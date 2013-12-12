@@ -105,11 +105,24 @@ Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a 
 <h1 class="top">Magit User Manual</h1>
 
 <p>Magit is an interface to the version control system Git, implemented
-as an extension to Emacs.  Magit supports GNU Emacs version 22 or
-later.  It may work with other emacsen, but Magit developers do not
-intend to investigate and fix bugs that only appear in unsupported
-versions.  Patches to fix bugs in other emacsen or volunteers to
-maintain compatibility are still welcome.
+as an Emacs extension.
+</p>
+<p>Unlike Emacs&rsquo;s native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+</p>
+<p>Magit supports GNU Emacs 23.2 or later; 24.1 or later is recommended.
+Magit supports Git 1.7.2.5 or later; 1.8.2 or later is recommended.
+The minimal versions are those available in ancient Debian oldstable.
+</p>
+<p>When something breaks please see the curated list of known issues
+(https://github.com/magit/magit/wiki/Known-issues) and the FAQ
+(https://github.com/magit/magit/wiki/FAQ).  If that doesn&rsquo;t help check
+the list of all open issues (https://github.com/magit/magit/issues).
+</p>
+<p>If everything else fails please open a new issue or ask for help on
+the mailing list (https://groups.google.com/forum/?fromgroups#!forum/magit).
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -156,13 +169,11 @@ maintain compatibility are still welcome.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Bisecting">Bisecting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Finding-commits-not-merged-upstream">Finding commits not merged upstream</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Using-Magit-Extensions">Using Magit Extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Using-Git-Directly">Using Git Directly</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Customization">Customization</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Frequently-Asked-Questions">Frequently Asked Questions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#GNU-Free-Documentation-License">GNU Free Documentation License</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -187,19 +198,20 @@ rebasing, and other common Git operations.
 most common Git operations convenient.  Thus, Magit will likely not
 save you from learning Git itself.
 </p>
-<p>This manual provides a tour of all Magit features.  It does not give an
+<p>This manual provides a tour of many Magit features.  It isn&rsquo;t an
 introduction to version control in general, or to Git in particular.
 </p>
-<p>The main entry point to Magit is <kbd>M-x magit-status</kbd>, which will
-put you in Magit&rsquo;s status buffer.  You will be using it frequently, so
-it is probably a good idea to bind <code>magit-status</code> to a key of
-your choice.
+<p>The main entry point to Magit is <kbd>M-x magit-status</kbd>, which puts
+you in Magit&rsquo;s status buffer.  You will be using it frequently, so it
+is probably a good idea to globally bind <code>magit-status</code> to a key
+of your choice.
 </p>
 <p>In addition to the status buffer, Magit will also create buffers that
 show lists of commits, buffers with diffs, and other kinds of buffers.
-All these buffers are in <code>magit-mode</code> and have the same key
-bindings.  Not all commands make sense in all contexts, but a given
-key will always do the same thing in all Magit buffers.
+All these buffers are in a mode derived from <code>magit-mode</code> and
+have the similar key bindings.  Not all commands make sense in all
+contexts, but a given key will do the same thing in different Magit
+buffers.
 </p>
 <p>Naturally, Magit runs the <code>git</code> command to do most of the work.
 The <code>*magit-process*</code> buffer contains the transcript of the most
@@ -214,25 +226,14 @@ Next: <a href="#Sections" accesskey="n" rel="next">Sections</a>, Previous: <a hr
 <a name="Acknowledgments-1"></a>
 <h2 class="chapter">2 Acknowledgments</h2>
 
-<p>Marius Vollmer started the whole project.  Thanks !
+<p>Our thank goes to all current and past contributors, Marius Vollmer
+who started the project, and all retired and current maintainers,
+Phil Jackson, Peter J. Weisberg, Rémi Vanicat, Nicolas Dudebout,
+Yann Hodique, and Jonas Bernoulli.
 </p>
-<p>From day one of the first Magit announcement, John Wiegley has
-contributed numerous fixes, UI improvements, and new features.
-Thanks!
-</p>
-<p>Linh Dang and Christian Neukirchen also contributed from day one.
-Thanks!
-</p>
-<p>Phil Hagelberg joined a few days later.  Thanks!
-</p>
-<p>Alex Ott contributed support for git svn.  Thanks!
-</p>
-<p>Marcin Bachry contributed bug fixes and support for decorated logs.
-Thanks!
-</p>
-<p>Alexey Voinov fixed bugs.  Thanks!
-</p>
-<p>Rémi Vanicat helped with Tramp support.  Thanks!
+<p>(For a full list of contributors, see the AUTHORS.md file
+at the top-level directory of this distribution and at
+https://raw.github.com/magit/magit/master/AUTHORS.md)
 </p>
 <hr>
 <a name="Sections"></a>
@@ -1011,6 +1012,12 @@ different order.  You could pick them from the reflog, for example.
 associated with rewriting.  These commands all start with the <kbd>r</kbd>
 prefix key.
 </p>
+<p>(Unless you already do so, we recommend that you don&rsquo;t use the
+functionality described here.  It is semi-deprecated and will be
+removed once its unique features have been ported to the <code>git
+rebase --interactive</code> workflow.  Even now the latter is almost always
+the better option.)
+</p>
 <p>Typing <kbd>r b</kbd> will start a rewrite operation.  You will be prompted
 for a <em>base</em> commit.  This commit and all subsequent commits up
 until the current head are then put in a list of <em>Pending
@@ -1132,7 +1139,7 @@ specified in .gitmodules.
 <a name="Bisecting"></a>
 <div class="header">
 <p>
-Next: <a href="#Using-Magit-Extensions" accesskey="n" rel="next">Using Magit Extensions</a>, Previous: <a href="#Submodules" accesskey="p" rel="previous">Submodules</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Finding-commits-not-merged-upstream" accesskey="n" rel="next">Finding commits not merged upstream</a>, Previous: <a href="#Submodules" accesskey="p" rel="previous">Submodules</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="Bisecting-1"></a>
 <h2 class="chapter">22 Bisecting</h2>
@@ -1164,13 +1171,43 @@ their state.
 </p>
 
 <hr>
+<a name="Finding-commits-not-merged-upstream"></a>
+<div class="header">
+<p>
+Next: <a href="#Using-Magit-Extensions" accesskey="n" rel="next">Using Magit Extensions</a>, Previous: <a href="#Bisecting" accesskey="p" rel="previous">Bisecting</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="Finding-commits-not-merged-upstream-1"></a>
+<h2 class="chapter">23 Finding commits not merged upstream</h2>
+
+<p>One of the comforts of git is that it can tell you which commits have
+been merged upstream but not locally and vice versa.  Git&rsquo;s
+sub-command for this is <code>cherry</code> (not to be confused with
+<code>cherry-pick</code>).  Magit has support for this by invoking
+<code>magit-cherry</code> which is bound to <kbd>y</kbd> by default.
+</p>
+<p>Magit will then ask you first for the upstream revision (which
+defaults to the currently tracked remote branch if any) and the head
+revision (which defaults to the current branch) to use in the
+comparison.  You will then see a new buffer in which all commits are
+listed with a directional marker, their revision and the commit
+message&rsquo;s first line.  The directional marker is either <code>+</code>
+indicating a commit that&rsquo;s present in upstream but not in head or
+<code>-</code> which indicates a commit present in head but not in upstream.
+</p>
+<p>From this list you can use the usual key bindings for cherry-picking
+individual commits (<kbd>a</kbd> for cherry-picking without committing and
+<kbd>A</kbd> for the same plus the automatic commit).  The buffer is
+refreshed automatically after each cherry-pick.
+</p>
+
+<hr>
 <a name="Using-Magit-Extensions"></a>
 <div class="header">
 <p>
-Next: <a href="#Using-Git-Directly" accesskey="n" rel="next">Using Git Directly</a>, Previous: <a href="#Bisecting" accesskey="p" rel="previous">Bisecting</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Using-Git-Directly" accesskey="n" rel="next">Using Git Directly</a>, Previous: <a href="#Finding-commits-not-merged-upstream" accesskey="p" rel="previous">Finding commits not merged upstream</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="Magit-Extensions"></a>
-<h2 class="chapter">23 Magit Extensions</h2>
+<h2 class="chapter">24 Magit Extensions</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Activating-extensions" accesskey="1">Activating extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1181,8 +1218,6 @@ Next: <a href="#Using-Git-Directly" accesskey="n" rel="next">Using Git Directly<
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Interfacing-with-StGit" accesskey="4">Interfacing with StGit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Developing-Extensions" accesskey="5">Developing Extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
 </table>
 
 <hr>
@@ -1192,7 +1227,7 @@ Next: <a href="#Using-Git-Directly" accesskey="n" rel="next">Using Git Directly<
 Next: <a href="#Interfacing-with-Subversion" accesskey="n" rel="next">Interfacing with Subversion</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; </p>
 </div>
 <a name="Activating-extensions-1"></a>
-<h3 class="section">23.1 Activating extensions</h3>
+<h3 class="section">24.1 Activating extensions</h3>
 
 <p>Magit comes with a couple of shipped extensions that allow interaction
 with <code>git-svn</code>, <code>topgit</code> and <code>stgit</code>.  See following
@@ -1239,7 +1274,7 @@ line in the <code>config</code> file.
 Next: <a href="#Interfacing-with-Topgit" accesskey="n" rel="next">Interfacing with Topgit</a>, Previous: <a href="#Activating-extensions" accesskey="p" rel="previous">Activating extensions</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; </p>
 </div>
 <a name="Interfacing-with-Subversion-1"></a>
-<h3 class="section">23.2 Interfacing with Subversion</h3>
+<h3 class="section">24.2 Interfacing with Subversion</h3>
 
 <p>Typing <kbd>N r</kbd> runs <code>git svn rebase</code>, typing <kbd>N c</kbd> runs
 <code>git svn dcommit</code> and typing <kbd>N f</kbd> runs <code>git svn fetch</code>.
@@ -1257,7 +1292,7 @@ in.
 Next: <a href="#Interfacing-with-StGit" accesskey="n" rel="next">Interfacing with StGit</a>, Previous: <a href="#Interfacing-with-Subversion" accesskey="p" rel="previous">Interfacing with Subversion</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; </p>
 </div>
 <a name="Interfacing-with-Topgit-1"></a>
-<h3 class="section">23.3 Interfacing with Topgit</h3>
+<h3 class="section">24.3 Interfacing with Topgit</h3>
 
 <p>Topgit (http://repo.or.cz/r/topgit.git) is a patch queue manager that
 aims at being close as possible to raw Git, which makes it easy to use
@@ -1281,10 +1316,10 @@ of conflicts.
 <a name="Interfacing-with-StGit"></a>
 <div class="header">
 <p>
-Next: <a href="#Developing-Extensions" accesskey="n" rel="next">Developing Extensions</a>, Previous: <a href="#Interfacing-with-Topgit" accesskey="p" rel="previous">Interfacing with Topgit</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; </p>
+Previous: <a href="#Interfacing-with-Topgit" accesskey="p" rel="previous">Interfacing with Topgit</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; </p>
 </div>
 <a name="Interfacing-with-StGit-1"></a>
-<h3 class="section">23.4 Interfacing with StGit</h3>
+<h3 class="section">24.4 Interfacing with StGit</h3>
 
 <p>StGit (http://www.procode.org/stgit) is a Python application providing
 similar functionality to Quilt (i.e. pushing/popping patches to/from a
@@ -1305,404 +1340,24 @@ as well as you can delete them using the &ldquo;discard&rdquo; action.
 operations.
 </p>
 <hr>
-<a name="Developing-Extensions"></a>
-<div class="header">
-<p>
-Previous: <a href="#Interfacing-with-StGit" accesskey="p" rel="previous">Interfacing with StGit</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; </p>
-</div>
-<a name="Developing-Extensions-1"></a>
-<h3 class="section">23.5 Developing Extensions</h3>
-
-<p>Magit provides a generic mechanism to allow cooperation with Git-related
-systems, such as foreign VCS, patch systems,…
-</p>
-<p>In particular it allows to:
-</p>
-<ul>
-<li> Define sections to display specific information about the current state
-of the repository, and place them relatively to existing sections.
-
-<p><code>magit-define-inserter</code> automagically defines two hooks called
-<code>magit-before-insert-SECTION-hook</code> and
-<code>magit-after-insert-SECTION-hook</code> that allow to generate and place
-more sections.
-</p>
-<p>In the following example, we use the builtin &ldquo;stashes&rdquo; section to
-place our own &ldquo;foo&rdquo; one.
-</p>
-<div class="example">
-<pre class="example">(magit-define-inserter foo ()
-  (magit-git-section 'foo
-                     &quot;Foo:&quot; 'foo-wash-function
-                     &quot;foo&quot; &quot;arg1&quot; &quot;arg2&quot;))
-(add-hook 'magit-after-insert-stashes-hook 'magit-insert-foo)
-</pre></div>
-
-</li><li> Define new types of objects in those sections.
-
-<p>The function <code>foo-wash-function</code> defined above post-processes each
-line of the output of the &ldquo;git foo arg1 arg2&rdquo; command, and is able to
-associate a type to certain lines.
-</p>
-<p>A simple implementation could be:
-</p>
-<div class="example">
-<pre class="example">(defun foo-wash-function ()
-  (let ((foo (buffer-substring (line-beginning-position) (line-end-position))))
-    (goto-char (line-beginning-position))
-    (magit-with-section foo 'foo
-      (magit-set-section-info foo)
-      (forward-line))))
-</pre></div>
-
-<p>In this case, every line of the command output is transformed into an
-object of type <code>'foo</code>.
-</p>
-</li><li> Alter behavior of generic commands to dispatch them correctly to the
-relevant system, optionally making use of the newly defined types.
-
-<div class="example">
-<pre class="example">(magit-add-action (item info &quot;discard&quot;)
-  ((foo)
-   (do-something-meaningful-for-discarding-a-foo)))
-</pre></div>
-
-<p>This will alter the behavior of <kbd>k</kbd>, when applied to those objects.
-</p>
-</li><li> Plug a different logic into basic commands, to reflect the presence of
-the extension.
-
-<p><code>magit-define-command</code> automagically defines
-a <code>magit-CMD-command-hook</code> that can contain a list of functions to
-call before the actual core code.  Execution stops after the first hook
-that returns a non-nil value.  This leaves room for extension logic.
-</p>
-<div class="example">
-<pre class="example">(add-hook 'magit-create-branch-command-hook 'foo-create-branch)
-</pre></div>
-
-<p>The function <code>foo-create-branch</code> will be called each time an
-attempt is made to create a branch, and can, for example, react to
-a certain name convention.
-</p>
-</li><li> Define new commands and associated menu.
-
-<p>This part is not really specific to extensions, except that menus take
-place in the &ldquo;Extensions&rdquo; submenu.
-</p>
-</li></ul>
-
-<p>It is suggested that Magit extensions authors stick to the convention of
-making extensions minor modes.  This has many advantages, including the
-fact that users are able to toggle extensions, and that it&rsquo;s easy to
-configure a specific set of extensions for a given repository.
-</p>
-<p>Shipped extensions can serve as an example of how to develop
-new extensions.
-</p>
-<p>Basically a <code>foo</code> extension should provide a <code>magit-foo-mode</code>
-minor mode, as well as a <code>turn-on-magit-foo</code> function.  The main
-task of the minor mode is to register/unregister the various hooks that
-the extension requires.  The registered actions on the other hand can be
-left alone and activated globally, since they can be run only on
-displayed items, which won&rsquo;t happen when the minor mode is off.
-</p>
-<p>Don&rsquo;t forget to call <code>magit-refresh</code> when the minor mode is toggled
-interactively, so that the relevant sections can be shown or hidden.
-</p>
-<hr>
 <a name="Using-Git-Directly"></a>
 <div class="header">
 <p>
-Next: <a href="#Customization" accesskey="n" rel="next">Customization</a>, Previous: <a href="#Using-Magit-Extensions" accesskey="p" rel="previous">Using Magit Extensions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#GNU-Free-Documentation-License" accesskey="n" rel="next">GNU Free Documentation License</a>, Previous: <a href="#Using-Magit-Extensions" accesskey="p" rel="previous">Using Magit Extensions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="Using-Git-Directly-1"></a>
-<h2 class="chapter">24 Using Git Directly</h2>
+<h2 class="chapter">25 Using Git Directly</h2>
 
 <p>For situations when Magit doesn&rsquo;t do everything you need, you can run
 raw Git commands using <kbd>:</kbd>.  This will prompt for a Git command, run
 it, and refresh the status buffer.  The output can be viewed by typing
 <kbd>$</kbd>.
 </p>
-
-<hr>
-<a name="Customization"></a>
-<div class="header">
-<p>
-Next: <a href="#Frequently-Asked-Questions" accesskey="n" rel="next">Frequently Asked Questions</a>, Previous: <a href="#Using-Git-Directly" accesskey="p" rel="previous">Using Git Directly</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
-</div>
-<a name="Customization-1"></a>
-<h2 class="chapter">25 Customization</h2>
-
-<p>The following variables can be used to adapt Magit to your workflow:
-</p>
-<dl compact="compact">
-<dt><code>magit-git-executable</code></dt>
-<dd><p>The name of the Git executable.
-</p>
-</dd>
-<dt><code>magit-git-standard-options</code></dt>
-<dd><p>Standard options when running Git.
-</p>
-</dd>
-<dt><code>magit-repo-dirs</code></dt>
-<dd><p>Directories containing Git repositories.
-</p>
-<p>Magit will look into these directories for Git repositories and offer
-them as choices for <code>magit-status</code>.
-</p>
-</dd>
-<dt><code>magit-repo-dirs-depth</code></dt>
-<dd><p>The maximum depth to look for Git repos.
-</p>
-<p>When looking for a Git repository below the directories in
-<code>magit-repo-dirs</code>, Magit will only descend this many levels deep.
-</p>
-</dd>
-<dt><code>magit-save-some-buffers</code></dt>
-<dd><p>Non-nil means that <code>magit-status</code> will save modified buffers
-before running.  Setting this to <code>t</code> will ask which buffers to
-save, setting it to <code>'dontask</code> will save all modified buffers
-without asking.
-</p>
-</dd>
-<dt><code>magit-save-some-buffers-predicate</code></dt>
-<dd><p>Specifies a predicate function on <code>magit-save-some-buffers</code> to
-determine which unsaved buffers should be prompted for saving.
-</p>
-</dd>
-<dt><code>magit-commit-all-when-nothing-staged</code></dt>
-<dd><p>Determines what <code>magit-log-edit</code> does when nothing is staged.
-Setting this to <code>nil</code> will make it do nothing, setting it to
-<code>t</code> will arrange things so that the actual commit command will
-use the <code>--all</code> option, setting it to <code>'ask</code> will first ask
-for confirmation whether to do this, and setting it to
-<code>'ask-stage</code> will cause all changes to be staged, after a
-confirmation.
-</p>
-</dd>
-<dt><code>magit-commit-signoff</code></dt>
-<dd><p>When performing <code>git commit</code> adds <code>--signoff</code>.
-</p>
-</dd>
-<dt><code>magit-log-cutoff-length</code></dt>
-<dd><p>The maximum number of commits to show in the <code>log</code> and
-<code>whazzup</code> buffers.
-</p>
-</dd>
-<dt><code>magit-log-infinite-length</code></dt>
-<dd><p>Number of log used to show as maximum for
-<code>magit-log-cutoff-length</code>.
-</p>
-</dd>
-<dt><code>magit-log-auto-more</code></dt>
-<dd><p>Insert more log entries automatically when moving past the last entry.
-</p>
-<p>Only considered when moving past the last entry with <code>magit-goto-next-section</code>.
-</p>
-</dd>
-<dt><code>magit-process-popup-time</code></dt>
-<dd><p>Popup the process buffer if a command takes longer than this many
-seconds.
-</p>
-</dd>
-<dt><code>magit-revert-item-confirm</code></dt>
-<dd><p>Require acknowledgment before reverting an item.
-</p>
-</dd>
-<dt><code>magit-log-edit-confirm-cancellation</code></dt>
-<dd><p>Require acknowledgment before canceling the log edit buffer.
-</p>
-</dd>
-<dt><code>magit-remote-ref-format</code></dt>
-<dd><p>What format to use for autocompleting refs, in particular for
-remotes.
-</p>
-<p>Autocompletion is used by functions like <code>magit-checkout</code>,
-<code>magit-interactive-rebase</code> and others which offer branch name
-completion.
-</p>
-<p>The value <code>'name-then-remote</code> means remotes will be of the form
-<code>name (remote)</code>, while the value <code>'remote-slash-name</code> means
-that they&rsquo;ll be of the form <code>remote/name</code>. For example something
-listed as <code>remotes/upstream/next</code> by <code>git branch -l -a</code> will
-be offered as <code>next (upstream)</code> and <code>upstream/next</code>.
-</p>
-</dd>
-<dt><code>magit-process-connection-type</code></dt>
-<dd><p>Connection type used for the git process.
-</p>
-<p><code>nil</code> mean pipe, it is usually faster and more efficient, and
-work on cygwin.  <code>t</code> mean pty, it enable magit to prompt for
-passphrase when needed.
-</p>
-</dd>
-<dt><code>magit-completing-read-function</code></dt>
-<dd><p>Function to be called when requesting input from the user.
-</p>
-</dd>
-<dt><code>magit-create-branch-behaviour</code></dt>
-<dd><p>Where magit will create a new branch if not supplied a branchname or
-ref.
-</p>
-<p>The value <code>'at-head</code> means a new branch will be created at the
-tip of your current branch, while the value <code>'at-point</code> means
-magit will try to find a valid reference at point...
-</p>
-</dd>
-<dt><code>magit-status-buffer-switch-function</code></dt>
-<dd><p>Function for <code>magit-status</code> to use for switching to the status
-buffer.
-</p>
-<p>The function is given one argument, the status buffer.
-</p>
-</dd>
-<dt><code>magit-rewrite-inclusive</code></dt>
-<dd><p>Whether magit includes the selected base commit in a rewrite
-operation.
-</p>
-<p><code>t</code> means both the selected commit as well as any subsequent
-commits will be rewritten.  This is magit&rsquo;s default behaviour,
-equivalent to <code>git rebase -i ${REV~1}</code>
-</p>
-<pre class="verbatim">  A'---B'---C'---D'
-  ^
-</pre>
-<p><code>nil</code> means the selected commit will be literally used as
-<code>base</code>, so only subsequent commits will be rewritten.  This is
-consistent with git-rebase, equivalent to <code>git rebase -i
-${REV}</code>, yet more cumbersome to use from the status buffer.
-</p>
-<pre class="verbatim">  A---B'---C'---D'
-  ^
-</pre>
-</dd>
-<dt><code>magit-topgit-executable</code></dt>
-<dd><p>The name of the TopGit executable.
-</p>
-</dd>
-<dt><code>magit-topgit-branch-prefix</code></dt>
-<dd><p>Convention prefix for topic branch creation.
-</p>
-</dd>
-</dl>
-
-<hr>
-<a name="Frequently-Asked-Questions"></a>
-<div class="header">
-<p>
-Next: <a href="#GNU-Free-Documentation-License" accesskey="n" rel="next">GNU Free Documentation License</a>, Previous: <a href="#Customization" accesskey="p" rel="previous">Customization</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
-</div>
-<a name="Frequently-Asked-Questions-1"></a>
-<h2 class="chapter">26 Frequently Asked Questions</h2>
-
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#FAQ-_002d-Changes" accesskey="1">FAQ - Changes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#FAQ-1-_002d-Troubleshooting" accesskey="2">FAQ 1 - Troubleshooting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#FAQ-2-_002d-Display-issues" accesskey="3">FAQ 2 - Display issues</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
-<hr>
-<a name="FAQ-_002d-Changes"></a>
-<div class="header">
-<p>
-Next: <a href="#FAQ-1-_002d-Troubleshooting" accesskey="n" rel="next">FAQ 1 - Troubleshooting</a>, Up: <a href="#Frequently-Asked-Questions" accesskey="u" rel="up">Frequently Asked Questions</a> &nbsp; </p>
-</div>
-<a name="Changes"></a>
-<h3 class="section">26.1 Changes</h3>
-
-<ul>
-<li> v1.1: Changed the way extensions work.  Previously, they were enabled
-unconditionally once the library was loaded.  Now they are minor modes
-that need to be activated explicitly (potentially on a per-repository
-basis).  See <a href="#Activating-extensions">Activating extensions</a>.
-
-</li></ul>
-
-<hr>
-<a name="FAQ-1-_002d-Troubleshooting"></a>
-<div class="header">
-<p>
-Next: <a href="#FAQ-2-_002d-Display-issues" accesskey="n" rel="next">FAQ 2 - Display issues</a>, Previous: <a href="#FAQ-_002d-Changes" accesskey="p" rel="previous">FAQ - Changes</a>, Up: <a href="#Frequently-Asked-Questions" accesskey="u" rel="up">Frequently Asked Questions</a> &nbsp; </p>
-</div>
-<a name="Troubleshooting"></a>
-<h3 class="section">26.2 Troubleshooting</h3>
-
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#FAQ-1_002d1" accesskey="1">FAQ 1-1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How do I get raw error messages from git?
-</td></tr>
-</table>
-
-<hr>
-<a name="FAQ-1_002d1"></a>
-<div class="header">
-<p>
-Up: <a href="#FAQ-1-_002d-Troubleshooting" accesskey="u" rel="up">FAQ 1 - Troubleshooting</a> &nbsp; </p>
-</div>
-<a name="Question-1_002e1"></a>
-<h4 class="subsection">26.2.1 Question 1.1</h4>
-
-<p>How do I get raw error messages from git?
-</p>
-<a name="Answer"></a>
-<h4 class="subsubheading">Answer</h4>
-
-<p>If a command goes wrong, you can hit <kbd>$</kbd> to access the git process
-buffer.  There, the entire trace for the latest operation is available.
-</p>
-<hr>
-<a name="FAQ-2-_002d-Display-issues"></a>
-<div class="header">
-<p>
-Previous: <a href="#FAQ-1-_002d-Troubleshooting" accesskey="p" rel="previous">FAQ 1 - Troubleshooting</a>, Up: <a href="#Frequently-Asked-Questions" accesskey="u" rel="up">Frequently Asked Questions</a> &nbsp; </p>
-</div>
-<a name="Display-issues"></a>
-<h3 class="section">26.3 Display issues</h3>
-
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#FAQ-2_002d1" accesskey="1">FAQ 2-1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How do I fix international characters display?
-</td></tr>
-</table>
-
-<hr>
-<a name="FAQ-2_002d1"></a>
-<div class="header">
-<p>
-Up: <a href="#FAQ-2-_002d-Display-issues" accesskey="u" rel="up">FAQ 2 - Display issues</a> &nbsp; </p>
-</div>
-<a name="Question-2_002e1"></a>
-<h4 class="subsection">26.3.1 Question 2.1</h4>
-
-<p>How do I fix international characters display?
-</p>
-<a name="Answer-1"></a>
-<h4 class="subsubheading">Answer</h4>
-
-<p>Please make sure your Magit buffer uses a compatible coding system.
-In the particular case of file names, git itself quotes them by
-default.  You can disable this with one of the following approaches:
-</p>
-<div class="example">
-<pre class="example">$ git config core.quotepath false
-</pre></div>
-
-<p>or
-</p>
-<div class="example">
-<pre class="example">(setq magit-git-standard-options (append magit-git-standard-options
-                                         '(&quot;-c&quot; &quot;core.quotepath=false&quot;)))
-</pre></div>
-
-<p>The latter might not work in old versions of git.
-</p>
 <hr>
 <a name="GNU-Free-Documentation-License"></a>
 <div class="header">
 <p>
-Previous: <a href="#Frequently-Asked-Questions" accesskey="p" rel="previous">Frequently Asked Questions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Using-Git-Directly" accesskey="p" rel="previous">Using Git Directly</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="GNU-Free-Documentation-License-1"></a>
 <h2 class="appendix">Appendix A GNU Free Documentation License</h2>
