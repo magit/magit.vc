@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Diffing</title>
+
+<meta name="description" content="Magit User Manual (1.4): Diffing">
+<meta name="keywords" content="Magit User Manual (1.4): Diffing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Tagging.html#Tagging" rel="next" title="Tagging">
+<link href="Commit-Buffer.html#Commit-Buffer" rel="prev" title="Commit Buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Diffing"></a>
+<div class="header">
+<p>
+Next: <a href="Tagging.html#Tagging" accesskey="n" rel="next">Tagging</a>, Previous: <a href="Commit-Buffer.html#Commit-Buffer" accesskey="p" rel="prev">Commit Buffer</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Diffing-1"></a>
+<h2 class="chapter">10 Diffing</h2>
+
+<p>Magit typically shows diffs in the &ldquo;unified&rdquo; format.
+</p>
+<p>In any buffer that shows a diff, you can type <kbd>e</kbd> anywhere within
+the diff to show the two versions of the file in Ediff.  If the diff
+is of a file in the status buffer that needs to be merged, you will be
+able to use Ediff as an interactive merge tool.  Otherwise, Ediff will
+simply show the two versions of the file.
+</p>
+<p>To show the changes from your working tree to another revision, type
+<kbd>d</kbd>.  To show the changes between two arbitrary revisions, type
+<kbd>D</kbd>.
+</p>
+<p>You can use <kbd>a</kbd> within the diff output to apply the changes to
+your working tree.  As usual when point is in a diff header for a
+file, all changes for that file are applied, and when it is in a hunk,
+only that hunk is.  When the region is active, the applied changes are
+restricted to that region.
+</p>
+<p>Typing <kbd>v</kbd> will apply the selected changes in reverse.
+</p>
+
+
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Section movement</title>
+
+<meta name="description" content="Magit User Manual: Section movement">
+<meta name="keywords" content="Magit User Manual: Section movement">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Sections.html#Sections" rel="up" title="Sections">
+<link href="Section-visibility.html#Section-visibility" rel="next" title="Section visibility">
+<link href="Sections.html#Sections" rel="prev" title="Sections">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Section-movement"></a>
+<div class="header">
+<p>
+Next: <a href="Section-visibility.html#Section-visibility" accesskey="n" rel="next">Section visibility</a>, Up: <a href="Sections.html#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Section-movement-1"></a>
+<h4 class="subsection">4.4.1 Section movement</h4>
+
+<p>To move within a section use the usual keys (<code>C-p</code>, <code>C-n</code>, <code>C-b</code>, <code>C-f</code> etc),
+whose global bindings are not shadowed.  To move to another section use
+the following commands.
+</p>
+<dl compact="compact">
+<dd><a name="index-p"></a>
+<a name="index-magit_002dsection_002dbackward"></a>
+</dd>
+<dt><kbd>p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-backward</code>)</dt>
+<dd>
+<p>When not at the beginning of a section, then move to the beginning
+of the current section.  At the beginning of a section, instead move
+to the beginning of the previous visible section.
+</p>
+<a name="index-n"></a>
+<a name="index-magit_002dsection_002dforward"></a>
+</dd>
+<dt><kbd>n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-forward</code>)</dt>
+<dd>
+<p>Move to the beginning of the next visible section.
+</p>
+<a name="index-P"></a>
+<a name="index-magit_002dsection_002dbackward_002dsiblings"></a>
+</dd>
+<dt><kbd>P</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-backward-siblings</code>)</dt>
+<dd>
+<p>Move to the beginning of the previous sibling section.  If there is
+no previous sibling section, then move to the parent section
+instead.
+</p>
+<a name="index-N"></a>
+<a name="index-magit_002dsection_002dforward_002dsiblings"></a>
+</dd>
+<dt><kbd>N</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-forward-siblings</code>)</dt>
+<dd>
+<p>Move to the beginning of the next sibling section.  If there is no
+next sibling section, then move to the parent section instead.
+</p>
+<a name="index-_005e"></a>
+<a name="index-magit_002dsection_002dup"></a>
+</dd>
+<dt><kbd>^</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-up</code>)</dt>
+<dd>
+<p>Move to the beginning of the parent of the current section.
+</p></dd>
+</dl>
+
+<p>The above commands all call the hook <code>magit-section-movement-hook</code>.
+And, except for the second, the below functions are all members of
+that hook&rsquo;s default value.
+</p>
+<dl>
+<dt><a name="index-magit_002dsection_002dmovement_002dhook"></a>Variable: <strong>magit-section-movement-hook</strong></dt>
+<dd>
+<p>This hook is run by all of the above movement commands, after
+arriving at the destination.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dhunk_002dset_002dwindow_002dstart"></a>Function: <strong>magit-hunk-set-window-start</strong></dt>
+<dd>
+<p>This hook function ensures that the beginning of the current section
+is visible, provided it is a <code>hunk</code> section.  Otherwise, it does
+nothing.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dsection_002dset_002dwindow_002dstart"></a>Function: <strong>magit-section-set-window-start</strong></dt>
+<dd>
+<p>This hook function ensures that the beginning of the current section
+is visible, regardless of the section&rsquo;s type.  If you add this to
+<code>magit-section-movement-hook</code>, then you must remove the hunk-only
+variant in turn.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dmaybe_002dshow_002dcommit"></a>Function: <strong>magit-log-maybe-show-commit</strong></dt>
+<dd>
+<p>This hook function shows the commit at point in another window.  If
+the section at point is a <code>commit</code> section and the value of
+<code>magit-diff-auto-show-p</code> calls for it, then the commit is shown in
+another window, using <code>magit-show-commit</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dmaybe_002dshow_002dmore_002dcommits"></a>Function: <strong>magit-log-maybe-show-more-commits</strong></dt>
+<dd>
+<p>This hook function only has an effect in log buffers, and <code>point</code> is
+on the &quot;show more&quot; section.  If that is the case, then it doubles
+the number of commits that are being shown.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Section-visibility.html#Section-visibility" accesskey="n" rel="next">Section visibility</a>, Up: <a href="Sections.html#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the obsolete 1.2 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.2 OBSOLETE): Customization</title>
+
+<meta name="description" content="Magit User Manual (1.2 OBSOLETE): Customization">
+<meta name="keywords" content="Magit User Manual (1.2 OBSOLETE): Customization">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Frequently-Asked-Questions.html#Frequently-Asked-Questions" rel="next" title="Frequently Asked Questions">
+<link href="Using-Git-Directly.html#Using-Git-Directly" rel="prev" title="Using Git Directly">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Customization"></a>
+<div class="header">
+<p>
+Next: <a href="Frequently-Asked-Questions.html#Frequently-Asked-Questions" accesskey="n" rel="next">Frequently Asked Questions</a>, Previous: <a href="Using-Git-Directly.html#Using-Git-Directly" accesskey="p" rel="prev">Using Git Directly</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Customization-1"></a>
+<h2 class="chapter">26 Customization</h2>
+
+<p>The following variables can be used to adapt Magit to your workflow:
+</p>
+<dl compact="compact">
+<dt><code>magit-git-executable</code></dt>
+<dd><p>The name of the Git executable.
+</p>
+</dd>
+<dt><code>magit-git-standard-options</code></dt>
+<dd><p>Standard options when running Git.
+</p>
+</dd>
+<dt><code>magit-repo-dirs</code></dt>
+<dd><p>Directories containing Git repositories.
+</p>
+<p>Magit will look into these directories for Git repositories and offer
+them as choices for <code>magit-status</code>.
+</p>
+</dd>
+<dt><code>magit-repo-dirs-depth</code></dt>
+<dd><p>The maximum depth to look for Git repos.
+</p>
+<p>When looking for a Git repository below the directories in
+<code>magit-repo-dirs</code>, Magit will only descend this many levels deep.
+</p>
+</dd>
+<dt><code>magit-save-some-buffers</code></dt>
+<dd><p>Non-nil means that <code>magit-status</code> will save modified buffers
+before running.  Setting this to <code>t</code> will ask which buffers to
+save, setting it to <code>'dontask</code> will save all modified buffers
+without asking.
+</p>
+</dd>
+<dt><code>magit-save-some-buffers-predicate</code></dt>
+<dd><p>Specifies a predicate function on <code>magit-save-some-buffers</code> to
+determine which unsaved buffers should be prompted for saving.
+</p>
+</dd>
+<dt><code>magit-commit-all-when-nothing-staged</code></dt>
+<dd><p>Determines what <code>magit-log-edit</code> does when nothing is staged.
+Setting this to <code>nil</code> will make it do nothing, setting it to
+<code>t</code> will arrange things so that the actual commit command will
+use the <code>--all</code> option, setting it to <code>'ask</code> will first ask
+for confirmation whether to do this, and setting it to
+<code>'ask-stage</code> will cause all changes to be staged, after a
+confirmation.
+</p>
+</dd>
+<dt><code>magit-commit-signoff</code></dt>
+<dd><p>When performing <code>git commit</code> adds <code>--signoff</code>.
+</p>
+</dd>
+<dt><code>magit-log-cutoff-length</code></dt>
+<dd><p>The maximum number of commits to show in the <code>log</code> and
+<code>whazzup</code> buffers.
+</p>
+</dd>
+<dt><code>magit-log-infinite-length</code></dt>
+<dd><p>Number of log used to show as maximum for
+<code>magit-log-cutoff-length</code>.
+</p>
+</dd>
+<dt><code>magit-log-auto-more</code></dt>
+<dd><p>Insert more log entries automatically when moving past the last entry.
+</p>
+<p>Only considered when moving past the last entry with <code>magit-goto-next-section</code>.
+</p>
+</dd>
+<dt><code>magit-process-popup-time</code></dt>
+<dd><p>Popup the process buffer if a command takes longer than this many
+seconds.
+</p>
+</dd>
+<dt><code>magit-revert-item-confirm</code></dt>
+<dd><p>Require acknowledgment before reverting an item.
+</p>
+</dd>
+<dt><code>magit-log-edit-confirm-cancellation</code></dt>
+<dd><p>Require acknowledgment before canceling the log edit buffer.
+</p>
+</dd>
+<dt><code>magit-remote-ref-format</code></dt>
+<dd><p>What format to use for autocompleting refs, in pariticular for
+remotes.
+</p>
+<p>Autocompletion is used by functions like <code>magit-checkout</code>,
+<code>magit-interactive-rebase</code> and others which offer branch name
+completion.
+</p>
+<p>The value <code>'name-then-remote</code> means remotes will be of the form
+<code>name (remote)</code>, while the value <code>'remote-slash-name</code> means
+that they&rsquo;ll be of the form <code>remote/name</code>. I.e. something that&rsquo;s
+listed as <code>remotes/upstream/next</code> by <code>git branch -l -a</code> will
+be <code>upstream/next</code>.
+</p>
+</dd>
+<dt><code>magit-process-connection-type</code></dt>
+<dd><p>Connection type used for the git process.
+</p>
+<p><code>nil</code> mean pipe, it is usually faster and more efficient, and
+work on cygwin.  <code>t</code> mean pty, it enable magit to prompt for
+passphrase when needed.
+</p>
+</dd>
+<dt><code>magit-completing-read-function</code></dt>
+<dd><p>Function to be called when requesting input from the user.
+</p>
+</dd>
+<dt><code>magit-create-branch-behaviour</code></dt>
+<dd><p>Where magit will create a new branch if not supplied a branchname or
+ref.
+</p>
+<p>The value <code>'at-head</code> means a new branch will be created at the
+tip of your current branch, while the value <code>'at-point</code> means
+magit will try to find a valid reference at point...
+</p>
+</dd>
+<dt><code>magit-status-buffer-switch-function</code></dt>
+<dd><p>Function for <code>magit-status</code> to use for switching to the status
+buffer.
+</p>
+<p>The function is given one argument, the status buffer.
+</p>
+</dd>
+<dt><code>magit-rewrite-inclusive</code></dt>
+<dd><p>Whether magit includes the selected base commit in a rewrite
+operation.
+</p>
+<p><code>t</code> means both the selected commit as well as any subsequent
+commits will be rewritten. This is magit&rsquo;s default behaviour,
+equivalent to <code>git rebase -i ${REV~1}</code>
+</p>
+<pre class="verbatim">  A'---B'---C'---D'
+  ^
+</pre>
+<p><code>nil</code> means the selected commit will be literally used as
+<code>base</code>, so only subsequent commits will be rewritten. This is
+consistent with git-rebase, equivalent to <code>git rebase -i
+${REV}</code>, yet more cumbersome to use from the status buffer.
+</p>
+<pre class="verbatim">  A---B'---C'---D'
+  ^
+</pre>
+</dd>
+<dt><code>magit-topgit-executable</code></dt>
+<dd><p>The name of the TopGit executable.
+</p>
+</dd>
+<dt><code>magit-topgit-branch-prefix</code></dt>
+<dd><p>Convention prefix for topic branch creation.
+</p>
+</dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Frequently-Asked-Questions.html#Frequently-Asked-Questions" accesskey="n" rel="next">Frequently Asked Questions</a>, Previous: <a href="Using-Git-Directly.html#Using-Git-Directly" accesskey="p" rel="prev">Using Git Directly</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

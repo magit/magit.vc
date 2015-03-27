@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Ediffing</title>
+
+<meta name="description" content="Magit User Manual: Ediffing">
+<meta name="keywords" content="Magit User Manual: Ediffing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
+<link href="References-buffer.html#References-buffer" rel="next" title="References buffer">
+<link href="Revision-buffer.html#Revision-buffer" rel="prev" title="Revision buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Ediffing"></a>
+<div class="header">
+<p>
+Next: <a href="References-buffer.html#References-buffer" accesskey="n" rel="next">References buffer</a>, Previous: <a href="Diffing.html#Diffing" accesskey="p" rel="prev">Diffing</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Ediffing-1"></a>
+<h3 class="section">5.4 Ediffing</h3>
+
+<dl compact="compact">
+<dd><a name="index-e"></a>
+<a name="index-magit_002dediff_002ddwim"></a>
+</dd>
+<dt><kbd>e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-ediff-dwim</code>)</dt>
+<dd>
+<p>Compare, stage, or resolve using Ediff.
+</p>
+<p>This command tries to guess what file, and what commit or range the
+user wants to compare, stage, or resolve using Ediff.  It might only
+be able to guess either the file, or range/commit, in which case
+the user is asked about the other.  It might not always guess right,
+in which case the appropriate <code>magit-ediff-*</code> command has to be used
+explicitly.  If it cannot read the user&rsquo;s mind at all, then it asks
+the user for a command to run.
+</p>
+<a name="index-E"></a>
+<a name="index-magit_002dediff_002dpopup"></a>
+</dd>
+<dt><kbd>E</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-ediff-popup</code>)</dt>
+<dd>
+<p>This prefix commands shows the following suffix commands in a popup
+buffer.
+</p>
+<a name="index-E-d"></a>
+<a name="index-magit_002dediff_002dcompare"></a>
+</dd>
+<dt><kbd>E d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-ediff-compare</code>)</dt>
+<dd>
+<p>Compare two revisions of a file using Ediff, defaulting to the file
+at point.
+</p>
+<a name="index-E-m"></a>
+<a name="index-magit_002dediff_002dresolve"></a>
+</dd>
+<dt><kbd>E m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-ediff-resolve</code>)</dt>
+<dd>
+<p>Resolve outstanding conflicts in a file using Ediff, defaulting to
+the file at point.
+</p>
+<p>In the rare event that you want to manually resolve all conflicts,
+including those already resolved by Git, use
+<code>ediff-merge-revisions-with-ancestor</code>.
+</p>
+<a name="index-E-s"></a>
+<a name="index-magit_002dediff_002dstage"></a>
+</dd>
+<dt><kbd>E s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-ediff-stage</code>)</dt>
+<dd>
+<p>Stage and unstage changes to a file using Ediff, defaulting to the
+file at point.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

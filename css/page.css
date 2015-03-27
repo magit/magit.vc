@@ -1,0 +1,100 @@
+body {
+  font-family: 'Noto Serif', serif;
+  text-align: justify;
+  background-color: #fdf6e3;
+  color: #586e75;
+  max-width: 700px;
+  margin: 50px;
+}
+
+a {
+  color: #b58900;
+}
+
+a:visited {
+  color: #7B6000;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Noto Sans', sans-serif;
+  text-align: left;
+  margin-top: 40px;
+  color: #268bd2;
+}
+
+header h1 img#M {
+  vertical-align: -10px;
+  margin-right: 3px;
+}
+
+header h1 {
+  font-size: 50px;
+  display: inline;
+  color: #d33682;
+}
+
+header h2 {
+  display: inline;
+}
+
+img.screenshot {
+  box-shadow: 2px 2px 15px #93a1a1;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+blockquote {
+  display:block;
+  background: #eee8d5;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: left;
+  box-shadow: 2px 2px 15px #eee8d5;
+}
+
+blockquote::before {
+  content: "\201C";
+  font-size: 60px;
+  font-weight: bold;
+  color: #d33682;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+p#donate {
+  display: block;
+  background: #eee8d5;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: left;
+  box-shadow: 2px 2px 15px #859900;
+}
+
+p#donate a {
+  color: #859900;
+}
+
+p#donate i {
+  color: #d33682;
+}
+
+p#donate::before {
+  content: "\0024";
+  font-size: 40px;
+  font-weight: bold;
+  color: #859900;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+a.small {
+  font-size: xx-small;
+}

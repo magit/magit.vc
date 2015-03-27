@@ -1,0 +1,16 @@
+*~
+*.aux
+*.cp
+*.cps
+*.fn
+*.fns
+*.ky
+*.kys
+*.log
+*.pg
+*.toc
+*.tp
+*.vr
+*.vrs
+/stats/gitstats.cache
+/stats/gitstats.css

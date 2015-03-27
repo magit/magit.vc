@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Branches in the Branch Manager</title>
+
+<meta name="description" content="Magit User Manual (1.4): Branches in the Branch Manager">
+<meta name="keywords" content="Magit User Manual (1.4): Branches in the Branch Manager">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Branches-and-Remotes.html#Branches-and-Remotes" rel="up" title="Branches and Remotes">
+<link href="Remotes-in-the-Branch-Manager.html#Remotes-in-the-Branch-Manager" rel="next" title="Remotes in the Branch Manager">
+<link href="Remotes-Popup.html#Remotes-Popup" rel="prev" title="Remotes Popup">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Branches-in-the-Branch-Manager"></a>
+<div class="header">
+<p>
+Next: <a href="Remotes-in-the-Branch-Manager.html#Remotes-in-the-Branch-Manager" accesskey="n" rel="next">Remotes in the Branch Manager</a>, Previous: <a href="Remotes-Popup.html#Remotes-Popup" accesskey="p" rel="prev">Remotes Popup</a>, Up: <a href="Branches-and-Remotes.html#Branches-and-Remotes" accesskey="u" rel="up">Branches and Remotes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Branches-in-the-Branch-Manager-1"></a>
+<h3 class="section">14.3 Branches in the Branch Manager</h3>
+
+<p>In the branch manager, each branch is displayed on a separate line.  The
+current local branch is marked by a &ldquo;*&rdquo; in front of the name.  Remote
+branches are grouped by the remote they come from.
+</p>
+<p>If a local branch tracks a remote branch some extra information is
+printed on the branch line.  The format  is the following: &ldquo;&lt;branch&gt;
+[&lt;remote-branch&gt; &nbsp;&lt;remote&gt;: ahead &lt;a&gt;, behind &lt;b&gt;]&rdquo;.
+&ldquo;&lt;remote-branch&gt;&rdquo; is omitted if it is identical to &ldquo;&lt;branch&gt;&rdquo;.
+&ldquo;ahead&rdquo; and &ldquo;behind&rdquo; information are only displayed if necessary.
+</p>
+<p>To check out a branch, move your cursor to the desired branch and
+press <kbd>RET</kbd>.
+</p>
+<p>Typing <kbd>c</kbd> will create a new branch.
+</p>
+<p>Typing <kbd>k</kbd> will delete the branch in the current line, and
+<kbd>C-u k</kbd> deletes it even if it hasn&rsquo;t been merged into the current
+local branch.  Deleting works for both local and remote branches.
+</p>
+<p>Typing <kbd>r</kbd> on a branch will rename it.
+</p>
+<p>Typing <kbd>T</kbd> on a local branch, changes which remote branch it
+tracks.
+</p>
+
+
+
+</body>
+</html>

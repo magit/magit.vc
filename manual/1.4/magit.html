@@ -1,0 +1,1788 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4)</title>
+
+<meta name="description" content="Magit User Manual (1.4)">
+<meta name="keywords" content="Magit User Manual (1.4)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="dir.html#Top" rel="up" title="(dir)">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">Magit User Manual (1.4)</h1>
+
+
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Introduction-1" href="#Introduction">1 Introduction</a></li>
+  <li><a name="toc-Acknowledgments-1" href="#Acknowledgments">2 Acknowledgments</a></li>
+  <li><a name="toc-Sections-1" href="#Sections">3 Sections</a></li>
+  <li><a name="toc-Status-1" href="#Status">4 Status</a></li>
+  <li><a name="toc-Untracked-files-1" href="#Untracked-files">5 Untracked files</a></li>
+  <li><a name="toc-Staging-and-Committing-1" href="#Staging-and-Committing">6 Staging and Committing</a></li>
+  <li><a name="toc-History-1" href="#History">7 History</a></li>
+  <li><a name="toc-Reflogs-1" href="#Reflogs">8 Reflogs</a></li>
+  <li><a name="toc-Commit-Buffer-1" href="#Commit-Buffer">9 Commit Buffer</a></li>
+  <li><a name="toc-Diffing-1" href="#Diffing">10 Diffing</a></li>
+  <li><a name="toc-Tagging-1" href="#Tagging">11 Tagging</a></li>
+  <li><a name="toc-Resetting-1" href="#Resetting">12 Resetting</a></li>
+  <li><a name="toc-Stashing-1" href="#Stashing">13 Stashing</a></li>
+  <li><a name="toc-Branches-and-Remotes-1" href="#Branches-and-Remotes">14 Branches and Remotes</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Branches-Popup-1" href="#Branches-Popup">14.1 Branches Popup</a></li>
+    <li><a name="toc-Remotes-Popup-1" href="#Remotes-Popup">14.2 Remotes Popup</a></li>
+    <li><a name="toc-Branches-in-the-Branch-Manager-1" href="#Branches-in-the-Branch-Manager">14.3 Branches in the Branch Manager</a></li>
+    <li><a name="toc-Remotes-in-the-Branch-Manager-1" href="#Remotes-in-the-Branch-Manager">14.4 Remotes in the Branch Manager</a></li>
+  </ul></li>
+  <li><a name="toc-Wazzup-1" href="#Wazzup">15 Wazzup</a></li>
+  <li><a name="toc-Merging-1" href="#Merging">16 Merging</a></li>
+  <li><a name="toc-Rebasing-1" href="#Rebasing">17 Rebasing</a></li>
+  <li><a name="toc-Interactive-Rebasing-1" href="#Interactive-Rebasing">18 Interactive Rebasing</a></li>
+  <li><a name="toc-Rewriting-1" href="#Rewriting">19 Rewriting</a></li>
+  <li><a name="toc-Pushing-and-Pulling-1" href="#Pushing-and-Pulling">20 Pushing and Pulling</a></li>
+  <li><a name="toc-Submodules-1" href="#Submodules">21 Submodules</a></li>
+  <li><a name="toc-Bisecting-1" href="#Bisecting">22 Bisecting</a></li>
+  <li><a name="toc-Finding-commits-not-merged-upstream-1" href="#Finding-commits-not-merged-upstream">23 Finding commits not merged upstream</a></li>
+  <li><a name="toc-Magit-Extensions" href="#Using-Magit-Extensions">24 Magit Extensions</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Activating-extensions-1" href="#Activating-extensions">24.1 Activating extensions</a></li>
+    <li><a name="toc-Interfacing-with-Subversion-1" href="#Interfacing-with-Subversion">24.2 Interfacing with Subversion</a></li>
+    <li><a name="toc-Interfacing-with-Topgit-1" href="#Interfacing-with-Topgit">24.3 Interfacing with Topgit</a></li>
+    <li><a name="toc-Interfacing-with-StGit-1" href="#Interfacing-with-StGit">24.4 Interfacing with StGit</a></li>
+  </ul></li>
+  <li><a name="toc-Using-Git-Directly-1" href="#Using-Git-Directly">25 Using Git Directly</a></li>
+  <li><a name="toc-GNU-Free-Documentation-License-1" href="#GNU-Free-Documentation-License">Appendix A GNU Free Documentation License</a></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Magit-User-Manual"></a>
+<h1 class="top">Magit User Manual</h1>
+<p>Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+</p>
+<p>Unlike Emacs&rsquo;s native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+</p>
+<p>You are looking at the manual for the <code>1.4</code> series.
+</p>
+<blockquote>
+<p>Copyright &copy; 2008-2015 The Magit Project Developers
+</p>
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+&ldquo;GNU Free Documentation License&rdquo;.
+</p></blockquote>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Acknowledgments" accesskey="2">Acknowledgments</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Sections" accesskey="3">Sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Status" accesskey="4">Status</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Untracked-files" accesskey="5">Untracked files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Staging-and-Committing" accesskey="6">Staging and Committing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#History" accesskey="7">History</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Reflogs" accesskey="8">Reflogs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Commit-Buffer" accesskey="9">Commit Buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Diffing">Diffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tagging">Tagging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Resetting">Resetting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Stashing">Stashing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Branches-and-Remotes">Branches and Remotes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Wazzup">Wazzup</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Merging">Merging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Rebasing">Rebasing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interactive-Rebasing">Interactive Rebasing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Rewriting">Rewriting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Pushing-and-Pulling">Pushing and Pulling</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Submodules">Submodules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bisecting">Bisecting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Finding-commits-not-merged-upstream">Finding commits not merged upstream</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Using-Magit-Extensions">Using Magit Extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Using-Git-Directly">Using Git Directly</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#GNU-Free-Documentation-License">GNU Free Documentation License</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Introduction"></a>
+<div class="header">
+<p>
+Next: <a href="#Acknowledgments" accesskey="n" rel="next">Acknowledgments</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Introduction-1"></a>
+<h2 class="chapter">1 Introduction</h2>
+
+<p>With Magit, you can inspect and modify your Git repositories with
+Emacs.  You can review and commit the changes you have made to the
+tracked files, for example, and you can browse the history of past
+changes.  There is support for cherry picking, reverting, merging,
+rebasing, and other common Git operations.
+</p>
+<p>Magit is not a complete interface to Git; it just aims to make the
+most common Git operations convenient.  Thus, Magit will likely not
+save you from learning Git itself.
+</p>
+<p>This manual provides a tour of many Magit features.  It isn&rsquo;t an
+introduction to version control in general, or to Git in particular.
+</p>
+<p>The main entry point to Magit is <kbd>M-x magit-status</kbd>, which puts
+you in Magit&rsquo;s status buffer.  You will be using it frequently, so it
+is probably a good idea to globally bind <code>magit-status</code> to a key
+of your choice.
+</p>
+<p>In addition to the status buffer, Magit will also create buffers that
+show lists of commits, buffers with diffs, and other kinds of buffers.
+All these buffers are in a mode derived from <code>magit-mode</code> and
+have the similar key bindings.  Not all commands make sense in all
+contexts, but a given key will do the same thing in different Magit
+buffers.
+</p>
+<p>Naturally, Magit runs the <code>git</code> command to do most of the work.
+The <code>*magit-process*</code> buffer contains the transcript of the most
+recent command.  You can switch to it with <kbd>$</kbd>.
+</p>
+<hr>
+<a name="Acknowledgments"></a>
+<div class="header">
+<p>
+Next: <a href="#Sections" accesskey="n" rel="next">Sections</a>, Previous: <a href="#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Acknowledgments-1"></a>
+<h2 class="chapter">2 Acknowledgments</h2>
+
+<p>Our thank goes to all current and past contributors, Marius Vollmer
+who started the project, and all retired and current maintainers,
+Phil Jackson, Peter J. Weisberg, Rémi Vanicat, Nicolas Dudebout,
+Yann Hodique, and Jonas Bernoulli.
+</p>
+<p>For a full list of contributors, see the AUTHORS.md file at the
+top-level directory of this distribution or at
+<a href="https://github.com/magit/magit/tree/master/AUTHORS.md">AUTHORS.md</a>.
+</p>
+<hr>
+<a name="Sections"></a>
+<div class="header">
+<p>
+Next: <a href="#Status" accesskey="n" rel="next">Status</a>, Previous: <a href="#Acknowledgments" accesskey="p" rel="prev">Acknowledgments</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Sections-1"></a>
+<h2 class="chapter">3 Sections</h2>
+
+<p>All Magit buffers are structured into nested &rsquo;sections&rsquo;.  These
+sections can be hidden and shown individually.  When a section is
+hidden, only its first line is shown and all its children are
+completely invisible.
+</p>
+<p>The most fine-grained way to control the visibility of sections is the
+<kbd>TAB</kbd> key.  It will to toggle the current section (the section
+that contains point) between being hidden and being shown.
+</p>
+<p>Typing <kbd>S-TAB</kbd> toggles the visibility of the children of the
+current section.  When all of them are shown, they will all be hidden.
+Otherwise, when some or all are hidden, they will all be shown.
+</p>
+<p>The digit keys <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd>, and <kbd>4</kbd> control the
+visibility of sections based on levels.  Hitting <kbd>2</kbd>, for example,
+will show sections on levels one and two, and will hide sections on
+level 3.  However, only sections that are a parent or child of the
+current section are affected.
+</p>
+<p>For example, when the current section is on level 3 and you hit
+<kbd>1</kbd>, the grand-parent of the current section (which is on level
+one) will be shown, and the parent of the current section (level 2)
+will be hidden.  The visibility of no other section will be changed.
+</p>
+<p>This sounds a bit complicated, but you&rsquo;ll figure it out.
+</p>
+<p>Using <kbd>M-1</kbd>, <kbd>M-2</kbd>, <kbd>M-3</kbd>, and <kbd>M-4</kbd> is similar to the
+unmodified digits, but now all sections on the respective level are
+affected, regardless of whether or not they are related to the current
+section.
+</p>
+<p>For example, <kbd>M-1</kbd> will only show the first lines of the top-level
+sections and will hide everything else.  Typing <kbd>M-4</kbd> on the other
+hand will show everything.
+</p>
+<p>Because of the way the status buffer is set up, some changes to
+section visibility are more common than others.  Files are on level 2
+and diff hunks are on level 4.  Thus, you can type <kbd>2</kbd> to collapse
+the diff of the current file, and <kbd>M-2</kbd> to collapse all files.
+This returns the status buffer to its default setup and is a quick way
+to unclutter it after drilling down into the modified files.
+</p>
+<p>Because <kbd>2</kbd> and <kbd>M-2</kbd> are so common in the status buffer, they
+are bound to additional, more mnemonic keys: <kbd>M-h</kbd> (hide) and
+<kbd>M-H</kbd> (hide all).  Likewise <kbd>4</kbd> and <kbd>M-4</kbd> are also
+available as <kbd>M-s</kbd> (show) and <kbd>M-S</kbd> (show all).
+</p>
+<p>In other buffers than the status buffer, <kbd>M-h</kbd>, <kbd>M-H</kbd>,
+<kbd>M-s</kbd>, and <kbd>M-S</kbd> might work on different levels than on 2 and
+4, but they keep their general meaning: <kbd>M-H</kbd> hides all detail,
+and <kbd>M-S</kbd> shows everything.
+</p>
+<hr>
+<a name="Status"></a>
+<div class="header">
+<p>
+Next: <a href="#Untracked-files" accesskey="n" rel="next">Untracked files</a>, Previous: <a href="#Sections" accesskey="p" rel="prev">Sections</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Status-1"></a>
+<h2 class="chapter">4 Status</h2>
+
+<p>Running <kbd>M-x magit-status</kbd> displays the main interface of Magit,
+the status buffer.  You can have multiple status buffers active at the
+same time, each associated with its own Git repository.
+</p>
+<p>When invoking <kbd>M-x magit-status</kbd> from within a Git repository, it
+will switch to the status buffer of that repository.  Otherwise, it
+will prompt for a directory.  With a prefix argument, it will always
+prompt.
+</p>
+<p>You can set <code>magit-repo-dirs</code> to customize how
+<code>magit-status</code> asks for the repository to work on.  When
+<code>magit-repo-dirs</code> is nil, <code>magit-status</code> will simply ask for
+a directory.
+</p>
+<p>If you specify a directory that is not a Git repository, <kbd>M-x
+magit-status</kbd> will offer to initialize it as one.
+</p>
+<p>When <code>magit-repo-dirs</code> is not nil, it is treated as a list of
+directory names, and <code>magit-status</code> will find all Git
+repositories in those directories and offer them for completion.
+(Magit will only look <code>magit-repo-dirs-depth</code> levels deep,
+however.)
+</p>
+<p>With two prefix arguments, <code>magit-status</code> will always prompt for
+a raw directory.
+</p>
+<p>Thus, you would normally set <code>magit-repo-dirs</code> to the places
+where you keep most of your Git repositories and switch between them
+with <kbd>C-u M-x magit-status</kbd>.  If you want to go to a repository
+outside of your normal working areas, or if you want to create a new
+repository, you would use <kbd>C-u C-u M-x magit-status</kbd>.
+</p>
+<p>You need to explicitly refresh the status buffer when you have made
+changes to the repository from outside of Emacs.  You can type <kbd>g</kbd>
+in the status buffer itself, or just use <kbd>M-x magit-status</kbd>
+instead of <kbd>C-x b</kbd> when switching to it.  You also need to refresh
+the status buffer in this way after saving a file in Emacs.
+</p>
+<p>The header at the top of the status buffer shows a short summary of
+the repository state: where it is located, which branch is checked
+out, etc.  Below the header are a number of sections that show details
+about the working tree and the staging area.  You can hide and show
+them as described in the previous section.
+</p>
+<p>The first section shows <em>Untracked files</em>, if there are any.  See
+<a href="#Untracked-files">Untracked files</a> for more details.
+</p>
+<p>The next two sections show your local changes.  They are explained
+fully in the next chapter, <a href="#Staging-and-Committing">Staging and Committing</a>.
+</p>
+<p>If the current branch is associated with a remote tracking branch, the
+status buffer shows the differences between the current branch and the
+tracking branch.  See <a href="#Pushing-and-Pulling">Pushing and Pulling</a> for more information.
+</p>
+<p>During a history rewriting session, the status buffer shows the
+<em>Pending changes</em> and <em>Pending commits</em> sections.  See
+<a href="#Rewriting">Rewriting</a> for more details.
+</p>
+<hr>
+<a name="Untracked-files"></a>
+<div class="header">
+<p>
+Next: <a href="#Staging-and-Committing" accesskey="n" rel="next">Staging and Committing</a>, Previous: <a href="#Status" accesskey="p" rel="prev">Status</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Untracked-files-1"></a>
+<h2 class="chapter">5 Untracked files</h2>
+
+<p>Untracked files are shown in the <em>Untracked files</em> section.
+</p>
+<p>You can add an untracked file to the staging area with <kbd>s</kbd>.  If
+point is on the <em>Untracked files</em> section title when you hit
+<kbd>s</kbd>, all untracked files are staged.
+</p>
+<p>Typing <kbd>C-u S</kbd> anywhere will also stage all untracked files,
+together with all changes to the tracked files.
+</p>
+<p>You can instruct Git to ignore them by typing <kbd>i</kbd>.  This will add
+the filename to the <code>.gitignore</code> file.  Typing <kbd>C-u i</kbd> will ask
+you for the name of the file to ignore.  This is useful to ignore whole
+directories, for example.  In this case, the minibuffer&rsquo;s future history
+(accessible with <kbd>M-n</kbd>) contains predefined values (such as
+wildcards) that might be of interest.  If prefix argument is negative
+(for example after typing <kbd>C-- i</kbd>), the prompt proposes wildcard by
+default.  The <kbd>I</kbd> command is similar to <kbd>i</kbd> but will add the
+file to <code>.git/info/exclude</code> instead.
+</p>
+<p>To delete an untracked file forever, use <kbd>k</kbd>.  If point is on the
+<em>Untracked files</em> section title when you hit <kbd>k</kbd>, all
+untracked files are deleted.
+</p>
+<hr>
+<a name="Staging-and-Committing"></a>
+<div class="header">
+<p>
+Next: <a href="#History" accesskey="n" rel="next">History</a>, Previous: <a href="#Untracked-files" accesskey="p" rel="prev">Untracked files</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Staging-and-Committing-1"></a>
+<h2 class="chapter">6 Staging and Committing</h2>
+
+<p>Committing with Git is a two step process: first you add the changes
+you want to commit to a &rsquo;staging area&rsquo; or &rsquo;index&rsquo;, and then you commit
+them to the repository.  This allows you to only commit a subset of
+the changes in the working tree.  If you are not familiar with this
+concept yet, then you should change that as soon as possible using one
+of the fine Git tutorials.  If you don&rsquo;t, then Git and by extension
+Magit will seem rather strange.
+</p>
+<p>Magit shows uncommitted changes in two sections, depending on whether
+the changes have been staged yet.  The <em>Staged changes</em> section
+shows the changes that will be included in the next commit, while the
+<em>Unstaged changes</em> section shows the changes that will be left
+out.
+</p>
+<p>To move an unstaged hunk into the staging area, move point into the
+hunk and type <kbd>s</kbd>.  Likewise, to unstage a hunk, move point into
+it and type <kbd>u</kbd>.  If point is in a diff header when you type
+<kbd>s</kbd> or <kbd>u</kbd>, all hunks belonging to that diff are moved at the
+same time.
+</p>
+<p>Currently it is only possible to stage from the status buffer.
+Staging and unstaging from diff buffers that show unstaged and staged
+changes is not possible yet.
+</p>
+<p>If the region is active when you type <kbd>s</kbd> or <kbd>u</kbd>, only the
+changes in the region are staged or unstaged.  (This works line by
+line: if the beginning of a line is in the region it is included in
+the changes, otherwise it is not.)
+</p>
+<p>To change the size of the hunks, you can type <kbd>+</kbd> or <kbd>-</kbd> to
+increase and decrease, respectively.  Typing <kbd>0</kbd> will
+reset the hunk size to the default.
+</p>
+<p>Typing <kbd>C-u s</kbd> will ask you for a name of a file to be staged, for
+example to stage files that are hidden.
+</p>
+<p>To move all hunks of all diffs into the staging area in one go, type
+<kbd>S</kbd>.  To unstage everything, type <kbd>U</kbd>.
+</p>
+<p>Typing <kbd>C-u S</kbd> will stage all untracked files in addition to the
+changes to tracked files.
+</p>
+<p>You can discard uncommitted changes by moving point into a hunk and
+typing <kbd>k</kbd>.  The changes to discard are selected as with <kbd>s</kbd>
+and <kbd>u</kbd>.
+</p>
+<p>Before committing, you should write a short description of the
+changes.
+</p>
+<p>Type <kbd>c c</kbd> to pop up a buffer where you can write your change
+description.  Once you are happy with the description, type <kbd>C-c
+C-c</kbd> in that buffer to perform the commit.
+</p>
+<p>If you want to write changes in a <samp>ChangeLog</samp> file, you can use
+<kbd>C-x 4 a</kbd> on a diff hunk.
+</p>
+<p>Typing <kbd>c c</kbd> when the staging area is unused is a special
+situation.  Normally, the next commit would be empty, but you can
+configure Magit to do something more useful by customizing the
+<code>magit-commit-all-when-nothing-staged</code> variable.  One choice is
+to instruct the subsequent <kbd>C-c C-c</kbd> to commit all changes.
+Another choice is stage everything at the time of hitting <kbd>c c</kbd>.
+</p>
+<p>Typing <kbd>M-n</kbd> or <kbd>M-p</kbd> will cycle through the
+<code>log-edit-comment-ring</code>, which will have your previous log
+messages. This is particularly useful if you have a hook that
+occasionally causes git to refuse your commit.
+</p>
+<p>To abort a commit use <kbd>C-c C-k</kbd>.  The commit message is saved and
+can later be retrieved in the commit message buffer using <kbd>M-n</kbd>
+and <kbd>M-p</kbd>.
+</p>
+<p>Typing <kbd>C</kbd> will also pop up the change description buffer, but in
+addition, it will try to insert a ChangeLog-style entry for the change
+that point is in.
+</p>
+<hr>
+<a name="History"></a>
+<div class="header">
+<p>
+Next: <a href="#Reflogs" accesskey="n" rel="next">Reflogs</a>, Previous: <a href="#Staging-and-Committing" accesskey="p" rel="prev">Staging and Committing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="History-1"></a>
+<h2 class="chapter">7 History</h2>
+
+<p>To show the repository history of your current head, type <kbd>l l</kbd>.  A
+new buffer will be shown that displays the history in a terse form.
+The first paragraph of each commit message is displayed, next to a
+representation of the relationships between commits.
+</p>
+<p>To show the repository history between two branches or between any two
+points of the history, type <kbd>l r l</kbd>.  You will be prompted to enter
+references for starting point and ending point of the history range; you
+can use auto-completion to specify them.  A typical use case for ranged
+history log display would be <kbd>l r l master RET new-feature RET</kbd> that
+will display commits on the new-feature branch that are not in master;
+these commits can then be inspected and cherry-picked, for example.
+</p>
+<p>More thorough filtering can be done by supplying <kbd>l</kbd> with one or
+more suffix arguments, as displayed in its popup.  <kbd>=g</kbd> (&rsquo;Grep&rsquo;)
+for example, limits the output to commits of which the log message
+matches a specific string/regex.
+</p>
+<p>Typing <kbd>l L</kbd> (or <kbd>l C-u L</kbd>) will show the log in a more verbose
+form.
+</p>
+<p>Magit will show only <code>magit-log-cutoff-length</code> entries.  <kbd>e</kbd>
+will show twice as many entries.  <kbd>C-u e</kbd> will show all entries,
+and given a numeric prefix argument, <kbd>e</kbd> will add this number of
+entries.
+</p>
+<p>You can move point to a commit and then cause various things to happen
+with it.  (The following commands work in any list of commits, such as
+the one shown in the <em>Unpushed commits</em> section.)
+</p>
+<p>Typing <kbd>RET</kbd> will pop up more information about the current commit
+and move point into the new buffer.  See <a href="#Commit-Buffer">Commit Buffer</a>.  Typing
+<kbd>SPC</kbd> and <kbd>DEL</kbd> will also show the information, but will
+scroll the new buffer up or down (respectively) when typed again.
+</p>
+<p>Typing <kbd>a</kbd> will apply the current commit to your current branch.
+This is useful when you are browsing the history of some other branch
+and you want to &lsquo;cherry-pick&rsquo; some changes from it.  A typical
+situation is applying selected bug fixes from the development version
+of a program to a release branch.  The cherry-picked changes will not
+be committed automatically; you need to do that explicitly.
+</p>
+<p>Typing <kbd>A</kbd> will cherry-pick the current commit and will also
+commit the changes automatically when there have not been any
+conflicts.
+</p>
+<p>Typing <kbd>v</kbd> will revert the current commit.  Thus, it will apply
+the changes made by that commit in reverse.  This is obviously useful
+to cleanly undo changes that turned out to be wrong.  As with <kbd>a</kbd>,
+you need to commit the changes explicitly.
+</p>
+<p>Typing <kbd>C-w</kbd> will copy the sha1 of the current commit into the
+kill ring.
+</p>
+<p>Typing <kbd>=</kbd> will show the differences from the current commit to
+the <em>marked</em> commit.
+</p>
+<p>You can mark the current commit by typing <kbd>.</kbd>.  When the current
+commit is already marked, typing <kbd>.</kbd> will unmark it.  To unmark
+the marked commit no matter where point is, use <kbd>C-u .</kbd>.
+</p>
+<p>Some commands, such as <kbd>=</kbd>, will use the current commit and the
+marked commit as implicit arguments.  Other commands will offer the
+marked commit as a default when prompting for their arguments.
+</p>
+<hr>
+<a name="Reflogs"></a>
+<div class="header">
+<p>
+Next: <a href="#Commit-Buffer" accesskey="n" rel="next">Commit Buffer</a>, Previous: <a href="#History" accesskey="p" rel="prev">History</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Reflogs-1"></a>
+<h2 class="chapter">8 Reflogs</h2>
+
+<p>You can use <kbd>l h</kbd> and <kbd>l H</kbd> to browse your <em>reflog</em>, the
+local history of changes made to your repository heads.  Typing
+<kbd>H</kbd> will ask for a head, while <kbd>l h</kbd> will show the reflog of
+<code>HEAD</code>.
+</p>
+<p>The resulting buffer is just like the buffer produced by <kbd>l l</kbd> and
+<kbd>l L</kbd> that shows the commit history.
+</p>
+<hr>
+<a name="Commit-Buffer"></a>
+<div class="header">
+<p>
+Next: <a href="#Diffing" accesskey="n" rel="next">Diffing</a>, Previous: <a href="#Reflogs" accesskey="p" rel="prev">Reflogs</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Commit-Buffer-1"></a>
+<h2 class="chapter">9 Commit Buffer</h2>
+
+<p>When you view a commit (perhaps by selecting it in the log buffer,
+<a href="#History">History</a>), the &ldquo;commit buffer&rdquo; is displayed, showing you
+information about the commit and letting you interact with it.
+</p>
+<p>By placing your cursor within the diff or hunk and typing <kbd>a</kbd>, you
+can apply the same patch to your working copy.  This is useful when
+you want to copy a change from another branch, but don&rsquo;t necessarily
+want to cherry-pick the whole commit.
+</p>
+<p>By typing <kbd>v</kbd> you can apply the patch in reverse, removing all the
+lines that were added and adding all the lines that were removed.
+This is a convenient way to remove a change after determining that it
+introduced a bug.
+</p>
+<p>If the commit message refers to any other commits in the repository by
+their unique hash, the hash will be highlighted and you will be able
+to visit the referenced commit either by clicking on it or by moving
+your cursor onto it and pressing <kbd>RET</kbd>.
+</p>
+<p>The commit buffer maintains a history of the commits it has shown.
+After visiting a referenced commit you can type <kbd>C-c C-b</kbd> to get
+back to where you came from.  To go forward in the history, type
+<kbd>C-c C-f</kbd>.  There are also <code>[back]</code> and <code>[forward]</code>
+buttons at the bottom of the buffer.
+</p>
+<hr>
+<a name="Diffing"></a>
+<div class="header">
+<p>
+Next: <a href="#Tagging" accesskey="n" rel="next">Tagging</a>, Previous: <a href="#Commit-Buffer" accesskey="p" rel="prev">Commit Buffer</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Diffing-1"></a>
+<h2 class="chapter">10 Diffing</h2>
+
+<p>Magit typically shows diffs in the &ldquo;unified&rdquo; format.
+</p>
+<p>In any buffer that shows a diff, you can type <kbd>e</kbd> anywhere within
+the diff to show the two versions of the file in Ediff.  If the diff
+is of a file in the status buffer that needs to be merged, you will be
+able to use Ediff as an interactive merge tool.  Otherwise, Ediff will
+simply show the two versions of the file.
+</p>
+<p>To show the changes from your working tree to another revision, type
+<kbd>d</kbd>.  To show the changes between two arbitrary revisions, type
+<kbd>D</kbd>.
+</p>
+<p>You can use <kbd>a</kbd> within the diff output to apply the changes to
+your working tree.  As usual when point is in a diff header for a
+file, all changes for that file are applied, and when it is in a hunk,
+only that hunk is.  When the region is active, the applied changes are
+restricted to that region.
+</p>
+<p>Typing <kbd>v</kbd> will apply the selected changes in reverse.
+</p>
+<hr>
+<a name="Tagging"></a>
+<div class="header">
+<p>
+Next: <a href="#Resetting" accesskey="n" rel="next">Resetting</a>, Previous: <a href="#Diffing" accesskey="p" rel="prev">Diffing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Tagging-1"></a>
+<h2 class="chapter">11 Tagging</h2>
+
+<p>Typing <kbd>t t</kbd> will make a lightweight tag.  Typing <kbd>t a</kbd> will
+make an annotated tag.  It will put you in the normal
+<code>*magit-log-edit</code> buffer for writing commit messages, but typing
+<kbd>C-c C-c</kbd> in it will make the tag instead.  This is controlled by
+the <code>Tag</code> field that will be added to the <code>*magit-log-edit*</code>
+buffer.  You can edit it, if you like.
+</p>
+<hr>
+<a name="Resetting"></a>
+<div class="header">
+<p>
+Next: <a href="#Stashing" accesskey="n" rel="next">Stashing</a>, Previous: <a href="#Tagging" accesskey="p" rel="prev">Tagging</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Resetting-1"></a>
+<h2 class="chapter">12 Resetting</h2>
+
+<p>Once you have added a commit to your local repository, you can not
+change that commit anymore in any way.  But you can reset your current
+head to an earlier commit and start over.
+</p>
+<p>If you have published your history already, rewriting it in this way
+can be confusing and should be avoided.  However, rewriting your local
+history is fine and it is often cleaner to fix mistakes this way than
+by reverting commits (with <kbd>v</kbd>, for example).
+</p>
+<p>Typing <kbd>x</kbd> will ask for a revision and reset your current head to
+it.  No changes will be made to your working tree and staging area.
+Thus, the <em>Staged changes</em> section in the status buffer will show
+the changes that you have removed from your commit history.  You can
+commit the changes again as if you had just made them, thus rewriting
+history.
+</p>
+<p>Typing <kbd>x</kbd> while point is in a line that describes a commit will
+offer this commit as the default revision to reset to.  Thus, you can
+move point to one of the commits in the <em>Unpushed commits</em>
+section and hit <kbd>x RET</kbd> to reset your current head to it.
+</p>
+<p>Type <kbd>X</kbd> to reset your working tree and staging area to the most
+recently committed state.  This will discard your local modifications,
+so be careful.
+</p>
+<p>You can give a prefix to <kbd>x</kbd> if you want to reset both the current
+head and your working tree to a given commit.  This is the same as
+first using an unprefixed <kbd>x</kbd> to reset only the head, and then
+using <kbd>X</kbd>.
+</p>
+<hr>
+<a name="Stashing"></a>
+<div class="header">
+<p>
+Next: <a href="#Branches-and-Remotes" accesskey="n" rel="next">Branches and Remotes</a>, Previous: <a href="#Resetting" accesskey="p" rel="prev">Resetting</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Stashing-1"></a>
+<h2 class="chapter">13 Stashing</h2>
+
+<p>You can create a new stash with <kbd>z z</kbd>.  Your stashes will be listed
+in the status buffer, and you can apply them with <kbd>a</kbd> and pop them
+with <kbd>A</kbd>.  To drop a stash, use <kbd>k</kbd>.
+</p>
+<p>With a prefix argument, both <kbd>a</kbd> and <kbd>A</kbd> will attempt to
+reinstate the index as well as the working tree from the stash.
+</p>
+<p>Typing <kbd>z -k z</kbd> will create a stash just like <kbd>z z</kbd>, but will
+leave the changes in your working tree and index.  This makes it easier
+to, for example, test multiple variations of the same change.
+</p>
+<p>If you just want to make quick snapshots in between edits, you can use
+<kbd>z s</kbd>, which automatically enters a timestamp as description, and
+keeps your working tree and index intact by default.
+</p>
+<p>You can visit and show stashes in the usual way: Typing <kbd>SPC</kbd> and
+<kbd>DEL</kbd> will pop up a buffer with the description of the stash and
+scroll it, typing <kbd>RET</kbd> will move point into that buffer.  Using
+<kbd>C-u RET</kbd> will move point into that buffer in other window.
+</p>
+<hr>
+<a name="Branches-and-Remotes"></a>
+<div class="header">
+<p>
+Next: <a href="#Wazzup" accesskey="n" rel="next">Wazzup</a>, Previous: <a href="#Stashing" accesskey="p" rel="prev">Stashing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Branches-and-Remotes-1"></a>
+<h2 class="chapter">14 Branches and Remotes</h2>
+
+<p>The current branch is indicated in the header of the status buffer.  If
+this branch is tracking a remote branch, the latter is also indicated.
+</p>
+<p>Branches and remotes can be manipulated directly with a popup menu or
+through the branch manager.  Using the popup menu allows you to quickly
+make changes from any magit buffer.  The branch manager is a separate
+buffer called <code>*magit-branches*</code>.  It displays information about
+branches and remotes and offers a local key map for shorter key
+bindings.  The two interaction methods are described in more details
+below.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Branches-Popup" accesskey="1">Branches Popup</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Remotes-Popup" accesskey="2">Remotes Popup</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Branches-in-the-Branch-Manager" accesskey="3">Branches in the Branch Manager</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Remotes-in-the-Branch-Manager" accesskey="4">Remotes in the Branch Manager</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Branches-Popup"></a>
+<div class="header">
+<p>
+Next: <a href="#Remotes-Popup" accesskey="n" rel="next">Remotes Popup</a>, Up: <a href="#Branches-and-Remotes" accesskey="u" rel="up">Branches and Remotes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Branches-Popup-1"></a>
+<h3 class="section">14.1 Branches Popup</h3>
+
+<p>Typing <kbd>b</kbd> will display a popup menu to manipulate branches.
+</p>
+<p>You can switch to a different branch by typing <kbd>b b</kbd>.  This will
+immediately checkout the branch into your working copy, so you
+shouldn&rsquo;t have any local modifications when switching branches.
+</p>
+<p>If you try to switch to a remote branch, Magit will offer to create a
+local tracking branch for it instead.  This way, you can easily start
+working on new branches that have appeared in a remote repository.
+</p>
+<p>Typing <kbd>b b</kbd> while point is at a commit description will offer
+that commit as the default to switch to.  This will result in a
+detached head.
+</p>
+<p>To create a new branch and switch to it immediately, type <kbd>b c</kbd>.
+</p>
+<p>To delete a branch, type <kbd>b k</kbd>.  If you&rsquo;re currently on that
+branch, Magit will offer to switch to the &rsquo;master&rsquo; branch.
+</p>
+<p>Typing  <kbd>b r</kbd> will let you rename a branch.  Unless a branch with the same
+name already exists, obviously...
+</p>
+<p>Deleting a branch is only possible if it&rsquo;s already fully merged into
+HEAD or its upstream branch.  Unless you type <kbd>b C-u k</kbd>, that is.
+Here be dragons...
+</p>
+<p>Typing <kbd>b v</kbd> will launch the branch manager.
+</p>
+<hr>
+<a name="Remotes-Popup"></a>
+<div class="header">
+<p>
+Next: <a href="#Branches-in-the-Branch-Manager" accesskey="n" rel="next">Branches in the Branch Manager</a>, Previous: <a href="#Branches-Popup" accesskey="p" rel="prev">Branches Popup</a>, Up: <a href="#Branches-and-Remotes" accesskey="u" rel="up">Branches and Remotes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Remotes-Popup-1"></a>
+<h3 class="section">14.2 Remotes Popup</h3>
+
+<p>Typing <kbd>M</kbd> will display a popup menu to manipulate remotes.
+</p>
+<p>To add a new remote, type  <kbd>M a</kbd>.
+</p>
+<p>To delete a remote type <kbd>M k</kbd>.
+</p>
+<p>Typing <kbd>M r</kbd> will let you rename a remote.
+</p>
+<hr>
+<a name="Branches-in-the-Branch-Manager"></a>
+<div class="header">
+<p>
+Next: <a href="#Remotes-in-the-Branch-Manager" accesskey="n" rel="next">Remotes in the Branch Manager</a>, Previous: <a href="#Remotes-Popup" accesskey="p" rel="prev">Remotes Popup</a>, Up: <a href="#Branches-and-Remotes" accesskey="u" rel="up">Branches and Remotes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Branches-in-the-Branch-Manager-1"></a>
+<h3 class="section">14.3 Branches in the Branch Manager</h3>
+
+<p>In the branch manager, each branch is displayed on a separate line.  The
+current local branch is marked by a &ldquo;*&rdquo; in front of the name.  Remote
+branches are grouped by the remote they come from.
+</p>
+<p>If a local branch tracks a remote branch some extra information is
+printed on the branch line.  The format  is the following: &ldquo;&lt;branch&gt;
+[&lt;remote-branch&gt; &nbsp;&lt;remote&gt;: ahead &lt;a&gt;, behind &lt;b&gt;]&rdquo;.
+&ldquo;&lt;remote-branch&gt;&rdquo; is omitted if it is identical to &ldquo;&lt;branch&gt;&rdquo;.
+&ldquo;ahead&rdquo; and &ldquo;behind&rdquo; information are only displayed if necessary.
+</p>
+<p>To check out a branch, move your cursor to the desired branch and
+press <kbd>RET</kbd>.
+</p>
+<p>Typing <kbd>c</kbd> will create a new branch.
+</p>
+<p>Typing <kbd>k</kbd> will delete the branch in the current line, and
+<kbd>C-u k</kbd> deletes it even if it hasn&rsquo;t been merged into the current
+local branch.  Deleting works for both local and remote branches.
+</p>
+<p>Typing <kbd>r</kbd> on a branch will rename it.
+</p>
+<p>Typing <kbd>T</kbd> on a local branch, changes which remote branch it
+tracks.
+</p>
+<hr>
+<a name="Remotes-in-the-Branch-Manager"></a>
+<div class="header">
+<p>
+Previous: <a href="#Branches-in-the-Branch-Manager" accesskey="p" rel="prev">Branches in the Branch Manager</a>, Up: <a href="#Branches-and-Remotes" accesskey="u" rel="up">Branches and Remotes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Remotes-in-the-Branch-Manager-1"></a>
+<h3 class="section">14.4 Remotes in the Branch Manager</h3>
+
+<p>In the branch manager, each remote is displayed on a separate line.  The
+format is the following &ldquo;&lt;remote&gt; (&lt;url&gt;, &lt;push-url&gt;)&rdquo;.  &ldquo;&lt;push-url&gt;&rdquo;
+is omitted if it is not set.  The associated branches are listed under
+this line.
+</p>
+<p>Typing <kbd>a</kbd> will add a new remote.
+</p>
+<p>Typing <kbd>k</kbd> will delete the remote in the current line.
+</p>
+<p>Typing <kbd>r</kbd> on a remote will rename it.
+</p>
+<hr>
+<a name="Wazzup"></a>
+<div class="header">
+<p>
+Next: <a href="#Merging" accesskey="n" rel="next">Merging</a>, Previous: <a href="#Branches-and-Remotes" accesskey="p" rel="prev">Branches and Remotes</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Wazzup-1"></a>
+<h2 class="chapter">15 Wazzup</h2>
+
+<p>Typing <kbd>w</kbd> will show a summary of how your other branches relate
+to the current branch.
+</p>
+<p>For each branch, you will get a section that lists the commits in that
+branch that are not in the current branch.  The sections are initially
+collapsed; you need to explicitly open them with <kbd>TAB</kbd> (or
+similar) to show the lists of commits.
+</p>
+<p>When point is on a <em>N unmerged commits in ...</em> title, the
+corresponding branch will be offered as the default for a merge.
+</p>
+<p>Hitting <kbd>i</kbd> on a branch title will ignore this branch in the
+wazzup view.  You can use <kbd>C-u w</kbd> to show all branches, including
+the ignored ones.  Hitting <kbd>i</kbd> on an already ignored branch in
+that view will unignore it.
+</p>
+<hr>
+<a name="Merging"></a>
+<div class="header">
+<p>
+Next: <a href="#Rebasing" accesskey="n" rel="next">Rebasing</a>, Previous: <a href="#Wazzup" accesskey="p" rel="prev">Wazzup</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Merging-1"></a>
+<h2 class="chapter">16 Merging</h2>
+
+<p>Magit offers two ways to merge branches: manual and automatic.  A
+manual merge will apply all changes to your working tree and staging
+area, but will not commit them, while an automatic merge will go ahead
+and commit them immediately.
+</p>
+<p>Type <kbd>m m</kbd> to initiate merge.
+</p>
+<p>After initiating a merge, the header of the status buffer might remind
+you that the next commit will be a merge commit (with more than one
+parent).  If you want to abort a manual merge, just do a hard reset to
+HEAD with <kbd>X</kbd>.
+</p>
+<p>Merges can fail if the two branches you want to merge introduce
+conflicting changes.  In that case, the automatic merge stops before the
+commit, essentially falling back to a manual merge.  You need to resolve
+the conflicts for example with <kbd>e</kbd> and stage the resolved files, for
+example with <kbd>S</kbd>.
+</p>
+<p>You can not stage individual hunks one by one as you resolve them, you
+can only stage whole files once all conflicts in them have been
+resolved.
+</p>
+<hr>
+<a name="Rebasing"></a>
+<div class="header">
+<p>
+Next: <a href="#Interactive-Rebasing" accesskey="n" rel="next">Interactive Rebasing</a>, Previous: <a href="#Merging" accesskey="p" rel="prev">Merging</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Rebasing-1"></a>
+<h2 class="chapter">17 Rebasing</h2>
+
+<p>Typing <kbd>R</kbd> in the status buffer will initiate a rebase or, if one
+is already in progress, ask you how to continue.
+</p>
+<p>When a rebase is stopped in the middle because of a conflict, the
+header of the status buffer will indicate how far along you are in the
+series of commits that are being replayed.  When that happens, you
+should resolve the conflicts and stage everything and hit <kbd>R c</kbd> to
+continue the rebase.  Alternatively, hitting <kbd>c</kbd> or <kbd>C</kbd> while
+in the middle of a rebase will also ask you whether to continue the
+rebase.
+</p>
+<p>Of course, you can initiate a rebase in any number of ways, by
+configuring <code>git pull</code> to rebase instead of merge, for example.
+Such a rebase can be finished with <kbd>R</kbd> as well.
+</p>
+<hr>
+<a name="Interactive-Rebasing"></a>
+<div class="header">
+<p>
+Next: <a href="#Rewriting" accesskey="n" rel="next">Rewriting</a>, Previous: <a href="#Rebasing" accesskey="p" rel="prev">Rebasing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Interactive-Rebasing-1"></a>
+<h2 class="chapter">18 Interactive Rebasing</h2>
+
+<p>Typing <kbd>E</kbd> in the status buffer will initiate an interactive
+rebase.  This is equivalent to running <code>git rebase --interactive</code>
+at the command line.  The <samp>git-rebase-todo</samp> file will be opened in
+an Emacs buffer for you to edit.  This file is opened using
+<code>emacsclient</code>, so just edit this file as you normally would, then
+call the <code>server-edit</code> function (typically bound to <kbd>C-x #</kbd>)
+to tell Emacs you are finished editing, and the rebase will proceed as
+usual.
+</p>
+<p>If you have loaded <samp>rebase-mode.el</samp> (which is included in the
+Magit distribution), the <samp>git-rebase-todo</samp> buffer will be in
+<code>rebase-mode</code>.  This mode disables normal text editing but instead
+provides single-key commands (shown in the buffer) to perform all the
+edits that you would normally do manually, including changing the
+operation to be performed each commit (&ldquo;pick&rdquo;, &ldquo;squash&rdquo;, etc.),
+deleting (commenting out) commits from the list, and reordering
+commits.  You can finish editing the buffer and proceed with the rebase
+by pressing <kbd>C-c C-c</kbd>, which is bound to <code>server-edit</code> in
+this mode, and you can abort the rebase with <kbd>C-c C-k</kbd>, just like
+when editing a commit message in Magit.
+</p>
+<hr>
+<a name="Rewriting"></a>
+<div class="header">
+<p>
+Next: <a href="#Pushing-and-Pulling" accesskey="n" rel="next">Pushing and Pulling</a>, Previous: <a href="#Interactive-Rebasing" accesskey="p" rel="prev">Interactive Rebasing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Rewriting-1"></a>
+<h2 class="chapter">19 Rewriting</h2>
+
+<p>As hinted at earlier, you can rewrite your commit history.  For
+example, you can reset the current head to an earlier commit with
+<kbd>x</kbd>.  This leaves the working tree unchanged, and the status
+buffer will show all the changes that have been made since that new
+value of the current head.  You can commit these changes again,
+possibly splitting them into multiple commits as you go along.
+</p>
+<p>Amending your last commit is a common special case of rewriting
+history like this.
+</p>
+<p>Another common way to rewrite history is to reset the head to an
+earlier commit, and then to cherry pick the previous commits in a
+different order.  You could pick them from the reflog, for example.
+</p>
+<p>Magit has several commands that can simplify the book keeping
+associated with rewriting.  These commands all start with the <kbd>r</kbd>
+prefix key.
+</p>
+<p>(Unless you already do so, we recommend that you don&rsquo;t use the
+functionality described here.  It is semi-deprecated and will be
+removed once its unique features have been ported to the <code>git
+rebase --interactive</code> workflow.  Even now the latter is almost always
+the better option.)
+</p>
+<p>Typing <kbd>r b</kbd> will start a rewrite operation.  You will be prompted
+for a <em>base</em> commit.  This commit and all subsequent commits up
+until the current head are then put in a list of <em>Pending
+commits</em>, after which the current head will be reset to the
+<em>parent</em> of the base commit.  This can be configured to behave
+like <code>git rebase</code>, i.e. exclude the selected base commit from the
+rewrite operation, with the <code>magit-rewrite-inclusive</code> variable.
+</p>
+<p>You would then typically use <kbd>a</kbd> and <kbd>A</kbd> to cherry pick
+commits from the list of pending commits in the desired order, until
+all have been applied.  Magit shows which commits have been applied by
+changing their marker from <code>*</code> to <code>.</code>.
+</p>
+<p>Using <kbd>A</kbd> will immediately commit the commit (as usual).  If you
+want to combine multiple previous commits into a single new one, use
+<kbd>a</kbd> to apply them all to your working tree, and then commit them
+together.
+</p>
+<p>Magit has no explicit support for rewriting merge commits.  It will
+happily include merge commits in the list of pending commits, but
+there is no way of replaying them automatically.  You have to redo the
+merge explicitly.
+</p>
+<p>You can also use <kbd>v</kbd> to revert a commit when you have changed your
+mind.  This will change the <code>.</code> mark back to <code>*</code>.
+</p>
+<p>Once you are done with the rewrite, type <kbd>r s</kbd> to remove the book
+keeping information from the status buffer.
+</p>
+<p>If you rather wish to start over, type <kbd>r a</kbd>.  This will abort the
+rewriting, resetting the current head back to the value it had before
+the rewrite was started with <kbd>r b</kbd>.
+</p>
+<p>Typing <kbd>r f</kbd> will <em>finish</em> the rewrite: it will apply all
+unused commits one after the other, as if you would use <kbd>A</kbd> with
+all of them.
+</p>
+<p>You can change the <kbd>*</kbd> and <kbd>.</kbd> marks of a pending commit
+explicitly with <kbd>r *</kbd> and <kbd>r .</kbd>.
+</p>
+<p>In addition to a list of pending commits, the status buffer will show
+the <em>Pending changes</em>.  This section shows the diff between the
+original head and the current head.  You can use it to review the
+changes that you still need to rewrite, and you can apply hunks from
+it, like from any other diff.
+</p>
+<hr>
+<a name="Pushing-and-Pulling"></a>
+<div class="header">
+<p>
+Next: <a href="#Submodules" accesskey="n" rel="next">Submodules</a>, Previous: <a href="#Rewriting" accesskey="p" rel="prev">Rewriting</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Pushing-and-Pulling-1"></a>
+<h2 class="chapter">20 Pushing and Pulling</h2>
+
+<p>Magit will run <code>git push</code> when you type <kbd>P P</kbd>.  If you give
+a prefix argument to <kbd>P P</kbd>, you will be prompted for the repository
+to push to.  When no default remote repository has been configured yet
+for the current branch, you will be prompted as well.  Typing <kbd>P P</kbd>
+will only push the current branch to the remote.  In other words, it
+will run <code>git push &lt;remote&gt; &lt;branch&gt;</code>.  The branch will be created
+in the remote if it doesn&rsquo;t exist already.  The local branch will be
+configured so that it pulls from the new remote branch.  If you give
+a double prefix argument to <kbd>P P</kbd>, you will be prompted in addition
+for the target branch to push to.  In other words, it will run <code>git
+push &lt;remote&gt; &lt;branch&gt;:&lt;target&gt;</code>.
+</p>
+<p>Typing <kbd>f f</kbd> will run <code>git fetch</code>.  It will prompt for the name
+of the remote to update if there is no default one.  Typing <kbd>f o</kbd>
+will always prompt for the remote.  Typing <kbd>F F</kbd> will run <code>git
+pull</code>.  When you don&rsquo;t have a default branch configured to be pulled
+into the current one, you will be asked for it.
+</p>
+<p>If there is a default remote repository for the current branch, Magit
+will show that repository in the status buffer header.
+</p>
+<p>In this case, the status buffer will also have a <em>Unpushed
+commits</em> section that shows the commits on your current head that are
+not in the branch named <code>&lt;remote&gt;/&lt;branch&gt;</code>.  This section works
+just like the history buffer: you can see details about a commit with
+<kbd>RET</kbd>, compare two of them with <kbd>.</kbd> and <kbd>=</kbd>, and you can
+reset your current head to one of them with <kbd>x</kbd>, for example.  If
+you want to push the changes then type <kbd>P P</kbd>.
+</p>
+<p>When the remote branch has changes that are not in the current branch,
+Magit shows them in a section called <em>Unpulled changes</em>.  Typing
+<kbd>F F</kbd> will fetch and merge them into the current branch.
+</p>
+<hr>
+<a name="Submodules"></a>
+<div class="header">
+<p>
+Next: <a href="#Bisecting" accesskey="n" rel="next">Bisecting</a>, Previous: <a href="#Pushing-and-Pulling" accesskey="p" rel="prev">Pushing and Pulling</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Submodules-1"></a>
+<h2 class="chapter">21 Submodules</h2>
+
+<dl compact="compact">
+<dt><kbd>o u</kbd></dt>
+<dd><p>Update the submodules, with a prefix argument it will also initialize them.
+</p>
+</dd>
+<dt><kbd>o i</kbd></dt>
+<dd><p>Initialize the submodules.
+</p>
+</dd>
+<dt><kbd>o b</kbd></dt>
+<dd><p>Update and initialize the submodules in one go (same as C-u o u).
+</p>
+</dd>
+<dt><kbd>o s</kbd></dt>
+<dd><p>Synchronizes submodules&rsquo; remote URL configuration setting to the value
+specified in .gitmodules.
+</p></dd>
+</dl>
+
+
+<hr>
+<a name="Bisecting"></a>
+<div class="header">
+<p>
+Next: <a href="#Finding-commits-not-merged-upstream" accesskey="n" rel="next">Finding commits not merged upstream</a>, Previous: <a href="#Submodules" accesskey="p" rel="prev">Submodules</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Bisecting-1"></a>
+<h2 class="chapter">22 Bisecting</h2>
+
+<p>Magit supports bisecting by showing how many revisions and steps are
+left to be tested in the status buffer.  You can control the bisect
+session from both the status and from log buffers with the <kbd>B</kbd> key
+menu.
+</p>
+<p>Typing <kbd>B s</kbd> will start a bisect session.  You will be prompted
+for a revision that is known to be bad (defaults to <em>HEAD</em>) and
+for a revision that is known to be good (defaults to the revision at
+point if there is one).  git will select a revision for you to test,
+and Magit will update its status buffer accordingly.
+</p>
+<p>You can tell git that the current revision is good with <kbd>B g</kbd>,
+that it is bad with <kbd>B b</kbd> or that git should skip it with <kbd>B
+k</kbd>.  You can also tell git to go into full automatic mode by giving it
+the name of a script to run for each revision to test with <kbd>B u</kbd>.
+</p>
+<p>The current status can be shown as a log with <kbd>B l</kbd>.  It contains
+the revisions that have already been tested and your decisions about
+their state.
+</p>
+<p>The revisions left to test can be visualized in gitk with <kbd>B v</kbd>.
+</p>
+<p>When you&rsquo;re finished bisecting you have to reset the session with
+<kbd>B r</kbd>.
+</p>
+
+<hr>
+<a name="Finding-commits-not-merged-upstream"></a>
+<div class="header">
+<p>
+Next: <a href="#Using-Magit-Extensions" accesskey="n" rel="next">Using Magit Extensions</a>, Previous: <a href="#Bisecting" accesskey="p" rel="prev">Bisecting</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Finding-commits-not-merged-upstream-1"></a>
+<h2 class="chapter">23 Finding commits not merged upstream</h2>
+
+<p>One of the comforts of git is that it can tell you which commits have
+been merged upstream but not locally and vice versa.  Git&rsquo;s
+sub-command for this is <code>cherry</code> (not to be confused with
+<code>cherry-pick</code>).  Magit has support for this by invoking
+<code>magit-cherry</code> which is bound to <kbd>y</kbd> by default.
+</p>
+<p>Magit will then ask you first for the upstream revision (which
+defaults to the currently tracked remote branch if any) and the head
+revision (which defaults to the current branch) to use in the
+comparison.  You will then see a new buffer in which all commits are
+listed with a directional marker, their revision and the commit
+message&rsquo;s first line.  The directional marker is either <code>+</code>
+indicating a commit that&rsquo;s present in upstream but not in head or
+<code>-</code> which indicates a commit present in head but not in upstream.
+</p>
+<p>From this list you can use the usual key bindings for cherry-picking
+individual commits (<kbd>a</kbd> for cherry-picking without committing and
+<kbd>A</kbd> for the same plus the automatic commit).  The buffer is
+refreshed automatically after each cherry-pick.
+</p>
+
+<hr>
+<a name="Using-Magit-Extensions"></a>
+<div class="header">
+<p>
+Next: <a href="#Using-Git-Directly" accesskey="n" rel="next">Using Git Directly</a>, Previous: <a href="#Finding-commits-not-merged-upstream" accesskey="p" rel="prev">Finding commits not merged upstream</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Magit-Extensions"></a>
+<h2 class="chapter">24 Magit Extensions</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Activating-extensions" accesskey="1">Activating extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interfacing-with-Subversion" accesskey="2">Interfacing with Subversion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interfacing-with-Topgit" accesskey="3">Interfacing with Topgit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interfacing-with-StGit" accesskey="4">Interfacing with StGit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Activating-extensions"></a>
+<div class="header">
+<p>
+Next: <a href="#Interfacing-with-Subversion" accesskey="n" rel="next">Interfacing with Subversion</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Activating-extensions-1"></a>
+<h3 class="section">24.1 Activating extensions</h3>
+
+<p>Magit comes with a couple of shipped extensions that allow interaction
+with <code>git-svn</code>, <code>topgit</code> and <code>stgit</code>.  See following
+sections for specific details on how to use them.
+</p>
+<p>Extensions can be activated globally or on a per-repository basis.  Since
+those extensions are implemented as minor modes, one can use for example
+<kbd>M-x magit-topgit-mode</kbd> to toggle the <code>topgit</code> extension,
+making the corresponding section and commands (un)available.
+</p>
+<p>In order to do that automatically (and for every repository), one can
+use for example:
+</p>
+<div class="example">
+<pre class="example">(add-hook 'magit-mode-hook 'turn-on-magit-topgit)
+</pre></div>
+
+<p>Magit also allows configuring different extensions, based on the git
+repository configuration.
+</p>
+<div class="example">
+<pre class="example">(add-hook 'magit-mode-hook 'magit-load-config-extensions)
+</pre></div>
+
+<p>This will read git configuration variables and activate the
+relevant extensions.
+</p>
+<p>For example, after running the following commands, the <code>topgit</code>
+extension will be loaded for every repository, while the <code>svn</code> one
+will be loaded only for the current one.
+</p>
+<div class="example">
+<pre class="example">$ git config --global --add magit.extension topgit
+$ git config --add magit.extension svn
+</pre></div>
+
+<p>Note the <code>--add</code> flag, which means that each extension gets its own
+line in the <code>config</code> file.
+</p>
+<hr>
+<a name="Interfacing-with-Subversion"></a>
+<div class="header">
+<p>
+Next: <a href="#Interfacing-with-Topgit" accesskey="n" rel="next">Interfacing with Topgit</a>, Previous: <a href="#Activating-extensions" accesskey="p" rel="prev">Activating extensions</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Interfacing-with-Subversion-1"></a>
+<h3 class="section">24.2 Interfacing with Subversion</h3>
+
+<p>Typing <kbd>N r</kbd> runs <code>git svn rebase</code>, typing <kbd>N c</kbd> runs
+<code>git svn dcommit</code> and typing <kbd>N f</kbd> runs <code>git svn fetch</code>.
+</p>
+<p><kbd>N s</kbd> will prompt you for a (numeric, Subversion) revision and
+then search for a corresponding Git sha1 for the commit.  This is
+limited to the path of the remote Subversion repository.  With a prefix
+(<kbd>C-u N s</kbd> the user will also be prompted for a branch to search
+in.
+</p>
+<hr>
+<a name="Interfacing-with-Topgit"></a>
+<div class="header">
+<p>
+Next: <a href="#Interfacing-with-StGit" accesskey="n" rel="next">Interfacing with StGit</a>, Previous: <a href="#Interfacing-with-Subversion" accesskey="p" rel="prev">Interfacing with Subversion</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Interfacing-with-Topgit-1"></a>
+<h3 class="section">24.3 Interfacing with Topgit</h3>
+
+<p><a href="http://repo.or.cz/r/topgit.git">Topgit</a> is a patch queue manager
+that aims at being close as possible to raw Git, which makes it easy
+to use with Magit.  In particular, it does not require to use a
+different set of commands for &ldquo;commit&rdquo;, &ldquo;update&rdquo;, and other
+operations.
+</p>
+<p><samp>magit-topgit.el</samp> provides basic integration with Magit, mostly by
+providing a &ldquo;Topics&rdquo; section.
+</p>
+<p>Topgit branches can be created the regular way, by using a &ldquo;t/&rdquo; prefix
+by convention.  So, creating a &ldquo;t/foo&rdquo; branch will actually populate
+the &ldquo;Topics&rdquo; section with one more branch after committing
+<samp>.topdeps</samp> and <samp>.topmsg</samp>.
+</p>
+<p>Also, the way we pull (see <a href="#Pushing-and-Pulling">Pushing and Pulling</a>) such a branch is
+slightly different, since it requires updating the various dependencies
+of that branch.  This should be mostly transparent, except in case
+of conflicts.
+</p>
+<hr>
+<a name="Interfacing-with-StGit"></a>
+<div class="header">
+<p>
+Previous: <a href="#Interfacing-with-Topgit" accesskey="p" rel="prev">Interfacing with Topgit</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Interfacing-with-StGit-1"></a>
+<h3 class="section">24.4 Interfacing with StGit</h3>
+
+<p><a href="http://www.procode.org/stgit">StGit</a> is a Python application
+providing similar functionality to Quilt (i.e. pushing/popping patches
+to/from a stack) on top of Git.  These operations are performed using
+Git commands and the patches are stored as Git commit objects,
+allowing easy merging of the StGit patches into other repositories
+using standard Git functionality.
+</p>
+<p><samp>magit-stgit.el</samp> provides basic integration with Magit, mostly by
+providing a &ldquo;Series&rdquo; section, whose patches can be seen as regular
+commits through the &ldquo;visit&rdquo; action.
+</p>
+<p>You can change the current patch in a series with the &ldquo;apply&rdquo; action,
+as well as you can delete them using the &ldquo;discard&rdquo; action.
+</p>
+<p>Additionally, the <code>magit-stgit-refresh</code> and
+<code>magit-stgit-rebase</code> commands let you perform the respective StGit
+operations.
+</p>
+<hr>
+<a name="Using-Git-Directly"></a>
+<div class="header">
+<p>
+Next: <a href="#GNU-Free-Documentation-License" accesskey="n" rel="next">GNU Free Documentation License</a>, Previous: <a href="#Using-Magit-Extensions" accesskey="p" rel="prev">Using Magit Extensions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Using-Git-Directly-1"></a>
+<h2 class="chapter">25 Using Git Directly</h2>
+
+<p>For situations when Magit doesn&rsquo;t do everything you need, you can run
+raw Git commands using <kbd>:</kbd>.  This will prompt for a Git command, run
+it, and refresh the status buffer.  The output can be viewed by typing
+<kbd>$</kbd>.
+</p>
+<hr>
+<a name="GNU-Free-Documentation-License"></a>
+<div class="header">
+<p>
+Previous: <a href="#Using-Git-Directly" accesskey="p" rel="prev">Using Git Directly</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="GNU-Free-Documentation-License-1"></a>
+<h2 class="appendix">Appendix A GNU Free Documentation License</h2>
+<div align="center">Version 1.2, November 2002
+</div>
+<div class="display">
+<pre class="display">Copyright &copy; 2000,2001,2002 Free Software Foundation, Inc.
+51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
+
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+</pre></div>
+
+<ol>
+<li> PREAMBLE
+
+<p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <em>free</em> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially.
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+</p>
+<p>This License is a kind of &ldquo;copyleft&rdquo;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+</p>
+<p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+</p>
+</li><li> APPLICABILITY AND DEFINITIONS
+
+<p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &ldquo;Document&rdquo;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &ldquo;you&rdquo;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+</p>
+<p>A &ldquo;Modified Version&rdquo; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+</p>
+<p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document&rsquo;s overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+</p>
+<p>The &ldquo;Invariant Sections&rdquo; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+</p>
+<p>The &ldquo;Cover Texts&rdquo; are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+</p>
+<p>A &ldquo;Transparent&rdquo; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent.
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &ldquo;Transparent&rdquo; is called &ldquo;Opaque&rdquo;.
+</p>
+<p>Examples of suitable formats for Transparent copies include plain
+<small>ASCII</small> without markup, Texinfo input format, LaTeX input
+format, <acronym>SGML</acronym> or <acronym>XML</acronym> using a publicly available
+<acronym>DTD</acronym>, and standard-conforming simple <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> designed for human modification.  Examples
+of transparent image formats include <acronym>PNG</acronym>, <acronym>XCF</acronym> and
+<acronym>JPG</acronym>.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, <acronym>SGML</acronym> or
+<acronym>XML</acronym> for which the <acronym>DTD</acronym> and/or processing tools are
+not generally available, and the machine-generated <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> produced by some word processors for
+output purposes only.
+</p>
+<p>The &ldquo;Title Page&rdquo; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
+the text near the most prominent appearance of the work&rsquo;s title,
+preceding the beginning of the body of the text.
+</p>
+<p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, &ldquo;Endorsements&rdquo;, or &ldquo;History&rdquo;.)  To &ldquo;Preserve the Title&rdquo;
+of such a section when you modify the Document means that it remains a
+section &ldquo;Entitled XYZ&rdquo; according to this definition.
+</p>
+<p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+</p>
+</li><li> VERBATIM COPYING
+
+<p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+</p>
+<p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+</p>
+</li><li> COPYING IN QUANTITY
+
+<p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document&rsquo;s license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition.
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+</p>
+<p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+</p>
+<p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material.
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+</p>
+<p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+</p>
+</li><li> MODIFICATIONS
+
+<p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+</p>
+<ol>
+<li> Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+</li><li> List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+</li><li> State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+</li><li> Preserve all the copyright notices of the Document.
+
+</li><li> Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+</li><li> Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+</li><li> Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document&rsquo;s license notice.
+
+</li><li> Include an unaltered copy of this License.
+
+</li><li> Preserve the section Entitled &ldquo;History&rdquo;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &ldquo;History&rdquo; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+</li><li> Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the &ldquo;History&rdquo; section.
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+</li><li> For any section Entitled &ldquo;Acknowledgements&rdquo; or &ldquo;Dedications&rdquo;, Preserve
+the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+</li><li> Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+</li><li> Delete any section Entitled &ldquo;Endorsements&rdquo;.  Such a section
+may not be included in the Modified Version.
+
+</li><li> Do not retitle any existing section to be Entitled &ldquo;Endorsements&rdquo; or
+to conflict in title with any Invariant Section.
+
+</li><li> Preserve any Warranty Disclaimers.
+</li></ol>
+
+<p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version&rsquo;s license notice.
+These titles must be distinct from any other section titles.
+</p>
+<p>You may add a section Entitled &ldquo;Endorsements&rdquo;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&mdash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+</p>
+<p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+</p>
+<p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+</p>
+</li><li> COMBINING DOCUMENTS
+
+<p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+</p>
+<p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+</p>
+<p>In the combination, you must combine any sections Entitled &ldquo;History&rdquo;
+in the various original documents, forming one section Entitled
+&ldquo;History&rdquo;; likewise combine any sections Entitled &ldquo;Acknowledgements&rdquo;,
+and any sections Entitled &ldquo;Dedications&rdquo;.  You must delete all
+sections Entitled &ldquo;Endorsements.&rdquo;
+</p>
+</li><li> COLLECTIONS OF DOCUMENTS
+
+<p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+</p>
+<p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+</p>
+</li><li> AGGREGATION WITH INDEPENDENT WORKS
+
+<p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation&rsquo;s users beyond what the individual works permit.
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+</p>
+<p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document&rsquo;s Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form.
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+</p>
+</li><li> TRANSLATION
+
+<p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4.
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+</p>
+<p>If a section in the Document is Entitled &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, or &ldquo;History&rdquo;, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+</p>
+</li><li> TERMINATION
+
+<p>You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided for under this License.  Any other attempt to
+copy, modify, sublicense or distribute the Document is void, and will
+automatically terminate your rights under this License.  However,
+parties who have received copies, or rights, from you under this
+License will not have their licenses terminated so long as such
+parties remain in full compliance.
+</p>
+</li><li> FUTURE REVISIONS OF THIS LICENSE
+
+<p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>.
+</p>
+<p>Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+</p></li></ol>
+
+<a name="ADDENDUM_003a-How-to-use-this-License-for-your-documents"></a>
+<h3 class="heading">ADDENDUM: How to use this License for your documents</h3>
+
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+</p>
+<div class="smallexample">
+<pre class="smallexample">  Copyright (C)  <var>year</var>  <var>your name</var>.
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.2
+  or any later version published by the Free Software Foundation;
+  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+  Texts.  A copy of the license is included in the section entitled ``GNU
+  Free Documentation License''.
+</pre></div>
+
+<p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the &ldquo;with&hellip;Texts.&rdquo; line with this:
+</p>
+<div class="smallexample">
+<pre class="smallexample">    with the Invariant Sections being <var>list their titles</var>, with
+    the Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts
+    being <var>list</var>.
+</pre></div>
+
+<p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+</p>
+<p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+</p>
+<hr>
+
+
+
+</body>
+</html>

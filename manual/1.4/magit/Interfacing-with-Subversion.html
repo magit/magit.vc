@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Interfacing with Subversion</title>
+
+<meta name="description" content="Magit User Manual (1.4): Interfacing with Subversion">
+<meta name="keywords" content="Magit User Manual (1.4): Interfacing with Subversion">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Using-Magit-Extensions.html#Using-Magit-Extensions" rel="up" title="Using Magit Extensions">
+<link href="Interfacing-with-Topgit.html#Interfacing-with-Topgit" rel="next" title="Interfacing with Topgit">
+<link href="Activating-extensions.html#Activating-extensions" rel="prev" title="Activating extensions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Interfacing-with-Subversion"></a>
+<div class="header">
+<p>
+Next: <a href="Interfacing-with-Topgit.html#Interfacing-with-Topgit" accesskey="n" rel="next">Interfacing with Topgit</a>, Previous: <a href="Activating-extensions.html#Activating-extensions" accesskey="p" rel="prev">Activating extensions</a>, Up: <a href="Using-Magit-Extensions.html#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Interfacing-with-Subversion-1"></a>
+<h3 class="section">24.2 Interfacing with Subversion</h3>
+
+<p>Typing <kbd>N r</kbd> runs <code>git svn rebase</code>, typing <kbd>N c</kbd> runs
+<code>git svn dcommit</code> and typing <kbd>N f</kbd> runs <code>git svn fetch</code>.
+</p>
+<p><kbd>N s</kbd> will prompt you for a (numeric, Subversion) revision and
+then search for a corresponding Git sha1 for the commit.  This is
+limited to the path of the remote Subversion repository.  With a prefix
+(<kbd>C-u N s</kbd> the user will also be prompted for a branch to search
+in.
+</p>
+
+
+
+</body>
+</html>

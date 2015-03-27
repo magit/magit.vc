@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Introduction</title>
+
+<meta name="description" content="Magit User Manual: Introduction">
+<meta name="keywords" content="Magit User Manual: Introduction">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Installation.html#Installation" rel="next" title="Installation">
+<link href="index.html#Top" rel="prev" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Introduction"></a>
+<div class="header">
+<p>
+Next: <a href="Installation.html#Installation" accesskey="n" rel="next">Installation</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Introduction-1"></a>
+<h2 class="chapter">1 Introduction</h2>
+
+<p>Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+</p>
+<p>Staging and otherwise applying changes is one of the most important
+features in a Git porcelain and here Magit outshines anything else,
+including Git itself.  Git&rsquo;s own staging interface (<code>git add --patch</code>)
+is so cumbersome that many users only use it in exceptional cases.
+In Magit staging a hunk or even just part of a hunk is as trivial as
+staging all changes made to a file.
+</p>
+<p>The most visible part of Magit&rsquo;s interface is the status buffer, which
+displays information about the current repository.  Its content is
+created by running several Git commands and making their output
+actionable.  Among other things, it displays information about the
+current branch, lists unpulled and unpushed changes and contains
+sections displaying the staged and unstaged changes.  That might sound
+noisy, but, since sections are collapsible, it&rsquo;s not.
+</p>
+<p>To stage or unstage a change one places the cursor on the change and
+then types <code>s</code> or <code>u</code>.  The change can be a file or a hunk, or when the
+region is active (i.e. when there is a selection) several files or
+hunks, or even just part of a hunk.  The change or changes that these
+commands - and many others - would act on are highlighted.
+</p>
+<p>Magit also implements several other &quot;apply variants&quot; in addition to
+staging and unstaging.  One can discard or reverse a change, or
+apply it to the working tree.  Git&rsquo;s own porcelain only supports this
+for staging and unstaging and you would have to do something like <code>git
+diff ... | ??? | git apply ...</code> to discard, revert, or apply a single
+hunk on the command line.  In fact that&rsquo;s exactly what Magit does
+internally (which is what lead to the term &quot;apply variants&quot;).
+</p>
+<p>Magit isn&rsquo;t just for Git experts, but it does assume some prior
+experience with Git as well as Emacs.  That being said, many users
+have reported that using Magit was what finally taught them what Git
+it is capable off and how to use it to its fullest.  Other users
+wished they had switched to Emacs sooner so that they would have
+gotten their hands on Magit earlier.
+</p>
+<p>While one has to know the basic features of Emacs to be able to make
+full use of Magit, acquiring just enough Emacs skills doesn&rsquo;t take
+long and is worth it, even for users who prefer other editors.  Vim
+users are advised to give <a href="https://bitbucket.org/lyro/evil/wiki/Home">Evil</a>, the &quot;Extensible VI Layer for Emacs&quot;,
+and <a href="https://github.com/syl20bnr/spacemacs">Spacemacs</a>, an &quot;Emacs starter-kit focused on Evil&quot; a try.
+</p>
+<p>Magit provides a consistent and efficient Git porcelain.  After a
+short learning period, you will be able to perform most of your daily
+version control tasks faster than you would on the command line.  You
+will likely also start using features that seemed too daunting in the
+past.
+</p>
+<p>Magit fully embraces Git.  It exposes many advanced features using a
+simple but flexible interface instead of only wrapping the trivial
+ones like many GUI clients do.  Of course Magit supports logging,
+cloning, pushing, and other commands that usually don&rsquo;t fail in
+spectacular ways; but it also supports tasks that often cannot be
+completed in a single step.  Magit fully supports tasks such as
+merging, rebasing, cherry-picking, reverting, and blaming by not only
+providing a command to initiate these tasks but also by displaying
+context sensitive information along the way and providing commands
+that are useful for resolving conflicts and resuming the sequence
+after doing so.
+</p>
+<p>Magit wraps and in many cases improves upon at least the following Git
+porcelain commands: <code>add</code>, <code>am</code>, <code>bisect</code>, <code>blame</code>, <code>branch</code>,
+<code>checkout</code>, <code>cherry</code>, <code>cherry-pick</code>, <code>clean</code>, <code>clone</code>, <code>commit</code>,
+<code>config</code>, <code>describe</code>, <code>diff</code>, <code>fetch</code>, <code>format-patch</code>, <code>init</code>, <code>log</code>,
+<code>merge</code>, <code>merge-tree</code>, <code>mv</code>, <code>notes</code>, <code>pull</code>, <code>rebase</code>, <code>reflog</code>,
+<code>remote</code>, <code>request-pull</code>, <code>reset</code>, <code>revert</code>, <code>rm</code>, <code>show</code>, <code>stash</code>,
+<code>submodule</code>, and <code>tag</code>.  Many more Magit porcelain commands are
+implemented on top of Git plumbing commands.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Installation.html#Installation" accesskey="n" rel="next">Installation</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
