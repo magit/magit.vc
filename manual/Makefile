@@ -7,7 +7,7 @@ CSS = /css/page.css
 all:  texi html pdf
 
 texi: magit.texi magit-popup.texi with-editor.texi
-pdf:  magit.pdf  magit-popup.pdf  with-editor.pdf
+pdf:  magit.pdf  magit-popup.pdf  with-editor.pdf magit-refcard.pdf
 html: magit magit-popup with-editor
 
 magit: magit.texi
@@ -34,6 +34,10 @@ with-editor: with-editor.texi
 	@echo >> $@
 	@rm $@~
 
+magit-refcard.pdf: magit-refcard.tex
+	@printf " GEN $@\n"
+	@pdflatex magit-refcard.tex > /dev/null
+
 %.pdf: %.texi
 	@printf " GEN $@\n"
 	@$(TEXI2PDF) $<
@@ -44,3 +48,4 @@ clean:
 	@rm -rf magit.pdf magit.html magit/
 	@rm -rf magit-popup.pdf magit-popup.html magit-popup/
 	@rm -rf with-editor.pdf with-editor.html with-editor/
+	@rm -rf magit-refcard.pdf
