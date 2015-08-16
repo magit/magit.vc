@@ -108,13 +108,23 @@ directly invoke the popup&rsquo;s default action.
 
 <p>Ignore prefix arguments.
 </p></li></ul>
-</dd></dl>
+<p>This option can be overriden for individual popups.
+<code>magit-show-refs-popup</code> for example defaults to invoking the default
+action directly.  It only shows the popup buffer when a prefix
+argument is used.  See <a href="Customizing-existing-popups.html#Customizing-existing-popups">Customizing existing popups</a>.
+</p></dd></dl>
 
 <dl>
 <dt><a name="index-magit_002dpopup_002dmanpage_002dpackage"></a>User Option: <strong>magit-popup-manpage-package</strong></dt>
 <dd>
 <p>The Emacs package used to display man-pages, one of <code>man</code> or <code>woman</code>.
 </p></dd></dl>
+
+<p>To emphasize the default action by making it bold use this:
+</p>
+<div class="lisp">
+<pre class="lisp">(button-type-put 'magit-popup-action-button 'format &quot; %k %D&quot;)
+</pre></div>
 
 
 

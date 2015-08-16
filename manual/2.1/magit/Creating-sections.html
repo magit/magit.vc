@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Creating sections</title>
+
+<meta name="description" content="Magit User Manual: Creating sections">
+<meta name="keywords" content="Magit User Manual: Creating sections">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Section-plumbing.html#Section-plumbing" rel="up" title="Section plumbing">
+<link href="Section-selection.html#Section-selection" rel="next" title="Section selection">
+<link href="Section-plumbing.html#Section-plumbing" rel="prev" title="Section plumbing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Creating-sections"></a>
+<div class="header">
+<p>
+Next: <a href="Section-selection.html#Section-selection" accesskey="n" rel="next">Section selection</a>, Up: <a href="Section-plumbing.html#Section-plumbing" accesskey="u" rel="up">Section plumbing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Creating-sections-1"></a>
+<h4 class="subsection">10.2.1 Creating sections</h4>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dsection"></a>Macro: <strong>magit-insert-section</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Insert a section at point.
+</p>
+<p>TYPE is the section type, a symbol.  Many commands that act on the
+current section behave differently depending on that type.  Also if
+a variable <code>magit-TYPE-section-map</code> exists, then use that as the
+text-property <code>keymap</code> of all text belonging to the section (but this
+may be overwritten in subsections).
+</p>
+<p>Optional VALUE is the value of the section, usually a string that is
+required when acting on the section.
+</p>
+<p>When optional HIDE is non-nil collapse the section body by default,
+i.e. when first creating the section, but not when refreshing the
+buffer.  Otherwise, expand it by default.  This can be overwritten using
+<code>magit-section-set-visibility-hook</code>.  When a section is recreated
+during a refresh, then the visibility of predecessor is inherited
+and HIDE is ignored (but the hook is still honored).
+</p>
+<p>BODY is any number of forms that actually insert the section&rsquo;s
+heading and body.  Optional NAME, if specified, has to be a symbol,
+which is then bound to the struct of the section being inserted.
+</p>
+<p>Before BODY is evaluated the <code>start</code> of the section object is set to
+the value of <code>point</code> and after BODY was evaluated its <code>end</code> is set to
+the new value of <code>point</code>; BODY is responsible for moving <code>point</code>
+forward.
+</p>
+<p>If it turns out inside BODY that the section is empty, then
+<code>magit-cancel-section</code> can be used to abort and remove all traces of
+the partially inserted section.  This can happen when creating a
+section by washing Git&rsquo;s output and Git didn&rsquo;t actually output
+anything this time around.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dheading"></a>Function: <strong>magit-insert-heading</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Insert the heading for the section currently being inserted.
+</p>
+<p>This function should only be used inside <code>magit-insert-section</code>.
+</p>
+<p>When called without any arguments, then just set the <code>content</code> slot of
+the object representing the section being inserted to a marker at
+<code>point</code>.  The section should only contain a single line when this
+function is used like this.
+</p>
+<p>When called with arguments ARGS, which have to be strings, then
+insert those strings at point.  The section should not contain any
+text before this happens and afterwards it should again only contain
+a single line.  If the <code>face</code> property is set anywhere inside any of
+these strings, then insert all of them unchanged.  Otherwise use the
+<code>magit-section-heading</code> face for all inserted text.
+</p>
+<p>The <code>content</code> property of the section struct is the end of the heading
+(which lasts from <code>start</code> to <code>content</code>) and the beginning of the body
+(which lasts from <code>content</code> to <code>end</code>).  If the value of <code>content</code> is nil,
+then the section has no heading and its body cannot be collapsed.
+If a section does have a heading then its height must be exactly one
+line, including a trailing newline character.  This isn&rsquo;t enforced;
+you are responsible for getting it right.  The only exception is
+that this function does insert a newline character if necessary.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dcancel_002dsection"></a>Function: <strong>magit-cancel-section</strong></dt>
+<dd>
+<p>Cancel the section currently being inserted.  This exits the
+innermost call to <code>magit-insert-section</code> and removes all traces of
+what has already happened inside that call.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddefine_002dsection_002djumper"></a>Function: <strong>magit-define-section-jumper</strong> <em>sym title &amp;optional value</em></dt>
+<dd>
+<p>Define an interactive function to go to section SYM.  TITLE is the
+displayed title of the section.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Section-selection.html#Section-selection" accesskey="n" rel="next">Section selection</a>, Up: <a href="Section-plumbing.html#Section-plumbing" accesskey="u" rel="up">Section plumbing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

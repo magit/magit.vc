@@ -78,6 +78,18 @@ Next: <a href="Ediffing.html#Ediffing" accesskey="n" rel="next">Ediffing</a>, Pr
 <a name="Diffing-1"></a>
 <h3 class="section">5.3 Diffing</h3>
 
+<p>The status buffer contains diffs for the staged and unstaged commits,
+but that obviously isn&rsquo;t enough.  The prefix command <code>magit-diff-popup</code>,
+on <code>d</code>, features several suffix commands, which show a specific diff in
+a separate diff buffer.
+</p>
+<p>Like other popups, the diff popup also features several arguments that
+can be changed before invoking one of the suffix commands.  However in
+case of the diff popup these arguments correspond to those currently
+in use in the current repository&rsquo;s diff buffer.  When the diff popup
+is invoked while no diff buffer exists for the current repository yet,
+then the default value of <code>magit-diff-arguments</code> is used instead.
+</p>
 <p>Also see 
 the <a href="http://git-scm.com/docs/git-diff">git-diff(1)</a> manpage.
 </p>
@@ -87,7 +99,7 @@ the <a href="http://git-scm.com/docs/git-diff">git-diff(1)</a> manpage.
 </dd>
 <dt><kbd>d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-popup</code>)</dt>
 <dd>
-<p>This prefix commands shows the following suffix commands along with
+<p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
 <a name="index-d-d"></a>
@@ -108,6 +120,11 @@ the appropriate infix arguments in a popup buffer.
 commit.  If one side of the range is omitted, then it defaults to
 HEAD.  If just a commit is given, then changes in the working tree
 relative to that commit are shown.
+</p>
+<p>If the region is active, use the revisions on the first and last
+line of the region.  With a prefix argument, instead of diffing the
+revisions, choose a revision to view changes along, starting at the
+common ancestor of both revisions (i.e., use a &quot;&hellip;&quot;  range).
 </p>
 <a name="index-d-w"></a>
 <a name="index-magit_002ddiff_002dworktree"></a>
@@ -141,21 +158,6 @@ minibuffer.
 <dd>
 <p>Show changes between any two files on disk.
 </p>
-<a name="index-d-c"></a>
-<a name="index-magit_002dshow_002dcommit"></a>
-</dd>
-<dt><kbd>d c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-show-commit</code>)</dt>
-<dd>
-<p>Show the commit at point.  If there is no commit at point or with a
-prefix argument, prompt for a commit.
-</p>
-<a name="index-d-t"></a>
-<a name="index-magit_002dstash_002dshow"></a>
-</dd>
-<dt><kbd>d t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-show</code>)</dt>
-<dd>
-<p>Show all diffs of a stash in a buffer.
-</p>
 <a name="index-M_002dx-magit_002ddiff_002dunpushed"></a>
 <a name="index-magit_002ddiff_002dunpushed"></a>
 </dd>
@@ -169,6 +171,28 @@ prefix argument, prompt for a commit.
 <dt><kbd>M-x magit-diff-unpulled</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-unpulled</code>)</dt>
 <dd>
 <p>Show unpulled changes.
+</p></dd>
+</dl>
+
+<p>All of the above suffix commands update the repository&rsquo;s diff buffer.
+The diff popup also features two commands which show differences in
+another buffer:
+</p>
+<dl compact="compact">
+<dd><a name="index-d-c"></a>
+<a name="index-magit_002dshow_002dcommit"></a>
+</dd>
+<dt><kbd>d c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-show-commit</code>)</dt>
+<dd>
+<p>Show the commit at point.  If there is no commit at point or with a
+prefix argument, prompt for a commit.
+</p>
+<a name="index-d-t"></a>
+<a name="index-magit_002dstash_002dshow"></a>
+</dd>
+<dt><kbd>d t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-show</code>)</dt>
+<dd>
+<p>Show all diffs of a stash in a buffer.
 </p></dd>
 </dl>
 

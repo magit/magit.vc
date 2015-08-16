@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Select from log</title>
+
+<meta name="description" content="Magit User Manual: Select from log">
+<meta name="keywords" content="Magit User Manual: Select from log">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Logging.html#Logging" rel="up" title="Logging">
+<link href="Reflog.html#Reflog" rel="next" title="Reflog">
+<link href="Log-Buffer.html#Log-Buffer" rel="prev" title="Log Buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Select-from-log"></a>
+<div class="header">
+<p>
+Next: <a href="Reflog.html#Reflog" accesskey="n" rel="next">Reflog</a>, Previous: <a href="Log-Buffer.html#Log-Buffer" accesskey="p" rel="prev">Log Buffer</a>, Up: <a href="Logging.html#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Select-from-log-1"></a>
+<h4 class="subsection">5.2.2 Select from log</h4>
+
+<p>When the user has to select a recent commit that is reachable from
+<code>HEAD</code>, using regular completion would be inconvenient (because most
+humans cannot remember hashes or &quot;HEAD~5&quot;, at least not without double
+checking).  Instead a log buffer is used to select the commit, which
+has the advantage that commits are presented in order and with the
+commit message.  The following additional key bindings are available
+when a log is used for selection:
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dc-C_002dc-1"></a>
+<a name="index-magit_002dlog_002dselect_002dpick"></a>
+</dd>
+<dt><kbd>C-c C-c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-select-pick</code>)</dt>
+<dd>
+<p>Select the commit at point and act on it.  Call
+<code>magit-log-select-pick-function</code> with the selected commit as
+argument.
+</p>
+<a name="index-C_002dc-C_002dk"></a>
+<a name="index-magit_002dlog_002dselect_002dquit"></a>
+</dd>
+<dt><kbd>C-c C-k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-select-quit</code>)</dt>
+<dd>
+<p>Abort selecting a commit, don&rsquo;t act on any commit.
+</p></dd>
+</dl>
+
+<p>This feature is used by rebase and squash commands.
+</p>
+
+
+
+</body>
+</html>

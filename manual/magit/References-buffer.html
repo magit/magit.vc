@@ -197,6 +197,48 @@ information.
 is taken from &quot;%Nc&quot; in the above format strings.
 </p></dd></dl>
 
+<p>Everywhere in Magit <code>RET</code> visits the thing represented by the section
+at point.  In almost all cases visiting is done by showing some
+information in another buffer and <strong>not</strong> doing anything else.  In refs
+buffers <code>RET</code> behaves differently, and because many users have grown
+accustomed to that inconsistency we are keeping it that way.
+</p>
+<dl compact="compact">
+<dd><a name="index-RET-1"></a>
+<a name="index-magit_002dvisit_002dref"></a>
+</dd>
+<dt><kbd>RET</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-visit-ref</code>)</dt>
+<dd>
+<p>Everywhere except in refs buffers this command behaves exactly like
+<code>magit-show-commit</code>; it shows the commit at point in another buffer.
+</p>
+<p>In refs buffers, when there is a local branch at point, then this
+command instead checks out that branch.  When there is a remote
+branch or a tag at point then the respective commit is checked out
+causing <code>HEAD</code> to be detached.
+</p>
+<p>When a prefix argument it used, then this command only <strong>focuses</strong> on
+the reference at point, i.e. the commit counts and cherries are
+updated to be relative to that reference, but nothing is checked
+out.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dvisit_002dref_002dcreate"></a>User Option: <strong>magit-visit-ref-create</strong></dt>
+<dd>
+<p>When this is non-nil and <code>magit-visit-ref</code> is called inside a refs
+buffer, then it &quot;visits&quot; the remote branch at point by creating a
+new local branch which tracks that remote branch and then checking
+out the newly created branch.
+</p>
+<p>This is not enabled by default because one has to use an extremely
+loose definition of the verb &quot;to visit&quot; to be able to argue that
+creating and then checking out a new local branch is a form of
+visiting a remote branch.
+</p></dd></dl>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="References-sections.html#References-sections" accesskey="1">References sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>

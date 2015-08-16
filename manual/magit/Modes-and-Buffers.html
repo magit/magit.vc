@@ -133,6 +133,34 @@ appending <code>&lt;N&gt;</code> and thereby keeping Magit from re-using it to d
 other information of the same kind.
 </p>
 <p>With a prefix argument, the user can pick an arbitrary name.
+</p>
+<a name="index-M_002dw"></a>
+<a name="index-magit_002dcopy_002dbuffer_002dthing_002das_002dkill"></a>
+</dd>
+<dt><kbd>M-w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-copy-buffer-thing-as-kill</code>)</dt>
+<dd>
+<p>This command saves a representation of the thing that is being
+displayed in the current buffer to the kill ring.
+</p>
+<p>In buffers in which it is undefined what this &quot;buffer thing&quot; is,
+this command instead saves the value of the current section, as
+<code>magit-copy-as-kill</code> would.
+</p>
+<p>When the region is active, then this command behaves like
+<code>kill-ring-save</code>.
+</p>
+<a name="index-C_002dw"></a>
+<a name="index-magit_002dcopy_002das_002dkill"></a>
+</dd>
+<dt><kbd>C-w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-copy-as-kill</code>)</dt>
+<dd>
+<p>This commands saves the value of the current section to the kill
+ring.  For commits it saves the full hash.  For branches it saves
+the branch name, except when a prefix argument is used, then it
+saves the full hash.
+</p>
+<p>When the region is active, then this command behaves like
+<code>kill-ring-save</code>.
 </p></dd>
 </dl>
 

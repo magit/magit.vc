@@ -151,15 +151,48 @@ per-repository-class basis.  See <a href="Per_002drepository-configuration.html#
 
 </li><li> <code>magit-diff-highlight-indentation</code>
 
-</li><li> <code>magit-diff-highlight-whitespace</code>
+</li><li> <code>magit-diff-highlight-trailing</code>
 
 </li><li> <code>magit-diff-paint-whitespace</code>
 
 </li><li> <code>magit-diff-refine-hunk</code>
 
+</li><li> <code>magit-log-arguments</code>, <code>magit-log-select-arguments</code>, and
+<code>magit-log-section-arguments</code>
+
+<p>In repositories with more than a few thousand commits <code>--graph</code> should
+never be a member of <code>magit-log-section-arguments</code>.  That variable is
+in the status buffer which is refreshed every time you run any Magit
+command.
+</p>
+<p>Using <code>--color --graph</code> is even slower.  Magit uses code that is part
+of Emacs to turn control characters into faces.  That code is pretty
+slow and this is quite noticeable when showing a log with many
+branches and merges.  For that reason <code>--color</code> is not enabled by
+default anymore.  Consider leaving it at that.
+</p>
+
 </li><li> <code>magit-not-reverted-hook</code>
 
 </li><li> <code>magit-refresh-buffer-hook</code>
+
+</li><li> <code>magit-refs-sections-hook</code>
+
+<p>When refreshing the &quot;references buffer&quot; is slow, then that&rsquo;s usually
+because several hundred refs are being displayed.  The best way to
+address that is to display fewer refs, obviously.
+</p>
+<p>If you are not, or only mildly, interested in seeing the list of
+tags, then start by not displaying them:
+</p>
+<div class="lisp">
+<pre class="lisp">(remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
+</pre></div>
+
+<p>Then you should also make sure that the listed remote branches
+actually all exist.  You can do so by pruning branches which no
+longer exist using <code>f-pa</code>.
+</p>
 
 </li><li> <code>magit-status-refresh-hook</code>
 
@@ -172,8 +205,14 @@ per-repository-class basis.  See <a href="Per_002drepository-configuration.html#
 
 <p>Also note that everything involving &quot;cherry commits&quot; is slow.
 </p>
-<p>If nothing helps, then feel free to open a new issue.  Please provide
-benchmarks.
+<p>If, after actually trying the above suggestions, performance is still
+bad, and the above does not contain a statement explaining why that is
+so in that particular case and that there is nothing that we can
+currently do about it, then comment on the appropriate existing issue
+(see <a href="https://github.com/magit/magit/labels/performance">https://github.com/magit/magit/labels/performance</a>), or if
+necessary open a new issue.  Note that &quot;something is slow, I am using
+v2.2&quot; is not helpful, you have to be a bit more specific.  Benchmarks
+are a start.
 </p>
 <hr>
 <div class="header">

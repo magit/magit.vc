@@ -162,6 +162,15 @@ defined using <code>magit-define-popup</code>.  TYPE is one of <code>:action</co
 or <code>:option</code>.  KEY is the character which is to be unbound.
 </p></dd></dl>
 
+<p>It is also possible to change other aspects of a popup by setting a
+property using <code>plist-put</code>.  See <a href="Defining-prefix-commands.html#Defining-prefix-commands">Defining prefix commands</a> for valid
+properties.  The most likely change Magit users might want to make
+is:
+</p>
+<div class="lisp">
+<pre class="lisp">(plist-put magit-show-refs-popup :use-prefix nil)
+</pre></div>
+
 <hr>
 <div class="header">
 <p>

@@ -82,12 +82,12 @@ Next: <a href="Creating-and-sending-patches.html#Creating-and-sending-patches" a
 the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage.
 </p>
 <dl compact="compact">
-<dd><a name="index-P-2"></a>
+<dd><a name="index-P-1"></a>
 <a name="index-magit_002dpush_002dpopup"></a>
 </dd>
 <dt><kbd>P</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-popup</code>)</dt>
 <dd>
-<p>This prefix commands shows the following suffix commands along with
+<p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
 <a name="index-P-P"></a>
@@ -114,6 +114,29 @@ then read the remote branch.
 <p>Push a branch or commit to some remote branch.  Read the local and
 remote branch.
 </p>
+<a name="index-P-Q"></a>
+<a name="index-magit_002dpush_002dquickly"></a>
+</dd>
+<dt><kbd>P Q</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-quickly</code>)</dt>
+<dd>
+<p>Push the current branch to some remote.  When the Git variable
+<code>magit.pushRemote</code> is set, then push to that remote.  If that variable
+is undefined or the remote does not exist, then push to &quot;origin&quot;.
+If that also doesn&rsquo;t exist then raise an error.  The local branch is
+pushed to the remote branch with the same name.
+</p>
+<a name="index-P-i"></a>
+<a name="index-magit_002dpush_002dimplicitly"></a>
+</dd>
+<dt><kbd>P i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-implicitly</code>)</dt>
+<dd>
+<p>Push without explicitly specifing what to push.  This runs <code>git push
+  -v</code>.  What is being pushed depends on various Git variables as
+described in the 
+the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage and 
+the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage</p>
+<p>manpages.
+</p>
 <a name="index-P-m"></a>
 <a name="index-magit_002dpush_002dmatching"></a>
 </dd>
@@ -138,9 +161,37 @@ remote configured for the current branch as default.
 <dt><kbd>P T</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-tag</code>)</dt>
 <dd>
 <p>Push a tag to another repository.
-</p></dd>
+</p>
+</dd>
 </dl>
 
+<dl>
+<dt><a name="index-magit_002dpush_002dalways_002dverify"></a>User Option: <strong>magit-push-always-verify</strong></dt>
+<dd>
+<p>Whether certain commands require verification before pushing.
+</p>
+<p>Starting with <code>v2.1.0</code> some of the push commands are supposed to
+push to the configured upstream branch without requiring user
+confirmation or offering to push somewhere else.
+</p>
+<p>This has taken a few users by surprise, and they suggested that we
+force users to opt-in to this behavior.  Unfortunately adding this
+option means that now other users will complain about us needlessly
+forcing them to set an option.  This is an attempt to make everyone
+happy and like all such attempts it is prone to fail.  Before
+complaining about having to set this option, please consider that
+other users are less experienced than you and have different needs.
+</p>
+<p>You should set the value of this option to nil, causing all push
+commands to behave as intended.  But first read the description of
+each command above.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Creating-and-sending-patches.html#Creating-and-sending-patches" accesskey="n" rel="next">Creating and sending patches</a>, Previous: <a href="Pulling.html#Pulling" accesskey="p" rel="prev">Pulling</a>, Up: <a href="Transferring.html#Transferring" accesskey="u" rel="up">Transferring</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

@@ -7,7 +7,7 @@
 #+TEXINFO_DIR_CATEGORY: Emacs
 #+TEXINFO_DIR_TITLE: Magit-Popup: (magit-popup).
 #+TEXINFO_DIR_DESC: Infix arguments with feedback
-#+SUBTITLE: for version 2.1
+#+SUBTITLE: for version 2.2
 
 #+OPTIONS: H:4 num:3 toc:2
 #+STARTUP: indent
@@ -187,7 +187,7 @@ interface, it is better to do so directly from the popup buffer.
 
 It is also possible to add additional arguments and commands to an
 existing popup, but that cannot be done directly from the popup (or
-the Custom interface).  See [[*Customizing existing popups][Customizing existing popups]].
+the Custom interface).  See [[*Customizing existing popups]].
 
 Documentation about a popup's arguments and commands can be shown
 directly from the popup.
@@ -299,6 +299,15 @@ commands to an existing popup using the following functions.
   defined using ~magit-define-popup~.  TYPE is one of ~:action~, ~:switch~,
   or ~:option~.  KEY is the character which is to be unbound.
 
+It is also possible to change other aspects of a popup by setting a
+property using ~plist-put~.  See [[*Defining prefix commands]] for valid
+properties.  The most likely change Magit users might want to make
+is:
+
+#+BEGIN_SRC emacs-lisp
+  (plist-put magit-show-refs-popup :use-prefix nil)
+#+END_SRC
+
 ** Other options
 
 - User Option: magit-popup-use-prefix-argument
@@ -330,9 +339,20 @@ commands to an existing popup using the following functions.
 
     Ignore prefix arguments.
 
+  This option can be overriden for individual popups.
+  ~magit-show-refs-popup~ for example defaults to invoking the default
+  action directly.  It only shows the popup buffer when a prefix
+  argument is used.  See [[*Customizing existing popups]].
+
 - User Option: magit-popup-manpage-package
 
   The Emacs package used to display man-pages, one of ~man~ or ~woman~.
+
+To emphasize the default action by making it bold use this:
+
+#+BEGIN_SRC emacs-lisp
+  (button-type-put 'magit-popup-action-button 'format " %k %D")
+#+END_SRC
 
 * Defining prefix and suffix commands
 

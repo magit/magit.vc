@@ -78,15 +78,10 @@ Next: <a href="Diff-buffer.html#Diff-buffer" accesskey="n" rel="next">Diff buffe
 <a name="Refreshing-diffs-1"></a>
 <h4 class="subsection">5.3.1 Refreshing diffs</h4>
 
-<p>The <code>magit-diff-popup</code> described in the previous section is used to
-display a log in the current repositories diff buffer.  The following
-popup is used to change the arguments used to generate the diff or
-diffs in the current buffer, the status buffer or the diff buffer.
-</p>
-<p>In the diff buffer you can of course just use <code>magit-diff-popup</code>, but
-<code>magit-diff-refresh-popup</code> is more convenient because you don&rsquo;t have to
-again specify which differences to show.  In the status buffer this
-popup is the only way to change certain arguments.
+<p>The prefix command <code>magit-diff-refresh-popup</code>, on <code>D</code>, can be used to
+change the diff arguments used in the current buffer, without changing
+which diff is shown.  This works in dedicated diff buffers, but also
+in the status buffer.
 </p>
 <dl compact="compact">
 <dd><a name="index-D"></a>
@@ -94,7 +89,7 @@ popup is the only way to change certain arguments.
 </dd>
 <dt><kbd>D</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-refresh-popup</code>)</dt>
 <dd>
-<p>This prefix commands shows the following suffix commands along with
+<p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
 <a name="index-D-g"></a>
@@ -102,63 +97,84 @@ the appropriate infix arguments in a popup buffer.
 </dd>
 <dt><kbd>D g</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-refresh</code>)</dt>
 <dd>
-<p>Set the local diff arguments for the current buffer.
+<p>This suffix command sets the local diff arguments for the current
+buffer.
 </p>
 <a name="index-D-s"></a>
 <a name="index-magit_002ddiff_002dset_002ddefault_002darguments"></a>
 </dd>
 <dt><kbd>D s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-set-default-arguments</code>)</dt>
 <dd>
-<p>Set the global diff arguments for the current buffer.
+<p>This suffix command sets the default diff arguments for buffers of
+the same type as that of the current buffer.  Other existing buffers
+of the same type are not affected because their local values have
+already been initialized.
 </p>
 <a name="index-D-w"></a>
 <a name="index-magit_002ddiff_002dsave_002ddefault_002darguments"></a>
 </dd>
 <dt><kbd>D w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-save-default-arguments</code>)</dt>
 <dd>
-<p>Set and save the global diff arguments for the current buffer.
+<p>This suffix command sets the default diff arguments for buffers of
+the same type as that of the current buffer, and saves the value for
+future sessions.  Other existing buffers of the same type are not
+affected because their local values have already been initialized.
 </p>
 <a name="index-D-t"></a>
 <a name="index-magit_002ddiff_002dtoggle_002drefine_002dhunk"></a>
 </dd>
 <dt><kbd>D t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-toggle-refine-hunk</code>)</dt>
 <dd>
-<p>Toggle hunk refinement on or off.
+<p>This command toggles hunk refinement on or off.
+</p>
+<a name="index-D-r"></a>
+<a name="index-magit_002ddiff_002dswitch_002drange_002dtype"></a>
+</dd>
+<dt><kbd>D r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-switch-range-type</code>)</dt>
+<dd>
+<p>This command converts the diff range type from &quot;revA..revB&quot; to
+&quot;revB&hellip;revA&quot;, or vice versa.
+</p>
+<a name="index-D-f"></a>
+<a name="index-magit_002ddiff_002dflip_002drevs"></a>
+</dd>
+<dt><kbd>D f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-flip-revs</code>)</dt>
+<dd>
+<p>This command swaps revisions in the diff range from &quot;revA..revB&quot;
+to &quot;revB..revA&quot;, or vice versa.
 </p></dd>
 </dl>
 
-<p>In addition to the above popup, which allow changing any of the
+<p>In addition to the above popup, which allows changing any of the
 supported arguments, there also exist some commands which change a
 particular argument.
 </p>
 <dl compact="compact">
-<dd><a name="index-_002b-1"></a>
+<dd><a name="index-_002d"></a>
 <a name="index-magit_002ddiff_002dless_002dcontext"></a>
 </dd>
-<dt><kbd>+</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-less-context</code>)</dt>
+<dt><kbd>-</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-less-context</code>)</dt>
 <dd>
-<p>Decrease the context for diff hunks by COUNT lines.
+<p>This command decreases the context for diff hunks by COUNT lines.
 </p>
-<a name="index-_002d"></a>
+<a name="index-_002b-1"></a>
 <a name="index-magit_002ddiff_002dmore_002dcontext"></a>
 </dd>
-<dt><kbd>-</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-more-context</code>)</dt>
+<dt><kbd>+</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-more-context</code>)</dt>
 <dd>
-<p>Increase the context for diff hunks by COUNT lines.
+<p>This command increases the context for diff hunks by COUNT lines.
 </p>
 <a name="index-0"></a>
 <a name="index-magit_002ddiff_002ddefault_002dcontext"></a>
 </dd>
 <dt><kbd>0</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-default-context</code>)</dt>
 <dd>
-<p>Reset context for diff hunks to the default height.
+<p>This command resets the context for diff hunks to the default height.
 </p></dd>
 </dl>
 
-<p>While all of the above commands change <strong>how</strong> some change is being
-displayed without changing <strong>what</strong> change is being displayed, the
-following commands do the opposite: they change what is being
-displayed but not how.
+<p>The following commands quicky change what diff is being displayed
+without having to using one of the diff popups.
 </p>
 <dl compact="compact">
 <dd><a name="index-C_002dc-C_002dd"></a>
@@ -166,9 +182,10 @@ displayed but not how.
 </dd>
 <dt><kbd>C-c C-d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-while-committing</code>)</dt>
 <dd>
-<p>While committing, show the changes that are about to be committed.
-While amending, invoking the command again toggles between showing
-just the new changes or all the changes that will be committed.
+<p>While committing, this command shows the changes that are about to
+be committed.  While amending, invoking the command again toggles
+between showing just the new changes or all the changes that will be
+committed.
 </p>
 <p>This binding is available in the diff buffer as well as the commit
 message buffer.
@@ -178,14 +195,14 @@ message buffer.
 </dd>
 <dt><kbd>C-c C-b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-go-backward</code>)</dt>
 <dd>
-<p>Move backward in current buffer&rsquo;s history.
+<p>This command moves backward in current buffer&rsquo;s history.
 </p>
 <a name="index-C_002dc-C_002df-1"></a>
 <a name="index-magit_002dgo_002dforward-1"></a>
 </dd>
 <dt><kbd>C-c C-f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-go-forward</code>)</dt>
 <dd>
-<p>Move forward in current buffer&rsquo;s history.
+<p>This command moves forward in current buffer&rsquo;s history.
 </p></dd>
 </dl>
 

@@ -153,7 +153,7 @@ Write a message and then type <code>C-c C-c</code> to actually create the commit
 </p>
 <p>You probably don&rsquo;t want to push the commit you just created because
 you just committed some random changes, but if that is not the case
-you could push it by typing <code>p</code> to bring up the push popup and then <code>p</code>
+you could push it by typing <code>P</code> to bring up the push popup and then <code>P</code>
 again to push to the configured upstream.  (If the upstream is not
 configured, then you would be prompted for the push target instead.)
 </p>
@@ -167,22 +167,24 @@ before starting to try out Magit, then don&rsquo;t do this.
 </p>
 <p>So far we have mentioned the commit, push, and log popups.  These are
 probably among the popups you will be using the most, but many others
-exist.  To show a popup with all other popups (and some other commands
-which are not popups), type <code>h</code>.  Try a few.
+exist.  To show a popup with all other popups (as well as the various
+apply commands), type <code>h</code>.  Try a few.
 </p>
-<p>In most cases the key bindings in that popup correspond to the
-bindings in Magit buffers, including but not limited to the status
-buffer.  So you could type <code>h d</code> to bring up the diff popup, but once
-you remember that &quot;d&quot; stands for &quot;diff&quot;, you would usually do so by
-just typing <code>d</code>.  But the &quot;popup of popups&quot; is useful even once you have
-memorized all the bindings, as it can provide easy access to Magit
-commands from non-Magit buffers.  So you should bind this globally
-too:
+<p>The key bindings in that popup correspond to the bindings in Magit
+buffers, including but not limited to the status buffer.  So you could
+type <code>h d</code> to bring up the diff popup, but once you remember that &quot;d&quot;
+stands for &quot;diff&quot;, you would usually do so by just typing <code>d</code>.  But the
+&quot;popup of popups&quot; is useful even once you have memorized all the
+bindings, as it can provide easy access to Magit commands from
+non-Magit buffers.  So you should bind this globally too:
 </p>
 <div class="lisp">
 <pre class="lisp">(global-set-key (kbd &quot;C-x M-g&quot;) 'magit-dispatch-popup)
 </pre></div>
 
+<p>You might also want to enable <code>global-magit-file-buffer-mode</code> (see
+<a href="File_002dbuffer-mode.html#File_002dbuffer-mode">File-buffer mode</a>).
+</p>
 <hr>
 <div class="header">
 <p>

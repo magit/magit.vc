@@ -32,7 +32,7 @@ with-editor: with-editor.texi
 	@printf " GEN $@\n"
 	@$(BATCH) $< -l ox-texinfo+.el -f org-texinfo+export-to-texinfo
 	@echo >> $@
-	@rm $@~
+	@rm -f $@~
 
 magit-refcard.pdf: magit-refcard.tex
 	@printf " GEN $@\n"

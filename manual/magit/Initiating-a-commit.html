@@ -87,7 +87,7 @@ the <a href="http://git-scm.com/docs/git-commit">git-commit(1)</a> manpage.
 </dd>
 <dt><kbd>c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-popup</code>)</dt>
 <dd>
-<p>This prefix commands shows the following suffix commands along with
+<p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
 <a name="index-c-c"></a>
@@ -115,10 +115,10 @@ argument change the committer date.  The option
 <code>magit-commit-extend-override-date</code> can be used to inverse the
 meaning of the prefix argument.
 </p>
-<a name="index-c-r"></a>
+<a name="index-c-w"></a>
 <a name="index-magit_002dcommit_002dreword"></a>
 </dd>
-<dt><kbd>c r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-reword</code>)</dt>
+<dt><kbd>c w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-reword</code>)</dt>
 <dd>
 <p>Reword the last commit, ignoring staged changes.
 </p>
@@ -134,10 +134,11 @@ ignore the option.
 </dd>
 <dt><kbd>c f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-fixup</code>)</dt>
 <dd>
-<p>Create a fixup commit.  With a prefix argument the target commit has
-to be confirmed.  Otherwise the commit at point may be used without
-confirmation depending on the value of option
-<code>magit-commit-squash-confirm</code>.
+<p>Create a fixup commit.
+</p>
+<p>With a prefix argument the target commit has to be confirmed.
+Otherwise the commit at point may be used without confirmation
+depending on the value of option <code>magit-commit-squash-confirm</code>.
 </p>
 <a name="index-c-F"></a>
 <a name="index-magit_002dcommit_002dinstant_002dfixup"></a>
@@ -151,10 +152,11 @@ confirmation depending on the value of option
 </dd>
 <dt><kbd>c s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-squash</code>)</dt>
 <dd>
-<p>Create a squash commit.  With a prefix argument the target commit
-has to be confirmed.  Otherwise the commit at point may be used
-without confirmation depending on the value of option
-<code>magit-commit-squash-confirm</code>.
+<p>Create a squash commit, without editing the squash message.
+</p>
+<p>With a prefix argument the target commit has to be confirmed.
+Otherwise the commit at point may be used without confirmation
+depending on the value of option <code>magit-commit-squash-confirm</code>.
 </p>
 <a name="index-c-S"></a>
 <a name="index-magit_002dcommit_002dinstant_002dsquash"></a>
@@ -162,6 +164,17 @@ without confirmation depending on the value of option
 <dt><kbd>c S</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-instant-squash</code>)</dt>
 <dd>
 <p>Create a squash commit and instantly rebase.
+</p>
+<a name="index-c-A"></a>
+<a name="index-magit_002dcommit_002daugment"></a>
+</dd>
+<dt><kbd>c A</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-augment</code>)</dt>
+<dd>
+<p>Create a squash commit, editing the squash message.
+</p>
+<p>With a prefix argument the target commit has to be confirmed.
+Otherwise the commit at point may be used without confirmation
+depending on the value of option <code>magit-commit-squash-confirm</code>.
 </p>
 </dd>
 </dl>

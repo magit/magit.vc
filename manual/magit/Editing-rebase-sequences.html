@@ -33,7 +33,7 @@ General Public License for more details. -->
 <link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Rebasing.html#Rebasing" rel="up" title="Rebasing">
-<link href="Cherry-picking.html#Cherry-picking" rel="next" title="Cherry picking">
+<link href="Rebase-sequence-log.html#Rebase-sequence-log" rel="next" title="Rebase sequence log">
 <link href="Rebasing.html#Rebasing" rel="prev" title="Rebasing">
 <style type="text/css">
 <!--
@@ -72,7 +72,7 @@ ul.no-bullet {list-style: none}
 <a name="Editing-rebase-sequences"></a>
 <div class="header">
 <p>
-Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Rebase-sequence-log.html#Rebase-sequence-log" accesskey="n" rel="next">Rebase sequence log</a>, Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Editing-rebase-sequences-1"></a>
@@ -95,12 +95,33 @@ Git then creates the commit using the message it finds in the file.
 <p>Cancel the current editing session by returning with exit code 1.
 Git then cancels the commit, but leaves the file untouched.
 </p>
-<a name="index-RET-2"></a>
+<a name="index-RET-3"></a>
 <a name="index-git_002drebase_002dshow_002dcommit"></a>
 </dd>
 <dt><kbd>RET</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-show-commit</code>)</dt>
 <dd>
-<p>Show the commit on the current line if any.
+<p>Show the commit on the current line in another buffer and select
+that buffer.
+</p>
+<a name="index-SPC-3"></a>
+<a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002dup-2"></a>
+</dd>
+<dt><kbd>SPC</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-show-or-scroll-up</code>)</dt>
+<dd>
+<p>Show the commit on the current line in another buffer without
+selecting that buffer.  If the revision buffer is already visible in
+another window of the current frame, then instead scroll that window
+up.
+</p>
+<a name="index-DEL-3"></a>
+<a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002ddown-2"></a>
+</dd>
+<dt><kbd>DEL</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-show-or-scroll-down</code>)</dt>
+<dd>
+<p>Show the commit on the current line in another buffer without
+selecting that buffer.  If the revision buffer is already visible in
+another window of the current frame, then instead scroll that window
+down.
 </p>
 <a name="index-p-2"></a>
 <a name="index-git_002drebase_002dbackward_002dline"></a>
@@ -116,14 +137,14 @@ Git then cancels the commit, but leaves the file untouched.
 <dd>
 <p>Move to next line.
 </p>
-<a name="index-M_002dp-1"></a>
+<a name="index-M_002dp-2"></a>
 <a name="index-git_002drebase_002dmove_002dline_002dup"></a>
 </dd>
 <dt><kbd>M-p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-move-line-up</code>)</dt>
 <dd>
 <p>Move the current commit (or command) up.
 </p>
-<a name="index-M_002dn-1"></a>
+<a name="index-M_002dn-2"></a>
 <a name="index-git_002drebase_002dmove_002dline_002ddown"></a>
 </dd>
 <dt><kbd>M-n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-move-line-down</code>)</dt>
@@ -224,7 +245,7 @@ buffers.
 <hr>
 <div class="header">
 <p>
-Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Rebase-sequence-log.html#Rebase-sequence-log" accesskey="n" rel="next">Rebase sequence log</a>, Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

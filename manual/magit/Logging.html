@@ -33,7 +33,7 @@ General Public License for more details. -->
 <link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
-<link href="Log-Buffer.html#Log-Buffer" rel="next" title="Log Buffer">
+<link href="Refreshing-logs.html#Refreshing-logs" rel="next" title="Refreshing logs">
 <link href="Status-options.html#Status-options" rel="prev" title="Status options">
 <style type="text/css">
 <!--
@@ -78,8 +78,22 @@ Next: <a href="Diffing.html#Diffing" accesskey="n" rel="next">Diffing</a>, Previ
 <a name="Logging-1"></a>
 <h3 class="section">5.2 Logging</h3>
 
-<p>Also see 
+<p>The status buffer contains logs for the unpushed and unpulled commits,
+but that obviously isn&rsquo;t enough.  The prefix command <code>magit-log-popup</code>,
+on <code>l</code>, features several suffix commands, which show a specific log in a
+separate log buffer.
+</p>
+<p>Like other popups, the log popup also features several arguments that
+can be changed before invoking one of the suffix commands.  However in
+case of the log popup these arguments correspond to those currently in
+use in the current repository&rsquo;s log buffer.  When the log popup is
+invoked while no log buffer exists for the current repository yet,
+then the default value of <code>magit-log-arguments</code> is used instead.
+</p>
+<p>For information about the various arguments, see 
 the <a href="http://git-scm.com/docs/git-log">git-log(1)</a> manpage.
+</p>
+<p>The log popup also features several reflog commands.  See <a href="Reflog.html#Reflog">Reflog</a>.
 </p>
 <dl compact="compact">
 <dd><a name="index-l"></a>
@@ -87,7 +101,7 @@ the <a href="http://git-scm.com/docs/git-log">git-log(1)</a> manpage.
 </dd>
 <dt><kbd>l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-popup</code>)</dt>
 <dd>
-<p>This prefix commands shows the following suffix commands along with
+<p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
 <a name="index-l-l"></a>
@@ -159,11 +173,13 @@ commit at point are available as completion candidates.
 </dl>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Log-Buffer.html#Log-Buffer" accesskey="1">Log Buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Refreshing-logs.html#Refreshing-logs" accesskey="1">Refreshing logs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Select-from-log.html#Select-from-log" accesskey="2">Select from log</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Log-Buffer.html#Log-Buffer" accesskey="2">Log Buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Reflog.html#Reflog" accesskey="3">Reflog</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Select-from-log.html#Select-from-log" accesskey="3">Select from log</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Reflog.html#Reflog" accesskey="4">Reflog</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

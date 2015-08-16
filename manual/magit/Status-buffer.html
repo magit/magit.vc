@@ -144,12 +144,13 @@ despite its name, usually causes a Dired buffer to be created.
 	      (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)))
 </pre></div>
 
-<p>Starting with Emacs 25.1 that keymap can also be customized in a
-sane fashion:
+<p>Starting with Emacs 25.1 the Ido keymaps are defined just once
+instead of every time Ido is invoked, so now you can modify it
+like pretty much every other keymap:
 </p>
 <div class="lisp">
-<pre class="lisp">(define-key ido-completion-map
-   (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)))
+<pre class="lisp">(define-key ido-common-completion-map
+  (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)
 </pre></div>
 </dd></dl>
 

@@ -87,7 +87,7 @@ the <a href="http://git-scm.com/docs/git-rebase">git-rebase(1)</a> manpage.
 </dd>
 <dt><kbd>r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-popup</code>)</dt>
 <dd>
-<p>This prefix commands shows the following suffix commands along with
+<p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p></dd>
 </dl>
@@ -105,9 +105,9 @@ following commands.
 UPSTREAM are rebased.
 </p>
 <a name="index-r-o"></a>
-<a name="index-magit_002drebase_002dfrom"></a>
+<a name="index-magit_002drebase_002dsubset"></a>
 </dd>
-<dt><kbd>r o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-from</code>)</dt>
+<dt><kbd>r o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-subset</code>)</dt>
 <dd>
 <p>Start a non-interactive rebase sequence with commits from START to
 <code>HEAD</code> onto NEWBASE.  START has to be selected from a list of recent
@@ -119,6 +119,18 @@ commits.
 <dt><kbd>r e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-interactive</code>)</dt>
 <dd>
 <p>Start an interactive rebase sequence.
+</p>
+<a name="index-r-l"></a>
+<a name="index-magit_002drebase_002dunpushed"></a>
+</dd>
+<dt><kbd>r l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-unpushed</code>)</dt>
+<dd>
+<p>Start an interactive rebase sequence of unpushed commits.  This is
+like <code>magit-rebase-interactive</code>, but if the upstream of the current
+branch is configured, then all commits since the merge-base are
+rebased.  If there is no upstream or no merge-base, then the user
+has to select the first commit to be rebased like for
+<code>magit-rebase-interactive</code>.
 </p>
 <a name="index-r-f"></a>
 <a name="index-magit_002drebase_002dautosquash"></a>
@@ -179,6 +191,8 @@ commands instead.
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Editing-rebase-sequences.html#Editing-rebase-sequences" accesskey="1">Editing rebase sequences</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Rebase-sequence-log.html#Rebase-sequence-log" accesskey="2">Rebase sequence log</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
