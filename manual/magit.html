@@ -3843,9 +3843,8 @@ arguments available from <code>magit-blame-popup</code> should be used.
 </dd>
 <dt><kbd>M-x magit-blame-popup</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-popup</code>)</dt>
 <dd>
-<p>By default this behaves just like <code>magit-blame</code>.  With a prefix
-argument instead show a popup buffer featuring a few infix arguments
-and a single suffix command (<code>magit-blame</code>).
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
 </p>
 <a name="index-RET-2"></a>
 <a name="index-magit_002dshow_002dcommit-1"></a>
@@ -4104,6 +4103,10 @@ use a command which always does just that, then rebind <code>U</code> to
 </p></dd>
 </dl>
 
+<p>To stage a smaller unit than a range of lines, similar to <code>git add
+--patch</code> followed by <code>e</code> would do, then you can use <code>magit-ediff-stage</code> to
+do so.
+</p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Staging-from-file_002dvisiting-buffers" accesskey="1">Staging from file-visiting buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
