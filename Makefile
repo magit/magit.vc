@@ -8,6 +8,7 @@ help:
 	$(info make clean-gen       - )
 	$(info make serve           - )
 	$(info make genstats        - )
+	$(info make copy-manuals    - )
 	$(info make master          - )
 	$(info make master-info     - )
 	$(info make master-pdf      - )
@@ -25,7 +26,7 @@ include config.mk
 
 all: next master genstats
 
-clean: next-clean master-clean
+clean: copy-manual next-clean master-clean
 
 GENFILES  = manual/$(VERSION)/magit.info
 GENFILES += manual/$(VERSION)/magit.pdf
@@ -45,6 +46,11 @@ serve:
 
 genstats:
 	@$(MAKE) -C $(MAGIT_REPO) genstats
+
+copy-manuals:
+	@cp $(MAGIT_REPO)/Documentation/magit.org \
+	$(MAGIT_REPO)/Documentation/magit-popup.org \
+	$(MAGIT_REPO)/Documentation/with-editor.org manual
 
 master:
 	@$(MAKE) -C manual master
