@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Magit! A Git Porcelain inside Emacs</title>
+    <meta name="author"      content="Jonas Bernoulli <jonas@bernoul.li>">
+    <meta name="description" content="Magit is an Emacs interace to Git">
+    <meta name="keywords"    content="emacs, git, version control">
+    <link rel="stylesheet" type="text/css" href="/css/page.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic">
+  </head>
+
+  <body>
+    <header>
+      <h1><a href="/"><img alt="M" id="M" src="/img/M.png"></a>agit!</h1>
+      <h2>Elpa archive for obsolete v1 series</h2>
+    </header>
+
+    <section>
+      <h2>The v1 series is obsolete and unmaintained</h2>
+      <p>
+        Being unmaintained means, among other things, that we won't
+        fix any bugs.  If you think that is wrong of us, then consider
+        that "we" is mostly "I", my time is limited, and that I have
+        not used that series myself for more that one and a half years
+        now.  For most of that time I actually did support the v1
+        series, but that has come to an end now.  For more information
+        see the release notes for
+        <a href="https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/1.4.0.txt">1.4.0</a> and
+        <a href="https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.1.0.txt">2.1.0</a>.
+      </p>
+      <p>
+        However, for your convenience, I am now making v1.4.2, the
+        last release in the v1 series, available from this dedicated
+        Elpa archive.
+      </p>
+      <p>
+        Never-the-less <b>if it is at all possible, then you should
+        instead update to the v2 series</b>.  That requires at least
+        Emacs v24.4 and Git v1.9.4.
+      </p>
+      <p>
+        If these releases are not available in your distribution, then
+        you should look for backports.  If no backports are available,
+        then you should compile from source.  If you require
+        permission to install software, then you should ask for it.
+        You should only consider installing v1 instead of v2, if, and
+        only if, your employer forbids that you install recent
+        versions of Emacs and Git.  In all other cases it would be
+        much better to learn to install Emacs and/or Git from source.
+        It's really not that hard and is a skill worth having.
+      </p>
+      <p>
+        Currently we do not provide any distribution specific
+        instructions for installing Emacs and Git, but should such
+        instructions be contributed by users, then they would appear
+        <a href="http://magit.vc/manual/magit/I-am-using-an-Emacs-release-older-than-244.html">here</a> and
+        <a href="http://magit.vc/manual/magit/I-am-using-a-Git-release-older-than-194.html">here</a>.
+        (Note that you could be that user who contributes those
+        instructions for your distribution.)
+      </p>
+    </section>
+
+    <section>
+      <h2>How to install v1 if that's the only option</h2>
+      <p>
+        Add the <code>magit-v1</code> archive
+        to <code>package-archives</code>.  If you are also using other
+        archives, then you have to pin the <code>magit</code> package
+        to the <code>magit-v1</code> archive
+        using <code>package-pinned-packages</code>.  If your Emacs
+        does not have that variable, then you have to install and
+        <a href="http://melpa.org/#/getting-started">configure</a>
+        the <code>package-filter</code> package which is available
+        from Melpa.
+      </p>
+      <pre>(require 'package)
+(add-to-list 'package-archives
+             '("magit-v1" . "http://magit.vc/elpa/v1/packages/") t)
+      </pre>
+    </section>
+
+    <section>
+      <h2>Pay to have Magit v2 backported to Git v1.8</h2>
+      <p>
+        First things first: I <b>did not</b> drop support for ancient
+        Git and Emacs releases so that I could later charge for that
+        support to be restored.  I did so because my time is limited
+        and it benefits many more people if I keep on improving Magit
+        then it would if I spend the same time supporting ancient
+        releases for people who are employed by companies that don't
+        allow their developers to install the software they need to
+        get the job done efficiently.
+      </p>
+      <p>
+        But recently this topic came up again and I made the offer to
+        backport Magit v2 to Git v1.8 &ndash; if I am being paid to do
+        so.  See <a href="https://github.com/magit/magit/issues/2269">
+        this issue</a> for more information.
+      </p>
+    </section>
+  </body>
+</html>
