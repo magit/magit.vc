@@ -64,6 +64,11 @@
     <section>
       <h2>How to install v1 if that's the only option</h2>
       <p>
+        If you have already installed v2 (>=20150601 on Melpa) then
+        you have to first uninstall <code>magit</code>
+        and <code>git-commit</code>.  Then restart Emacs.
+      </p>
+      <p>
         Add the <code>magit-v1</code> archive
         to <code>package-archives</code>.  If you are also using other
         archives, then you have to pin the <code>magit</code> package
@@ -77,6 +82,7 @@
       <pre>(require 'package)
 (add-to-list 'package-archives
              '("magit-v1" . "http://magit.vc/elpa/v1/packages/") t)
+(add-to-list 'package-pinned-packages '(magit . "magit-v1"))
       </pre>
     </section>
 
