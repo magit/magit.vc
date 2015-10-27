@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic">
   </head>
 
-  <body>
+  <body style="max-width:100%">
     <header>
       <h1><a href="/"><img alt="M" id="M" src="/img/M.png"></a>agit!</h1>
       <h2>Help making it better</h2>
@@ -27,29 +27,58 @@
         please do not hesitate to ask.
       </p>
 
-      <table>
-        <tr>
-          <td>
-            <script data-gratipay-username="magit" src="//gttp.co/v1.js"></script></br>
-          </td>
-          <td>
-            <a href="https://flattr.com/submit/auto?user_id=tarsius&url=http%3A%2F%2Fmagit.vc&title=Magit!%20A%20Git%20Porcelain%20inside%20Emacs&">
-              <img src="//button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0">
-            </a>
-          </td>
-          <td>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-              <input type="hidden" name="cmd" value="_s-xclick">
-              <input type="hidden" name="hosted_button_id" value="TGDUK5VGB78XA">
-              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-              <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-            </form>
-          </td>
-      </table>
+      <h3>Donation options</h3>
+      <ul>
+        <li><a href="#paypal">PayPal</a></li>
+        <li><a href="#gratipay">Gratipay</a></li>
+        <li><a href="#flattr">Flattr</a></li>
+        <li>
+          <a href="#bitcoin">Bitcoin</a>
+          <ul>
+            <li><a href="#coinbase">Coinbase</a></li>
+          </ul>
+        </li>
+      </ul>
 
-      <iframe id="coinbase_inline_iframe_db6e8d65785b39f9132dda522aba9c88" src="https://www.coinbase.com/checkouts/db6e8d65785b39f9132dda522aba9c88/inline" style="width: 460px; height: 460px; border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.25);" allowtransparency="true" frameborder="0"></iframe>
-      <iframe id="coinbase_inline_iframe_e6e56533ac20f9516bb6c8a0eaa4b0d0" src="https://www.coinbase.com/checkouts/e6e56533ac20f9516bb6c8a0eaa4b0d0/inline" style="width: 460px; height: 460px; border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.25);" allowtransparency="true" frameborder="0"></iframe>
+      <h3 id="paypal">PayPal</h3>
+      <p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="TGDUK5VGB78XA">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+                 border="0" name="submit"
+                 alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+      </p>
 
+      <h3 id="gratipay">GratiPay</h3>
+      <p>
+        <script data-gratipay-username="magit" src="//gttp.co/v1.js"></script></br>
+        <a href="https://gratipay.com/magit">gratipay.com/magit</a>
+      </p>
+
+      <h3 id="flattr">Flattr</h3>
+      <p>
+        <a href="https://flattr.com/submit/auto?user_id=tarsius&url=http%3A%2F%2Fmagit.vc&title=Magit!%20A%20Git%20Porcelain%20inside%20Emacs&">
+          <img src="//button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0">
+        </a>
+      </p>
+
+      <h3 id="bitcoin">Bitcoin</h3>
+      <h4 id="coinbase">Coinbase</h4>
+      <p>
+        <iframe id="coinbase_inline_iframe_db6e8d65785b39f9132dda522aba9c88"
+                src="https://www.coinbase.com/checkouts/db6e8d65785b39f9132dda522aba9c88/inline"
+                style="width: 460px; height: 460px; border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.25);"
+                allowtransparency="true" frameborder="0"></iframe>
+        <iframe id="coinbase_inline_iframe_e6e56533ac20f9516bb6c8a0eaa4b0d0"
+                src="https://www.coinbase.com/checkouts/e6e56533ac20f9516bb6c8a0eaa4b0d0/inline"
+                style="width: 460px; height: 460px; border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.25);"
+                allowtransparency="true" frameborder="0"></iframe>
+      </p>
+
+      <h3>Notes</h3>
       <p>
         Currently I (<a href="http://emacsair.me">Jonas Bernoulli</a>)
         receive all the donations made through the above options,
