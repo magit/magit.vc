@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Matching sections</title>
+
+<meta name="description" content="Magit User Manual: Matching sections">
+<meta name="keywords" content="Magit User Manual: Matching sections">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Section-plumbing.html#Section-plumbing" rel="up" title="Section plumbing">
+<link href="Refreshing-buffers.html#Refreshing-buffers" rel="next" title="Refreshing buffers">
+<link href="Section-selection.html#Section-selection" rel="prev" title="Section selection">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Matching-sections"></a>
+<div class="header">
+<p>
+Previous: <a href="Section-selection.html#Section-selection" accesskey="p" rel="prev">Section selection</a>, Up: <a href="Section-plumbing.html#Section-plumbing" accesskey="u" rel="up">Section plumbing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Matching-sections-1"></a>
+<h4 class="subsection">10.2.3 Matching sections</h4>
+
+<dl compact="compact">
+<dd><a name="index-M_002dx-magit_002ddescribe_002dsection-1"></a>
+<a name="index-magit_002ddescribe_002dsection-1"></a>
+</dd>
+<dt><kbd>M-x magit-describe-section</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-describe-section</code>)</dt>
+<dd>
+<p>Show information about the section at point.  This command is
+intended for debugging purposes.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dsection_002dident"></a>Function: <strong>magit-section-ident</strong></dt>
+<dd>
+<p>Return an unique identifier for SECTION.  The return value has the
+form <code>((TYPE . VALUE)...)</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dget_002dsection"></a>Function: <strong>magit-get-section</strong></dt>
+<dd>
+<p>Return the section identified by IDENT.  IDENT has to be a list as
+returned by <code>magit-section-ident</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dsection_002dmatch"></a>Function: <strong>magit-section-match</strong> <em>condition &amp;optional section</em></dt>
+<dd>
+<p>Return <code>t</code> if SECTION matches CONDITION.  SECTION defaults to the
+section at point.
+</p>
+<p>Conditions can take the following forms:
+</p><ul>
+<li> <code>(CONDITION...)</code>
+
+<p>matches if any of the CONDITIONs matches.
+</p>
+
+</li><li> <code>[TYPE...]</code>
+
+<p>matches if the first TYPE matches the type of the section at
+point, the second matches that of its parent, and so on.
+</p>
+
+</li><li> <code>[* TYPE...]</code>
+
+<p>matches sections that match [TYPE&hellip;] and also recursively all
+their child sections.
+</p>
+
+</li><li> <code>TYPE</code>
+
+<p>matches TYPE regardless of its parents.
+</p></li></ul>
+<p>Each TYPE is a symbol.  Note that is not necessary to specify all
+TYPEs up to the root section as printed by <code>magit-describe-type</code>,
+unless of course your want to be that precise.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dsection_002dwhen"></a>Function: <strong>magit-section-when</strong> <em>condition &amp;rest body</em></dt>
+<dd>
+<p>If the section at point matches CONDITION evaluate BODY.
+</p>
+<p>If the section matches evaluate BODY forms sequentially and return
+the value of the last one, or if there are no BODY forms return the
+value of the section.  If the section does not match return nil.
+</p>
+<p>See <code>magit-section-match</code> for the forms CONDITION can take.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dsection_002dcase"></a>Function: <strong>magit-section-case</strong> <em>&amp;rest clauses</em></dt>
+<dd>
+<p>Choose among clauses on the type of the section at point.
+</p>
+<p>Each clause looks like (CONDITION BODY&hellip;).  The type of the
+section is compared against each CONDITION; the BODY forms of the
+first match are evaluated sequentially and the value of the last
+form is returned.  Inside BODY the symbol <code>it</code> is bound to the
+section at point.  If no clause succeeds or if there is no
+section at point return nil.
+</p>
+<p>See <code>magit-section-match</code> for the forms CONDITION can take.
+Additionally a CONDITION of t is allowed in the final clause and
+matches if no other CONDITION match, even if there is no section at
+point.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002droot_002dsection"></a>Variable: <strong>magit-root-section</strong></dt>
+<dd>
+<p>The root section in the current buffer.  All other sections are
+descendants of this section.  The value of this variable is set by
+<code>magit-insert-section</code> and you should never modify it.
+</p></dd></dl>
+
+<p>For diff related sections a few additional tools exist.
+</p>
+<dl>
+<dt><a name="index-magit_002ddiff_002dtype"></a>Function: <strong>magit-diff-type</strong> <em>&amp;optional section</em></dt>
+<dd>
+<p>Return the diff type of SECTION.
+</p>
+<p>The returned type is one of the symbols <code>staged</code>, <code>unstaged</code>, <code>committed</code>,
+or <code>undefined</code>.  This type serves a similar purpose as the general
+type common to all sections (which is stored in the <code>type</code> slot of the
+corresponding <code>magit-section</code> struct) but takes additional information
+into account.  When the SECTION isn&rsquo;t related to diffs and the
+buffer containing it also isn&rsquo;t a diff-only buffer, then return nil.
+</p>
+<p>Currently the type can also be one of <code>tracked</code> and <code>untracked</code>, but
+these values are not handled explicitly in every place they should
+be.  A possible fix could be to just return nil here.
+</p>
+<p>The section has to be a <code>diff</code> or <code>hunk</code> section, or a section whose
+children are of type <code>diff</code>.  If optional SECTION is nil, return the
+diff type for the current section.  In buffers whose major mode is
+<code>magit-diff-mode</code> SECTION is ignored and the type is determined using
+other means.  In <code>magit-revision-mode</code> buffers the type is always
+<code>committed</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002dscope"></a>Function: <strong>magit-diff-scope</strong> <em>&amp;optional section strict</em></dt>
+<dd>
+<p>Return the diff scope of SECTION or the selected section(s).
+</p>
+<p>A diff&rsquo;s &quot;scope&quot; describes what part of a diff is selected, it is a
+symbol, one of <code>region</code>, <code>hunk</code>, <code>hunks</code>, <code>file</code>, <code>files</code>, or <code>list</code>.  Do not
+confuse this with the diff &quot;type&quot;, as returned by <code>magit-diff-type</code>.
+</p>
+<p>If optional SECTION is non-nil, then return the scope of that,
+ignoring the sections selected by the region.  Otherwise return the
+scope of the current section, or if the region is active and selects
+a valid group of diff related sections, the type of these sections,
+i.e. <code>hunks</code> or <code>files</code>.  If SECTION (or if the current section that
+is nil) is a <code>hunk</code> section and the region starts and ends inside
+the body of a that section, then the type is <code>region</code>.
+</p>
+<p>If optional STRICT is non-nil then return nil if the diff type of
+the section at point is <code>untracked</code> or the section at point is not
+actually a <code>diff</code> but a <code>diffstat</code> section.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Section-selection.html#Section-selection" accesskey="p" rel="prev">Section selection</a>, Up: <a href="Section-plumbing.html#Section-plumbing" accesskey="u" rel="up">Section plumbing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

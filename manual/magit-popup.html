@@ -382,6 +382,9 @@ Next: <a href="#Other-options" accesskey="n" rel="next">Other options</a>, Up: <
 <p>It is possible to define additional infix arguments and suffix
 commands to an existing popup using the following functions.
 </p>
+<p>You can find some examples which use the below commands at
+<a href="https://github.com/magit/magit/wiki/Additional-proposed-infix-arguments-and-suffix-commands">https://github.com/magit/magit/wiki/Additional-proposed-infix-arguments-and-suffix-commands</a>.
+</p>
 <dl>
 <dt><a name="index-magit_002ddefine_002dpopup_002dswitch"></a>Function: <strong>magit-define-popup-switch</strong> <em>popup key desc switch &amp;optional enable at prepend</em></dt>
 <dd>
@@ -452,19 +455,27 @@ placed before or after AT, depending on PREPEND.
 </p></dd></dl>
 
 <dl>
+<dt><a name="index-magit_002ddefine_002dpopup_002dsequence_002daction"></a>Function: <strong>magit-define-popup-sequence-action</strong> <em>popup key desc command &amp;optional at prepend</em></dt>
+<dd>
+<p>Like <code>magit-define-popup-action</code>, but modifies the value of the
+<code>:sequence-actions</code> property instead of <code>:actions</code>.
+</p></dd></dl>
+
+<dl>
 <dt><a name="index-magit_002dchange_002dpopup_002dkey"></a>Function: <strong>magit-change-popup-key</strong> <em>popup type from to</em></dt>
 <dd>
 <p>In POPUP, bind TO to what FROM was bound to.  TYPE is one of
-<code>:action</code>, <code>:switch</code>, or <code>:option</code>.  Bind TO and unbind FROM, both are
-characters.
+<code>:action</code>, <code>:sequence-action</code>, <code>:switch</code>, or <code>:option</code>.  Bind TO and unbind
+FROM, both are characters.
 </p></dd></dl>
 
 <dl>
 <dt><a name="index-magit_002dremove_002dpopup_002dkey"></a>Function: <strong>magit-remove-popup-key</strong> <em>popup type key</em></dt>
 <dd>
 <p>In POPUP, remove KEY&rsquo;s binding of TYPE.  POPUP is a popup command
-defined using <code>magit-define-popup</code>.  TYPE is one of <code>:action</code>, <code>:switch</code>,
-or <code>:option</code>.  KEY is the character which is to be unbound.
+defined using <code>magit-define-popup</code>.  TYPE is one of <code>:action</code>,
+<code>:sequence-action</code>, <code>:switch</code>, or <code>:option</code>.  KEY is the character which
+is to be unbound.
 </p></dd></dl>
 
 <p>It is also possible to change other aspects of a popup by setting a
@@ -572,19 +583,19 @@ infix arguments, and then also one of its suffix commands.
   'magit-commands
   :man-page &quot;git-tag&quot;
   :switches '((?a &quot;Annotate&quot; &quot;--annotate&quot;)
-	      (?s &quot;Sign&quot;     &quot;--sign&quot;)
-	      (?f &quot;Force&quot;    &quot;--force&quot;))
+              (?s &quot;Sign&quot;     &quot;--sign&quot;)
+              (?f &quot;Force&quot;    &quot;--force&quot;))
   :actions  '((?t &quot;Create&quot;   magit-tag)
-	      (?k &quot;Delete&quot;   magit-tag-delete)
-	      (?p &quot;Prune&quot;    magit-tag-prune))
+              (?k &quot;Delete&quot;   magit-tag-delete)
+              (?p &quot;Prune&quot;    magit-tag-prune))
   :default-action 'magit-tag)
 
 ;;;###autoload
 (defun magit-tag (name rev &amp;optional args)
   &quot;Create a new tag with the given NAME at REV.&quot;
   (interactive (list (magit-read-tag &quot;Tag name&quot;)
-		     (magit-read-branch-or-commit &quot;Place tag on&quot;)
-		     (magit-tag-arguments)))
+                     (magit-read-branch-or-commit &quot;Place tag on&quot;)
+                     (magit-tag-arguments)))
   (magit-run-git-with-editor &quot;tag&quot; args name rev))
 </pre></div>
 

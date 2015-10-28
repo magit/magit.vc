@@ -159,8 +159,71 @@ with those that are already committed.
 <p>While committing, show the changes that are about to be committed.
 While amending, invoking the command again toggles between showing
 just the new changes or all the changes that will be committed.
-</p></dd>
+</p>
+<a name="index-C_002dc-C_002dw"></a>
+<a name="index-magit_002dpop_002drevision_002dstack"></a>
+</dd>
+<dt><kbd>C-c C-w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pop-revision-stack</code>)</dt>
+<dd>
+<p>This command inserts a representation of a revision into the current
+buffer.  It can be used inside buffers used to write commit messages
+but also in other buffers such as buffers used to edit emails or
+ChangeLog files.
+</p>
+<p>By default this command pops the revision which was last added to
+the <code>magit-revision-stack</code> and inserts it into the current buffer
+according to <code>magit-pop-revision-stack-format</code>.  Revisions can be put
+on the stack using <code>magit-copy-section-value</code> and
+<code>magit-copy-buffer-revision</code>.
+</p>
+<p>If the stack is empty or with a prefix argument it instead reads a
+revision in the minibuffer.  By using the minibuffer history this
+allows selecting an item which was popped earlier or to insert an
+arbitrary reference or revision without first pushing it onto the
+stack.
+</p>
+<p>When reading the revision from the minibuffer, then it might not
+be possible to guess the correct repository.  When this command
+is called inside a repository (e.g. while composing a commit
+message), then that repository is used.  Otherwise (e.g. while
+composing an email) then the repository recorded for the top
+element of the stack is used (even though we insert another
+revision).  If not called inside a repository and with an empty
+stack, or with two prefix arguments, then read the repository in
+the minibuffer too.
+</p>
+</dd>
 </dl>
+
+<dl>
+<dt><a name="index-magit_002dpop_002drevision_002dstack_002dformat"></a>User Option: <strong>magit-pop-revision-stack-format</strong></dt>
+<dd>
+<p>This option controls how the command <code>magit-pop-revision-stack</code>
+inserts a revision into the current buffer.
+</p>
+<p>The entries on the stack have the format <code>(HASH TOPLEVEL)</code> and this
+option has the format <code>(POINT-FORMAT EOB-FORMAT INDEX-REGEXP)</code>, all
+of which may be nil or a string (though either one of EOB-FORMAT
+or POINT-FORMAT should be a string, and if INDEX-REGEXP is
+non-nil, then the two formats should be too).
+</p>
+<p>First INDEX-REGEXP is used to find the previously inserted entry,
+by searching backward from point.  The first submatch must match
+the index number.  That number is incremented by one, and becomes
+the index number of the entry to be inserted.  If you don&rsquo;t want
+to number the inserted revisions, then use nil for INDEX-REGEXP.
+</p>
+<p>If INDEX-REGEXP is non-nil then both POINT-FORMAT and EOB-FORMAT
+should contain \&quot;%N\&quot;, which is replaced with the number that was
+determined in the previous step.
+</p>
+<p>Both formats, if non-nil and after removing %N, are then expanded
+using &lsquo;git show &ndash;format=FORMAT &hellip;&rsquo; inside TOPLEVEL.
+</p>
+<p>The expansion of POINT-FORMAT is inserted at point, and the
+expansion of EOB-FORMAT is inserted at the end of the buffer (if the
+buffer ends with a comment, then it is inserted right before that).
+</p></dd></dl>
 
 <p>Some projects use pseudo headers in commit messages.  Magit colorizes
 such headers and provides some commands to insert such headers.

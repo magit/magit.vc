@@ -90,7 +90,12 @@ ul.no-bullet {list-style: none}
   <li><a name="toc-Getting-started-1" href="Getting-started.html#Getting-started">3 Getting started</a></li>
   <li><a name="toc-Interface-concepts-1" href="Interface-concepts.html#Interface-concepts">4 Interface concepts</a>
   <ul class="no-bullet">
-    <li><a name="toc-Modes-and-Buffers-1" href="Modes-and-Buffers.html#Modes-and-Buffers">4.1 Modes and Buffers</a></li>
+    <li><a name="toc-Modes-and-Buffers-1" href="Modes-and-Buffers.html#Modes-and-Buffers">4.1 Modes and Buffers</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Switching-Buffers-1" href="Switching-Buffers.html#Switching-Buffers">4.1.1 Switching Buffers</a></li>
+      <li><a name="toc-Naming-Buffers-1" href="Naming-Buffers.html#Naming-Buffers">4.1.2 Naming Buffers</a></li>
+      <li><a name="toc-Quitting-Windows-1" href="Quitting-Windows.html#Quitting-Windows">4.1.3 Quitting Windows</a></li>
+    </ul></li>
     <li><a name="toc-Automatic-save-1" href="Automatic-save.html#Automatic-save">4.2 Automatic save</a></li>
     <li><a name="toc-Automatic-refresh-and-revert-1" href="Automatic-refresh-and-revert.html#Automatic-refresh-and-revert">4.3 Automatic refresh and revert</a></li>
     <li><a name="toc-Sections-1" href="Sections.html#Sections">4.4 Sections</a>
@@ -183,8 +188,10 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Tagging-1" href="Tagging.html#Tagging">8.1 Tagging</a></li>
     <li><a name="toc-Notes-1" href="Notes.html#Notes">8.2 Notes</a></li>
     <li><a name="toc-Submodules-1" href="Submodules.html#Submodules">8.3 Submodules</a></li>
-    <li><a name="toc-Wip-modes-1" href="Wip-modes.html#Wip-modes">8.4 Wip modes</a></li>
-    <li><a name="toc-File_002dbuffer-mode-1" href="File_002dbuffer-mode.html#File_002dbuffer-mode">8.5 File-buffer mode</a></li>
+    <li><a name="toc-Common-commands-1" href="Common-commands.html#Common-commands">8.4 Common commands</a></li>
+    <li><a name="toc-Wip-modes-1" href="Wip-modes.html#Wip-modes">8.5 Wip modes</a></li>
+    <li><a name="toc-Minor-mode-for-buffers-visiting-files-1" href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files">8.6 Minor mode for buffers visiting files</a></li>
+    <li><a name="toc-Minor-mode-for-buffers-visiting-blobs-1" href="Minor-mode-for-buffers-visiting-blobs.html#Minor-mode-for-buffers-visiting-blobs">8.7 Minor mode for buffers visiting blobs</a></li>
   </ul></li>
   <li><a name="toc-Customizing-1" href="Customizing.html#Customizing">9 Customizing</a>
   <ul class="no-bullet">
@@ -218,17 +225,20 @@ ul.no-bullet {list-style: none}
   <li><a name="toc-FAQ-1" href="FAQ.html#FAQ">Appendix A FAQ</a>
   <ul class="no-bullet">
     <li><a name="toc-Magit-is-slow-1" href="Magit-is-slow.html#Magit-is-slow">A.1 Magit is slow</a></li>
-    <li><a name="toc-I-am-having-problems-committing-1" href="I-am-having-problems-committing.html#I-am-having-problems-committing">A.2 I am having problems committing</a></li>
-    <li><a name="toc-I-am-using-an-Emacs-release-older-than-24_002e4" href="I-am-using-an-Emacs-release-older-than-244.html#I-am-using-an-Emacs-release-older-than-244">A.3 I am using an Emacs release older than 24.4</a></li>
-    <li><a name="toc-I-am-using-a-Git-release-older-than-1_002e9_002e4" href="I-am-using-a-Git-release-older-than-194.html#I-am-using-a-Git-release-older-than-194">A.4 I am using a Git release older than 1.9.4</a></li>
-    <li><a name="toc-I-am-using-MS-Windows-and-cannot-push-with-Magit-1" href="I-am-using-MS-Windows-and-cannot-push-with-Magit.html#I-am-using-MS-Windows-and-cannot-push-with-Magit">A.5 I am using MS Windows and cannot push with Magit</a></li>
-    <li><a name="toc-How-to-install-the-gitman-info-manual_003f-1" href="How-to-install-the-gitman-info-manual_003f.html#How-to-install-the-gitman-info-manual_003f">A.6 How to install the gitman info manual?</a></li>
-    <li><a name="toc-How-can-I-show-Git_0027s-output_003f-1" href="How-can-I-show-Git_0027s-output_003f.html#How-can-I-show-Git_0027s-output_003f">A.7 How can I show Git&rsquo;s output?</a></li>
-    <li><a name="toc-Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1" href="Expanding-a-file-to-show-the-diff-causes-it-to-disappear.html#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">A.8 Expanding a file to show the diff causes it to disappear</a></li>
-    <li><a name="toc-Magit-claims-repository-accessed-using-Tramp-does-not-exist-1" href="Magit-claims-repository-accessed-using-Tramp-does-not-exist.html#Magit-claims-repository-accessed-using-Tramp-does-not-exist">A.9 Magit claims repository accessed using Tramp does not exist</a></li>
-    <li><a name="toc-Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1" href="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f.html#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">A.10 Can Magit be used as ediff-version-control-package?</a></li>
-    <li><a name="toc-How-to-show-diffs-for-gpg_002dencrypted-files_003f-1" href="How-to-show-diffs-for-gpg_002dencrypted-files_003f.html#How-to-show-diffs-for-gpg_002dencrypted-files_003f">A.11 How to show diffs for gpg-encrypted files?</a></li>
-    <li><a name="toc-Emacs-24_002e5-hangs-when-loading-Magit" href="Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit">A.12 Emacs 24.5 hangs when loading Magit</a></li>
+    <li><a name="toc-I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable-1" href="I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable.html#I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable">A.2 I changed several thousand files at once and now Magit is unusable</a></li>
+    <li><a name="toc-I-am-having-problems-committing-1" href="I-am-having-problems-committing.html#I-am-having-problems-committing">A.3 I am having problems committing</a></li>
+    <li><a name="toc-I-don_0027t-like-how-branching-and-pushing-works-1" href="I-don_0027t-like-how-branching-and-pushing-works.html#I-don_0027t-like-how-branching-and-pushing-works">A.4 I don&rsquo;t like how branching and pushing works</a></li>
+    <li><a name="toc-I-cannot-install-the-pre_002drequisits-for-Magit-v2-1" href="I-cannot-install-the-pre_002drequisits-for-Magit-v2.html#I-cannot-install-the-pre_002drequisits-for-Magit-v2">A.5 I cannot install the pre-requisits for Magit v2</a></li>
+    <li><a name="toc-I-am-using-an-Emacs-release-older-than-v24_002e4" href="I-am-using-an-Emacs-release-older-than-v244.html#I-am-using-an-Emacs-release-older-than-v244">A.6 I am using an Emacs release older than v24.4</a></li>
+    <li><a name="toc-I-am-using-a-Git-release-older-than-v1_002e9_002e4" href="I-am-using-a-Git-release-older-than-v194.html#I-am-using-a-Git-release-older-than-v194">A.7 I am using a Git release older than v1.9.4</a></li>
+    <li><a name="toc-I-am-using-MS-Windows-and-cannot-push-with-Magit-1" href="I-am-using-MS-Windows-and-cannot-push-with-Magit.html#I-am-using-MS-Windows-and-cannot-push-with-Magit">A.8 I am using MS Windows and cannot push with Magit</a></li>
+    <li><a name="toc-How-to-install-the-gitman-info-manual_003f-1" href="How-to-install-the-gitman-info-manual_003f.html#How-to-install-the-gitman-info-manual_003f">A.9 How to install the gitman info manual?</a></li>
+    <li><a name="toc-How-can-I-show-Git_0027s-output_003f-1" href="How-can-I-show-Git_0027s-output_003f.html#How-can-I-show-Git_0027s-output_003f">A.10 How can I show Git&rsquo;s output?</a></li>
+    <li><a name="toc-Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1" href="Expanding-a-file-to-show-the-diff-causes-it-to-disappear.html#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">A.11 Expanding a file to show the diff causes it to disappear</a></li>
+    <li><a name="toc-Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer-1" href="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer.html#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">A.12 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a></li>
+    <li><a name="toc-Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1" href="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f.html#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">A.13 Can Magit be used as ediff-version-control-package?</a></li>
+    <li><a name="toc-How-to-show-diffs-for-gpg_002dencrypted-files_003f-1" href="How-to-show-diffs-for-gpg_002dencrypted-files_003f.html#How-to-show-diffs-for-gpg_002dencrypted-files_003f">A.14 How to show diffs for gpg-encrypted files?</a></li>
+    <li><a name="toc-Emacs-24_002e5-hangs-when-loading-Magit" href="Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit">A.15 Emacs 24.5 hangs when loading Magit</a></li>
   </ul></li>
   <li><a name="toc-Keystroke-Index-1" href="Keystroke-Index.html#Keystroke-Index">Appendix B Keystroke Index</a></li>
   <li><a name="toc-Command-Index-1" href="Command-Index.html#Command-Index">Appendix C Command Index</a></li>
@@ -330,6 +340,15 @@ Interface concepts
 <tr><td align="left" valign="top">&bull; <a href="Completion-and-confirmation.html#Completion-and-confirmation">Completion and confirmation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Running-Git.html#Running-Git">Running Git</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Modes and Buffers
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Switching-Buffers.html#Switching-Buffers">Switching Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Naming-Buffers.html#Naming-Buffers">Naming Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Quitting-Windows.html#Quitting-Windows">Quitting Windows</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 Sections
@@ -481,9 +500,13 @@ Miscellaneous
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Submodules.html#Submodules">Submodules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Common-commands.html#Common-commands">Common commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Wip-modes.html#Wip-modes">Wip modes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="File_002dbuffer-mode.html#File_002dbuffer-mode">File-buffer mode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Minor-mode-for-buffers-visiting-blobs.html#Minor-mode-for-buffers-visiting-blobs">Minor mode for buffers visiting blobs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 Customizing
@@ -538,11 +561,17 @@ FAQ
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Magit-is-slow.html#Magit-is-slow">Magit is slow</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable.html#I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable">I changed several thousand files at once and now Magit is unusable</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="I-am-having-problems-committing.html#I-am-having-problems-committing">I am having problems committing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="I-am-using-an-Emacs-release-older-than-244.html#I-am-using-an-Emacs-release-older-than-244">I am using an Emacs release older than 24.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="I-don_0027t-like-how-branching-and-pushing-works.html#I-don_0027t-like-how-branching-and-pushing-works">I don't like how branching and pushing works</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="I-am-using-a-Git-release-older-than-194.html#I-am-using-a-Git-release-older-than-194">I am using a Git release older than 1.9.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="I-cannot-install-the-pre_002drequisits-for-Magit-v2.html#I-cannot-install-the-pre_002drequisits-for-Magit-v2">I cannot install the pre-requisits for Magit v2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-am-using-an-Emacs-release-older-than-v244.html#I-am-using-an-Emacs-release-older-than-v244">I am using an Emacs release older than v24.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-am-using-a-Git-release-older-than-v194.html#I-am-using-a-Git-release-older-than-v194">I am using a Git release older than v1.9.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="I-am-using-MS-Windows-and-cannot-push-with-Magit.html#I-am-using-MS-Windows-and-cannot-push-with-Magit">I am using MS Windows and cannot push with Magit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -552,7 +581,7 @@ FAQ
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Expanding-a-file-to-show-the-diff-causes-it-to-disappear.html#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">Expanding a file to show the diff causes it to disappear</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Magit-claims-repository-accessed-using-Tramp-does-not-exist.html#Magit-claims-repository-accessed-using-Tramp-does-not-exist">Magit claims repository accessed using Tramp does not exist</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer.html#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f.html#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">Can Magit be used as ediff-version-control-package?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>

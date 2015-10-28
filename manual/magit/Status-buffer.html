@@ -139,9 +139,9 @@ despite its name, usually causes a Dired buffer to be created.
 </p>
 <div class="lisp">
 <pre class="lisp">(add-hook 'ido-setup-hook
-	  (lambda ()
-	    (define-key ido-completion-map
-	      (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)))
+          (lambda ()
+            (define-key ido-completion-map
+              (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)))
 </pre></div>
 
 <p>Starting with Emacs 25.1 the Ido keymaps are defined just once

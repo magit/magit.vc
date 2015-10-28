@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Initiating a commit</title>
+
+<meta name="description" content="Magit User Manual: Initiating a commit">
+<meta name="keywords" content="Magit User Manual: Initiating a commit">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Committing.html#Committing" rel="up" title="Committing">
+<link href="Editing-commit-messages.html#Editing-commit-messages" rel="next" title="Editing commit messages">
+<link href="Committing.html#Committing" rel="prev" title="Committing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Initiating-a-commit"></a>
+<div class="header">
+<p>
+Next: <a href="Editing-commit-messages.html#Editing-commit-messages" accesskey="n" rel="next">Editing commit messages</a>, Up: <a href="Committing.html#Committing" accesskey="u" rel="up">Committing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Initiating-a-commit-1"></a>
+<h4 class="subsection">6.4.1 Initiating a commit</h4>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-commit">git-commit(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-c"></a>
+<a name="index-magit_002dcommit_002dpopup"></a>
+</dd>
+<dt><kbd>c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-c-c"></a>
+<a name="index-magit_002dcommit"></a>
+</dd>
+<dt><kbd>c c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit</code>)</dt>
+<dd>
+<p>Create a new commit on <code>HEAD</code>.  With a prefix argument amend to the
+commit at <code>HEAD</code> instead.
+</p>
+<a name="index-c-a"></a>
+<a name="index-magit_002dcommit_002damend"></a>
+</dd>
+<dt><kbd>c a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-amend</code>)</dt>
+<dd>
+<p>Amend the last commit.
+</p>
+<a name="index-c-e"></a>
+<a name="index-magit_002dcommit_002dextend"></a>
+</dd>
+<dt><kbd>c e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-extend</code>)</dt>
+<dd>
+<p>Amend the last commit, without editing the message.  With a prefix
+argument change the committer date.  The option
+<code>magit-commit-extend-override-date</code> can be used to inverse the
+meaning of the prefix argument.
+</p>
+<a name="index-c-w"></a>
+<a name="index-magit_002dcommit_002dreword"></a>
+</dd>
+<dt><kbd>c w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-reword</code>)</dt>
+<dd>
+<p>Reword the last commit, ignoring staged changes.
+</p>
+<p>With a prefix argument change the committer date.  The option
+<code>magit-commit-rewrite-override-date</code> can be used to inverse the
+meaning of the prefix argument.
+</p>
+<p>Non-interactively respect the optional OVERRIDE-DATE argument and
+ignore the option.
+</p>
+<a name="index-c-f"></a>
+<a name="index-magit_002dcommit_002dfixup"></a>
+</dd>
+<dt><kbd>c f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-fixup</code>)</dt>
+<dd>
+<p>Create a fixup commit.
+</p>
+<p>With a prefix argument the target commit has to be confirmed.
+Otherwise the commit at point may be used without confirmation
+depending on the value of option <code>magit-commit-squash-confirm</code>.
+</p>
+<a name="index-c-F"></a>
+<a name="index-magit_002dcommit_002dinstant_002dfixup"></a>
+</dd>
+<dt><kbd>c F</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-instant-fixup</code>)</dt>
+<dd>
+<p>Create a fixup commit and instantly rebase.
+</p>
+<a name="index-c-s"></a>
+<a name="index-magit_002dcommit_002dsquash"></a>
+</dd>
+<dt><kbd>c s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-squash</code>)</dt>
+<dd>
+<p>Create a squash commit, without editing the squash message.
+</p>
+<p>With a prefix argument the target commit has to be confirmed.
+Otherwise the commit at point may be used without confirmation
+depending on the value of option <code>magit-commit-squash-confirm</code>.
+</p>
+<a name="index-c-S"></a>
+<a name="index-magit_002dcommit_002dinstant_002dsquash"></a>
+</dd>
+<dt><kbd>c S</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-instant-squash</code>)</dt>
+<dd>
+<p>Create a squash commit and instantly rebase.
+</p>
+<a name="index-c-A"></a>
+<a name="index-magit_002dcommit_002daugment"></a>
+</dd>
+<dt><kbd>c A</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-augment</code>)</dt>
+<dd>
+<p>Create a squash commit, editing the squash message.
+</p>
+<p>With a prefix argument the target commit has to be confirmed.
+Otherwise the commit at point may be used without confirmation
+depending on the value of option <code>magit-commit-squash-confirm</code>.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dcommit_002dask_002dto_002dstage"></a>User Option: <strong>magit-commit-ask-to-stage</strong></dt>
+<dd>
+<p>Whether to ask to stage everything when committing and nothing is
+staged.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dcommit_002dextend_002doverride_002ddate"></a>User Option: <strong>magit-commit-extend-override-date</strong></dt>
+<dd>
+<p>Whether using <code>magit-commit-extend</code> changes the committer date.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dcommit_002dreword_002doverride_002ddate"></a>User Option: <strong>magit-commit-reword-override-date</strong></dt>
+<dd>
+<p>Whether using <code>magit-commit-reword</code> changes the committer date.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dcommit_002dsquash_002dconfirm"></a>User Option: <strong>magit-commit-squash-confirm</strong></dt>
+<dd>
+<p>Whether the commit targeted by squash and fixup has to be confirmed.
+When non-nil then the commit at point (if any) is used as default
+choice.  Otherwise it has to be confirmed.  This option only affects
+<code>magit-commit-squash</code> and <code>magit-commit-fixup</code>.  The &quot;instant&quot; variants
+always require confirmation because making an error while using
+those is harder to recover from.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Editing-commit-messages.html#Editing-commit-messages" accesskey="n" rel="next">Editing commit messages</a>, Up: <a href="Committing.html#Committing" accesskey="u" rel="up">Committing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

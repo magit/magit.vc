@@ -121,6 +121,38 @@ minibuffer.
 <p>This command creates a new branch like <code>magit-branch</code>, but then also
 checks it out.
 </p>
+<a name="index-b-s"></a>
+<a name="index-magit_002dbranch_002dspinoff"></a>
+</dd>
+<dt><kbd>b s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-spinoff</code>)</dt>
+<dd>
+<p>This command creates and checks out a new branch starting at and
+tracking the current branch.  That branch in turn is reset to the
+last commit it shares with its upstream.  If the current branch has
+no upstream or no unpushed commits, then the new branch is created
+anyway and the previously current branch is not touched.
+</p>
+<p>This is useful to create a feature branch after work has already
+began on the old branch (likely but not necessarily &quot;master&quot;).
+</p>
+<a name="index-b-x"></a>
+<a name="index-magit_002dbranch_002dreset"></a>
+</dd>
+<dt><kbd>b x</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-reset</code>)</dt>
+<dd>
+<p>This command resets a branch, defaulting to the branch at point, to
+the tip of another branch or any other commit.
+</p>
+<p>When resetting to another branch, then that branch is also set as
+the upstream of the branch being reset.
+</p>
+<p>When the branch being reset is the current branch, then a hard reset
+is performed.  If there are any uncommitted changes, then the user
+has to confirming the reset because those changes would be lost.
+</p>
+<p>This is useful when you have started work on a feature branch but
+realize it&rsquo;s all crap and want to start over.
+</p>
 <a name="index-b-d"></a>
 <a name="index-magit_002dbranch_002ddelete"></a>
 </dd>

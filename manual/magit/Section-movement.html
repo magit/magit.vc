@@ -154,20 +154,60 @@ variant in turn.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-magit_002dlog_002dmaybe_002dshow_002dcommit"></a>Function: <strong>magit-log-maybe-show-commit</strong></dt>
-<dd>
-<p>This hook function shows the commit at point in another window.  If
-the section at point is a <code>commit</code> section and the value of
-<code>magit-diff-auto-show-p</code> calls for it, then the commit is shown in
-another window, using <code>magit-show-commit</code>.
-</p></dd></dl>
-
-<dl>
 <dt><a name="index-magit_002dlog_002dmaybe_002dshow_002dmore_002dcommits"></a>Function: <strong>magit-log-maybe-show-more-commits</strong></dt>
 <dd>
 <p>This hook function only has an effect in log buffers, and <code>point</code> is
 on the &quot;show more&quot; section.  If that is the case, then it doubles
 the number of commits that are being shown.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dmaybe_002dupdate_002drevision_002dbuffer"></a>Function: <strong>magit-log-maybe-update-revision-buffer</strong></dt>
+<dd>
+<p>When moving inside a log buffer, then this function updates the
+revision buffer, provided it is already being displayed in another
+window of the same frame.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dmaybe_002dupdate_002dblob_002dbuffer"></a>Function: <strong>magit-log-maybe-update-blob-buffer</strong></dt>
+<dd>
+<p>When moving inside a log buffer and another window of the same frame
+displays a blob buffer, then this function instead displays the blob
+buffer for the commit at point in that window.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dstatus_002dmaybe_002dupdate_002drevision_002dbuffer"></a>Function: <strong>magit-status-maybe-update-revision-buffer</strong></dt>
+<dd>
+<p>When moving inside a status buffer, then this function updates the
+revision buffer, provided it is already being displayed in another
+window of the same frame.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dstatus_002dmaybe_002dupdate_002dblob_002dbuffer"></a>Function: <strong>magit-status-maybe-update-blob-buffer</strong></dt>
+<dd>
+<p>When moving inside a status buffer and another window of the same
+frame displays a blob buffer, then this function instead displays
+the blob buffer for the commit at point in that window.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dupdate_002dother_002dwindow_002ddelay"></a>User Option: <strong>magit-update-other-window-delay</strong></dt>
+<dd>
+<p>Delay before automatically updating the other window.
+</p>
+<p>When moving around in certain buffers certain other buffers, which
+are being displayed in another window, may optionally be updated to
+display information about the section at point.
+</p>
+<p>When holding down a key to move by more than just one section, then
+that would update that buffer for each section on the way.  To
+prevent that, updating the revision buffer is delayed, and this
+option controls for how long.  For optimal experience you might have
+to adjust this delay and/or the keyboard repeat rate and delay of
+your graphical environment or operating system.
 </p></dd></dl>
 
 <hr>

@@ -79,7 +79,25 @@ Next: <a href="Select-from-log.html#Select-from-log" accesskey="n" rel="next">Se
 <h4 class="subsection">5.2.2 Log Buffer</h4>
 
 <dl compact="compact">
-<dd><a name="index-C_002dc-C_002db"></a>
+<dd><a name="index-L-1"></a>
+<a name="index-magit_002dlog_002drefresh_002dpopup-1"></a>
+</dd>
+<dt><kbd>L</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-refresh-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.  See <a href="Refreshing-logs.html#Refreshing-logs">Refreshing logs</a>.
+</p>
+<a name="index-q-1"></a>
+<a name="index-magit_002dlog_002dbury_002dbuffer"></a>
+</dd>
+<dt><kbd>q</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-bury-buffer</code>)</dt>
+<dd>
+<p>Bury the current buffer or the revision buffer in the same frame.
+Like <code>magit-mode-bury-buffer</code> (which see) but with a negative prefix
+argument instead bury the revision buffer, provided it is displayed
+in the current frame.
+</p>
+<a name="index-C_002dc-C_002db"></a>
 <a name="index-magit_002dgo_002dbackward"></a>
 </dd>
 <dt><kbd>C-c C-b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-go-backward</code>)</dt>
@@ -119,15 +137,28 @@ and contains information about that commit or stash, then instead
 scroll the buffer down.  If there is no commit or stash at point,
 then prompt for a commit.
 </p>
-<a name="index-q-1"></a>
-<a name="index-magit_002dlog_002dbury_002dbuffer"></a>
+<a name="index-_003d"></a>
+<a name="index-magit_002dlog_002dtoggle_002dcommit_002dlimit"></a>
 </dd>
-<dt><kbd>q</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-bury-buffer</code>)</dt>
+<dt><kbd>=</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-toggle-commit-limit</code>)</dt>
 <dd>
-<p>Bury the current buffer or the revision buffer in the same frame.
-Like <code>magit-mode-bury-buffer</code> (which see) but with a negative prefix
-argument instead bury the revision buffer, provided it is displayed
-in the current frame.
+<p>Toggle the number of commits the current log buffer is limited to.
+If the number of commits is currently limited, then remove that
+limit.  Otherwise set it to 256.
+</p>
+<a name="index-_002b"></a>
+<a name="index-magit_002dlog_002ddouble_002dcommit_002dlimit"></a>
+</dd>
+<dt><kbd>+</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-double-commit-limit</code>)</dt>
+<dd>
+<p>Double the number of commits the current log buffer is limited to.
+</p>
+<a name="index-_003d-1"></a>
+<a name="index-magit_002dlog_002dhalf_002dcommit_002dlimit"></a>
+</dd>
+<dt><kbd>=</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-half-commit-limit</code>)</dt>
+<dd>
+<p>Half the number of commits the current log buffer is limited to.
 </p>
 </dd>
 </dl>
@@ -139,27 +170,6 @@ in the current frame.
 entry.  Only considered when moving past the last entry with
 <code>magit-goto-*-section</code> commands.
 </p></dd></dl>
-
-<dl compact="compact">
-<dd><a name="index-_002b"></a>
-<a name="index-magit_002dlog_002dshow_002dmore_002dcommits"></a>
-</dd>
-<dt><kbd>+</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-show-more-commits</code>)</dt>
-<dd>
-<p>Increase the number of commits shown in current log.
-</p>
-<p>With no prefix argument, show twice as many commits as before.
-With a numerical prefix argument, show this many additional
-commits.  With a non-numeric prefix argument, show all commits.
-</p>
-<p>When no limit was previously imposed in the current buffer, set the
-local limit to the default limit instead (or if that is nil then
-100), regardless of the prefix argument.
-</p>
-<p>By default <code>magit-log-cutoff-length</code> commits are shown.
-</p>
-</dd>
-</dl>
 
 <dl>
 <dt><a name="index-magit_002dlog_002dshow_002dmargin"></a>User Option: <strong>magit-log-show-margin</strong></dt>
@@ -173,24 +183,6 @@ current buffer using the command <code>magit-toggle-margin</code>.
 <p>When a log buffer contains a verbose log, then the margin is never
 displayed.  In status buffers this option is ignored, but it is
 possible to show the margin using the mentioned command.
-</p></dd></dl>
-
-<dl compact="compact">
-<dd><a name="index-L-1"></a>
-<a name="index-magit_002dlog_002drefresh_002dpopup-1"></a>
-</dd>
-<dt><kbd>L</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-refresh-popup</code>)</dt>
-<dd>
-<p>This prefix command shows the following suffix commands along with
-the appropriate infix arguments in a popup buffer.  See <a href="Refreshing-logs.html#Refreshing-logs">Refreshing logs</a>.
-</p>
-</dd>
-</dl>
-
-<dl>
-<dt><a name="index-magit_002dlog_002dcutoff_002dlength"></a>User Option: <strong>magit-log-cutoff-length</strong></dt>
-<dd>
-<p>The maximum number of commits to show in log and reflog buffers.
 </p></dd></dl>
 
 <dl>

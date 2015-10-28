@@ -37,7 +37,7 @@ General Public License for more details.
 @finalout
 @titlepage
 @title Magit-Popup User Manual
-@subtitle for version 2.2
+@subtitle for version 2.3
 @author Jonas Bernoulli
 @page
 @vskip 0pt plus 1filll
@@ -294,6 +294,9 @@ buffers along with the other common commands.
 It is possible to define additional infix arguments and suffix
 commands to an existing popup using the following functions.
 
+You can find some examples which use the below commands at
+@uref{https://github.com/magit/magit/wiki/Additional-proposed-infix-arguments-and-suffix-commands}.
+
 @defun magit-define-popup-switch popup key desc switch &optional enable at prepend
 
 In POPUP, define KEY as SWITCH.
@@ -360,18 +363,25 @@ of another command already defined for POPUP, the command is then
 placed before or after AT, depending on PREPEND.
 @end defun
 
+@defun magit-define-popup-sequence-action popup key desc command &optional at prepend
+
+Like @code{magit-define-popup-action}, but modifies the value of the
+@code{:sequence-actions} property instead of @code{:actions}.
+@end defun
+
 @defun magit-change-popup-key popup type from to
 
 In POPUP, bind TO to what FROM was bound to.  TYPE is one of
-@code{:action}, @code{:switch}, or @code{:option}.  Bind TO and unbind FROM, both are
-characters.
+@code{:action}, @code{:sequence-action}, @code{:switch}, or @code{:option}.  Bind TO and unbind
+FROM, both are characters.
 @end defun
 
 @defun magit-remove-popup-key popup type key
 
 In POPUP, remove KEY's binding of TYPE.  POPUP is a popup command
-defined using @code{magit-define-popup}.  TYPE is one of @code{:action}, @code{:switch},
-or @code{:option}.  KEY is the character which is to be unbound.
+defined using @code{magit-define-popup}.  TYPE is one of @code{:action},
+@code{:sequence-action}, @code{:switch}, or @code{:option}.  KEY is the character which
+is to be unbound.
 @end defun
 
 It is also possible to change other aspects of a popup by setting a
@@ -469,19 +479,19 @@ infix arguments, and then also one of its suffix commands.
   'magit-commands
   :man-page "git-tag"
   :switches '((?a "Annotate" "--annotate")
-	      (?s "Sign"     "--sign")
-	      (?f "Force"    "--force"))
+              (?s "Sign"     "--sign")
+              (?f "Force"    "--force"))
   :actions  '((?t "Create"   magit-tag)
-	      (?k "Delete"   magit-tag-delete)
-	      (?p "Prune"    magit-tag-prune))
+              (?k "Delete"   magit-tag-delete)
+              (?p "Prune"    magit-tag-prune))
   :default-action 'magit-tag)
 
 ;;;###autoload
 (defun magit-tag (name rev &optional args)
   "Create a new tag with the given NAME at REV."
   (interactive (list (magit-read-tag "Tag name")
-		     (magit-read-branch-or-commit "Place tag on")
-		     (magit-tag-arguments)))
+                     (magit-read-branch-or-commit "Place tag on")
+                     (magit-tag-arguments)))
   (magit-run-git-with-editor "tag" args name rev))
 @end lisp
 

@@ -79,27 +79,27 @@ Previous: <a href="Diff-options.html#Diff-options" accesskey="p" rel="prev">Diff
 <h4 class="subsection">5.3.4 Revision buffer</h4>
 
 <dl>
-<dt><a name="index-magit_002drevision_002dshow_002ddiffstat"></a>User Option: <strong>magit-revision-show-diffstat</strong></dt>
-<dd>
-<p>Whether to show diffstat in revision buffers.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-magit_002drevision_002dshow_002dnotes"></a>User Option: <strong>magit-revision-show-notes</strong></dt>
-<dd>
-<p>Whether to show notes in revision buffers.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-magit_002drevision_002dshow_002dxref_002dbuttons"></a>User Option: <strong>magit-revision-show-xref-buttons</strong></dt>
-<dd>
-<p>Whether to show buffer history buttons in revision buffers.
-</p></dd></dl>
-
-<dl>
 <dt><a name="index-magit_002drevision_002dinsert_002drelated_002drefs"></a>User Option: <strong>magit-revision-insert-related-refs</strong></dt>
 <dd>
 <p>Whether to show related refs in revision buffers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drevision_002dshow_002dgravatar"></a>User Option: <strong>magit-revision-show-gravatar</strong></dt>
+<dd>
+<p>Whether to show gravatar images in revision buffers.
+</p>
+<p>If non-nil, then the value has to be a cons-cell which specifies
+where the gravatar images for the author and/or the committer are
+inserted inside the text that was previously inserted according
+to <code>magit-revision-header-format</code>.
+</p>
+<p>Both cells are regular expressions.  The car specifies where to
+insert the author gravatar image.  The top halve of the image is
+inserted right after the matched text, the bottom halve on the
+next line at the same offset.  The cdr specifies where to insert
+the committer image, accordingly.  Either the car or the cdr may
+be nil.
 </p></dd></dl>
 
 

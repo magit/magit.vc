@@ -124,27 +124,23 @@ argument also stage previously untracked (but not ignored) files.
 <p>Remove the change at point from the staging area.
 </p>
 <a name="index-U"></a>
+<a name="index-magit_002dunstage_002dall"></a>
+</dd>
+<dt><kbd>U</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-unstage-all</code>)</dt>
+<dd>
+<p>Remove all changes from the staging area.
+</p>
+<a name="index-M_002dx-magit_002dreset_002dindex"></a>
 <a name="index-magit_002dreset_002dindex"></a>
 </dd>
-<dt><kbd>U</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-reset-index</code>)</dt>
+<dt><kbd>M-x magit-reset-index</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-reset-index</code>)</dt>
 <dd>
 <p>Reset the index to some commit.  The commit is read from the user
 and defaults to the commit at point.  If there is no commit at
 point, then it defaults to <code>HEAD</code>.
-</p>
-<p>So <code>U RET</code> with no commit at point does the inverse of <code>S</code> (or actually
-<code>S yes RET</code>), i.e. &quot;unstage all staged changes&quot;.  If you would rather
-use a command which always does just that, then rebind <code>U</code> to
-<code>magit-unstage-all</code>.
-</p>
-<a name="index-M_002dx-magit_002dunstage_002dall"></a>
-<a name="index-magit_002dunstage_002dall"></a>
-</dd>
-<dt><kbd>M-x magit-unstage-all</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-unstage-all</code>)</dt>
-<dd>
-<p>Remove all changes from the staging area.
 </p></dd>
 </dl>
+
 
 <p>To stage a smaller unit than a range of lines, similar to <code>git add
 --patch</code> followed by <code>e</code> would do, then you can use <code>magit-ediff-stage</code> to

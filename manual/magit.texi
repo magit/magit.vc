@@ -40,7 +40,7 @@ General Public License for more details.
 @finalout
 @titlepage
 @title Magit User Manual
-@subtitle for version 2.2
+@subtitle for version 2.3
 @author Jonas Bernoulli
 @page
 @vskip 0pt plus 1filll
@@ -92,6 +92,12 @@ Interface concepts
 * Popup buffers and prefix commands::
 * Completion and confirmation::
 * Running Git::
+
+Modes and Buffers
+
+* Switching Buffers::
+* Naming Buffers::
+* Quitting Windows::
 
 Sections
 
@@ -188,8 +194,10 @@ Miscellaneous
 * Tagging::
 * Notes::
 * Submodules::
+* Common commands::
 * Wip modes::
-* File-buffer mode::
+* Minor mode for buffers visiting files::
+* Minor mode for buffers visiting blobs::
 
 Customizing
 
@@ -227,14 +235,17 @@ Conventions
 FAQ
 
 * Magit is slow::
+* I changed several thousand files at once and now Magit is unusable::
 * I am having problems committing::
-* I am using an Emacs release older than 24.4: I am using an Emacs release older than 244. 
-* I am using a Git release older than 1.9.4: I am using a Git release older than 194. 
+* I don't like how branching and pushing works::
+* I cannot install the pre-requisits for Magit v2::
+* I am using an Emacs release older than v24.4: I am using an Emacs release older than v244. 
+* I am using a Git release older than v1.9.4: I am using a Git release older than v194. 
 * I am using MS Windows and cannot push with Magit::
 * How to install the gitman info manual?::
 * How can I show Git's output?::
 * Expanding a file to show the diff causes it to disappear::
-* Magit claims repository accessed using Tramp does not exist::
+* Point is wrong in the COMMIT@math{_EDITMSG} buffer::
 * Can Magit be used as ediff-version-control-package?::
 * How to show diffs for gpg-encrypted files?::
 * Emacs 24.5 hangs when loading Magit: Emacs 245 hangs when loading Magit. 
@@ -391,7 +402,7 @@ To use Melpa:
 @lisp
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 @end lisp
 
 @itemize
@@ -402,7 +413,7 @@ To use Melpa-Stable:
 @lisp
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 @end lisp
 
 @itemize
@@ -413,7 +424,7 @@ To use Marmalade:
 @lisp
 (require 'package)
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 @end lisp
 
 Once you have added your preferred archive, you need to update the
@@ -474,7 +485,7 @@ Finally add this to your init file:
 (with-eval-after-load 'info
   (info-initialize)
   (add-to-list 'Info-directory-list
-	       "~/.emacs.d/site-lisp/magit/Documentation/"))
+               "~/.emacs.d/site-lisp/magit/Documentation/"))
 @end lisp
 
 Note that you have to add the @code{lisp/} subdirectory to the @code{load-path},
@@ -645,8 +656,7 @@ non-Magit buffers.  So you should bind this globally too:
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 @end lisp
 
-You might also want to enable @code{global-magit-file-buffer-mode} (see
-@ref{File-buffer mode,File-buffer mode}).
+You might also want to enable @code{global-magit-file-mode} (see @ref{Minor mode for buffers visiting files,Minor mode for buffers visiting files}).
 
 @node Interface concepts
 @chapter Interface concepts
@@ -665,16 +675,211 @@ You might also want to enable @code{global-magit-file-buffer-mode} (see
 @node Modes and Buffers
 @section Modes and Buffers
 
-Magit provides several major modes.  For each of these modes there
+Magit provides several major-modes.  For each of these modes there
 usually exists only one buffer per repository.  Separate modes and
 thus buffers exist for commits, diffs, logs, and some other things.
-
-In this manual we often speak about "Magit buffers".  By that we mean
-buffers whose major-modes derive from @code{magit-mode}.
 
 Besides these special purpose buffers, there also exists an overview
 buffer, called the @strong{status buffer}.  Its usually from this buffer that
 the user invokes Git commands, or creates or visits other buffers.
+
+In this manual we often speak about "Magit buffers".  By that we mean
+buffers whose major-modes derive from @code{magit-mode}.
+
+@table @asis
+@kindex M-x magit-toggle-buffer-lock
+@cindex magit-toggle-buffer-lock
+@item @kbd{M-x magit-toggle-buffer-lock} @tie{}@tie{}@tie{}@tie{}(@code{magit-toggle-buffer-lock})
+
+This command locks the current buffer to its value or if the buffer
+is already locked, then it unlocks it.
+
+Locking a buffer to its value, prevents it from being reused to
+display another value.  The name of a locked buffer contains its
+value, which allows telling it apart from other locked buffers and
+the unlocked buffer.
+
+Not all Magit buffers can be locked to their values, for example it
+wouldn't make sense to lock a status buffer.
+
+There can only be a single unlocked buffer using a certain
+major-mode per repository.  So when a buffer is being unlocked and
+another unlocked buffer already exists for that mode and repository,
+then the former buffer is instead deleted and the latter is
+displayed in its place.
+@end table
+
+@menu
+* Switching Buffers::
+* Naming Buffers::
+* Quitting Windows::
+@end menu
+
+@node Switching Buffers
+@subsection Switching Buffers
+
+@defun magit-display-buffer buffer
+
+This function is a wrapper around @code{display-buffer} and is used to
+display any Magit buffer.  It displays BUFFER in some window and,
+unlike @code{display-buffer}, also selects that window, provided
+@code{magit-display-buffer-noselect} is @code{nil}.  It also runs the hooks
+mentioned below.
+@end defun
+
+@defvar magit-display-buffer-noselect
+
+When this is non-nil, then @code{magit-display-buffer} only displays the
+buffer but forgoes also selecting the window.  This variable should
+not be set globally, it is only intended to be let-bound, by code
+that automatically updates "the other window".  This is used for
+example when the revision buffer is updated when you move inside the
+log buffer.
+@end defvar
+
+@defopt magit-display-buffer-function
+
+The function specified here is called by @code{magit-display-buffer} with
+one argument, a buffer, to actually display that buffer.  This
+function should call @code{display-buffer} with that buffer as first and a
+list of display actions as second argument.
+
+Instead of using a wrapper around @code{display-buffer}, that function
+itself can be used here, in which case the display actions have to
+be specified by adding them to @code{display-buffer-alist} instead.
+
+To learn about display actions, see @ref{Choosing a Window for Display,,,elisp,}.
+@end defopt
+
+@defun magit-display-buffer-traditional buffer
+
+This function is the current default value of the option
+@code{magit-display-buffer-function}.  Before that option and this function
+were added, the behavior was hard-coded in many places all over the
+code base but now all the rules are contained in this one function
+(except for the "noselect" special case mentioned above).
+
+If you want to use different rules, then a good way of doing that is
+to start with a copy of this function and then adjust it to your
+needs.  More functions to choose from will be added in the future,
+and eventually the default will change.
+@end defun
+
+@defopt magit-pre-display-buffer-hook
+
+This hook is run by @code{magit-display-buffer} before displaying the
+buffer.
+@end defopt
+
+@defun magit-save-window-configuration
+
+This function saves the current window configuration.  Later when
+the buffer is buried, it may be restored by
+@code{magit-restore-window-configuration}.
+@end defun
+
+@defopt magit-post-display-buffer-hook
+
+This hook is run by @code{magit-display-buffer} after displaying the
+buffer.
+@end defopt
+
+@defun magit-maybe-set-dedicated
+
+This function remembers if a new window had to be created to display
+the buffer, or whether an existing window was reused.  This
+information is later used by @code{magit-mode-quit-window}, to determine
+whether the window should be deleted when its last Magit buffer is
+buried.
+@end defun
+
+@node Naming Buffers
+@subsection Naming Buffers
+
+@defopt magit-generate-buffer-name-function
+
+The function used to generate the names of Magit buffers.
+
+Such a function should take the options @code{magit-uniquify-buffer-names}
+as well as @code{magit-buffer-name-format} into account.  If it doesn't,
+then should be clearly stated in the doc-string.  And if it supports
+%-sequences beyond those mentioned in the doc-string of the option
+@code{magit-buffer-name-format}, then its own doc-string should describe
+the additions.
+@end defopt
+
+@defun magit-generate-buffer-name-default-function mode
+
+This function returns a buffer name suitable for a buffer whose
+major-mode is MODE and which shows information about the repository
+in which @code{default-directory} is located.
+
+This function uses @code{magit-buffer-name-format} and supporting all of
+the %-sequences mentioned the documentation of that option.  It also
+respects the option @code{magit-uniquify-buffer-names}.
+@end defun
+
+@defopt magit-buffer-name-format
+
+The format string used to name Magit buffers.
+
+At least the following %-sequences are supported:
+
+@itemize
+@item
+@code{%m}
+
+The name of the major-mode, but with the @code{-mode} suffix removed.
+
+
+@item
+@code{%M}
+
+Like @code{%m} but abbreviate @code{magit-status-mode} as @code{magit}.
+
+
+@item
+@code{%v}
+
+The value the buffer is locked to, in parentheses, if it is the
+buffer is actually locked to its value.  An empty string
+otherwise.
+
+
+@item
+@code{%V}
+
+Like @code{%v}, but the string is prefixed with a space, unless it is an
+empty string.
+
+
+@item
+@code{%t}
+
+The top-level directory of the working tree of the repository, or
+if @code{magit-uniquify-buffer-name} is non-nil an abbreviation of that.
+@end itemize
+The value should always contain either @code{%m} or @code{%M}, @code{%v} or @code{%V}, and @code{%t}.
+If @code{magit-uniquify-buffer-name} is non-nil, then the value must end
+with @code{%t}.
+@end defopt
+
+@defopt magit-uniquify-buffer-names
+
+This option controls whether the names of Magit buffers are
+uniquified.  If the names are not being uniquified, then they
+contain the full path of the top-level of the working tree of the
+corresponding repository.  If they are being uniquified, then they
+end with the basename of the top-level, or if that would conflict
+with the name used for other buffers, then the names of all these
+buffers are adjusted until they no longer conflict.
+
+This is done using the @code{uniquify} package; customize its options to
+control how buffer names are uniquified.
+@end defopt
+
+@node Quitting Windows
+@subsection Quitting Windows
 
 @table @asis
 @kindex q
@@ -684,65 +889,40 @@ the user invokes Git commands, or creates or visits other buffers.
 This command buries the current Magit buffer.  With a prefix
 argument, it instead kills the buffer.
 
-If @code{magit-restore-window-configuration} is non-nil and the last
-configuration stored by @code{magit-mode-display-buffer} originates from
-the selected frame (which usually is the case), then that is restored
-after burying or killing the buffer.
-
 @end table
 
-@defopt magit-restore-window-configuration
+@defopt magit-bury-buffer-function
 
-This option controls whether quitting a Magit buffer restores the
-previous window configuration.
+The function used to actually bury or kill the current buffer.
+
+@code{magit-mode-bury-buffer} calls this function with one argument.  If
+the argument is non-nil, then the function has to kill the current
+buffer.  Otherwise it has to bury it alive.  The default value
+currently is @code{magit-restore-window-configuration}.
 @end defopt
 
-While it often is enough to have one buffer of a certain Magit mode
-per repository, this is not always the case.  You might, for example,
-want to view the diffs for two commits at the same time.  To do so,
-first rename the existing revision buffer.  Then show another commit.
-Usually that would reuse the existing buffer, but because its name no
-longer matches the default name, a new buffer is created instead.  The
-new buffer uses the default name, and therefore will be reused to show
-other commits as usual.
+@defun magit-restore-window-configuration kill-buffer
 
-@table @asis
-@kindex M-x magit-rename-buffer
-@cindex magit-rename-buffer
-@item @kbd{M-x magit-rename-buffer} @tie{}@tie{}@tie{}@tie{}(@code{magit-rename-buffer})
+Bury or kill the current buffer using @code{quit-window}, which is called
+with KILL-BUFFER as first and the selected window as second
+argument.
 
-This command changes the name of the current Magit buffer by
-appending @code{<N>} and thereby keeping Magit from re-using it to display
-other information of the same kind.
+Then restore the window configuration that existed right before the
+current buffer was displayed in the selected frame.  Unfortunately
+that also means that point gets adjusted in all the buffers, which
+are being displayed in the selected frame.
+@end defun
 
-With a prefix argument, the user can pick an arbitrary name.
+@defun magit-mode-quit-window kill-buffer
 
-@kindex M-w
-@cindex magit-copy-buffer-thing-as-kill
-@item @kbd{M-w} @tie{}@tie{}@tie{}@tie{}(@code{magit-copy-buffer-thing-as-kill})
+Bury or kill the current buffer using @code{quit-window}, which is called
+with KILL-BUFFER as first and the selected window as second
+argument.
 
-This command saves a representation of the thing that is being
-displayed in the current buffer to the kill ring.
-
-In buffers in which it is undefined what this "buffer thing" is,
-this command instead saves the value of the current section, as
-@code{magit-copy-as-kill} would.
-
-When the region is active, then this command behaves like
-@code{kill-ring-save}.
-
-@kindex C-w
-@cindex magit-copy-as-kill
-@item @kbd{C-w} @tie{}@tie{}@tie{}@tie{}(@code{magit-copy-as-kill})
-
-This commands saves the value of the current section to the kill
-ring.  For commits it saves the full hash.  For branches it saves
-the branch name, except when a prefix argument is used, then it
-saves the full hash.
-
-When the region is active, then this command behaves like
-@code{kill-ring-save}.
-@end table
+Then, if the window was originally created to display a Magit buffer
+and the buried buffer was the last remaining Magit buffer that was
+ever displayed in the window, then that is deleted.
+@end defun
 
 @node Automatic save
 @section Automatic save
@@ -771,10 +951,15 @@ intervention.  If it is @code{t} then the user has to confirm each save.
 
 After running a command which may change the state of the current
 repository, the current Magit buffer and the corresponding status
-buffer are refreshed.  This ensures that the displayed information is
-up-to-date but can lead to a noticeable delay in big repositories.
-Other Magit buffers are not refreshed to keep the delay to a minimum
-and also because doing so can sometimes be undesirable.
+buffer are refreshed.  Status buffer may optionally be automatically
+refreshed whenever a buffer is saved to a file inside the respective
+repository.
+
+Automatically refreshing Magit buffers ensures that the displayed
+information is up-to-date most of the time but can lead to a
+noticeable delay in big repositories.  Other Magit buffers are not
+refreshed to keep the delay to a minimum and also because doing so can
+sometimes be undesirable.
 
 @defopt magit-revert-buffers
 
@@ -819,6 +1004,10 @@ default so that users come here and pick what is right for them.
 
 Revert the buffers synchronously and be quiet about it.
 
+This is the recommended setting, because for the other values the
+revert messages might prevent you from seeing other, more
+important, messages in the echo area.
+
 
 @item
 NUMBER
@@ -859,6 +1048,18 @@ The file-visiting buffers are always reverted, even if
 
 @end table
 
+@defun magit-after-save-refresh-status
+
+This function is intended to be added to @code{after-save-hook}.  After
+doing that the corresponding status buffer is refreshed whenever a
+buffer is saved to a file inside a repository.
+
+Note that refreshing a Magit buffer is done by re-creating its
+contents from scratch, which can be slow in large repositories.  If
+you are not satisfied with Magit's performance, then you should
+obviously not add this function to that hook.
+@end defun
+
 @defopt magit-refresh-buffer-hook
 
 This hook is run in each Magit buffer that was refreshed during the
@@ -894,7 +1095,7 @@ mode.  Each section also has a type, and some sections also have a
 value.  For each section type there can also be a local keymap, shared
 by all sections of that type.
 
-Taking advantage the section value and type, many commands operate on
+Taking advantage of the section value and type, many commands operate on
 the current section, or when the region is active and selects sections
 of the same type, all of the selected sections.  Commands that only
 make sense for a particular section type (as opposed to just behaving
@@ -978,20 +1179,56 @@ is visible, regardless of the section's type.  If you add this to
 variant in turn.
 @end defun
 
-@defun magit-log-maybe-show-commit
-
-This hook function shows the commit at point in another window.  If
-the section at point is a @code{commit} section and the value of
-@code{magit-diff-auto-show-p} calls for it, then the commit is shown in
-another window, using @code{magit-show-commit}.
-@end defun
-
 @defun magit-log-maybe-show-more-commits
 
 This hook function only has an effect in log buffers, and @code{point} is
 on the "show more" section.  If that is the case, then it doubles
 the number of commits that are being shown.
 @end defun
+
+@defun magit-log-maybe-update-revision-buffer
+
+When moving inside a log buffer, then this function updates the
+revision buffer, provided it is already being displayed in another
+window of the same frame.
+@end defun
+
+@defun magit-log-maybe-update-blob-buffer
+
+When moving inside a log buffer and another window of the same frame
+displays a blob buffer, then this function instead displays the blob
+buffer for the commit at point in that window.
+@end defun
+
+@defun magit-status-maybe-update-revision-buffer
+
+When moving inside a status buffer, then this function updates the
+revision buffer, provided it is already being displayed in another
+window of the same frame.
+@end defun
+
+@defun magit-status-maybe-update-blob-buffer
+
+When moving inside a status buffer and another window of the same
+frame displays a blob buffer, then this function instead displays
+the blob buffer for the commit at point in that window.
+@end defun
+
+@defopt magit-update-other-window-delay
+
+Delay before automatically updating the other window.
+
+When moving around in certain buffers certain other buffers, which
+are being displayed in another window, may optionally be updated to
+display information about the section at point.
+
+When holding down a key to move by more than just one section, then
+that would update that buffer for each section on the way.  To
+prevent that, updating the revision buffer is delayed, and this
+option controls for how long.  For optimal experience you might have
+to adjust this delay and/or the keyboard repeat rate and delay of
+your graphical environment or operating system.
+@end defopt
 
 @node Section visibility
 @subsection Section visibility
@@ -1396,16 +1633,16 @@ in the top-level directory of the current repository instead.
 These suffix commands run arbitrary shell commands.
 
 @table @asis
-@kindex ! !
+@kindex ! s
 @cindex magit-shell-command-topdir
-@item @kbd{! !} @tie{}@tie{}@tie{}@tie{}(@code{magit-shell-command-topdir})
+@item @kbd{! s} @tie{}@tie{}@tie{}@tie{}(@code{magit-shell-command-topdir})
 
 This command reads a shell command from the user and executes it in
 the top-level directory of the current repository.
 
-@kindex ! p
+@kindex ! S
 @cindex magit-shell-command
-@item @kbd{! p} @tie{}@tie{}@tie{}@tie{}(@code{magit-shell-command})
+@item @kbd{! S} @tie{}@tie{}@tie{}@tie{}(@code{magit-shell-command})
 
 This command reads a shell command from the user and executes it in
 @code{default-directory}.  With a prefix argument the command is executed
@@ -1602,9 +1839,9 @@ To make this command available, use something like:
 
 @lisp
 (add-hook 'ido-setup-hook
-	  (lambda ()
-	    (define-key ido-completion-map
-	      (kbd \"C-x g\") 'ido-enter-magit-status)))
+          (lambda ()
+            (define-key ido-completion-map
+              (kbd \"C-x g\") 'ido-enter-magit-status)))
 @end lisp
 
 Starting with Emacs 25.1 the Ido keymaps are defined just once
@@ -1843,21 +2080,6 @@ Insert a header line about the current user.
 Hook run after a status buffer has been refreshed.
 @end defopt
 
-@defopt magit-status-buffer-switch-function
-
-Function used by @code{magit-status} to switch to a status buffer.
-The function is given one argument, the status buffer.
-@end defopt
-
-@defopt magit-status-buffer-name-format
-
-Name format for buffers used to display a repository's status.
-
-The following @code{format}-like specs are supported:
-@code{%a} the absolute filename of the repository top-level.
-@code{%b} the basename of the repository top-level.
-@end defopt
-
 @defopt magit-log-section-args
 
 Additional Git arguments used when creating log sections.  Only
@@ -2027,6 +2249,22 @@ Show or hide the margin.
 @subsection Log Buffer
 
 @table @asis
+@kindex L
+@cindex magit-log-refresh-popup
+@item @kbd{L} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-refresh-popup})
+
+This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.  See @ref{Refreshing logs,Refreshing logs}.
+
+@kindex q
+@cindex magit-log-bury-buffer
+@item @kbd{q} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-bury-buffer})
+
+Bury the current buffer or the revision buffer in the same frame.
+Like @code{magit-mode-bury-buffer} (which see) but with a negative prefix
+argument instead bury the revision buffer, provided it is displayed
+in the current frame.
+
 @kindex C-c C-b
 @cindex magit-go-backward
 @item @kbd{C-c C-b} @tie{}@tie{}@tie{}@tie{}(@code{magit-go-backward})
@@ -2063,14 +2301,25 @@ and contains information about that commit or stash, then instead
 scroll the buffer down.  If there is no commit or stash at point,
 then prompt for a commit.
 
-@kindex q
-@cindex magit-log-bury-buffer
-@item @kbd{q} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-bury-buffer})
+@kindex =
+@cindex magit-log-toggle-commit-limit
+@item @kbd{=} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-toggle-commit-limit})
 
-Bury the current buffer or the revision buffer in the same frame.
-Like @code{magit-mode-bury-buffer} (which see) but with a negative prefix
-argument instead bury the revision buffer, provided it is displayed
-in the current frame.
+Toggle the number of commits the current log buffer is limited to.
+If the number of commits is currently limited, then remove that
+limit.  Otherwise set it to 256.
+
+@kindex +
+@cindex magit-log-double-commit-limit
+@item @kbd{+} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-double-commit-limit})
+
+Double the number of commits the current log buffer is limited to.
+
+@kindex =
+@cindex magit-log-half-commit-limit
+@item @kbd{=} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-half-commit-limit})
+
+Half the number of commits the current log buffer is limited to.
 
 @end table
 
@@ -2080,25 +2329,6 @@ Insert more log entries automatically when moving past the last
 entry.  Only considered when moving past the last entry with
 @code{magit-goto-*-section} commands.
 @end defopt
-
-@table @asis
-@kindex +
-@cindex magit-log-show-more-commits
-@item @kbd{+} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-show-more-commits})
-
-Increase the number of commits shown in current log.
-
-With no prefix argument, show twice as many commits as before.
-With a numerical prefix argument, show this many additional
-commits.  With a non-numeric prefix argument, show all commits.
-
-When no limit was previously imposed in the current buffer, set the
-local limit to the default limit instead (or if that is nil then
-100), regardless of the prefix argument.
-
-By default @code{magit-log-cutoff-length} commits are shown.
-
-@end table
 
 @defopt magit-log-show-margin
 
@@ -2111,21 +2341,6 @@ current buffer using the command @code{magit-toggle-margin}.
 When a log buffer contains a verbose log, then the margin is never
 displayed.  In status buffers this option is ignored, but it is
 possible to show the margin using the mentioned command.
-@end defopt
-
-@table @asis
-@kindex L
-@cindex magit-log-refresh-popup
-@item @kbd{L} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-refresh-popup})
-
-This prefix command shows the following suffix commands along with
-the appropriate infix arguments in a popup buffer.  See @ref{Refreshing logs,Refreshing logs}.
-
-@end table
-
-@defopt magit-log-cutoff-length
-
-The maximum number of commits to show in log and reflog buffers.
 @end defopt
 
 @defopt magit-log-show-refname-after-summary
@@ -2506,61 +2721,6 @@ Scroll text downward.
 @node Diff options
 @subsection Diff options
 
-@defopt magit-diff-show-diffstat
-
-Whether to show diffstat in diff buffers.
-@end defopt
-
-@defopt magit-diff-show-xref-buttons
-
-Whether to show buffer history buttons in diff buffers.
-@end defopt
-
-@defopt magit-diff-auto-show
-
-Whether to automatically show the relevant diff or commit.
-
-When this option is non-nil certain operations cause the relevant
-changes to be displayed automatically.
-
-@itemize
-@item
-@code{commit}
-
-@item
-@code{stage-all}
-
-@item
-@code{log-oneline}
-
-@item
-@code{log-follow}
-
-@item
-@code{log-select}
-
-@item
-@code{blame-follow}
-@end itemize
-In the event that expanding very large patches takes a long time, @code{C-g}
-can be used to abort that step.  This is especially useful when you
-would normally not look at the changes, e.g. because you are
-committing some binary files.
-@end defopt
-
-@defopt magit-diff-auto-show-delay
-
-How long to delay showing or updating the revision buffer, when
-that happens automatically (according to @code{magit-diff-auto-show}).
-
-When holding down a key to move by several lines, then that would
-update that buffer for each line on the way.  To prevent that,
-updating the revision buffer is delayed, and this option controls
-for how long it is delayed.  For optimal experience you might have
-to adjust this delay and/or the keyboard repeat rate and delay of
-your graphical environment or operating system.
-@end defopt
-
 @defopt magit-diff-refine-hunk
 
 Whether to show word-granularity differences within diff hunks.
@@ -2611,24 +2771,26 @@ Otherwise, highlight neither.
 @node Revision buffer
 @subsection Revision buffer
 
-@defopt magit-revision-show-diffstat
-
-Whether to show diffstat in revision buffers.
-@end defopt
-
-@defopt magit-revision-show-notes
-
-Whether to show notes in revision buffers.
-@end defopt
-
-@defopt magit-revision-show-xref-buttons
-
-Whether to show buffer history buttons in revision buffers.
-@end defopt
-
 @defopt magit-revision-insert-related-refs
 
 Whether to show related refs in revision buffers.
+@end defopt
+
+@defopt magit-revision-show-gravatar
+
+Whether to show gravatar images in revision buffers.
+
+If non-nil, then the value has to be a cons-cell which specifies
+where the gravatar images for the author and/or the committer are
+inserted inside the text that was previously inserted according
+to @code{magit-revision-header-format}.
+
+Both cells are regular expressions.  The car specifies where to
+insert the author gravatar image.  The top halve of the image is
+inserted right after the matched text, the bottom halve on the
+next line at the same offset.  The cdr specifies where to insert
+the committer image, accordingly.  Either the car or the cdr may
+be nil.
 @end defopt
 
 @node Ediffing
@@ -2778,7 +2940,7 @@ Whether to show commit counts in Magit-Refs mode buffers.
 
 @itemize
 @item
-@verb{~all~} Show counts for branches and tags.
+@code{all} Show counts for branches and tags.
 
 @item
 @code{branch} Show counts for branches only.
@@ -3071,8 +3233,8 @@ arguments available from @code{magit-blame-popup} should be used.
 @cindex magit-blame-popup
 @item @kbd{M-x magit-blame-popup} @tie{}@tie{}@tie{}@tie{}(@code{magit-blame-popup})
 
-This prefix command shows the following suffix commands along with
-the appropriate infix arguments in a popup buffer.
+This prefix command shows the above suffix command along with the
+appropriate infix arguments in a popup buffer.
 
 @kindex RET
 @cindex magit-show-commit
@@ -3163,7 +3325,7 @@ Format string used for time strings in blame headings.
 @defopt magit-blame-show-headings
 
 Whether to initially show blame block headings.  The headings can
-also be toggled locally using command @verb{~magit-blame-toggle-headings~}.
+also be toggled locally using command @code{magit-blame-toggle-headings}.
 @end defopt
 
 @defopt magit-blame-goto-chunk-hook
@@ -3260,24 +3422,20 @@ argument also stage previously untracked (but not ignored) files.
 Remove the change at point from the staging area.
 
 @kindex U
+@cindex magit-unstage-all
+@item @kbd{U} @tie{}@tie{}@tie{}@tie{}(@code{magit-unstage-all})
+
+Remove all changes from the staging area.
+
+@kindex M-x magit-reset-index
 @cindex magit-reset-index
-@item @kbd{U} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-index})
+@item @kbd{M-x magit-reset-index} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-index})
 
 Reset the index to some commit.  The commit is read from the user
 and defaults to the commit at point.  If there is no commit at
 point, then it defaults to @code{HEAD}.
-
-So @code{U RET} with no commit at point does the inverse of @code{S} (or actually
-@code{S yes RET}), i.e. "unstage all staged changes".  If you would rather
-use a command which always does just that, then rebind @code{U} to
-@code{magit-unstage-all}.
-
-@kindex M-x magit-unstage-all
-@cindex magit-unstage-all
-@item @kbd{M-x magit-unstage-all} @tie{}@tie{}@tie{}@tie{}(@code{magit-unstage-all})
-
-Remove all changes from the staging area.
 @end table
+
 
 To stage a smaller unit than a range of lines, similar to @code{git add
 --patch} followed by @code{e} would do, then you can use @code{magit-ediff-stage} to
@@ -3437,19 +3595,21 @@ Amend the last commit.
 @item @kbd{c e} @tie{}@tie{}@tie{}@tie{}(@code{magit-commit-extend})
 
 Amend the last commit, without editing the message.  With a prefix
-argument change the committer date.  The option
-@code{magit-commit-extend-override-date} can be used to inverse the
-meaning of the prefix argument.
+argument keep the committer date, otherwise change it.  The option
+@code{magit-commit-extend-override-date} can be used to inverse the meaning
+of the prefix argument.
+
+Non-interactively respect the optional OVERRIDE-DATE argument and
+ignore the option.
 
 @kindex c w
 @cindex magit-commit-reword
 @item @kbd{c w} @tie{}@tie{}@tie{}@tie{}(@code{magit-commit-reword})
 
-Reword the last commit, ignoring staged changes.
-
-With a prefix argument change the committer date.  The option
-@code{magit-commit-rewrite-override-date} can be used to inverse the
-meaning of the prefix argument.
+Reword the last commit, ignoring staged changes.  With a prefix
+argument keep the committer date, otherwise change it.  The option
+@code{magit-commit-reword-override-date} can be used to inverse the meaning
+of the prefix argument.
 
 Non-interactively respect the optional OVERRIDE-DATE argument and
 ignore the option.
@@ -3600,7 +3760,68 @@ with those that are already committed.
 While committing, show the changes that are about to be committed.
 While amending, invoking the command again toggles between showing
 just the new changes or all the changes that will be committed.
+
+@kindex C-c C-w
+@cindex magit-pop-revision-stack
+@item @kbd{C-c C-w} @tie{}@tie{}@tie{}@tie{}(@code{magit-pop-revision-stack})
+
+This command inserts a representation of a revision into the current
+buffer.  It can be used inside buffers used to write commit messages
+but also in other buffers such as buffers used to edit emails or
+ChangeLog files.
+
+By default this command pops the revision which was last added to
+the @code{magit-revision-stack} and inserts it into the current buffer
+according to @code{magit-pop-revision-stack-format}.  Revisions can be put
+on the stack using @code{magit-copy-section-value} and
+@code{magit-copy-buffer-revision}.
+
+If the stack is empty or with a prefix argument it instead reads a
+revision in the minibuffer.  By using the minibuffer history this
+allows selecting an item which was popped earlier or to insert an
+arbitrary reference or revision without first pushing it onto the
+stack.
+
+When reading the revision from the minibuffer, then it might not
+be possible to guess the correct repository.  When this command
+is called inside a repository (e.g. while composing a commit
+message), then that repository is used.  Otherwise (e.g. while
+composing an email) then the repository recorded for the top
+element of the stack is used (even though we insert another
+revision).  If not called inside a repository and with an empty
+stack, or with two prefix arguments, then read the repository in
+the minibuffer too.
+
 @end table
+
+@defopt magit-pop-revision-stack-format
+
+This option controls how the command @code{magit-pop-revision-stack}
+inserts a revision into the current buffer.
+
+The entries on the stack have the format @code{(HASH TOPLEVEL)} and this
+option has the format @code{(POINT-FORMAT EOB-FORMAT INDEX-REGEXP)}, all
+of which may be nil or a string (though either one of EOB-FORMAT
+or POINT-FORMAT should be a string, and if INDEX-REGEXP is
+non-nil, then the two formats should be too).
+
+First INDEX-REGEXP is used to find the previously inserted entry,
+by searching backward from point.  The first submatch must match
+the index number.  That number is incremented by one, and becomes
+the index number of the entry to be inserted.  If you don't want
+to number the inserted revisions, then use nil for INDEX-REGEXP.
+
+If INDEX-REGEXP is non-nil then both POINT-FORMAT and EOB-FORMAT
+should contain \"%N\", which is replaced with the number that was
+determined in the previous step.
+
+Both formats, if non-nil and after removing %N, are then expanded
+using `git show --format=FORMAT @dots{}' inside TOPLEVEL.
+
+The expansion of POINT-FORMAT is inserted at point, and the
+expansion of EOB-FORMAT is inserted at the end of the buffer (if the
+buffer ends with a comment, then it is inserted right before that).
+@end defopt
 
 Some projects use pseudo headers in commit messages.  Magit colorizes
 such headers and provides some commands to insert such headers.
@@ -3831,6 +4052,36 @@ minibuffer.
 This command creates a new branch like @code{magit-branch}, but then also
 checks it out.
 
+@kindex b s
+@cindex magit-branch-spinoff
+@item @kbd{b s} @tie{}@tie{}@tie{}@tie{}(@code{magit-branch-spinoff})
+
+This command creates and checks out a new branch starting at and
+tracking the current branch.  That branch in turn is reset to the
+last commit it shares with its upstream.  If the current branch has
+no upstream or no unpushed commits, then the new branch is created
+anyway and the previously current branch is not touched.
+
+This is useful to create a feature branch after work has already
+began on the old branch (likely but not necessarily "master").
+
+@kindex b x
+@cindex magit-branch-reset
+@item @kbd{b x} @tie{}@tie{}@tie{}@tie{}(@code{magit-branch-reset})
+
+This command resets a branch, defaulting to the branch at point, to
+the tip of another branch or any other commit.
+
+When resetting to another branch, then that branch is also set as
+the upstream of the branch being reset.
+
+When the branch being reset is the current branch, then a hard reset
+is performed.  If there are any uncommitted changes, then the user
+has to confirming the reset because those changes would be lost.
+
+This is useful when you have started work on a feature branch but
+realize it's all crap and want to start over.
+
 @kindex b d
 @cindex magit-branch-delete
 @item @kbd{b d} @tie{}@tie{}@tie{}@tie{}(@code{magit-branch-delete})
@@ -4011,10 +4262,28 @@ UPSTREAM are rebased.
 Start a non-interactive rebase sequence with commits from START to
 @code{HEAD} onto NEWBASE.  START has to be selected from a list of recent
 commits.
+@end table
 
-@kindex r e
+Note that the popup also features the infix argument @code{--interactive}.
+This can be used to turn one of the above non-interactive rebase
+variants into an interactive rebase.
+
+For example if you want to clean up a feature branch and at the same
+time rebase it onto @code{master}, then you could use @code{r-ir}.  But we recommend
+that you instead do that in two steps.  First use @code{rs} to cleanup the
+feature branch, and then in a second step @code{rl} to rebase it onto @code{master}.
+That way if things turn out to be more complicated than you thought
+and/or you make a mistake and have to start over, then you only have
+to redo half the work.
+
+Explicitly enabling @code{--interactive} won't have an effect on the
+following commands as they always use that argument anyway, even if it
+is not enabled in the popup.
+
+@table @asis
+@kindex r i
 @cindex magit-rebase-interactive
-@item @kbd{r e} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-interactive})
+@item @kbd{r i} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-interactive})
 
 Start an interactive rebase sequence.
 
@@ -4035,9 +4304,9 @@ has to select the first commit to be rebased like for
 
 Combine squash and fixup commits with their intended targets.
 
-@kindex r s
+@kindex r e
 @cindex magit-rebase-edit-commit
-@item @kbd{r s} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-edit-commit})
+@item @kbd{r e} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-edit-commit})
 
 Edit a single older commit using rebase.
 
@@ -4553,9 +4822,9 @@ Reset the head and index to some commit read from the user and
 defaulting to the commit at point.  The working tree is kept as-is.
 With a prefix argument also reset the working tree.
 
-@kindex U
+@kindex M-x magit-reset-index
 @cindex magit-reset-index
-@item @kbd{U} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-index})
+@item @kbd{M-x magit-reset-index} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-index})
 
 Reset the index to some commit read from the user and defaulting to
 the commit at point.  Keep the @code{HEAD} and working tree as-is, so if
@@ -4583,6 +4852,15 @@ as-is.
 
 Reset the @code{HEAD}, index, and working tree to some commit read from the
 user and defaulting to the commit at point.
+
+@kindex M-x magit-checkout-file
+@cindex magit-checkout-file
+@item @kbd{M-x magit-checkout-file} @tie{}@tie{}@tie{}@tie{}(@code{magit-checkout-file})
+
+Update file in the working tree and index to the contents from a
+revision.
+
+Both the revision and file are read from the user.
 @end table
 
 @node Stashing
@@ -4710,6 +4988,12 @@ Show all diffs of a stash in a buffer.
 @item @kbd{z b} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-branch})
 
 Create and checkout a new BRANCH from STASH.
+
+@kindex z f
+@cindex magit-stash-format-patch
+@item @kbd{z f} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-format-patch})
+
+Create a patch from STASH.
 
 @kindex k
 @cindex magit-stash-clear
@@ -5102,8 +5386,10 @@ changes made since the sequence started.
 * Tagging::
 * Notes::
 * Submodules::
+* Common commands::
 * Wip modes::
-* File-buffer mode::
+* Minor mode for buffers visiting files::
+* Minor mode for buffers visiting blobs::
 @end menu
 
 @node Tagging
@@ -5332,6 +5618,48 @@ Fetch submodule.  With a prefix argument fetch all remotes.
 Unregister the submodule at PATH.
 @end table
 
+@node Common commands
+@section Common commands
+
+These are some of the commands that can be used in all buffers whose
+major-modes derive from @code{magit-mode}.  There are other common commands
+beside the ones below, but these didn't fit well anywhere else.
+
+@table @asis
+@kindex M-w
+@cindex magit-copy-section-value
+@item @kbd{M-w} @tie{}@tie{}@tie{}@tie{}(@code{magit-copy-section-value})
+
+This command saves the value of the current section to the
+@code{kill-ring}, and, provided that the current section is a commit,
+branch, or tag section, it also pushes the (referenced) revision to
+the @code{magit-revision-stack}.
+
+When the current section is a branch or a tag, and a prefix argument
+is used, then it saves the revision at its tip to the @code{kill-ring}
+instead of the reference name.
+
+@kindex C-w
+@cindex magit-copy-buffer-revision
+@item @kbd{C-w} @tie{}@tie{}@tie{}@tie{}(@code{magit-copy-buffer-revision})
+
+This command save the revision being displayed in the current buffer
+to the @code{kill-ring} and also pushes it to the @code{magit-revision-stack}.  It
+is mainly intended for use in @code{magit-revision-mode} buffers, the only
+buffers where it is always unambiguous exactly which revision should
+be saved.
+
+Most other Magit buffers usually show more than one revision, in
+some way or another, so this command has to select one of them, and
+that choice might not always be the one you think would have been
+the best pick.
+@end table
+
+Outside of Magit @code{M-w} and @code{C-w} are usually bound to @code{kill-ring-save} and
+@code{kill-region}, and these commands would also be useful in Magit buffers.
+Therefore when the region is active, then both of these commands
+behave like @code{kill-ring-save} instead of as described above.
+
 @node Wip modes
 @section Wip modes
 
@@ -5504,29 +5832,99 @@ slash.  The wip refs are named "<namespace>index/<branchref>" and
 the @code{HEAD} is detached then "HEAD" is used in place of @code{<branchref>}.
 @end defopt
 
-@node File-buffer mode
-@section File-buffer mode
+@node Minor mode for buffers visiting files
+@section Minor mode for buffers visiting files
 
-The @code{magit-file-buffer-mode} enables certain Magit features in
-file-visiting buffers belonging to a Git repository.  It should be
-enabled globally using @code{global-magit-file-buffer-mode}.  Currently this
-mode only establishes a few key bindings, but this might be extended
-in the future.
+The @code{magit-file-mode} enables certain Magit features in file-visiting
+buffers belonging to a Git repository.  It should be enabled globally
+using @code{global-magit-file-mode}.  Currently this mode only establishes a
+few key bindings, but this might be extended in the future.
 
-@defopt global-magit-file-buffer-mode
+@defopt global-magit-file-mode
 
 Whether to establish certain Magit key bindings in all file-visiting
-buffers belonging to a Git repository.  This establishes the bindings
-suggested in @ref{Getting started,Getting started} (but only for file-visiting buffers),
-and additionally binds @code{C-c M-g} to @code{magit-file-buffer-popup}.
+buffers belonging to a Git repository.  This establishes the
+bindings suggested in @ref{Getting started,Getting started} (but only for file-visiting
+buffers), and additionally binds @code{C-c M-g} to @code{magit-file-popup}.
 @end defopt
 
-@cindex magit-file-buffer-popup
-@deffn Command magit-file-buffer-popup
+@table @asis
+@kindex C-c M-g
+@cindex magit-file-popup
+@item @kbd{C-c M-g} @tie{}@tie{}@tie{}@tie{}(@code{magit-file-popup})
 
 This prefix command shows a popup buffer featuring suffix commands
 that operate on the file being visited in the current buffer.
-@end deffn
+
+@kindex C-c M-g s
+@cindex magit-stage-file
+@item @kbd{C-c M-g s} @tie{}@tie{}@tie{}@tie{}(@code{magit-stage-file})
+
+Stage all changes to the file being visited in the current buffer.
+
+@kindex C-c M-g u
+@cindex magit-unstage-file
+@item @kbd{C-c M-g u} @tie{}@tie{}@tie{}@tie{}(@code{magit-unstage-file})
+
+Unstage all changes to the file being visited in the current buffer.
+
+@kindex C-c M-g l
+@cindex magit-log-buffer-file
+@item @kbd{C-c M-g l} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-buffer-file})
+
+This command shows the log for the file of blob that the current
+buffer visits.  Renames are followed when a prefix argument is used
+or when @code{--follow} is part of @code{magit-log-arguments}.
+
+@kindex C-c M-g b
+@cindex magit-blame-popup
+@item @kbd{C-c M-g b} @tie{}@tie{}@tie{}@tie{}(@code{magit-blame-popup})
+
+This prefix command shows the @code{magit-blame} suffix command along with
+the appropriate infix arguments in a popup buffer.  See @ref{Initiating a commit,Initiating a commit}.
+
+@kindex C-c M-g p
+@cindex magit-blob-previous
+@item @kbd{C-c M-g p} @tie{}@tie{}@tie{}@tie{}(@code{magit-blob-previous})
+
+Visit the previous blob which modified the current file.
+
+@kindex C-c M-g c
+@cindex magit-commit-popup
+@item @kbd{C-c M-g c} @tie{}@tie{}@tie{}@tie{}(@code{magit-commit-popup})
+
+This prefix command shows suffix commands along with the appropriate
+infix arguments in a popup buffer.  See @ref{Initiating a commit,Initiating a commit}.
+@end table
+
+@node Minor mode for buffers visiting blobs
+@section Minor mode for buffers visiting blobs
+
+The @code{magit-blob-mode} enables certain Magit features in blob-visiting
+buffers.  Such buffers can be created using @code{magit-find-file} and some
+of the commands mentioned below, which also take care of turning on
+this minor mode.  Currently this mode only establishes a few key
+bindings, but this might be e
+
+@table @asis
+@kindex p
+@cindex magit-blob-previous
+@item @kbd{p} @tie{}@tie{}@tie{}@tie{}(@code{magit-blob-previous})
+
+Visit the previous blob which modified the current file.
+
+@kindex n
+@cindex magit-blob-next
+@item @kbd{n} @tie{}@tie{}@tie{}@tie{}(@code{magit-blob-next})
+
+Visit the next blob which modified the current file.
+
+@kindex q
+@cindex magit-kill-this-buffer
+@item @kbd{q} @tie{}@tie{}@tie{}@tie{}(@code{magit-kill-this-buffer})
+
+Kill the current buffer.
+@end table
 
 @node Customizing
 @chapter Customizing
@@ -5618,7 +6016,7 @@ For example:
 
 @example
 [include]
-	path = /path/to/huge-gitconfig
+        path = /path/to/huge-gitconfig
 @end example
 
 
@@ -5627,7 +6025,7 @@ For example:
 
 @example
 [status]
-	showUntrackedFiles = no
+        showUntrackedFiles = no
 @end example
 
 
@@ -5752,9 +6150,11 @@ phase after @code{--graph} does its computation".
 
 In other words, it's not that Git is slow at outputting the
 differences, or that Magit is slow at parsing the output - the
-problem is that Git first goes outside and has a smoke.  This has to
-be fixed in Git but so far nobody volunteered to do it.  Maybe you
-could do that?
+problem is that Git first goes outside and has a smoke.
+
+We actually work around this issue by limiting the commit not only
+using @code{-<N>} but also using a range.  But unfortunately that's not
+always possible.
 
 
 @item
@@ -5772,10 +6172,10 @@ Now for the things that you can do to improve performance:
 
 Most optional features which can have a negative effect on performance
 are disabled by default.  So start by checking the options you have
-customized.  Even the potentially slow features are expected to only
-lead to barely noticeable delays, but your mileage may vary.  Also
-note that it is now possible to set options on a per-repository or
-per-repository-class basis.  See @ref{Per-repository configuration,Per-repository configuration}.
+explicitly enabled.  Even the potentially slow features are expected
+to only lead to barely noticeable delays, but your mileage may vary.
+Also note that it is now possible to set options on a per-repository
+or per-repository-class basis.  See @ref{Per-repository configuration,Per-repository configuration}.
 
 You should check the values of at least the following variables:
 
@@ -6684,14 +7084,17 @@ made it into the manual yet, see @uref{https://github.com/magit/magit/wiki/FAQ}.
 
 @menu
 * Magit is slow::
+* I changed several thousand files at once and now Magit is unusable::
 * I am having problems committing::
-* I am using an Emacs release older than 24.4: I am using an Emacs release older than 244. 
-* I am using a Git release older than 1.9.4: I am using a Git release older than 194. 
+* I don't like how branching and pushing works::
+* I cannot install the pre-requisits for Magit v2::
+* I am using an Emacs release older than v24.4: I am using an Emacs release older than v244. 
+* I am using a Git release older than v1.9.4: I am using a Git release older than v194. 
 * I am using MS Windows and cannot push with Magit::
 * How to install the gitman info manual?::
 * How can I show Git's output?::
 * Expanding a file to show the diff causes it to disappear::
-* Magit claims repository accessed using Tramp does not exist::
+* Point is wrong in the COMMIT@math{_EDITMSG} buffer::
 * Can Magit be used as ediff-version-control-package?::
 * How to show diffs for gpg-encrypted files?::
 * Emacs 24.5 hangs when loading Magit: Emacs 245 hangs when loading Magit. 
@@ -6702,6 +7105,17 @@ made it into the manual yet, see @uref{https://github.com/magit/magit/wiki/FAQ}.
 
 See @ref{Performance,Performance}.
 
+@node I changed several thousand files at once and now Magit is unusable
+@section I changed several thousand files at once and now Magit is unusable
+
+Magit is @strong{currently} not expected to work under such conditions. It sure
+would be nice if it did, and v2.5 will hopefully be a big step into
+that direction.  But it might take until v3.1 to accomplish fully
+satisfactory performance, because that requires some heavy refactoring.
+
+But for now we recommend you use the command line to complete this one
+commit.  Also see @ref{Performance,Performance}.
+
 @node I am having problems committing
 @section I am having problems committing
 
@@ -6709,10 +7123,25 @@ That likely means that Magit is having problems finding an appropriate
 emacsclient executable.  See @ref{Configuring With-Editor,,,with-editor,}
 and @ref{Debugging,,,with-editor,}.
 
-@node I am using an Emacs release older than 244
-@section I am using an Emacs release older than 24.4
+@node I don't like how branching and pushing works
+@section I don't like how branching and pushing works
 
-At least version 24.4 is required.  There is no way around it.
+In v2.1 the default behavior of the branch and push commands changed,
+which has taken a few users by surprise and left more unsatisfied.
+The next release, v2.4, will try to address these concerns.
+
+@node I cannot install the pre-requisits for Magit v2
+@section I cannot install the pre-requisits for Magit v2
+
+An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
+is available from @uref{http://magit.vc/elpa/v1}.  But note that v1.4.2 is
+obsolete and no longer maintained.
+
+@node I am using an Emacs release older than v244
+@section I am using an Emacs release older than v24.4
+
+At least Emacs v24.4 is required.  There is no way around it, if you
+want to use Magit v2.
 
 If you own the machine you work on, then consider updating to the
 latest release provided by your distribution.  If it doesn't feature a
@@ -6735,10 +7164,14 @@ to do that yourself, then consider informing me about the resources
 that helped you figure what to do for your specific setup, so that I
 can post a link here.  That way those coming after you have it easier.
 
-@node I am using a Git release older than 194
-@section I am using a Git release older than 1.9.4
+An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
+is available from @uref{http://magit.vc/elpa/v1}.
 
-At least version 1.9.4 is required.  There is no way around it.
+@node I am using a Git release older than v194
+@section I am using a Git release older than v1.9.4
+
+At least Git v1.9.4 is required.  There is no way around it, if you
+want to use Magit v2.
 
 If you own the machine, then consider updating to the latest release
 provided by your distribution.  If it doesn't feature a recent enough
@@ -6749,6 +7182,9 @@ Installing Git from source is quite simple. See the instructions at
 @uref{https://github.com/git/git/blob/master/INSTALL} to get an idea of that
 this involves.  But when you perform the installation then use the
 instructions for the release you are actually installing.
+
+An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
+is available from @uref{http://magit.vc/elpa/v1}.
 
 @node I am using MS Windows and cannot push with Magit
 @section I am using MS Windows and cannot push with Magit
@@ -6787,11 +7223,11 @@ Alternatively you may add this advice to your @code{init.el} file.
 manual, then instead of following that cross reference show
 the actual manpage using the function `man'."
   (let ((node (Info-get-token
-	       (point) "\\*note[ \n\t]+"
-	       "\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?")))
+               (point) "\\*note[ \n\t]+"
+               "\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?")))
     (if (and node (string-match "^(gitman)\\(.+\\)" node))
-	(progn (require 'man)
-	       (man (match-string 1 node)))
+        (progn (require 'man)
+               (man (match-string 1 node)))
       ad-do-it)))
 @end lisp
 
@@ -6805,11 +7241,11 @@ variation with used the Emacs Lisp implementation provided by the
 manual, then instead of following that cross reference show
 the actual manpage using the function `woman'."
   (let ((node (Info-get-token
-	       (point) "\\*note[ \n\t]+"
-	       "\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?")))
+               (point) "\\*note[ \n\t]+"
+               "\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?")))
     (if (and node (string-match "^(gitman)\\(.+\\)" node))
-	(progn (require 'woman)
-	       (woman (match-string 1 node)))
+        (progn (require 'woman)
+               (woman (match-string 1 node)))
       ad-do-it)))
 @end lisp
 
@@ -6838,25 +7274,28 @@ probably set that variable for a reason, and should therefore
 only undo that setting in Magit by customizing
 @code{magit-git-global-arguments}.
 
-@node Magit claims repository accessed using Tramp does not exist
-@section Magit claims repository accessed using Tramp does not exist
+@node Point is wrong in the COMMIT@math{_EDITMSG} buffer
+@section Point is wrong in the COMMIT@math{_EDITMSG} buffer
 
-"There is no Git repository in /ssh:host:/path/to/repository".
+Neither Magit nor `git-commit` fiddle with point in the buffer used to
+write commit messages, so something else must be doing it.
 
-Magit requires at least version @code{1.9.4}.  When connecting to a remote
-machine using Tramp it requires that same version on that remote.
+You have probably globally enabled a mode which does restore point in
+file-visiting buffers.  It might be a bit surprising, but when you
+write a commit message, then you are actually editing a file.
 
-By default Tramp searches for programs in the directories given by the
-output of @code{getconf PATH} on the remote host.  Therefore, if the remote
-git version that you intend to use lives in a non-standard location,
-you may need to alter @code{tramp-remote-path}.  Consult the Tramp
-documentation on remote programs
-@uref{http://www.gnu.org/software/emacs/manual/html_node/tramp/Remote-Programs.html}
-for details.
+So you have to figure out which package is doing.  @code{saveplace},
+@code{pointback}, and @code{session} are likely candidates.  These snippets might
+help:
 
-There are others reasons why Magit/Git might think that there is no
-repository where there actually is one, but when this is being
-reported then it's usually the above.
+@lisp
+(setq session-name-disable-regexp "\\(?:\\`'\\.git/[A-Z_]+\\'\\)")
+
+(with-eval-after-load 'pointback
+  (lambda ()
+    (when (or git-commit-mode git-rebase-mode)
+      (pointback-mode -1))))
+@end lisp
 
 @node Can Magit be used as ediff-version-control-package?
 @section Can Magit be used as ediff-version-control-package?

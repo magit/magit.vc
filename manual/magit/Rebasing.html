@@ -112,11 +112,30 @@ UPSTREAM are rebased.
 <p>Start a non-interactive rebase sequence with commits from START to
 <code>HEAD</code> onto NEWBASE.  START has to be selected from a list of recent
 commits.
+</p></dd>
+</dl>
+
+<p>Note that the popup also features the infix argument <code>--interactive</code>.
+This can be used to turn one of the above non-interactive rebase
+variants into an interactive rebase.
 </p>
-<a name="index-r-e"></a>
+<p>For example if you want to clean up a feature branch and at the same
+time rebase it onto <code>master</code>, then you could use <code>r-ir</code>.  But we recommend
+that you instead do that in two steps.  First use <code>rs</code> to cleanup the
+feature branch, and then in a second step <code>rl</code> to rebase it onto <code>master</code>.
+That way if things turn out to be more complicated than you thought
+and/or you make a mistake and have to start over, then you only have
+to redo half the work.
+</p>
+<p>Explicitly enabling <code>--interactive</code> won&rsquo;t have an effect on the
+following commands as they always use that argument anyway, even if it
+is not enabled in the popup.
+</p>
+<dl compact="compact">
+<dd><a name="index-r-i"></a>
 <a name="index-magit_002drebase_002dinteractive"></a>
 </dd>
-<dt><kbd>r e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-interactive</code>)</dt>
+<dt><kbd>r i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-interactive</code>)</dt>
 <dd>
 <p>Start an interactive rebase sequence.
 </p>
@@ -139,10 +158,10 @@ has to select the first commit to be rebased like for
 <dd>
 <p>Combine squash and fixup commits with their intended targets.
 </p>
-<a name="index-r-s"></a>
+<a name="index-r-e"></a>
 <a name="index-magit_002drebase_002dedit_002dcommit"></a>
 </dd>
-<dt><kbd>r s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-edit-commit</code>)</dt>
+<dt><kbd>r e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-edit-commit</code>)</dt>
 <dd>
 <p>Edit a single older commit using rebase.
 </p>
@@ -166,7 +185,7 @@ commands instead.
 <dd>
 <p>Restart the current rebasing operation.
 </p>
-<a name="index-r-s-1"></a>
+<a name="index-r-s"></a>
 <a name="index-magit_002drebase_002dskip"></a>
 </dd>
 <dt><kbd>r s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-skip</code>)</dt>

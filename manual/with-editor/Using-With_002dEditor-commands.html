@@ -84,7 +84,7 @@ Previous: <a href="Configuring-With_002dEditor.html#Configuring-With_002dEditor"
 <a name="Using-With_002dEditor-commands-1"></a>
 <h3 class="section">1.2 Using With-Editor commands</h3>
 
-<p>This section describes how to use the <tt>with-editor</tt> library <em>outside</em> of
+<p>This section describes how to use the <code>with-editor</code> library <em>outside</em> of
 Magit.  You don&rsquo;t need to know any of this just to create commits
 using Magit.
 </p>
@@ -150,7 +150,7 @@ appropriate mode hooks:
 </p>
 <div class="lisp">
 <pre class="lisp">(add-hook 'shell-mode-hook
-	  (apply-partially 'with-editor-export-editor &quot;GIT_EDITOR&quot;))
+          (apply-partially 'with-editor-export-editor &quot;GIT_EDITOR&quot;))
 (add-hook 'shell-mode-hook 'with-editor-export-git-editor)
 </pre></div>
 

@@ -111,20 +111,22 @@ commit at <code>HEAD</code> instead.
 <dt><kbd>c e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-extend</code>)</dt>
 <dd>
 <p>Amend the last commit, without editing the message.  With a prefix
-argument change the committer date.  The option
-<code>magit-commit-extend-override-date</code> can be used to inverse the
-meaning of the prefix argument.
+argument keep the committer date, otherwise change it.  The option
+<code>magit-commit-extend-override-date</code> can be used to inverse the meaning
+of the prefix argument.
+</p>
+<p>Non-interactively respect the optional OVERRIDE-DATE argument and
+ignore the option.
 </p>
 <a name="index-c-w"></a>
 <a name="index-magit_002dcommit_002dreword"></a>
 </dd>
 <dt><kbd>c w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-reword</code>)</dt>
 <dd>
-<p>Reword the last commit, ignoring staged changes.
-</p>
-<p>With a prefix argument change the committer date.  The option
-<code>magit-commit-rewrite-override-date</code> can be used to inverse the
-meaning of the prefix argument.
+<p>Reword the last commit, ignoring staged changes.  With a prefix
+argument keep the committer date, otherwise change it.  The option
+<code>magit-commit-reword-override-date</code> can be used to inverse the meaning
+of the prefix argument.
 </p>
 <p>Non-interactively respect the optional OVERRIDE-DATE argument and
 ignore the option.

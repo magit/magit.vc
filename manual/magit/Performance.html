@@ -116,9 +116,11 @@ phase after <code>--graph</code> does its computation&quot;.
 
 <p>In other words, it&rsquo;s not that Git is slow at outputting the
 differences, or that Magit is slow at parsing the output - the
-problem is that Git first goes outside and has a smoke.  This has to
-be fixed in Git but so far nobody volunteered to do it.  Maybe you
-could do that?
+problem is that Git first goes outside and has a smoke.
+</p>
+<p>We actually work around this issue by limiting the commit not only
+using <code>-&lt;N&gt;</code> but also using a range.  But unfortunately that&rsquo;s not
+always possible.
 </p>
 
 </li><li> Whenever &quot;something changes&quot;, Magit &quot;refreshes&quot; the status buffer and
@@ -135,10 +137,10 @@ content and instead focus on making doing so faster.
 </p>
 <p>Most optional features which can have a negative effect on performance
 are disabled by default.  So start by checking the options you have
-customized.  Even the potentially slow features are expected to only
-lead to barely noticeable delays, but your mileage may vary.  Also
-note that it is now possible to set options on a per-repository or
-per-repository-class basis.  See <a href="Per_002drepository-configuration.html#Per_002drepository-configuration">Per-repository configuration</a>.
+explicitly enabled.  Even the potentially slow features are expected
+to only lead to barely noticeable delays, but your mileage may vary.
+Also note that it is now possible to set options on a per-repository
+or per-repository-class basis.  See <a href="Per_002drepository-configuration.html#Per_002drepository-configuration">Per-repository configuration</a>.
 </p>
 <p>You should check the values of at least the following variables:
 </p>

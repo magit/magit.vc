@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Diff options</title>
+
+<meta name="description" content="Magit User Manual: Diff options">
+<meta name="keywords" content="Magit User Manual: Diff options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Diffing.html#Diffing" rel="up" title="Diffing">
+<link href="Revision-buffer.html#Revision-buffer" rel="next" title="Revision buffer">
+<link href="Diff-buffer.html#Diff-buffer" rel="prev" title="Diff buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Diff-options"></a>
+<div class="header">
+<p>
+Next: <a href="Revision-buffer.html#Revision-buffer" accesskey="n" rel="next">Revision buffer</a>, Previous: <a href="Diff-buffer.html#Diff-buffer" accesskey="p" rel="prev">Diff buffer</a>, Up: <a href="Diffing.html#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Diff-options-1"></a>
+<h4 class="subsection">5.3.3 Diff options</h4>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002dshow_002ddiffstat"></a>User Option: <strong>magit-diff-show-diffstat</strong></dt>
+<dd>
+<p>Whether to show diffstat in diff buffers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002dshow_002dxref_002dbuttons"></a>User Option: <strong>magit-diff-show-xref-buttons</strong></dt>
+<dd>
+<p>Whether to show buffer history buttons in diff buffers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002dauto_002dshow"></a>User Option: <strong>magit-diff-auto-show</strong></dt>
+<dd>
+<p>Whether to automatically show the relevant diff or commit.
+</p>
+<p>When this option is non-nil certain operations cause the relevant
+changes to be displayed automatically.
+</p>
+<ul>
+<li> <code>commit</code>
+
+</li><li> <code>stage-all</code>
+
+</li><li> <code>log-oneline</code>
+
+</li><li> <code>log-follow</code>
+
+</li><li> <code>log-select</code>
+
+</li><li> <code>blame-follow</code>
+</li></ul>
+<p>In the event that expanding very large patches takes a long time, <code>C-g</code>
+can be used to abort that step.  This is especially useful when you
+would normally not look at the changes, e.g. because you are
+committing some binary files.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002dauto_002dshow_002ddelay"></a>User Option: <strong>magit-diff-auto-show-delay</strong></dt>
+<dd>
+<p>How long to delay showing or updating the revision buffer, when
+that happens automatically (according to <code>magit-diff-auto-show</code>).
+</p>
+<p>When holding down a key to move by several lines, then that would
+update that buffer for each line on the way.  To prevent that,
+updating the revision buffer is delayed, and this option controls
+for how long it is delayed.  For optimal experience you might have
+to adjust this delay and/or the keyboard repeat rate and delay of
+your graphical environment or operating system.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002drefine_002dhunk"></a>User Option: <strong>magit-diff-refine-hunk</strong></dt>
+<dd>
+<p>Whether to show word-granularity differences within diff hunks.
+</p>
+<ul>
+<li> <code>nil</code> never show fine differences.
+
+</li><li> <code>t</code> show fine differences for the current diff hunk only.
+
+</li><li> <code>all</code> show fine differences for all displayed diff hunks.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002dpaint_002dwhitespace"></a>User Option: <strong>magit-diff-paint-whitespace</strong></dt>
+<dd>
+<p>Specify where to highlight whitespace errors.
+</p>
+<p>See <code>magit-highlight-trailing-whitespace</code>,
+<code>magit-highlight-indentation</code>.  The symbol <code>t</code> means in all diffs,
+<code>status</code> means only in the status buffer, and nil means nowhere.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002dhighlight_002dtrailing"></a>User Option: <strong>magit-diff-highlight-trailing</strong></dt>
+<dd>
+<p>Whether to highlight whitespace at the end of a line in diffs.  Used
+only when <code>magit-diff-paint-whitespace</code> is non-nil.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddiff_002dhighlight_002dindentation"></a>User Option: <strong>magit-diff-highlight-indentation</strong></dt>
+<dd>
+<p>Highlight the &quot;wrong&quot; indentation style.  Used only when
+<code>magit-diff-paint-whitespace</code> is non-nil.
+</p>
+<p>The value is a list of cons cells.  The car is a regular expression,
+and the cdr is the value that applies to repositories whose
+directory matches the regular expression.  If more than one element
+matches, then the <strong>last</strong> element in the list applies.  The default
+value should therefore come first in the list.
+</p>
+<p>If the value is <code>tabs</code>, highlight indentation with tabs.  If the value
+is an integer, highlight indentation with at least that many spaces.
+Otherwise, highlight neither.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Revision-buffer.html#Revision-buffer" accesskey="n" rel="next">Revision buffer</a>, Previous: <a href="Diff-buffer.html#Diff-buffer" accesskey="p" rel="prev">Diff buffer</a>, Up: <a href="Diffing.html#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

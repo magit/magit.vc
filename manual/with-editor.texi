@@ -47,7 +47,7 @@ General Public License for more details.
 @finalout
 @titlepage
 @title With-Editor User Manual
-@subtitle for version 2.2
+@subtitle for version 2.3
 @author Jonas Bernoulli
 @page
 @vskip 0pt plus 1filll
@@ -174,7 +174,7 @@ It is unlikely that you should ever have to customize this option.
 @node Using With-Editor commands
 @section Using With-Editor commands
 
-This section describes how to use the @verb{~with-editor~} library @emph{outside} of
+This section describes how to use the @code{with-editor} library @emph{outside} of
 Magit.  You don't need to know any of this just to create commits
 using Magit.
 
@@ -237,7 +237,7 @@ Some variants of this function exist; these two forms are equivalent:
 
 @lisp
 (add-hook 'shell-mode-hook
-	  (apply-partially 'with-editor-export-editor "GIT_EDITOR"))
+          (apply-partially 'with-editor-export-editor "GIT_EDITOR"))
 (add-hook 'shell-mode-hook 'with-editor-export-git-editor)
 @end lisp
 
@@ -268,7 +268,7 @@ This section describes how to use the @verb{~with-editor~} library @emph{outside
 Magit to teach another package how to have its child processes call
 home, just like Magit does.  You don't need to know any of this just
 to create commits using Magit.  You can also ignore this if you use
-@verb{~with-editor~} outside of Magit, but only as an end-user.
+@code{with-editor} outside of Magit, but only as an end-user.
 
 For information about interactive use and options which affect both
 interactive and non-interactive use, see @ref{Using the With-Editor package,Using the With-Editor package}.

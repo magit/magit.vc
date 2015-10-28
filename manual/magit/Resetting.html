@@ -91,10 +91,10 @@ the <a href="http://git-scm.com/docs/git-reset">git-reset(1)</a> manpage.
 defaulting to the commit at point.  The working tree is kept as-is.
 With a prefix argument also reset the working tree.
 </p>
-<a name="index-U-1"></a>
+<a name="index-M_002dx-magit_002dreset_002dindex-1"></a>
 <a name="index-magit_002dreset_002dindex-1"></a>
 </dd>
-<dt><kbd>U</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-reset-index</code>)</dt>
+<dt><kbd>M-x magit-reset-index</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-reset-index</code>)</dt>
 <dd>
 <p>Reset the index to some commit read from the user and defaulting to
 the commit at point.  Keep the <code>HEAD</code> and working tree as-is, so if
@@ -125,6 +125,16 @@ as-is.
 <dd>
 <p>Reset the <code>HEAD</code>, index, and working tree to some commit read from the
 user and defaulting to the commit at point.
+</p>
+<a name="index-M_002dx-magit_002dcheckout_002dfile"></a>
+<a name="index-magit_002dcheckout_002dfile"></a>
+</dd>
+<dt><kbd>M-x magit-checkout-file</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-checkout-file</code>)</dt>
+<dd>
+<p>Update file in the working tree and index to the contents from a
+revision.
+</p>
+<p>Both the revision and file are read from the user.
 </p></dd>
 </dl>
 

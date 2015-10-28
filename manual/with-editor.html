@@ -270,7 +270,7 @@ Previous: <a href="#Configuring-With_002dEditor" accesskey="p" rel="prev">Config
 <a name="Using-With_002dEditor-commands-1"></a>
 <h3 class="section">1.2 Using With-Editor commands</h3>
 
-<p>This section describes how to use the <tt>with-editor</tt> library <em>outside</em> of
+<p>This section describes how to use the <code>with-editor</code> library <em>outside</em> of
 Magit.  You don&rsquo;t need to know any of this just to create commits
 using Magit.
 </p>
@@ -336,7 +336,7 @@ appropriate mode hooks:
 </p>
 <div class="lisp">
 <pre class="lisp">(add-hook 'shell-mode-hook
-	  (apply-partially 'with-editor-export-editor &quot;GIT_EDITOR&quot;))
+          (apply-partially 'with-editor-export-editor &quot;GIT_EDITOR&quot;))
 (add-hook 'shell-mode-hook 'with-editor-export-git-editor)
 </pre></div>
 
@@ -376,7 +376,7 @@ Next: <a href="#Debugging" accesskey="n" rel="next">Debugging</a>, Previous: <a 
 Magit to teach another package how to have its child processes call
 home, just like Magit does.  You don&rsquo;t need to know any of this just
 to create commits using Magit.  You can also ignore this if you use
-<tt>with-editor</tt> outside of Magit, but only as an end-user.
+<code>with-editor</code> outside of Magit, but only as an end-user.
 </p>
 <p>For information about interactive use and options which affect both
 interactive and non-interactive use, see <a href="#Using-the-With_002dEditor-package">Using the With-Editor package</a>.
