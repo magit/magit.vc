@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -123,9 +123,8 @@ respects the option <code>magit-uniquify-buffer-names</code>.
 
 </li><li> <code>%v</code>
 
-<p>The value the buffer is locked to, in parentheses, if it is the
-buffer is actually locked to its value.  An empty string
-otherwise.
+<p>The value the buffer is locked to, in parentheses, or an empty
+string if the buffer is not locked to a value.
 </p>
 
 </li><li> <code>%V</code>
@@ -137,10 +136,10 @@ empty string.
 </li><li> <code>%t</code>
 
 <p>The top-level directory of the working tree of the repository, or
-if <code>magit-uniquify-buffer-name</code> is non-nil an abbreviation of that.
+if <code>magit-uniquify-buffer-names</code> is non-nil an abbreviation of that.
 </p></li></ul>
 <p>The value should always contain either <code>%m</code> or <code>%M</code>, <code>%v</code> or <code>%V</code>, and <code>%t</code>.
-If <code>magit-uniquify-buffer-name</code> is non-nil, then the value must end
+If <code>magit-uniquify-buffer-names</code> is non-nil, then the value must end
 with <code>%t</code>.
 </p></dd></dl>
 

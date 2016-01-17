@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -90,52 +90,45 @@ the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage.
 <p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
-<a name="index-P-P"></a>
+<a name="index-P-p"></a>
+<a name="index-magit_002dpush_002dcurrent_002dto_002dpushremote"></a>
+</dd>
+<dt><kbd>P p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current-to-pushremote</code>)</dt>
+<dd>
+<p>Push the current branch to <code>branch.&lt;name&gt;.pushRemote</code> or if that
+is unset to <code>remote.pushDefault</code>.
+</p>
+<p>When <code>magit-push-current-set-remote-if-missing</code> is non-nil and the
+push-remote is not configured, then read the push-remote from the
+user, set it, and then push to it.  With a prefix argument the
+push-remote can be changed before pushed to it.
+</p>
+<a name="index-P-u"></a>
+<a name="index-magit_002dpush_002dcurrent_002dto_002dupstream"></a>
+</dd>
+<dt><kbd>P u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current-to-upstream</code>)</dt>
+<dd>
+<p>Push the current branch to its upstream branch.
+</p>
+<p>When <code>magit-push-current-set-remote-if-missing</code> is non-nil and the
+push-remote is not configured, then read the upstram from the
+user, set it, and then push to it.  With a prefix argument the
+push-remote can be changed before pushed to it.
+</p>
+<a name="index-P-e"></a>
 <a name="index-magit_002dpush_002dcurrent"></a>
 </dd>
-<dt><kbd>P P</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current</code>)</dt>
+<dt><kbd>P e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current</code>)</dt>
 <dd>
-<p>Push the current branch to its upstream branch.  If the upstream
-isn&rsquo;t set, then read the remote branch.
+<p>Push the current branch to a branch read in the minibuffer.
 </p>
 <a name="index-P-o"></a>
 <a name="index-magit_002dpush"></a>
 </dd>
 <dt><kbd>P o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push</code>)</dt>
 <dd>
-<p>Push a branch to its upstream branch.  If the upstream isn&rsquo;t set,
-then read the remote branch.
-</p>
-<a name="index-P-e"></a>
-<a name="index-magit_002dpush_002delsewhere"></a>
-</dd>
-<dt><kbd>P e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-elsewhere</code>)</dt>
-<dd>
-<p>Push a branch or commit to some remote branch.  Read the local and
-remote branch.
-</p>
-<a name="index-P-Q"></a>
-<a name="index-magit_002dpush_002dquickly"></a>
-</dd>
-<dt><kbd>P Q</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-quickly</code>)</dt>
-<dd>
-<p>Push the current branch to some remote.  When the Git variable
-<code>magit.pushRemote</code> is set, then push to that remote.  If that variable
-is undefined or the remote does not exist, then push to &quot;origin&quot;.
-If that also doesn&rsquo;t exist then raise an error.  The local branch is
-pushed to the remote branch with the same name.
-</p>
-<a name="index-P-i"></a>
-<a name="index-magit_002dpush_002dimplicitly"></a>
-</dd>
-<dt><kbd>P i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-implicitly</code>)</dt>
-<dd>
-<p>Push without explicitly specifing what to push.  This runs <code>git push
-  -v</code>.  What is being pushed depends on various Git variables as
-described in the 
-the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage and 
-the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage</p>
-<p>manpages.
+<p>Push an arbitrary branch or commit somewhere.  Both the source and
+the target are read in the minibuffer.
 </p>
 <a name="index-P-m"></a>
 <a name="index-magit_002dpush_002dmatching"></a>
@@ -161,30 +154,64 @@ remote configured for the current branch as default.
 <dt><kbd>P T</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-tag</code>)</dt>
 <dd>
 <p>Push a tag to another repository.
-</p>
-</dd>
+</p></dd>
 </dl>
 
+<p>Two more push commands exist, which by default are not available from
+the push popup.  See their doc-strings for instructions on how to add
+them to the popup.
+</p>
+<a name="index-magit_002dpush_002dimplicitly-args"></a>
 <dl>
-<dt><a name="index-magit_002dpush_002dalways_002dverify"></a>User Option: <strong>magit-push-always-verify</strong></dt>
+<dt><a name="index-magit_002dpush_002dimplicitly"></a>Command: <strong>magit-push-implicitly</strong> <em>args</em></dt>
 <dd>
-<p>Whether certain commands require verification before pushing.
+<p>Push somewhere without using an explicit refspec.
 </p>
-<p>Starting with <code>v2.1.0</code> some of the push commands are supposed to
-push to the configured upstream branch without requiring user
-confirmation or offering to push somewhere else.
+<p>This command simply runs <code>git push -v [ARGS]</code>.  ARGS are the arguments
+specified in the popup buffer.  No explicit refspec arguments are
+used.  Instead the behavior depends on at least these Git variables:
+<code>push.default</code>, <code>remote.pushDefault</code>, <code>branch.&lt;branch&gt;.pushRemote</code>,
+<code>branch.&lt;branch&gt;.remote</code>, <code>branch.&lt;branch&gt;.merge</code>, and
+<code>remote.&lt;remote&gt;.push</code>.
+</p></dd></dl>
+
+<a name="index-magit_002dpush_002dto_002dremote-remote-args"></a>
+<dl>
+<dt><a name="index-magit_002dpush_002dto_002dremote"></a>Command: <strong>magit-push-to-remote</strong> <em>remote args</em></dt>
+<dd>
+<p>Push to the remote REMOTE without using an explicit refspec.  The
+remote is read in the minibuffer.
 </p>
-<p>This has taken a few users by surprise, and they suggested that we
-force users to opt-in to this behavior.  Unfortunately adding this
-option means that now other users will complain about us needlessly
-forcing them to set an option.  This is an attempt to make everyone
-happy and like all such attempts it is prone to fail.  Before
-complaining about having to set this option, please consider that
-other users are less experienced than you and have different needs.
+<p>This command simply runs <code>git push -v [ARGS] REMOTE</code>.  ARGS are the
+arguments specified in the popup buffer.  No refspec arguments are
+used.  Instead the behavior depends on at least these Git variables:
+<code>push.default</code>, <code>remote.pushDefault</code>, <code>branch.&lt;branch&gt;.pushRemote</code>,
+<code>branch.&lt;branch&gt;.remote</code>, <code>branch.&lt;branch&gt;.merge</code>, and
+<code>remote.&lt;remote&gt;.push</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dpush_002dcurrent_002dset_002dremote_002dif_002dmissing"></a>User Option: <strong>magit-push-current-set-remote-if-missing</strong></dt>
+<dd>
+<p>This option controls whether missing remotes are configured before
+pushing.
 </p>
-<p>You should set the value of this option to nil, causing all push
-commands to behave as intended.  But first read the description of
-each command above.
+<p>When <code>nil</code>, then the command <code>magit-push-current-to-pushremote</code> and
+<code>magit-push-current-to-upstream</code> do not appear in the push popup if
+the push-remote resp. upstream is not configured.  If the user
+invokes one of these commands anyway, then it raises an error.
+</p>
+<p>When <code>non-nil</code>, then these commands always appear in the push popup.
+But if the required configuration is missing, then they do appear in
+a way that indicates that this is the case.  If the user invokes one
+of them, then it asks for the necessary configuration, stores the
+configuration, and then uses it to push a first time.
+</p>
+<p>This option also affects whether the argument <code>--set-upstream</code> is
+available in the popup.  If the value is <code>non-nil</code>, then that argument
+is redundant.  But note that changing the value of this option does
+not take affect immediately, the argument will only be added or
+removed after restarting Emacs.
 </p></dd></dl>
 
 <hr>

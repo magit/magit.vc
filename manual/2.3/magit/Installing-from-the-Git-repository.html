@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Installing from the Git repository</title>
+
+<meta name="description" content="Magit User Manual: Installing from the Git repository">
+<meta name="keywords" content="Magit User Manual: Installing from the Git repository">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Installation.html#Installation" rel="up" title="Installation">
+<link href="Post_002dinstallation-tasks.html#Post_002dinstallation-tasks" rel="next" title="Post-installation tasks">
+<link href="Installing-from-an-Elpa-archive.html#Installing-from-an-Elpa-archive" rel="prev" title="Installing from an Elpa archive">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Installing-from-the-Git-repository"></a>
+<div class="header">
+<p>
+Next: <a href="Post_002dinstallation-tasks.html#Post_002dinstallation-tasks" accesskey="n" rel="next">Post-installation tasks</a>, Previous: <a href="Installing-from-an-Elpa-archive.html#Installing-from-an-Elpa-archive" accesskey="p" rel="prev">Installing from an Elpa archive</a>, Up: <a href="Installation.html#Installation" accesskey="u" rel="up">Installation</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Installing-from-the-Git-repository-1"></a>
+<h3 class="section">2.3 Installing from the Git repository</h3>
+
+<p>If you are updating from a release older than <code>2.1.0</code>, then you have to
+first uninstall the old version.  See <a href="Updating-from-an-older-release.html#Updating-from-an-older-release">Updating from an older release</a>.
+</p>
+<p>Magit depends on the <code>dash</code> library, available from all three of the
+popular third-party Elpa archives.  Install it using <code>M-x
+package-install RET dash RET</code>.  Of course you may also install it
+manually from its development repository, but I won&rsquo;t cover that here.
+</p>
+<p>Then clone the Magit repository:
+</p>
+<div class="example">
+<pre class="example">$ git clone git://github.com/magit/magit.git ~/.emacs.d/site-lisp/magit
+$ cd ~/.emacs.d/site-lisp/magit
+</pre></div>
+
+<p>Then compile the libraries and generate the info manuals:
+</p>
+<div class="example">
+<pre class="example">$ make
+</pre></div>
+
+<p>If you haven&rsquo;t installed <code>dash</code> using Elpa or at <code>/path/to/magit/../dash</code>,
+then you have to tell <code>make</code> where to find it.  To do so create
+<code>/path/to/magit/config.mk</code> with the following content before running
+<code>make</code>:
+</p>
+<div class="example">
+<pre class="example">LOAD_PATH = -L /path/to/magit/lisp -L /path/to/dash
+</pre></div>
+
+<p>Finally add this to your init file:
+</p>
+<div class="lisp">
+<pre class="lisp">(add-to-list 'load-path &quot;~/.emacs.d/site-lisp/magit/lisp&quot;)
+(require 'magit)
+
+(with-eval-after-load 'info
+  (info-initialize)
+  (add-to-list 'Info-directory-list
+               &quot;~/.emacs.d/site-lisp/magit/Documentation/&quot;))
+</pre></div>
+
+<p>Note that you have to add the <code>lisp/</code> subdirectory to the <code>load-path</code>,
+not the top-level of the repository.
+</p>
+<p>Instead of requiring the feature <code>magit</code>, you could only load the
+autoloads, by loading the file <code>magit-autoloads.el</code>.
+</p>
+<p>Instead of running Magit directly from the repository by adding that
+to the <code>load-path</code>, you might want to instead install it in some other
+directory using <code>sudo make install</code> and setting <code>load-path</code> accordingly.
+</p>
+<p>To update Magit use:
+</p>
+<div class="example">
+<pre class="example">$ git pull
+$ make
+</pre></div>
+
+<p>At times it might be necessary to run <code>make clean all</code> instead.
+</p>
+<p>To view all available targets use <code>make help</code>.
+</p>
+<p>Now see <a href="Post_002dinstallation-tasks.html#Post_002dinstallation-tasks">Post-installation tasks</a>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Post_002dinstallation-tasks.html#Post_002dinstallation-tasks" accesskey="n" rel="next">Post-installation tasks</a>, Previous: <a href="Installing-from-an-Elpa-archive.html#Installing-from-an-Elpa-archive" accesskey="p" rel="prev">Installing from an Elpa archive</a>, Up: <a href="Installation.html#Installation" accesskey="u" rel="up">Installation</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

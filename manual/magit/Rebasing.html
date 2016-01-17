@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -96,13 +96,29 @@ the appropriate infix arguments in a popup buffer.
 following commands.
 </p>
 <dl compact="compact">
-<dd><a name="index-r-r"></a>
+<dd><a name="index-r-p"></a>
+<a name="index-magit_002drebase_002donto_002dpushremote"></a>
+</dd>
+<dt><kbd>r p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-onto-pushremote</code>)</dt>
+<dd>
+<p>Rebase the current branch onto <code>branch.&lt;name&gt;.pushRemote</code>.  If that
+variable is unset, then rebase onto <code>remote.pushDefault</code>.
+</p>
+<a name="index-r-u"></a>
+<a name="index-magit_002drebase_002donto_002dupstream"></a>
+</dd>
+<dt><kbd>r u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-onto-upstream</code>)</dt>
+<dd>
+<p>Rebase the current branch onto its upstream branch.
+</p>
+<a name="index-r-e"></a>
 <a name="index-magit_002drebase"></a>
 </dd>
-<dt><kbd>r r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase</code>)</dt>
+<dt><kbd>r e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase</code>)</dt>
 <dd>
-<p>Start a non-interactive rebase sequence.  All commits not in
-UPSTREAM are rebased.
+<p>Rebase the current branch onto a branch read in the minibuffer.  All
+commits that are reachable from head but not from the selected
+branch TARGET are being rebased.&quot;
 </p>
 <a name="index-r-o"></a>
 <a name="index-magit_002drebase_002dsubset"></a>
@@ -120,9 +136,9 @@ This can be used to turn one of the above non-interactive rebase
 variants into an interactive rebase.
 </p>
 <p>For example if you want to clean up a feature branch and at the same
-time rebase it onto <code>master</code>, then you could use <code>r-ir</code>.  But we recommend
-that you instead do that in two steps.  First use <code>rs</code> to cleanup the
-feature branch, and then in a second step <code>rl</code> to rebase it onto <code>master</code>.
+time rebase it onto <code>master</code>, then you could use <code>r-iu</code>.  But we recommend
+that you instead do that in two steps.  First use <code>ri</code> to cleanup the
+feature branch, and then in a second step <code>ru</code> to rebase it onto <code>master</code>.
 That way if things turn out to be more complicated than you thought
 and/or you make a mistake and have to start over, then you only have
 to redo half the work.
@@ -139,18 +155,6 @@ is not enabled in the popup.
 <dd>
 <p>Start an interactive rebase sequence.
 </p>
-<a name="index-r-l"></a>
-<a name="index-magit_002drebase_002dunpushed"></a>
-</dd>
-<dt><kbd>r l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-unpushed</code>)</dt>
-<dd>
-<p>Start an interactive rebase sequence of unpushed commits.  This is
-like <code>magit-rebase-interactive</code>, but if the upstream of the current
-branch is configured, then all commits since the merge-base are
-rebased.  If there is no upstream or no merge-base, then the user
-has to select the first commit to be rebased like for
-<code>magit-rebase-interactive</code>.
-</p>
 <a name="index-r-f"></a>
 <a name="index-magit_002drebase_002dautosquash"></a>
 </dd>
@@ -158,10 +162,10 @@ has to select the first commit to be rebased like for
 <dd>
 <p>Combine squash and fixup commits with their intended targets.
 </p>
-<a name="index-r-e"></a>
+<a name="index-r-m"></a>
 <a name="index-magit_002drebase_002dedit_002dcommit"></a>
 </dd>
-<dt><kbd>r e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-edit-commit</code>)</dt>
+<dt><kbd>r m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-edit-commit</code>)</dt>
 <dd>
 <p>Edit a single older commit using rebase.
 </p>
@@ -178,7 +182,7 @@ has to select the first commit to be rebased like for
 commands instead.
 </p>
 <dl compact="compact">
-<dd><a name="index-r-r-1"></a>
+<dd><a name="index-r-r"></a>
 <a name="index-magit_002drebase_002dcontinue"></a>
 </dd>
 <dt><kbd>r r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-continue</code>)</dt>

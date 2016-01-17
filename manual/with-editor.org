@@ -1,16 +1,15 @@
 #+TITLE: With-Editor User Manual
 #+AUTHOR: Jonas Bernoulli
 #+EMAIL: jonas@bernoul.li
-#+DATE: 2015
+#+DATE: 2015-2016
 #+LANGUAGE: en
 
 #+TEXINFO_DIR_CATEGORY: Emacs
 #+TEXINFO_DIR_TITLE: With-Editor: (with-editor).
 #+TEXINFO_DIR_DESC: Using the Emacsclient as $EDITOR
-#+SUBTITLE: for version 2.3
+#+SUBTITLE: for version 2.4
 
 #+OPTIONS: H:4 num:3 toc:2
-#+STARTUP: indent
 
 * Copying
 :PROPERTIES:
@@ -36,7 +35,7 @@ don't use Magit or another package which uses it internally.
 @end ifnottex
 
 @quotation
-Copyright (C) 2015 Jonas Bernoulli <jonas@@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software

@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -34,7 +34,7 @@ General Public License for more details. -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
 <link href="Command-Index.html#Command-Index" rel="next" title="Command Index">
-<link href="Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit" rel="prev" title="Emacs 245 hangs when loading Magit">
+<link href="Where-is-the-branch-manager.html#Where-is-the-branch-manager" rel="prev" title="Where is the branch manager">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -210,19 +210,16 @@ Next: <a href="Command-Index.html#Command-Index" accesskey="n" rel="next">Comman
 <tr><td></td><td valign="top"><a href="Branching.html#index-b"><code>b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Bisecting.html#index-B-b"><code>B b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Bisecting.html#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="Branching.html#index-b-b"><code>b b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="Branching.html#index-b-B"><code>b B</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Branching.html#index-b-c"><code>b c</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Branching.html#index-b-d"><code>b d</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="Branching.html#index-b-e"><code>b e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Bisecting.html#index-B-g"><code>B g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Bisecting.html#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="Bisecting.html#index-B-k"><code>B k</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Bisecting.html#Bisecting">Bisecting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Branching.html#index-b-n"><code>b n</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Bisecting.html#index-B-r"><code>B r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Bisecting.html#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="Branching.html#index-b-r"><code>b r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Bisecting.html#index-B-s"><code>B s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Bisecting.html#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="Branching.html#index-b-s"><code>b s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Bisecting.html#index-B-u"><code>B u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Bisecting.html#Bisecting">Bisecting</a></td></tr>
-<tr><td></td><td valign="top"><a href="Branching.html#index-b-u"><code>b u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="Branching.html#index-b-U"><code>b U</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Branching.html#index-b-x"><code>b x</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Branching.html#Branching">Branching</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-C">C</a></th><td></td><td></td></tr>
@@ -311,15 +308,17 @@ Next: <a href="Command-Index.html#Command-Index" accesskey="n" rel="next">Comman
 <tr><td></td><td valign="top"><a href="Fetching.html#index-f-1"><code>f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Fetching.html#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="Pulling.html#index-F"><code>F</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pulling.html#Pulling">Pulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="Fetching.html#index-f-a"><code>f a</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Fetching.html#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="Fetching.html#index-f-f"><code>f f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Fetching.html#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="Pulling.html#index-F-F"><code>F F</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pulling.html#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="Fetching.html#index-f-e"><code>f e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Fetching.html#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="Pulling.html#index-F-e"><code>F e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pulling.html#Pulling">Pulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="Fetching.html#index-f-m"><code>f m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Fetching.html#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="Fetching.html#index-f-o"><code>f o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Fetching.html#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="Pulling.html#index-F-o"><code>F o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pulling.html#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="Fetching.html#index-f-p"><code>f p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Fetching.html#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="Pulling.html#index-F-p"><code>F p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pulling.html#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="Fetching.html#index-f-u"><code>f u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Fetching.html#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="Pulling.html#index-F-u"><code>F u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pulling.html#Pulling">Pulling</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-G">G</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="Automatic-refresh-and-revert.html#index-g"><code>g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Automatic-refresh-and-revert.html#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
-<tr><td></td><td valign="top"><a href="Automatic-refresh-and-revert.html#index-G"><code>G</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Automatic-refresh-and-revert.html#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
+<tr><td></td><td valign="top"><a href="Automatic-Refreshing-of-Magit-Buffers.html#index-g"><code>g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Automatic-Refreshing-of-Magit-Buffers.html#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="Automatic-Refreshing-of-Magit-Buffers.html#index-G"><code>G</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Automatic-Refreshing-of-Magit-Buffers.html#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-J">J</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="Diff-buffer.html#index-j"><code>j</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Diff-buffer.html#Diff-buffer">Diff buffer</a></td></tr>
@@ -380,8 +379,6 @@ Next: <a href="Command-Index.html#Command-Index" accesskey="n" rel="next">Comman
 <tr><td></td><td valign="top"><a href="Repository-setup.html#index-M_002dx-magit_002dclone"><code>M-x magit-clone</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Repository-setup.html#Repository-setup">Repository setup</a></td></tr>
 <tr><td></td><td valign="top"><a href="Section-types-and-values.html#index-M_002dx-magit_002ddescribe_002dsection"><code>M-x magit-describe-section</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Section-types-and-values.html#Section-types-and-values">Section types and values</a></td></tr>
 <tr><td></td><td valign="top"><a href="Matching-sections.html#index-M_002dx-magit_002ddescribe_002dsection-1"><code>M-x magit-describe-section</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Matching-sections.html#Matching-sections">Matching sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="Diffing.html#index-M_002dx-magit_002ddiff_002dunpulled"><code>M-x magit-diff-unpulled</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Diffing.html#Diffing">Diffing</a></td></tr>
-<tr><td></td><td valign="top"><a href="Diffing.html#index-M_002dx-magit_002ddiff_002dunpushed"><code>M-x magit-diff-unpushed</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Diffing.html#Diffing">Diffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Visiting-blobs.html#index-M_002dx-magit_002dfind_002dfile"><code>M-x magit-find-file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Visiting-blobs.html#Visiting-blobs">Visiting blobs</a></td></tr>
 <tr><td></td><td valign="top"><a href="Visiting-blobs.html#index-M_002dx-magit_002dfind_002dfile_002dother_002dwindow"><code>M-x magit-find-file-other-window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Visiting-blobs.html#Visiting-blobs">Visiting blobs</a></td></tr>
 <tr><td></td><td valign="top"><a href="Repository-setup.html#index-M_002dx-magit_002dinit"><code>M-x magit-init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Repository-setup.html#Repository-setup">Repository setup</a></td></tr>
@@ -422,13 +419,12 @@ Next: <a href="Command-Index.html#Command-Index" accesskey="n" rel="next">Comman
 <tr><td></td><td valign="top"><a href="Pushing.html#index-P-1"><code>P</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Minor-mode-for-buffers-visiting-blobs.html#index-p-3"><code>p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Minor-mode-for-buffers-visiting-blobs.html#Minor-mode-for-buffers-visiting-blobs">Minor mode for buffers visiting blobs</a></td></tr>
 <tr><td></td><td valign="top"><a href="Pushing.html#index-P-e"><code>P e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="Pushing.html#index-P-i"><code>P i</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Pushing.html#index-P-m"><code>P m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Pushing.html#index-P-o"><code>P o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="Pushing.html#index-P-P"><code>P P</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="Pushing.html#index-P-Q"><code>P Q</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Pushing.html#index-P-p"><code>P p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Pushing.html#index-P-t"><code>P t</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Pushing.html#index-P-T"><code>P T</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Pushing.html#index-P-u"><code>P u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Pushing.html#Pushing">Pushing</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-Q">Q</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="Quitting-Windows.html#index-q"><code>q</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Quitting-Windows.html#Quitting-Windows">Quitting Windows</a></td></tr>
@@ -444,11 +440,12 @@ Next: <a href="Command-Index.html#Command-Index" accesskey="n" rel="next">Comman
 <tr><td></td><td valign="top"><a href="Rebasing.html#index-r-e-1"><code>r e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Rebasing.html#index-r-f"><code>r f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Rebasing.html#index-r-i"><code>r i</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
-<tr><td></td><td valign="top"><a href="Rebasing.html#index-r-l"><code>r l</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Rebasing.html#index-r-m"><code>r m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Rebasing.html#index-r-o"><code>r o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Rebasing.html#index-r-p"><code>r p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Rebasing.html#index-r-r"><code>r r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
-<tr><td></td><td valign="top"><a href="Rebasing.html#index-r-r-1"><code>r r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Rebasing.html#index-r-s"><code>r s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Rebasing.html#index-r-u"><code>r u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Rebasing.html#index-r-w"><code>r w</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Rebasing.html#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="Diff-buffer.html#index-RET"><code>RET</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="Diff-buffer.html#Diff-buffer">Diff buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="References-buffer.html#index-RET-1"><code>RET</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="References-buffer.html#References-buffer">References buffer</a></td></tr>

@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Performance</title>
+
+<meta name="description" content="Magit User Manual: Performance">
+<meta name="keywords" content="Magit User Manual: Performance">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Essential-settings.html#Essential-settings" rel="up" title="Essential settings">
+<link href="Plumbing.html#Plumbing" rel="next" title="Plumbing">
+<link href="Safety.html#Safety" rel="prev" title="Safety">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Performance"></a>
+<div class="header">
+<p>
+Previous: <a href="Safety.html#Safety" accesskey="p" rel="prev">Safety</a>, Up: <a href="Essential-settings.html#Essential-settings" accesskey="u" rel="up">Essential settings</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Performance-1"></a>
+<h4 class="subsection">9.2.2 Performance</h4>
+
+<p>Magit is slower than raw Git because it does more.  For example <code>git
+commit</code> creates a commit and that&rsquo;s it.  <code>magit-commit</code> also updates the
+current Magit buffer to make sure you are not looking at outdated
+information without noticing it.  To refresh the status buffer, Magit
+has to run Git a dozen times or more, making it slower than <code>git
+status</code>, but also much more informative.  Magit also optionally reverts
+file-visiting buffers, creates backups, runs hooks where third-party
+extensions can do their slow thing, etc.
+</p>
+<p>I do care about performance and try to optimize for it as much as
+possible, but many features simply come with an inherent performance
+penalty.  When a feature is just too slow given certain usage and
+repository characteristics, then it often can be disabled, globally or
+on a per-repository basis.
+</p>
+<p>But first a short list of performance issues that cannot easily be
+worked around:
+</p>
+<ul>
+<li> Creating a new process on MS Windows is much slower than on
+POSIX-compatible systems.  This is a problem because Magit creates a
+lot of child processes to retrieve information from Git.  In the
+short run, only switching to a POSIX system can fix this.  Of course
+this could also be fixed in Windows itself, but I am just one unpaid
+person while Microsoft is a billion dollar company, so I will leave
+it to them to fix this grave flaw in their OS.
+
+
+</li><li> When showing logs, Magit limits the number of commits initially
+shown in the hope that this avoids unnecessary work.  When using
+<code>--graph</code> this unfortunately does not have the desired effect for
+large histories.  Junio said on the git mailing list
+(<a href="http://www.spinics.net/lists/git/msg232230.html">http://www.spinics.net/lists/git/msg232230.html</a>): &quot;<code>--graph</code> wants to
+compute the whole history and the max-count only affects the output
+phase after <code>--graph</code> does its computation&quot;.
+
+<p>In other words, it&rsquo;s not that Git is slow at outputting the
+differences, or that Magit is slow at parsing the output - the
+problem is that Git first goes outside and has a smoke.
+</p>
+<p>We actually work around this issue by limiting the commit not only
+using <code>-&lt;N&gt;</code> but also using a range.  But unfortunately that&rsquo;s not
+always possible.
+</p>
+
+</li><li> Whenever &quot;something changes&quot;, Magit &quot;refreshes&quot; the status buffer and
+the current Magit buffer by recreating them from scratch.  This is
+an old design decision that we couldn&rsquo;t depart from easily.  And it
+has its benefits too - most importantly it&rsquo;s much simpler and less
+error prone to do it this way than to only refreshing &quot;what actually
+has changed&quot; (that would basically be a huge collection of special
+cases).  So for now at least, we don&rsquo;t avoid recreating the buffer
+content and instead focus on making doing so faster.
+</li></ul>
+
+<p>Now for the things that you can do to improve performance:
+</p>
+<p>Most optional features which can have a negative effect on performance
+are disabled by default.  So start by checking the options you have
+explicitly enabled.  Even the potentially slow features are expected
+to only lead to barely noticeable delays, but your mileage may vary.
+Also note that it is now possible to set options on a per-repository
+or per-repository-class basis.  See <a href="Per_002drepository-configuration.html#Per_002drepository-configuration">Per-repository configuration</a>.
+</p>
+<p>You should check the values of at least the following variables:
+</p>
+<ul>
+<li> <code>magit-after-revert-hook</code>
+
+</li><li> <code>magit-diff-auto-show</code>
+
+</li><li> <code>magit-diff-highlight-hunk-body</code>
+
+</li><li> <code>magit-diff-highlight-indentation</code>
+
+</li><li> <code>magit-diff-highlight-trailing</code>
+
+</li><li> <code>magit-diff-paint-whitespace</code>
+
+</li><li> <code>magit-diff-refine-hunk</code>
+
+</li><li> <code>magit-log-arguments</code>, <code>magit-log-select-arguments</code>, and
+<code>magit-log-section-arguments</code>
+
+<p>In repositories with more than a few thousand commits <code>--graph</code> should
+never be a member of <code>magit-log-section-arguments</code>.  That variable is
+in the status buffer which is refreshed every time you run any Magit
+command.
+</p>
+<p>Using <code>--color --graph</code> is even slower.  Magit uses code that is part
+of Emacs to turn control characters into faces.  That code is pretty
+slow and this is quite noticeable when showing a log with many
+branches and merges.  For that reason <code>--color</code> is not enabled by
+default anymore.  Consider leaving it at that.
+</p>
+
+</li><li> <code>magit-not-reverted-hook</code>
+
+</li><li> <code>magit-refresh-buffer-hook</code>
+
+</li><li> <code>magit-refs-sections-hook</code>
+
+<p>When refreshing the &quot;references buffer&quot; is slow, then that&rsquo;s usually
+because several hundred refs are being displayed.  The best way to
+address that is to display fewer refs, obviously.
+</p>
+<p>If you are not, or only mildly, interested in seeing the list of
+tags, then start by not displaying them:
+</p>
+<div class="lisp">
+<pre class="lisp">(remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
+</pre></div>
+
+<p>Then you should also make sure that the listed remote branches
+actually all exist.  You can do so by pruning branches which no
+longer exist using <code>f-pa</code>.
+</p>
+
+</li><li> <code>magit-status-refresh-hook</code>
+
+</li><li> <code>magit-wip-after-apply-mode</code>
+
+</li><li> <code>magit-wip-after-save-mode</code>
+
+</li><li> <code>magit-wip-before-change-mode</code>
+</li></ul>
+
+<p>Also note that everything involving &quot;cherry commits&quot; is slow.
+</p>
+<p>If, after actually trying the above suggestions, performance is still
+bad, and the above does not contain a statement explaining why that is
+so in that particular case and that there is nothing that we can
+currently do about it, then comment on the appropriate existing issue
+(see <a href="https://github.com/magit/magit/labels/performance">https://github.com/magit/magit/labels/performance</a>), or if
+necessary open a new issue.  Note that &quot;something is slow, I am using
+v2.2&quot; is not helpful, you have to be a bit more specific.  Benchmarks
+are a start.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Safety.html#Safety" accesskey="p" rel="prev">Safety</a>, Up: <a href="Essential-settings.html#Essential-settings" accesskey="u" rel="up">Essential settings</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

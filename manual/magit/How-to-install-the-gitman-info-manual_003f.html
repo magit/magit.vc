@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -76,7 +76,7 @@ Next: <a href="How-can-I-show-Git_0027s-output_003f.html#How-can-I-show-Git_0027
 </div>
 <hr>
 <a name="How-to-install-the-gitman-info-manual_003f-1"></a>
-<h3 class="section">A.9 How to install the gitman info manual?</h3>
+<h3 class="section">A.10 How to install the gitman info manual?</h3>
 
 <p>Git&rsquo;s manpages can be exported as an info manual called <code>gitman</code>.
 Magit&rsquo;s own info manual links to nodes in that manual instead of the
@@ -102,11 +102,11 @@ Git release you have installed, and follow the instructions in
 manual, then instead of following that cross reference show
 the actual manpage using the function `man'.&quot;
   (let ((node (Info-get-token
-               (point) &quot;\\*note[ \n\t]+&quot;
-               &quot;\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?&quot;)))
+	       (point) &quot;\\*note[ \n\t]+&quot;
+	       &quot;\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?&quot;)))
     (if (and node (string-match &quot;^(gitman)\\(.+\\)&quot; node))
-        (progn (require 'man)
-               (man (match-string 1 node)))
+	(progn (require 'man)
+	       (man (match-string 1 node)))
       ad-do-it)))
 </pre></div>
 
@@ -120,11 +120,11 @@ variation with used the Emacs Lisp implementation provided by the
 manual, then instead of following that cross reference show
 the actual manpage using the function `woman'.&quot;
   (let ((node (Info-get-token
-               (point) &quot;\\*note[ \n\t]+&quot;
-               &quot;\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?&quot;)))
+	       (point) &quot;\\*note[ \n\t]+&quot;
+	       &quot;\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?&quot;)))
     (if (and node (string-match &quot;^(gitman)\\(.+\\)&quot; node))
-        (progn (require 'woman)
-               (woman (match-string 1 node)))
+	(progn (require 'woman)
+	       (woman (match-string 1 node)))
       ad-do-it)))
 </pre></div>
 

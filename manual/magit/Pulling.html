@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -87,25 +87,36 @@ the <a href="http://git-scm.com/docs/git-pull">git-pull(1)</a> manpage.
 </dd>
 <dt><kbd>F</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull-popup</code>)</dt>
 <dd>
-<p>This prefix command shows the following suffix commands along with
-the appropriate infix arguments in a popup buffer.
+<p>This prefix command shows the following suffix commands in a popup
+buffer.
 </p>
-<a name="index-F-F"></a>
-<a name="index-magit_002dpull_002dcurrent"></a>
+<a name="index-F-p"></a>
+<a name="index-magit_002dpull_002dfrom_002dpushremote"></a>
 </dd>
-<dt><kbd>F F</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull-current</code>)</dt>
+<dt><kbd>F p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull-from-pushremote</code>)</dt>
 <dd>
-<p>Fetch and merge into current branch.
+<p>Pull from the push-remote of the current branch.
 </p>
-<a name="index-F-o"></a>
+<a name="index-F-u"></a>
+<a name="index-magit_002dpull_002dfrom_002dupstream"></a>
+</dd>
+<dt><kbd>F u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull-from-upstream</code>)</dt>
+<dd>
+<p>Pull from the upstream of the current branch.
+</p>
+<a name="index-F-e"></a>
 <a name="index-magit_002dpull"></a>
 </dd>
-<dt><kbd>F o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull</code>)</dt>
+<dt><kbd>F e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull</code>)</dt>
 <dd>
-<p>Fetch from another repository and merge a fetched branch.
+<p>Pull from a branch read in the minibuffer.
 </p></dd>
 </dl>
 
+<p>Instead of using one popup for fetching and another for pulling, you
+could also use <code>magit-pull-and-fetch-popup</code>.  See its doc-string for
+more information.
+</p>
 
 
 

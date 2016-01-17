@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -94,25 +94,29 @@ ul.no-bullet {list-style: none}
       <li><a name="toc-Switching-Buffers-1" href="#Switching-Buffers">4.1.1 Switching Buffers</a></li>
       <li><a name="toc-Naming-Buffers-1" href="#Naming-Buffers">4.1.2 Naming Buffers</a></li>
       <li><a name="toc-Quitting-Windows-1" href="#Quitting-Windows">4.1.3 Quitting Windows</a></li>
+      <li><a name="toc-Automatic-Refreshing-of-Magit-Buffers-1" href="#Automatic-Refreshing-of-Magit-Buffers">4.1.4 Automatic Refreshing of Magit Buffers</a></li>
+      <li><a name="toc-Automatic-Saving-of-File_002dVisiting-Buffers-1" href="#Automatic-Saving-of-File_002dVisiting-Buffers">4.1.5 Automatic Saving of File-Visiting Buffers</a></li>
+      <li><a name="toc-Automatic-Reverting-of-File_002dVisiting-Buffers-1" href="#Automatic-Reverting-of-File_002dVisiting-Buffers">4.1.6 Automatic Reverting of File-Visiting Buffers</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Risk-of-Reverting-Automatically-1" href="#Risk-of-Reverting-Automatically">Risk of Reverting Automatically</a></li>
+      </ul></li>
     </ul></li>
-    <li><a name="toc-Automatic-save-1" href="#Automatic-save">4.2 Automatic save</a></li>
-    <li><a name="toc-Automatic-refresh-and-revert-1" href="#Automatic-refresh-and-revert">4.3 Automatic refresh and revert</a></li>
-    <li><a name="toc-Sections-1" href="#Sections">4.4 Sections</a>
+    <li><a name="toc-Sections-1" href="#Sections">4.2 Sections</a>
     <ul class="no-bullet">
-      <li><a name="toc-Section-movement-1" href="#Section-movement">4.4.1 Section movement</a></li>
-      <li><a name="toc-Section-visibility-1" href="#Section-visibility">4.4.2 Section visibility</a></li>
-      <li><a name="toc-Section-hooks-1" href="#Section-hooks">4.4.3 Section hooks</a></li>
-      <li><a name="toc-Section-types-and-values-1" href="#Section-types-and-values">4.4.4 Section types and values</a></li>
-      <li><a name="toc-Section-options-1" href="#Section-options">4.4.5 Section options</a></li>
+      <li><a name="toc-Section-movement-1" href="#Section-movement">4.2.1 Section movement</a></li>
+      <li><a name="toc-Section-visibility-1" href="#Section-visibility">4.2.2 Section visibility</a></li>
+      <li><a name="toc-Section-hooks-1" href="#Section-hooks">4.2.3 Section hooks</a></li>
+      <li><a name="toc-Section-types-and-values-1" href="#Section-types-and-values">4.2.4 Section types and values</a></li>
+      <li><a name="toc-Section-options-1" href="#Section-options">4.2.5 Section options</a></li>
     </ul></li>
-    <li><a name="toc-Popup-buffers-and-prefix-commands-1" href="#Popup-buffers-and-prefix-commands">4.5 Popup buffers and prefix commands</a></li>
-    <li><a name="toc-Completion-and-confirmation-1" href="#Completion-and-confirmation">4.6 Completion and confirmation</a></li>
-    <li><a name="toc-Running-Git-1" href="#Running-Git">4.7 Running Git</a>
+    <li><a name="toc-Popup-buffers-and-prefix-commands-1" href="#Popup-buffers-and-prefix-commands">4.3 Popup buffers and prefix commands</a></li>
+    <li><a name="toc-Completion-and-confirmation-1" href="#Completion-and-confirmation">4.4 Completion and confirmation</a></li>
+    <li><a name="toc-Running-Git-1" href="#Running-Git">4.5 Running Git</a>
     <ul class="no-bullet">
-      <li><a name="toc-Viewing-Git-output-1" href="#Viewing-Git-output">4.7.1 Viewing Git output</a></li>
-      <li><a name="toc-Running-Git-manually-1" href="#Running-Git-manually">4.7.2 Running Git manually</a></li>
-      <li><a name="toc-Git-executable-1" href="#Git-executable">4.7.3 Git executable</a></li>
-      <li><a name="toc-Global-Git-arguments-1" href="#Global-Git-arguments">4.7.4 Global Git arguments</a></li>
+      <li><a name="toc-Viewing-Git-output-1" href="#Viewing-Git-output">4.5.1 Viewing Git output</a></li>
+      <li><a name="toc-Running-Git-manually-1" href="#Running-Git-manually">4.5.2 Running Git manually</a></li>
+      <li><a name="toc-Git-executable-1" href="#Git-executable">4.5.3 Git executable</a></li>
+      <li><a name="toc-Global-Git-arguments-1" href="#Global-Git-arguments">4.5.4 Global Git arguments</a></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-Inspecting-1" href="#Inspecting">5 Inspecting</a>
@@ -198,7 +202,13 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Essential-settings-1" href="#Essential-settings">9.2 Essential settings</a>
     <ul class="no-bullet">
       <li><a name="toc-Safety-1" href="#Safety">9.2.1 Safety</a></li>
-      <li><a name="toc-Performance-1" href="#Performance">9.2.2 Performance</a></li>
+      <li><a name="toc-Performance-1" href="#Performance">9.2.2 Performance</a>
+      <ul class="no-bullet">
+        <li><a name="toc-Microsoft-Windows-Performance" href="#Microsoft-Windows-Performance">Microsoft Windows Performance</a></li>
+        <li><a name="toc-Log-Performance" href="#Log-Performance">Log Performance</a></li>
+        <li><a name="toc-Diff-Performance" href="#Diff-Performance">Diff Performance</a></li>
+        <li><a name="toc-Refs-Buffer-Performance" href="#Refs-Buffer-Performance">Refs Buffer Performance</a></li>
+      </ul></li>
     </ul></li>
   </ul></li>
   <li><a name="toc-Plumbing-1" href="#Plumbing">10 Plumbing</a>
@@ -226,18 +236,21 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Magit-is-slow-1" href="#Magit-is-slow">A.1 Magit is slow</a></li>
     <li><a name="toc-I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable-1" href="#I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable">A.2 I changed several thousand files at once and now Magit is unusable</a></li>
     <li><a name="toc-I-am-having-problems-committing-1" href="#I-am-having-problems-committing">A.3 I am having problems committing</a></li>
-    <li><a name="toc-I-don_0027t-like-how-branching-and-pushing-works-1" href="#I-don_0027t-like-how-branching-and-pushing-works">A.4 I don&rsquo;t like how branching and pushing works</a></li>
-    <li><a name="toc-I-cannot-install-the-pre_002drequisits-for-Magit-v2-1" href="#I-cannot-install-the-pre_002drequisits-for-Magit-v2">A.5 I cannot install the pre-requisits for Magit v2</a></li>
-    <li><a name="toc-I-am-using-an-Emacs-release-older-than-v24_002e4" href="#I-am-using-an-Emacs-release-older-than-v244">A.6 I am using an Emacs release older than v24.4</a></li>
-    <li><a name="toc-I-am-using-a-Git-release-older-than-v1_002e9_002e4" href="#I-am-using-a-Git-release-older-than-v194">A.7 I am using a Git release older than v1.9.4</a></li>
-    <li><a name="toc-I-am-using-MS-Windows-and-cannot-push-with-Magit-1" href="#I-am-using-MS-Windows-and-cannot-push-with-Magit">A.8 I am using MS Windows and cannot push with Magit</a></li>
-    <li><a name="toc-How-to-install-the-gitman-info-manual_003f-1" href="#How-to-install-the-gitman-info-manual_003f">A.9 How to install the gitman info manual?</a></li>
-    <li><a name="toc-How-can-I-show-Git_0027s-output_003f-1" href="#How-can-I-show-Git_0027s-output_003f">A.10 How can I show Git&rsquo;s output?</a></li>
-    <li><a name="toc-Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1" href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">A.11 Expanding a file to show the diff causes it to disappear</a></li>
-    <li><a name="toc-Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer-1" href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">A.12 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a></li>
-    <li><a name="toc-Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1" href="#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">A.13 Can Magit be used as ediff-version-control-package?</a></li>
-    <li><a name="toc-How-to-show-diffs-for-gpg_002dencrypted-files_003f-1" href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f">A.14 How to show diffs for gpg-encrypted files?</a></li>
-    <li><a name="toc-Emacs-24_002e5-hangs-when-loading-Magit" href="#Emacs-245-hangs-when-loading-Magit">A.15 Emacs 24.5 hangs when loading Magit</a></li>
+    <li><a name="toc-I-don_0027t-understand-how-branching-and-pushing-work-1" href="#I-don_0027t-understand-how-branching-and-pushing-work">A.4 I don&rsquo;t understand how branching and pushing work</a></li>
+    <li><a name="toc-I-don_0027t-like-the-key-binding-in-v2_002e4" href="#I-don_0027t-like-the-key-binding-in-v24">A.5 I don&rsquo;t like the key binding in v2.4</a></li>
+    <li><a name="toc-I-cannot-install-the-pre_002drequisites-for-Magit-v2-1" href="#I-cannot-install-the-pre_002drequisites-for-Magit-v2">A.6 I cannot install the pre-requisites for Magit v2</a></li>
+    <li><a name="toc-I-am-using-an-Emacs-release-older-than-v24_002e4" href="#I-am-using-an-Emacs-release-older-than-v244">A.7 I am using an Emacs release older than v24.4</a></li>
+    <li><a name="toc-I-am-using-a-Git-release-older-than-v1_002e9_002e4" href="#I-am-using-a-Git-release-older-than-v194">A.8 I am using a Git release older than v1.9.4</a></li>
+    <li><a name="toc-I-am-using-MS-Windows-and-cannot-push-with-Magit-1" href="#I-am-using-MS-Windows-and-cannot-push-with-Magit">A.9 I am using MS Windows and cannot push with Magit</a></li>
+    <li><a name="toc-How-to-install-the-gitman-info-manual_003f-1" href="#How-to-install-the-gitman-info-manual_003f">A.10 How to install the gitman info manual?</a></li>
+    <li><a name="toc-How-can-I-show-Git_0027s-output_003f-1" href="#How-can-I-show-Git_0027s-output_003f">A.11 How can I show Git&rsquo;s output?</a></li>
+    <li><a name="toc-Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1" href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">A.12 Expanding a file to show the diff causes it to disappear</a></li>
+    <li><a name="toc-Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer-1" href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">A.13 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a></li>
+    <li><a name="toc-Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1" href="#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">A.14 Can Magit be used as ediff-version-control-package?</a></li>
+    <li><a name="toc-How-to-show-diffs-for-gpg_002dencrypted-files_003f-1" href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f">A.15 How to show diffs for gpg-encrypted files?</a></li>
+    <li><a name="toc-Emacs-24_002e5-hangs-when-loading-Magit" href="#Emacs-245-hangs-when-loading-Magit">A.16 Emacs 24.5 hangs when loading Magit</a></li>
+    <li><a name="toc-Symbol_0027s-value-as-function-is-void-_002d_002dsome-1" href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome">A.17 Symbol&rsquo;s value as function is void &ndash;some</a></li>
+    <li><a name="toc-Where-is-the-branch-manager-1" href="#Where-is-the-branch-manager">A.18 Where is the branch manager</a></li>
   </ul></li>
   <li><a name="toc-Keystroke-Index-1" href="#Keystroke-Index">Appendix B Keystroke Index</a></li>
   <li><a name="toc-Command-Index-1" href="#Command-Index">Appendix C Command Index</a></li>
@@ -263,7 +276,7 @@ directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 </p>
 <blockquote>
-<p>Copyright (C) 2015 Jonas Bernoulli &lt;jonas@bernoul.li&gt;
+<p>Copyright (C) 2015-2016 Jonas Bernoulli &lt;jonas@bernoul.li&gt;
 </p>
 <p>You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -327,10 +340,6 @@ Interface concepts
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Modes-and-Buffers">Modes and Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Automatic-save">Automatic save</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Sections">Sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Popup-buffers-and-prefix-commands">Popup buffers and prefix commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -347,6 +356,12 @@ Modes and Buffers
 <tr><td align="left" valign="top">&bull; <a href="#Naming-Buffers">Naming Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Quitting-Windows">Quitting Windows</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Automatic-Saving-of-File_002dVisiting-Buffers">Automatic Saving of File-Visiting Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 Sections
@@ -563,9 +578,11 @@ FAQ
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#I-am-having-problems-committing">I am having problems committing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#I-don_0027t-like-how-branching-and-pushing-works">I don't like how branching and pushing works</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#I-don_0027t-understand-how-branching-and-pushing-work">I don't understand how branching and pushing work</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#I-cannot-install-the-pre_002drequisits-for-Magit-v2">I cannot install the pre-requisits for Magit v2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#I-don_0027t-like-the-key-binding-in-v24">I don&rsquo;t like the key binding in v2.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#I-cannot-install-the-pre_002drequisites-for-Magit-v2">I cannot install the pre-requisites for Magit v2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#I-am-using-an-Emacs-release-older-than-v244">I am using an Emacs release older than v24.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -586,6 +603,10 @@ FAQ
 <tr><td align="left" valign="top">&bull; <a href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f">How to show diffs for gpg-encrypted files?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Emacs-245-hangs-when-loading-Magit">Emacs 24.5 hangs when loading Magit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome">Symbol's value as function is void --some</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Where-is-the-branch-manager">Where is the branch manager</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr></table>
@@ -764,7 +785,7 @@ see <a href="http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Packa
 <div class="lisp">
 <pre class="lisp">(require 'package)
 (add-to-list 'package-archives
-             '(&quot;melpa&quot; . &quot;http://melpa.org/packages/&quot;) t)
+	     '(&quot;melpa&quot; . &quot;http://melpa.org/packages/&quot;) t)
 </pre></div>
 
 <ul>
@@ -774,7 +795,7 @@ see <a href="http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Packa
 <div class="lisp">
 <pre class="lisp">(require 'package)
 (add-to-list 'package-archives
-             '(&quot;melpa-stable&quot; . &quot;http://stable.melpa.org/packages/&quot;) t)
+	     '(&quot;melpa-stable&quot; . &quot;http://stable.melpa.org/packages/&quot;) t)
 </pre></div>
 
 <ul>
@@ -784,7 +805,7 @@ see <a href="http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Packa
 <div class="lisp">
 <pre class="lisp">(require 'package)
 (add-to-list 'package-archives
-             '(&quot;marmalade&quot; . &quot;http://marmalade-repo.org/packages/&quot;) t)
+	     '(&quot;marmalade&quot; . &quot;http://marmalade-repo.org/packages/&quot;) t)
 </pre></div>
 
 <p>Once you have added your preferred archive, you need to update the
@@ -823,7 +844,7 @@ manually from its development repository, but I won&rsquo;t cover that here.
 <p>Then clone the Magit repository:
 </p>
 <div class="example">
-<pre class="example">$ git clone git://github.com/magit/magit.git ~/.emacs.d/site-lisp/magit
+<pre class="example">$ git clone https://github.com/magit/magit.git ~/.emacs.d/site-lisp/magit
 $ cd ~/.emacs.d/site-lisp/magit
 </pre></div>
 
@@ -851,7 +872,7 @@ then you have to tell <code>make</code> where to find it.  To do so create
 (with-eval-after-load 'info
   (info-initialize)
   (add-to-list 'Info-directory-list
-               &quot;~/.emacs.d/site-lisp/magit/Documentation/&quot;))
+	       &quot;~/.emacs.d/site-lisp/magit/Documentation/&quot;))
 </pre></div>
 
 <p>Note that you have to add the <code>lisp/</code> subdirectory to the <code>load-path</code>,
@@ -898,7 +919,7 @@ outdated value for <code>load-path</code>.
 <p>should display something like
 </p>
 <div class="example">
-<pre class="example">Magit 2.2.0, Git 2.4.2, Emacs 24.5.1
+<pre class="example">Magit 2.4.0, Git 2.7.0, Emacs 24.5.1
 </pre></div>
 
 <p>Then you might also want to read about options that many users likely
@@ -912,10 +933,7 @@ See <a href="#How-to-install-the-gitman-info-manual_003f">How to install the git
 <p>If you are completely new to Magit then see <a href="#Getting-started">Getting started</a>.
 </p>
 <p>If you have used an older Magit release before, then you should have a
-look at the release notes
-<a href="https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.1.0.txt">https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.1.0.txt</a>
-and
-<a href="https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.2.0.txt">https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.2.0.txt</a>
+look at the release notes <a href="https://github.com/magit/magit/releases">https://github.com/magit/magit/releases</a>.
 </p>
 <p>And last but not least please consider making a donation, to ensure
 that I can keep working on Magit.  See <a href="http://magit.vc/donations.html">http://magit.vc/donations.html</a>
@@ -1049,17 +1067,13 @@ Next: <a href="#Inspecting" accesskey="n" rel="next">Inspecting</a>, Previous: <
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Modes-and-Buffers" accesskey="1">Modes and Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Automatic-save" accesskey="2">Automatic save</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Sections" accesskey="2">Sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Automatic-refresh-and-revert" accesskey="3">Automatic refresh and revert</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Popup-buffers-and-prefix-commands" accesskey="3">Popup buffers and prefix commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Sections" accesskey="4">Sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Completion-and-confirmation" accesskey="4">Completion and confirmation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Popup-buffers-and-prefix-commands" accesskey="5">Popup buffers and prefix commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Completion-and-confirmation" accesskey="6">Completion and confirmation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Running-Git" accesskey="7">Running Git</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Running-Git" accesskey="5">Running Git</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -1067,7 +1081,7 @@ Next: <a href="#Inspecting" accesskey="n" rel="next">Inspecting</a>, Previous: <
 <a name="Modes-and-Buffers"></a>
 <div class="header">
 <p>
-Next: <a href="#Automatic-save" accesskey="n" rel="next">Automatic save</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Sections" accesskey="n" rel="next">Sections</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Modes-and-Buffers-1"></a>
 <h3 class="section">4.1 Modes and Buffers</h3>
@@ -1114,6 +1128,12 @@ displayed in its place.
 <tr><td align="left" valign="top">&bull; <a href="#Naming-Buffers" accesskey="2">Naming Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Quitting-Windows" accesskey="3">Quitting Windows</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Automatic-Refreshing-of-Magit-Buffers" accesskey="4">Automatic Refreshing of Magit Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Automatic-Saving-of-File_002dVisiting-Buffers" accesskey="5">Automatic Saving of File-Visiting Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Automatic-Reverting-of-File_002dVisiting-Buffers" accesskey="6">Automatic Reverting of File-Visiting Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -1263,9 +1283,8 @@ respects the option <code>magit-uniquify-buffer-names</code>.
 
 </li><li> <code>%v</code>
 
-<p>The value the buffer is locked to, in parentheses, if it is the
-buffer is actually locked to its value.  An empty string
-otherwise.
+<p>The value the buffer is locked to, in parentheses, or an empty
+string if the buffer is not locked to a value.
 </p>
 
 </li><li> <code>%V</code>
@@ -1277,10 +1296,10 @@ empty string.
 </li><li> <code>%t</code>
 
 <p>The top-level directory of the working tree of the repository, or
-if <code>magit-uniquify-buffer-name</code> is non-nil an abbreviation of that.
+if <code>magit-uniquify-buffer-names</code> is non-nil an abbreviation of that.
 </p></li></ul>
 <p>The value should always contain either <code>%m</code> or <code>%M</code>, <code>%v</code> or <code>%V</code>, and <code>%t</code>.
-If <code>magit-uniquify-buffer-name</code> is non-nil, then the value must end
+If <code>magit-uniquify-buffer-names</code> is non-nil, then the value must end
 with <code>%t</code>.
 </p></dd></dl>
 
@@ -1303,7 +1322,7 @@ control how buffer names are uniquified.
 <a name="Quitting-Windows"></a>
 <div class="header">
 <p>
-Previous: <a href="#Naming-Buffers" accesskey="p" rel="prev">Naming Buffers</a>, Up: <a href="#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Automatic-Refreshing-of-Magit-Buffers" accesskey="n" rel="next">Automatic Refreshing of Magit Buffers</a>, Previous: <a href="#Naming-Buffers" accesskey="p" rel="prev">Naming Buffers</a>, Up: <a href="#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Quitting-Windows-1"></a>
 <h4 class="subsection">4.1.3 Quitting Windows</h4>
@@ -1357,48 +1376,19 @@ ever displayed in the window, then that is deleted.
 </p></dd></dl>
 
 <hr>
-<a name="Automatic-save"></a>
+<a name="Automatic-Refreshing-of-Magit-Buffers"></a>
 <div class="header">
 <p>
-Next: <a href="#Automatic-refresh-and-revert" accesskey="n" rel="next">Automatic refresh and revert</a>, Previous: <a href="#Modes-and-Buffers" accesskey="p" rel="prev">Modes and Buffers</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Automatic-Saving-of-File_002dVisiting-Buffers" accesskey="n" rel="next">Automatic Saving of File-Visiting Buffers</a>, Previous: <a href="#Quitting-Windows" accesskey="p" rel="prev">Quitting Windows</a>, Up: <a href="#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Automatic-save-1"></a>
-<h3 class="section">4.2 Automatic save</h3>
-
-<p>File-visiting buffers are by default saved at certain points in time.
-This doesn&rsquo;t guarantee that Magit buffers are always up-to-date, but,
-provided one only edits files by editing them in Emacs and uses only
-Magit to interact with Git, one can be fairly confident.  When in
-doubt or after outside changes, type <code>g</code> (<code>magit-refresh</code>) to save and
-refresh explicitly.
-</p>
-<dl>
-<dt><a name="index-magit_002dsave_002drepository_002dbuffers"></a>User Option: <strong>magit-save-repository-buffers</strong></dt>
-<dd>
-<p>This option controls whether file-visiting buffers are saved before
-certain events.
-</p>
-<p>If this is non-nil then all modified file-visiting buffers belonging
-to the current repository may be saved before running commands,
-before creating new Magit buffers, and before explicitly refreshing
-such buffers.  If this is <code>dontask</code> then this is done without user
-intervention.  If it is <code>t</code> then the user has to confirm each save.
-</p></dd></dl>
-
-<hr>
-<a name="Automatic-refresh-and-revert"></a>
-<div class="header">
-<p>
-Next: <a href="#Sections" accesskey="n" rel="next">Sections</a>, Previous: <a href="#Automatic-save" accesskey="p" rel="prev">Automatic save</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Automatic-refresh-and-revert-1"></a>
-<h3 class="section">4.3 Automatic refresh and revert</h3>
+<a name="Automatic-Refreshing-of-Magit-Buffers-1"></a>
+<h4 class="subsection">4.1.4 Automatic Refreshing of Magit Buffers</h4>
 
 <p>After running a command which may change the state of the current
 repository, the current Magit buffer and the corresponding status
-buffer are refreshed.  Status buffer may optionally be automatically
-refreshed whenever a buffer is saved to a file inside the respective
-repository.
+buffer are refreshed.  The status buffer may optionally be
+automatically refreshed whenever a buffer is saved to a file inside
+the respective repository.
 </p>
 <p>Automatically refreshing Magit buffers ensures that the displayed
 information is up-to-date most of the time but can lead to a
@@ -1406,59 +1396,6 @@ noticeable delay in big repositories.  Other Magit buffers are not
 refreshed to keep the delay to a minimum and also because doing so can
 sometimes be undesirable.
 </p>
-<dl>
-<dt><a name="index-magit_002drevert_002dbuffers-1"></a>User Option: <strong>magit-revert-buffers</strong></dt>
-<dd>
-<p>This option controls if and how file-visiting buffers in the current
-repository are reverted.
-</p>
-<p>Unmodified buffers visiting files belonging to the current
-repository may be reverted after refreshing the current Magit buffer
-and after running certain other commands.
-</p>
-<ul>
-<li> <code>nil</code>
-
-<p>Don&rsquo;t revert any buffers.
-</p>
-
-</li><li> <code>ask</code>
-
-<p>List the buffers which might potentially have to be reverted and
-ask the user whether she wants to revert them.  If so, then do it
-synchronously.
-</p>
-
-</li><li> <code>t</code>
-
-<p>Revert the buffers synchronously, mentioning each one as it is
-being reverted and then also show a summary in the echo area.
-</p>
-
-</li><li> <code>usage</code>
-
-<p>Like <code>t</code> but include usage information in the summary.  This is the
-default so that users come here and pick what is right for them.
-</p>
-
-</li><li> <code>silent</code>
-
-<p>Revert the buffers synchronously and be quiet about it.
-</p>
-<p>This is the recommended setting, because for the other values the
-revert messages might prevent you from seeing other, more
-important, messages in the echo area.
-</p>
-
-</li><li> NUMBER
-
-<p>An integer or float.  Revert the buffers asynchronously,
-mentioning each one as it is being reverted.  If user input
-arrives, then stop reverting.  After NUMBER seconds resume
-reverting.
-</p></li></ul>
-</dd></dl>
-
 <p>Buffers can also be refreshed explicitly, which is useful in buffers
 that weren&rsquo;t current during the last refresh and after changes were
 made to the repository outside of Magit.
@@ -1492,6 +1429,24 @@ being tracked in the current repository.
 </dl>
 
 <dl>
+<dt><a name="index-magit_002drefresh_002dbuffer_002dhook"></a>User Option: <strong>magit-refresh-buffer-hook</strong></dt>
+<dd>
+<p>This hook is run in each Magit buffer that was refreshed during the
+current refresh - normally the current buffer and the status buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drefresh_002dstatus_002dbuffer"></a>User Option: <strong>magit-refresh-status-buffer</strong></dt>
+<dd>
+<p>When this option is non-nil, then the status buffer is automatically
+refreshed after running git for side-effects, in addition to the
+current Magit buffer, which is always refreshed automatically.
+</p>
+<p>Only set this to nil after exhausting all other options to improve
+performance.
+</p></dd></dl>
+
+<dl>
 <dt><a name="index-magit_002dafter_002dsave_002drefresh_002dstatus"></a>Function: <strong>magit-after-save-refresh-status</strong></dt>
 <dd>
 <p>This function is intended to be added to <code>after-save-hook</code>.  After
@@ -1504,43 +1459,206 @@ you are not satisfied with Magit&rsquo;s performance, then you should
 obviously not add this function to that hook.
 </p></dd></dl>
 
-<dl>
-<dt><a name="index-magit_002drefresh_002dbuffer_002dhook"></a>User Option: <strong>magit-refresh-buffer-hook</strong></dt>
-<dd>
-<p>This hook is run in each Magit buffer that was refreshed during the
-current refresh - normally the current buffer and the status buffer.
-</p></dd></dl>
+<hr>
+<a name="Automatic-Saving-of-File_002dVisiting-Buffers"></a>
+<div class="header">
+<p>
+Next: <a href="#Automatic-Reverting-of-File_002dVisiting-Buffers" accesskey="n" rel="next">Automatic Reverting of File-Visiting Buffers</a>, Previous: <a href="#Automatic-Refreshing-of-Magit-Buffers" accesskey="p" rel="prev">Automatic Refreshing of Magit Buffers</a>, Up: <a href="#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Automatic-Saving-of-File_002dVisiting-Buffers-1"></a>
+<h4 class="subsection">4.1.5 Automatic Saving of File-Visiting Buffers</h4>
 
-<dl>
-<dt><a name="index-magit_002dafter_002drevert_002dhook"></a>User Option: <strong>magit-after-revert-hook</strong></dt>
-<dd>
-<p>This hook is run in each file-visiting buffer belonging to the
-current repository that was actually reverted during a refresh.
+<p>File-visiting buffers are by default saved at certain points in time.
+This doesn&rsquo;t guarantee that Magit buffers are always up-to-date, but,
+provided one only edits files by editing them in Emacs and uses only
+Magit to interact with Git, one can be fairly confident.  When in
+doubt or after outside changes, type <code>g</code> (<code>magit-refresh</code>) to save and
+refresh explicitly.
 </p>
-<p>Note that adding something here is very expensive.  If you
-experience performance issues, you might want to check this hook, as
-well as <code>magit-not-reverted-hook</code> and, if possible, remove some of the
-functions added by third-party packages.
+<dl>
+<dt><a name="index-magit_002dsave_002drepository_002dbuffers"></a>User Option: <strong>magit-save-repository-buffers</strong></dt>
+<dd>
+<p>This option controls whether file-visiting buffers are saved before
+certain events.
+</p>
+<p>If this is non-nil then all modified file-visiting buffers belonging
+to the current repository may be saved before running commands,
+before creating new Magit buffers, and before explicitly refreshing
+such buffers.  If this is <code>dontask</code> then this is done without user
+intervention.  If it is <code>t</code> then the user has to confirm each save.
+</p></dd></dl>
+
+<hr>
+<a name="Automatic-Reverting-of-File_002dVisiting-Buffers"></a>
+<div class="header">
+<p>
+Previous: <a href="#Automatic-Saving-of-File_002dVisiting-Buffers" accesskey="p" rel="prev">Automatic Saving of File-Visiting Buffers</a>, Up: <a href="#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Automatic-Reverting-of-File_002dVisiting-Buffers-1"></a>
+<h4 class="subsection">4.1.6 Automatic Reverting of File-Visiting Buffers</h4>
+
+<p>By default Magit automatically reverts buffers that are visiting files
+that are being tracked in a Git repository, after they have changed on
+disk.  When using Magit one often changes files on disk by running
+git, i.e. &quot;outside Emacs&quot;, making this a rather important feature.
+</p>
+<p>For example, if you discard a change in the status buffer, then that
+is done by running <code>git apply --reverse ...</code>, and Emacs considers the
+file to have &quot;change on disk&quot;.  If Magit did not automaticallyrevert
+the buffer, then you would have to type <code>M-x revert-buffer RET RET</code> in
+the visiting buffer before you could continue making changes.
+</p>
+<dl>
+<dt><a name="index-magit_002dauto_002drevert_002dmode"></a>User Option: <strong>magit-auto-revert-mode</strong></dt>
+<dd>
+<p>When this mode is enabled, then buffers that visit tracked files,
+are automatically reverted after the visited files changed on disk.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-magit_002dnot_002dreverted_002dhook"></a>User Option: <strong>magit-not-reverted-hook</strong></dt>
+<dt><a name="index-global_002dauto_002drevert_002dmode"></a>User Option: <strong>global-auto-revert-mode</strong></dt>
 <dd>
-<p>This hook is run in each file-visiting buffer belonging to the
-current repository that was reverted during a refresh.  The file
-was not reverted because it did not change, and so Magit does not
-have to do anything.  This hook is intended for third-party
-extensions that need to run some functions even on such files.
+<p>When this mode is enabled, then any file-visiting buffer is
+automatically reverted after the visited file changed on disk.
+</p>
+<p>If you like buffers that visit tracked files to be automatically
+reverted, then you might also like any buffer to be reverted, not
+just those visiting tracked files.  If that is the case, then enable
+this mode <em>instead of</em> <code>magit-auto-revert-mode</code>.
 </p></dd></dl>
 
+<dl>
+<dt><a name="index-magit_002dauto_002drevert_002dimmediately"></a>User Option: <strong>magit-auto-revert-immediately</strong></dt>
+<dd>
+<p>This option controls whether Magit reverts buffers immediately.
+</p>
+<p>If this is non-nil and either <code>global-auto-revert-mode</code> or
+<code>magit-auto-revert-mode</code> is enabled, then Magit immediately reverts
+buffers by explicitly calling <code>auto-revert-buffers</code> after running git
+for side-effects.
+</p>
+<p>If <code>auto-revert-use-notify</code> is non-nil (and file notifications are
+actually supported), then <code>magit-auto-revert-immediately</code> should be
+set to nil, because the reverts happen immediately anyway.
+</p>
+<p>If <code>magit-auto-revert-immediately</code> and <code>auto-revert-use-notify</code> are both
+nil, then reverts happen after <code>auto-revert-interval</code> seconds of user
+inactivity.  That is not desirable.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002duse_002dnotify"></a>User Option: <strong>auto-revert-use-notify</strong></dt>
+<dd>
+<p>This option controls whether file notification functions should be
+used.  Note that this variable unfortunately defaults to <code>t</code> even on
+systems on which file notifications cannot be used.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dauto_002drevert_002dtracked_002donly"></a>User Option: <strong>magit-auto-revert-tracked-only</strong></dt>
+<dd>
+<p>This option controls whether <code>magit-auto-revert-mode</code> only reverts
+tracked files or all files that are located inside Git repositories,
+including untracked files and files located inside Git&rsquo;s control
+directory.
+</p></dd></dl>
+
+<a name="index-auto_002drevert_002dmode"></a>
+<dl>
+<dt><a name="index-auto_002drevert_002dmode-1"></a>Command: <strong>auto-revert-mode</strong></dt>
+<dd>
+<p>The global mode <code>magit-auto-revert-mode</code> works by turning on this
+local mode in the appropriate buffers.  You can also turn it on or
+off manually, which might be necessary if Magit does not notice that
+a previously untracked file now is being tracked or vice-versa.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dstop_002don_002duser_002dinput"></a>User Option: <strong>auto-revert-stop-on-user-input</strong></dt>
+<dd>
+<p>This option controls whether the arrival of user input suspends the
+automatic reverts for <code>auto-revert-interval</code> seconds.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dinterval"></a>User Option: <strong>auto-revert-interval</strong></dt>
+<dd>
+<p>This option controls for how many seconds Emacs waits before
+resuming suspended reverts.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dverbose"></a>User Option: <strong>auto-revert-verbose</strong></dt>
+<dd>
+<p>This option controls whether Emacs reports when a buffer has been
+reverted.
+</p></dd></dl>
+
+<p>The options with the <code>auto-revert-</code> prefix are located in the Custom
+group named <code>auto-revert</code>.  The other, magit-specific, options are
+located in the <code>magit</code> group.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Risk-of-Reverting-Automatically" accesskey="1">Risk of Reverting Automatically</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Risk-of-Reverting-Automatically"></a>
+<div class="header">
+<p>
+Up: <a href="#Automatic-Reverting-of-File_002dVisiting-Buffers" accesskey="u" rel="up">Automatic Reverting of File-Visiting Buffers</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Risk-of-Reverting-Automatically-1"></a>
+<h4 class="unnumberedsubsubsec">Risk of Reverting Automatically</h4>
+
+<p>For the vast majority users automatically reverting file-visiting
+buffers after they have changed on disk is harmless.
+</p>
+<p>If a buffer is modified (i.e. it contains changes that haven&rsquo;t been
+saved yet), then Emacs would refuse to automatically revert it.  If
+you save a previously modified buffer, then that results in what is
+seen by Git as an uncommitted change.  Git would then refuse to carry
+out any commands that would cause these changes to be lost.  In other
+words, if there is anything that could be lost, then either Git or
+Emacs would refuse to discard the changes.
+</p>
+<p>However if you do use file-visiting buffers as a sort of ad hoc
+&quot;staging area&quot;, then the automatic reverts could potentially cause
+data loss.  So far I have only heard from one user who uses such a
+workflow.
+</p>
+<p>An example: You visit some file in a buffer, edit it, and save the
+changes.  Then, outside of Emacs (or at least not using Magit or by
+saving the buffer) you change the file on disk again.  At this point
+the buffer is the only place where the intermediate version still
+exists.  You have saved the changes to disk, but that has since been
+overwritten.  Meanwhile Emacs considers the buffer to be unmodified
+(because you have not made any changes to it since you last saved it
+to the visited file) and therefore would not object to it being
+automatically reverted.  At this point an Auto-Revert mode would kick
+in.  It would check whether the buffer is modified and since that is
+not the case it would revert it.  The intermediate version would be
+lost.  (Actually you could still get it back using the <code>undo</code> command.)
+</p>
+<p>If your workflow depends on Emacs preserving the intermediate version
+in the buffer, then you have to disable all Auto-Revert modes.  But
+please consider that such a workflow would be dangerous even without
+using an Auto-Revert mode, and should therefore be avoided.  If Emacs
+crashed or if you quit Emacs by mistake, then you would also lose the
+buffer content.  There would be no autosave file still containing the
+intermediate version (because that was deleted when you saved the
+buffer) and you would not be asked whether you want to safe the buffer
+(because it isn&rsquo;t modified).
+</p>
 <hr>
 <a name="Sections"></a>
 <div class="header">
 <p>
-Next: <a href="#Popup-buffers-and-prefix-commands" accesskey="n" rel="next">Popup buffers and prefix commands</a>, Previous: <a href="#Automatic-refresh-and-revert" accesskey="p" rel="prev">Automatic refresh and revert</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Popup-buffers-and-prefix-commands" accesskey="n" rel="next">Popup buffers and prefix commands</a>, Previous: <a href="#Modes-and-Buffers" accesskey="p" rel="prev">Modes and Buffers</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Sections-1"></a>
-<h3 class="section">4.4 Sections</h3>
+<h3 class="section">4.2 Sections</h3>
 
 <p>Magit buffers are organized into nested sections, which can be
 collapsed and expanded, similar to how sections are handled in Org
@@ -1575,7 +1693,7 @@ keymaps.
 Next: <a href="#Section-visibility" accesskey="n" rel="next">Section visibility</a>, Up: <a href="#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Section-movement-1"></a>
-<h4 class="subsection">4.4.1 Section movement</h4>
+<h4 class="subsection">4.2.1 Section movement</h4>
 
 <p>To move within a section use the usual keys (<code>C-p</code>, <code>C-n</code>, <code>C-b</code>, <code>C-f</code> etc),
 whose global bindings are not shadowed.  To move to another section use
@@ -1716,7 +1834,7 @@ your graphical environment or operating system.
 Next: <a href="#Section-hooks" accesskey="n" rel="next">Section hooks</a>, Previous: <a href="#Section-movement" accesskey="p" rel="prev">Section movement</a>, Up: <a href="#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Section-visibility-1"></a>
-<h4 class="subsection">4.4.2 Section visibility</h4>
+<h4 class="subsection">4.2.2 Section visibility</h4>
 
 <p>Magit provides many commands for changing the visibility of sections,
 but all you need to get started are the next two.
@@ -1821,7 +1939,7 @@ show the headings.  Previously shown text-only bodies are hidden.
 <dd>
 <p>Recursively show the bodies of children of the current section.
 With a prefix argument show children down to the level of the
-currect section, and hide deeper children.
+current section, and hide deeper children.
 </p></dd></dl>
 
 <a name="index-magit_002dsection_002dhide_002dchildren"></a>
@@ -1870,7 +1988,7 @@ immediately return <code>nil</code>.
 Next: <a href="#Section-types-and-values" accesskey="n" rel="next">Section types and values</a>, Previous: <a href="#Section-visibility" accesskey="p" rel="prev">Section visibility</a>, Up: <a href="#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Section-hooks-1"></a>
-<h4 class="subsection">4.4.3 Section hooks</h4>
+<h4 class="subsection">4.2.3 Section hooks</h4>
 
 <p>Which sections are inserted into certain buffers is controlled with
 hooks.  This includes the status and the refs buffers.  For other
@@ -1894,9 +2012,12 @@ APPEND is non-nil, in which case FUNCTION is added at the end.  If
 FUNCTION already is a member then move it to the new location.
 </p>
 <p>If optional AT is non-nil and a member of the hook list, then add
-FUNCTION next to that instead.  Add before or after AT depending
-on APPEND.  If only FUNCTION is a member of the list, then leave
-it wherever it already is.
+FUNCTION next to that instead.  Add before or after AT, or replace
+AT with FUNCTION depending on APPEND.  If APPEND is the symbol
+<code>replace</code>, then replace AT with FUNCTION.  For any other non-nil value
+place FUNCTION right after AT.  If nil, then place FUNCTION right
+before AT.  If FUNCTION already is a member of the list but AT is
+not, then leave FUNCTION where ever it already is.
 </p>
 <p>If optional LOCAL is non-nil, then modify the hook&rsquo;s buffer-local
 value rather than its global value.  This makes the hook local by
@@ -1919,7 +2040,7 @@ should not be abused for other side-effects.
 Next: <a href="#Section-options" accesskey="n" rel="next">Section options</a>, Previous: <a href="#Section-hooks" accesskey="p" rel="prev">Section hooks</a>, Up: <a href="#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Section-types-and-values-1"></a>
-<h4 class="subsection">4.4.4 Section types and values</h4>
+<h4 class="subsection">4.2.4 Section types and values</h4>
 
 <p>Each section has a type, for example <code>hunk</code>, <code>file</code>, and <code>commit</code>.
 Instances of certain section types also have a value.  The value of a
@@ -1957,7 +2078,7 @@ yourself, and it will automatically be used.
 Previous: <a href="#Section-types-and-values" accesskey="p" rel="prev">Section types and values</a>, Up: <a href="#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Section-options-1"></a>
-<h4 class="subsection">4.4.5 Section options</h4>
+<h4 class="subsection">4.2.5 Section options</h4>
 
 <p>This section describes options that have an effect on more than just a
 certain type of sections.  As you can see there are not many of those.
@@ -1976,7 +2097,7 @@ only affects sections that could benefit from this information.
 Next: <a href="#Completion-and-confirmation" accesskey="n" rel="next">Completion and confirmation</a>, Previous: <a href="#Sections" accesskey="p" rel="prev">Sections</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Popup-buffers-and-prefix-commands-1"></a>
-<h3 class="section">4.5 Popup buffers and prefix commands</h3>
+<h3 class="section">4.3 Popup buffers and prefix commands</h3>
 
 <p>Many Magit commands are implemented using <strong>popup buffers</strong>.  First the
 user invokes a <strong>popup</strong> or <strong>prefix</strong> command, which causes a popup buffer
@@ -2018,7 +2139,7 @@ you should setup a global binding:
 Next: <a href="#Running-Git" accesskey="n" rel="next">Running Git</a>, Previous: <a href="#Popup-buffers-and-prefix-commands" accesskey="p" rel="prev">Popup buffers and prefix commands</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Completion-and-confirmation-1"></a>
-<h3 class="section">4.6 Completion and confirmation</h3>
+<h3 class="section">4.4 Completion and confirmation</h3>
 
 <p>Many commands read a value from the user.  By default this is done
 using the built-in function <code>completing-read</code>, but Magit can instead use
@@ -2092,7 +2213,7 @@ option when acting on a single section.
 Previous: <a href="#Completion-and-confirmation" accesskey="p" rel="prev">Completion and confirmation</a>, Up: <a href="#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Running-Git-1"></a>
-<h3 class="section">4.7 Running Git</h3>
+<h3 class="section">4.5 Running Git</h3>
 
 
 <table class="menu" border="0" cellspacing="0">
@@ -2113,7 +2234,7 @@ Previous: <a href="#Completion-and-confirmation" accesskey="p" rel="prev">Comple
 Next: <a href="#Running-Git-manually" accesskey="n" rel="next">Running Git manually</a>, Up: <a href="#Running-Git" accesskey="u" rel="up">Running Git</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Viewing-Git-output-1"></a>
-<h4 class="subsection">4.7.1 Viewing Git output</h4>
+<h4 class="subsection">4.5.1 Viewing Git output</h4>
 
 <p>Magit runs Git either for side-effects (e.g. when pushing) or to get
 some value (e.g. the name of the current branch).  When Git is run for
@@ -2160,7 +2281,7 @@ just negatively affects performance.
 Next: <a href="#Git-executable" accesskey="n" rel="next">Git executable</a>, Previous: <a href="#Viewing-Git-output" accesskey="p" rel="prev">Viewing Git output</a>, Up: <a href="#Running-Git" accesskey="u" rel="up">Running Git</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Running-Git-manually-1"></a>
-<h4 class="subsection">4.7.2 Running Git manually</h4>
+<h4 class="subsection">4.5.2 Running Git manually</h4>
 
 <p>While Magit provides many Emacs commands to interact with Git, it does
 not cover everything.  In those cases your existing Git knowledge will
@@ -2263,7 +2384,7 @@ in the top-level directory of the current repository instead.
 Next: <a href="#Global-Git-arguments" accesskey="n" rel="next">Global Git arguments</a>, Previous: <a href="#Running-Git-manually" accesskey="p" rel="prev">Running Git manually</a>, Up: <a href="#Running-Git" accesskey="u" rel="up">Running Git</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Git-executable-1"></a>
-<h4 class="subsection">4.7.3 Git executable</h4>
+<h4 class="subsection">4.5.3 Git executable</h4>
 
 <p>Except on MS Windows, Magit defaults to running Git without specifying
 the path to the git executable.  Instead the first executable found by
@@ -2316,7 +2437,7 @@ itself, using the standard mechanism for doing such things.
 Previous: <a href="#Git-executable" accesskey="p" rel="prev">Git executable</a>, Up: <a href="#Running-Git" accesskey="u" rel="up">Running Git</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Global-Git-arguments-1"></a>
-<h4 class="subsection">4.7.4 Global Git arguments</h4>
+<h4 class="subsection">4.5.4 Global Git arguments</h4>
 
 <dl>
 <dt><a name="index-magit_002dgit_002dglobal_002darguments"></a>User Option: <strong>magit-git-global-arguments</strong></dt>
@@ -2448,9 +2569,9 @@ despite its name, usually causes a Dired buffer to be created.
 </p>
 <div class="lisp">
 <pre class="lisp">(add-hook 'ido-setup-hook
-          (lambda ()
-            (define-key ido-completion-map
-              (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)))
+	  (lambda ()
+	    (define-key ido-completion-map
+	      (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)))
 </pre></div>
 
 <p>Starting with Emacs 25.1 the Ido keymaps are defined just once
@@ -2570,15 +2691,31 @@ instead of &quot;Stashes:&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-magit_002dinsert_002dunpulled_002dcommits"></a>Function: <strong>magit-insert-unpulled-commits</strong></dt>
+<dt><a name="index-magit_002dinsert_002dunpulled_002dfrom_002dupstream"></a>Function: <strong>magit-insert-unpulled-from-upstream</strong></dt>
 <dd>
-<p>Insert section showing unpulled commits.
+<p>Insert section showing commits that haven&rsquo;t been pulled from the
+upstream branch yet.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-magit_002dinsert_002dunpushed_002dcommits"></a>Function: <strong>magit-insert-unpushed-commits</strong></dt>
+<dt><a name="index-magit_002dinsert_002dunpulled_002dfrom_002dpushremote"></a>Function: <strong>magit-insert-unpulled-from-pushremote</strong></dt>
 <dd>
-<p>Insert section showing unpushed commits.
+<p>Insert section showing commits that haven&rsquo;t been pulled from the
+push-remote branch yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpushed_002dto_002dupstream"></a>Function: <strong>magit-insert-unpushed-to-upstream</strong></dt>
+<dd>
+<p>Insert section showing commits that haven&rsquo;t been pushed to the
+upstream yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpushed_002dto_002dpushremote"></a>Function: <strong>magit-insert-unpushed-to-pushremote</strong></dt>
+<dd>
+<p>Insert section showing commits that haven&rsquo;t been pushed to the
+push-remote yet.
 </p></dd></dl>
 
 <p>The following functions can also be added to the above hook:
@@ -2685,15 +2822,41 @@ to be a member of <code>magit-insert-status-sections</code> to be used at all.
 <p>By default the following functions are members of the above hook:
 </p>
 <dl>
-<dt><a name="index-magit_002dinsert_002dhead_002dheader"></a>Function: <strong>magit-insert-head-header</strong></dt>
+<dt><a name="index-magit_002dinsert_002derror_002dheader"></a>Function: <strong>magit-insert-error-header</strong></dt>
 <dd>
-<p>Insert a header line about the <code>HEAD</code> commit.
+<p>Insert a header line showing the message about the Git error that
+just occurred.
+</p>
+<p>This function is only aware of the last error that occur when Git
+was run for side-effects.  If, for example, an error occurs while
+generating a diff, then that error won&rsquo;t be inserted.  Refreshing
+the status buffer causes this section to disappear again.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-magit_002dinsert_002dupstream_002dheader"></a>Function: <strong>magit-insert-upstream-header</strong></dt>
+<dt><a name="index-magit_002dinsert_002ddiff_002dfilter_002dheader"></a>Function: <strong>magit-insert-diff-filter-header</strong></dt>
 <dd>
-<p>Insert a header line about the upstream branch and its tip.
+<p>Insert a header line showing the effective diff filters.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dhead_002dbranch_002dheader"></a>Function: <strong>magit-insert-head-branch-header</strong></dt>
+<dd>
+<p>Insert a header line about the current branch or detached <code>HEAD</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dupstream_002dbranch_002dheader"></a>Function: <strong>magit-insert-upstream-branch-header</strong></dt>
+<dd>
+<p>Insert a header line about the branch that is usually pulled into
+the current branch.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dpush_002dbranch_002dheader"></a>Function: <strong>magit-insert-push-branch-header</strong></dt>
+<dd>
+<p>Insert a header line about the branch that the current branch is
+usually pushed to.
 </p></dd></dl>
 
 <dl>
@@ -3216,20 +3379,6 @@ minibuffer.
 <dt><kbd>d p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-paths</code>)</dt>
 <dd>
 <p>Show changes between any two files on disk.
-</p>
-<a name="index-M_002dx-magit_002ddiff_002dunpushed"></a>
-<a name="index-magit_002ddiff_002dunpushed"></a>
-</dd>
-<dt><kbd>M-x magit-diff-unpushed</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-unpushed</code>)</dt>
-<dd>
-<p>Show unpushed changes.
-</p>
-<a name="index-M_002dx-magit_002ddiff_002dunpulled"></a>
-<a name="index-magit_002ddiff_002dunpulled"></a>
-</dd>
-<dt><kbd>M-x magit-diff-unpulled</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-unpulled</code>)</dt>
-<dd>
-<p>Show unpulled changes.
 </p></dd>
 </dl>
 
@@ -3370,7 +3519,7 @@ particular argument.
 </p></dd>
 </dl>
 
-<p>The following commands quicky change what diff is being displayed
+<p>The following commands quickly change what diff is being displayed
 without having to using one of the diff popups.
 </p>
 <dl compact="compact">
@@ -4233,8 +4382,18 @@ to confirm that it should be reinitialized.
 for the new repository.
 </p>
 <p>The user is queried for a remote url and a local directory.
-</p></dd>
+</p>
+</dd>
 </dl>
+
+<dl>
+<dt><a name="index-magit_002dclone_002dset_002dremote_002epushDefault"></a>User Option: <strong>magit-clone-set-remote.pushDefault</strong></dt>
+<dd>
+<p>Whether to set the value of <code>remote.pushDefault</code> after cloning.
+</p>
+<p>If <code>t</code>, then set without asking.  If <code>nil</code>, then don&rsquo;t set.  If <code>ask</code>,
+then ask the user every time she clones a repository.
+</p></dd></dl>
 
 <hr>
 <a name="Staging-and-unstaging"></a>
@@ -4630,7 +4789,7 @@ Git then cancels the commit, but leaves the file untouched.
 </p></dd>
 </dl>
 
-<p>In additon to being used by Git, these messages may also be stored in
+<p>In addition to being used by Git, these messages may also be stored in
 a ring that persists until Emacs is closed.  By default the message is
 stored at the beginning and the end of an edit session (regardless of
 whether the session is finished successfully or was canceled).  It is
@@ -4941,9 +5100,44 @@ Next: <a href="#Merging" accesskey="n" rel="next">Merging</a>, Previous: <a href
 <a name="Branching-1"></a>
 <h3 class="section">6.5 Branching</h3>
 
-<p>Also see 
-the <a href="http://git-scm.com/docs/git-branch">git-branch(1)</a> manpage and 
-the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage.
+<p>The upstream branch of some local branch is the branch into which the
+commits on that local branch should eventually be merged, usually
+something like <code>origin/master</code>.  For the <code>master</code> branch itself the
+upstream branch and the branch it is being pushed to, are usually the
+same remote branch.  But for a feature branch the upstream branch and
+the branch it is being pushed to should differ.
+</p>
+<p>Feature branches too should <em>eventually</em> end up in a remote branch such
+as <code>origin/master</code> or <code>origin/maint</code>.  Such a branch should therefore be
+used as the upstream.  But feature branches shouldn&rsquo;t be pushed
+directly to such branches.  Instead a feature branch <code>my-feature</code> is
+usually pushed to <code>my-fork/my-feature</code> or <code>origin/my-feature</code>.  After the
+new feature has been reviewed, the maintainer merges the feature into
+<code>master</code>.  And finally <code>master</code> (not <code>my-feature</code> itself) is pushed to
+<code>origin/master</code>.
+</p>
+<p>But new features seldom are perfect on the first try, and so feature
+branches usually have to be improved and re-pushed many times.
+Pushing should therefore be easy to do, and for that reason some users
+have concluded that the remote branch to which a feature branch is
+being pushed should be set as the upstream.  Luckily Git has long ago
+gained support for a push-remote which can be configured separately
+from the upstream branch, using the variables <code>branch.&lt;name&gt;.pushRemote</code>
+and <code>remote.pushDefault</code>, so we no longer have to choose which of the
+two remotes should be used as &quot;the remote&quot;.
+</p>
+<p>Each of the fetching, pulling, and pushing popups features three
+commands which act on the current branch and some other branch.  Of
+these, <code>p</code> is bound to a command which acts on the push-remote, <code>u</code> is
+bound to a command which acts on the upstream, and <code>e</code> is bound to a
+command which acts on any other branch.  The status buffer shows
+unpushed and unpulled for both the push-remote and the upstream.
+</p>
+<p>It&rsquo;s fairly simple to configure these two remotes.  The values of all
+the variables that are related to fetching, pulling, and pushing (as
+well as some other branch-related variables) can be inspected and
+changed in the branching popup.  It is also possible to set the
+push-remote and/or upstream while pushing (see <a href="#Pushing">Pushing</a>).
 </p>
 <dl compact="compact">
 <dd><a name="index-b"></a>
@@ -4951,10 +5145,162 @@ the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage.
 </dd>
 <dt><kbd>b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-popup</code>)</dt>
 <dd>
-<p>This prefix command shows the following suffix commands along with
-the appropriate infix arguments in a popup buffer.
+<p>This prefix command shows the following suffix commands in a popup
+buffer.  It also displays the values of the following variables and
+allows changing their values.
+</p></dd>
+</dl>
+
+<p>The following variables are used to configure a specific branch.  The
+values are being displayed for the current branch (if any).  To change
+the value for another branch use a prefix argument.
 </p>
-<a name="index-b-b"></a>
+<dl>
+<dt><a name="index-branch_002eNAME_002emerge"></a>Variable: <strong>branch.NAME.merge</strong></dt>
+<dd>
+<p>Together with <code>branch.NAME.remote</code> this variable defines the upstream
+branch of the local branch named NAME.  The value of this variable
+is the full reference of the upstream <em>branch</em>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002eremote"></a>Variable: <strong>branch.NAME.remote</strong></dt>
+<dd>
+<p>Together with <code>branch.NAME.merge</code> this variable defines the upstream
+branch of the local branch named NAME.  The value of this variable
+is the name of the upstream <em>remote</em>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002erebase"></a>Variable: <strong>branch.NAME.rebase</strong></dt>
+<dd>
+<p>This variable controls whether pulling into the branch named NAME is
+done by rebasing or by merging the fetched branch.
+</p>
+<ul>
+<li> When <code>true</code> then pulling is done by rebasing.
+
+</li><li> When <code>false</code> then pulling is done by merging.
+
+</li><li> When undefined then the value of <code>pull.rebase</code> is used.  The default
+of that variable is <code>false</code>.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002epushRemote"></a>Variable: <strong>branch.NAME.pushRemote</strong></dt>
+<dd>
+<p>This variable specifies the remote that the branch named NAME is
+usually pushed to.  The value has to be the name of an existing
+remote.
+</p>
+<p>It is not possible to specify the name of <em>branch</em> to push the local
+branch to.  The name of the remote branch is always the same as the
+name of the local branch.
+</p>
+<p>If this variable is undefined but <code>remote.pushDefault</code> is defined,
+then the value of the latter is used.  By default <code>remote.pushDefault</code>
+is undefined.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002edescription"></a>Variable: <strong>branch.NAME.description</strong></dt>
+<dd>
+<p>This variable can be used to describe the branch named NAME.  That
+description is used e.g. when turning the branch into a series of
+patches.
+</p></dd></dl>
+
+<p>The following variables specify defaults which are used if the above
+branch-specific variables are not set.
+</p>
+<dl>
+<dt><a name="index-pull_002erebase"></a>Variable: <strong>pull.rebase</strong></dt>
+<dd>
+<p>This variable specifies whether pulling is done by rebasing or by
+merging.  It can be overwritten using <code>branch.NAME.rebase</code>.
+</p>
+<ul>
+<li> When <code>true</code> then pulling is done by rebasing.
+
+</li><li> When <code>false</code> (the default) then pulling is done by merging.
+</li></ul>
+<p>Since it is never a good idea to merge the upstream branch into a
+feature or hotfix branch and most branches are such branches, you
+should consider setting this to <code>true</code>, and <code>branch.master.rebase</code> to
+<code>false</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-remote_002epushDefault"></a>Variable: <strong>remote.pushDefault</strong></dt>
+<dd>
+<p>This variable specifies what remote the local branches are usually
+pushed to.  This can be overwritten per branch using
+<code>branch.NAME.pushRemote</code>.
+</p></dd></dl>
+
+<p>The following variables are used during the creation of a branch and
+control whether the various branch-specific variables are
+automatically set at this time.
+</p>
+<dl>
+<dt><a name="index-branch_002eautoSetupMerge"></a>Variable: <strong>branch.autoSetupMerge</strong></dt>
+<dd>
+<p>This variable specifies under what circumstances creating a branch
+NAME should result in the variables <code>branch.NAME.merge</code> and
+<code>branch.NAME.remote</code> being set according to the starting point used to
+create the branch.  If the starting point isn&rsquo;t a branch, then these
+variables are never set.
+</p>
+<ul>
+<li> When <code>always</code> then the variables are set regardless of whether the
+starting point is a local or a remote branch.
+
+</li><li> When <code>true</code> (the default) then the variables are set when the starting
+point is a remote branch, but not when it is a local branch.
+
+</li><li> When <code>false</code> then the variables are never set.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eautoSetupRebase"></a>Variable: <strong>branch.autoSetupRebase</strong></dt>
+<dd>
+<p>This variable specifies whether creating a branch NAME should result
+in the variable <code>branch.NAME.rebase</code> being set to <code>true</code>.
+</p>
+<ul>
+<li> When <code>always</code> then the variable is set regardless of whether the
+starting point is a local or a remote branch.
+
+</li><li> When <code>local</code> then the variable are set when the starting point is a
+local branch, but not when it is a remote branch.
+
+</li><li> When <code>remote</code> then the variable are set when the starting point is a
+remote branch, but not when it is a local branch.
+
+</li><li> When <code>never</code> (the default) then the variable is never set.
+</li></ul>
+</dd></dl>
+
+<p>Note that the respective commands always change the repository-local
+values.  If you want to change the global value, which is used when
+the local value is undefined, then you have to do so on the command
+line, e.g.:
+</p>
+<div class="example">
+<pre class="example">git config --global remote.autoSetupMerge always
+</pre></div>
+
+<p>For more information about these variables you should also see
+</p>
+the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage<p>.  Also see 
+the <a href="http://git-scm.com/docs/git-branch">git-branch(1)</a> manpage,
+</p>
+the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage<p>, and <a href="#Pushing">Pushing</a>.
+</p>
+<dl compact="compact">
+<dd><a name="index-b-b"></a>
 <a name="index-magit_002dcheckout"></a>
 </dd>
 <dt><kbd>b b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-checkout</code>)</dt>
@@ -4965,10 +5311,10 @@ branch then that becomes the current branch.  If it is something
 else then <code>HEAD</code> becomes detached.  Checkout fails if the working tree
 or the staging area contain changes.
 </p>
-<a name="index-b-c"></a>
+<a name="index-b-n"></a>
 <a name="index-magit_002dbranch"></a>
 </dd>
-<dt><kbd>b c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch</code>)</dt>
+<dt><kbd>b n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch</code>)</dt>
 <dd>
 <p>Create a new branch.  The user is asked for a branch or arbitrary
 revision to use as the starting point of the new branch.  When a
@@ -4976,13 +5322,17 @@ branch name is provided, then that becomes the upstream branch of
 the new branch.  The name of the new branch is also read in the
 minibuffer.
 </p>
-<a name="index-b-B"></a>
+<p>Also see option <code>magit-branch-prefer-remote-upstream</code>.
+</p>
+<a name="index-b-c"></a>
 <a name="index-magit_002dbranch_002dand_002dcheckout"></a>
 </dd>
-<dt><kbd>b B</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-and-checkout</code>)</dt>
+<dt><kbd>b c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-and-checkout</code>)</dt>
 <dd>
 <p>This command creates a new branch like <code>magit-branch</code>, but then also
 checks it out.
+</p>
+<p>Also see option <code>magit-branch-prefer-remote-upstream</code>.
 </p>
 <a name="index-b-s"></a>
 <a name="index-magit_002dbranch_002dspinoff"></a>
@@ -4997,6 +5347,12 @@ anyway and the previously current branch is not touched.
 </p>
 <p>This is useful to create a feature branch after work has already
 began on the old branch (likely but not necessarily &quot;master&quot;).
+</p>
+<p>If the current branch is a member of the value of option
+<code>magit-branch-prefer-remote-upstream</code> (which see), then the current
+branch will be used as the starting point as usual, but the upstream
+of the starting-point may be used as the upstream of the new branch,
+instead of the starting-point itself.
 </p>
 <a name="index-b-x"></a>
 <a name="index-magit_002dbranch_002dreset"></a>
@@ -5025,22 +5381,6 @@ realize it&rsquo;s all crap and want to start over.
 branches, then offer to delete those.  Otherwise, prompt for a single
 branch to be deleted, defaulting to the branch at point.
 </p>
-<a name="index-b-u"></a>
-<a name="index-magit_002dbranch_002dset_002dupstream"></a>
-</dd>
-<dt><kbd>b u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-set-upstream</code>)</dt>
-<dd>
-<p>Change the upstream branch of a branch.  Both branches are read in
-the minibuffer, while providing reasonable defaults.
-</p>
-<a name="index-b-U"></a>
-<a name="index-magit_002dbranch_002dunset_002dupstream"></a>
-</dd>
-<dt><kbd>b U</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-unset-upstream</code>)</dt>
-<dd>
-<p>Unset the upstream branch of a branch read in the minibuffer and
-defaulting to the branch at point or the current branch.
-</p>
 <a name="index-b-r"></a>
 <a name="index-magit_002dbranch_002drename"></a>
 </dd>
@@ -5050,16 +5390,6 @@ defaulting to the branch at point or the current branch.
 minibuffer.  With prefix argument the branch is renamed even if that
 name conflicts with an existing branch.
 </p>
-<a name="index-b-e"></a>
-<a name="index-magit_002dbranch_002dedit_002ddescription"></a>
-</dd>
-<dt><kbd>b e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-edit-description</code>)</dt>
-<dd>
-<p>Edit the description of a branch.  The branch is read in the
-minibuffer defaulting to the branch at point or the current branch.
-The description is edited in a regular buffer similar to how commit
-messages are edited.
-</p>
 </dd>
 </dl>
 
@@ -5067,7 +5397,51 @@ messages are edited.
 <dt><a name="index-magit_002dbranch_002dread_002dupstream_002dfirst"></a>User Option: <strong>magit-branch-read-upstream-first</strong></dt>
 <dd>
 <p>When creating a branch, whether to read the upstream branch before
-the name of the branch that is to be created.
+the name of the branch that is to be created.  The default is <code>nil</code>,
+and I recommend you leave it at that.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dbranch_002dprefer_002dremote_002dupstream"></a>User Option: <strong>magit-branch-prefer-remote-upstream</strong></dt>
+<dd>
+<p>This option specifies whether remote upstreams are favored over
+local upstreams when creating new branches.
+</p>
+<p>When a new branch is created, Magit offers the branch, commit, or
+stash as the default starting point of the new branch.  If there is
+no such thing at point, then it falls back to offer the current
+branch as starting-point.  The user may then accept that default or
+pick something else.
+</p>
+<p>If the chosen starting-point is a branch, then it may also be set
+as the upstream of the new branch, depending on the value of the
+Git variable &lsquo;branch.autoSetupMerge&rsquo;.  By default this is done
+for remote branches, but not for local branches.
+</p>
+<p>You might prefer to always use some remote branch as upstream.
+If the chosen starting-point is (1) a local branch, (2) whose
+name is a member of the value of this option, (3) the upstream of
+that local branch is a remote branch with the same name, and (4)
+that remote branch can be fast-forwarded to the local branch,
+then the chosen branch is used as starting-point, but its own
+upstream is used as the upstream of the new branch.
+</p>
+<p>Assuming the chosen branch matches these conditions you would end
+up with with e.g.:
+</p>
+<div class="example">
+<pre class="example">feature --upstream--&gt; origin/master
+</pre></div>
+
+<p>instead of
+</p>
+<div class="example">
+<pre class="example">feature --upstream--&gt; master --upstream--&gt; origin/master
+</pre></div>
+
+<p>Which you prefer is a matter of personal preference.  If you do
+prefer the former, then you should add branches such as <code>master</code>,
+<code>next</code>, and <code>maint</code> to the value of this options.
 </p></dd></dl>
 
 <hr>
@@ -5191,13 +5565,29 @@ the appropriate infix arguments in a popup buffer.
 following commands.
 </p>
 <dl compact="compact">
-<dd><a name="index-r-r"></a>
+<dd><a name="index-r-p"></a>
+<a name="index-magit_002drebase_002donto_002dpushremote"></a>
+</dd>
+<dt><kbd>r p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-onto-pushremote</code>)</dt>
+<dd>
+<p>Rebase the current branch onto <code>branch.&lt;name&gt;.pushRemote</code>.  If that
+variable is unset, then rebase onto <code>remote.pushDefault</code>.
+</p>
+<a name="index-r-u"></a>
+<a name="index-magit_002drebase_002donto_002dupstream"></a>
+</dd>
+<dt><kbd>r u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-onto-upstream</code>)</dt>
+<dd>
+<p>Rebase the current branch onto its upstream branch.
+</p>
+<a name="index-r-e"></a>
 <a name="index-magit_002drebase"></a>
 </dd>
-<dt><kbd>r r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase</code>)</dt>
+<dt><kbd>r e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase</code>)</dt>
 <dd>
-<p>Start a non-interactive rebase sequence.  All commits not in
-UPSTREAM are rebased.
+<p>Rebase the current branch onto a branch read in the minibuffer.  All
+commits that are reachable from head but not from the selected
+branch TARGET are being rebased.&quot;
 </p>
 <a name="index-r-o"></a>
 <a name="index-magit_002drebase_002dsubset"></a>
@@ -5215,9 +5605,9 @@ This can be used to turn one of the above non-interactive rebase
 variants into an interactive rebase.
 </p>
 <p>For example if you want to clean up a feature branch and at the same
-time rebase it onto <code>master</code>, then you could use <code>r-ir</code>.  But we recommend
-that you instead do that in two steps.  First use <code>rs</code> to cleanup the
-feature branch, and then in a second step <code>rl</code> to rebase it onto <code>master</code>.
+time rebase it onto <code>master</code>, then you could use <code>r-iu</code>.  But we recommend
+that you instead do that in two steps.  First use <code>ri</code> to cleanup the
+feature branch, and then in a second step <code>ru</code> to rebase it onto <code>master</code>.
 That way if things turn out to be more complicated than you thought
 and/or you make a mistake and have to start over, then you only have
 to redo half the work.
@@ -5234,18 +5624,6 @@ is not enabled in the popup.
 <dd>
 <p>Start an interactive rebase sequence.
 </p>
-<a name="index-r-l"></a>
-<a name="index-magit_002drebase_002dunpushed"></a>
-</dd>
-<dt><kbd>r l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-unpushed</code>)</dt>
-<dd>
-<p>Start an interactive rebase sequence of unpushed commits.  This is
-like <code>magit-rebase-interactive</code>, but if the upstream of the current
-branch is configured, then all commits since the merge-base are
-rebased.  If there is no upstream or no merge-base, then the user
-has to select the first commit to be rebased like for
-<code>magit-rebase-interactive</code>.
-</p>
 <a name="index-r-f"></a>
 <a name="index-magit_002drebase_002dautosquash"></a>
 </dd>
@@ -5253,10 +5631,10 @@ has to select the first commit to be rebased like for
 <dd>
 <p>Combine squash and fixup commits with their intended targets.
 </p>
-<a name="index-r-e"></a>
+<a name="index-r-m"></a>
 <a name="index-magit_002drebase_002dedit_002dcommit"></a>
 </dd>
-<dt><kbd>r e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-edit-commit</code>)</dt>
+<dt><kbd>r m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-edit-commit</code>)</dt>
 <dd>
 <p>Edit a single older commit using rebase.
 </p>
@@ -5273,7 +5651,7 @@ has to select the first commit to be rebased like for
 commands instead.
 </p>
 <dl compact="compact">
-<dd><a name="index-r-r-1"></a>
+<dd><a name="index-r-r"></a>
 <a name="index-magit_002drebase_002dcontinue"></a>
 </dd>
 <dt><kbd>r r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-rebase-continue</code>)</dt>
@@ -5501,7 +5879,7 @@ either because the user has to deal with a conflict or explicitly
 requested that rebase stops at that commit, then point is placed on
 the commit that separates the two groups, i.e. on <code>HEAD</code>.  The commits
 above it have not been applied yet, while it and the commits below it
-have already been applied.  In between these two groups or applied and
+have already been applied.  In between these two groups of applied and
 yet-to-be applied commits, there sometimes is a commit which has been
 dropped.
 </p>
@@ -5629,7 +6007,7 @@ changes which makes it impossible to know for sure.
 you will acquire a good enough understanding through practice.
 </p>
 <p>For other sequence operations such as cherry-picking, a similar section
-is displayed, but they lack some of the features described below, due
+is displayed, but they lack some of the features described above, due
 to limitations in the git commands used to implement them.  Most
 importantly these sequences only support &quot;picking&quot; a commit but not
 other actions such as &quot;rewording&quot;, and they do not keep track of the
@@ -6088,8 +6466,22 @@ read in the minibuffer.
 <dt><kbd>M k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-remote-remove</code>)</dt>
 <dd>
 <p>Delete a remote, read from the minibuffer.
-</p></dd>
+</p>
+</dd>
 </dl>
+
+<dl>
+<dt><a name="index-magit_002dremote_002dadd_002dset_002dremote_002epushDefault"></a>User Option: <strong>magit-remote-add-set-remote.pushDefault</strong></dt>
+<dd>
+<p>Whether to set the value of <code>remote.pushDefault</code> after adding a
+remote.
+</p>
+<p>If <code>ask</code>, then always ask.  If <code>ask-if-unset</code>, then ask, but only if the
+variable isn&rsquo;t set already.  If <code>nil</code>, then don&rsquo;t ever set.  If the
+value is a string, then set without asking, provided the name of the
+name of the added remote is equal to that string and the variable
+isn&rsquo;t already set.
+</p></dd></dl>
 
 <hr>
 <a name="Fetching"></a>
@@ -6112,19 +6504,24 @@ the <a href="http://git-scm.com/docs/git-fetch">git-fetch(1)</a> manpage.
 <p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
-<a name="index-f-f"></a>
-<a name="index-magit_002dfetch_002dcurrent"></a>
+<a name="index-f-p"></a>
+<a name="index-magit_002dfetch_002dfrom_002dpushremote"></a>
 </dd>
-<dt><kbd>f f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-current</code>)</dt>
+<dt><kbd>f p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-from-pushremote</code>)</dt>
 <dd>
-<p>Fetch from the upstream repository of the current branch.  If <code>HEAD</code>
-is detached or if the upstream is not configured, then read the
-remote.
+<p>Fetch from the push-remote of the current branch.
 </p>
-<a name="index-f-o"></a>
+<a name="index-f-u"></a>
+<a name="index-magit_002dfetch_002dfrom_002dupstream"></a>
+</dd>
+<dt><kbd>f u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-from-upstream</code>)</dt>
+<dd>
+<p>Fetch from the push-remote of the current branch.
+</p>
+<a name="index-f-e"></a>
 <a name="index-magit_002dfetch"></a>
 </dd>
-<dt><kbd>f o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch</code>)</dt>
+<dt><kbd>f e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch</code>)</dt>
 <dd>
 <p>Fetch from another repository.
 </p>
@@ -6133,18 +6530,22 @@ remote.
 </dd>
 <dt><kbd>f a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-all</code>)</dt>
 <dd>
-<p>Fetch from all configured remotes.
+<p>Fetch from all remotes.
 </p>
 <a name="index-f-m"></a>
 <a name="index-magit_002dsubmodule_002dfetch"></a>
 </dd>
 <dt><kbd>f m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-fetch</code>)</dt>
 <dd>
-<p>Fetch all submodules.  With a prefix argument fetch all remotes or
+<p>Fetch all submodules.  With a prefix argument fetch all remotes of
 all submodules.
 </p></dd>
 </dl>
 
+<p>Instead of using one popup for fetching and another for pulling, you
+could also use <code>magit-pull-and-fetch-popup</code>.  See its doc-string for
+more information.
+</p>
 <hr>
 <a name="Pulling"></a>
 <div class="header">
@@ -6163,25 +6564,36 @@ the <a href="http://git-scm.com/docs/git-pull">git-pull(1)</a> manpage.
 </dd>
 <dt><kbd>F</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull-popup</code>)</dt>
 <dd>
-<p>This prefix command shows the following suffix commands along with
-the appropriate infix arguments in a popup buffer.
+<p>This prefix command shows the following suffix commands in a popup
+buffer.
 </p>
-<a name="index-F-F"></a>
-<a name="index-magit_002dpull_002dcurrent"></a>
+<a name="index-F-p"></a>
+<a name="index-magit_002dpull_002dfrom_002dpushremote"></a>
 </dd>
-<dt><kbd>F F</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull-current</code>)</dt>
+<dt><kbd>F p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull-from-pushremote</code>)</dt>
 <dd>
-<p>Fetch and merge into current branch.
+<p>Pull from the push-remote of the current branch.
 </p>
-<a name="index-F-o"></a>
+<a name="index-F-u"></a>
+<a name="index-magit_002dpull_002dfrom_002dupstream"></a>
+</dd>
+<dt><kbd>F u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull-from-upstream</code>)</dt>
+<dd>
+<p>Pull from the upstream of the current branch.
+</p>
+<a name="index-F-e"></a>
 <a name="index-magit_002dpull"></a>
 </dd>
-<dt><kbd>F o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull</code>)</dt>
+<dt><kbd>F e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pull</code>)</dt>
 <dd>
-<p>Fetch from another repository and merge a fetched branch.
+<p>Pull from a branch read in the minibuffer.
 </p></dd>
 </dl>
 
+<p>Instead of using one popup for fetching and another for pulling, you
+could also use <code>magit-pull-and-fetch-popup</code>.  See its doc-string for
+more information.
+</p>
 <hr>
 <a name="Pushing"></a>
 <div class="header">
@@ -6203,52 +6615,45 @@ the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage.
 <p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
-<a name="index-P-P"></a>
+<a name="index-P-p"></a>
+<a name="index-magit_002dpush_002dcurrent_002dto_002dpushremote"></a>
+</dd>
+<dt><kbd>P p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current-to-pushremote</code>)</dt>
+<dd>
+<p>Push the current branch to <code>branch.&lt;name&gt;.pushRemote</code> or if that
+is unset to <code>remote.pushDefault</code>.
+</p>
+<p>When <code>magit-push-current-set-remote-if-missing</code> is non-nil and the
+push-remote is not configured, then read the push-remote from the
+user, set it, and then push to it.  With a prefix argument the
+push-remote can be changed before pushed to it.
+</p>
+<a name="index-P-u"></a>
+<a name="index-magit_002dpush_002dcurrent_002dto_002dupstream"></a>
+</dd>
+<dt><kbd>P u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current-to-upstream</code>)</dt>
+<dd>
+<p>Push the current branch to its upstream branch.
+</p>
+<p>When <code>magit-push-current-set-remote-if-missing</code> is non-nil and the
+push-remote is not configured, then read the upstram from the
+user, set it, and then push to it.  With a prefix argument the
+push-remote can be changed before pushed to it.
+</p>
+<a name="index-P-e"></a>
 <a name="index-magit_002dpush_002dcurrent"></a>
 </dd>
-<dt><kbd>P P</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current</code>)</dt>
+<dt><kbd>P e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current</code>)</dt>
 <dd>
-<p>Push the current branch to its upstream branch.  If the upstream
-isn&rsquo;t set, then read the remote branch.
+<p>Push the current branch to a branch read in the minibuffer.
 </p>
 <a name="index-P-o"></a>
 <a name="index-magit_002dpush"></a>
 </dd>
 <dt><kbd>P o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push</code>)</dt>
 <dd>
-<p>Push a branch to its upstream branch.  If the upstream isn&rsquo;t set,
-then read the remote branch.
-</p>
-<a name="index-P-e"></a>
-<a name="index-magit_002dpush_002delsewhere"></a>
-</dd>
-<dt><kbd>P e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-elsewhere</code>)</dt>
-<dd>
-<p>Push a branch or commit to some remote branch.  Read the local and
-remote branch.
-</p>
-<a name="index-P-Q"></a>
-<a name="index-magit_002dpush_002dquickly"></a>
-</dd>
-<dt><kbd>P Q</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-quickly</code>)</dt>
-<dd>
-<p>Push the current branch to some remote.  When the Git variable
-<code>magit.pushRemote</code> is set, then push to that remote.  If that variable
-is undefined or the remote does not exist, then push to &quot;origin&quot;.
-If that also doesn&rsquo;t exist then raise an error.  The local branch is
-pushed to the remote branch with the same name.
-</p>
-<a name="index-P-i"></a>
-<a name="index-magit_002dpush_002dimplicitly"></a>
-</dd>
-<dt><kbd>P i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-implicitly</code>)</dt>
-<dd>
-<p>Push without explicitly specifing what to push.  This runs <code>git push
-  -v</code>.  What is being pushed depends on various Git variables as
-described in the 
-the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage and 
-the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage</p>
-<p>manpages.
+<p>Push an arbitrary branch or commit somewhere.  Both the source and
+the target are read in the minibuffer.
 </p>
 <a name="index-P-m"></a>
 <a name="index-magit_002dpush_002dmatching"></a>
@@ -6274,30 +6679,64 @@ remote configured for the current branch as default.
 <dt><kbd>P T</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-tag</code>)</dt>
 <dd>
 <p>Push a tag to another repository.
-</p>
-</dd>
+</p></dd>
 </dl>
 
+<p>Two more push commands exist, which by default are not available from
+the push popup.  See their doc-strings for instructions on how to add
+them to the popup.
+</p>
+<a name="index-magit_002dpush_002dimplicitly-args"></a>
 <dl>
-<dt><a name="index-magit_002dpush_002dalways_002dverify"></a>User Option: <strong>magit-push-always-verify</strong></dt>
+<dt><a name="index-magit_002dpush_002dimplicitly"></a>Command: <strong>magit-push-implicitly</strong> <em>args</em></dt>
 <dd>
-<p>Whether certain commands require verification before pushing.
+<p>Push somewhere without using an explicit refspec.
 </p>
-<p>Starting with <code>v2.1.0</code> some of the push commands are supposed to
-push to the configured upstream branch without requiring user
-confirmation or offering to push somewhere else.
+<p>This command simply runs <code>git push -v [ARGS]</code>.  ARGS are the arguments
+specified in the popup buffer.  No explicit refspec arguments are
+used.  Instead the behavior depends on at least these Git variables:
+<code>push.default</code>, <code>remote.pushDefault</code>, <code>branch.&lt;branch&gt;.pushRemote</code>,
+<code>branch.&lt;branch&gt;.remote</code>, <code>branch.&lt;branch&gt;.merge</code>, and
+<code>remote.&lt;remote&gt;.push</code>.
+</p></dd></dl>
+
+<a name="index-magit_002dpush_002dto_002dremote-remote-args"></a>
+<dl>
+<dt><a name="index-magit_002dpush_002dto_002dremote"></a>Command: <strong>magit-push-to-remote</strong> <em>remote args</em></dt>
+<dd>
+<p>Push to the remote REMOTE without using an explicit refspec.  The
+remote is read in the minibuffer.
 </p>
-<p>This has taken a few users by surprise, and they suggested that we
-force users to opt-in to this behavior.  Unfortunately adding this
-option means that now other users will complain about us needlessly
-forcing them to set an option.  This is an attempt to make everyone
-happy and like all such attempts it is prone to fail.  Before
-complaining about having to set this option, please consider that
-other users are less experienced than you and have different needs.
+<p>This command simply runs <code>git push -v [ARGS] REMOTE</code>.  ARGS are the
+arguments specified in the popup buffer.  No refspec arguments are
+used.  Instead the behavior depends on at least these Git variables:
+<code>push.default</code>, <code>remote.pushDefault</code>, <code>branch.&lt;branch&gt;.pushRemote</code>,
+<code>branch.&lt;branch&gt;.remote</code>, <code>branch.&lt;branch&gt;.merge</code>, and
+<code>remote.&lt;remote&gt;.push</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dpush_002dcurrent_002dset_002dremote_002dif_002dmissing"></a>User Option: <strong>magit-push-current-set-remote-if-missing</strong></dt>
+<dd>
+<p>This option controls whether missing remotes are configured before
+pushing.
 </p>
-<p>You should set the value of this option to nil, causing all push
-commands to behave as intended.  But first read the description of
-each command above.
+<p>When <code>nil</code>, then the command <code>magit-push-current-to-pushremote</code> and
+<code>magit-push-current-to-upstream</code> do not appear in the push popup if
+the push-remote resp. upstream is not configured.  If the user
+invokes one of these commands anyway, then it raises an error.
+</p>
+<p>When <code>non-nil</code>, then these commands always appear in the push popup.
+But if the required configuration is missing, then they do appear in
+a way that indicates that this is the case.  If the user invokes one
+of them, then it asks for the necessary configuration, stores the
+configuration, and then uses it to push a first time.
+</p>
+<p>This option also affects whether the argument <code>--set-upstream</code> is
+available in the popup.  If the value is <code>non-nil</code>, then that argument
+is redundant.  But note that changing the value of this option does
+not take affect immediately, the argument will only be added or
+removed after restarting Emacs.
 </p></dd></dl>
 
 <hr>
@@ -7105,7 +7544,7 @@ For example:
 
 <div class="example">
 <pre class="example">[include]
-        path = /path/to/huge-gitconfig
+	path = /path/to/huge-gitconfig
 </pre></div>
 
 
@@ -7113,7 +7552,7 @@ For example:
 
 <div class="example">
 <pre class="example">[status]
-        showUntrackedFiles = no
+	showUntrackedFiles = no
 </pre></div>
 
 
@@ -7160,13 +7599,13 @@ Next: <a href="#Performance" accesskey="n" rel="next">Performance</a>, Up: <a hr
 change (or <strong>not</strong> change) for safety reasons.
 </p>
 <p>Git keeps <strong>committed</strong> changes around long enough for users to recover
-changes they have accidentally deleted.  It does not do the same for
-<strong>uncommitted</strong> changes in the working tree and not even the index (the
-staging area).  Because Magit makes it so easy to modify uncommitted
-changes, it also makes it easy to shoot yourself in the foot in the
-process.  For that reason Magit provides three global modes that save
-<strong>tracked</strong> files to work-in-progress references after or before certain
-actions.  See <a href="#Wip-modes">Wip modes</a>.
+changes they have accidentally been deleted.  It does not do the same
+for <strong>uncommitted</strong> changes in the working tree and not even the index
+(the staging area).  Because Magit makes it so easy to modify
+uncommitted changes, it also makes it easy to shoot yourself in the
+foot in the process.  For that reason Magit provides three global
+modes that save <strong>tracked</strong> files to work-in-progress references after or
+before certain actions.  See <a href="#Wip-modes">Wip modes</a>.
 </p>
 <p>These modes are not enabled by default because of performance
 concerns.  Instead a lot of potentially destructive commands require
@@ -7181,32 +7620,9 @@ controls whether the system trash is used, which is the case by default.
 Nevertheless, <code>trash</code> isn&rsquo;t a member of <code>magit-no-confirm</code> - you
 might want to change that.
 </p>
-<p>Buffers visiting files tracked in the current repository are being
-refreshed before certain actions.  See <a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a>.
-This isn&rsquo;t as risky as it might seem.  If a buffer is modified
-(i.e. it contains changes that haven&rsquo;t been saved yet), then
-Emacs/Magit would refuse to revert it.  If the buffer has been saved
-resulting in what is seen by Git as an uncommitted change, then Git in
-turn would refuse to carry out the action that would cause these
-changes to be lost.  Since Git doesn&rsquo;t do anything, the file doesn&rsquo;t
-change on disk, and Emacs/Magit has nothing to revert.
-</p>
-<p>However if you do modify some files, visit the respective files in
-Emacs, somehow discard the changes (not using Magit and probably even
-outside Emacs), and then expect the respective file-visiting buffers
-to retain the uncommitted changes, then the automatic reverting would
-actually be harmful.  In other words if you use file-visiting buffers
-as a sort of &quot;staging area&quot;, then you should set <code>magit-revert-buffers</code>
-to <code>nil</code>.
-</p>
-<p>So far I have only heard from one user who uses such a workflow.  But
-because there might be some other users doing such things, and I don&rsquo;t
-want to be responsible for data loss, these reverts by default happen
-quite verbosely, allowing these few users to undo the reverts using
-the <code>undo</code> command and then disabling the automatic reverts for the
-future.  Most users should however keep automatic reverts turned on
-and instead configure it to be less verbose by setting
-<code>magit-revert-buffers</code> to <code>t</code> or even <code>silent</code>.
+<p>By default buffers visiting files are automatically reverted when the
+visited file changes on disk.  This isn&rsquo;t as risky as it might seem,
+but to make an informed decision you should see <a href="#Risk-of-Reverting-Automatically">Risk of Reverting Automatically</a>.
 </p>
 <hr>
 <a name="Performance"></a>
@@ -7217,143 +7633,130 @@ Previous: <a href="#Safety" accesskey="p" rel="prev">Safety</a>, Up: <a href="#E
 <a name="Performance-1"></a>
 <h4 class="subsection">9.2.2 Performance</h4>
 
-<p>Magit is slower than raw Git because it does more.  For example <code>git
-commit</code> creates a commit and that&rsquo;s it.  <code>magit-commit</code> also updates the
-current Magit buffer to make sure you are not looking at outdated
-information without noticing it.  To refresh the status buffer, Magit
-has to run Git a dozen times or more, making it slower than <code>git
-status</code>, but also much more informative.  Magit also optionally reverts
-file-visiting buffers, creates backups, runs hooks where third-party
-extensions can do their slow thing, etc.
+<p>After Magit has run <code>git</code> for side-effects, it also refreshes the
+current Magit buffer and the respective status buffer.  This is
+necessary because otherwise outdated information might be displayed
+without the user noticing.  Magit buffers are updated by recreating
+their content from scratch, which makes updating simpler and less
+error-prone, but also more costly.  Keeping it simple and just
+re-creating everything from scratch is an old design decision and
+departing from that will require major refactoring.
 </p>
-<p>I do care about performance and try to optimize for it as much as
-possible, but many features simply come with an inherent performance
-penalty.  When a feature is just too slow given certain usage and
-repository characteristics, then it often can be disabled, globally or
-on a per-repository basis.
+<p>I plan to do that in time for the next major release.  I also intend
+to create logs and diffs asynchronously, which should also help a lot
+but also requires major refactoring.
 </p>
-<p>But first a short list of performance issues that cannot easily be
-worked around:
+<p>Meanwhile you can tell Magit to only automatically refresh the current
+Magit buffer, but not the status buffer.  If you do that, then the
+status buffer is only refreshed automatically if it itself is the
+current buffer.
 </p>
-<ul>
-<li> Creating a new process on MS Windows is much slower than on
-POSIX-compatible systems.  This is a problem because Magit creates a
-lot of child processes to retrieve information from Git.  In the
-short run, only switching to a POSIX system can fix this.  Of course
-this could also be fixed in Windows itself, but I am just one unpaid
-person while Microsoft is a billion dollar company, so I will leave
-it to them to fix this grave flaw in their OS.
+<div class="lisp">
+<pre class="lisp">(setq magit-refresh-status-buffer nil)
+</pre></div>
 
+<p>You should also check whether any third-party packages have added
+anything to <code>magit-refresh-buffer-hook</code> and <code>magit-status-refresh-hook</code>,
+and if so whether those additions impacts performance significantly.
+</p>
+<p>If you have enabled any features that are disabled by default, then
+you should check whether they impact performance significantly.  It&rsquo;s
+likely that they were not enabled by default because it is known that
+they reduce performance at least in large repositories.
+</p>
+<p>If performance is only slow inside certain unusually large
+repositories, then you might want to disable certain features on a
+per-repository or per-repository-class basis only.  See
+<a href="#Per_002drepository-configuration">Per-repository configuration</a>.
+</p>
+<a name="Microsoft-Windows-Performance"></a>
+<h4 class="unnumberedsubsubsec">Microsoft Windows Performance</h4>
 
-</li><li> When showing logs, Magit limits the number of commits initially
-shown in the hope that this avoids unnecessary work.  When using
-<code>--graph</code> this unfortunately does not have the desired effect for
-large histories.  Junio said on the git mailing list
-(<a href="http://www.spinics.net/lists/git/msg232230.html">http://www.spinics.net/lists/git/msg232230.html</a>): &quot;<code>--graph</code> wants to
-compute the whole history and the max-count only affects the output
+<p>In order to update the status buffer, <code>git</code> has to be run a few dozen
+times.  That is only problematic on Microsoft Windows, because that
+operating system is exceptionally slow at starting processes.  Sadly
+this is an issue that can only be fixed by Microsoft itself, and they
+don&rsquo;t appear to particularly interested in doing so.
+</p>
+<p>Beside the subprocess issue, there also exist other Window-specific
+performance issues, some of which can be worked around.  The
+maintainers of &quot;Git for Windows&quot; try to reduce their effect, and in
+order to benefit from the latest performance tweaks, should always
+use the latest release.  Magit too tries to work around some
+Windows-specific issues.
+</p>
+<p>But all these efforts might not be enough, forcing users to make some
+changes themselves.  For example, according to
+<a href="http://stackoverflow.com/questions/4485059">http://stackoverflow.com/questions/4485059</a>, setting the following Git
+variables might also help:
+</p>
+<div class="example">
+<pre class="example">git config --global core.preloadindex true
+git config --global core.fscache true
+git config --global gc.auto 256
+</pre></div>
+
+<p>You should also check whether an anti-virus program is slowing things
+down.
+</p>
+<a name="Log-Performance"></a>
+<h4 class="unnumberedsubsubsec">Log Performance</h4>
+
+<p>When showing logs, Magit limits the number of commits initially shown
+in the hope that this avoids unnecessary work.  When using <code>--graph</code> is
+used, then this unfortunately does not have the desired effect for
+large histories.  Junio, Git&rsquo;s maintainer, said on the git mailing
+list (<a href="http://www.spinics.net/lists/git/msg232230.html">http://www.spinics.net/lists/git/msg232230.html</a>): &quot;<code>--graph</code> wants
+to compute the whole history and the max-count only affects the output
 phase after <code>--graph</code> does its computation&quot;.
-
+</p>
 <p>In other words, it&rsquo;s not that Git is slow at outputting the
-differences, or that Magit is slow at parsing the output - the
-problem is that Git first goes outside and has a smoke.
+differences, or that Magit is slow at parsing the output - the problem
+is that Git first goes outside and has a smoke.
 </p>
-<p>We actually work around this issue by limiting the commit not only
-using <code>-&lt;N&gt;</code> but also using a range.  But unfortunately that&rsquo;s not
-always possible.
+<p>We actually work around this issue by limiting the number of commits
+not only by using <code>-&lt;N&gt;</code> but by also using a range.  But unfortunately
+that&rsquo;s not always possible.
 </p>
-
-</li><li> Whenever &quot;something changes&quot;, Magit &quot;refreshes&quot; the status buffer and
-the current Magit buffer by recreating them from scratch.  This is
-an old design decision that we couldn&rsquo;t depart from easily.  And it
-has its benefits too - most importantly it&rsquo;s much simpler and less
-error prone to do it this way than to only refreshing &quot;what actually
-has changed&quot; (that would basically be a huge collection of special
-cases).  So for now at least, we don&rsquo;t avoid recreating the buffer
-content and instead focus on making doing so faster.
-</li></ul>
-
-<p>Now for the things that you can do to improve performance:
-</p>
-<p>Most optional features which can have a negative effect on performance
-are disabled by default.  So start by checking the options you have
-explicitly enabled.  Even the potentially slow features are expected
-to only lead to barely noticeable delays, but your mileage may vary.
-Also note that it is now possible to set options on a per-repository
-or per-repository-class basis.  See <a href="#Per_002drepository-configuration">Per-repository configuration</a>.
-</p>
-<p>You should check the values of at least the following variables:
-</p>
-<ul>
-<li> <code>magit-after-revert-hook</code>
-
-</li><li> <code>magit-diff-auto-show</code>
-
-</li><li> <code>magit-diff-highlight-hunk-body</code>
-
-</li><li> <code>magit-diff-highlight-indentation</code>
-
-</li><li> <code>magit-diff-highlight-trailing</code>
-
-</li><li> <code>magit-diff-paint-whitespace</code>
-
-</li><li> <code>magit-diff-refine-hunk</code>
-
-</li><li> <code>magit-log-arguments</code>, <code>magit-log-select-arguments</code>, and
-<code>magit-log-section-arguments</code>
-
 <p>In repositories with more than a few thousand commits <code>--graph</code> should
 never be a member of <code>magit-log-section-arguments</code>.  That variable is
-in the status buffer which is refreshed every time you run any Magit
-command.
+used in the status buffer which is refreshed every time you run any
+Magit command.
 </p>
-<p>Using <code>--color --graph</code> is even slower.  Magit uses code that is part
-of Emacs to turn control characters into faces.  That code is pretty
-slow and this is quite noticeable when showing a log with many
-branches and merges.  For that reason <code>--color</code> is not enabled by
-default anymore.  Consider leaving it at that.
+<p>Using <code>--color --graph</code> is even slower.  Magit uses code that is part of
+Emacs to turn control characters into faces.  That code is pretty slow
+and this is quite noticeable when showing a log with many branches and
+merges.  For that reason <code>--color</code> is not enabled by default anymore.
+Consider leaving it at that.
 </p>
+<a name="Diff-Performance"></a>
+<h4 class="unnumberedsubsubsec">Diff Performance</h4>
 
-</li><li> <code>magit-not-reverted-hook</code>
+<ul>
+<li> <code>magit-diff-highlight-hunk-body</code>, <code>magit-diff-highlight-indentation</code>,
+<code>magit-diff-highlight-trailing</code>, and <code>magit-diff-paint-whitespace</code>
 
-</li><li> <code>magit-refresh-buffer-hook</code>
 
-</li><li> <code>magit-refs-sections-hook</code>
+</li><li> <code>magit-diff-refine-hunk</code>
+</li></ul>
+
+<a name="Refs-Buffer-Performance"></a>
+<h4 class="unnumberedsubsubsec">Refs Buffer Performance</h4>
 
 <p>When refreshing the &quot;references buffer&quot; is slow, then that&rsquo;s usually
 because several hundred refs are being displayed.  The best way to
 address that is to display fewer refs, obviously.
 </p>
-<p>If you are not, or only mildly, interested in seeing the list of
-tags, then start by not displaying them:
+<p>If you are not, or only mildly, interested in seeing the list of tags,
+then start by not displaying them:
 </p>
 <div class="lisp">
 <pre class="lisp">(remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
 </pre></div>
 
 <p>Then you should also make sure that the listed remote branches
-actually all exist.  You can do so by pruning branches which no
-longer exist using <code>f-pa</code>.
-</p>
-
-</li><li> <code>magit-status-refresh-hook</code>
-
-</li><li> <code>magit-wip-after-apply-mode</code>
-
-</li><li> <code>magit-wip-after-save-mode</code>
-
-</li><li> <code>magit-wip-before-change-mode</code>
-</li></ul>
-
-<p>Also note that everything involving &quot;cherry commits&quot; is slow.
-</p>
-<p>If, after actually trying the above suggestions, performance is still
-bad, and the above does not contain a statement explaining why that is
-so in that particular case and that there is nothing that we can
-currently do about it, then comment on the appropriate existing issue
-(see <a href="https://github.com/magit/magit/labels/performance">https://github.com/magit/magit/labels/performance</a>), or if
-necessary open a new issue.  Note that &quot;something is slow, I am using
-v2.2&quot; is not helpful, you have to be a bit more specific.  Benchmarks
-are a start.
+actually all exist.  You can do so by pruning branches which no longer
+exist using <code>f-pa</code>.
 </p>
 <hr>
 <a name="Plumbing"></a>
@@ -8308,17 +8711,19 @@ made it into the manual yet, see <a href="https://github.com/magit/magit/wiki/FA
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#I-am-having-problems-committing" accesskey="3">I am having problems committing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#I-don_0027t-like-how-branching-and-pushing-works" accesskey="4">I don't like how branching and pushing works</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#I-don_0027t-understand-how-branching-and-pushing-work" accesskey="4">I don't understand how branching and pushing work</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#I-cannot-install-the-pre_002drequisits-for-Magit-v2" accesskey="5">I cannot install the pre-requisits for Magit v2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#I-don_0027t-like-the-key-binding-in-v24" accesskey="5">I don&rsquo;t like the key binding in v2.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#I-am-using-an-Emacs-release-older-than-v244" accesskey="6">I am using an Emacs release older than v24.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#I-cannot-install-the-pre_002drequisites-for-Magit-v2" accesskey="6">I cannot install the pre-requisites for Magit v2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#I-am-using-a-Git-release-older-than-v194" accesskey="7">I am using a Git release older than v1.9.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#I-am-using-an-Emacs-release-older-than-v244" accesskey="7">I am using an Emacs release older than v24.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#I-am-using-MS-Windows-and-cannot-push-with-Magit" accesskey="8">I am using MS Windows and cannot push with Magit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#I-am-using-a-Git-release-older-than-v194" accesskey="8">I am using a Git release older than v1.9.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#How-to-install-the-gitman-info-manual_003f" accesskey="9">How to install the gitman info manual?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#I-am-using-MS-Windows-and-cannot-push-with-Magit" accesskey="9">I am using MS Windows and cannot push with Magit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#How-to-install-the-gitman-info-manual_003f">How to install the gitman info manual?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#How-can-I-show-Git_0027s-output_003f">How can I show Git's output?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -8331,6 +8736,10 @@ made it into the manual yet, see <a href="https://github.com/magit/magit/wiki/FA
 <tr><td align="left" valign="top">&bull; <a href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f">How to show diffs for gpg-encrypted files?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Emacs-245-hangs-when-loading-Magit">Emacs 24.5 hangs when loading Magit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome">Symbol's value as function is void --some</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Where-is-the-branch-manager">Where is the branch manager</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8366,7 +8775,7 @@ commit.  Also see <a href="#Performance">Performance</a>.
 <a name="I-am-having-problems-committing"></a>
 <div class="header">
 <p>
-Next: <a href="#I-don_0027t-like-how-branching-and-pushing-works" accesskey="n" rel="next">I don't like how branching and pushing works</a>, Previous: <a href="#I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable" accesskey="p" rel="prev">I changed several thousand files at once and now Magit is unusable</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#I-don_0027t-understand-how-branching-and-pushing-work" accesskey="n" rel="next">I don't understand how branching and pushing work</a>, Previous: <a href="#I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable" accesskey="p" rel="prev">I changed several thousand files at once and now Magit is unusable</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="I-am-having-problems-committing-1"></a>
 <h3 class="section">A.3 I am having problems committing</h3>
@@ -8376,26 +8785,35 @@ emacsclient executable.  See <a href="with-editor.html#Configuring-With_002dEdit
 and <a href="with-editor.html#Debugging">(with-editor)Debugging</a>.
 </p>
 <hr>
-<a name="I-don_0027t-like-how-branching-and-pushing-works"></a>
+<a name="I-don_0027t-understand-how-branching-and-pushing-work"></a>
 <div class="header">
 <p>
-Next: <a href="#I-cannot-install-the-pre_002drequisits-for-Magit-v2" accesskey="n" rel="next">I cannot install the pre-requisits for Magit v2</a>, Previous: <a href="#I-am-having-problems-committing" accesskey="p" rel="prev">I am having problems committing</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#I-don_0027t-like-the-key-binding-in-v24" accesskey="n" rel="next">I don't like the key binding in v24</a>, Previous: <a href="#I-am-having-problems-committing" accesskey="p" rel="prev">I am having problems committing</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="I-don_0027t-like-how-branching-and-pushing-works-1"></a>
-<h3 class="section">A.4 I don&rsquo;t like how branching and pushing works</h3>
+<a name="I-don_0027t-understand-how-branching-and-pushing-work-1"></a>
+<h3 class="section">A.4 I don&rsquo;t understand how branching and pushing work</h3>
 
-<p>In v2.1 the default behavior of the branch and push commands changed,
-which has taken a few users by surprise and left more unsatisfied.
-The next release, v2.4, will try to address these concerns.
+<p>Please see <a href="#Branching">Branching</a> and <a href="http://emacsair.me/2016/01/18/magit-2.4">http://emacsair.me/2016/01/18/magit-2.4</a>
 </p>
 <hr>
-<a name="I-cannot-install-the-pre_002drequisits-for-Magit-v2"></a>
+<a name="I-don_0027t-like-the-key-binding-in-v24"></a>
 <div class="header">
 <p>
-Next: <a href="#I-am-using-an-Emacs-release-older-than-v244" accesskey="n" rel="next">I am using an Emacs release older than v244</a>, Previous: <a href="#I-don_0027t-like-how-branching-and-pushing-works" accesskey="p" rel="prev">I don't like how branching and pushing works</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#I-cannot-install-the-pre_002drequisites-for-Magit-v2" accesskey="n" rel="next">I cannot install the pre-requisites for Magit v2</a>, Previous: <a href="#I-don_0027t-understand-how-branching-and-pushing-work" accesskey="p" rel="prev">I don't understand how branching and pushing work</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="I-cannot-install-the-pre_002drequisits-for-Magit-v2-1"></a>
-<h3 class="section">A.5 I cannot install the pre-requisits for Magit v2</h3>
+<a name="I-don_0027t-like-the-key-binding-in-v2_002e4"></a>
+<h3 class="section">A.5 I don&rsquo;t like the key binding in v2.4</h3>
+
+<p>Please see <a href="http://emacsair.me/2016/01/1/restore-old-bindings">http://emacsair.me/2016/01/1/restore-old-bindings</a>.
+</p>
+<hr>
+<a name="I-cannot-install-the-pre_002drequisites-for-Magit-v2"></a>
+<div class="header">
+<p>
+Next: <a href="#I-am-using-an-Emacs-release-older-than-v244" accesskey="n" rel="next">I am using an Emacs release older than v244</a>, Previous: <a href="#I-don_0027t-like-the-key-binding-in-v24" accesskey="p" rel="prev">I don't like the key binding in v24</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="I-cannot-install-the-pre_002drequisites-for-Magit-v2-1"></a>
+<h3 class="section">A.6 I cannot install the pre-requisites for Magit v2</h3>
 
 <p>An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
 is available from <a href="http://magit.vc/elpa/v1">http://magit.vc/elpa/v1</a>.  But note that v1.4.2 is
@@ -8405,10 +8823,10 @@ obsolete and no longer maintained.
 <a name="I-am-using-an-Emacs-release-older-than-v244"></a>
 <div class="header">
 <p>
-Next: <a href="#I-am-using-a-Git-release-older-than-v194" accesskey="n" rel="next">I am using a Git release older than v194</a>, Previous: <a href="#I-cannot-install-the-pre_002drequisits-for-Magit-v2" accesskey="p" rel="prev">I cannot install the pre-requisits for Magit v2</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#I-am-using-a-Git-release-older-than-v194" accesskey="n" rel="next">I am using a Git release older than v194</a>, Previous: <a href="#I-cannot-install-the-pre_002drequisites-for-Magit-v2" accesskey="p" rel="prev">I cannot install the pre-requisites for Magit v2</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="I-am-using-an-Emacs-release-older-than-v24_002e4"></a>
-<h3 class="section">A.6 I am using an Emacs release older than v24.4</h3>
+<h3 class="section">A.7 I am using an Emacs release older than v24.4</h3>
 
 <p>At least Emacs v24.4 is required.  There is no way around it, if you
 want to use Magit v2.
@@ -8444,7 +8862,7 @@ is available from <a href="http://magit.vc/elpa/v1">http://magit.vc/elpa/v1</a>.
 Next: <a href="#I-am-using-MS-Windows-and-cannot-push-with-Magit" accesskey="n" rel="next">I am using MS Windows and cannot push with Magit</a>, Previous: <a href="#I-am-using-an-Emacs-release-older-than-v244" accesskey="p" rel="prev">I am using an Emacs release older than v244</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="I-am-using-a-Git-release-older-than-v1_002e9_002e4"></a>
-<h3 class="section">A.7 I am using a Git release older than v1.9.4</h3>
+<h3 class="section">A.8 I am using a Git release older than v1.9.4</h3>
 
 <p>At least Git v1.9.4 is required.  There is no way around it, if you
 want to use Magit v2.
@@ -8469,7 +8887,7 @@ is available from <a href="http://magit.vc/elpa/v1">http://magit.vc/elpa/v1</a>.
 Next: <a href="#How-to-install-the-gitman-info-manual_003f" accesskey="n" rel="next">How to install the gitman info manual?</a>, Previous: <a href="#I-am-using-a-Git-release-older-than-v194" accesskey="p" rel="prev">I am using a Git release older than v194</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="I-am-using-MS-Windows-and-cannot-push-with-Magit-1"></a>
-<h3 class="section">A.8 I am using MS Windows and cannot push with Magit</h3>
+<h3 class="section">A.9 I am using MS Windows and cannot push with Magit</h3>
 
 <p>It&rsquo;s almost certain that Magit is only incidental to this issue.  It
 is much more likely that this is a configuration issue, even if you
@@ -8485,7 +8903,7 @@ can push on the command line.
 Next: <a href="#How-can-I-show-Git_0027s-output_003f" accesskey="n" rel="next">How can I show Git's output?</a>, Previous: <a href="#I-am-using-MS-Windows-and-cannot-push-with-Magit" accesskey="p" rel="prev">I am using MS Windows and cannot push with Magit</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="How-to-install-the-gitman-info-manual_003f-1"></a>
-<h3 class="section">A.9 How to install the gitman info manual?</h3>
+<h3 class="section">A.10 How to install the gitman info manual?</h3>
 
 <p>Git&rsquo;s manpages can be exported as an info manual called <code>gitman</code>.
 Magit&rsquo;s own info manual links to nodes in that manual instead of the
@@ -8511,11 +8929,11 @@ Git release you have installed, and follow the instructions in
 manual, then instead of following that cross reference show
 the actual manpage using the function `man'.&quot;
   (let ((node (Info-get-token
-               (point) &quot;\\*note[ \n\t]+&quot;
-               &quot;\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?&quot;)))
+	       (point) &quot;\\*note[ \n\t]+&quot;
+	       &quot;\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?&quot;)))
     (if (and node (string-match &quot;^(gitman)\\(.+\\)&quot; node))
-        (progn (require 'man)
-               (man (match-string 1 node)))
+	(progn (require 'man)
+	       (man (match-string 1 node)))
       ad-do-it)))
 </pre></div>
 
@@ -8529,11 +8947,11 @@ variation with used the Emacs Lisp implementation provided by the
 manual, then instead of following that cross reference show
 the actual manpage using the function `woman'.&quot;
   (let ((node (Info-get-token
-               (point) &quot;\\*note[ \n\t]+&quot;
-               &quot;\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?&quot;)))
+	       (point) &quot;\\*note[ \n\t]+&quot;
+	       &quot;\\*note[ \n\t]+\\([^:]*\\):\\(:\\|[ \n\t]*(\\)?&quot;)))
     (if (and node (string-match &quot;^(gitman)\\(.+\\)&quot; node))
-        (progn (require 'woman)
-               (woman (match-string 1 node)))
+	(progn (require 'woman)
+	       (woman (match-string 1 node)))
       ad-do-it)))
 </pre></div>
 
@@ -8547,7 +8965,7 @@ just one of many issues.)
 Next: <a href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear" accesskey="n" rel="next">Expanding a file to show the diff causes it to disappear</a>, Previous: <a href="#How-to-install-the-gitman-info-manual_003f" accesskey="p" rel="prev">How to install the gitman info manual?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="How-can-I-show-Git_0027s-output_003f-1"></a>
-<h3 class="section">A.10 How can I show Git&rsquo;s output?</h3>
+<h3 class="section">A.11 How can I show Git&rsquo;s output?</h3>
 
 <p>To show the output of recently run git commands, press <code>$</code> (or, if that
 isn&rsquo;t available, <code>M-x magit-process-buffer</code>).  This will show a buffer
@@ -8567,7 +8985,7 @@ debugging purposes it&rsquo;s possible to do so anyway by setting
 Next: <a href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" accesskey="n" rel="next">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>, Previous: <a href="#How-can-I-show-Git_0027s-output_003f" accesskey="p" rel="prev">How can I show Git's output?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1"></a>
-<h3 class="section">A.11 Expanding a file to show the diff causes it to disappear</h3>
+<h3 class="section">A.12 Expanding a file to show the diff causes it to disappear</h3>
 
 <p>This is probably caused by a change of a <code>diff.*</code> Git variable.  You
 probably set that variable for a reason, and should therefore
@@ -8581,7 +8999,7 @@ only undo that setting in Magit by customizing
 Next: <a href="#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f" accesskey="n" rel="next">Can Magit be used as ediff-version-control-package?</a>, Previous: <a href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear" accesskey="p" rel="prev">Expanding a file to show the diff causes it to disappear</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer-1"></a>
-<h3 class="section">A.12 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</h3>
+<h3 class="section">A.13 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</h3>
 
 <p>Neither Magit nor &lsquo;git-commit&lsquo; fiddle with point in the buffer used to
 write commit messages, so something else must be doing it.
@@ -8610,7 +9028,7 @@ help:
 Next: <a href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f" accesskey="n" rel="next">How to show diffs for gpg-encrypted files?</a>, Previous: <a href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" accesskey="p" rel="prev">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1"></a>
-<h3 class="section">A.13 Can Magit be used as ediff-version-control-package?</h3>
+<h3 class="section">A.14 Can Magit be used as ediff-version-control-package?</h3>
 
 <p>No, it cannot.  For that to work the functions <code>ediff-magit-internal</code>
 and <code>ediff-magit-merge-internal</code> would have to be implemented, and they
@@ -8649,7 +9067,7 @@ conflicts.
 Next: <a href="#Emacs-245-hangs-when-loading-Magit" accesskey="n" rel="next">Emacs 245 hangs when loading Magit</a>, Previous: <a href="#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f" accesskey="p" rel="prev">Can Magit be used as ediff-version-control-package?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="How-to-show-diffs-for-gpg_002dencrypted-files_003f-1"></a>
-<h3 class="section">A.14 How to show diffs for gpg-encrypted files?</h3>
+<h3 class="section">A.15 How to show diffs for gpg-encrypted files?</h3>
 
 <p>Git supports showing diffs for encrypted files, but has to be told to
 do so.  Since Magit just uses Git to get the diffs, configuring Git
@@ -8664,16 +9082,39 @@ echo &quot;*.gpg filter=gpg diff=gpg&quot; &gt; .gitattributes
 <a name="Emacs-245-hangs-when-loading-Magit"></a>
 <div class="header">
 <p>
-Previous: <a href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f" accesskey="p" rel="prev">How to show diffs for gpg-encrypted files?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome" accesskey="n" rel="next">Symbol's value as function is void --some</a>, Previous: <a href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f" accesskey="p" rel="prev">How to show diffs for gpg-encrypted files?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Emacs-24_002e5-hangs-when-loading-Magit"></a>
-<h3 class="section">A.15 Emacs 24.5 hangs when loading Magit</h3>
+<h3 class="section">A.16 Emacs 24.5 hangs when loading Magit</h3>
 
 <p>This is actually triggered by loading Tramp.  See
 <a href="https://debbugs.gnu.org/cgi/bugreport.cgi?bug=20015">https://debbugs.gnu.org/cgi/bugreport.cgi?bug=20015</a> for details. You
 can work around the problem by setting
 <code>tramp-ssh-controlmaster-options</code>. Changing your DNS server (e.g. to
 Google&rsquo;s <code>8.8.8.8</code>) may also be sufficient to work around the issue.
+</p>
+<hr>
+<a name="Symbol_0027s-value-as-function-is-void-_002d_002dsome"></a>
+<div class="header">
+<p>
+Next: <a href="#Where-is-the-branch-manager" accesskey="n" rel="next">Where is the branch manager</a>, Previous: <a href="#Emacs-245-hangs-when-loading-Magit" accesskey="p" rel="prev">Emacs 245 hangs when loading Magit</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Symbol_0027s-value-as-function-is-void-_002d_002dsome-1"></a>
+<h3 class="section">A.17 Symbol&rsquo;s value as function is void &ndash;some</h3>
+
+<p>Update <code>dash</code>, restart Emacs, and then it will be defined.
+</p>
+<hr>
+<a name="Where-is-the-branch-manager"></a>
+<div class="header">
+<p>
+Previous: <a href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome" accesskey="p" rel="prev">Symbol's value as function is void --some</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Where-is-the-branch-manager-1"></a>
+<h3 class="section">A.18 Where is the branch manager</h3>
+
+<p><code>y</code> is bound to the command that shows the &quot;refs buffer&quot;, the successor
+of the &quot;branch manager&quot;.
 </p>
 <hr>
 <a name="Keystroke-Index"></a>
@@ -8816,19 +9257,16 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-b"><code>b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-b"><code>B b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-b"><code>b b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-b-B"><code>b B</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-c"><code>b c</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-d"><code>b d</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-b-e"><code>b e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-g"><code>B g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-k"><code>B k</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-b-n"><code>b n</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-r"><code>B r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-r"><code>b r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-s"><code>B s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-s"><code>b s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-u"><code>B u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-b-u"><code>b u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-b-U"><code>b U</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-x"><code>b x</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-C">C</a></th><td></td><td></td></tr>
@@ -8917,15 +9355,17 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-f-1"><code>f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-F"><code>F</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f-a"><code>f a</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-f-f"><code>f f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-F-F"><code>F F</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-f-e"><code>f e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-F-e"><code>F e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f-m"><code>f m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-f-o"><code>f o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-F-o"><code>F o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-f-p"><code>f p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-F-p"><code>F p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-f-u"><code>f u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-F-u"><code>F u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-G">G</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-g"><code>g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-G"><code>G</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-g"><code>g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-G"><code>G</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-J">J</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-j"><code>j</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-buffer">Diff buffer</a></td></tr>
@@ -8986,8 +9426,6 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dclone"><code>M-x magit-clone</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-setup">Repository setup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002ddescribe_002dsection"><code>M-x magit-describe-section</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-types-and-values">Section types and values</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002ddescribe_002dsection-1"><code>M-x magit-describe-section</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Matching-sections">Matching sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002ddiff_002dunpulled"><code>M-x magit-diff-unpulled</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diffing">Diffing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002ddiff_002dunpushed"><code>M-x magit-diff-unpushed</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diffing">Diffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dfind_002dfile"><code>M-x magit-find-file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Visiting-blobs">Visiting blobs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dfind_002dfile_002dother_002dwindow"><code>M-x magit-find-file-other-window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Visiting-blobs">Visiting blobs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dinit"><code>M-x magit-init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-setup">Repository setup</a></td></tr>
@@ -9028,13 +9466,12 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-P-1"><code>P</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-p-3"><code>p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-blobs">Minor mode for buffers visiting blobs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-e"><code>P e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-P-i"><code>P i</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-m"><code>P m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-o"><code>P o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-P-P"><code>P P</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-P-Q"><code>P Q</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-P-p"><code>P p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-t"><code>P t</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-T"><code>P T</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-P-u"><code>P u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-Q">Q</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-q"><code>q</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Quitting-Windows">Quitting Windows</a></td></tr>
@@ -9050,11 +9487,12 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-r-e-1"><code>r e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-r-f"><code>r f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-r-i"><code>r i</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-r-l"><code>r l</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-r-m"><code>r m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-r-o"><code>r o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-r-p"><code>r p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-r-r"><code>r r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-r-r-1"><code>r r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-r-s"><code>r s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-r-u"><code>r u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-r-w"><code>r w</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RET"><code>RET</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-buffer">Diff buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-RET-1"><code>RET</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
@@ -9224,7 +9662,9 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <a name="Command-Index-1"></a>
 <h2 class="appendix">Appendix C Command Index</h2>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Command-Index_cp_letter-F"><b>F</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Command-Index_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Command-Index_cp_letter-F"><b>F</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Command-Index_cp_letter-G"><b>G</b></a>
  &nbsp; 
@@ -9239,6 +9679,9 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 </td></tr></table>
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Command-Index_cp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-auto_002drevert_002dmode">auto-revert-mode</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Command-Index_cp_letter-F">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-forward_002dline">forward-line</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-rebase-sequences">Editing rebase sequences</a></td></tr>
@@ -9302,13 +9745,10 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch">magit-branch</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dand_002dcheckout">magit-branch-and-checkout</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002ddelete">magit-branch-delete</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dedit_002ddescription">magit-branch-edit-description</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dpopup">magit-branch-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002drename">magit-branch-rename</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dreset">magit-branch-reset</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dset_002dupstream">magit-branch-set-upstream</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dspinoff">magit-branch-spinoff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dunset_002dupstream">magit-branch-unset-upstream</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcheckout">magit-checkout</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcheckout_002dfile">magit-checkout-file</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resetting">Resetting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcherry">magit-cherry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Logging">Logging</a></td></tr>
@@ -9352,8 +9792,6 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dstaged">magit-diff-staged</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diffing">Diffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dswitch_002drange_002dtype">magit-diff-switch-range-type</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-diffs">Refreshing diffs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dtoggle_002drefine_002dhunk">magit-diff-toggle-refine-hunk</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-diffs">Refreshing diffs</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dunpulled">magit-diff-unpulled</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diffing">Diffing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dunpushed">magit-diff-unpushed</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diffing">Diffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dunstaged">magit-diff-unstaged</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diffing">Diffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dvisit_002dfile">magit-diff-visit-file</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-buffer">Diff buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dvisit_002dfile_002dworktree">magit-diff-visit-file-worktree</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-buffer">Diff buffer</a></td></tr>
@@ -9373,7 +9811,8 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dstage">magit-ediff-stage</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfetch">magit-fetch</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dall">magit-fetch-all</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dcurrent">magit-fetch-current</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dfrom_002dpushremote">magit-fetch-from-pushremote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dfrom_002dupstream">magit-fetch-from-upstream</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dpopup">magit-fetch-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfile_002dpopup">magit-file-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfind_002dfile">magit-find-file</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Visiting-blobs">Visiting blobs</a></td></tr>
@@ -9430,17 +9869,19 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dprocess">magit-process</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Viewing-Git-output">Viewing Git output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dprocess_002dkill">magit-process-kill</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Viewing-Git-output">Viewing Git output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpull">magit-pull</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dpull_002dcurrent">magit-pull-current</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpull_002dfrom_002dpushremote">magit-pull-from-pushremote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpull_002dfrom_002dupstream">magit-pull-from-upstream</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpull_002dpopup">magit-pull-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush">magit-push</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dcurrent">magit-push-current</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002delsewhere">magit-push-elsewhere</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dimplicitly">magit-push-implicitly</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dcurrent_002dto_002dpushremote">magit-push-current-to-pushremote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dcurrent_002dto_002dupstream">magit-push-current-to-upstream</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dimplicitly-args">magit-push-implicitly args</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dmatching">magit-push-matching</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dpopup">magit-push-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dquickly">magit-push-quickly</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dtag">magit-push-tag</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dtags">magit-push-tags</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dto_002dremote-remote-args">magit-push-to-remote remote args</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase">magit-rebase</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dabort">magit-rebase-abort</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dautosquash">magit-rebase-autosquash</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
@@ -9448,16 +9889,17 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dedit">magit-rebase-edit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dedit_002dcommit">magit-rebase-edit-commit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dinteractive">magit-rebase-interactive</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drebase_002donto_002dpushremote">magit-rebase-onto-pushremote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drebase_002donto_002dupstream">magit-rebase-onto-upstream</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dpopup">magit-rebase-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dreword_002dcommit">magit-rebase-reword-commit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dskip">magit-rebase-skip</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dsubset">magit-rebase-subset</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002drebase_002dunpushed">magit-rebase-unpushed</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Rebasing">Rebasing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dreflog_002dcurrent">magit-reflog-current</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reflog">Reflog</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dreflog_002dhead">magit-reflog-head</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reflog">Reflog</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dreflog_002dother">magit-reflog-other</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reflog">Reflog</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002drefresh">magit-refresh</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002drefresh_002dall">magit-refresh-all</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drefresh">magit-refresh</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drefresh_002dall">magit-refresh-all</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dremote_002dadd">magit-remote-add</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Remotes">Remotes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dremote_002dpopup">magit-remote-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Remotes">Remotes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dremote_002dremove">magit-remote-remove</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Remotes">Remotes</a></td></tr>
@@ -9574,7 +10016,9 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-with_002deditor_002dfinish-1">with-editor-finish</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-rebase-sequences">Editing rebase sequences</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Command-Index_cp_letter-F"><b>F</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Command-Index_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Command-Index_cp_letter-F"><b>F</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Command-Index_cp_letter-G"><b>G</b></a>
  &nbsp; 
@@ -9597,7 +10041,9 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <a name="Function-Index-1"></a>
 <h2 class="appendix">Appendix D Function Index</h2>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-Index_fn_letter-G"><b>G</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-Index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-Index_fn_letter-G"><b>G</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-I"><b>I</b></a>
  &nbsp; 
@@ -9608,6 +10054,9 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 </td></tr></table>
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Function-Index_fn_letter-A">A</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-auto_002drevert_002dmode-1"><code>auto-revert-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Function-Index_fn_letter-G">G</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-git_002dcommit_002dcheck_002dstyle_002dconventions"><code>git-commit-check-style-conventions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
@@ -9622,7 +10071,7 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Function-Index_fn_letter-M">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dadd_002dsection_002dhook"><code>magit-add-section-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-hooks">Section hooks</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dafter_002dsave_002drefresh_002dstatus"><code>magit-after-save-refresh-status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dafter_002dsave_002drefresh_002dstatus"><code>magit-after-save-refresh-status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbuiltin_002dcompleting_002dread"><code>magit-builtin-completing-read</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Completion-and-confirmation">Completion and confirmation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcall_002dgit"><code>magit-call-git</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Calling-Git-for-effect">Calling Git for effect</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcall_002dprocess"><code>magit-call-process</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Calling-Git-for-effect">Calling Git for effect</a></td></tr>
@@ -9653,10 +10102,13 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dbisect_002dlog"><code>magit-insert-bisect-log</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dbisect_002doutput"><code>magit-insert-bisect-output</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dbisect_002drest"><code>magit-insert-bisect-rest</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dhead_002dheader"><code>magit-insert-head-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002ddiff_002dfilter_002dheader"><code>magit-insert-diff-filter-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002derror_002dheader"><code>magit-insert-error-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dhead_002dbranch_002dheader"><code>magit-insert-head-branch-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dheading"><code>magit-insert-heading</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Creating-sections">Creating sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dlocal_002dbranches"><code>magit-insert-local-branches</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-sections">References sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dmerge_002dlog"><code>magit-insert-merge-log</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dpush_002dbranch_002dheader"><code>magit-insert-push-branch-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002drebase_002dsequence"><code>magit-insert-rebase-sequence</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002drecent_002dcommits"><code>magit-insert-recent-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dremote_002dbranches"><code>magit-insert-remote-branches</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-sections">References sections</a></td></tr>
@@ -9671,15 +10123,17 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dtags_002dheader"><code>magit-insert-tags-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dtracked_002dfiles"><code>magit-insert-tracked-files</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dcherries"><code>magit-insert-unpulled-cherries</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dcommits"><code>magit-insert-unpulled-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dfrom_002dpushremote"><code>magit-insert-unpulled-from-pushremote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dfrom_002dupstream"><code>magit-insert-unpulled-from-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dmodule_002dcommits"><code>magit-insert-unpulled-module-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dor_002drecent_002dcommits"><code>magit-insert-unpulled-or-recent-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dcherries"><code>magit-insert-unpushed-cherries</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dcommits"><code>magit-insert-unpushed-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dmodule_002dcommits"><code>magit-insert-unpushed-module-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dto_002dpushremote"><code>magit-insert-unpushed-to-pushremote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dto_002dupstream"><code>magit-insert-unpushed-to-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunstaged_002dchanges"><code>magit-insert-unstaged-changes</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002duntracked_002dfiles"><code>magit-insert-untracked-files</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dupstream_002dheader"><code>magit-insert-upstream-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dupstream_002dbranch_002dheader"><code>magit-insert-upstream-branch-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002duser_002dheader"><code>magit-insert-user-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dmaybe_002dshow_002dmore_002dcommits"><code>magit-log-maybe-show-more-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-movement">Section movement</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dmaybe_002dupdate_002dblob_002dbuffer"><code>magit-log-maybe-update-blob-buffer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-movement">Section movement</a></td></tr>
@@ -9688,6 +10142,8 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dmode_002ddisplay_002dbuffer"><code>magit-mode-display-buffer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-buffers">Refreshing buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dmode_002dquit_002dwindow"><code>magit-mode-quit-window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Quitting-Windows">Quitting Windows</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dmode_002dsetup"><code>magit-mode-setup</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-buffers">Refreshing buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dimplicitly"><code>magit-push-implicitly</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dto_002dremote"><code>magit-push-to-remote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dregion_002dsections"><code>magit-region-sections</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-selection">Section selection</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dregion_002dvalues"><code>magit-region-values</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-selection">Section selection</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drestore_002dwindow_002dconfiguration"><code>magit-restore-window-configuration</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Quitting-Windows">Quitting Windows</a></td></tr>
@@ -9728,7 +10184,9 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-with_002deditor_002dusage_002dmessage"><code>with-editor-usage-message</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-Index_fn_letter-G"><b>G</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-Index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-Index_fn_letter-G"><b>G</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-Index_fn_letter-I"><b>I</b></a>
  &nbsp; 
@@ -9747,13 +10205,36 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <a name="Variable-Index-1"></a>
 <h2 class="appendix">Appendix E Variable Index</h2>
 
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Variable-Index_vr_letter-G"><b>G</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Variable-Index_vr_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-Index_vr_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-Index_vr_letter-G"><b>G</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Variable-Index_vr_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-Index_vr_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-Index_vr_letter-R"><b>R</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="index-vr" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Variable-Index_vr_letter-A">A</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-auto_002drevert_002dinterval"><code>auto-revert-interval</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-auto_002drevert_002dstop_002don_002duser_002dinput"><code>auto-revert-stop-on-user-input</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-auto_002drevert_002duse_002dnotify"><code>auto-revert-use-notify</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-auto_002drevert_002dverbose"><code>auto-revert-verbose</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Variable-Index_vr_letter-B">B</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-branch_002eautoSetupMerge"><code>branch.autoSetupMerge</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-branch_002eautoSetupRebase"><code>branch.autoSetupRebase</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-branch_002eNAME_002edescription"><code>branch.NAME.description</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-branch_002eNAME_002emerge"><code>branch.NAME.merge</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-branch_002eNAME_002epushRemote"><code>branch.NAME.pushRemote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-branch_002eNAME_002erebase"><code>branch.NAME.rebase</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-branch_002eNAME_002eremote"><code>branch.NAME.remote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Variable-Index_vr_letter-G">G</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-git_002dcommit_002dfill_002dcolumn"><code>git-commit-fill-column</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
@@ -9765,17 +10246,22 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-git_002drebase_002dauto_002dadvance"><code>git-rebase-auto-advance</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-rebase-sequences">Editing rebase sequences</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-git_002drebase_002dconfirm_002dcancel"><code>git-rebase-confirm-cancel</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-rebase-sequences">Editing rebase sequences</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-git_002drebase_002dshow_002dinstructions"><code>git-rebase-show-instructions</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-rebase-sequences">Editing rebase sequences</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-global_002dauto_002drevert_002dmode"><code>global-auto-revert-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-global_002dmagit_002dfile_002dmode"><code>global-magit-file-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Variable-Index_vr_letter-M">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dafter_002drevert_002dhook"><code>magit-after-revert-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dauto_002drevert_002dimmediately"><code>magit-auto-revert-immediately</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dauto_002drevert_002dmode"><code>magit-auto-revert-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dauto_002drevert_002dtracked_002donly"><code>magit-auto-revert-tracked-only</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dblame_002dgoto_002dchunk_002dhook"><code>magit-blame-goto-chunk-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Blaming">Blaming</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dblame_002dheading_002dformat"><code>magit-blame-heading-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Blaming">Blaming</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dblame_002dshow_002dheadings"><code>magit-blame-show-headings</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Blaming">Blaming</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dblame_002dtime_002dformat"><code>magit-blame-time-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Blaming">Blaming</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dprefer_002dremote_002dupstream"><code>magit-branch-prefer-remote-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dread_002dupstream_002dfirst"><code>magit-branch-read-upstream-first</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbuffer_002dname_002dformat"><code>magit-buffer-name-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Naming-Buffers">Naming Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbury_002dbuffer_002dfunction"><code>magit-bury-buffer-function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Quitting-Windows">Quitting Windows</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dclone_002dset_002dremote_002epushDefault"><code>magit-clone-set-remote.pushDefault</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-setup">Repository setup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcommit_002dask_002dto_002dstage"><code>magit-commit-ask-to-stage</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Initiating-a-commit">Initiating a commit</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcommit_002dextend_002doverride_002ddate"><code>magit-commit-extend-override-date</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Initiating-a-commit">Initiating a commit</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcommit_002dreword_002doverride_002ddate"><code>magit-commit-reword-override-date</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Initiating-a-commit">Initiating a commit</a></td></tr>
@@ -9800,15 +10286,15 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dshow_002dmargin"><code>magit-log-show-margin</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Log-Buffer">Log Buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dshow_002drefname_002dafter_002dsummary"><code>magit-log-show-refname-after-summary</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Log-Buffer">Log Buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dno_002dconfirm"><code>magit-no-confirm</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Completion-and-confirmation">Completion and confirmation</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dnot_002dreverted_002dhook"><code>magit-not-reverted-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpop_002drevision_002dstack_002dformat"><code>magit-pop-revision-stack-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpost_002ddisplay_002dbuffer_002dhook"><code>magit-post-display-buffer-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpre_002ddisplay_002dbuffer_002dhook"><code>magit-pre-display-buffer-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dprocess_002draise_002derror"><code>magit-process-raise-error</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Calling-Git-for-effect">Calling Git for effect</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dalways_002dverify"><code>magit-push-always-verify</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dcurrent_002dset_002dremote_002dif_002dmissing"><code>magit-push-current-set-remote-if-missing</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefresh_002dargs"><code>magit-refresh-args</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-buffers">Refreshing buffers</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002drefresh_002dbuffer_002dhook"><code>magit-refresh-buffer-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drefresh_002dbuffer_002dhook"><code>magit-refresh-buffer-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefresh_002dfunction"><code>magit-refresh-function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-buffers">Refreshing buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drefresh_002dstatus_002dbuffer"><code>magit-refresh-status-buffer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefs_002dindent_002dcherry_002dlines"><code>magit-refs-indent-cherry-lines</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefs_002dlocal_002dbranch_002dformat"><code>magit-refs-local-branch-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefs_002dremote_002dbranch_002dformat"><code>magit-refs-remote-branch-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
@@ -9816,13 +10302,13 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002drefs_002dshow_002dcommit_002dcount"><code>magit-refs-show-commit-count</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefs_002dshow_002dmargin"><code>magit-refs-show-margin</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefs_002dtags_002dformat"><code>magit-refs-tags-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dremote_002dadd_002dset_002dremote_002epushDefault"><code>magit-remote-add-set-remote.pushDefault</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Remotes">Remotes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drepository_002ddirectories"><code>magit-repository-directories</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-buffer">Status buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drepository_002ddirectories_002ddepth"><code>magit-repository-directories-depth</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-buffer">Status buffer</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002drevert_002dbuffers-1"><code>magit-revert-buffers</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-refresh-and-revert">Automatic refresh and revert</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drevision_002dinsert_002drelated_002drefs"><code>magit-revision-insert-related-refs</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Revision-buffer">Revision buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drevision_002dshow_002dgravatar"><code>magit-revision-show-gravatar</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Revision-buffer">Revision buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002droot_002dsection"><code>magit-root-section</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Matching-sections">Matching sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsave_002drepository_002dbuffers"><code>magit-save-repository-buffers</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-save">Automatic save</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsave_002drepository_002dbuffers"><code>magit-save-repository-buffers</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Saving-of-File_002dVisiting-Buffers">Automatic Saving of File-Visiting Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dsection_002dmovement_002dhook"><code>magit-section-movement-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-movement">Section movement</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dsection_002dset_002dvisibility_002dhook"><code>magit-section-set-visibility-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-visibility">Section visibility</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dsection_002dshow_002dchild_002dcount"><code>magit-section-show-child-count</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-options">Section options</a></td></tr>
@@ -9841,10 +10327,24 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002dwip_002dbefore_002dchange_002dmode_002dlighter"><code>magit-wip-before-change-mode-lighter</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wip-modes">Wip modes</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dwip_002dnamespace"><code>magit-wip-namespace</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wip-modes">Wip modes</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Variable-Index_vr_letter-P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-pull_002erebase"><code>pull.rebase</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Variable-Index_vr_letter-R">R</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-remote_002epushDefault"><code>remote.pushDefault</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Variable-Index_vr_letter-G"><b>G</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Variable-Index_vr_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-Index_vr_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-Index_vr_letter-G"><b>G</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Variable-Index_vr_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-Index_vr_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Variable-Index_vr_letter-R"><b>R</b></a>
  &nbsp; 
 </td></tr></table>
 

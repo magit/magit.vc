@@ -5,7 +5,7 @@ this library implements a similar abstraction; a new kind of prefix
 command that is associated with a specific set of infix arguments and
 suffix commands.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -100,19 +100,19 @@ infix arguments, and then also one of its suffix commands.
   'magit-commands
   :man-page &quot;git-tag&quot;
   :switches '((?a &quot;Annotate&quot; &quot;--annotate&quot;)
-              (?s &quot;Sign&quot;     &quot;--sign&quot;)
-              (?f &quot;Force&quot;    &quot;--force&quot;))
+	      (?s &quot;Sign&quot;     &quot;--sign&quot;)
+	      (?f &quot;Force&quot;    &quot;--force&quot;))
   :actions  '((?t &quot;Create&quot;   magit-tag)
-              (?k &quot;Delete&quot;   magit-tag-delete)
-              (?p &quot;Prune&quot;    magit-tag-prune))
+	      (?k &quot;Delete&quot;   magit-tag-delete)
+	      (?p &quot;Prune&quot;    magit-tag-prune))
   :default-action 'magit-tag)
 
 ;;;###autoload
 (defun magit-tag (name rev &amp;optional args)
   &quot;Create a new tag with the given NAME at REV.&quot;
   (interactive (list (magit-read-tag &quot;Tag name&quot;)
-                     (magit-read-branch-or-commit &quot;Place tag on&quot;)
-                     (magit-tag-arguments)))
+		     (magit-read-branch-or-commit &quot;Place tag on&quot;)
+		     (magit-tag-arguments)))
   (magit-run-git-with-editor &quot;tag&quot; args name rev))
 </pre></div>
 

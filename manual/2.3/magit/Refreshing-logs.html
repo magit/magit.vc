@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Refreshing logs</title>
+
+<meta name="description" content="Magit User Manual: Refreshing logs">
+<meta name="keywords" content="Magit User Manual: Refreshing logs">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Logging.html#Logging" rel="up" title="Logging">
+<link href="Log-Buffer.html#Log-Buffer" rel="next" title="Log Buffer">
+<link href="Logging.html#Logging" rel="prev" title="Logging">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Refreshing-logs"></a>
+<div class="header">
+<p>
+Next: <a href="Log-Buffer.html#Log-Buffer" accesskey="n" rel="next">Log Buffer</a>, Up: <a href="Logging.html#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Refreshing-logs-1"></a>
+<h4 class="subsection">5.2.1 Refreshing logs</h4>
+
+<p>The prefix command <code>magit-log-refresh-popup</code>, on <code>L</code>, can be used to
+change the log arguments used in the current buffer, without changing
+which log is shown.  This works in dedicated log buffers, but also in
+the status buffer.
+</p>
+<dl compact="compact">
+<dd><a name="index-L"></a>
+<a name="index-magit_002dlog_002drefresh_002dpopup"></a>
+</dd>
+<dt><kbd>L</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-refresh-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-L-g"></a>
+<a name="index-magit_002dlog_002drefresh"></a>
+</dd>
+<dt><kbd>L g</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-refresh</code>)</dt>
+<dd>
+<p>This suffix command sets the local log arguments for the current
+buffer.
+</p>
+<a name="index-L-s"></a>
+<a name="index-magit_002dlog_002dset_002ddefault_002darguments"></a>
+</dd>
+<dt><kbd>L s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-set-default-arguments</code>)</dt>
+<dd>
+<p>This suffix command sets the default log arguments for buffers of
+the same type as that of the current buffer.  Other existing buffers
+of the same type are not affected because their local values have
+already been initialized.
+</p>
+<a name="index-L-w"></a>
+<a name="index-magit_002dlog_002dsave_002ddefault_002darguments"></a>
+</dd>
+<dt><kbd>L w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-save-default-arguments</code>)</dt>
+<dd>
+<p>This suffix command sets the default log arguments for buffers of
+the same type as that of the current buffer, and saves the value for
+future sessions.  Other existing buffers of the same type are not
+affected because their local values have already been initialized.
+</p>
+<a name="index-L-t"></a>
+<a name="index-magit_002dtoggle_002dmargin"></a>
+</dd>
+<dt><kbd>L t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-toggle-margin</code>)</dt>
+<dd>
+<p>Show or hide the margin.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

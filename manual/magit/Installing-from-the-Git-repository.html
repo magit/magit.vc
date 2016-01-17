@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -89,7 +89,7 @@ manually from its development repository, but I won&rsquo;t cover that here.
 <p>Then clone the Magit repository:
 </p>
 <div class="example">
-<pre class="example">$ git clone git://github.com/magit/magit.git ~/.emacs.d/site-lisp/magit
+<pre class="example">$ git clone https://github.com/magit/magit.git ~/.emacs.d/site-lisp/magit
 $ cd ~/.emacs.d/site-lisp/magit
 </pre></div>
 
@@ -117,7 +117,7 @@ then you have to tell <code>make</code> where to find it.  To do so create
 (with-eval-after-load 'info
   (info-initialize)
   (add-to-list 'Info-directory-list
-               &quot;~/.emacs.d/site-lisp/magit/Documentation/&quot;))
+	       &quot;~/.emacs.d/site-lisp/magit/Documentation/&quot;))
 </pre></div>
 
 <p>Note that you have to add the <code>lisp/</code> subdirectory to the <code>load-path</code>,

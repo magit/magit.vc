@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -167,15 +167,31 @@ instead of &quot;Stashes:&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-magit_002dinsert_002dunpulled_002dcommits"></a>Function: <strong>magit-insert-unpulled-commits</strong></dt>
+<dt><a name="index-magit_002dinsert_002dunpulled_002dfrom_002dupstream"></a>Function: <strong>magit-insert-unpulled-from-upstream</strong></dt>
 <dd>
-<p>Insert section showing unpulled commits.
+<p>Insert section showing commits that haven&rsquo;t been pulled from the
+upstream branch yet.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-magit_002dinsert_002dunpushed_002dcommits"></a>Function: <strong>magit-insert-unpushed-commits</strong></dt>
+<dt><a name="index-magit_002dinsert_002dunpulled_002dfrom_002dpushremote"></a>Function: <strong>magit-insert-unpulled-from-pushremote</strong></dt>
 <dd>
-<p>Insert section showing unpushed commits.
+<p>Insert section showing commits that haven&rsquo;t been pulled from the
+push-remote branch yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpushed_002dto_002dupstream"></a>Function: <strong>magit-insert-unpushed-to-upstream</strong></dt>
+<dd>
+<p>Insert section showing commits that haven&rsquo;t been pushed to the
+upstream yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpushed_002dto_002dpushremote"></a>Function: <strong>magit-insert-unpushed-to-pushremote</strong></dt>
+<dd>
+<p>Insert section showing commits that haven&rsquo;t been pushed to the
+push-remote yet.
 </p></dd></dl>
 
 <p>The following functions can also be added to the above hook:

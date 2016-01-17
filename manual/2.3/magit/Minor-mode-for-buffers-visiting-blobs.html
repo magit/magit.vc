@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Minor mode for buffers visiting blobs</title>
+
+<meta name="description" content="Magit User Manual: Minor mode for buffers visiting blobs">
+<meta name="keywords" content="Magit User Manual: Minor mode for buffers visiting blobs">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Miscellaneous.html#Miscellaneous" rel="up" title="Miscellaneous">
+<link href="Customizing.html#Customizing" rel="next" title="Customizing">
+<link href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files" rel="prev" title="Minor mode for buffers visiting files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Minor-mode-for-buffers-visiting-blobs"></a>
+<div class="header">
+<p>
+Previous: <a href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files" accesskey="p" rel="prev">Minor mode for buffers visiting files</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Minor-mode-for-buffers-visiting-blobs-1"></a>
+<h3 class="section">8.7 Minor mode for buffers visiting blobs</h3>
+
+<p>The <code>magit-blob-mode</code> enables certain Magit features in blob-visiting
+buffers.  Such buffers can be created using <code>magit-find-file</code> and some
+of the commands mentioned below, which also take care of turning on
+this minor mode.  Currently this mode only establishes a few key
+bindings, but this might be e
+</p>
+<dl compact="compact">
+<dd><a name="index-p-3"></a>
+<a name="index-magit_002dblob_002dprevious-1"></a>
+</dd>
+<dt><kbd>p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blob-previous</code>)</dt>
+<dd>
+<p>Visit the previous blob which modified the current file.
+</p>
+<a name="index-n-3"></a>
+<a name="index-magit_002dblob_002dnext"></a>
+</dd>
+<dt><kbd>n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blob-next</code>)</dt>
+<dd>
+<p>Visit the next blob which modified the current file.
+</p>
+<a name="index-q-3"></a>
+<a name="index-magit_002dkill_002dthis_002dbuffer"></a>
+</dd>
+<dt><kbd>q</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-kill-this-buffer</code>)</dt>
+<dd>
+<p>Kill the current buffer.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

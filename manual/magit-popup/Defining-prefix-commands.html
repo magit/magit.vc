@@ -5,7 +5,7 @@ this library implements a similar abstraction; a new kind of prefix
 command that is associated with a specific set of infix arguments and
 suffix commands.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -182,6 +182,13 @@ VALUE is a list whose members have the form (KEY DESC OPTION
 READER), see <code>magit-define-popup-option</code> for details.
 </p>
 
+</li><li> <code>:variables</code>
+
+<p>Git variables which can be set from the popup.  VALUE is a list
+whose members have the form (KEY DESC COMMAND FORMATTER), see
+<code>magit-define-popup-variable</code> for details.
+</p>
+
 </li><li> <code>:default-arguments</code>
 
 <p>The default arguments, a list of switches (which are then enabled
@@ -189,25 +196,37 @@ by default) and options with there default values, as in
 &quot;&ndash;OPT~OPTVAL\&quot;.
 </p>
 
-</li><li> <code>:man-page</code>
-
-<p>The name of the manpage to be displayed when the user requests
-help for an argument.
-</p></li></ul>
-<p>When MODE is <code>magit-popup-sequence-mode</code>, then the following keywords
-are also meaningful:
-</p>
-<ul>
-<li> <code>:sequence-predicate</code>
+</li><li> <code>:sequence-predicate</code>
 
 <p>When this function returns non-nil, then the popup uses
-<code>:sequence-actions</code> instead of <code>:actions</code>.
+<code>:sequence-actions</code> instead of <code>:actions</code>, and does not show the
+<code>:switches</code> and <code>:options</code>.
 </p>
 
 </li><li> <code>:sequence-actions</code>
 
 <p>The actions which can be invoked from the popup, when
 <code>:sequence-predicate</code> returns non-nil.
+</p>
+
+</li><li> <code>:setup-function</code>
+
+<p>When this function is specified, then it is used instead of
+<code>magit-popup-default-setup</code>.
+</p>
+
+</li><li> <code>:refresh-function</code>
+
+<p>When this function is specified, then it is used instead of
+calling <code>magit-popup-insert-section</code> three times with symbols
+<code>magit-popup-switch-button</code>, <code>magit-popup-option-button</code>, and finally
+<code>magit-popup-action-button</code> as argument.
+</p>
+
+</li><li> <code>:man-page</code>
+
+<p>The name of the manpage to be displayed when the user requests
+help for an argument.
 </p></li></ul>
 </dd></dl>
 

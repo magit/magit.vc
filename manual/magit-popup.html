@@ -5,7 +5,7 @@ this library implements a similar abstraction; a new kind of prefix
 command that is associated with a specific set of infix arguments and
 suffix commands.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -102,7 +102,7 @@ command that is associated with a specific set of infix arguments and
 suffix commands.
 </p>
 <blockquote>
-<p>Copyright (C) 2015 Jonas Bernoulli &lt;jonas@bernoul.li&gt;
+<p>Copyright (C) 2015-2016 Jonas Bernoulli &lt;jonas@bernoul.li&gt;
 </p>
 <p>You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -462,6 +462,29 @@ placed before or after AT, depending on PREPEND.
 </p></dd></dl>
 
 <dl>
+<dt><a name="index-magit_002ddefine_002dpopup_002dvariable"></a>Function: <strong>magit-define-popup-variable</strong> <em>popup key desc command formatter &amp;optional at prepend</em></dt>
+<dd>
+<p>In POPUP, define KEY as COMMAND.
+</p>
+<p>POPUP is a popup command defined using <code>magit-define-popup</code>.  COMMAND
+is a command which calls <code>magit-popup-set-variable</code>.  FORMATTER is a
+function which calls <code>magit-popup-format-variable</code>.  These two
+functions have to be called with the same arguments.
+</p>
+<p>KEY is a character representing the event used interactively call
+the COMMAND.
+</p>
+<p>DESC is the variable or a representation thereof.  It&rsquo;s not actually
+used for anything.
+</p>
+<p>COMMAND is inserted after all other commands already defined for
+POPUP, unless optional PREPEND is non-nil, in which case it is
+placed first.  If optional AT is non-nil then it should be the KEY
+of another command already defined for POPUP, the command is then
+placed before or after AT, depending on PREPEND.&quot;
+</p></dd></dl>
+
+<dl>
 <dt><a name="index-magit_002dchange_002dpopup_002dkey"></a>Function: <strong>magit-change-popup-key</strong> <em>popup type from to</em></dt>
 <dd>
 <p>In POPUP, bind TO to what FROM was bound to.  TYPE is one of
@@ -530,7 +553,7 @@ directly invoke the popup&rsquo;s default action.
 
 <p>Ignore prefix arguments.
 </p></li></ul>
-<p>This option can be overriden for individual popups.
+<p>This option can be overridden for individual popups.
 <code>magit-show-refs-popup</code> for example defaults to invoking the default
 action directly.  It only shows the popup buffer when a prefix
 argument is used.  See <a href="#Customizing-existing-popups">Customizing existing popups</a>.
@@ -540,6 +563,15 @@ argument is used.  See <a href="#Customizing-existing-popups">Customizing existi
 <dt><a name="index-magit_002dpopup_002dmanpage_002dpackage"></a>User Option: <strong>magit-popup-manpage-package</strong></dt>
 <dd>
 <p>The Emacs package used to display man-pages, one of <code>man</code> or <code>woman</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dpopup_002ddisplay_002dbuffer_002daction"></a>User Option: <strong>magit-popup-display-buffer-action</strong></dt>
+<dd>
+<p>The option controls how the window used to display a popup buffer is
+created.  Popup buffers are displayed using <code>display-buffer</code> with the
+value of this option as ACTION argument.  You can also set this to
+nil and instead add an entry to <code>display-buffer-alist</code>.
 </p></dd></dl>
 
 <p>To emphasize the default action by making it bold use this:
@@ -583,19 +615,19 @@ infix arguments, and then also one of its suffix commands.
   'magit-commands
   :man-page &quot;git-tag&quot;
   :switches '((?a &quot;Annotate&quot; &quot;--annotate&quot;)
-              (?s &quot;Sign&quot;     &quot;--sign&quot;)
-              (?f &quot;Force&quot;    &quot;--force&quot;))
+	      (?s &quot;Sign&quot;     &quot;--sign&quot;)
+	      (?f &quot;Force&quot;    &quot;--force&quot;))
   :actions  '((?t &quot;Create&quot;   magit-tag)
-              (?k &quot;Delete&quot;   magit-tag-delete)
-              (?p &quot;Prune&quot;    magit-tag-prune))
+	      (?k &quot;Delete&quot;   magit-tag-delete)
+	      (?p &quot;Prune&quot;    magit-tag-prune))
   :default-action 'magit-tag)
 
 ;;;###autoload
 (defun magit-tag (name rev &amp;optional args)
   &quot;Create a new tag with the given NAME at REV.&quot;
   (interactive (list (magit-read-tag &quot;Tag name&quot;)
-                     (magit-read-branch-or-commit &quot;Place tag on&quot;)
-                     (magit-tag-arguments)))
+		     (magit-read-branch-or-commit &quot;Place tag on&quot;)
+		     (magit-tag-arguments)))
   (magit-run-git-with-editor &quot;tag&quot; args name rev))
 </pre></div>
 
@@ -723,6 +755,13 @@ VALUE is a list whose members have the form (KEY DESC OPTION
 READER), see <code>magit-define-popup-option</code> for details.
 </p>
 
+</li><li> <code>:variables</code>
+
+<p>Git variables which can be set from the popup.  VALUE is a list
+whose members have the form (KEY DESC COMMAND FORMATTER), see
+<code>magit-define-popup-variable</code> for details.
+</p>
+
 </li><li> <code>:default-arguments</code>
 
 <p>The default arguments, a list of switches (which are then enabled
@@ -730,25 +769,37 @@ by default) and options with there default values, as in
 &quot;&ndash;OPT~OPTVAL\&quot;.
 </p>
 
-</li><li> <code>:man-page</code>
-
-<p>The name of the manpage to be displayed when the user requests
-help for an argument.
-</p></li></ul>
-<p>When MODE is <code>magit-popup-sequence-mode</code>, then the following keywords
-are also meaningful:
-</p>
-<ul>
-<li> <code>:sequence-predicate</code>
+</li><li> <code>:sequence-predicate</code>
 
 <p>When this function returns non-nil, then the popup uses
-<code>:sequence-actions</code> instead of <code>:actions</code>.
+<code>:sequence-actions</code> instead of <code>:actions</code>, and does not show the
+<code>:switches</code> and <code>:options</code>.
 </p>
 
 </li><li> <code>:sequence-actions</code>
 
 <p>The actions which can be invoked from the popup, when
 <code>:sequence-predicate</code> returns non-nil.
+</p>
+
+</li><li> <code>:setup-function</code>
+
+<p>When this function is specified, then it is used instead of
+<code>magit-popup-default-setup</code>.
+</p>
+
+</li><li> <code>:refresh-function</code>
+
+<p>When this function is specified, then it is used instead of
+calling <code>magit-popup-insert-section</code> three times with symbols
+<code>magit-popup-switch-button</code>, <code>magit-popup-option-button</code>, and finally
+<code>magit-popup-action-button</code> as argument.
+</p>
+
+</li><li> <code>:man-page</code>
+
+<p>The name of the manpage to be displayed when the user requests
+help for an argument.
 </p></li></ul>
 </dd></dl>
 

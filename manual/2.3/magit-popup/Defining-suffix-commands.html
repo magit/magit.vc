@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Taking inspiration from regular prefix commands and prefix arguments,
+this library implements a similar abstraction; a new kind of prefix
+command that is associated with a specific set of infix arguments and
+suffix commands.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit-Popup User Manual: Defining suffix commands</title>
+
+<meta name="description" content="Magit-Popup User Manual: Defining suffix commands">
+<meta name="keywords" content="Magit-Popup User Manual: Defining suffix commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" rel="up" title="Defining prefix and suffix commands">
+<link href="Defining-prefix-commands.html#Defining-prefix-commands" rel="prev" title="Defining prefix commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Defining-suffix-commands"></a>
+<div class="header">
+<p>
+Previous: <a href="Defining-prefix-commands.html#Defining-prefix-commands" accesskey="p" rel="prev">Defining prefix commands</a>, Up: <a href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" accesskey="u" rel="up">Defining prefix and suffix commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Defining-suffix-commands-1"></a>
+<h3 class="section">3.2 Defining suffix commands</h3>
+
+<p>Commands intended to be invoked from a particular popup should
+determine the currently effective arguments by calling the function
+<code>SHORTNAME-arguments</code> inside their <code>interactive</code> form.  This function
+is created by the <code>magit-define-popup</code> macro.  For a popup named
+<code>prefix-foo-popup</code> the name of this function is <code>prefix-foo-arguments</code>.
+</p>
+<p>When the command was invoked as an action in the respective popup,
+then this function returns the arguments that were set in the popup.
+Otherwise when the command was invoked as the default of the popup (by
+calling the popup command with a prefix argument), or without using
+the popup command at all, then this function returns the buffer-local
+or global value of the variable <code>SHORTNAME-arguments</code>.
+</p>
+<p>Internally arguments are handled as a list of strings.  This might not
+be appropriate for the intended use inside commands, or it might be
+necessary to manipulate that list somehow, i.e. to split &quot;&ndash;ARG=VAL&quot;
+into &quot;&ndash;ARG&quot;&quot;VAL&quot;.  This should be done by advising or redefining the
+function <code>SHORTNAME-arguments</code>.
+</p>
+<p>Internally <code>SHORNAME-arguments</code> used following variables and function.
+Except when redefining the former, you should not use these directly.
+</p>
+<dl>
+<dt><a name="index-magit_002dcurrent_002dpopup"></a>Variable: <strong>magit-current-popup</strong></dt>
+<dd>
+<p>The popup from which this editing command was invoked.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dcurrent_002dpopup_002dargs-1"></a>Variable: <strong>magit-current-popup-args</strong></dt>
+<dd>
+<p>The value of the popup arguments for this editing command.
+</p>
+<p>If the current command was invoked from a popup, then this is a list
+of strings of all the set switches and options.  This includes
+arguments which are set by default not only those explicitly set
+during this invocation.
+</p>
+<p>When the value is nil, then that can be because no argument is set,
+or because the current command wasn&rsquo;t invoked from a popup at all.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dcurrent_002dpopup_002dargs"></a>Function: <strong>magit-current-popup-args</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>This function returns the value of the popup arguments for this
+editing command.  The value is the same as that of the variable by
+the same name, except that FILTER is applied.  FILTER is a list of
+regexps; only arguments that match one of them are returned.  The
+first element of FILTER may also be <code>:not</code> in which case only
+arguments that don&rsquo;t match any of the regexps are returned, or <code>:only</code>
+which doesn&rsquo;t change the behavior.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Defining-prefix-commands.html#Defining-prefix-commands" accesskey="p" rel="prev">Defining prefix commands</a>, Up: <a href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" accesskey="u" rel="up">Defining prefix and suffix commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

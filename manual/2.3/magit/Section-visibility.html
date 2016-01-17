@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Section visibility</title>
+
+<meta name="description" content="Magit User Manual: Section visibility">
+<meta name="keywords" content="Magit User Manual: Section visibility">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Sections.html#Sections" rel="up" title="Sections">
+<link href="Section-hooks.html#Section-hooks" rel="next" title="Section hooks">
+<link href="Section-movement.html#Section-movement" rel="prev" title="Section movement">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Section-visibility"></a>
+<div class="header">
+<p>
+Next: <a href="Section-hooks.html#Section-hooks" accesskey="n" rel="next">Section hooks</a>, Previous: <a href="Section-movement.html#Section-movement" accesskey="p" rel="prev">Section movement</a>, Up: <a href="Sections.html#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Section-visibility-1"></a>
+<h4 class="subsection">4.4.2 Section visibility</h4>
+
+<p>Magit provides many commands for changing the visibility of sections,
+but all you need to get started are the next two.
+</p>
+<dl compact="compact">
+<dd><a name="index-TAB"></a>
+<a name="index-magit_002dsection_002dtoggle"></a>
+</dd>
+<dt><kbd>TAB</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-toggle</code>)</dt>
+<dd>
+<p>Toggle the visibility of the body of the current section.
+</p>
+<a name="index-C_002d_003ctab_003e"></a>
+<a name="index-magit_002dsection_002dcycle"></a>
+</dd>
+<dt><kbd>C-&lt;tab&gt;</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-cycle</code>)</dt>
+<dd>
+<p>Cycle the visibility of current section and its children.
+</p>
+<a name="index-M_002d_003ctab_003e"></a>
+<a name="index-magit_002dsection_002dcycle_002ddiffs"></a>
+</dd>
+<dt><kbd>M-&lt;tab&gt;</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-cycle-diffs</code>)</dt>
+<dd>
+<p>Cycle the visibility of diff-related sections in the current buffer.
+</p>
+<a name="index-s_002d_003ctab_003e"></a>
+<a name="index-magit_002dsection_002dcycle_002dglobal"></a>
+</dd>
+<dt><kbd>s-&lt;tab&gt;</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-cycle-global</code>)</dt>
+<dd>
+<p>Cycle the visibility of all sections in the current buffer.
+</p></dd>
+</dl>
+
+<a name="index-1"></a>
+<a name="index-2"></a>
+<a name="index-3"></a>
+<a name="index-4"></a>
+<a name="index-magit_002dsection_002dshow_002dlevel_002d1"></a>
+<dl>
+<dt><a name="index-magit_002dsection_002dshow_002dlevel_002d1-1"></a>Command: <strong>magit-section-show-level-1</strong></dt>
+<dd><a name="index-magit_002dsection_002dshow_002dlevel_002d2"></a>
+</dd><dt><a name="index-magit_002dsection_002dshow_002dlevel_002d2-1"></a>Command: <strong>magit-section-show-level-2</strong></dt>
+<dd><a name="index-magit_002dsection_002dshow_002dlevel_002d3"></a>
+</dd><dt><a name="index-magit_002dsection_002dshow_002dlevel_002d3-1"></a>Command: <strong>magit-section-show-level-3</strong></dt>
+<dd><a name="index-magit_002dsection_002dshow_002dlevel_002d4"></a>
+</dd><dt><a name="index-magit_002dsection_002dshow_002dlevel_002d4-1"></a>Command: <strong>magit-section-show-level-4</strong></dt>
+<dd>
+<p>To show sections surrounding the current section, up to level N,
+press the respective number key (<code>1</code>, <code>2</code>, <code>3</code>, or <code>4</code>).
+</p></dd></dl>
+
+<a name="index-M_002d1"></a>
+<a name="index-M_002d2"></a>
+<a name="index-M_002d3"></a>
+<a name="index-M_002d4"></a>
+<a name="index-magit_002dsection_002dshow_002dlevel_002d1_002dall"></a>
+<dl>
+<dt><a name="index-magit_002dsection_002dshow_002dlevel_002d1_002dall-1"></a>Command: <strong>magit-section-show-level-1-all</strong></dt>
+<dd><a name="index-magit_002dsection_002dshow_002dlevel_002d2_002dall"></a>
+</dd><dt><a name="index-magit_002dsection_002dshow_002dlevel_002d2_002dall-1"></a>Command: <strong>magit-section-show-level-2-all</strong></dt>
+<dd><a name="index-magit_002dsection_002dshow_002dlevel_002d3_002dall"></a>
+</dd><dt><a name="index-magit_002dsection_002dshow_002dlevel_002d3_002dall-1"></a>Command: <strong>magit-section-show-level-3-all</strong></dt>
+<dd><a name="index-magit_002dsection_002dshow_002dlevel_002d4_002dall"></a>
+</dd><dt><a name="index-magit_002dsection_002dshow_002dlevel_002d4_002dall-1"></a>Command: <strong>magit-section-show-level-4-all</strong></dt>
+<dd>
+<p>To show all sections up to level N, press the respective number key
+and meta (<code>M-1</code>, <code>M-2</code>, <code>M-3</code>, or <code>M-4</code>).
+</p></dd></dl>
+
+<p>Some functions, which are used to implement the above commands, are
+also exposed as commands themselves.  By default no keys are bound to
+these commands, as they are generally perceived to be much less
+useful.  But your mileage may vary.
+</p>
+<a name="index-magit_002dsection_002dshow"></a>
+<dl>
+<dt><a name="index-magit_002dsection_002dshow-1"></a>Command: <strong>magit-section-show</strong></dt>
+<dd>
+<p>Show the body of the current section.
+</p></dd></dl>
+
+<a name="index-magit_002dsection_002dhide"></a>
+<dl>
+<dt><a name="index-magit_002dsection_002dhide-1"></a>Command: <strong>magit-section-hide</strong></dt>
+<dd>
+<p>Hide the body of the current section.
+</p></dd></dl>
+
+<a name="index-magit_002dsection_002dshow_002dheadings"></a>
+<dl>
+<dt><a name="index-magit_002dsection_002dshow_002dheadings-1"></a>Command: <strong>magit-section-show-headings</strong></dt>
+<dd>
+<p>Recursively show headings of children of the current section.  Only
+show the headings.  Previously shown text-only bodies are hidden.
+</p></dd></dl>
+
+<a name="index-magit_002dsection_002dshow_002dchildren"></a>
+<dl>
+<dt><a name="index-magit_002dsection_002dshow_002dchildren-1"></a>Command: <strong>magit-section-show-children</strong></dt>
+<dd>
+<p>Recursively show the bodies of children of the current section.
+With a prefix argument show children down to the level of the
+currect section, and hide deeper children.
+</p></dd></dl>
+
+<a name="index-magit_002dsection_002dhide_002dchildren"></a>
+<dl>
+<dt><a name="index-magit_002dsection_002dhide_002dchildren-1"></a>Command: <strong>magit-section-hide-children</strong></dt>
+<dd>
+<p>Recursively hide the bodies of children of the current section.
+</p></dd></dl>
+
+<a name="index-magit_002dsection_002dtoggle_002dchildren"></a>
+<dl>
+<dt><a name="index-magit_002dsection_002dtoggle_002dchildren-1"></a>Command: <strong>magit-section-toggle-children</strong></dt>
+<dd>
+<p>Toggle visibility of bodies of children of the current section.
+</p></dd></dl>
+
+<p>When a buffer is first created then some sections are shown expanded
+while others are not.  This is hard coded.  When a buffer is refreshed
+then the previous visibility is preserved. The initial visibility of
+certain sections can also be overwritten using the hook
+<code>magit-section-set-visibility-hook</code>.
+</p>
+<dl>
+<dt><a name="index-magit_002dsection_002dset_002dvisibility_002dhook"></a>Variable: <strong>magit-section-set-visibility-hook</strong></dt>
+<dd>
+<p>This hook is run when first creating a buffer and also when
+refreshing an existing buffer, and is used to determine the
+visibility of the section currently being inserted.
+</p>
+<p>Each function is called with one argument, the section being
+inserted.  It should return <code>hide</code> or <code>show</code>, or to leave the visibility
+undefined <code>nil</code>.  If no function decides on the visibility and the
+buffer is being refreshed, then the visibility is preserved; or if
+the buffer is being created, then the hard coded default is used.
+</p>
+<p>Usually this should only be used to set the initial visibility but
+not during refreshes.  If <code>magit-insert-section--oldroot</code> is non-nil,
+then the buffer is being refreshed and these functions should
+immediately return <code>nil</code>.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Section-hooks.html#Section-hooks" accesskey="n" rel="next">Section hooks</a>, Previous: <a href="Section-movement.html#Section-movement" accesskey="p" rel="prev">Section movement</a>, Up: <a href="Sections.html#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

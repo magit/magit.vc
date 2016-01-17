@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -78,9 +78,44 @@ Next: <a href="Merging.html#Merging" accesskey="n" rel="next">Merging</a>, Previ
 <a name="Branching-1"></a>
 <h3 class="section">6.5 Branching</h3>
 
-<p>Also see 
-the <a href="http://git-scm.com/docs/git-branch">git-branch(1)</a> manpage and 
-the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage.
+<p>The upstream branch of some local branch is the branch into which the
+commits on that local branch should eventually be merged, usually
+something like <code>origin/master</code>.  For the <code>master</code> branch itself the
+upstream branch and the branch it is being pushed to, are usually the
+same remote branch.  But for a feature branch the upstream branch and
+the branch it is being pushed to should differ.
+</p>
+<p>Feature branches too should <em>eventually</em> end up in a remote branch such
+as <code>origin/master</code> or <code>origin/maint</code>.  Such a branch should therefore be
+used as the upstream.  But feature branches shouldn&rsquo;t be pushed
+directly to such branches.  Instead a feature branch <code>my-feature</code> is
+usually pushed to <code>my-fork/my-feature</code> or <code>origin/my-feature</code>.  After the
+new feature has been reviewed, the maintainer merges the feature into
+<code>master</code>.  And finally <code>master</code> (not <code>my-feature</code> itself) is pushed to
+<code>origin/master</code>.
+</p>
+<p>But new features seldom are perfect on the first try, and so feature
+branches usually have to be improved and re-pushed many times.
+Pushing should therefore be easy to do, and for that reason some users
+have concluded that the remote branch to which a feature branch is
+being pushed should be set as the upstream.  Luckily Git has long ago
+gained support for a push-remote which can be configured separately
+from the upstream branch, using the variables <code>branch.&lt;name&gt;.pushRemote</code>
+and <code>remote.pushDefault</code>, so we no longer have to choose which of the
+two remotes should be used as &quot;the remote&quot;.
+</p>
+<p>Each of the fetching, pulling, and pushing popups features three
+commands which act on the current branch and some other branch.  Of
+these, <code>p</code> is bound to a command which acts on the push-remote, <code>u</code> is
+bound to a command which acts on the upstream, and <code>e</code> is bound to a
+command which acts on any other branch.  The status buffer shows
+unpushed and unpulled for both the push-remote and the upstream.
+</p>
+<p>It&rsquo;s fairly simple to configure these two remotes.  The values of all
+the variables that are related to fetching, pulling, and pushing (as
+well as some other branch-related variables) can be inspected and
+changed in the branching popup.  It is also possible to set the
+push-remote and/or upstream while pushing (see <a href="Pushing.html#Pushing">Pushing</a>).
 </p>
 <dl compact="compact">
 <dd><a name="index-b"></a>
@@ -88,10 +123,162 @@ the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage.
 </dd>
 <dt><kbd>b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-popup</code>)</dt>
 <dd>
-<p>This prefix command shows the following suffix commands along with
-the appropriate infix arguments in a popup buffer.
+<p>This prefix command shows the following suffix commands in a popup
+buffer.  It also displays the values of the following variables and
+allows changing their values.
+</p></dd>
+</dl>
+
+<p>The following variables are used to configure a specific branch.  The
+values are being displayed for the current branch (if any).  To change
+the value for another branch use a prefix argument.
 </p>
-<a name="index-b-b"></a>
+<dl>
+<dt><a name="index-branch_002eNAME_002emerge"></a>Variable: <strong>branch.NAME.merge</strong></dt>
+<dd>
+<p>Together with <code>branch.NAME.remote</code> this variable defines the upstream
+branch of the local branch named NAME.  The value of this variable
+is the full reference of the upstream <em>branch</em>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002eremote"></a>Variable: <strong>branch.NAME.remote</strong></dt>
+<dd>
+<p>Together with <code>branch.NAME.merge</code> this variable defines the upstream
+branch of the local branch named NAME.  The value of this variable
+is the name of the upstream <em>remote</em>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002erebase"></a>Variable: <strong>branch.NAME.rebase</strong></dt>
+<dd>
+<p>This variable controls whether pulling into the branch named NAME is
+done by rebasing or by merging the fetched branch.
+</p>
+<ul>
+<li> When <code>true</code> then pulling is done by rebasing.
+
+</li><li> When <code>false</code> then pulling is done by merging.
+
+</li><li> When undefined then the value of <code>pull.rebase</code> is used.  The default
+of that variable is <code>false</code>.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002epushRemote"></a>Variable: <strong>branch.NAME.pushRemote</strong></dt>
+<dd>
+<p>This variable specifies the remote that the branch named NAME is
+usually pushed to.  The value has to be the name of an existing
+remote.
+</p>
+<p>It is not possible to specify the name of <em>branch</em> to push the local
+branch to.  The name of the remote branch is always the same as the
+name of the local branch.
+</p>
+<p>If this variable is undefined but <code>remote.pushDefault</code> is defined,
+then the value of the latter is used.  By default <code>remote.pushDefault</code>
+is undefined.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002edescription"></a>Variable: <strong>branch.NAME.description</strong></dt>
+<dd>
+<p>This variable can be used to describe the branch named NAME.  That
+description is used e.g. when turning the branch into a series of
+patches.
+</p></dd></dl>
+
+<p>The following variables specify defaults which are used if the above
+branch-specific variables are not set.
+</p>
+<dl>
+<dt><a name="index-pull_002erebase"></a>Variable: <strong>pull.rebase</strong></dt>
+<dd>
+<p>This variable specifies whether pulling is done by rebasing or by
+merging.  It can be overwritten using <code>branch.NAME.rebase</code>.
+</p>
+<ul>
+<li> When <code>true</code> then pulling is done by rebasing.
+
+</li><li> When <code>false</code> (the default) then pulling is done by merging.
+</li></ul>
+<p>Since it is never a good idea to merge the upstream branch into a
+feature or hotfix branch and most branches are such branches, you
+should consider setting this to <code>true</code>, and <code>branch.master.rebase</code> to
+<code>false</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-remote_002epushDefault"></a>Variable: <strong>remote.pushDefault</strong></dt>
+<dd>
+<p>This variable specifies what remote the local branches are usually
+pushed to.  This can be overwritten per branch using
+<code>branch.NAME.pushRemote</code>.
+</p></dd></dl>
+
+<p>The following variables are used during the creation of a branch and
+control whether the various branch-specific variables are
+automatically set at this time.
+</p>
+<dl>
+<dt><a name="index-branch_002eautoSetupMerge"></a>Variable: <strong>branch.autoSetupMerge</strong></dt>
+<dd>
+<p>This variable specifies under what circumstances creating a branch
+NAME should result in the variables <code>branch.NAME.merge</code> and
+<code>branch.NAME.remote</code> being set according to the starting point used to
+create the branch.  If the starting point isn&rsquo;t a branch, then these
+variables are never set.
+</p>
+<ul>
+<li> When <code>always</code> then the variables are set regardless of whether the
+starting point is a local or a remote branch.
+
+</li><li> When <code>true</code> (the default) then the variables are set when the starting
+point is a remote branch, but not when it is a local branch.
+
+</li><li> When <code>false</code> then the variables are never set.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eautoSetupRebase"></a>Variable: <strong>branch.autoSetupRebase</strong></dt>
+<dd>
+<p>This variable specifies whether creating a branch NAME should result
+in the variable <code>branch.NAME.rebase</code> being set to <code>true</code>.
+</p>
+<ul>
+<li> When <code>always</code> then the variable is set regardless of whether the
+starting point is a local or a remote branch.
+
+</li><li> When <code>local</code> then the variable are set when the starting point is a
+local branch, but not when it is a remote branch.
+
+</li><li> When <code>remote</code> then the variable are set when the starting point is a
+remote branch, but not when it is a local branch.
+
+</li><li> When <code>never</code> (the default) then the variable is never set.
+</li></ul>
+</dd></dl>
+
+<p>Note that the respective commands always change the repository-local
+values.  If you want to change the global value, which is used when
+the local value is undefined, then you have to do so on the command
+line, e.g.:
+</p>
+<div class="example">
+<pre class="example">git config --global remote.autoSetupMerge always
+</pre></div>
+
+<p>For more information about these variables you should also see
+</p>
+the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage<p>.  Also see 
+the <a href="http://git-scm.com/docs/git-branch">git-branch(1)</a> manpage,
+</p>
+the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage<p>, and <a href="Pushing.html#Pushing">Pushing</a>.
+</p>
+<dl compact="compact">
+<dd><a name="index-b-b"></a>
 <a name="index-magit_002dcheckout"></a>
 </dd>
 <dt><kbd>b b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-checkout</code>)</dt>
@@ -102,10 +289,10 @@ branch then that becomes the current branch.  If it is something
 else then <code>HEAD</code> becomes detached.  Checkout fails if the working tree
 or the staging area contain changes.
 </p>
-<a name="index-b-c"></a>
+<a name="index-b-n"></a>
 <a name="index-magit_002dbranch"></a>
 </dd>
-<dt><kbd>b c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch</code>)</dt>
+<dt><kbd>b n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch</code>)</dt>
 <dd>
 <p>Create a new branch.  The user is asked for a branch or arbitrary
 revision to use as the starting point of the new branch.  When a
@@ -113,13 +300,17 @@ branch name is provided, then that becomes the upstream branch of
 the new branch.  The name of the new branch is also read in the
 minibuffer.
 </p>
-<a name="index-b-B"></a>
+<p>Also see option <code>magit-branch-prefer-remote-upstream</code>.
+</p>
+<a name="index-b-c"></a>
 <a name="index-magit_002dbranch_002dand_002dcheckout"></a>
 </dd>
-<dt><kbd>b B</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-and-checkout</code>)</dt>
+<dt><kbd>b c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-and-checkout</code>)</dt>
 <dd>
 <p>This command creates a new branch like <code>magit-branch</code>, but then also
 checks it out.
+</p>
+<p>Also see option <code>magit-branch-prefer-remote-upstream</code>.
 </p>
 <a name="index-b-s"></a>
 <a name="index-magit_002dbranch_002dspinoff"></a>
@@ -134,6 +325,12 @@ anyway and the previously current branch is not touched.
 </p>
 <p>This is useful to create a feature branch after work has already
 began on the old branch (likely but not necessarily &quot;master&quot;).
+</p>
+<p>If the current branch is a member of the value of option
+<code>magit-branch-prefer-remote-upstream</code> (which see), then the current
+branch will be used as the starting point as usual, but the upstream
+of the starting-point may be used as the upstream of the new branch,
+instead of the starting-point itself.
 </p>
 <a name="index-b-x"></a>
 <a name="index-magit_002dbranch_002dreset"></a>
@@ -162,22 +359,6 @@ realize it&rsquo;s all crap and want to start over.
 branches, then offer to delete those.  Otherwise, prompt for a single
 branch to be deleted, defaulting to the branch at point.
 </p>
-<a name="index-b-u"></a>
-<a name="index-magit_002dbranch_002dset_002dupstream"></a>
-</dd>
-<dt><kbd>b u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-set-upstream</code>)</dt>
-<dd>
-<p>Change the upstream branch of a branch.  Both branches are read in
-the minibuffer, while providing reasonable defaults.
-</p>
-<a name="index-b-U"></a>
-<a name="index-magit_002dbranch_002dunset_002dupstream"></a>
-</dd>
-<dt><kbd>b U</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-unset-upstream</code>)</dt>
-<dd>
-<p>Unset the upstream branch of a branch read in the minibuffer and
-defaulting to the branch at point or the current branch.
-</p>
 <a name="index-b-r"></a>
 <a name="index-magit_002dbranch_002drename"></a>
 </dd>
@@ -187,16 +368,6 @@ defaulting to the branch at point or the current branch.
 minibuffer.  With prefix argument the branch is renamed even if that
 name conflicts with an existing branch.
 </p>
-<a name="index-b-e"></a>
-<a name="index-magit_002dbranch_002dedit_002ddescription"></a>
-</dd>
-<dt><kbd>b e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-edit-description</code>)</dt>
-<dd>
-<p>Edit the description of a branch.  The branch is read in the
-minibuffer defaulting to the branch at point or the current branch.
-The description is edited in a regular buffer similar to how commit
-messages are edited.
-</p>
 </dd>
 </dl>
 
@@ -204,7 +375,51 @@ messages are edited.
 <dt><a name="index-magit_002dbranch_002dread_002dupstream_002dfirst"></a>User Option: <strong>magit-branch-read-upstream-first</strong></dt>
 <dd>
 <p>When creating a branch, whether to read the upstream branch before
-the name of the branch that is to be created.
+the name of the branch that is to be created.  The default is <code>nil</code>,
+and I recommend you leave it at that.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dbranch_002dprefer_002dremote_002dupstream"></a>User Option: <strong>magit-branch-prefer-remote-upstream</strong></dt>
+<dd>
+<p>This option specifies whether remote upstreams are favored over
+local upstreams when creating new branches.
+</p>
+<p>When a new branch is created, Magit offers the branch, commit, or
+stash as the default starting point of the new branch.  If there is
+no such thing at point, then it falls back to offer the current
+branch as starting-point.  The user may then accept that default or
+pick something else.
+</p>
+<p>If the chosen starting-point is a branch, then it may also be set
+as the upstream of the new branch, depending on the value of the
+Git variable &lsquo;branch.autoSetupMerge&rsquo;.  By default this is done
+for remote branches, but not for local branches.
+</p>
+<p>You might prefer to always use some remote branch as upstream.
+If the chosen starting-point is (1) a local branch, (2) whose
+name is a member of the value of this option, (3) the upstream of
+that local branch is a remote branch with the same name, and (4)
+that remote branch can be fast-forwarded to the local branch,
+then the chosen branch is used as starting-point, but its own
+upstream is used as the upstream of the new branch.
+</p>
+<p>Assuming the chosen branch matches these conditions you would end
+up with with e.g.:
+</p>
+<div class="example">
+<pre class="example">feature --upstream--&gt; origin/master
+</pre></div>
+
+<p>instead of
+</p>
+<div class="example">
+<pre class="example">feature --upstream--&gt; master --upstream--&gt; origin/master
+</pre></div>
+
+<p>Which you prefer is a matter of personal preference.  If you do
+prefer the former, then you should add branches such as <code>master</code>,
+<code>next</code>, and <code>maint</code> to the value of this options.
 </p></dd></dl>
 
 <hr>

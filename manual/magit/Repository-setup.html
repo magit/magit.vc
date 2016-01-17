@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -101,8 +101,18 @@ to confirm that it should be reinitialized.
 for the new repository.
 </p>
 <p>The user is queried for a remote url and a local directory.
-</p></dd>
+</p>
+</dd>
 </dl>
+
+<dl>
+<dt><a name="index-magit_002dclone_002dset_002dremote_002epushDefault"></a>User Option: <strong>magit-clone-set-remote.pushDefault</strong></dt>
+<dd>
+<p>Whether to set the value of <code>remote.pushDefault</code> after cloning.
+</p>
+<p>If <code>t</code>, then set without asking.  If <code>nil</code>, then don&rsquo;t set.  If <code>ask</code>,
+then ask the user every time she clones a repository.
+</p></dd></dl>
 
 
 

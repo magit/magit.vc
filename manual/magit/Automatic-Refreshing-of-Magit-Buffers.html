@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Automatic Refreshing of Magit Buffers</title>
+
+<meta name="description" content="Magit User Manual: Automatic Refreshing of Magit Buffers">
+<meta name="keywords" content="Magit User Manual: Automatic Refreshing of Magit Buffers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Modes-and-Buffers.html#Modes-and-Buffers" rel="up" title="Modes and Buffers">
+<link href="Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" rel="next" title="Automatic Saving of File-Visiting Buffers">
+<link href="Quitting-Windows.html#Quitting-Windows" rel="prev" title="Quitting Windows">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Automatic-Refreshing-of-Magit-Buffers"></a>
+<div class="header">
+<p>
+Next: <a href="Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" accesskey="n" rel="next">Automatic Saving of File-Visiting Buffers</a>, Previous: <a href="Quitting-Windows.html#Quitting-Windows" accesskey="p" rel="prev">Quitting Windows</a>, Up: <a href="Modes-and-Buffers.html#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Automatic-Refreshing-of-Magit-Buffers-1"></a>
+<h4 class="subsection">4.1.4 Automatic Refreshing of Magit Buffers</h4>
+
+<p>After running a command which may change the state of the current
+repository, the current Magit buffer and the corresponding status
+buffer are refreshed.  The status buffer may optionally be
+automatically refreshed whenever a buffer is saved to a file inside
+the respective repository.
+</p>
+<p>Automatically refreshing Magit buffers ensures that the displayed
+information is up-to-date most of the time but can lead to a
+noticeable delay in big repositories.  Other Magit buffers are not
+refreshed to keep the delay to a minimum and also because doing so can
+sometimes be undesirable.
+</p>
+<p>Buffers can also be refreshed explicitly, which is useful in buffers
+that weren&rsquo;t current during the last refresh and after changes were
+made to the repository outside of Magit.
+</p>
+<dl compact="compact">
+<dd><a name="index-g"></a>
+<a name="index-magit_002drefresh"></a>
+</dd>
+<dt><kbd>g</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-refresh</code>)</dt>
+<dd>
+<p>This command refreshes the current buffer if its major mode derives
+from <code>magit-mode</code> as well as the corresponding status buffer.
+</p>
+<p>If the option <code>magit-revert-buffers</code> calls for it, then it also
+reverts all unmodified buffers that visit files being tracked in the
+current repository.
+</p>
+<a name="index-G"></a>
+<a name="index-magit_002drefresh_002dall"></a>
+</dd>
+<dt><kbd>G</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-refresh-all</code>)</dt>
+<dd>
+<p>This command refreshes all Magit buffers belonging to the current
+repository and also reverts all unmodified buffers that visit files
+being tracked in the current repository.
+</p>
+<p>The file-visiting buffers are always reverted, even if
+<code>magit-revert-buffers</code> is nil.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002drefresh_002dbuffer_002dhook"></a>User Option: <strong>magit-refresh-buffer-hook</strong></dt>
+<dd>
+<p>This hook is run in each Magit buffer that was refreshed during the
+current refresh - normally the current buffer and the status buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drefresh_002dstatus_002dbuffer"></a>User Option: <strong>magit-refresh-status-buffer</strong></dt>
+<dd>
+<p>When this option is non-nil, then the status buffer is automatically
+refreshed after running git for side-effects, in addition to the
+current Magit buffer, which is always refreshed automatically.
+</p>
+<p>Only set this to nil after exhausting all other options to improve
+performance.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dafter_002dsave_002drefresh_002dstatus"></a>Function: <strong>magit-after-save-refresh-status</strong></dt>
+<dd>
+<p>This function is intended to be added to <code>after-save-hook</code>.  After
+doing that the corresponding status buffer is refreshed whenever a
+buffer is saved to a file inside a repository.
+</p>
+<p>Note that refreshing a Magit buffer is done by re-creating its
+contents from scratch, which can be slow in large repositories.  If
+you are not satisfied with Magit&rsquo;s performance, then you should
+obviously not add this function to that hook.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" accesskey="n" rel="next">Automatic Saving of File-Visiting Buffers</a>, Previous: <a href="Quitting-Windows.html#Quitting-Windows" accesskey="p" rel="prev">Quitting Windows</a>, Up: <a href="Modes-and-Buffers.html#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

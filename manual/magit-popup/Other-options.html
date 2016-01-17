@@ -5,7 +5,7 @@ this library implements a similar abstraction; a new kind of prefix
 command that is associated with a specific set of infix arguments and
 suffix commands.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -108,7 +108,7 @@ directly invoke the popup&rsquo;s default action.
 
 <p>Ignore prefix arguments.
 </p></li></ul>
-<p>This option can be overriden for individual popups.
+<p>This option can be overridden for individual popups.
 <code>magit-show-refs-popup</code> for example defaults to invoking the default
 action directly.  It only shows the popup buffer when a prefix
 argument is used.  See <a href="Customizing-existing-popups.html#Customizing-existing-popups">Customizing existing popups</a>.
@@ -118,6 +118,15 @@ argument is used.  See <a href="Customizing-existing-popups.html#Customizing-exi
 <dt><a name="index-magit_002dpopup_002dmanpage_002dpackage"></a>User Option: <strong>magit-popup-manpage-package</strong></dt>
 <dd>
 <p>The Emacs package used to display man-pages, one of <code>man</code> or <code>woman</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dpopup_002ddisplay_002dbuffer_002daction"></a>User Option: <strong>magit-popup-display-buffer-action</strong></dt>
+<dd>
+<p>The option controls how the window used to display a popup buffer is
+created.  Popup buffers are displayed using <code>display-buffer</code> with the
+value of this option as ACTION argument.  You can also set this to
+nil and instead add an entry to <code>display-buffer-alist</code>.
 </p></dd></dl>
 
 <p>To emphasize the default action by making it bold use this:

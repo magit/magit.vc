@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Taking inspiration from regular prefix commands and prefix arguments,
+this library implements a similar abstraction; a new kind of prefix
+command that is associated with a specific set of infix arguments and
+suffix commands.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit-Popup User Manual: Defining prefix and suffix commands</title>
+
+<meta name="description" content="Magit-Popup User Manual: Defining prefix and suffix commands">
+<meta name="keywords" content="Magit-Popup User Manual: Defining prefix and suffix commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Defining-prefix-commands.html#Defining-prefix-commands" rel="next" title="Defining prefix commands">
+<link href="Other-options.html#Other-options" rel="prev" title="Other options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Defining-prefix-and-suffix-commands"></a>
+<div class="header">
+<p>
+Previous: <a href="Usage.html#Usage" accesskey="p" rel="prev">Usage</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Defining-prefix-and-suffix-commands-1"></a>
+<h2 class="chapter">3 Defining prefix and suffix commands</h2>
+
+<p>If you write an extension for Magit then you should use this library
+now and later when <code>transient</code> is released port to that.
+</p>
+<p>If you are considering using this library to define popups for
+packages not related to Magit, then keep in mind that it will be
+superseded eventually.  Once <code>transient</code> has been released I will only
+fix bugs in <code>magit-popup</code> but not implement any new features.
+</p>
+<p>Also consider using <code>hydra</code> instead.  To some extend <code>magit-popup</code> and
+<code>hydra</code> are similar but have a different focus.  The main purpose of
+<code>magit-popup</code> is to pass infix arguments to suffix commands.  If all you
+need is a command dispatcher then you are better of using <code>hydra</code>.  Of
+course <code>hydra</code> may also be a better fit not only because of the features
+it lacks, but also because of the features it provides, which are in
+turn missing from <code>magit-popup</code>.
+</p>
+<p>Here is an example of how one defines a prefix command along with its
+infix arguments, and then also one of its suffix commands.
+</p>
+<div class="lisp">
+<pre class="lisp">;;;###autoload (autoload 'magit-tag-popup &quot;magit&quot; nil t)
+(magit-define-popup magit-tag-popup
+  &quot;Show popup buffer featuring tagging commands.&quot;
+  'magit-commands
+  :man-page &quot;git-tag&quot;
+  :switches '((?a &quot;Annotate&quot; &quot;--annotate&quot;)
+              (?s &quot;Sign&quot;     &quot;--sign&quot;)
+              (?f &quot;Force&quot;    &quot;--force&quot;))
+  :actions  '((?t &quot;Create&quot;   magit-tag)
+              (?k &quot;Delete&quot;   magit-tag-delete)
+              (?p &quot;Prune&quot;    magit-tag-prune))
+  :default-action 'magit-tag)
+
+;;;###autoload
+(defun magit-tag (name rev &amp;optional args)
+  &quot;Create a new tag with the given NAME at REV.&quot;
+  (interactive (list (magit-read-tag &quot;Tag name&quot;)
+                     (magit-read-branch-or-commit &quot;Place tag on&quot;)
+                     (magit-tag-arguments)))
+  (magit-run-git-with-editor &quot;tag&quot; args name rev))
+</pre></div>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Defining-prefix-commands.html#Defining-prefix-commands" accesskey="1">Defining prefix commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Defining-suffix-commands.html#Defining-suffix-commands" accesskey="2">Defining suffix commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Usage.html#Usage" accesskey="p" rel="prev">Usage</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

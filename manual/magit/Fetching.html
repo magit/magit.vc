@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -90,19 +90,24 @@ the <a href="http://git-scm.com/docs/git-fetch">git-fetch(1)</a> manpage.
 <p>This prefix command shows the following suffix commands along with
 the appropriate infix arguments in a popup buffer.
 </p>
-<a name="index-f-f"></a>
-<a name="index-magit_002dfetch_002dcurrent"></a>
+<a name="index-f-p"></a>
+<a name="index-magit_002dfetch_002dfrom_002dpushremote"></a>
 </dd>
-<dt><kbd>f f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-current</code>)</dt>
+<dt><kbd>f p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-from-pushremote</code>)</dt>
 <dd>
-<p>Fetch from the upstream repository of the current branch.  If <code>HEAD</code>
-is detached or if the upstream is not configured, then read the
-remote.
+<p>Fetch from the push-remote of the current branch.
 </p>
-<a name="index-f-o"></a>
+<a name="index-f-u"></a>
+<a name="index-magit_002dfetch_002dfrom_002dupstream"></a>
+</dd>
+<dt><kbd>f u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-from-upstream</code>)</dt>
+<dd>
+<p>Fetch from the push-remote of the current branch.
+</p>
+<a name="index-f-e"></a>
 <a name="index-magit_002dfetch"></a>
 </dd>
-<dt><kbd>f o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch</code>)</dt>
+<dt><kbd>f e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch</code>)</dt>
 <dd>
 <p>Fetch from another repository.
 </p>
@@ -111,18 +116,22 @@ remote.
 </dd>
 <dt><kbd>f a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-all</code>)</dt>
 <dd>
-<p>Fetch from all configured remotes.
+<p>Fetch from all remotes.
 </p>
 <a name="index-f-m"></a>
 <a name="index-magit_002dsubmodule_002dfetch"></a>
 </dd>
 <dt><kbd>f m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-fetch</code>)</dt>
 <dd>
-<p>Fetch all submodules.  With a prefix argument fetch all remotes or
+<p>Fetch all submodules.  With a prefix argument fetch all remotes of
 all submodules.
 </p></dd>
 </dl>
 
+<p>Instead of using one popup for fetching and another for pulling, you
+could also use <code>magit-pull-and-fetch-popup</code>.  See its doc-string for
+more information.
+</p>
 
 
 

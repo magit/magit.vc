@@ -8,7 +8,7 @@ Git users to perform almost all of their daily version control tasks
 directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
-Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -120,8 +120,22 @@ read in the minibuffer.
 <dt><kbd>M k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-remote-remove</code>)</dt>
 <dd>
 <p>Delete a remote, read from the minibuffer.
-</p></dd>
+</p>
+</dd>
 </dl>
+
+<dl>
+<dt><a name="index-magit_002dremote_002dadd_002dset_002dremote_002epushDefault"></a>User Option: <strong>magit-remote-add-set-remote.pushDefault</strong></dt>
+<dd>
+<p>Whether to set the value of <code>remote.pushDefault</code> after adding a
+remote.
+</p>
+<p>If <code>ask</code>, then always ask.  If <code>ask-if-unset</code>, then ask, but only if the
+variable isn&rsquo;t set already.  If <code>nil</code>, then don&rsquo;t ever set.  If the
+value is a string, then set without asking, provided the name of the
+name of the added remote is equal to that string and the variable
+isn&rsquo;t already set.
+</p></dd></dl>
 
 
 
