@@ -277,6 +277,19 @@ the <a href="http://git-scm.com/docs/git-branch">git-branch(1)</a> manpage,
 </p>
 the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage<p>, and <a href="Pushing.html#Pushing">Pushing</a>.
 </p>
+<dl>
+<dt><a name="index-magit_002dprefer_002dremote_002dupstream"></a>User Option: <strong>magit-prefer-remote-upstream</strong></dt>
+<dd>
+<p>This option controls whether commands that read a branch from the
+user and then set it as the upstream branch, offer a local or a
+remote branch as default completion candidate, when they have the
+choice.
+</p>
+<p>This affects all commands that use <code>magit-read-upstream-branch</code> or
+<code>magit-read-starting-point</code>, which includes all commands that change
+the upstream and many which create new branches.
+</p></dd></dl>
+
 <dl compact="compact">
 <dd><a name="index-b-b"></a>
 <a name="index-magit_002dcheckout"></a>
@@ -340,15 +353,16 @@ instead of the starting-point itself.
 <p>This command resets a branch, defaulting to the branch at point, to
 the tip of another branch or any other commit.
 </p>
-<p>When resetting to another branch, then that branch is also set as
-the upstream of the branch being reset.
-</p>
 <p>When the branch being reset is the current branch, then a hard reset
 is performed.  If there are any uncommitted changes, then the user
 has to confirming the reset because those changes would be lost.
 </p>
 <p>This is useful when you have started work on a feature branch but
 realize it&rsquo;s all crap and want to start over.
+</p>
+<p>When resetting to another branch and a prefix argument is used, then
+the target branch is set as the upstream of the branch that is being
+reset.
 </p>
 <a name="index-b-d"></a>
 <a name="index-magit_002dbranch_002ddelete"></a>

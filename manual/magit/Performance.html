@@ -101,8 +101,26 @@ current buffer.
 </pre></div>
 
 <p>You should also check whether any third-party packages have added
-anything to <code>magit-refresh-buffer-hook</code> and <code>magit-status-refresh-hook</code>,
-and if so whether those additions impacts performance significantly.
+anything to <code>magit-refresh-buffer-hook</code>, <code>magit-status-refresh-hook</code>,
+<code>magit-pre-refresh-hook</code>, and <code>magit-post-refresh-hook</code>.  If so, then
+check whether those additions impacts performance significantly.
+Setting <code>magit-refresh-verbose</code> and then inspecting the output in the
+<code>*Messages*</code> buffer, should help doing so.
+</p>
+<p>Magit also reverts buffers which visit files located inside the
+current repository, when the visited file changes on disk.  That is
+implemented on top of <code>auto-revert-mode</code> from the built-in library
+<code>autorevert</code>.  To figure out whether that impacts performance, check
+whether performance is significantly worse, when many buffers exist
+and/or when some buffers visit files using Tramp.  If so, then this
+should help.
+</p>
+<div class="lisp">
+<pre class="lisp">(setq auto-revert-buffer-list-filter
+      'magit-auto-revert-repository-buffers-p)
+</pre></div>
+
+<p>For alternative approaches see <a href="Automatic-Reverting-of-File_002dVisiting-Buffers.html#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a>.
 </p>
 <p>If you have enabled any features that are disabled by default, then
 you should check whether they impact performance significantly.  It&rsquo;s
@@ -177,14 +195,12 @@ Consider leaving it at that.
 <a name="Diff-Performance"></a>
 <h4 class="unnumberedsubsubsec">Diff Performance</h4>
 
-<ul>
-<li> <code>magit-diff-highlight-hunk-body</code>, <code>magit-diff-highlight-indentation</code>,
-<code>magit-diff-highlight-trailing</code>, and <code>magit-diff-paint-whitespace</code>
-
-
-</li><li> <code>magit-diff-refine-hunk</code>
-</li></ul>
-
+<p>If diffs are slow, then consider turning off some optional diff
+features by setting all or some of the following variables to <code>nil</code>:
+<code>magit-diff-highlight-indentation</code>, <code>magit-diff-highlight-trailing</code>,
+<code>magit-diff-paint-whitespace</code>, <code>magit-diff-highlight-hunk-body</code>, and
+<code>magit-diff-refine-hunk</code>.
+</p>
 <a name="Refs-Buffer-Performance"></a>
 <h4 class="unnumberedsubsubsec">Refs Buffer Performance</h4>
 

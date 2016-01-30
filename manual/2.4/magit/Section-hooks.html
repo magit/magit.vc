@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Section hooks</title>
+
+<meta name="description" content="Magit User Manual: Section hooks">
+<meta name="keywords" content="Magit User Manual: Section hooks">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Sections.html#Sections" rel="up" title="Sections">
+<link href="Section-types-and-values.html#Section-types-and-values" rel="next" title="Section types and values">
+<link href="Section-visibility.html#Section-visibility" rel="prev" title="Section visibility">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Section-hooks"></a>
+<div class="header">
+<p>
+Next: <a href="Section-types-and-values.html#Section-types-and-values" accesskey="n" rel="next">Section types and values</a>, Previous: <a href="Section-visibility.html#Section-visibility" accesskey="p" rel="prev">Section visibility</a>, Up: <a href="Sections.html#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Section-hooks-1"></a>
+<h4 class="subsection">4.2.3 Section hooks</h4>
+
+<p>Which sections are inserted into certain buffers is controlled with
+hooks.  This includes the status and the refs buffers.  For other
+buffers, e.g. log, diff, and revision buffers, this is not possible.
+</p>
+<p>For buffers whose sections can be customized by the user, a hook
+variable called <code>magit-TYPE-sections-hook</code> exists.  This hook should be
+changed using <code>magit-add-section-hook</code>.  Avoid using <code>add-hooks</code> or the
+Custom interface.
+</p>
+<p>The various available section hook variables are described later in
+this manual along with the appropriate &quot;section inserter functions&quot;.
+</p>
+<dl>
+<dt><a name="index-magit_002dadd_002dsection_002dhook"></a>Function: <strong>magit-add-section-hook</strong> <em>hook function &amp;optional at append local</em></dt>
+<dd>
+<p>Add the function FUNCTION to the value of section hook HOOK.
+</p>
+<p>Add FUNCTION at the beginning of the hook list unless optional
+APPEND is non-nil, in which case FUNCTION is added at the end.  If
+FUNCTION already is a member then move it to the new location.
+</p>
+<p>If optional AT is non-nil and a member of the hook list, then add
+FUNCTION next to that instead.  Add before or after AT, or replace
+AT with FUNCTION depending on APPEND.  If APPEND is the symbol
+<code>replace</code>, then replace AT with FUNCTION.  For any other non-nil value
+place FUNCTION right after AT.  If nil, then place FUNCTION right
+before AT.  If FUNCTION already is a member of the list but AT is
+not, then leave FUNCTION where ever it already is.
+</p>
+<p>If optional LOCAL is non-nil, then modify the hook&rsquo;s buffer-local
+value rather than its global value.  This makes the hook local by
+copying the default value.  That copy is then modified.
+</p>
+<p>HOOK should be a symbol.  If HOOK is void, it is first set to nil.
+HOOK&rsquo;s value must not be a single hook function.  FUNCTION should
+be a function that takes no arguments and inserts one or multiple
+sections at point, moving point forward.  FUNCTION may choose not
+to insert its section(s), when doing so would not make sense.  It
+should not be abused for other side-effects.
+</p></dd></dl>
+
+<p>To remove a function from a section hook, use <code>remove-hook</code>.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Section-types-and-values.html#Section-types-and-values" accesskey="n" rel="next">Section types and values</a>, Previous: <a href="Section-visibility.html#Section-visibility" accesskey="p" rel="prev">Section visibility</a>, Up: <a href="Sections.html#Sections" accesskey="u" rel="up">Sections</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

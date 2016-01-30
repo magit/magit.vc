@@ -92,6 +92,8 @@ then the default value of <code>magit-log-arguments</code> is used instead.
 </p>
 <p>For information about the various arguments, see 
 the <a href="http://git-scm.com/docs/git-log">git-log(1)</a> manpage.
+The switch <code>++order=VALUE</code> is converted to one of <code>--author-date-order</code>,
+<code>--date-order</code>, or <code>--topo-order</code> before being passed to <code>git log</code>.
 </p>
 <p>The log popup also features several reflog commands.  See <a href="Reflog.html#Reflog">Reflog</a>.
 </p>

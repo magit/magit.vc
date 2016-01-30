@@ -772,11 +772,11 @@ Next: <a href="#Installing-from-the-Git-repository" accesskey="n" rel="next">Ins
 <p>If you are updating from a release older than <code>2.1.0</code>, then you have to
 first uninstall the old version.  See <a href="#Updating-from-an-older-release">Updating from an older release</a>.
 </p>
-<p>Magit is available from all three of the popular unofficial Elpa
-archives: Melpa, Melpa-Stable, and Marmalade.  If you haven&rsquo;t used
+<p>Magit is available from Melpa and Melpa-Stable.  If you haven&rsquo;t used
 Emacs&rsquo; package manager before, then it is high time you familiarize
-yourself with it by reading the documentation in the Emacs manual,
-see <a href="http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Packages">(emacs)Packages</a>.  Then add one of the archives to <code>package-archives</code>:
+yourself with it by reading the documentation in the Emacs manual, see
+<a href="http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Packages">(emacs)Packages</a>.  Then add one of the archives to
+<code>package-archives</code>:
 </p>
 <ul>
 <li> To use Melpa:
@@ -796,16 +796,6 @@ see <a href="http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Packa
 <pre class="lisp">(require 'package)
 (add-to-list 'package-archives
 	     '(&quot;melpa-stable&quot; . &quot;http://stable.melpa.org/packages/&quot;) t)
-</pre></div>
-
-<ul>
-<li> To use Marmalade:
-</li></ul>
-
-<div class="lisp">
-<pre class="lisp">(require 'package)
-(add-to-list 'package-archives
-	     '(&quot;marmalade&quot; . &quot;http://marmalade-repo.org/packages/&quot;) t)
 </pre></div>
 
 <p>Once you have added your preferred archive, you need to update the
@@ -836,10 +826,16 @@ Next: <a href="#Post_002dinstallation-tasks" accesskey="n" rel="next">Post-insta
 <p>If you are updating from a release older than <code>2.1.0</code>, then you have to
 first uninstall the old version.  See <a href="#Updating-from-an-older-release">Updating from an older release</a>.
 </p>
-<p>Magit depends on the <code>dash</code> library, available from all three of the
-popular third-party Elpa archives.  Install it using <code>M-x
-package-install RET dash RET</code>.  Of course you may also install it
-manually from its development repository, but I won&rsquo;t cover that here.
+<p>Magit depends on the <code>dash</code> and <code>with-editor</code> library which are available
+from Melpa and Melpa-Stable.  Install them using <code>M-x package-install
+RET &lt;package&gt; RET</code>.  Of course you may also install them manually from
+their development repository, but I won&rsquo;t cover that here.
+</p>
+<p>(An older release of Magit is also available from Marmalade, but no
+new versions will be uploaded in the future.  Marmalade&rsquo;s maintainer
+has stopped responding to requests from package maintainers who are
+having difficulties or require him to create an account so that they
+can upload their packages in the first place.)
 </p>
 <p>Then clone the Magit repository:
 </p>
@@ -854,13 +850,15 @@ $ cd ~/.emacs.d/site-lisp/magit
 <pre class="example">$ make
 </pre></div>
 
-<p>If you haven&rsquo;t installed <code>dash</code> using Elpa or at <code>/path/to/magit/../dash</code>,
-then you have to tell <code>make</code> where to find it.  To do so create
-<code>/path/to/magit/config.mk</code> with the following content before running
-<code>make</code>:
+<p>If you haven&rsquo;t installed <code>dash</code> and <code>with-editor</code> using Elpa or at
+<code>/path/to/magit/../&lt;package&gt;</code>, then you have to tell <code>make</code> where to find
+them.  To do so create <code>/path/to/magit/config.mk</code> with the following
+content before running <code>make</code>:
 </p>
 <div class="example">
-<pre class="example">LOAD_PATH = -L /path/to/magit/lisp -L /path/to/dash
+<pre class="example">LOAD_PATH  = -L /path/to/magit/lisp
+LOAD_PATH += -L /path/to/dash
+LOAD_PATH += -L /path/to/with-editor
 </pre></div>
 
 <p>Finally add this to your init file:
@@ -875,11 +873,12 @@ then you have to tell <code>make</code> where to find it.  To do so create
 	       &quot;~/.emacs.d/site-lisp/magit/Documentation/&quot;))
 </pre></div>
 
-<p>Note that you have to add the <code>lisp/</code> subdirectory to the <code>load-path</code>,
-not the top-level of the repository.
+<p>Note that you have to add the <code>lisp</code> subdirectory to the <code>load-path</code>, not
+the top-level of the repository, and that elements of <code>load-path</code> should
+not end with a slash, while those of <code>Info-directory-list</code> should.
 </p>
-<p>Instead of requiring the feature <code>magit</code>, you could only load the
-autoloads, by loading the file <code>magit-autoloads.el</code>.
+<p>Instead of requiring the feature <code>magit</code>, you could load just the
+autoload definitions, by loading the file <code>magit-autoloads.el</code>.
 </p>
 <p>Instead of running Magit directly from the repository by adding that
 to the <code>load-path</code>, you might want to instead install it in some other
@@ -1504,7 +1503,7 @@ git, i.e. &quot;outside Emacs&quot;, making this a rather important feature.
 </p>
 <p>For example, if you discard a change in the status buffer, then that
 is done by running <code>git apply --reverse ...</code>, and Emacs considers the
-file to have &quot;change on disk&quot;.  If Magit did not automaticallyrevert
+file to have &quot;changed on disk&quot;.  If Magit did not automatically revert
 the buffer, then you would have to type <code>M-x revert-buffer RET RET</code> in
 the visiting buffer before you could continue making changes.
 </p>
@@ -1538,11 +1537,11 @@ buffers by explicitly calling <code>auto-revert-buffers</code> after running git
 for side-effects.
 </p>
 <p>If <code>auto-revert-use-notify</code> is non-nil (and file notifications are
-actually supported), then <code>magit-auto-revert-immediately</code> should be
-set to nil, because the reverts happen immediately anyway.
+actually supported), then <code>magit-auto-revert-immediately</code> does not
+have to be non-nil, because the reverts happen immediately anyway.
 </p>
 <p>If <code>magit-auto-revert-immediately</code> and <code>auto-revert-use-notify</code> are both
-nil, then reverts happen after <code>auto-revert-interval</code> seconds of user
+<code>nil</code>, then reverts happen after <code>auto-revert-interval</code> seconds of user
 inactivity.  That is not desirable.
 </p></dd></dl>
 
@@ -1568,9 +1567,10 @@ directory.
 <dt><a name="index-auto_002drevert_002dmode-1"></a>Command: <strong>auto-revert-mode</strong></dt>
 <dd>
 <p>The global mode <code>magit-auto-revert-mode</code> works by turning on this
-local mode in the appropriate buffers.  You can also turn it on or
-off manually, which might be necessary if Magit does not notice that
-a previously untracked file now is being tracked or vice-versa.
+local mode in the appropriate buffers (but <code>global-auto-revert-mode</code>
+is implemented differently).  You can also turn it on or off
+manually, which might be necessary if Magit does not notice that a
+previously untracked file now is being tracked or vice-versa.
 </p></dd></dl>
 
 <dl>
@@ -1585,6 +1585,29 @@ automatic reverts for <code>auto-revert-interval</code> seconds.
 <dd>
 <p>This option controls for how many seconds Emacs waits before
 resuming suspended reverts.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dbuffer_002dlist_002dfilter"></a>User Option: <strong>auto-revert-buffer-list-filter</strong></dt>
+<dd>
+<p>This option specifies an additional filter used by
+<code>auto-revert-buffers</code> to determine whether a buffer should be reverted
+or not.
+</p>
+<p>This option is provided by <code>magit</code>, which also redefines
+<code>auto-revert-buffers</code> to respect it.  Magit users who do not turn on
+the local mode <code>auto-revert-mode</code> themselves, are best served by
+setting the value to <code>magit-auto-revert-repository-buffers-p</code>.
+</p>
+<p>However the default is nil, to not disturb users who do use the
+local mode directly.  If you experience delays when running Magit
+commands, then you should consider using one of the predicates
+provided by Magit - especially if you also use Tramp.
+</p>
+<p>Users who do turn on <code>auto-revert-mode</code> in buffers in which Magit
+doesn&rsquo;t do that for them, should likely not use any filter.  Users
+who turn on <code>global-auto-revert-mode</code>, do not have to worry about this
+option, because it is disregarded if the global mode is enabled.
 </p></dd></dl>
 
 <dl>
@@ -2941,6 +2964,8 @@ then the default value of <code>magit-log-arguments</code> is used instead.
 </p>
 <p>For information about the various arguments, see 
 the <a href="http://git-scm.com/docs/git-log">git-log(1)</a> manpage.
+The switch <code>++order=VALUE</code> is converted to one of <code>--author-date-order</code>,
+<code>--date-order</code>, or <code>--topo-order</code> before being passed to <code>git log</code>.
 </p>
 <p>The log popup also features several reflog commands.  See <a href="#Reflog">Reflog</a>.
 </p>
@@ -4424,6 +4449,8 @@ inside the heading of a sibling section of the same type.
 once, a hunk, multiple hunks at once, and on parts of a hunk.  These
 apply variants are described in the next section.
 </p>
+<p>You can also use Ediff to stage and unstage.  See <a href="#Ediffing">Ediffing</a>.
+</p>
 <dl compact="compact">
 <dd><a name="index-s"></a>
 <a name="index-magit_002dstage"></a>
@@ -4449,6 +4476,11 @@ argument also stage previously untracked (but not ignored) files.
 <dd>
 <p>Remove the change at point from the staging area.
 </p>
+<p>Only staged changes can be unstaged.  But by default this command
+performs an action that is somewhat similar to unstaging, when it is
+called on a committed change: it reverses the change in the index
+but not in the working tree.
+</p>
 <a name="index-U"></a>
 <a name="index-magit_002dunstage_002dall"></a>
 </dd>
@@ -4456,6 +4488,48 @@ argument also stage previously untracked (but not ignored) files.
 <dd>
 <p>Remove all changes from the staging area.
 </p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dunstage_002dcommitted"></a>User Option: <strong>magit-unstage-committed</strong></dt>
+<dd>
+<p>This option controls whether <code>magit-unstage</code> &quot;unstages&quot; committed
+changes by reversing them in the index but not the working tree.
+The alternative is to raise an error.
+</p></dd></dl>
+
+<dl compact="compact">
+<dd><a name="index-M_002dx-magit_002dreverse_002din_002dindex"></a>
+<a name="index-magit_002dreverse_002din_002dindex"></a>
+</dd>
+<dt><kbd>M-x magit-reverse-in-index</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-reverse-in-index</code>)</dt>
+<dd>
+<p>This command reverses the committed change at point in the index but
+not the working tree.  By default no key is bound directly to this
+command, but it is indirectly called when <code>u</code> (<code>magit-unstage</code>) is
+pressed on a committed change.
+</p>
+<p>This allows extracting a change from <code>HEAD</code>, while leaving it in the
+working tree, so that it can later be committed using a separate
+commit.  A typical workflow would be:
+</p>
+<ul>
+<li> Optionally make sure that there are no uncommitted changes.
+
+</li><li> Visit the <code>HEAD</code> commit and navigate to the change that should
+not have been included in that commit.
+
+</li><li> Type <code>u</code> (<code>magit-unstage</code>) to reverse it in the index.
+This assumes that <code>magit-unstage-committed-changes</code> is non-nil.
+
+</li><li> Type <code>c e</code> to extend <code>HEAD</code> with the staged changes,
+including those that were already staged before.
+
+</li><li> Optionally stage the remaining changes using <code>s</code> or <code>S</code> and then
+type <code>c c</code> to create a new commit.
+</li></ul>
+
 <a name="index-M_002dx-magit_002dreset_002dindex"></a>
 <a name="index-magit_002dreset_002dindex"></a>
 </dd>
@@ -4467,11 +4541,6 @@ point, then it defaults to <code>HEAD</code>.
 </p></dd>
 </dl>
 
-
-<p>To stage a smaller unit than a range of lines, similar to <code>git add
---patch</code> followed by <code>e</code> would do, then you can use <code>magit-ediff-stage</code> to
-do so.
-</p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Staging-from-file_002dvisiting-buffers" accesskey="1">Staging from file-visiting buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -5299,6 +5368,19 @@ the <a href="http://git-scm.com/docs/git-branch">git-branch(1)</a> manpage,
 </p>
 the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage<p>, and <a href="#Pushing">Pushing</a>.
 </p>
+<dl>
+<dt><a name="index-magit_002dprefer_002dremote_002dupstream"></a>User Option: <strong>magit-prefer-remote-upstream</strong></dt>
+<dd>
+<p>This option controls whether commands that read a branch from the
+user and then set it as the upstream branch, offer a local or a
+remote branch as default completion candidate, when they have the
+choice.
+</p>
+<p>This affects all commands that use <code>magit-read-upstream-branch</code> or
+<code>magit-read-starting-point</code>, which includes all commands that change
+the upstream and many which create new branches.
+</p></dd></dl>
+
 <dl compact="compact">
 <dd><a name="index-b-b"></a>
 <a name="index-magit_002dcheckout"></a>
@@ -5362,15 +5444,16 @@ instead of the starting-point itself.
 <p>This command resets a branch, defaulting to the branch at point, to
 the tip of another branch or any other commit.
 </p>
-<p>When resetting to another branch, then that branch is also set as
-the upstream of the branch being reset.
-</p>
 <p>When the branch being reset is the current branch, then a hard reset
 is performed.  If there are any uncommitted changes, then the user
 has to confirming the reset because those changes would be lost.
 </p>
 <p>This is useful when you have started work on a feature branch but
 realize it&rsquo;s all crap and want to start over.
+</p>
+<p>When resetting to another branch and a prefix argument is used, then
+the target branch is set as the upstream of the branch that is being
+reset.
 </p>
 <a name="index-b-d"></a>
 <a name="index-magit_002dbranch_002ddelete"></a>
@@ -6492,6 +6575,9 @@ Next: <a href="#Pulling" accesskey="n" rel="next">Pulling</a>, Previous: <a href
 <a name="Fetching-1"></a>
 <h3 class="section">7.2 Fetching</h3>
 
+<p>For information about the differences between the <em>upstream</em> and the
+<em>push-remote</em>, see <a href="#Branching">Branching</a>.
+</p>
 <p>Also see 
 the <a href="http://git-scm.com/docs/git-fetch">git-fetch(1)</a> manpage.
 </p>
@@ -6555,6 +6641,9 @@ Next: <a href="#Pushing" accesskey="n" rel="next">Pushing</a>, Previous: <a href
 <a name="Pulling-1"></a>
 <h3 class="section">7.3 Pulling</h3>
 
+<p>For information about the differences between the <em>upstream</em> and the
+<em>push-remote</em>, see <a href="#Branching">Branching</a>.
+</p>
 <p>Also see 
 the <a href="http://git-scm.com/docs/git-pull">git-pull(1)</a> manpage.
 </p>
@@ -6603,6 +6692,9 @@ Next: <a href="#Creating-and-sending-patches" accesskey="n" rel="next">Creating 
 <a name="Pushing-1"></a>
 <h3 class="section">7.4 Pushing</h3>
 
+<p>For information about the differences between the <em>upstream</em> and the
+<em>push-remote</em>, see <a href="#Branching">Branching</a>.
+</p>
 <p>Also see 
 the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage.
 </p>
@@ -7656,8 +7748,26 @@ current buffer.
 </pre></div>
 
 <p>You should also check whether any third-party packages have added
-anything to <code>magit-refresh-buffer-hook</code> and <code>magit-status-refresh-hook</code>,
-and if so whether those additions impacts performance significantly.
+anything to <code>magit-refresh-buffer-hook</code>, <code>magit-status-refresh-hook</code>,
+<code>magit-pre-refresh-hook</code>, and <code>magit-post-refresh-hook</code>.  If so, then
+check whether those additions impacts performance significantly.
+Setting <code>magit-refresh-verbose</code> and then inspecting the output in the
+<code>*Messages*</code> buffer, should help doing so.
+</p>
+<p>Magit also reverts buffers which visit files located inside the
+current repository, when the visited file changes on disk.  That is
+implemented on top of <code>auto-revert-mode</code> from the built-in library
+<code>autorevert</code>.  To figure out whether that impacts performance, check
+whether performance is significantly worse, when many buffers exist
+and/or when some buffers visit files using Tramp.  If so, then this
+should help.
+</p>
+<div class="lisp">
+<pre class="lisp">(setq auto-revert-buffer-list-filter
+      'magit-auto-revert-repository-buffers-p)
+</pre></div>
+
+<p>For alternative approaches see <a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a>.
 </p>
 <p>If you have enabled any features that are disabled by default, then
 you should check whether they impact performance significantly.  It&rsquo;s
@@ -7732,14 +7842,12 @@ Consider leaving it at that.
 <a name="Diff-Performance"></a>
 <h4 class="unnumberedsubsubsec">Diff Performance</h4>
 
-<ul>
-<li> <code>magit-diff-highlight-hunk-body</code>, <code>magit-diff-highlight-indentation</code>,
-<code>magit-diff-highlight-trailing</code>, and <code>magit-diff-paint-whitespace</code>
-
-
-</li><li> <code>magit-diff-refine-hunk</code>
-</li></ul>
-
+<p>If diffs are slow, then consider turning off some optional diff
+features by setting all or some of the following variables to <code>nil</code>:
+<code>magit-diff-highlight-indentation</code>, <code>magit-diff-highlight-trailing</code>,
+<code>magit-diff-paint-whitespace</code>, <code>magit-diff-highlight-hunk-body</code>, and
+<code>magit-diff-refine-hunk</code>.
+</p>
 <a name="Refs-Buffer-Performance"></a>
 <h4 class="unnumberedsubsubsec">Refs Buffer Performance</h4>
 
@@ -9435,6 +9543,7 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dreset_002dindex"><code>M-x magit-reset-index</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-and-unstaging">Staging and unstaging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dreset_002dindex-1"><code>M-x magit-reset-index</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resetting">Resetting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dreset_002dsoft"><code>M-x magit-reset-soft</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resetting">Resetting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dreverse_002din_002dindex"><code>M-x magit-reverse-in-index</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-and-unstaging">Staging and unstaging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dstage_002dfile"><code>M-x magit-stage-file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-from-file_002dvisiting-buffers">Staging from file-visiting buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dtoggle_002dbuffer_002dlock"><code>M-x magit-toggle-buffer-lock</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Modes-and-Buffers">Modes and Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-M_002dx-magit_002dunstage_002dfile"><code>M-x magit-unstage-file</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-from-file_002dvisiting-buffers">Staging from file-visiting buffers</a></td></tr>
@@ -9913,6 +10022,7 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dreset_002dindex-1">magit-reset-index</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resetting">Resetting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dreset_002dsoft">magit-reset-soft</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Resetting">Resetting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dreverse">magit-reverse</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Applying">Applying</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dreverse_002din_002dindex">magit-reverse-in-index</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-and-unstaging">Staging and unstaging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drevert">magit-revert</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reverting">Reverting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drevert_002dno_002dcommit">magit-revert-no-commit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reverting">Reverting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drevert_002dpopup">magit-revert-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Reverting">Reverting</a></td></tr>
@@ -10222,6 +10332,7 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Variable-Index_vr_letter-A">A</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-auto_002drevert_002dbuffer_002dlist_002dfilter"><code>auto-revert-buffer-list-filter</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-auto_002drevert_002dinterval"><code>auto-revert-interval</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-auto_002drevert_002dstop_002don_002duser_002dinput"><code>auto-revert-stop-on-user-input</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-auto_002drevert_002duse_002dnotify"><code>auto-revert-use-notify</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
@@ -10289,6 +10400,7 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002dpop_002drevision_002dstack_002dformat"><code>magit-pop-revision-stack-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpost_002ddisplay_002dbuffer_002dhook"><code>magit-post-display-buffer-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpre_002ddisplay_002dbuffer_002dhook"><code>magit-pre-display-buffer-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dprefer_002dremote_002dupstream"><code>magit-prefer-remote-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Branching">Branching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dprocess_002draise_002derror"><code>magit-process-raise-error</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Calling-Git-for-effect">Calling Git for effect</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dcurrent_002dset_002dremote_002dif_002dmissing"><code>magit-push-current-set-remote-if-missing</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefresh_002dargs"><code>magit-refresh-args</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-buffers">Refreshing buffers</a></td></tr>
@@ -10317,6 +10429,7 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002dstatus_002dsections_002dhook"><code>magit-status-sections-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dthis_002dprocess"><code>magit-this-process</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Calling-Git-for-effect">Calling Git for effect</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002duniquify_002dbuffer_002dnames"><code>magit-uniquify-buffer-names</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Naming-Buffers">Naming Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dunstage_002dcommitted"><code>magit-unstage-committed</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-and-unstaging">Staging and unstaging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dupdate_002dother_002dwindow_002ddelay"><code>magit-update-other-window-delay</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-movement">Section movement</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dvisit_002dref_002dcreate"><code>magit-visit-ref-create</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dwip_002dafter_002dapply_002dmode"><code>magit-wip-after-apply-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Wip-modes">Wip modes</a></td></tr>

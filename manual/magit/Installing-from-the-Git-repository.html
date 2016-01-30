@@ -81,10 +81,16 @@ Next: <a href="Post_002dinstallation-tasks.html#Post_002dinstallation-tasks" acc
 <p>If you are updating from a release older than <code>2.1.0</code>, then you have to
 first uninstall the old version.  See <a href="Updating-from-an-older-release.html#Updating-from-an-older-release">Updating from an older release</a>.
 </p>
-<p>Magit depends on the <code>dash</code> library, available from all three of the
-popular third-party Elpa archives.  Install it using <code>M-x
-package-install RET dash RET</code>.  Of course you may also install it
-manually from its development repository, but I won&rsquo;t cover that here.
+<p>Magit depends on the <code>dash</code> and <code>with-editor</code> library which are available
+from Melpa and Melpa-Stable.  Install them using <code>M-x package-install
+RET &lt;package&gt; RET</code>.  Of course you may also install them manually from
+their development repository, but I won&rsquo;t cover that here.
+</p>
+<p>(An older release of Magit is also available from Marmalade, but no
+new versions will be uploaded in the future.  Marmalade&rsquo;s maintainer
+has stopped responding to requests from package maintainers who are
+having difficulties or require him to create an account so that they
+can upload their packages in the first place.)
 </p>
 <p>Then clone the Magit repository:
 </p>
@@ -99,13 +105,15 @@ $ cd ~/.emacs.d/site-lisp/magit
 <pre class="example">$ make
 </pre></div>
 
-<p>If you haven&rsquo;t installed <code>dash</code> using Elpa or at <code>/path/to/magit/../dash</code>,
-then you have to tell <code>make</code> where to find it.  To do so create
-<code>/path/to/magit/config.mk</code> with the following content before running
-<code>make</code>:
+<p>If you haven&rsquo;t installed <code>dash</code> and <code>with-editor</code> using Elpa or at
+<code>/path/to/magit/../&lt;package&gt;</code>, then you have to tell <code>make</code> where to find
+them.  To do so create <code>/path/to/magit/config.mk</code> with the following
+content before running <code>make</code>:
 </p>
 <div class="example">
-<pre class="example">LOAD_PATH = -L /path/to/magit/lisp -L /path/to/dash
+<pre class="example">LOAD_PATH  = -L /path/to/magit/lisp
+LOAD_PATH += -L /path/to/dash
+LOAD_PATH += -L /path/to/with-editor
 </pre></div>
 
 <p>Finally add this to your init file:
@@ -120,11 +128,12 @@ then you have to tell <code>make</code> where to find it.  To do so create
 	       &quot;~/.emacs.d/site-lisp/magit/Documentation/&quot;))
 </pre></div>
 
-<p>Note that you have to add the <code>lisp/</code> subdirectory to the <code>load-path</code>,
-not the top-level of the repository.
+<p>Note that you have to add the <code>lisp</code> subdirectory to the <code>load-path</code>, not
+the top-level of the repository, and that elements of <code>load-path</code> should
+not end with a slash, while those of <code>Info-directory-list</code> should.
 </p>
-<p>Instead of requiring the feature <code>magit</code>, you could only load the
-autoloads, by loading the file <code>magit-autoloads.el</code>.
+<p>Instead of requiring the feature <code>magit</code>, you could load just the
+autoload definitions, by loading the file <code>magit-autoloads.el</code>.
 </p>
 <p>Instead of running Magit directly from the repository by adding that
 to the <code>load-path</code>, you might want to instead install it in some other

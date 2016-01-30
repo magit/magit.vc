@@ -2,13 +2,28 @@ include ../config.mk
 
 CSS = /css/page.css
 
-.PHONY: magit magit-popup with-editor clean
+.PHONY: help move-old copy-new magit magit-popup with-editor clean
+
+help:
+	$(info make VERSION=M.N move-old)
+	$(info make copy-new)
+	$(info make all)
 
 all:  texi html pdf
 
 texi: magit.texi magit-popup.texi with-editor.texi
 pdf:  magit.pdf  magit-popup.pdf  with-editor.pdf magit-refcard.pdf
 html: magit magit-popup with-editor
+
+move-old:
+	@mkdir $(VERSION)
+	@mv magit magit-popup with-editor $(VERSION)
+	@mv *.org *.texi *.html *.pdf $(VERSION)
+	@mv $(VERSION)/magit-refcard.* $(VERSION)/index.html .
+
+copy-new:
+	@cp ~/.emacs.d/lib/magit/Documentation/*.org .
+	@cp ~/.emacs.d/lib/with-editor/with-editor.org .
 
 magit: magit.texi
 	@printf " GEN $@.html\n"

@@ -98,6 +98,8 @@ inside the heading of a sibling section of the same type.
 once, a hunk, multiple hunks at once, and on parts of a hunk.  These
 apply variants are described in the next section.
 </p>
+<p>You can also use Ediff to stage and unstage.  See <a href="Ediffing.html#Ediffing">Ediffing</a>.
+</p>
 <dl compact="compact">
 <dd><a name="index-s"></a>
 <a name="index-magit_002dstage"></a>
@@ -123,6 +125,11 @@ argument also stage previously untracked (but not ignored) files.
 <dd>
 <p>Remove the change at point from the staging area.
 </p>
+<p>Only staged changes can be unstaged.  But by default this command
+performs an action that is somewhat similar to unstaging, when it is
+called on a committed change: it reverses the change in the index
+but not in the working tree.
+</p>
 <a name="index-U"></a>
 <a name="index-magit_002dunstage_002dall"></a>
 </dd>
@@ -130,6 +137,48 @@ argument also stage previously untracked (but not ignored) files.
 <dd>
 <p>Remove all changes from the staging area.
 </p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dunstage_002dcommitted"></a>User Option: <strong>magit-unstage-committed</strong></dt>
+<dd>
+<p>This option controls whether <code>magit-unstage</code> &quot;unstages&quot; committed
+changes by reversing them in the index but not the working tree.
+The alternative is to raise an error.
+</p></dd></dl>
+
+<dl compact="compact">
+<dd><a name="index-M_002dx-magit_002dreverse_002din_002dindex"></a>
+<a name="index-magit_002dreverse_002din_002dindex"></a>
+</dd>
+<dt><kbd>M-x magit-reverse-in-index</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-reverse-in-index</code>)</dt>
+<dd>
+<p>This command reverses the committed change at point in the index but
+not the working tree.  By default no key is bound directly to this
+command, but it is indirectly called when <code>u</code> (<code>magit-unstage</code>) is
+pressed on a committed change.
+</p>
+<p>This allows extracting a change from <code>HEAD</code>, while leaving it in the
+working tree, so that it can later be committed using a separate
+commit.  A typical workflow would be:
+</p>
+<ul>
+<li> Optionally make sure that there are no uncommitted changes.
+
+</li><li> Visit the <code>HEAD</code> commit and navigate to the change that should
+not have been included in that commit.
+
+</li><li> Type <code>u</code> (<code>magit-unstage</code>) to reverse it in the index.
+This assumes that <code>magit-unstage-committed-changes</code> is non-nil.
+
+</li><li> Type <code>c e</code> to extend <code>HEAD</code> with the staged changes,
+including those that were already staged before.
+
+</li><li> Optionally stage the remaining changes using <code>s</code> or <code>S</code> and then
+type <code>c c</code> to create a new commit.
+</li></ul>
+
 <a name="index-M_002dx-magit_002dreset_002dindex"></a>
 <a name="index-magit_002dreset_002dindex"></a>
 </dd>
@@ -141,11 +190,6 @@ point, then it defaults to <code>HEAD</code>.
 </p></dd>
 </dl>
 
-
-<p>To stage a smaller unit than a range of lines, similar to <code>git add
---patch</code> followed by <code>e</code> would do, then you can use <code>magit-ediff-stage</code> to
-do so.
-</p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Staging-from-file_002dvisiting-buffers.html#Staging-from-file_002dvisiting-buffers" accesskey="1">Staging from file-visiting buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>

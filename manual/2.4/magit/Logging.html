@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Logging</title>
+
+<meta name="description" content="Magit User Manual: Logging">
+<meta name="keywords" content="Magit User Manual: Logging">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
+<link href="Refreshing-logs.html#Refreshing-logs" rel="next" title="Refreshing logs">
+<link href="Status-options.html#Status-options" rel="prev" title="Status options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Logging"></a>
+<div class="header">
+<p>
+Next: <a href="Diffing.html#Diffing" accesskey="n" rel="next">Diffing</a>, Previous: <a href="Status-buffer.html#Status-buffer" accesskey="p" rel="prev">Status buffer</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Logging-1"></a>
+<h3 class="section">5.2 Logging</h3>
+
+<p>The status buffer contains logs for the unpushed and unpulled commits,
+but that obviously isn&rsquo;t enough.  The prefix command <code>magit-log-popup</code>,
+on <code>l</code>, features several suffix commands, which show a specific log in a
+separate log buffer.
+</p>
+<p>Like other popups, the log popup also features several arguments that
+can be changed before invoking one of the suffix commands.  However in
+case of the log popup these arguments correspond to those currently in
+use in the current repository&rsquo;s log buffer.  When the log popup is
+invoked while no log buffer exists for the current repository yet,
+then the default value of <code>magit-log-arguments</code> is used instead.
+</p>
+<p>For information about the various arguments, see 
+the <a href="http://git-scm.com/docs/git-log">git-log(1)</a> manpage.
+</p>
+<p>The log popup also features several reflog commands.  See <a href="Reflog.html#Reflog">Reflog</a>.
+</p>
+<dl compact="compact">
+<dd><a name="index-l"></a>
+<a name="index-magit_002dlog_002dpopup"></a>
+</dd>
+<dt><kbd>l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-l-l"></a>
+<a name="index-magit_002dlog_002dcurrent"></a>
+</dd>
+<dt><kbd>l l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-current</code>)</dt>
+<dd>
+<p>Show log for the current branch.  When <code>HEAD</code> is detached or with a
+prefix argument, show log for one or more revs read from the
+minibuffer.
+</p>
+<a name="index-l-o"></a>
+<a name="index-magit_002dlog"></a>
+</dd>
+<dt><kbd>l o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log</code>)</dt>
+<dd>
+<p>Show log for one or more revs read from the minibuffer.  The user
+can input any revision or revisions separated by a space, or even
+ranges, but only branches, tags, and a representation of the
+commit at point are available as completion candidates.
+</p>
+<a name="index-l-h"></a>
+<a name="index-magit_002dlog_002dhead"></a>
+</dd>
+<dt><kbd>l h</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-head</code>)</dt>
+<dd>
+<p>Show log for <code>HEAD</code>.
+</p>
+<a name="index-l-L"></a>
+<a name="index-magit_002dlog_002dbranches"></a>
+</dd>
+<dt><kbd>l L</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-branches</code>)</dt>
+<dd>
+<p>Show log for all local branches and <code>HEAD</code>.
+</p>
+<a name="index-l-b"></a>
+<a name="index-magit_002dlog_002dall_002dbranches"></a>
+</dd>
+<dt><kbd>l b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-all-branches</code>)</dt>
+<dd>
+<p>Show log for all local and remote branches and <code>HEAD</code>.
+</p>
+<a name="index-l-a"></a>
+<a name="index-magit_002dlog_002dall"></a>
+</dd>
+<dt><kbd>l a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-all</code>)</dt>
+<dd>
+<p>Show log for all references and <code>HEAD</code>.
+</p></dd>
+</dl>
+
+<p>The following related commands are not available from the popup.
+</p>
+<dl compact="compact">
+<dd><a name="index-Y"></a>
+<a name="index-magit_002dcherry"></a>
+</dd>
+<dt><kbd>Y</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-cherry</code>)</dt>
+<dd>
+<p>Show commits in a branch that are not merged in the upstream branch.
+</p>
+<a name="index-M_002dx-magit_002dlog_002dbuffer_002dfile"></a>
+<a name="index-magit_002dlog_002dbuffer_002dfile"></a>
+</dd>
+<dt><kbd>M-x magit-log-buffer-file</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-buffer-file</code>)</dt>
+<dd>
+<p>Show log for the file visited in the current buffer.
+</p></dd>
+</dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Refreshing-logs.html#Refreshing-logs" accesskey="1">Refreshing logs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Log-Buffer.html#Log-Buffer" accesskey="2">Log Buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Select-from-log.html#Select-from-log" accesskey="3">Select from log</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Reflog.html#Reflog" accesskey="4">Reflog</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Diffing.html#Diffing" accesskey="n" rel="next">Diffing</a>, Previous: <a href="Status-buffer.html#Status-buffer" accesskey="p" rel="prev">Status buffer</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

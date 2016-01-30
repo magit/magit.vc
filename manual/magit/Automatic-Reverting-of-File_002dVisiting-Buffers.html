@@ -85,7 +85,7 @@ git, i.e. &quot;outside Emacs&quot;, making this a rather important feature.
 </p>
 <p>For example, if you discard a change in the status buffer, then that
 is done by running <code>git apply --reverse ...</code>, and Emacs considers the
-file to have &quot;change on disk&quot;.  If Magit did not automaticallyrevert
+file to have &quot;changed on disk&quot;.  If Magit did not automatically revert
 the buffer, then you would have to type <code>M-x revert-buffer RET RET</code> in
 the visiting buffer before you could continue making changes.
 </p>
@@ -119,11 +119,11 @@ buffers by explicitly calling <code>auto-revert-buffers</code> after running git
 for side-effects.
 </p>
 <p>If <code>auto-revert-use-notify</code> is non-nil (and file notifications are
-actually supported), then <code>magit-auto-revert-immediately</code> should be
-set to nil, because the reverts happen immediately anyway.
+actually supported), then <code>magit-auto-revert-immediately</code> does not
+have to be non-nil, because the reverts happen immediately anyway.
 </p>
 <p>If <code>magit-auto-revert-immediately</code> and <code>auto-revert-use-notify</code> are both
-nil, then reverts happen after <code>auto-revert-interval</code> seconds of user
+<code>nil</code>, then reverts happen after <code>auto-revert-interval</code> seconds of user
 inactivity.  That is not desirable.
 </p></dd></dl>
 
@@ -149,9 +149,10 @@ directory.
 <dt><a name="index-auto_002drevert_002dmode-1"></a>Command: <strong>auto-revert-mode</strong></dt>
 <dd>
 <p>The global mode <code>magit-auto-revert-mode</code> works by turning on this
-local mode in the appropriate buffers.  You can also turn it on or
-off manually, which might be necessary if Magit does not notice that
-a previously untracked file now is being tracked or vice-versa.
+local mode in the appropriate buffers (but <code>global-auto-revert-mode</code>
+is implemented differently).  You can also turn it on or off
+manually, which might be necessary if Magit does not notice that a
+previously untracked file now is being tracked or vice-versa.
 </p></dd></dl>
 
 <dl>
@@ -166,6 +167,29 @@ automatic reverts for <code>auto-revert-interval</code> seconds.
 <dd>
 <p>This option controls for how many seconds Emacs waits before
 resuming suspended reverts.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dbuffer_002dlist_002dfilter"></a>User Option: <strong>auto-revert-buffer-list-filter</strong></dt>
+<dd>
+<p>This option specifies an additional filter used by
+<code>auto-revert-buffers</code> to determine whether a buffer should be reverted
+or not.
+</p>
+<p>This option is provided by <code>magit</code>, which also redefines
+<code>auto-revert-buffers</code> to respect it.  Magit users who do not turn on
+the local mode <code>auto-revert-mode</code> themselves, are best served by
+setting the value to <code>magit-auto-revert-repository-buffers-p</code>.
+</p>
+<p>However the default is nil, to not disturb users who do use the
+local mode directly.  If you experience delays when running Magit
+commands, then you should consider using one of the predicates
+provided by Magit - especially if you also use Tramp.
+</p>
+<p>Users who do turn on <code>auto-revert-mode</code> in buffers in which Magit
+doesn&rsquo;t do that for them, should likely not use any filter.  Users
+who turn on <code>global-auto-revert-mode</code>, do not have to worry about this
+option, because it is disregarded if the global mode is enabled.
 </p></dd></dl>
 
 <dl>

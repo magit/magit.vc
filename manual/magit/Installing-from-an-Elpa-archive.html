@@ -81,11 +81,11 @@ Next: <a href="Installing-from-the-Git-repository.html#Installing-from-the-Git-r
 <p>If you are updating from a release older than <code>2.1.0</code>, then you have to
 first uninstall the old version.  See <a href="Updating-from-an-older-release.html#Updating-from-an-older-release">Updating from an older release</a>.
 </p>
-<p>Magit is available from all three of the popular unofficial Elpa
-archives: Melpa, Melpa-Stable, and Marmalade.  If you haven&rsquo;t used
+<p>Magit is available from Melpa and Melpa-Stable.  If you haven&rsquo;t used
 Emacs&rsquo; package manager before, then it is high time you familiarize
-yourself with it by reading the documentation in the Emacs manual,
-see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Packages.html#Packages">(emacs)Packages</a>.  Then add one of the archives to <code>package-archives</code>:
+yourself with it by reading the documentation in the Emacs manual, see
+<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Packages.html#Packages">(emacs)Packages</a>.  Then add one of the archives to
+<code>package-archives</code>:
 </p>
 <ul>
 <li> To use Melpa:
@@ -105,16 +105,6 @@ see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Packages.h
 <pre class="lisp">(require 'package)
 (add-to-list 'package-archives
 	     '(&quot;melpa-stable&quot; . &quot;http://stable.melpa.org/packages/&quot;) t)
-</pre></div>
-
-<ul>
-<li> To use Marmalade:
-</li></ul>
-
-<div class="lisp">
-<pre class="lisp">(require 'package)
-(add-to-list 'package-archives
-	     '(&quot;marmalade&quot; . &quot;http://marmalade-repo.org/packages/&quot;) t)
 </pre></div>
 
 <p>Once you have added your preferred archive, you need to update the

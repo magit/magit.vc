@@ -40,7 +40,7 @@ General Public License for more details.
 @finalout
 @titlepage
 @title Magit User Manual
-@subtitle for version 2.4
+@subtitle for version 2.5
 @author Jonas Bernoulli
 @page
 @vskip 0pt plus 1filll
@@ -392,11 +392,11 @@ recent enough Git version on these hosts.
 If you are updating from a release older than @code{2.1.0}, then you have to
 first uninstall the old version.  See @ref{Updating from an older release,Updating from an older release}.
 
-Magit is available from all three of the popular unofficial Elpa
-archives: Melpa, Melpa-Stable, and Marmalade.  If you haven't used
+Magit is available from Melpa and Melpa-Stable.  If you haven't used
 Emacs' package manager before, then it is high time you familiarize
-yourself with it by reading the documentation in the Emacs manual,
-see @ref{Packages,,,emacs,}.  Then add one of the archives to @code{package-archives}:
+yourself with it by reading the documentation in the Emacs manual, see
+@ref{Packages,,,emacs,}.  Then add one of the archives to
+@code{package-archives}:
 
 @itemize
 @item
@@ -418,17 +418,6 @@ To use Melpa-Stable:
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-@end lisp
-
-@itemize
-@item
-To use Marmalade:
-@end itemize
-
-@lisp
-(require 'package)
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
 @end lisp
 
 Once you have added your preferred archive, you need to update the
@@ -453,10 +442,16 @@ Now see @ref{Post-installation tasks,Post-installation tasks}.
 If you are updating from a release older than @code{2.1.0}, then you have to
 first uninstall the old version.  See @ref{Updating from an older release,Updating from an older release}.
 
-Magit depends on the @code{dash} library, available from all three of the
-popular third-party Elpa archives.  Install it using @code{M-x
-package-install RET dash RET}.  Of course you may also install it
-manually from its development repository, but I won't cover that here.
+Magit depends on the @code{dash} and @code{with-editor} library which are available
+from Melpa and Melpa-Stable.  Install them using @code{M-x package-install
+RET <package> RET}.  Of course you may also install them manually from
+their development repository, but I won't cover that here.
+
+(An older release of Magit is also available from Marmalade, but no
+new versions will be uploaded in the future.  Marmalade's maintainer
+has stopped responding to requests from package maintainers who are
+having difficulties or require him to create an account so that they
+can upload their packages in the first place.)
 
 Then clone the Magit repository:
 
@@ -471,13 +466,15 @@ Then compile the libraries and generate the info manuals:
 $ make
 @end example
 
-If you haven't installed @code{dash} using Elpa or at @code{/path/to/magit/../dash},
-then you have to tell @code{make} where to find it.  To do so create
-@code{/path/to/magit/config.mk} with the following content before running
-@code{make}:
+If you haven't installed @code{dash} and @code{with-editor} using Elpa or at
+@code{/path/to/magit/../<package>}, then you have to tell @code{make} where to find
+them.  To do so create @code{/path/to/magit/config.mk} with the following
+content before running @code{make}:
 
 @example
-LOAD_PATH = -L /path/to/magit/lisp -L /path/to/dash
+LOAD_PATH  = -L /path/to/magit/lisp
+LOAD_PATH += -L /path/to/dash
+LOAD_PATH += -L /path/to/with-editor
 @end example
 
 Finally add this to your init file:
@@ -492,11 +489,12 @@ Finally add this to your init file:
 	       "~/.emacs.d/site-lisp/magit/Documentation/"))
 @end lisp
 
-Note that you have to add the @code{lisp/} subdirectory to the @code{load-path},
-not the top-level of the repository.
+Note that you have to add the @code{lisp} subdirectory to the @code{load-path}, not
+the top-level of the repository, and that elements of @code{load-path} should
+not end with a slash, while those of @code{Info-directory-list} should.
 
-Instead of requiring the feature @code{magit}, you could only load the
-autoloads, by loading the file @code{magit-autoloads.el}.
+Instead of requiring the feature @code{magit}, you could load just the
+autoload definitions, by loading the file @code{magit-autoloads.el}.
 
 Instead of running Magit directly from the repository by adding that
 to the @code{load-path}, you might want to instead install it in some other
@@ -1029,7 +1027,7 @@ git, i.e. "outside Emacs", making this a rather important feature.
 
 For example, if you discard a change in the status buffer, then that
 is done by running @code{git apply --reverse ...}, and Emacs considers the
-file to have "change on disk".  If Magit did not automaticallyrevert
+file to have "changed on disk".  If Magit did not automatically revert
 the buffer, then you would have to type @code{M-x revert-buffer RET RET} in
 the visiting buffer before you could continue making changes.
 
@@ -1060,11 +1058,11 @@ buffers by explicitly calling @code{auto-revert-buffers} after running git
 for side-effects.
 
 If @code{auto-revert-use-notify} is non-nil (and file notifications are
-actually supported), then @code{magit-auto-revert-immediately} should be
-set to nil, because the reverts happen immediately anyway.
+actually supported), then @code{magit-auto-revert-immediately} does not
+have to be non-nil, because the reverts happen immediately anyway.
 
 If @code{magit-auto-revert-immediately} and @code{auto-revert-use-notify} are both
-nil, then reverts happen after @code{auto-revert-interval} seconds of user
+@code{nil}, then reverts happen after @code{auto-revert-interval} seconds of user
 inactivity.  That is not desirable.
 @end defopt
 
@@ -1087,9 +1085,10 @@ directory.
 @deffn Command auto-revert-mode
 
 The global mode @code{magit-auto-revert-mode} works by turning on this
-local mode in the appropriate buffers.  You can also turn it on or
-off manually, which might be necessary if Magit does not notice that
-a previously untracked file now is being tracked or vice-versa.
+local mode in the appropriate buffers (but @code{global-auto-revert-mode}
+is implemented differently).  You can also turn it on or off
+manually, which might be necessary if Magit does not notice that a
+previously untracked file now is being tracked or vice-versa.
 @end deffn
 
 @defopt auto-revert-stop-on-user-input
@@ -1102,6 +1101,28 @@ automatic reverts for @code{auto-revert-interval} seconds.
 
 This option controls for how many seconds Emacs waits before
 resuming suspended reverts.
+@end defopt
+
+@defopt auto-revert-buffer-list-filter
+
+This option specifies an additional filter used by
+@code{auto-revert-buffers} to determine whether a buffer should be reverted
+or not.
+
+This option is provided by @code{magit}, which also redefines
+@code{auto-revert-buffers} to respect it.  Magit users who do not turn on
+the local mode @code{auto-revert-mode} themselves, are best served by
+setting the value to @code{magit-auto-revert-repository-buffers-p}.
+
+However the default is nil, to not disturb users who do use the
+local mode directly.  If you experience delays when running Magit
+commands, then you should consider using one of the predicates
+provided by Magit - especially if you also use Tramp.
+
+Users who do turn on @code{auto-revert-mode} in buffers in which Magit
+doesn't do that for them, should likely not use any filter.  Users
+who turn on @code{global-auto-revert-mode}, do not have to worry about this
+option, because it is disregarded if the global mode is enabled.
 @end defopt
 
 @defopt auto-revert-verbose
@@ -2235,6 +2256,8 @@ the <a href="http://git-scm.com/docs/git-log">git-log(1)</a> manpage
 the git-log(1) manpage
 @end iftex
 .
+The switch @code{++order=VALUE} is converted to one of @code{--author-date-order},
+@code{--date-order}, or @code{--topo-order} before being passed to @code{git log}.
 
 The log popup also features several reflog commands.  See @ref{Reflog,Reflog}.
 
@@ -3510,6 +3533,8 @@ Besides staging and unstaging, Magit also provides several other
 once, a hunk, multiple hunks at once, and on parts of a hunk.  These
 apply variants are described in the next section.
 
+You can also use Ediff to stage and unstage.  See @ref{Ediffing,Ediffing}.
+
 @table @asis
 @kindex s
 @cindex magit-stage
@@ -3532,11 +3557,60 @@ argument also stage previously untracked (but not ignored) files.
 
 Remove the change at point from the staging area.
 
+Only staged changes can be unstaged.  But by default this command
+performs an action that is somewhat similar to unstaging, when it is
+called on a committed change: it reverses the change in the index
+but not in the working tree.
+
 @kindex U
 @cindex magit-unstage-all
 @item @kbd{U} @tie{}@tie{}@tie{}@tie{}(@code{magit-unstage-all})
 
 Remove all changes from the staging area.
+
+@end table
+
+@defopt magit-unstage-committed
+
+This option controls whether @code{magit-unstage} "unstages" committed
+changes by reversing them in the index but not the working tree.
+The alternative is to raise an error.
+@end defopt
+
+@table @asis
+@kindex M-x magit-reverse-in-index
+@cindex magit-reverse-in-index
+@item @kbd{M-x magit-reverse-in-index} @tie{}@tie{}@tie{}@tie{}(@code{magit-reverse-in-index})
+
+This command reverses the committed change at point in the index but
+not the working tree.  By default no key is bound directly to this
+command, but it is indirectly called when @code{u} (@code{magit-unstage}) is
+pressed on a committed change.
+
+This allows extracting a change from @code{HEAD}, while leaving it in the
+working tree, so that it can later be committed using a separate
+commit.  A typical workflow would be:
+
+@itemize
+@item
+Optionally make sure that there are no uncommitted changes.
+
+@item
+Visit the @code{HEAD} commit and navigate to the change that should
+not have been included in that commit.
+
+@item
+Type @code{u} (@code{magit-unstage}) to reverse it in the index.
+This assumes that @code{magit-unstage-committed-changes} is non-nil.
+
+@item
+Type @code{c e} to extend @code{HEAD} with the staged changes,
+including those that were already staged before.
+
+@item
+Optionally stage the remaining changes using @code{s} or @code{S} and then
+type @code{c c} to create a new commit.
+@end itemize
 
 @kindex M-x magit-reset-index
 @cindex magit-reset-index
@@ -3546,11 +3620,6 @@ Reset the index to some commit.  The commit is read from the user
 and defaults to the commit at point.  If there is no commit at
 point, then it defaults to @code{HEAD}.
 @end table
-
-
-To stage a smaller unit than a range of lines, similar to @code{git add
---patch} followed by @code{e} would do, then you can use @code{magit-ediff-stage} to
-do so.
 
 @menu
 * Staging from file-visiting buffers::
@@ -4335,6 +4404,18 @@ the git-checkout(1) manpage
 @end iftex
 , and @ref{Pushing,Pushing}.
 
+@defopt magit-prefer-remote-upstream
+
+This option controls whether commands that read a branch from the
+user and then set it as the upstream branch, offer a local or a
+remote branch as default completion candidate, when they have the
+choice.
+
+This affects all commands that use @code{magit-read-upstream-branch} or
+@code{magit-read-starting-point}, which includes all commands that change
+the upstream and many which create new branches.
+@end defopt
+
 @table @asis
 @kindex b b
 @cindex magit-checkout
@@ -4393,15 +4474,16 @@ instead of the starting-point itself.
 This command resets a branch, defaulting to the branch at point, to
 the tip of another branch or any other commit.
 
-When resetting to another branch, then that branch is also set as
-the upstream of the branch being reset.
-
 When the branch being reset is the current branch, then a hard reset
 is performed.  If there are any uncommitted changes, then the user
 has to confirming the reset because those changes would be lost.
 
 This is useful when you have started work on a feature branch but
 realize it's all crap and want to start over.
+
+When resetting to another branch and a prefix argument is used, then
+the target branch is set as the upstream of the branch that is being
+reset.
 
 @kindex b d
 @cindex magit-branch-delete
@@ -5428,6 +5510,9 @@ isn't already set.
 @node Fetching
 @section Fetching
 
+For information about the differences between the @emph{upstream} and the
+@emph{push-remote}, see @ref{Branching,Branching}.
+
 Also see 
 @ifinfo
 @ref{git-fetch,,,gitman,}
@@ -5489,6 +5574,9 @@ more information.
 @node Pulling
 @section Pulling
 
+For information about the differences between the @emph{upstream} and the
+@emph{push-remote}, see @ref{Branching,Branching}.
+
 Also see 
 @ifinfo
 @ref{git-pull,,,gitman,}
@@ -5536,6 +5624,9 @@ more information.
 
 @node Pushing
 @section Pushing
+
+For information about the differences between the @emph{upstream} and the
+@emph{push-remote}, see @ref{Branching,Branching}.
 
 Also see 
 @ifinfo
@@ -6489,8 +6580,26 @@ current buffer.
 @end lisp
 
 You should also check whether any third-party packages have added
-anything to @code{magit-refresh-buffer-hook} and @code{magit-status-refresh-hook},
-and if so whether those additions impacts performance significantly.
+anything to @code{magit-refresh-buffer-hook}, @code{magit-status-refresh-hook},
+@code{magit-pre-refresh-hook}, and @code{magit-post-refresh-hook}.  If so, then
+check whether those additions impacts performance significantly.
+Setting @code{magit-refresh-verbose} and then inspecting the output in the
+@code{*Messages*} buffer, should help doing so.
+
+Magit also reverts buffers which visit files located inside the
+current repository, when the visited file changes on disk.  That is
+implemented on top of @code{auto-revert-mode} from the built-in library
+@code{autorevert}.  To figure out whether that impacts performance, check
+whether performance is significantly worse, when many buffers exist
+and/or when some buffers visit files using Tramp.  If so, then this
+should help.
+
+@lisp
+(setq auto-revert-buffer-list-filter
+      'magit-auto-revert-repository-buffers-p)
+@end lisp
+
+For alternative approaches see @ref{Automatic Reverting of File-Visiting Buffers,Automatic Reverting of File-Visiting Buffers}.
 
 If you have enabled any features that are disabled by default, then
 you should check whether they impact performance significantly.  It's
@@ -6562,15 +6671,11 @@ Consider leaving it at that.
 
 @unnumberedsubsubsec Diff Performance
 
-@itemize
-@item
-@code{magit-diff-highlight-hunk-body}, @code{magit-diff-highlight-indentation},
-@code{magit-diff-highlight-trailing}, and @code{magit-diff-paint-whitespace}
-
-
-@item
-@code{magit-diff-refine-hunk}
-@end itemize
+If diffs are slow, then consider turning off some optional diff
+features by setting all or some of the following variables to @code{nil}:
+@code{magit-diff-highlight-indentation}, @code{magit-diff-highlight-trailing},
+@code{magit-diff-paint-whitespace}, @code{magit-diff-highlight-hunk-body}, and
+@code{magit-diff-refine-hunk}.
 
 @unnumberedsubsubsec Refs Buffer Performance
 
