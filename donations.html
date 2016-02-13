@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic">
   </head>
 
-  <body style="max-width:100%">
+  <body>
     <header>
       <h1><a href="/"><img alt="M" id="M" src="/img/M.png"></a>agit!</h1>
       <h2>Help making it better</h2>
@@ -18,72 +18,209 @@
 
     <section>
       <p>
-        Please consider supporting development using Paypal, Gratipay,
-        Flattr, or Bitcoins. Thank you!
+        Please consider supporting development financially using one
+        of the following services. Thank you!
       </p>
-
       <p>
         If you would like to donate using some other method, then
         please do not hesitate to ask.
       </p>
+      <p>
+        Please also consider asking your employer to pay for the
+        software you are using.  That probably means that I have to
+        send an invoice.  I am also looking for corporote sponsors who
+        would like to make a substantial contribution.  Please contact
+        my <a href="mailto:jonas@bernoulli">by mail</a>.
+      </p>
 
-      <h3>Donation options</h3>
+      <h2>Donation options</h2>
       <ul>
-        <li><a href="#paypal">PayPal</a></li>
-        <li><a href="#gratipay">Gratipay</a></li>
-        <li><a href="#flattr">Flattr</a></li>
         <li>
-          <a href="#bitcoin">Bitcoin</a>
+          <b>One-time donations</b>
           <ul>
-            <li><a href="#coinbase">Coinbase</a></li>
+            <li><a href="#paypal">PayPal</a></li>
+            <li><a href="#payoneer">Payoneer</a></li>
+            <li><a href="#bitcoin">Bitcoin (Coinbase)</a></li>
           </ul>
         </li>
+        <li>
+          <b>Monthly subscriptions</b>
+          <ul>
+            <li><a href="#monthly-paypal">PayPal</a></li>
+            <li><a href="#monthly-gratipay">Gratipay</a></li>
+            <li><a href="#monthly-flattr">Flattr</a></li>
+            <li><a href="#monthly-bountysource">Bountysource Salt</a></li>
+            <li><a href="#weekly-bitcoin">Bitcoin (Coinbase)</a></li>
+          </ul>
+        </li>
+        <li>
+          <b>Issue bounties</b>
+          <ul>
+            <li><a href="#bountysource">Bountysource</a></li>
+          </ul>
+        </li>
+        <li>
+          <b>Notes</b>
+        </li>
       </ul>
+
+
+
+      <h2>One-time donations</h2>
 
       <h3 id="paypal">PayPal</h3>
       <p>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
           <input type="hidden" name="cmd" value="_s-xclick">
           <input type="hidden" name="hosted_button_id" value="TGDUK5VGB78XA">
-          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-                 border="0" name="submit"
-                 alt="PayPal - The safer, easier way to pay online!">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
           <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
         </form>
       </p>
-
-      <h3 id="gratipay">GratiPay</h3>
       <p>
-        <script data-gratipay-username="magit" src="//gttp.co/v1.js"></script></br>
-        <a href="https://gratipay.com/magit">gratipay.com/magit</a>
+        PayPal allows donating using <b>a PayPal account, a credit
+        card, or a bank account</b>.  Regardless of what method you
+        want to use, follow
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TGDUK5VGB78XA">this link</a>
+        or the button above.  Then either login to your PayPal account
+        using the login dialog on the right or click on the small
+        "Continue" link on the left of the login dialog to donate
+        using your credit card.
+      </p>
+      <p>
+        Make sure you DO NOT mark <b>Make This Recurring (Monthly)</b>,
+        unless of course that's what you want.
       </p>
 
-      <h3 id="flattr">Flattr</h3>
+      <h3 id="payoneer">Payoneer</h3>
+      <p>
+        Payoneer allows donating using a <b>credit
+        card</b>. Follow <a href="https://load.payoneer.com">this
+        link</a> and then enter <b>jonas@bernoul.li</b>
+        as <b>Recipient's Email</b> and comlete the subsequent steps.
+      </p>
+
+      <h3 id="bitcoin">Bitcoin (Coinbase)</h3>
+      <p>
+        <a class="coinbase-button" data-code="ff49118ff38dc965d03c1142b7357d12" data-button-style="donation_large" data-custom="magit-once" href="https://www.coinbase.com/checkouts/ff49118ff38dc965d03c1142b7357d12">Donate Bitcoins</a><script src="https://www.coinbase.com/assets/button.js" type="text/javascript"></script></br>
+        by clicking on the above button.  You can either send your
+        donation to the displayed address or if you have a Coinbase
+        wallet, then you can use that instead.
+      </p>
+      <p>
+        If you always wanted to get some Bitcoins but just never got
+        around to doing so until now, then you might want to consider
+        getting some using Coinbase by following
+        <a href="https://www.coinbase.com/join/5516d3606d23820f68000060">this
+        link</a>.  If you do that and buy bitcoins for $100 or more,
+        then Coinbase will pay me $10.  So far I am happy with
+        Coinbase, I hope you will too.  It was easy to get francs into
+        and out of Coinbase.
+      </p>
+
+
+
+      <h2>Monthly subscriptions</h2>
+
+      <h3 id="monthly-paypal">PayPal</h3>
+      <p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="TGDUK5VGB78XA">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+      </p>
+      <p>
+        PayPal allows donating using <b>a PayPal account, a credit
+        card, or a bank account</b>.  Regardless of what method you
+        want to use, follow
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TGDUK5VGB78XA">this link</a>
+        or the button above.  Then either login to your PayPal account
+        using the login dialog on the right or click on the small
+        "Continue" link on the left of the login dialog to donate
+        using your credit card.
+      </p>
+      <p>
+        Make sure you DO mark <b>Make This Recurring (Monthly)</b>,
+        unless of course you want to make a one-time donation.
+      </p>
+
+      <h3 id="monthly-gratipay">GratiPay</h3>
+      <p>
+        <script data-gratipay-username="magit" src="//gttp.co/v1.js"></script>
+      </p>
+      <p>
+        GratiPay allows making monthly donations.  You'll have to
+        create an account and added money to it, follow
+        <a href="https://gratipay.com/magit">this link</a> or
+        the button above to setup your monthly donation.
+      </p>
+
+      <h3 id="monthly-flattr">Flattr</h3>
       <p>
         <a href="https://flattr.com/submit/auto?user_id=tarsius&url=http%3A%2F%2Fmagit.vc&title=Magit!%20A%20Git%20Porcelain%20inside%20Emacs&">
           <img src="//button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0">
         </a>
       </p>
-
-      <h3 id="bitcoin">Bitcoin</h3>
-      <h4 id="coinbase">Coinbase</h4>
       <p>
-        <iframe id="coinbase_inline_iframe_db6e8d65785b39f9132dda522aba9c88"
-                src="https://www.coinbase.com/checkouts/db6e8d65785b39f9132dda522aba9c88/inline"
-                style="width: 460px; height: 460px; border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.25);"
-                allowtransparency="true" frameborder="0"></iframe>
-        <iframe id="coinbase_inline_iframe_e6e56533ac20f9516bb6c8a0eaa4b0d0"
-                src="https://www.coinbase.com/checkouts/e6e56533ac20f9516bb6c8a0eaa4b0d0/inline"
-                style="width: 460px; height: 460px; border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.25);"
-                allowtransparency="true" frameborder="0"></iframe>
+        Flattr allows making monthly donations.  You'll have to
+        create an account and added money to it, follow
+        <a href="https://flattr.com/thing/4143008">this link</a>
+        or the button above to setup your monthly donation.
       </p>
 
-      <h3>Notes</h3>
+      <h3 id="monthly-bountysource">Bountysource Salt</h3>
+      <p>
+        Bountysource Salt allows making monthly donations.  You'll
+        have to create an account and added money to it, follow
+        <a href="https://salt.bountysource.com/teams/magit">this link</a>
+        to setup your monthly donation.
+      </p>
+
+      <h3 id="monthly-bitcoin">Bitcoin (Coinbase)</h3>
+      <p>
+        <a class="coinbase-button" data-code="d8c9acadc2027c0a0034dd21e820d11b" data-button-style="subscription_large" data-custom="magit-monthly" href="https://www.coinbase.com/checkouts/d8c9acadc2027c0a0034dd21e820d11b">Donate Bitcoins</a><script src="https://www.coinbase.com/assets/button.js" type="text/javascript"></script></br>
+        by clicking on the above button.  The entered amount will be
+        payed from your Coinbase wallet every month until you cancel
+        the subscription.
+      </p>
+      <p>
+        You need a Coinbase wallet to do so.  If you would like send
+        Bitcoins as intended by Satoshi, then you'll have to make a
+        <a href="#bitcoin">one-time donation</a> (of course you are
+        welcome to do so every month :-).
+      </p>
+
+
+
+      <h2>Issue Bounties</h2>
+
+      <h3 id="bountysource">Bountysource</h3>
+      <p>
+        Bountysource allows backing particular issues you are
+        interested in.  You'll have to create an account and added
+        money to it.
+      </p>
+      <p>
+        Because I have done a good job preventing a large backlog,
+        there currently aren't many issues you could back, but feel
+        free to create and back new issues.
+      </p>
+      <p>
+        To back issues follow
+        <a href="https://www.bountysource.com/teams/magit">this link</a>.
+      </p>
+
+      <h2>Notes</h2>
       <p>
         Currently I (<a href="http://emacsair.me">Jonas Bernoulli</a>)
         receive all the donations made through the above options.
       </p>
-
+      <p>
+        Also I am currently
+        <a href="http://emacsair.me/2016/02/10/magit-2.5">taking a break</a>.
+      </p>
       <p>
         However Magit would not be what it is without the work of the
         former maintainers, so please also consider donating to them
@@ -95,6 +232,9 @@
         <a href="https://github.com/philjackson">Phil Jackson</a>,
         <a href="https://github.com/vanicat">R&eacute;mi Vanicat</a>, and
         <a href="http://www.hodique.info">Yann Hodique</a>.
+        Current co-maintainers are
+        <a href="Kyle Meye">https://github.com/kyleam</a> and
+        <a href="Noam Postavsky">https://github.com/npostavs</a>.
       </p>
     </section>
   </body>
