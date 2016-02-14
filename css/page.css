@@ -65,7 +65,7 @@ blockquote::before {
   top: 5px;
 }
 
-p#donate {
+div#donate {
   display: block;
   background: #eee8d5;
   padding: 15px 20px 15px 45px;
@@ -77,15 +77,19 @@ p#donate {
   box-shadow: 2px 2px 15px #859900;
 }
 
-p#donate a {
+div#donate a {
   color: #859900;
 }
 
-p#donate i {
+div#donate i {
   color: #d33682;
 }
 
-p#donate::before {
+div#donate div {
+  text-align: center;
+}
+
+div#donate::before {
   content: "\0024";
   font-size: 40px;
   font-weight: bold;
