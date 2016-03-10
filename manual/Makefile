@@ -28,6 +28,12 @@ copy-new:
 magit: magit.texi
 	@printf " GEN $@.html\n"
 	@makeinfo --html --no-split --css-ref $(CSS) $<
+	@$(BATCH) --eval "(progn\
+	(find-file \"magit.html\")\
+	(goto-char (point-min))\
+	(re-search-forward \"^<body.+\")\
+	(insert-file-contents \"fixup.html\")\
+	(save-buffer 0))"
 	@printf " GEN $@/*.html\n"
 	@makeinfo --html --css-ref $(CSS) $<
 
