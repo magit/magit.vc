@@ -1,11 +1,9 @@
 include ../config.mk
 
-CSS = /css/page.css
-
 .PHONY: help move-old copy-new magit magit-popup with-editor clean
 
 help:
-	$(info make VERSION=M.N move-old)
+	$(info make move-old)
 	$(info make copy-new)
 	$(info make all)
 
@@ -16,10 +14,10 @@ pdf:  magit.pdf  magit-popup.pdf  with-editor.pdf magit-refcard.pdf
 html: magit magit-popup with-editor
 
 move-old:
-	@mkdir $(VERSION)
-	@mv magit magit-popup with-editor $(VERSION)
-	@mv *.org *.texi *.html *.pdf $(VERSION)
-	@mv $(VERSION)/magit-refcard.* $(VERSION)/index.html .
+	@mkdir $(VERSION_PREV)
+	mv -v magit magit-popup with-editor $(VERSION_PREV)
+	mv -v magit.html magit.org magit.pdf magit.texi $(VERSION_PREV)
+	mv -v magit-popup* with-editor* $(VERSION_PREV)
 
 copy-new:
 	@cp ~/.emacs.d/lib/magit/Documentation/*.org .
@@ -27,7 +25,7 @@ copy-new:
 
 magit: magit.texi
 	@printf " GEN $@.html\n"
-	@makeinfo --html --no-split --css-ref $(CSS) $<
+	@makeinfo --html --no-split --css-ref $(MANUAL_CSS) $<
 	@$(BATCH) --eval "(progn\
 	(find-file \"magit.html\")\
 	(goto-char (point-min))\
@@ -35,19 +33,19 @@ magit: magit.texi
 	(insert-file-contents \"fixup.html\")\
 	(save-buffer 0))"
 	@printf " GEN $@/*.html\n"
-	@makeinfo --html --css-ref $(CSS) $<
+	@makeinfo --html --css-ref $(MANUAL_CSS) $<
 
 magit-popup: magit-popup.texi
 	@printf " GEN $@.html\n"
-	@makeinfo --html --no-split --css-ref $(CSS) $<
+	@makeinfo --html --no-split --css-ref $(MANUAL_CSS) $<
 	@printf " GEN $@/*.html\n"
-	@makeinfo --html --css-ref $(CSS) $<
+	@makeinfo --html --css-ref $(MANUAL_CSS) $<
 
 with-editor: with-editor.texi
 	@printf " GEN $@.html\n"
-	@makeinfo --html --no-split --css-ref $(CSS) $<
+	@makeinfo --html --no-split --css-ref $(MANUAL_CSS) $<
 	@printf " GEN $@/*.html\n"
-	@makeinfo --html --css-ref $(CSS) $<
+	@makeinfo --html --css-ref $(MANUAL_CSS) $<
 
 %.texi: %.org
 	@printf " GEN $@\n"
