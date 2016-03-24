@@ -1,1 +1,0 @@
-The Emacsmirror collects Emacs Lisp packages and distributes them in form of git repositories \u2014 one per package.
