@@ -545,7 +545,7 @@ If you have used an older Magit release before, then you should have a
 look at the release notes @uref{https://github.com/magit/magit/releases}.
 
 And last but not least please consider making a donation, to ensure
-that I can keep working on Magit.  See @uref{http://magit.vc/donations.html}
+that I can keep working on Magit.  See @uref{https://magit.vc/donations.html}
 for various donation options.
 
 @node Getting started
@@ -7557,18 +7557,18 @@ and @ref{Debugging,,,with-editor,}.
 @node I don't understand how branching and pushing work
 @section I don't understand how branching and pushing work
 
-Please see @ref{Branching,Branching} and @uref{http://emacsair.me/2016/01/18/magit-2.4}
+Please see @ref{Branching,Branching} and @uref{https://emacsair.me/2016/01/18/magit-2.4}
 
 @node I don't like the key binding in v24
 @section I don't like the key binding in v2.4
 
-Please see @uref{http://emacsair.me/2016/01/1/restore-old-bindings}.
+Please see @uref{https://emacsair.me/2016/01/1/restore-old-bindings}.
 
 @node I cannot install the pre-requisites for Magit v2
 @section I cannot install the pre-requisites for Magit v2
 
 An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from @uref{http://magit.vc/elpa/v1}.  But note that v1.4.2 is
+is available from @uref{https://magit.vc/elpa/v1}.  But note that v1.4.2 is
 obsolete and no longer maintained.
 
 @node I am using an Emacs release older than v244
@@ -7599,7 +7599,7 @@ that helped you figure what to do for your specific setup, so that I
 can post a link here.  That way those coming after you have it easier.
 
 An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from @uref{http://magit.vc/elpa/v1}.
+is available from @uref{https://magit.vc/elpa/v1}.
 
 @node I am using a Git release older than v194
 @section I am using a Git release older than v1.9.4
@@ -7618,7 +7618,7 @@ this involves.  But when you perform the installation then use the
 instructions for the release you are actually installing.
 
 An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from @uref{http://magit.vc/elpa/v1}.
+is available from @uref{https://magit.vc/elpa/v1}.
 
 @node I am using MS Windows and cannot push with Magit
 @section I am using MS Windows and cannot push with Magit

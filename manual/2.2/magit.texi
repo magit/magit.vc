@@ -535,7 +535,7 @@ and
 @uref{https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.2.0.txt}
 
 And last but not least please consider making a donation, to ensure
-that I can keep working on Magit.  See @uref{http://magit.vc/donations.html}
+that I can keep working on Magit.  See @uref{https://magit.vc/donations.html}
 for various donation options.
 
 @node Getting started

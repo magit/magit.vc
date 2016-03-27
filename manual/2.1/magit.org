@@ -310,7 +310,7 @@ look at the release notes
 https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.1.0.txt.
 
 And last but not least please consider making a donation, to ensure
-that I can keep working on Magit.  See http://magit.vc/donations.html
+that I can keep working on Magit.  See https://magit.vc/donations.html
 for various donation options.
 
 * Getting started

@@ -307,7 +307,7 @@ and
 https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.2.0.txt
 
 And last but not least please consider making a donation, to ensure
-that I can keep working on Magit.  See http://magit.vc/donations.html
+that I can keep working on Magit.  See https://magit.vc/donations.html
 for various donation options.
 
 * Getting started
@@ -5178,7 +5178,7 @@ The next release, v2.4, will try to address these concerns.
 ** I cannot install the pre-requisits for Magit v2
 
 An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from http://magit.vc/elpa/v1.  But note that v1.4.2 is
+is available from https://magit.vc/elpa/v1.  But note that v1.4.2 is
 obsolete and no longer maintained.
 
 ** I am using an Emacs release older than v24.4
@@ -5208,7 +5208,7 @@ that helped you figure what to do for your specific setup, so that I
 can post a link here.  That way those coming after you have it easier.
 
 An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from http://magit.vc/elpa/v1.
+is available from https://magit.vc/elpa/v1.
 
 ** I am using a Git release older than v1.9.4
 
@@ -5226,7 +5226,7 @@ this involves.  But when you perform the installation then use the
 instructions for the release you are actually installing.
 
 An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from http://magit.vc/elpa/v1.
+is available from https://magit.vc/elpa/v1.
 
 ** I am using MS Windows and cannot push with Magit
 
