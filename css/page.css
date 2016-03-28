@@ -21,22 +21,17 @@ h1, h2, h3, h4 {
   font-family: 'Noto Sans', sans-serif;
   text-align: left;
   margin-top: 40px;
-  color: #268bd2;
-}
-
-header h1 img#M {
-  vertical-align: -10px;
-  margin-right: 3px;
+  color: #20ab2d;
 }
 
 header h1 {
-  font-size: 50px;
+  font-size: 60px;
   display: inline;
-  color: #d33682;
 }
 
 header h2 {
   display: inline;
+  color: #ab2720;ab2720
 }
 
 img.screenshot {
@@ -61,7 +56,7 @@ blockquote::before {
   content: "\201C";
   font-size: 60px;
   font-weight: bold;
-  color: #d33682;
+  color: #ab2720;
   position: absolute;
   left: 10px;
   top: 5px;
@@ -76,15 +71,15 @@ div#donate {
   font-size: 16px;
   line-height: 1.2;
   text-align: left;
-  box-shadow: 2px 2px 15px #859900;
+  box-shadow: 2px 2px 15px #20ab2d;
 }
 
 div#donate a {
-  color: #859900;
+  color: #20ab2d;
 }
 
 div#donate i {
-  color: #d33682;
+  color: #ab2720;
 }
 
 div#donate div {
@@ -95,7 +90,7 @@ div#donate::before {
   content: "\0024";
   font-size: 40px;
   font-weight: bold;
-  color: #859900;
+  color: #20ab2d;
   position: absolute;
   left: 10px;
   top: 5px;
