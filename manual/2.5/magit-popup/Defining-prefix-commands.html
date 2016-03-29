@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Taking inspiration from regular prefix commands and prefix arguments,
+this library implements a similar abstraction; a new kind of prefix
+command that is associated with a specific set of infix arguments and
+suffix commands.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit-Popup User Manual: Defining prefix commands</title>
+
+<meta name="description" content="Magit-Popup User Manual: Defining prefix commands">
+<meta name="keywords" content="Magit-Popup User Manual: Defining prefix commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" rel="up" title="Defining prefix and suffix commands">
+<link href="Defining-suffix-commands.html#Defining-suffix-commands" rel="next" title="Defining suffix commands">
+<link href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" rel="prev" title="Defining prefix and suffix commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Defining-prefix-commands"></a>
+<div class="header">
+<p>
+Next: <a href="Defining-suffix-commands.html#Defining-suffix-commands" accesskey="n" rel="next">Defining suffix commands</a>, Up: <a href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" accesskey="u" rel="up">Defining prefix and suffix commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Defining-prefix-commands-1"></a>
+<h3 class="section">3.1 Defining prefix commands</h3>
+
+<p>Prefix commands and their infix arguments are defined using the macro
+<code>magit-define-popup</code>.  The key bindings and descriptions of suffix
+commands are also defined using that macro, but the actual interactive
+commands have to be defined separately using plain <code>defun</code>.
+</p>
+<dl>
+<dt><a name="index-magit_002ddefine_002dpopup"></a>Macro: <strong>magit-define-popup</strong> <em>name doc [group [mode [option]]] :keyword value&hellip;</em></dt>
+<dd>
+<p>This macro defines a popup named NAME.  The NAME should begin with
+the package prefix and by convention end with <code>-popup</code>, it is used
+as the name of the command which shows the popup and for an internal
+variable (whose value is used to store information about the popup
+and should not be accessed directly).  DOC is the doc-string of the
+popup command.
+</p>
+<p>This macro also defines an option and a function both named
+<code>SHORTNAME-arguments</code>, where SHORTNAME is NAME with the trailing
+<code>-popup</code> removed.  The name of this option and this function can be
+overwritten using the optional argument OPTION, but that is rarely
+advisable. As a special case if OPTION is specified but <code>nil</code>, then
+this option and this function are not defined at all, which is
+useful for popups that are used as simple dispatchers that offer no
+arguments.
+</p>
+<p>The option <code>SHORTNAME-arguments</code> holds the value for the popup
+arguments.  It can be customized from within the popup or using the
+Custom interface.  It can also have a buffer local value in any
+non-popup buffer.  The local value for the buffer from which the
+popup command was invoked, can be set from within the popup buffer.
+</p>
+<p>The function <code>SHORTNAME-arguments</code> returns the currently effective
+value of the variable by the same name.  See below for more
+information.
+</p>
+<p>The optional argument GROUP specifies the Custom group in which the
+option is placed.  If omitted then the option is placed in some
+group the same way it is done when directly using <code>defcustom</code> and
+omitting the group.
+</p>
+<p>The optional argument MODE specifies the mode used by the popup
+buffer.  If it is omitted or <code>nil</code> then <code>magit-popup-mode</code> is used.
+</p>
+<p>The remaining arguments should have the form <code>[KEYWORD VALUE]...</code>.
+</p>
+<p>The following keywords are meaningful (and by convention are
+usually specified in that order):
+</p>
+<ul>
+<li> <code>:actions</code>
+
+<p>The actions which can be invoked from the popup.  VALUE is a list
+whose members have the form (KEY DESC COMMAND), see
+<code>magit-define-popup-action</code> for details.
+</p>
+<p>How the actions are split into rows and columns currently depends
+on the available space and <code>:max-action-columns</code>.
+</p>
+<p>WARNING: This will likely be change to use a more explicit format
+(((KEY DESC COMMAND)&hellip;)&hellip;) before the release.
+</p>
+<p>Actions are regular Emacs commands, which usually have an
+<code>interactive</code> form setup to consume the values of the popup
+<code>:switches</code> and <code>:options</code> when invoked from the corresponding popup,
+else when invoked as the default action or directly without using
+the popup, the default value of the variable <code>SHORTNAME-arguments</code>.
+This is usually done by calling the function <code>SHORTNAME-arguments</code>.
+</p>
+<p>Members of VALUE may also be strings, assuming the first member is
+also a string.  Instead of just one action section with the
+heading \&quot;Actions\&quot;, multiple sections are then inserted into the
+popup buffer, using these strings as headings.
+</p>
+<p>Members of VALUE may also be nil.  This should only be used
+together with <code>:max-action-columns</code> and allows having gaps in the
+action grit, which can help arranging actions sensibly.
+</p>
+
+</li><li> <code>:default-action</code>
+
+<p>The default action of the popup which is used directly instead of
+displaying the popup buffer, when the popup is invoked with a
+prefix argument.  Also see <code>magit-popup-use-prefix-argument</code> and
+<code>:use-prefix</code>, which can be used to inverse the meaning of the
+prefix argument.
+</p>
+
+</li><li> <code>:use-prefix</code>
+
+<p>Controls when to display the popup buffer and when to invoke the
+default action (if any) directly.  This overrides the global
+default set using <code>magit-popup-use-prefix-argument</code>.  The value, if
+specified, should be one of <code>default</code> or <code>prefix</code>.
+</p>
+
+</li><li> <code>:switches</code>
+
+<p>The popup arguments which can be toggled on and off.  VALUE is a
+list whose members have the form <code>(KEY DESC SWITCH)</code>, see
+<code>magit-define-popup-switch</code> for details.
+</p>
+
+</li><li> <code>:options</code>
+
+<p>The popup arguments which take a value, as in &quot;&ndash;opt~OPTVAL&quot;.
+VALUE is a list whose members have the form (KEY DESC OPTION
+READER), see <code>magit-define-popup-option</code> for details.
+</p>
+
+</li><li> <code>:variables</code>
+
+<p>Git variables which can be set from the popup.  VALUE is a list
+whose members have the form (KEY DESC COMMAND FORMATTER), see
+<code>magit-define-popup-variable</code> for details.
+</p>
+
+</li><li> <code>:default-arguments</code>
+
+<p>The default arguments, a list of switches (which are then enabled
+by default) and options with there default values, as in
+&quot;&ndash;OPT~OPTVAL\&quot;.
+</p>
+
+</li><li> <code>:sequence-predicate</code>
+
+<p>When this function returns non-nil, then the popup uses
+<code>:sequence-actions</code> instead of <code>:actions</code>, and does not show the
+<code>:switches</code> and <code>:options</code>.
+</p>
+
+</li><li> <code>:sequence-actions</code>
+
+<p>The actions which can be invoked from the popup, when
+<code>:sequence-predicate</code> returns non-nil.
+</p>
+
+</li><li> <code>:setup-function</code>
+
+<p>When this function is specified, then it is used instead of
+<code>magit-popup-default-setup</code>.
+</p>
+
+</li><li> <code>:refresh-function</code>
+
+<p>When this function is specified, then it is used instead of
+calling <code>magit-popup-insert-section</code> three times with symbols
+<code>magit-popup-switch-button</code>, <code>magit-popup-option-button</code>, and finally
+<code>magit-popup-action-button</code> as argument.
+</p>
+
+</li><li> <code>:man-page</code>
+
+<p>The name of the manpage to be displayed when the user requests
+help for an argument.
+</p></li></ul>
+</dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Defining-suffix-commands.html#Defining-suffix-commands" accesskey="n" rel="next">Defining suffix commands</a>, Up: <a href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" accesskey="u" rel="up">Defining prefix and suffix commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

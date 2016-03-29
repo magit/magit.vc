@@ -3,9 +3,10 @@ include ../config.mk
 .PHONY: help move-old copy-new magit magit-popup with-editor clean
 
 help:
-	$(info make move-old)
-	$(info make copy-new)
-	$(info make all)
+	$(info make move-old        - )
+	$(info make copy-new        - )
+	$(info make all             - )
+	@printf "\n"
 
 all:  texi html pdf
 

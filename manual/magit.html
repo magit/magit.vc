@@ -76,8 +76,8 @@ ul.no-bullet {list-style: none}
     <section>
       <p>
         Magit is an interface to the version control system
-        <a href="http://git-scm.com">Git</a>, implemented as an
-        <a href="http://www.gnu.org/software/emacs">Emacs</a> package.
+        <a href="https://git-scm.com">Git</a>, implemented as an
+        <a href="https://www.gnu.org/software/emacs">Emacs</a> package.
         Magit aspires to be a complete Git porcelain.  While we cannot
         (yet) claim that Magit wraps and improves upon each and every
         Git command, it is complete enough to allow even experienced
@@ -264,6 +264,7 @@ ul.no-bullet {list-style: none}
         <li><a name="toc-Log-Performance" href="#Log-Performance">Log Performance</a></li>
         <li><a name="toc-Diff-Performance" href="#Diff-Performance">Diff Performance</a></li>
         <li><a name="toc-Refs-Buffer-Performance" href="#Refs-Buffer-Performance">Refs Buffer Performance</a></li>
+        <li><a name="toc-Committing-Performance-1" href="#Committing-Performance">Committing Performance</a></li>
       </ul></li>
     </ul></li>
   </ul></li>
@@ -300,13 +301,14 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-I-am-using-MS-Windows-and-cannot-push-with-Magit-1" href="#I-am-using-MS-Windows-and-cannot-push-with-Magit">A.9 I am using MS Windows and cannot push with Magit</a></li>
     <li><a name="toc-How-to-install-the-gitman-info-manual_003f-1" href="#How-to-install-the-gitman-info-manual_003f">A.10 How to install the gitman info manual?</a></li>
     <li><a name="toc-How-can-I-show-Git_0027s-output_003f-1" href="#How-can-I-show-Git_0027s-output_003f">A.11 How can I show Git&rsquo;s output?</a></li>
-    <li><a name="toc-Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1" href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">A.12 Expanding a file to show the diff causes it to disappear</a></li>
-    <li><a name="toc-Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer-1" href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">A.13 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a></li>
-    <li><a name="toc-Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1" href="#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">A.14 Can Magit be used as ediff-version-control-package?</a></li>
-    <li><a name="toc-How-to-show-diffs-for-gpg_002dencrypted-files_003f-1" href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f">A.15 How to show diffs for gpg-encrypted files?</a></li>
-    <li><a name="toc-Emacs-24_002e5-hangs-when-loading-Magit" href="#Emacs-245-hangs-when-loading-Magit">A.16 Emacs 24.5 hangs when loading Magit</a></li>
-    <li><a name="toc-Symbol_0027s-value-as-function-is-void-_002d_002dsome-1" href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome">A.17 Symbol&rsquo;s value as function is void &ndash;some</a></li>
-    <li><a name="toc-Where-is-the-branch-manager-1" href="#Where-is-the-branch-manager">A.18 Where is the branch manager</a></li>
+    <li><a name="toc-Diffs-contain-control-sequences-1" href="#Diffs-contain-control-sequences">A.12 Diffs contain control sequences</a></li>
+    <li><a name="toc-Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1" href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">A.13 Expanding a file to show the diff causes it to disappear</a></li>
+    <li><a name="toc-Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer-1" href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">A.14 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a></li>
+    <li><a name="toc-Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1" href="#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">A.15 Can Magit be used as ediff-version-control-package?</a></li>
+    <li><a name="toc-How-to-show-diffs-for-gpg_002dencrypted-files_003f-1" href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f">A.16 How to show diffs for gpg-encrypted files?</a></li>
+    <li><a name="toc-Emacs-24_002e5-hangs-when-loading-Magit" href="#Emacs-245-hangs-when-loading-Magit">A.17 Emacs 24.5 hangs when loading Magit</a></li>
+    <li><a name="toc-Symbol_0027s-value-as-function-is-void-_002d_002dsome-1" href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome">A.18 Symbol&rsquo;s value as function is void &ndash;some</a></li>
+    <li><a name="toc-Where-is-the-branch-manager-1" href="#Where-is-the-branch-manager">A.19 Where is the branch manager</a></li>
   </ul></li>
   <li><a name="toc-Keystroke-Index-1" href="#Keystroke-Index">Appendix B Keystroke Index</a></li>
   <li><a name="toc-Command-Index-1" href="#Command-Index">Appendix C Command Index</a></li>
@@ -650,6 +652,8 @@ FAQ
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#How-can-I-show-Git_0027s-output_003f">How can I show Git's output?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Diffs-contain-control-sequences">Diffs contain control sequences</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">Expanding a file to show the diff causes it to disappear</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -991,7 +995,7 @@ See <a href="#How-to-install-the-gitman-info-manual_003f">How to install the git
 look at the release notes <a href="https://github.com/magit/magit/releases">https://github.com/magit/magit/releases</a>.
 </p>
 <p>And last but not least please consider making a donation, to ensure
-that I can keep working on Magit.  See <a href="https://magit.vc/donations">https://magit.vc/donations.html</a>
+that I can keep working on Magit.  See <a href="http://magit.vc/donations.html">http://magit.vc/donations.html</a>
 for various donation options.
 </p>
 <hr>
@@ -2831,6 +2835,37 @@ unpulled commits) show.
 </p></dd></dl>
 
 <dl>
+<dt><a name="index-magit_002dinsert_002dmodules_002dunpulled_002dfrom_002dupstream"></a>Function: <strong>magit-insert-modules-unpulled-from-upstream</strong></dt>
+<dd>
+<p>Insert sections for modules that haven&rsquo;t been pulled from the
+upstream yet.  These sections can be expanded to show the respective
+commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dmodules_002dunpulled_002dfrom_002dpushremote"></a>Function: <strong>magit-insert-modules-unpulled-from-pushremote</strong></dt>
+<dd>
+<p>Insert sections for modules that haven&rsquo;t been pulled from the
+push-remote yet.  These sections can be expanded to show the
+respective commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dmodules_002dunpushed_002dto_002dupstream"></a>Function: <strong>magit-insert-modules-unpushed-to-upstream</strong></dt>
+<dd>
+<p>Insert sections for modules that haven&rsquo;t been pushed to the upstream
+yet.  These sections can be expanded to show the respective commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dmodules_002dunpushed_002dto_002dpushremote"></a>Function: <strong>magit-insert-modules-unpushed-to-pushremote</strong></dt>
+<dd>
+<p>Insert sections for modules that haven&rsquo;t been pushed to the
+push-remote yet. These sections can be expanded to show the
+respective commits.
+</p></dd></dl>
+
+<dl>
 <dt><a name="index-magit_002dinsert_002dunpulled_002dcherries"></a>Function: <strong>magit-insert-unpulled-cherries</strong></dt>
 <dd>
 <p>Insert section showing unpulled commits.
@@ -2841,13 +2876,6 @@ with &quot;-&quot;.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-magit_002dinsert_002dunpulled_002dmodule_002dcommits"></a>Function: <strong>magit-insert-unpulled-module-commits</strong></dt>
-<dd>
-<p>Insert sections for all submodules with unpulled commits.
-These sections can be expanded to show the respective commits.
-</p></dd></dl>
-
-<dl>
 <dt><a name="index-magit_002dinsert_002dunpushed_002dcherries"></a>Function: <strong>magit-insert-unpushed-cherries</strong></dt>
 <dd>
 <p>Insert section showing unpushed commits.
@@ -2855,13 +2883,6 @@ Like <code>magit-insert-unpushed-commits</code> but prefix each commit
 which has not been applied to upstream yet (i.e. a commit with
 a patch-id not shared with any upstream commit) with &quot;+&quot; and
 all others with &quot;-&quot;.
-</p></dd></dl>
-
-<dl>
-<dt><a name="index-magit_002dinsert_002dunpushed_002dmodule_002dcommits"></a>Function: <strong>magit-insert-unpushed-module-commits</strong></dt>
-<dd>
-<p>Insert sections for all submodules with unpushed commits.
-These sections can be expanded to show the respective commits.
 </p></dd></dl>
 
 <p>See <a href="#References-buffer">References buffer</a> for some more section inserters, which could be
@@ -3762,6 +3783,12 @@ is an integer, highlight indentation with at least that many spaces.
 Otherwise, highlight neither.
 </p></dd></dl>
 
+<dl>
+<dt><a name="index-magit_002ddiff_002dhide_002dtrailing_002dcr_002dcharacters"></a>User Option: <strong>magit-diff-hide-trailing-cr-characters</strong></dt>
+<dd>
+<p>Whether to hide ^M characters at the end of a line in diffs.
+</p></dd></dl>
+
 <hr>
 <a name="Revision-buffer"></a>
 <div class="header">
@@ -3892,6 +3919,13 @@ file at point.
 <dd>
 <p>Show changes to a file introduced by a commit using Ediff.
 </p>
+<a name="index-E-z"></a>
+<a name="index-magit_002dediff_002dshow_002dstash"></a>
+</dd>
+<dt><kbd>E z</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-ediff-show-stash</code>)</dt>
+<dd>
+<p>Show changes to a file introduced by a stash using Ediff.
+</p>
 </dd>
 </dl>
 
@@ -3903,6 +3937,15 @@ point is on uncommitted hunks.  When nil, always run
 <code>magit-ediff-stage</code>.  Otherwise, use <code>magit-ediff-show-staged</code> and
 <code>magit-ediff-show-unstaged</code> to show staged and unstaged changes,
 respectively.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dediff_002dshow_002dstash_002dwith_002dindex"></a>User Option: <strong>magit-ediff-show-stash-with-index</strong></dt>
+<dd>
+<p>This option controls whether <code>magit-ediff-show-stash</code> includes a
+buffer containing the file&rsquo;s state in the index at the time the
+stash was created.  This makes it possible to tell which changes in
+the stash were staged.
 </p></dd></dl>
 
 <dl>
@@ -6658,7 +6701,7 @@ the appropriate infix arguments in a popup buffer.
 </dd>
 <dt><kbd>f u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-from-upstream</code>)</dt>
 <dd>
-<p>Fetch from the push-remote of the current branch.
+<p>Fetch from the upstream of the current branch.
 </p>
 <a name="index-f-e"></a>
 <a name="index-magit_002dfetch"></a>
@@ -6666,6 +6709,22 @@ the appropriate infix arguments in a popup buffer.
 <dt><kbd>f e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch</code>)</dt>
 <dd>
 <p>Fetch from another repository.
+</p>
+<a name="index-f-o"></a>
+<a name="index-magit_002dfetch_002dbranch"></a>
+</dd>
+<dt><kbd>f o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-branch</code>)</dt>
+<dd>
+<p>Fetch a branch from a remote, both of which are read from the
+minibuffer.
+</p>
+<a name="index-f-r"></a>
+<a name="index-magit_002dfetch_002drefspec"></a>
+</dd>
+<dt><kbd>f r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-refspec</code>)</dt>
+<dd>
+<p>Fetch from a remote using an explicit refspec, both of which are
+read from the minibuffer.
 </p>
 <a name="index-f-a"></a>
 <a name="index-magit_002dfetch_002dall"></a>
@@ -6802,6 +6861,18 @@ push-remote can be changed before pushed to it.
 <dd>
 <p>Push an arbitrary branch or commit somewhere.  Both the source and
 the target are read in the minibuffer.
+</p>
+<a name="index-P-r"></a>
+<a name="index-magit_002dpush_002drefspecs"></a>
+</dd>
+<dt><kbd>P r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-refspecs</code>)</dt>
+<dd>
+<p>Push one or multiple refspecs to a remote, both of which are read
+in the minibuffer.
+</p>
+<p>To use multiple refspecs, separate them with commas.  Completion is
+only available for the part before the colon, or when no colon is
+used.
 </p>
 <a name="index-P-m"></a>
 <a name="index-magit_002dpush_002dmatching"></a>
@@ -7530,6 +7601,24 @@ that operate on the file being visited in the current buffer.
 <dd>
 <p>Unstage all changes to the file being visited in the current buffer.
 </p>
+<a name="index-C_002dc-M_002dg-c"></a>
+<a name="index-magit_002dcommit_002dpopup-1"></a>
+</dd>
+<dt><kbd>C-c M-g c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-popup</code>)</dt>
+<dd>
+<p>This prefix command shows suffix commands along with the appropriate
+infix arguments in a popup buffer.  See <a href="#Initiating-a-commit">Initiating a commit</a>.
+</p>
+<a name="index-C_002dc-M_002dg-d"></a>
+<a name="index-magit_002ddiff_002dbuffer_002dfile_002dpopup"></a>
+</dd>
+<dt><kbd>C-c M-g d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-buffer-file-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the same suffix commands and infix
+arguments in a popup buffer as <code>magit-diff-popup</code>.  But this variant
+has to be called from a file-visiting buffer and the visited file
+is automatically used in the popup to limit the diff to that file.
+</p>
 <a name="index-C_002dc-M_002dg-l"></a>
 <a name="index-magit_002dlog_002dbuffer_002dfile-1"></a>
 </dd>
@@ -7553,14 +7642,6 @@ the appropriate infix arguments in a popup buffer.  See <a href="#Initiating-a-c
 <dt><kbd>C-c M-g p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blob-previous</code>)</dt>
 <dd>
 <p>Visit the previous blob which modified the current file.
-</p>
-<a name="index-C_002dc-M_002dg-c"></a>
-<a name="index-magit_002dcommit_002dpopup-1"></a>
-</dd>
-<dt><kbd>C-c M-g c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-popup</code>)</dt>
-<dd>
-<p>This prefix command shows suffix commands along with the appropriate
-infix arguments in a popup buffer.  See <a href="#Initiating-a-commit">Initiating a commit</a>.
 </p></dd>
 </dl>
 
@@ -7835,6 +7916,11 @@ repositories, then you might want to disable certain features on a
 per-repository or per-repository-class basis only.  See
 <a href="#Per_002drepository-configuration">Per-repository configuration</a>.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Committing-Performance" accesskey="1">Committing Performance</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
 <a name="Microsoft-Windows-Performance"></a>
 <h4 class="unnumberedsubsubsec">Microsoft Windows Performance</h4>
 
@@ -7904,6 +7990,13 @@ features by setting all or some of the following variables to <code>nil</code>:
 <code>magit-diff-paint-whitespace</code>, <code>magit-diff-highlight-hunk-body</code>, and
 <code>magit-diff-refine-hunk</code>.
 </p>
+<p>When showing a commit instead of some arbitrary diff, then some
+additional information is displayed.  Calculating this information
+can be quite expensive given certain circumstances.  If looking at
+a commit using <code>magit-revision-mode</code> takes considerably more time than
+looking at the same commit in <code>magit-diff-mode</code>, then consider setting
+<code>magit-revision-insert-related-refs</code> to <code>nil</code>.
+</p>
 <a name="Refs-Buffer-Performance"></a>
 <h4 class="unnumberedsubsubsec">Refs Buffer Performance</h4>
 
@@ -7921,6 +8014,34 @@ then start by not displaying them:
 <p>Then you should also make sure that the listed remote branches
 actually all exist.  You can do so by pruning branches which no longer
 exist using <code>f-pa</code>.
+</p>
+<hr>
+<a name="Committing-Performance"></a>
+<div class="header">
+<p>
+Up: <a href="#Performance" accesskey="u" rel="up">Performance</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Committing-Performance-1"></a>
+<h4 class="unnumberedsubsubsec">Committing Performance</h4>
+
+<p>When you initiate a commit, then Magit by default automatically shows
+a diff of the changes you are about to commit.  For large commits this
+can take a long time, which is especially distracting when you are
+committing large amounts of generated data which you don&rsquo;t actually
+intend to inspect before committing.  This behavior can be turned off
+using:
+</p>
+<div class="lisp">
+<pre class="lisp">(remove-hook 'server-switch-hook 'magit-commit-diff)
+</pre></div>
+
+<p>Then you can type <code>C-c C-d</code> to show the diff when you actually want to
+see it, but only then.  Alternatively you can leave the hook alone and
+just type <code>C-g</code> in those cases when it takes to long to generate the
+diff.  If you do that, then you will end up with a broken diff buffer,
+but doing it this way has the advantage that you usually get to see
+the diff, which is useful because it increases the odds that you spot
+potential issues.
 </p>
 <hr>
 <a name="Plumbing"></a>
@@ -8319,7 +8440,8 @@ Next: <a href="#Section-selection" accesskey="n" rel="next">Section selection</a
 current section behave differently depending on that type.  Also if
 a variable <code>magit-TYPE-section-map</code> exists, then use that as the
 text-property <code>keymap</code> of all text belonging to the section (but this
-may be overwritten in subsections).
+may be overwritten in subsections).  TYPE can also have the form
+<code>(eval FORM)</code> in which case FORM is evaluated at runtime.
 </p>
 <p>Optional VALUE is the value of the section, usually a string that is
 required when acting on the section.
@@ -8891,6 +9013,8 @@ made it into the manual yet, see <a href="https://github.com/magit/magit/wiki/FA
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#How-can-I-show-Git_0027s-output_003f">How can I show Git's output?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Diffs-contain-control-sequences">Diffs contain control sequences</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">Expanding a file to show the diff causes it to disappear</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -8957,7 +9081,7 @@ Next: <a href="#I-don_0027t-like-the-key-binding-in-v24" accesskey="n" rel="next
 <a name="I-don_0027t-understand-how-branching-and-pushing-work-1"></a>
 <h3 class="section">A.4 I don&rsquo;t understand how branching and pushing work</h3>
 
-<p>Please see <a href="#Branching">Branching</a> and <a href="https://emacsair.me/2016/01/18/magit-2.4">https://emacsair.me/2016/01/18/magit-2.4</a>
+<p>Please see <a href="#Branching">Branching</a> and <a href="http://emacsair.me/2016/01/18/magit-2.4">http://emacsair.me/2016/01/18/magit-2.4</a>
 </p>
 <hr>
 <a name="I-don_0027t-like-the-key-binding-in-v24"></a>
@@ -8968,7 +9092,7 @@ Next: <a href="#I-cannot-install-the-pre_002drequisites-for-Magit-v2" accesskey=
 <a name="I-don_0027t-like-the-key-binding-in-v2_002e4"></a>
 <h3 class="section">A.5 I don&rsquo;t like the key binding in v2.4</h3>
 
-<p>Please see <a href="https://emacsair.me/2016/01/1/restore-old-bindings">https://emacsair.me/2016/01/1/restore-old-bindings</a>.
+<p>Please see <a href="http://emacsair.me/2016/01/1/restore-old-bindings">http://emacsair.me/2016/01/1/restore-old-bindings</a>.
 </p>
 <hr>
 <a name="I-cannot-install-the-pre_002drequisites-for-Magit-v2"></a>
@@ -8980,7 +9104,7 @@ Next: <a href="#I-am-using-an-Emacs-release-older-than-v244" accesskey="n" rel="
 <h3 class="section">A.6 I cannot install the pre-requisites for Magit v2</h3>
 
 <p>An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from <a href="https://magit.vc/elpa/v1">https://magit.vc/elpa/v1</a>.  But note that v1.4.2 is
+is available from <a href="http://magit.vc/elpa/v1">http://magit.vc/elpa/v1</a>.  But note that v1.4.2 is
 obsolete and no longer maintained.
 </p>
 <hr>
@@ -9017,7 +9141,7 @@ that helped you figure what to do for your specific setup, so that I
 can post a link here.  That way those coming after you have it easier.
 </p>
 <p>An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from <a href="https://magit.vc/elpa/v1">https://magit.vc/elpa/v1</a>.
+is available from <a href="http://magit.vc/elpa/v1">http://magit.vc/elpa/v1</a>.
 </p>
 <hr>
 <a name="I-am-using-a-Git-release-older-than-v194"></a>
@@ -9042,7 +9166,7 @@ this involves.  But when you perform the installation then use the
 instructions for the release you are actually installing.
 </p>
 <p>An Elpa archive featuring obsolete Magit v1.4.2 and its dependencies
-is available from <a href="https://magit.vc/elpa/v1">https://magit.vc/elpa/v1</a>.
+is available from <a href="http://magit.vc/elpa/v1">http://magit.vc/elpa/v1</a>.
 </p>
 <hr>
 <a name="I-am-using-MS-Windows-and-cannot-push-with-Magit"></a>
@@ -9126,7 +9250,7 @@ just one of many issues.)
 <a name="How-can-I-show-Git_0027s-output_003f"></a>
 <div class="header">
 <p>
-Next: <a href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear" accesskey="n" rel="next">Expanding a file to show the diff causes it to disappear</a>, Previous: <a href="#How-to-install-the-gitman-info-manual_003f" accesskey="p" rel="prev">How to install the gitman info manual?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Diffs-contain-control-sequences" accesskey="n" rel="next">Diffs contain control sequences</a>, Previous: <a href="#How-to-install-the-gitman-info-manual_003f" accesskey="p" rel="prev">How to install the gitman info manual?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="How-can-I-show-Git_0027s-output_003f-1"></a>
 <h3 class="section">A.11 How can I show Git&rsquo;s output?</h3>
@@ -9143,13 +9267,40 @@ debugging purposes it&rsquo;s possible to do so anyway by setting
 <code>magit-git-debug</code> to <code>t</code>.
 </p>
 <hr>
+<a name="Diffs-contain-control-sequences"></a>
+<div class="header">
+<p>
+Next: <a href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear" accesskey="n" rel="next">Expanding a file to show the diff causes it to disappear</a>, Previous: <a href="#How-can-I-show-Git_0027s-output_003f" accesskey="p" rel="prev">How can I show Git's output?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Diffs-contain-control-sequences-1"></a>
+<h3 class="section">A.12 Diffs contain control sequences</h3>
+
+<p>This happens when you configure Git to always color diffs and/or all
+of its output.  The valid values for relevant Git variables <code>color.ui</code>
+and <code>color.diff</code> are <code>false</code>, <code>true</code> and <code>always</code>, and the default is <code>true</code>.
+You should leave it that because then you get colorful output in
+terminals but git&rsquo;s output is consumed by something else, then no
+colors are used.
+</p>
+<p>If you actually use some other tool which expects that requires that
+you force git to output control sequences (which is highly unlikely),
+then you can override these settings just for Magit by using:
+</p>
+<div class="lisp">
+<pre class="lisp">(setq magit-git-global-arguments
+      (nconc magit-git-global-arguments
+	     '(&quot;-c&quot; &quot;color.ui=false&quot;
+	       &quot;-c&quot; &quot;color.diff=false&quot;)))
+</pre></div>
+
+<hr>
 <a name="Expanding-a-file-to-show-the-diff-causes-it-to-disappear"></a>
 <div class="header">
 <p>
-Next: <a href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" accesskey="n" rel="next">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>, Previous: <a href="#How-can-I-show-Git_0027s-output_003f" accesskey="p" rel="prev">How can I show Git's output?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" accesskey="n" rel="next">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>, Previous: <a href="#Diffs-contain-control-sequences" accesskey="p" rel="prev">Diffs contain control sequences</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1"></a>
-<h3 class="section">A.12 Expanding a file to show the diff causes it to disappear</h3>
+<h3 class="section">A.13 Expanding a file to show the diff causes it to disappear</h3>
 
 <p>This is probably caused by a change of a <code>diff.*</code> Git variable.  You
 probably set that variable for a reason, and should therefore
@@ -9163,7 +9314,7 @@ only undo that setting in Magit by customizing
 Next: <a href="#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f" accesskey="n" rel="next">Can Magit be used as ediff-version-control-package?</a>, Previous: <a href="#Expanding-a-file-to-show-the-diff-causes-it-to-disappear" accesskey="p" rel="prev">Expanding a file to show the diff causes it to disappear</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer-1"></a>
-<h3 class="section">A.13 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</h3>
+<h3 class="section">A.14 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</h3>
 
 <p>Neither Magit nor &lsquo;git-commit&lsquo; fiddle with point in the buffer used to
 write commit messages, so something else must be doing it.
@@ -9192,7 +9343,7 @@ help:
 Next: <a href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f" accesskey="n" rel="next">How to show diffs for gpg-encrypted files?</a>, Previous: <a href="#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" accesskey="p" rel="prev">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1"></a>
-<h3 class="section">A.14 Can Magit be used as ediff-version-control-package?</h3>
+<h3 class="section">A.15 Can Magit be used as ediff-version-control-package?</h3>
 
 <p>No, it cannot.  For that to work the functions <code>ediff-magit-internal</code>
 and <code>ediff-magit-merge-internal</code> would have to be implemented, and they
@@ -9231,7 +9382,7 @@ conflicts.
 Next: <a href="#Emacs-245-hangs-when-loading-Magit" accesskey="n" rel="next">Emacs 245 hangs when loading Magit</a>, Previous: <a href="#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f" accesskey="p" rel="prev">Can Magit be used as ediff-version-control-package?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="How-to-show-diffs-for-gpg_002dencrypted-files_003f-1"></a>
-<h3 class="section">A.15 How to show diffs for gpg-encrypted files?</h3>
+<h3 class="section">A.16 How to show diffs for gpg-encrypted files?</h3>
 
 <p>Git supports showing diffs for encrypted files, but has to be told to
 do so.  Since Magit just uses Git to get the diffs, configuring Git
@@ -9249,7 +9400,7 @@ echo &quot;*.gpg filter=gpg diff=gpg&quot; &gt; .gitattributes
 Next: <a href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome" accesskey="n" rel="next">Symbol's value as function is void --some</a>, Previous: <a href="#How-to-show-diffs-for-gpg_002dencrypted-files_003f" accesskey="p" rel="prev">How to show diffs for gpg-encrypted files?</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Emacs-24_002e5-hangs-when-loading-Magit"></a>
-<h3 class="section">A.16 Emacs 24.5 hangs when loading Magit</h3>
+<h3 class="section">A.17 Emacs 24.5 hangs when loading Magit</h3>
 
 <p>This is actually triggered by loading Tramp.  See
 <a href="https://debbugs.gnu.org/cgi/bugreport.cgi?bug=20015">https://debbugs.gnu.org/cgi/bugreport.cgi?bug=20015</a> for details. You
@@ -9264,7 +9415,7 @@ Google&rsquo;s <code>8.8.8.8</code>) may also be sufficient to work around the i
 Next: <a href="#Where-is-the-branch-manager" accesskey="n" rel="next">Where is the branch manager</a>, Previous: <a href="#Emacs-245-hangs-when-loading-Magit" accesskey="p" rel="prev">Emacs 245 hangs when loading Magit</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Symbol_0027s-value-as-function-is-void-_002d_002dsome-1"></a>
-<h3 class="section">A.17 Symbol&rsquo;s value as function is void &ndash;some</h3>
+<h3 class="section">A.18 Symbol&rsquo;s value as function is void &ndash;some</h3>
 
 <p>Update <code>dash</code>, restart Emacs, and then it will be defined.
 </p>
@@ -9275,7 +9426,7 @@ Next: <a href="#Where-is-the-branch-manager" accesskey="n" rel="next">Where is t
 Previous: <a href="#Symbol_0027s-value-as-function-is-void-_002d_002dsome" accesskey="p" rel="prev">Symbol's value as function is void --some</a>, Up: <a href="#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Where-is-the-branch-manager-1"></a>
-<h3 class="section">A.18 Where is the branch manager</h3>
+<h3 class="section">A.19 Where is the branch manager</h3>
 
 <p><code>y</code> is bound to the command that shows the &quot;refs buffer&quot;, the successor
 of the &quot;branch manager&quot;.
@@ -9471,6 +9622,7 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-C_002dc-M_002dg"><code>C-c M-g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-M_002dg-b"><code>C-c M-g b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-M_002dg-c"><code>C-c M-g c</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-C_002dc-M_002dg-d"><code>C-c M-g d</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-M_002dg-l"><code>C-c M-g l</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-M_002dg-p"><code>C-c M-g p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-M_002dg-s"><code>C-c M-g s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
@@ -9513,6 +9665,7 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-E-s"><code>E s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-E-u"><code>E u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-E-w"><code>E w</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-E-z"><code>E z</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-F">F</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f"><code>f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-rebase-sequences">Editing rebase sequences</a></td></tr>
@@ -9522,8 +9675,10 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-f-e"><code>f e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-F-e"><code>F e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f-m"><code>f m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-f-o"><code>f o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f-p"><code>f p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-F-p"><code>F p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-f-r"><code>f r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f-u"><code>f u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-F-u"><code>F u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pulling">Pulling</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -9634,6 +9789,7 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-P-m"><code>P m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-o"><code>P o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-p"><code>P p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-P-r"><code>P r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-t"><code>P t</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-T"><code>P T</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-P-u"><code>P u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
@@ -9937,6 +10093,7 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002ddescribe_002dsection">magit-describe-section</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-types-and-values">Section types and values</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddescribe_002dsection-1">magit-describe-section</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Matching-sections">Matching sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff">magit-diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diffing">Diffing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dbuffer_002dfile_002dpopup">magit-diff-buffer-file-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002ddefault_002dcontext">magit-diff-default-context</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-diffs">Refreshing diffs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002ddwim">magit-diff-dwim</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diffing">Diffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dflip_002drevs">magit-diff-flip-revs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-diffs">Refreshing diffs</a></td></tr>
@@ -9971,14 +10128,17 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dresolve">magit-ediff-resolve</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dshow_002dcommit">magit-ediff-show-commit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dshow_002dstaged">magit-ediff-show-staged</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dshow_002dstash">magit-ediff-show-stash</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dshow_002dunstaged">magit-ediff-show-unstaged</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dshow_002dworking_002dtree">magit-ediff-show-working-tree</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dstage">magit-ediff-stage</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfetch">magit-fetch</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dall">magit-fetch-all</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dbranch">magit-fetch-branch</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dfrom_002dpushremote">magit-fetch-from-pushremote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dfrom_002dupstream">magit-fetch-from-upstream</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002dpopup">magit-fetch-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dfetch_002drefspec">magit-fetch-refspec</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfile_002dpopup">magit-file-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfind_002dfile">magit-find-file</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Visiting-blobs">Visiting blobs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dfind_002dfile_002dother_002dwindow">magit-find-file-other-window</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Visiting-blobs">Visiting blobs</a></td></tr>
@@ -10044,6 +10204,7 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dimplicitly-args">magit-push-implicitly args</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dmatching">magit-push-matching</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dpopup">magit-push-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dpush_002drefspecs">magit-push-refspecs</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dtag">magit-push-tag</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dtags">magit-push-tags</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dto_002dremote-remote-args">magit-push-to-remote remote args</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
@@ -10274,6 +10435,10 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dheading"><code>magit-insert-heading</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Creating-sections">Creating sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dlocal_002dbranches"><code>magit-insert-local-branches</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-sections">References sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dmerge_002dlog"><code>magit-insert-merge-log</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dmodules_002dunpulled_002dfrom_002dpushremote"><code>magit-insert-modules-unpulled-from-pushremote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dmodules_002dunpulled_002dfrom_002dupstream"><code>magit-insert-modules-unpulled-from-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dmodules_002dunpushed_002dto_002dpushremote"><code>magit-insert-modules-unpushed-to-pushremote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dmodules_002dunpushed_002dto_002dupstream"><code>magit-insert-modules-unpushed-to-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dpush_002dbranch_002dheader"><code>magit-insert-push-branch-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002drebase_002dsequence"><code>magit-insert-rebase-sequence</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002drecent_002dcommits"><code>magit-insert-recent-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
@@ -10291,10 +10456,8 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dcherries"><code>magit-insert-unpulled-cherries</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dfrom_002dpushremote"><code>magit-insert-unpulled-from-pushremote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dfrom_002dupstream"><code>magit-insert-unpulled-from-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dmodule_002dcommits"><code>magit-insert-unpulled-module-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpulled_002dor_002drecent_002dcommits"><code>magit-insert-unpulled-or-recent-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dcherries"><code>magit-insert-unpushed-cherries</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dmodule_002dcommits"><code>magit-insert-unpushed-module-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dto_002dpushremote"><code>magit-insert-unpushed-to-pushremote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunpushed_002dto_002dupstream"><code>magit-insert-unpushed-to-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dunstaged_002dchanges"><code>magit-insert-unstaged-changes</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
@@ -10434,6 +10597,7 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002dcommit_002dreword_002doverride_002ddate"><code>magit-commit-reword-override-date</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Initiating-a-commit">Initiating a commit</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcommit_002dsquash_002dconfirm"><code>magit-commit-squash-confirm</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Initiating-a-commit">Initiating a commit</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcompleting_002dread_002dfunction"><code>magit-completing-read-function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Completion-and-confirmation">Completion and confirmation</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dhide_002dtrailing_002dcr_002dcharacters"><code>magit-diff-hide-trailing-cr-characters</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-options">Diff options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dhighlight_002dindentation"><code>magit-diff-highlight-indentation</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-options">Diff options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dhighlight_002dtrailing"><code>magit-diff-highlight-trailing</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-options">Diff options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dpaint_002dwhitespace"><code>magit-diff-paint-whitespace</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-options">Diff options</a></td></tr>
@@ -10442,6 +10606,7 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002ddisplay_002dbuffer_002dnoselect"><code>magit-display-buffer-noselect</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002ddwim_002dshow_002don_002dhunks"><code>magit-ediff-dwim-show-on-hunks</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dquit_002dhook"><code>magit-ediff-quit-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dediff_002dshow_002dstash_002dwith_002dindex"><code>magit-ediff-show-stash-with-index</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Ediffing">Ediffing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dgenerate_002dbuffer_002dname_002dfunction"><code>magit-generate-buffer-name-function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Naming-Buffers">Naming Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dgit_002ddebug"><code>magit-git-debug</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Viewing-Git-output">Viewing Git output</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dgit_002ddebug-1"><code>magit-git-debug</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Getting-a-value-from-Git">Getting a value from Git</a></td></tr>

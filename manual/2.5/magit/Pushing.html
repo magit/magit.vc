@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Pushing</title>
+
+<meta name="description" content="Magit User Manual: Pushing">
+<meta name="keywords" content="Magit User Manual: Pushing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Transferring.html#Transferring" rel="up" title="Transferring">
+<link href="Creating-and-sending-patches.html#Creating-and-sending-patches" rel="next" title="Creating and sending patches">
+<link href="Pulling.html#Pulling" rel="prev" title="Pulling">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Pushing"></a>
+<div class="header">
+<p>
+Next: <a href="Creating-and-sending-patches.html#Creating-and-sending-patches" accesskey="n" rel="next">Creating and sending patches</a>, Previous: <a href="Pulling.html#Pulling" accesskey="p" rel="prev">Pulling</a>, Up: <a href="Transferring.html#Transferring" accesskey="u" rel="up">Transferring</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Pushing-1"></a>
+<h3 class="section">7.4 Pushing</h3>
+
+<p>For information about the differences between the <em>upstream</em> and the
+<em>push-remote</em>, see <a href="Branching.html#Branching">Branching</a>.
+</p>
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-P-1"></a>
+<a name="index-magit_002dpush_002dpopup"></a>
+</dd>
+<dt><kbd>P</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-P-p"></a>
+<a name="index-magit_002dpush_002dcurrent_002dto_002dpushremote"></a>
+</dd>
+<dt><kbd>P p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current-to-pushremote</code>)</dt>
+<dd>
+<p>Push the current branch to <code>branch.&lt;name&gt;.pushRemote</code> or if that
+is unset to <code>remote.pushDefault</code>.
+</p>
+<p>When <code>magit-push-current-set-remote-if-missing</code> is non-nil and the
+push-remote is not configured, then read the push-remote from the
+user, set it, and then push to it.  With a prefix argument the
+push-remote can be changed before pushed to it.
+</p>
+<a name="index-P-u"></a>
+<a name="index-magit_002dpush_002dcurrent_002dto_002dupstream"></a>
+</dd>
+<dt><kbd>P u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current-to-upstream</code>)</dt>
+<dd>
+<p>Push the current branch to its upstream branch.
+</p>
+<p>When <code>magit-push-current-set-remote-if-missing</code> is non-nil and the
+push-remote is not configured, then read the upstram from the
+user, set it, and then push to it.  With a prefix argument the
+push-remote can be changed before pushed to it.
+</p>
+<a name="index-P-e"></a>
+<a name="index-magit_002dpush_002dcurrent"></a>
+</dd>
+<dt><kbd>P e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-current</code>)</dt>
+<dd>
+<p>Push the current branch to a branch read in the minibuffer.
+</p>
+<a name="index-P-o"></a>
+<a name="index-magit_002dpush"></a>
+</dd>
+<dt><kbd>P o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push</code>)</dt>
+<dd>
+<p>Push an arbitrary branch or commit somewhere.  Both the source and
+the target are read in the minibuffer.
+</p>
+<a name="index-P-m"></a>
+<a name="index-magit_002dpush_002dmatching"></a>
+</dd>
+<dt><kbd>P m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-matching</code>)</dt>
+<dd>
+<p>Push all matching branches to another repository.  If multiple
+remotes exit, then read one from the user.  If just one exists, use
+that without requiring confirmation.
+</p>
+<a name="index-P-t"></a>
+<a name="index-magit_002dpush_002dtags"></a>
+</dd>
+<dt><kbd>P t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-tags</code>)</dt>
+<dd>
+<p>Push all tags to another repository.  If only one remote exists,
+then push to that.  Otherwise prompt for a remote, offering the
+remote configured for the current branch as default.
+</p>
+<a name="index-P-T"></a>
+<a name="index-magit_002dpush_002dtag"></a>
+</dd>
+<dt><kbd>P T</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-push-tag</code>)</dt>
+<dd>
+<p>Push a tag to another repository.
+</p></dd>
+</dl>
+
+<p>Two more push commands exist, which by default are not available from
+the push popup.  See their doc-strings for instructions on how to add
+them to the popup.
+</p>
+<a name="index-magit_002dpush_002dimplicitly-args"></a>
+<dl>
+<dt><a name="index-magit_002dpush_002dimplicitly"></a>Command: <strong>magit-push-implicitly</strong> <em>args</em></dt>
+<dd>
+<p>Push somewhere without using an explicit refspec.
+</p>
+<p>This command simply runs <code>git push -v [ARGS]</code>.  ARGS are the arguments
+specified in the popup buffer.  No explicit refspec arguments are
+used.  Instead the behavior depends on at least these Git variables:
+<code>push.default</code>, <code>remote.pushDefault</code>, <code>branch.&lt;branch&gt;.pushRemote</code>,
+<code>branch.&lt;branch&gt;.remote</code>, <code>branch.&lt;branch&gt;.merge</code>, and
+<code>remote.&lt;remote&gt;.push</code>.
+</p></dd></dl>
+
+<a name="index-magit_002dpush_002dto_002dremote-remote-args"></a>
+<dl>
+<dt><a name="index-magit_002dpush_002dto_002dremote"></a>Command: <strong>magit-push-to-remote</strong> <em>remote args</em></dt>
+<dd>
+<p>Push to the remote REMOTE without using an explicit refspec.  The
+remote is read in the minibuffer.
+</p>
+<p>This command simply runs <code>git push -v [ARGS] REMOTE</code>.  ARGS are the
+arguments specified in the popup buffer.  No refspec arguments are
+used.  Instead the behavior depends on at least these Git variables:
+<code>push.default</code>, <code>remote.pushDefault</code>, <code>branch.&lt;branch&gt;.pushRemote</code>,
+<code>branch.&lt;branch&gt;.remote</code>, <code>branch.&lt;branch&gt;.merge</code>, and
+<code>remote.&lt;remote&gt;.push</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dpush_002dcurrent_002dset_002dremote_002dif_002dmissing"></a>User Option: <strong>magit-push-current-set-remote-if-missing</strong></dt>
+<dd>
+<p>This option controls whether missing remotes are configured before
+pushing.
+</p>
+<p>When <code>nil</code>, then the command <code>magit-push-current-to-pushremote</code> and
+<code>magit-push-current-to-upstream</code> do not appear in the push popup if
+the push-remote resp. upstream is not configured.  If the user
+invokes one of these commands anyway, then it raises an error.
+</p>
+<p>When <code>non-nil</code>, then these commands always appear in the push popup.
+But if the required configuration is missing, then they do appear in
+a way that indicates that this is the case.  If the user invokes one
+of them, then it asks for the necessary configuration, stores the
+configuration, and then uses it to push a first time.
+</p>
+<p>This option also affects whether the argument <code>--set-upstream</code> is
+available in the popup.  If the value is <code>non-nil</code>, then that argument
+is redundant.  But note that changing the value of this option does
+not take affect immediately, the argument will only be added or
+removed after restarting Emacs.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Creating-and-sending-patches.html#Creating-and-sending-patches" accesskey="n" rel="next">Creating and sending patches</a>, Previous: <a href="Pulling.html#Pulling" accesskey="p" rel="prev">Pulling</a>, Up: <a href="Transferring.html#Transferring" accesskey="u" rel="up">Transferring</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Switching Buffers</title>
+
+<meta name="description" content="Magit User Manual: Switching Buffers">
+<meta name="keywords" content="Magit User Manual: Switching Buffers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Modes-and-Buffers.html#Modes-and-Buffers" rel="up" title="Modes and Buffers">
+<link href="Naming-Buffers.html#Naming-Buffers" rel="next" title="Naming Buffers">
+<link href="Modes-and-Buffers.html#Modes-and-Buffers" rel="prev" title="Modes and Buffers">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Switching-Buffers"></a>
+<div class="header">
+<p>
+Next: <a href="Naming-Buffers.html#Naming-Buffers" accesskey="n" rel="next">Naming Buffers</a>, Up: <a href="Modes-and-Buffers.html#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Switching-Buffers-1"></a>
+<h4 class="subsection">4.1.1 Switching Buffers</h4>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer"></a>Function: <strong>magit-display-buffer</strong> <em>buffer</em></dt>
+<dd>
+<p>This function is a wrapper around <code>display-buffer</code> and is used to
+display any Magit buffer.  It displays BUFFER in some window and,
+unlike <code>display-buffer</code>, also selects that window, provided
+<code>magit-display-buffer-noselect</code> is <code>nil</code>.  It also runs the hooks
+mentioned below.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dnoselect"></a>Variable: <strong>magit-display-buffer-noselect</strong></dt>
+<dd>
+<p>When this is non-nil, then <code>magit-display-buffer</code> only displays the
+buffer but forgoes also selecting the window.  This variable should
+not be set globally, it is only intended to be let-bound, by code
+that automatically updates &quot;the other window&quot;.  This is used for
+example when the revision buffer is updated when you move inside the
+log buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dfunction"></a>User Option: <strong>magit-display-buffer-function</strong></dt>
+<dd>
+<p>The function specified here is called by <code>magit-display-buffer</code> with
+one argument, a buffer, to actually display that buffer.  This
+function should call <code>display-buffer</code> with that buffer as first and a
+list of display actions as second argument.
+</p>
+<p>Instead of using a wrapper around <code>display-buffer</code>, that function
+itself can be used here, in which case the display actions have to
+be specified by adding them to <code>display-buffer-alist</code> instead.
+</p>
+<p>To learn about display actions, see <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-a-Window-for-Display.html#Choosing-a-Window-for-Display">(elisp)Choosing a Window for Display</a>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dtraditional"></a>Function: <strong>magit-display-buffer-traditional</strong> <em>buffer</em></dt>
+<dd>
+<p>This function is the current default value of the option
+<code>magit-display-buffer-function</code>.  Before that option and this function
+were added, the behavior was hard-coded in many places all over the
+code base but now all the rules are contained in this one function
+(except for the &quot;noselect&quot; special case mentioned above).
+</p>
+<p>If you want to use different rules, then a good way of doing that is
+to start with a copy of this function and then adjust it to your
+needs.  More functions to choose from will be added in the future,
+and eventually the default will change.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dpre_002ddisplay_002dbuffer_002dhook"></a>User Option: <strong>magit-pre-display-buffer-hook</strong></dt>
+<dd>
+<p>This hook is run by <code>magit-display-buffer</code> before displaying the
+buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dsave_002dwindow_002dconfiguration"></a>Function: <strong>magit-save-window-configuration</strong></dt>
+<dd>
+<p>This function saves the current window configuration.  Later when
+the buffer is buried, it may be restored by
+<code>magit-restore-window-configuration</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dpost_002ddisplay_002dbuffer_002dhook"></a>User Option: <strong>magit-post-display-buffer-hook</strong></dt>
+<dd>
+<p>This hook is run by <code>magit-display-buffer</code> after displaying the
+buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dmaybe_002dset_002ddedicated"></a>Function: <strong>magit-maybe-set-dedicated</strong></dt>
+<dd>
+<p>This function remembers if a new window had to be created to display
+the buffer, or whether an existing window was reused.  This
+information is later used by <code>magit-mode-quit-window</code>, to determine
+whether the window should be deleted when its last Magit buffer is
+buried.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Naming-Buffers.html#Naming-Buffers" accesskey="n" rel="next">Naming Buffers</a>, Up: <a href="Modes-and-Buffers.html#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

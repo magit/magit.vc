@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Submodules</title>
+
+<meta name="description" content="Magit User Manual: Submodules">
+<meta name="keywords" content="Magit User Manual: Submodules">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Miscellaneous.html#Miscellaneous" rel="up" title="Miscellaneous">
+<link href="Common-commands.html#Common-commands" rel="next" title="Common commands">
+<link href="Notes.html#Notes" rel="prev" title="Notes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Submodules"></a>
+<div class="header">
+<p>
+Next: <a href="Common-commands.html#Common-commands" accesskey="n" rel="next">Common commands</a>, Previous: <a href="Notes.html#Notes" accesskey="p" rel="prev">Notes</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Submodules-1"></a>
+<h3 class="section">8.3 Submodules</h3>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-submodule">git-submodule(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-o"></a>
+<a name="index-magit_002dsubmodule_002dpopup"></a>
+</dd>
+<dt><kbd>o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-o-a"></a>
+<a name="index-magit_002dsubmodule_002dadd"></a>
+</dd>
+<dt><kbd>o a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-add</code>)</dt>
+<dd>
+<p>Add the repository at URL as a submodule.  Optional PATH is the path
+to the submodule relative to the root of the super-project. If it is
+nil then the path is determined based on URL.
+</p>
+<a name="index-o-b"></a>
+<a name="index-magit_002dsubmodule_002dsetup"></a>
+</dd>
+<dt><kbd>o b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-setup</code>)</dt>
+<dd>
+<p>Clone and register missing submodules and checkout appropriate
+commits.
+</p>
+<a name="index-o-i"></a>
+<a name="index-magit_002dsubmodule_002dinit"></a>
+</dd>
+<dt><kbd>o i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-init</code>)</dt>
+<dd>
+<p>Register submodules listed in &quot;.gitmodules&quot; into &quot;.git/config&quot;.
+</p>
+<a name="index-o-u"></a>
+<a name="index-magit_002dsubmodule_002dupdate"></a>
+</dd>
+<dt><kbd>o u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-update</code>)</dt>
+<dd>
+<p>Clone missing submodules and checkout appropriate commits.  With a
+prefix argument also register submodules in &quot;.git/config&quot;.
+</p>
+<a name="index-o-s"></a>
+<a name="index-magit_002dsubmodule_002dsync"></a>
+</dd>
+<dt><kbd>o s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-sync</code>)</dt>
+<dd>
+<p>Update each submodule&rsquo;s remote URL according to &quot;.gitmodules&quot;.
+</p>
+<a name="index-o-f"></a>
+<a name="index-magit_002dsubmodule_002dfetch-1"></a>
+</dd>
+<dt><kbd>o f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-fetch</code>)</dt>
+<dd>
+<p>Fetch submodule.  With a prefix argument fetch all remotes.
+</p>
+<a name="index-o-i-1"></a>
+<a name="index-magit_002dsubmodule_002dinit-1"></a>
+</dd>
+<dt><kbd>o i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-init</code>)</dt>
+<dd>
+<p>Unregister the submodule at PATH.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

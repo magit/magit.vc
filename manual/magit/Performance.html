@@ -33,7 +33,7 @@ General Public License for more details. -->
 <link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Essential-settings.html#Essential-settings" rel="up" title="Essential settings">
-<link href="Plumbing.html#Plumbing" rel="next" title="Plumbing">
+<link href="Committing-Performance.html#Committing-Performance" rel="next" title="Committing Performance">
 <link href="Safety.html#Safety" rel="prev" title="Safety">
 <style type="text/css">
 <!--
@@ -132,6 +132,11 @@ repositories, then you might want to disable certain features on a
 per-repository or per-repository-class basis only.  See
 <a href="Per_002drepository-configuration.html#Per_002drepository-configuration">Per-repository configuration</a>.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Committing-Performance.html#Committing-Performance" accesskey="1">Committing Performance</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
 <a name="Microsoft-Windows-Performance"></a>
 <h4 class="unnumberedsubsubsec">Microsoft Windows Performance</h4>
 
@@ -200,6 +205,13 @@ features by setting all or some of the following variables to <code>nil</code>:
 <code>magit-diff-highlight-indentation</code>, <code>magit-diff-highlight-trailing</code>,
 <code>magit-diff-paint-whitespace</code>, <code>magit-diff-highlight-hunk-body</code>, and
 <code>magit-diff-refine-hunk</code>.
+</p>
+<p>When showing a commit instead of some arbitrary diff, then some
+additional information is displayed.  Calculating this information
+can be quite expensive given certain circumstances.  If looking at
+a commit using <code>magit-revision-mode</code> takes considerably more time than
+looking at the same commit in <code>magit-diff-mode</code>, then consider setting
+<code>magit-revision-insert-related-refs</code> to <code>nil</code>.
 </p>
 <a name="Refs-Buffer-Performance"></a>
 <h4 class="unnumberedsubsubsec">Refs Buffer Performance</h4>

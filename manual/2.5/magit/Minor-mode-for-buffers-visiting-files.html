@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Minor mode for buffers visiting files</title>
+
+<meta name="description" content="Magit User Manual: Minor mode for buffers visiting files">
+<meta name="keywords" content="Magit User Manual: Minor mode for buffers visiting files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Miscellaneous.html#Miscellaneous" rel="up" title="Miscellaneous">
+<link href="Minor-mode-for-buffers-visiting-blobs.html#Minor-mode-for-buffers-visiting-blobs" rel="next" title="Minor mode for buffers visiting blobs">
+<link href="Wip-modes.html#Wip-modes" rel="prev" title="Wip modes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Minor-mode-for-buffers-visiting-files"></a>
+<div class="header">
+<p>
+Next: <a href="Minor-mode-for-buffers-visiting-blobs.html#Minor-mode-for-buffers-visiting-blobs" accesskey="n" rel="next">Minor mode for buffers visiting blobs</a>, Previous: <a href="Wip-modes.html#Wip-modes" accesskey="p" rel="prev">Wip modes</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Minor-mode-for-buffers-visiting-files-1"></a>
+<h3 class="section">8.6 Minor mode for buffers visiting files</h3>
+
+<p>The <code>magit-file-mode</code> enables certain Magit features in file-visiting
+buffers belonging to a Git repository.  It should be enabled globally
+using <code>global-magit-file-mode</code>.  Currently this mode only establishes a
+few key bindings, but this might be extended in the future.
+</p>
+<dl>
+<dt><a name="index-global_002dmagit_002dfile_002dmode"></a>User Option: <strong>global-magit-file-mode</strong></dt>
+<dd>
+<p>Whether to establish certain Magit key bindings in all file-visiting
+buffers belonging to a Git repository.  This establishes the
+bindings suggested in <a href="Getting-started.html#Getting-started">Getting started</a> (but only for file-visiting
+buffers), and additionally binds <code>C-c M-g</code> to <code>magit-file-popup</code>.
+</p></dd></dl>
+
+<dl compact="compact">
+<dd><a name="index-C_002dc-M_002dg"></a>
+<a name="index-magit_002dfile_002dpopup"></a>
+</dd>
+<dt><kbd>C-c M-g</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-file-popup</code>)</dt>
+<dd>
+<p>This prefix command shows a popup buffer featuring suffix commands
+that operate on the file being visited in the current buffer.
+</p>
+<a name="index-C_002dc-M_002dg-s"></a>
+<a name="index-magit_002dstage_002dfile-1"></a>
+</dd>
+<dt><kbd>C-c M-g s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stage-file</code>)</dt>
+<dd>
+<p>Stage all changes to the file being visited in the current buffer.
+</p>
+<a name="index-C_002dc-M_002dg-u"></a>
+<a name="index-magit_002dunstage_002dfile-1"></a>
+</dd>
+<dt><kbd>C-c M-g u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-unstage-file</code>)</dt>
+<dd>
+<p>Unstage all changes to the file being visited in the current buffer.
+</p>
+<a name="index-C_002dc-M_002dg-l"></a>
+<a name="index-magit_002dlog_002dbuffer_002dfile-1"></a>
+</dd>
+<dt><kbd>C-c M-g l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-buffer-file</code>)</dt>
+<dd>
+<p>This command shows the log for the file of blob that the current
+buffer visits.  Renames are followed when a prefix argument is used
+or when <code>--follow</code> is part of <code>magit-log-arguments</code>.
+</p>
+<a name="index-C_002dc-M_002dg-b"></a>
+<a name="index-magit_002dblame_002dpopup-1"></a>
+</dd>
+<dt><kbd>C-c M-g b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the <code>magit-blame</code> suffix command along with
+the appropriate infix arguments in a popup buffer.  See <a href="Initiating-a-commit.html#Initiating-a-commit">Initiating a commit</a>.
+</p>
+<a name="index-C_002dc-M_002dg-p"></a>
+<a name="index-magit_002dblob_002dprevious"></a>
+</dd>
+<dt><kbd>C-c M-g p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blob-previous</code>)</dt>
+<dd>
+<p>Visit the previous blob which modified the current file.
+</p>
+<a name="index-C_002dc-M_002dg-c"></a>
+<a name="index-magit_002dcommit_002dpopup-1"></a>
+</dd>
+<dt><kbd>C-c M-g c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-commit-popup</code>)</dt>
+<dd>
+<p>This prefix command shows suffix commands along with the appropriate
+infix arguments in a popup buffer.  See <a href="Initiating-a-commit.html#Initiating-a-commit">Initiating a commit</a>.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Minor-mode-for-buffers-visiting-blobs.html#Minor-mode-for-buffers-visiting-blobs" accesskey="n" rel="next">Minor mode for buffers visiting blobs</a>, Previous: <a href="Wip-modes.html#Wip-modes" accesskey="p" rel="prev">Wip modes</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
