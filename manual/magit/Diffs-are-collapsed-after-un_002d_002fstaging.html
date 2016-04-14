@@ -21,10 +21,10 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details. -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>Magit User Manual: Running Git</title>
+<title>Magit User Manual: Diffs are collapsed after un-/staging</title>
 
-<meta name="description" content="Magit User Manual: Running Git">
-<meta name="keywords" content="Magit User Manual: Running Git">
+<meta name="description" content="Magit User Manual: Diffs are collapsed after un-/staging">
+<meta name="keywords" content="Magit User Manual: Diffs are collapsed after un-/staging">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -32,9 +32,9 @@ General Public License for more details. -->
 <link href="index.html#Top" rel="start" title="Top">
 <link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
-<link href="Interface-concepts.html#Interface-concepts" rel="up" title="Interface concepts">
-<link href="Viewing-Git-output.html#Viewing-Git-output" rel="next" title="Viewing Git output">
-<link href="Completion-and-confirmation.html#Completion-and-confirmation" rel="prev" title="Completion and confirmation">
+<link href="FAQ.html#FAQ" rel="up" title="FAQ">
+<link href="I-don_0027t-understand-how-branching-and-pushing-work.html#I-don_0027t-understand-how-branching-and-pushing-work" rel="next" title="I don't understand how branching and pushing work">
+<link href="I-am-having-problems-committing.html#I-am-having-problems-committing" rel="prev" title="I am having problems committing">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -69,26 +69,34 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<a name="Running-Git"></a>
+<a name="Diffs-are-collapsed-after-un_002d_002fstaging"></a>
 <div class="header">
 <p>
-Previous: <a href="Completion-and-confirmation.html#Completion-and-confirmation" accesskey="p" rel="prev">Completion and confirmation</a>, Up: <a href="Interface-concepts.html#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="I-don_0027t-understand-how-branching-and-pushing-work.html#I-don_0027t-understand-how-branching-and-pushing-work" accesskey="n" rel="next">I don't understand how branching and pushing work</a>, Previous: <a href="I-am-having-problems-committing.html#I-am-having-problems-committing" accesskey="p" rel="prev">I am having problems committing</a>, Up: <a href="FAQ.html#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Running-Git-1"></a>
-<h3 class="section">4.5 Running Git</h3>
+<a name="Diffs-are-collapsed-after-un_002d_002fstaging-1"></a>
+<h3 class="section">A.4 Diffs are collapsed after un-/staging</h3>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Viewing-Git-output.html#Viewing-Git-output" accesskey="1">Viewing Git output</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Running-Git-manually.html#Running-Git-manually" accesskey="2">Running Git manually</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Git-executable.html#Git-executable" accesskey="3">Git executable</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Global-Git-arguments.html#Global-Git-arguments" accesskey="4">Global Git arguments</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
+<p>Currently when one part of a Magit buffer has to be updated the whole
+buffer is recreated from scratch.  That obviously isn&rsquo;t good for
+performance and will be fixed eventually.  Meanwhile we need a kludge
+that prevents the update from taking very long under certain
+circumstances, e.g. when showing the difference for hundrets of
+changes files.
+</p>
+<p>For that reason the variable <code>magit-diff-expansion-treshhold</code> was added,
+defaulting to one second.  If it takes longer than that to recreate a
+Magit buffer, then no further diff sections are expanded because
+that&rsquo;s one of the steps that take the longest.  If a diff is not
+expanded, then some work can be delayed until it actually is.
+</p>
+<p>You can then still expand sections manually, but when you refresh the
+complete buffer explicitly using <code>g</code> or by performing an action which
+triggers a refresh, then previously expanded diffs could be collapsed.
+You can set <code>magit-diff-expansion-treshhold</code> to a higher value to
+prevent that from happening.
+</p>
 
 
 

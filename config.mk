@@ -11,10 +11,7 @@ LOAD_PATH  ?= \
 EMACS ?= emacs
 BATCH  = $(EMACS) --batch -Q $(LOAD_PATH)
 
-MAKEINFO     ?= makeinfo
-TEXI2PDF     ?= texi2pdf
-TEXI2HTML    ?= texi2html
-INSTALL_INFO ?= ginstall-info
+TEXI2PDF ?= texi2pdf
 
 MANUAL_CSS = /css/page.css
 
