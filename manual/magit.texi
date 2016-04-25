@@ -271,15 +271,16 @@ FAQ
 * I am using an Emacs release older than v24.4: I am using an Emacs release older than v244. 
 * I am using a Git release older than v1.9.4: I am using a Git release older than v194. 
 * I am using MS Windows and cannot push with Magit::
+* I am using OS X and SOMETHING works in shell, but not in Magit: I am using OS X and SOMETHING works in shell but not in Magit. 
 * How to install the gitman info manual?::
 * How can I show Git's output?::
 * Diffs contain control sequences::
 * Expanding a file to show the diff causes it to disappear::
-* Point is wrong in the COMMIT@math{_EDITMSG} buffer::
-* Can Magit be used as ediff-version-control-package?::
+* Point is wrong in the @code{COMMIT_EDITMSG} buffer::
+* Can Magit be used as @code{ediff-version-control-package}?::
 * How to show diffs for gpg-encrypted files?::
 * Emacs 24.5 hangs when loading Magit: Emacs 245 hangs when loading Magit. 
-* Symbol's value as function is void --some::
+* @code{Symbol's value as function is void --some}::
 * Where is the branch manager::
 @end detailmenu
 @end menu
@@ -2140,6 +2141,12 @@ yet.  These sections can be expanded to show the respective commits.
 Insert sections for modules that haven't been pushed to the
 push-remote yet. These sections can be expanded to show the
 respective commits.
+@end defun
+
+@defun magit-insert-submodules
+
+Insert sections for all modules.  For each section insert the path
+and the output of @code{git describe --tags}.
 @end defun
 
 @defun magit-insert-unpulled-cherries
@@ -6701,10 +6708,6 @@ repositories, then you might want to disable certain features on a
 per-repository or per-repository-class basis only.  See
 @ref{Per-repository configuration,Per-repository configuration}.
 
-@menu
-* Committing Performance::
-@end menu
-
 @unnumberedsubsubsec Microsoft Windows Performance
 
 In order to update the status buffer, @code{git} has to be run a few dozen
@@ -6720,14 +6723,12 @@ order to benefit from the latest performance tweaks, should always
 use the latest release.  Magit too tries to work around some
 Windows-specific issues.
 
-But all these efforts might not be enough, forcing users to make some
-changes themselves.  For example, according to
-@uref{http://stackoverflow.com/questions/4485059}, setting the following Git
-variables might also help:
+According to some sources setting the following Git variables can also
+help.
 
 @example
-git config --global core.preloadindex true
-git config --global core.fscache true
+git config --global core.preloadindex true   # default since v2.1
+git config --global core.fscache true        # default since v2.8
 git config --global gc.auto 256
 @end example
 
@@ -6795,7 +6796,6 @@ Then you should also make sure that the listed remote branches
 actually all exist.  You can do so by pruning branches which no longer
 exist using @code{f-pa}.
 
-@node Committing Performance
 @unnumberedsubsubsec Committing Performance
 
 When you initiate a commit, then Magit by default automatically shows
@@ -7643,15 +7643,16 @@ made it into the manual yet, see @uref{https://github.com/magit/magit/wiki/FAQ}.
 * I am using an Emacs release older than v24.4: I am using an Emacs release older than v244. 
 * I am using a Git release older than v1.9.4: I am using a Git release older than v194. 
 * I am using MS Windows and cannot push with Magit::
+* I am using OS X and SOMETHING works in shell, but not in Magit: I am using OS X and SOMETHING works in shell but not in Magit. 
 * How to install the gitman info manual?::
 * How can I show Git's output?::
 * Diffs contain control sequences::
 * Expanding a file to show the diff causes it to disappear::
-* Point is wrong in the COMMIT@math{_EDITMSG} buffer::
-* Can Magit be used as ediff-version-control-package?::
+* Point is wrong in the @code{COMMIT_EDITMSG} buffer::
+* Can Magit be used as @code{ediff-version-control-package}?::
 * How to show diffs for gpg-encrypted files?::
 * Emacs 24.5 hangs when loading Magit: Emacs 245 hangs when loading Magit. 
-* Symbol's value as function is void --some::
+* @code{Symbol's value as function is void --some}::
 * Where is the branch manager::
 @end menu
 
@@ -7680,6 +7681,10 @@ and @ref{Debugging,,,with-editor,}.
 
 @node Diffs are collapsed after un-/staging
 @section Diffs are collapsed after un-/staging
+
+This typically happens on Windows and/or large repositories where
+preparing diffs takes longer than @code{magit-diff-expansion-threshold}. The
+default is one second, try increasing it to a larger value.
 
 Currently when one part of a Magit buffer has to be updated the whole
 buffer is recreated from scratch.  That obviously isn't good for
@@ -7775,6 +7780,18 @@ can push on the command line.
 
 Detailed setup instructions can be found at
 @uref{https://github.com/magit/magit/wiki/Pushing-with-Magit-from-Windows}.
+
+@node I am using OS X and SOMETHING works in shell but not in Magit
+@section I am using OS X and SOMETHING works in shell, but not in Magit
+
+This usually occurs because Emacs doesn't have the same environment
+variables as your shell.  Try installing and configuring
+@uref{https://github.com/purcell/exec-path-from-shell}.  By default it
+synchronizes @code{$PATH}, which helps Magit find the same @code{git} as the one you
+are using on the shell.
+
+If SOMETHING is "passphrase caching with gpg-agent for commit and/or
+tag signing", then you'll also need to synchronize @code{$GPG_AGENT_INFO}.
 
 @node How to install the gitman info manual?
 @section How to install the gitman info manual?
@@ -7875,8 +7892,8 @@ probably set that variable for a reason, and should therefore
 only undo that setting in Magit by customizing
 @code{magit-git-global-arguments}.
 
-@node Point is wrong in the COMMIT@math{_EDITMSG} buffer
-@section Point is wrong in the COMMIT@math{_EDITMSG} buffer
+@node Point is wrong in the @code{COMMIT_EDITMSG} buffer
+@section Point is wrong in the @code{COMMIT_EDITMSG} buffer
 
 Neither Magit nor `git-commit` fiddle with point in the buffer used to
 write commit messages, so something else must be doing it.
@@ -7898,8 +7915,8 @@ help:
       (pointback-mode -1))))
 @end lisp
 
-@node Can Magit be used as ediff-version-control-package?
-@section Can Magit be used as ediff-version-control-package?
+@node Can Magit be used as @code{ediff-version-control-package}?
+@section Can Magit be used as @code{ediff-version-control-package}?
 
 No, it cannot.  For that to work the functions @code{ediff-magit-internal}
 and @code{ediff-magit-merge-internal} would have to be implemented, and they
@@ -7952,8 +7969,8 @@ can work around the problem by setting
 @code{tramp-ssh-controlmaster-options}. Changing your DNS server (e.g. to
 Google's @code{8.8.8.8}) may also be sufficient to work around the issue.
 
-@node Symbol's value as function is void --some
-@section Symbol's value as function is void --some
+@node @code{Symbol's value as function is void --some}
+@section @code{Symbol's value as function is void --some}
 
 Update @code{dash}, restart Emacs, and then it will be defined.
 

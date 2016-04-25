@@ -1584,6 +1584,11 @@ The following functions can also be added to the above hook:
   push-remote yet. These sections can be expanded to show the
   respective commits.
 
+- Function: magit-insert-submodules
+
+  Insert sections for all modules.  For each section insert the path
+  and the output of ~git describe --tags~.
+
 - Function: magit-insert-unpulled-cherries
 
   Insert section showing unpulled commits.
@@ -4827,14 +4832,12 @@ order to benefit from the latest performance tweaks, should always
 use the latest release.  Magit too tries to work around some
 Windows-specific issues.
 
-But all these efforts might not be enough, forcing users to make some
-changes themselves.  For example, according to
-http://stackoverflow.com/questions/4485059, setting the following Git
-variables might also help:
+According to some sources setting the following Git variables can also
+help.
 
 #+BEGIN_SRC shell-script
-  git config --global core.preloadindex true
-  git config --global core.fscache true
+  git config --global core.preloadindex true   # default since v2.1
+  git config --global core.fscache true        # default since v2.8
   git config --global gc.auto 256
 #+END_SRC
 
@@ -4912,6 +4915,9 @@ actually all exist.  You can do so by pruning branches which no longer
 exist using ~f-pa~.
 
 **** Committing Performance
+:PROPERTIES:
+:NONODE:     t
+:END:
 
 When you initiate a commit, then Magit by default automatically shows
 a diff of the changes you are about to commit.  For large commits this
@@ -5678,6 +5684,10 @@ and [[info:with-editor#Debugging]].
 
 ** Diffs are collapsed after un-/staging
 
+This typically happens on Windows and/or large repositories where
+preparing diffs takes longer than ~magit-diff-expansion-threshold~. The
+default is one second, try increasing it to a larger value.
+
 Currently when one part of a Magit buffer has to be updated the whole
 buffer is recreated from scratch.  That obviously isn't good for
 performance and will be fixed eventually.  Meanwhile we need a kludge
@@ -5766,6 +5776,17 @@ can push on the command line.
 
 Detailed setup instructions can be found at
 https://github.com/magit/magit/wiki/Pushing-with-Magit-from-Windows.
+
+** I am using OS X and SOMETHING works in shell, but not in Magit
+
+This usually occurs because Emacs doesn't have the same environment
+variables as your shell.  Try installing and configuring
+https://github.com/purcell/exec-path-from-shell.  By default it
+synchronizes ~$PATH~, which helps Magit find the same ~git~ as the one you
+are using on the shell.
+
+If SOMETHING is "passphrase caching with gpg-agent for commit and/or
+tag signing", then you'll also need to synchronize ~$GPG_AGENT_INFO~.
 
 ** How to install the gitman info manual?
 
@@ -5862,7 +5883,7 @@ probably set that variable for a reason, and should therefore
 only undo that setting in Magit by customizing
 ~magit-git-global-arguments~.
 
-** Point is wrong in the COMMIT_EDITMSG buffer
+** Point is wrong in the ~COMMIT_EDITMSG~ buffer
 
 Neither Magit nor `git-commit` fiddle with point in the buffer used to
 write commit messages, so something else must be doing it.
@@ -5884,7 +5905,7 @@ help:
 	(pointback-mode -1))))
 #+END_SRC
 
-** Can Magit be used as ediff-version-control-package?
+** Can Magit be used as ~ediff-version-control-package~?
 
 No, it cannot.  For that to work the functions ~ediff-magit-internal~
 and ~ediff-magit-merge-internal~ would have to be implemented, and they
@@ -5935,7 +5956,7 @@ can work around the problem by setting
 ~tramp-ssh-controlmaster-options~. Changing your DNS server (e.g. to
 Google's ~8.8.8.8~) may also be sufficient to work around the issue.
 
-** Symbol's value as function is void --some
+** ~Symbol's value as function is void --some~
 
 Update ~dash~, restart Emacs, and then it will be defined.
 

@@ -78,6 +78,10 @@ Next: <a href="I-don_0027t-understand-how-branching-and-pushing-work.html#I-don_
 <a name="Diffs-are-collapsed-after-un_002d_002fstaging-1"></a>
 <h3 class="section">A.4 Diffs are collapsed after un-/staging</h3>
 
+<p>This typically happens on Windows and/or large repositories where
+preparing diffs takes longer than <code>magit-diff-expansion-threshold</code>. The
+default is one second, try increasing it to a larger value.
+</p>
 <p>Currently when one part of a Magit buffer has to be updated the whole
 buffer is recreated from scratch.  That obviously isn&rsquo;t good for
 performance and will be fixed eventually.  Meanwhile we need a kludge
