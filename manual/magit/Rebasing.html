@@ -34,7 +34,7 @@ General Public License for more details. -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Manipulating.html#Manipulating" rel="up" title="Manipulating">
 <link href="Editing-rebase-sequences.html#Editing-rebase-sequences" rel="next" title="Editing rebase sequences">
-<link href="Merging.html#Merging" rel="prev" title="Merging">
+<link href="Resolving-conflicts.html#Resolving-conflicts" rel="prev" title="Resolving conflicts">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -72,14 +72,15 @@ ul.no-bullet {list-style: none}
 <a name="Rebasing"></a>
 <div class="header">
 <p>
-Next: <a href="Cherry-picking.html#Cherry-picking" accesskey="n" rel="next">Cherry picking</a>, Previous: <a href="Merging.html#Merging" accesskey="p" rel="prev">Merging</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Cherry-picking.html#Cherry-picking" accesskey="n" rel="next">Cherry picking</a>, Previous: <a href="Resolving-conflicts.html#Resolving-conflicts" accesskey="p" rel="prev">Resolving conflicts</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Rebasing-1"></a>
-<h3 class="section">6.7 Rebasing</h3>
+<h3 class="section">6.8 Rebasing</h3>
 
 <p>Also see 
-the <a href="http://git-scm.com/docs/git-rebase">git-rebase(1)</a> manpage.
+the <a href="http://git-scm.com/docs/git-rebase">git-rebase(1)</a> manpage.  For information on how to resolve
+conflicts that occur during rebases see the preceding section.
 </p>
 <dl compact="compact">
 <dd><a name="index-r"></a>
@@ -94,6 +95,13 @@ the appropriate infix arguments in a popup buffer.
 
 <p>When no rebase is in progress, then the popup buffer features the
 following commands.
+</p>
+<p>Using one of these commands <em>starts</em> a rebase sequence.  Git might then
+stop somewhere along the way, either because you told it to do so, or
+because applying a commit failed due to a conflict.  When that
+happens, then the status buffer shows information about the rebase
+sequence which is in progress in a section similar to a log section.
+See <a href="Information-about-in_002dprogress-rebase.html#Information-about-in_002dprogress-rebase">Information about in-progress rebase</a>.
 </p>
 <dl compact="compact">
 <dd><a name="index-r-p"></a>
@@ -189,6 +197,9 @@ commands instead.
 <dd>
 <p>Restart the current rebasing operation.
 </p>
+<p>In some cases this pops up a commit message buffer for you do edit.
+With a prefix argument the old message is reused as-is.
+</p>
 <a name="index-r-s"></a>
 <a name="index-magit_002drebase_002dskip"></a>
 </dd>
@@ -215,14 +226,14 @@ commands instead.
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Editing-rebase-sequences.html#Editing-rebase-sequences" accesskey="1">Editing rebase sequences</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Rebase-sequence-log.html#Rebase-sequence-log" accesskey="2">Rebase sequence log</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="Information-about-in_002dprogress-rebase.html#Information-about-in_002dprogress-rebase" accesskey="2">Information about in-progress rebase</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 <hr>
 <div class="header">
 <p>
-Next: <a href="Cherry-picking.html#Cherry-picking" accesskey="n" rel="next">Cherry picking</a>, Previous: <a href="Merging.html#Merging" accesskey="p" rel="prev">Merging</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Cherry-picking.html#Cherry-picking" accesskey="n" rel="next">Cherry picking</a>, Previous: <a href="Resolving-conflicts.html#Resolving-conflicts" accesskey="p" rel="prev">Resolving conflicts</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

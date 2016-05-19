@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Section selection</title>
+
+<meta name="description" content="Magit User Manual: Section selection">
+<meta name="keywords" content="Magit User Manual: Section selection">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Section-plumbing.html#Section-plumbing" rel="up" title="Section plumbing">
+<link href="Matching-sections.html#Matching-sections" rel="next" title="Matching sections">
+<link href="Creating-sections.html#Creating-sections" rel="prev" title="Creating sections">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Section-selection"></a>
+<div class="header">
+<p>
+Next: <a href="Matching-sections.html#Matching-sections" accesskey="n" rel="next">Matching sections</a>, Previous: <a href="Creating-sections.html#Creating-sections" accesskey="p" rel="prev">Creating sections</a>, Up: <a href="Section-plumbing.html#Section-plumbing" accesskey="u" rel="up">Section plumbing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Section-selection-1"></a>
+<h4 class="subsection">10.2.2 Section selection</h4>
+
+<dl>
+<dt><a name="index-magit_002dcurrent_002dsection"></a>Function: <strong>magit-current-section</strong></dt>
+<dd>
+<p>Return the section at point.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dregion_002dsections"></a>Function: <strong>magit-region-sections</strong></dt>
+<dd>
+<p>Return a list of the selected sections.
+</p>
+<p>When the region is active and constitutes a valid section selection,
+then return a list of all selected sections.  This is the case when
+the region begins in the heading of a section and ends in the
+heading of a sibling of that first section.  When the selection is
+not valid then return nil.  Most commands that can act on the
+selected sections, then instead just act on the current section, the
+one point is in.
+</p>
+<p>When the region looks like it would in any other buffer then the
+selection is invalid.  When the selection is valid then the region
+uses the <code>magit-section-highlight</code>.  This does not apply to diffs where
+things get a bit more complicated, but even here if the region looks
+like it usually does, then that&rsquo;s not a valid selection as far as
+this function is concerned.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dregion_002dvalues"></a>Function: <strong>magit-region-values</strong> <em>&amp;rest types</em></dt>
+<dd>
+<p>Return a list of the values of the selected sections.
+</p>
+<p>Also see <code>magit-region-sections</code> whose doc-string explains when a
+region is a valid section selection.  If the region is not active
+or is not a valid section selection, then return nil.  If optional
+TYPES is non-nil then the selection not only has to be valid; the
+types of all selected sections additionally have to match one of
+TYPES, or nil is returned.
+</p></dd></dl>
+
+
+
+
+</body>
+</html>

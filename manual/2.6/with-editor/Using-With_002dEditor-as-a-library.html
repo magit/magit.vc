@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- The library with-editor makes it easy to use the Emacsclient as
+the $EDITOR of child processes, making sure they know how to call
+home.  For remote processes a substitute is provided, which communicates
+with Emacs on standard output instead of using a socket as the Emacsclient
+does.
+
+This library was written because Magit has to be able to do the above
+to allow the user to edit commit messages gracefully and to edit
+rebase sequences, which wouldn't be possible at all otherwise.
+
+Because other packages can benefit from such functionality, this
+library is made available as a separate package.  It also defines some
+additional functionality which makes it useful even for end-users, who
+don't use Magit or another package which uses it internally.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>With-Editor User Manual: Using With-Editor as a library</title>
+
+<meta name="description" content="With-Editor User Manual: Using With-Editor as a library">
+<meta name="keywords" content="With-Editor User Manual: Using With-Editor as a library">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Debugging.html#Debugging" rel="next" title="Debugging">
+<link href="Using-With_002dEditor-commands.html#Using-With_002dEditor-commands" rel="prev" title="Using With-Editor commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Using-With_002dEditor-as-a-library"></a>
+<div class="header">
+<p>
+Next: <a href="Debugging.html#Debugging" accesskey="n" rel="next">Debugging</a>, Previous: <a href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" accesskey="p" rel="prev">Using the With-Editor package</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Using-With_002dEditor-as-a-library-1"></a>
+<h2 class="chapter">2 Using With-Editor as a library</h2>
+
+<p>This section describes how to use the <tt>with-editor</tt> library <em>outside</em> of
+Magit to teach another package how to have its child processes call
+home, just like Magit does.  You don&rsquo;t need to know any of this just
+to create commits using Magit.  You can also ignore this if you use
+<code>with-editor</code> outside of Magit, but only as an end-user.
+</p>
+<p>For information about interactive use and options which affect both
+interactive and non-interactive use, see <a href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package">Using the With-Editor package</a>.
+</p>
+<dl>
+<dt><a name="index-with_002deditor"></a>Macro: <strong>with-editor</strong> <em>&amp;rest body</em></dt>
+<dd>
+<p>This macro arranges for the emacsclient or the sleeping editor to be
+used as the editor of child processes, effectively teaching them to
+call home to the current emacs instance when they require that the
+user edits a file.
+</p>
+<p>This is essentially done by establishing a local binding for
+<code>process-environment</code> and changing the value of the <code>$EDITOR</code>
+environment variable.  This affects all processes started by forms
+inside BODY.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-with_002deditor_002dset_002dprocess_002dfilter"></a>Function: <strong>with-editor-set-process-filter</strong> <em>process filter</em></dt>
+<dd>
+<p>This function is like <code>set-process-filter</code> but ensures that adding the
+new FILTER does not remove the <code>with-editor-process-filter</code>.  This is
+done by wrapping the two filter functions using a lambda, which
+becomes the actual filter.  It calls <code>with-editor-process-filter</code>
+first, passing <code>t</code> as NO-STANDARD-FILTER.  Then it calls FILTER.
+</p></dd></dl>
+
+
+
+
+</body>
+</html>

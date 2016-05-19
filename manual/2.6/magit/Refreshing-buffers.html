@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Refreshing buffers</title>
+
+<meta name="description" content="Magit User Manual: Refreshing buffers">
+<meta name="keywords" content="Magit User Manual: Refreshing buffers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Plumbing.html#Plumbing" rel="up" title="Plumbing">
+<link href="Conventions.html#Conventions" rel="next" title="Conventions">
+<link href="Matching-sections.html#Matching-sections" rel="prev" title="Matching sections">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Refreshing-buffers"></a>
+<div class="header">
+<p>
+Next: <a href="Conventions.html#Conventions" accesskey="n" rel="next">Conventions</a>, Previous: <a href="Section-plumbing.html#Section-plumbing" accesskey="p" rel="prev">Section plumbing</a>, Up: <a href="Plumbing.html#Plumbing" accesskey="u" rel="up">Plumbing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Refreshing-buffers-1"></a>
+<h3 class="section">10.3 Refreshing buffers</h3>
+
+<p>All commands that create a new Magit buffer or change what is being
+displayed in an existing buffer do so by calling <code>magit-mode-setup</code>.
+Among other things, that function sets the buffer local values of
+<code>default-directory</code> (to the top-level of the repository),
+<code>magit-refresh-function</code>, and <code>magit-refresh-args</code>.
+</p>
+<p>Buffers are refreshed by calling the function that is the local value
+of <code>magit-refresh-function</code> (a function named <code>magit-*-refresh-buffer</code>,
+where <code>*</code> may be something like <code>diff</code>) with the value of
+<code>magit-refresh-args</code> as arguments.
+</p>
+<dl>
+<dt><a name="index-magit_002dmode_002dsetup"></a>Macro: <strong>magit-mode-setup</strong> <em>buffer switch-func mode refresh-func &amp;optional refresh-args</em></dt>
+<dd>
+<p>This function displays and selects BUFFER, turns on MODE, and
+refreshes a first time.
+</p>
+<p>This function displays and optionally selects BUFFER by calling
+<code>magit-mode-display-buffer</code> with BUFFER, MODE and SWITCH-FUNC as
+arguments.  Then it sets the local value of <code>magit-refresh-function</code>
+to REFRESH-FUNC and that of <code>magit-refresh-args</code> to REFRESH-ARGS.
+Finally it creates the buffer content by calling REFRESH-FUNC with
+REFRESH-ARGS as arguments.
+</p>
+<p>All arguments are evaluated before switching to BUFFER.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dmode_002ddisplay_002dbuffer"></a>Function: <strong>magit-mode-display-buffer</strong> <em>buffer mode &amp;optional switch-function</em></dt>
+<dd>
+<p>This function display BUFFER in some window and select it.  BUFFER
+may be a buffer or a string, the name of a buffer.  The buffer is
+returned.
+</p>
+<p>Unless BUFFER is already displayed in the selected frame, store the
+previous window configuration as a buffer local value, so that it
+can later be restored by <code>magit-mode-bury-buffer</code>.
+</p>
+<p>The buffer is displayed and selected using SWITCH-FUNCTION.  If that
+is <code>nil</code> then <code>pop-to-buffer</code> is used if the current buffer&rsquo;s major mode
+derives from <code>magit-mode</code>.  Otherwise <code>switch-to-buffer</code> is used.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drefresh_002dfunction"></a>Variable: <strong>magit-refresh-function</strong></dt>
+<dd>
+<p>The value of this buffer-local variable is the function used to
+refresh the current buffer.  It is called with <code>magit-refresh-args</code> as
+arguments.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drefresh_002dargs"></a>Variable: <strong>magit-refresh-args</strong></dt>
+<dd>
+<p>The list of arguments used by <code>magit-refresh-function</code> to refresh the
+current buffer.  <code>magit-refresh-function</code> is called with these
+arguments.
+</p>
+<p>The value is usually set using <code>magit-mode-setup</code>, but in some cases
+it&rsquo;s also useful to provide commands which can change the value.  For
+example, the <code>magit-diff-refresh-popup</code> can be used to change any of
+the arguments used to display the diff, without having to specify
+again which differences should be shown.  <code>magit-diff-more-context</code>,
+<code>magit-diff-less-context</code>, and <code>magit-diff-default-context</code> change just
+the <code>-U&lt;N&gt;</code> argument.  In both case this is done by changing the value
+of this variable and then calling this <code>magit-refresh-function</code>.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Conventions.html#Conventions" accesskey="n" rel="next">Conventions</a>, Previous: <a href="Section-plumbing.html#Section-plumbing" accesskey="p" rel="prev">Section plumbing</a>, Up: <a href="Plumbing.html#Plumbing" accesskey="u" rel="up">Plumbing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -246,6 +246,25 @@ but doing it this way has the advantage that you usually get to see
 the diff, which is useful because it increases the odds that you spot
 potential issues.
 </p>
+<a name="The-built_002din-VC-Package"></a>
+<h4 class="unnumberedsubsubsec">The built-in VC Package</h4>
+
+<p>Emacs comes with a version control interface called &quot;VC&quot;, see
+<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Version-Control.html#Version-Control">(emacs)Version Control</a>.  It is enabled be default and if you don&rsquo;t
+use it in addition to Magit, then you should disable it to keep it
+from performing unnecessary work:
+</p>
+<div class="lisp">
+<pre class="lisp">(setq vc-handled-backends nil)
+</pre></div>
+
+<p>You can also disable its use only for Git but keep using it when using
+another version control system:
+</p>
+<div class="lisp">
+<pre class="lisp">(setq vc-handled-backends (delq 'Git vc-handled-backends))
+</pre></div>
+
 <hr>
 <div class="header">
 <p>

@@ -33,7 +33,7 @@ General Public License for more details. -->
 <link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Rebasing.html#Rebasing" rel="up" title="Rebasing">
-<link href="Rebase-sequence-log.html#Rebase-sequence-log" rel="next" title="Rebase sequence log">
+<link href="Information-about-in_002dprogress-rebase.html#Information-about-in_002dprogress-rebase" rel="next" title="Information about in-progress rebase">
 <link href="Rebasing.html#Rebasing" rel="prev" title="Rebasing">
 <style type="text/css">
 <!--
@@ -72,11 +72,11 @@ ul.no-bullet {list-style: none}
 <a name="Editing-rebase-sequences"></a>
 <div class="header">
 <p>
-Next: <a href="Rebase-sequence-log.html#Rebase-sequence-log" accesskey="n" rel="next">Rebase sequence log</a>, Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Information-about-in_002dprogress-rebase.html#Information-about-in_002dprogress-rebase" accesskey="n" rel="next">Information about in-progress rebase</a>, Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Editing-rebase-sequences-1"></a>
-<h4 class="subsection">6.7.1 Editing rebase sequences</h4>
+<h4 class="subsection">6.8.1 Editing rebase sequences</h4>
 
 <dl compact="compact">
 <dd><a name="index-C_002dc-C_002dc-3"></a>
@@ -85,7 +85,7 @@ Next: <a href="Rebase-sequence-log.html#Rebase-sequence-log" accesskey="n" rel="
 <dt><kbd>C-c C-c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>with-editor-finish</code>)</dt>
 <dd>
 <p>Finish the current editing session by returning with exit code 0.
-Git then creates the commit using the message it finds in the file.
+Git then uses the rebase instructions it finds in the file.
 </p>
 <a name="index-C_002dc-C_002dk-2"></a>
 <a name="index-with_002deditor_002dcancel-1"></a>
@@ -93,7 +93,7 @@ Git then creates the commit using the message it finds in the file.
 <dt><kbd>C-c C-k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>with-editor-cancel</code>)</dt>
 <dd>
 <p>Cancel the current editing session by returning with exit code 1.
-Git then cancels the commit, but leaves the file untouched.
+Git then forgoes starting the rebase sequence.
 </p>
 <a name="index-RET-3"></a>
 <a name="index-git_002drebase_002dshow_002dcommit"></a>
@@ -245,7 +245,7 @@ buffers.
 <hr>
 <div class="header">
 <p>
-Next: <a href="Rebase-sequence-log.html#Rebase-sequence-log" accesskey="n" rel="next">Rebase sequence log</a>, Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Information-about-in_002dprogress-rebase.html#Information-about-in_002dprogress-rebase" accesskey="n" rel="next">Information about in-progress rebase</a>, Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 
