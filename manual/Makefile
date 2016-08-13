@@ -60,7 +60,7 @@ magit-refcard.pdf: magit-refcard.tex
 
 %.pdf: %.texi
 	@printf " GEN $@\n"
-	@$(TEXI2PDF) $<
+	@$(TEXI2PDF) $< > /dev/null
 	@git clean -qfX
 
 clean:
