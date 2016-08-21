@@ -1,5 +1,5 @@
-VERSION = 2.7
-VERSION_PREV = 2.6
+VERSION = 2.8
+VERSION_PREV = 2.7
 
 SITE_LISP  ?= ~/.emacs.d/lib
 MAGIT_REPO ?= $(SITE_LISP)/magit

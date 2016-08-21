@@ -261,8 +261,13 @@ respective commits.
 <dl>
 <dt><a name="index-magit_002dinsert_002dsubmodules"></a>Function: <strong>magit-insert-submodules</strong></dt>
 <dd>
-<p>Insert sections for all modules.  For each section insert the path
-and the output of <code>git describe --tags</code>.
+<p>Insert sections for all submodules.  For each section insert the
+path, the branch, and the output of <code>git describe --tags</code>.
+</p>
+<p>Press <code>RET</code> on such a submodule section to show its own status buffer.
+Press <code>RET</code> on the &quot;Modules&quot; section to display a list of submodules
+in a separate buffer.  This shows additional information not
+displayed in the super-repository&rsquo;s status buffer.
 </p></dd></dl>
 
 <dl>

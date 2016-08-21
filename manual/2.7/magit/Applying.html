@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Applying</title>
+
+<meta name="description" content="Magit User Manual: Applying">
+<meta name="keywords" content="Magit User Manual: Applying">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Manipulating.html#Manipulating" rel="up" title="Manipulating">
+<link href="Committing.html#Committing" rel="next" title="Committing">
+<link href="Staging-from-file_002dvisiting-buffers.html#Staging-from-file_002dvisiting-buffers" rel="prev" title="Staging from file-visiting buffers">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Applying"></a>
+<div class="header">
+<p>
+Next: <a href="Committing.html#Committing" accesskey="n" rel="next">Committing</a>, Previous: <a href="Staging-and-unstaging.html#Staging-and-unstaging" accesskey="p" rel="prev">Staging and unstaging</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Applying-1"></a>
+<h3 class="section">6.3 Applying</h3>
+
+<p>Magit provides several &quot;apply variants&quot;: stage, unstage, discard,
+reverse, and &quot;regular apply&quot;.  At least when operating on a hunk they
+are all implemented using <code>git apply</code>, which is why they are called
+&quot;apply variants&quot;.
+</p>
+<ul>
+<li> Stage.  Apply a change from the working tree to the index.  The change
+also remains in the working tree.
+
+
+</li><li> Unstage.  Remove a change from the index.  The change remains in the
+working tree.
+
+
+</li><li> Discard.  On a staged change, remove it from the working tree and the
+index.  On an unstaged change, remove it from the working tree only.
+
+
+</li><li> Reverse.  Reverse a change in the working tree.  Both committed and
+staged changes can be reversed.  Unstaged changes cannot be
+reversed.  Discard them instead.
+
+
+</li><li> Apply.  Apply a change to the working tree.  Both committed and staged
+changes can be applied.  Unstaged changes cannot be applied - as
+they already have been applied.
+</li></ul>
+
+<p>The previous section described the staging and unstaging commands.
+What follows are the commands which implement the remaining apply
+variants.
+</p>
+<dl compact="compact">
+<dd><a name="index-a"></a>
+<a name="index-magit_002dapply"></a>
+</dd>
+<dt><kbd>a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-apply</code>)</dt>
+<dd>
+<p>Apply the change at point to the working tree.
+</p>
+<p>With a prefix argument fallback to a 3-way merge.  Doing so causes
+the change to be applied to the index as well.
+</p>
+<a name="index-k-1"></a>
+<a name="index-magit_002ddiscard"></a>
+</dd>
+<dt><kbd>k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-discard</code>)</dt>
+<dd>
+<p>Remove the change at point from the working tree.
+</p>
+<a name="index-v"></a>
+<a name="index-magit_002dreverse"></a>
+</dd>
+<dt><kbd>v</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-reverse</code>)</dt>
+<dd>
+<p>Reverse the change at point in the working tree.
+</p>
+<p>With a prefix argument fallback to a 3-way merge.  Doing so causes
+the change to be applied to the index as well.
+</p></dd>
+</dl>
+
+<p>With a prefix argument all apply variants attempt a 3-way merge when
+appropriate (i.e. when <code>git apply</code> is used internally).
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Committing.html#Committing" accesskey="n" rel="next">Committing</a>, Previous: <a href="Staging-and-unstaging.html#Staging-and-unstaging" accesskey="p" rel="prev">Staging and unstaging</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

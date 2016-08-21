@@ -107,6 +107,11 @@ one argument, a buffer, to actually display that buffer.  This
 function should call <code>display-buffer</code> with that buffer as first and a
 list of display actions as second argument.
 </p>
+<p>Magit provides several functions, listed below, that are suitable
+values for this option.  If you want to use different rules, then a
+good way of doing that is to start with a copy of one of these
+functions and then adjust it to your needs.
+</p>
 <p>Instead of using a wrapper around <code>display-buffer</code>, that function
 itself can be used here, in which case the display actions have to
 be specified by adding them to <code>display-buffer-alist</code> instead.
@@ -122,11 +127,45 @@ be specified by adding them to <code>display-buffer-alist</code> instead.
 were added, the behavior was hard-coded in many places all over the
 code base but now all the rules are contained in this one function
 (except for the &quot;noselect&quot; special case mentioned above).
-</p>
-<p>If you want to use different rules, then a good way of doing that is
-to start with a copy of this function and then adjust it to your
-needs.  More functions to choose from will be added in the future,
-and eventually the default will change.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dsame_002dwindow_002dexcept_002ddiff_002dv1"></a>Function: <strong>magit-display-buffer-same-window-except-diff-v1</strong></dt>
+<dd>
+<p>This function displays most buffers in the currently selected
+window.  If a buffer&rsquo;s mode derives from <code>magit-diff-mode</code> or
+<code>magit-process-mode</code>, it is displayed in another window.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dfullframe_002dstatus_002dv1"></a>Function: <strong>magit-display-buffer-fullframe-status-v1</strong></dt>
+<dd>
+<p>This function fills the entire frame when displaying a status
+buffer.  Otherwise, it behaves like
+<code>magit-display-buffer-traditional</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dfullframe_002dstatus_002dtopleft_002dv1"></a>Function: <strong>magit-display-buffer-fullframe-status-topleft-v1</strong></dt>
+<dd>
+<p>This function fills the entire frame when displaying a status
+buffer.  It behaves like <code>magit-display-buffer-fullframe-status-v1</code>
+except that it displays buffers that derive from <code>magit-diff-mode</code>
+or <code>magit-process-mode</code> to the top or left of the current buffer
+rather than to the bottom or right.  As a result, Magit buffers tend
+to pop up on the same side as they would if
+<code>magit-display-buffer-traditional</code> were in use.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dfullcolumn_002dmost_002dv1"></a>Function: <strong>magit-display-buffer-fullcolumn-most-v1</strong></dt>
+<dd>
+<p>This function displays most buffers so that they fill the entire
+height of the frame.  However, the buffer is displayed in another
+window if 1) the buffer&rsquo;s mode derives from <code>magit-process-mode</code>,
+or 2) the buffer&rsquo;s mode derives from <code>magit-diff-mode</code>, provided
+that the mode of the current buffer derives from <code>magit-log-mode</code> or
+<code>magit-cherry-mode</code>.
 </p></dd></dl>
 
 <dl>

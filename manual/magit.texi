@@ -40,7 +40,7 @@ General Public License for more details.
 @finalout
 @titlepage
 @title Magit User Manual
-@subtitle for version 2.7
+@subtitle for version 2.8
 @author Jonas Bernoulli
 @page
 @vskip 0pt plus 1filll
@@ -125,6 +125,7 @@ Running Git
 Inspecting
 
 * Status buffer::
+* Repository list::
 * Logging::
 * Diffing::
 * Ediffing::
@@ -138,6 +139,7 @@ Status buffer
 * Status sections::
 * Status header sections::
 * Status options::
+
 
 
 Logging
@@ -230,6 +232,11 @@ Miscellaneous
 * Minor mode for buffers visiting blobs::
 
 
+
+Submodules
+
+* Listing submodules::
+* Submodule popup::
 
 Customizing
 
@@ -369,13 +376,12 @@ that are useful for resolving conflicts and resuming the sequence
 after doing so.
 
 Magit wraps and in many cases improves upon at least the following Git
-porcelain commands: @code{add}, @code{am}, @code{bisect}, @code{blame}, @code{branch},
-@code{checkout}, @code{cherry}, @code{cherry-pick}, @code{clean}, @code{clone}, @code{commit},
-@code{config}, @code{describe}, @code{diff}, @code{fetch}, @code{format-patch}, @code{init}, @code{log},
-@code{merge}, @code{merge-tree}, @code{mv}, @code{notes}, @code{pull}, @code{rebase}, @code{reflog},
-@code{remote}, @code{request-pull}, @code{reset}, @code{revert}, @code{rm}, @code{show}, @code{stash},
-@code{submodule}, and @code{tag}.  Many more Magit porcelain commands are
-implemented on top of Git plumbing commands.
+porcelain commands: @code{add}, @code{am}, @code{bisect}, @code{blame}, @code{branch}, @code{checkout}, @code{cherry},
+@code{cherry-pick}, @code{clean}, @code{clone}, @code{commit}, @code{config}, @code{describe}, @code{diff}, @code{fetch},
+@code{format-patch}, @code{init}, @code{log}, @code{merge}, @code{merge-tree}, @code{mv}, @code{notes}, @code{pull}, @code{rebase},
+@code{reflog}, @code{remote}, @code{request-pull}, @code{reset}, @code{revert}, @code{rm}, @code{show}, @code{stash},
+@code{submodule}, @code{subtree}, @code{tag}, and @code{worktree.}  Many more Magit porcelain
+commands are implemented on top of Git plumbing commands.
 
 @node Installation
 @chapter Installation
@@ -566,7 +572,7 @@ M-x magit-version RET
 should display something like
 
 @example
-Magit 2.4.0, Git 2.7.0, Emacs 24.5.1
+Magit 2.8.0, Git 2.9.0, Emacs 24.5.1
 @end example
 
 Then you might also want to read about options that many users likely
@@ -664,9 +670,9 @@ Write a message and then type @code{C-c C-c} to actually create the commit.
 
 You probably don't want to push the commit you just created because
 you just committed some random changes, but if that is not the case
-you could push it by typing @code{P} to bring up the push popup and then @code{P}
-again to push to the configured upstream.  (If the upstream is not
-configured, then you would be prompted for the push target instead.)
+you could push it by typing @code{P} to bring up the push popup and then @code{u} to
+push to the configured upstream.  (If the upstream is not configured,
+then you would be prompted for the push target instead.)
 
 Instead we are going to undo the changes made so far.  Bring up the
 log for the current branch by typing @code{l l}, move to the last commit
@@ -728,7 +734,7 @@ buffers whose major-modes derive from @code{magit-mode}.
 This command locks the current buffer to its value or if the buffer
 is already locked, then it unlocks it.
 
-Locking a buffer to its value, prevents it from being reused to
+Locking a buffer to its value prevents it from being reused to
 display another value.  The name of a locked buffer contains its
 value, which allows telling it apart from other locked buffers and
 the unlocked buffer.
@@ -781,6 +787,11 @@ one argument, a buffer, to actually display that buffer.  This
 function should call @code{display-buffer} with that buffer as first and a
 list of display actions as second argument.
 
+Magit provides several functions, listed below, that are suitable
+values for this option.  If you want to use different rules, then a
+good way of doing that is to start with a copy of one of these
+functions and then adjust it to your needs.
+
 Instead of using a wrapper around @code{display-buffer}, that function
 itself can be used here, in which case the display actions have to
 be specified by adding them to @code{display-buffer-alist} instead.
@@ -795,11 +806,41 @@ This function is the current default value of the option
 were added, the behavior was hard-coded in many places all over the
 code base but now all the rules are contained in this one function
 (except for the "noselect" special case mentioned above).
+@end defun
 
-If you want to use different rules, then a good way of doing that is
-to start with a copy of this function and then adjust it to your
-needs.  More functions to choose from will be added in the future,
-and eventually the default will change.
+@defun magit-display-buffer-same-window-except-diff-v1
+
+This function displays most buffers in the currently selected
+window.  If a buffer's mode derives from @code{magit-diff-mode} or
+@code{magit-process-mode}, it is displayed in another window.
+@end defun
+
+@defun magit-display-buffer-fullframe-status-v1
+
+This function fills the entire frame when displaying a status
+buffer.  Otherwise, it behaves like
+@code{magit-display-buffer-traditional}.
+@end defun
+
+@defun magit-display-buffer-fullframe-status-topleft-v1
+
+This function fills the entire frame when displaying a status
+buffer.  It behaves like @code{magit-display-buffer-fullframe-status-v1}
+except that it displays buffers that derive from @code{magit-diff-mode}
+or @code{magit-process-mode} to the top or left of the current buffer
+rather than to the bottom or right.  As a result, Magit buffers tend
+to pop up on the same side as they would if
+@code{magit-display-buffer-traditional} were in use.
+@end defun
+
+@defun magit-display-buffer-fullcolumn-most-v1
+
+This function displays most buffers so that they fill the entire
+height of the frame.  However, the buffer is displayed in another
+window if 1) the buffer's mode derives from @code{magit-process-mode},
+or 2) the buffer's mode derives from @code{magit-diff-mode}, provided
+that the mode of the current buffer derives from @code{magit-log-mode} or
+@code{magit-cherry-mode}.
 @end defun
 
 @defopt magit-pre-display-buffer-hook
@@ -1215,7 +1256,7 @@ using an Auto-Revert mode, and should therefore be avoided.  If Emacs
 crashed or if you quit Emacs by mistake, then you would also lose the
 buffer content.  There would be no autosave file still containing the
 intermediate version (because that was deleted when you saved the
-buffer) and you would not be asked whether you want to safe the buffer
+buffer) and you would not be asked whether you want to save the buffer
 (because it isn't modified).
 
 @node Sections
@@ -1905,6 +1946,7 @@ described later.
 
 @menu
 * Status buffer::
+* Repository list::
 * Logging::
 * Diffing::
 * Ediffing::
@@ -1950,16 +1992,21 @@ then offer to initialize it as a new repository.
 
 @defopt magit-repository-directories
 
-Directories containing Git repositories.  Magit checks these
-directories for Git repositories and offers them as choices when
-@code{magit-status} is used with a prefix argument.
+List of directories that are or contain Git repositories.  Each
+element has the form @code{(DIRECTORY . DEPTH)} or, for backward
+compatibility, just DIRECTORY.  DIRECTORY has to be a directory or
+a directory file-name, a string.  DEPTH, an integer, specifies the
+maximum depth to look for Git repositories.  If it is 0, then only
+add DIRECTORY itself.  For elements that are strings, the value of
+option @code{magit-repository-directories-depth} specifies the depth.
 @end defopt
 
 @defopt magit-repository-directories-depth
 
-The maximum depth to look for Git repositories.  When looking for
-a Git repository below the directories in
-@code{magit-repository-directories}, only descend this many levels deep.
+The maximum depth to look for Git repositories.  This option is
+obsolete and only used for elements of the option
+@code{magit-repository-directories} (which see) that don't specify the
+depth directly.
 @end defopt
 
 @cindex ido-enter-magit-status
@@ -2155,8 +2202,13 @@ respective commits.
 
 @defun magit-insert-submodules
 
-Insert sections for all modules.  For each section insert the path
-and the output of @code{git describe --tags}.
+Insert sections for all submodules.  For each section insert the
+path, the branch, and the output of @code{git describe --tags}.
+
+Press @code{RET} on such a submodule section to show its own status buffer.
+Press @code{RET} on the "Modules" section to display a list of submodules
+in a separate buffer.  This shows additional information not
+displayed in the super-repository's status buffer.
 @end defun
 
 @defun magit-insert-unpulled-cherries
@@ -2284,6 +2336,76 @@ with long histories, so you probably don't want to add this here.
 
 Also see the proceeding section for more options concerning status
 buffers.
+
+@node Repository list
+@section Repository list
+
+@cindex magit-list-repositories
+@deffn Command magit-list-repositories
+
+This command displays a list of repositories in a separate buffer.
+
+The options @code{magit-repository-directories} and
+@code{magit-repository-directories-depth} control which repositories are
+displayed.
+@end deffn
+
+@defopt magit-repolist-columns
+
+This option controls what columns are displayed by the command
+@code{magit-list-repositories} and how they are displayed.
+
+Each element has the form @code{(HEADER WIDTH FORMAT PROPS)}.
+
+HEADER is the string displayed in the header.  WIDTH is the width of
+the column.  FORMAT is a function that is called with one argument,
+the repository identification (usually its basename), and with
+@code{default-directory} bound to the toplevel of its working tree.  It
+has to return a string to be inserted or nil.  PROPS is an alist
+that supports the keys @code{:right-align} and @code{:pad-right}.
+@end defopt
+
+The following functions can be added to the above option:
+
+@defun magit-repolist-column-ident
+
+This function inserts the identification of the repository.  Usually
+this is just its basename.
+@end defun
+
+@defun magit-repolist-column-path
+
+This function inserts the absolute path of the repository.
+@end defun
+
+@defun magit-repolist-column-version
+
+This function inserts a description of the repository's @code{HEAD} revision.
+@end defun
+
+@defun magit-repolist-column-unpulled-from-upstream
+
+This function inserts the number of upstream commits not in the
+current branch.
+@end defun
+
+@defun magit-repolist-column-unpulled-from-pushremote
+
+This function inserts the number of commits in the push branch but
+not the current branch.
+@end defun
+
+@defun magit-repolist-column-unpushed-to-upstream
+
+This function inserts the number of commits in the current branch
+but not its upstream.
+@end defun
+
+@defun magit-repolist-column-unpushed-to-pushremote
+
+This function inserts the number of commits in the current branch
+but not its push branch.
+@end defun
 
 @node Logging
 @section Logging
@@ -2473,6 +2595,14 @@ Move backward in current buffer's history.
 @item @kbd{C-c C-f} @tie{}@tie{}@tie{}@tie{}(@code{magit-go-forward})
 
 Move forward in current buffer's history.
+
+@kindex C-c C-n
+@cindex magit-log-move-to-parent
+@item @kbd{C-c C-n} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-move-to-parent})
+
+Move to a parent of the current commit.  By default, this is the
+first parent, but a numeric prefix can be used to specify another
+parent.
 
 @kindex SPC
 @cindex magit-diff-show-or-scroll-up
@@ -3201,11 +3331,11 @@ is the current branch, or "#" otherwise.  For all other refs " ".
 @code{%n} Name of this ref.
 
 @item
-@code{%u} Upstream of this local branch and additional local vs. upstream
-information.
+@code{%u} Upstream of this local branch.
 
 @item
-@code{%U} Upstream of this local branch.
+@code{%U} Upstream of this local branch and additional local vs. upstream
+information.
 
 @end itemize
 
@@ -3384,6 +3514,15 @@ After bisecting, cleanup bisection state and return to original
 @code{HEAD}.
 @end table
 
+By default the status buffer shows information about the ongoing
+bisect session.
+
+@defopt magit-bisect-show-graph
+
+This option controls whether a graph is displayed for the log of
+commits that still have to be bisected.
+@end defopt
+
 @node Visiting blobs
 @section Visiting blobs
 
@@ -3513,6 +3652,9 @@ recursive blame, then also kill the buffer.
 @item @kbd{M-w} @tie{}@tie{}@tie{}@tie{}(@code{magit-blame-copy-hash})
 
 Save the hash of the current chunk's commit to the kill ring.
+
+When the region is active, then save that to the @code{kill-ring},
+like @code{kill-ring-save} would.
 
 @kindex t
 @cindex magit-blame-toggle-headings
@@ -4416,9 +4558,9 @@ When resetting to another branch and a prefix argument is used, then
 the target branch is set as the upstream of the branch that is being
 reset.
 
-@kindex b d
+@kindex b k
 @cindex magit-branch-delete
-@item @kbd{b d} @tie{}@tie{}@tie{}@tie{}(@code{magit-branch-delete})
+@item @kbd{b k} @tie{}@tie{}@tie{}@tie{}(@code{magit-branch-delete})
 
 Delete one or multiple branches.  If the region marks multiple
 branches, then offer to delete those.  Otherwise, prompt for a single
@@ -4482,6 +4624,13 @@ Which you prefer is a matter of personal preference.  If you do
 prefer the former, then you should add branches such as @code{master},
 @code{next}, and @code{maint} to the value of this options.
 @end defopt
+
+@cindex magit-branch-orphan
+@deffn Command magit-branch-orphan
+
+This command creates and checks out a new orphan branch with
+contents from a given revision.
+@end deffn
 
 @node The branch config popup
 @subsection The branch config popup
@@ -6334,6 +6483,58 @@ the git-submodule(1) manpage
 @end iftex
 .
 
+@menu
+* Listing submodules::
+* Submodule popup::
+@end menu
+
+@node Listing submodules
+@subsection Listing submodules
+
+The command @code{magit-list-submodule} displays a list of the current
+repository's submodules in a separate buffer.  It's also possible to
+display information about submodules directly in the status buffer of
+the super-repository by adding @code{magit-insert-submodules} to the hook
+@code{magit-status-sections-hook}.
+
+@cindex magit-list-submodules
+@deffn Command magit-list-submodules
+
+This command displays a list of the current repository's submodules
+in a separate buffer.
+
+It can be invoked by pressing @code{RET} on the section titled "Modules".
+@end deffn
+
+@defopt magit-submodule-list-columns
+
+This option controls what columns are displayed by the command
+@code{magit-list-submodules} and how they are displayed.
+
+Each element has the form @code{(HEADER WIDTH FORMAT PROPS)}.
+
+HEADER is the string displayed in the header.  WIDTH is the width of
+the column.  FORMAT is a function that is called with one argument,
+the repository identification (usually its basename), and with
+@code{default-directory} bound to the toplevel of its working tree.  It
+has to return a string to be inserted or nil.  PROPS is an alist
+that supports the keys @code{:right-align} and @code{:pad-right}.
+@end defopt
+
+@defun magit-insert-submodules
+
+Insert sections for all submodules.  For each section insert the
+path, the branch, and the output of @code{git describe --tags}.
+
+Press @code{RET} on such a submodule section to show its own status buffer.
+Press @code{RET} on the "Modules" section to display a list of submodules
+in a separate buffer.  This shows additional information not
+displayed in the super-repository's status buffer.
+@end defun
+
+@node Submodule popup
+@subsection Submodule popup
+
 @table @asis
 @kindex o
 @cindex magit-submodule-popup
@@ -7034,7 +7235,7 @@ In order to update the status buffer, @code{git} has to be run a few dozen
 times.  That is only problematic on Microsoft Windows, because that
 operating system is exceptionally slow at starting processes.  Sadly
 this is an issue that can only be fixed by Microsoft itself, and they
-don't appear to particularly interested in doing so.
+don't appear to be particularly interested in doing so.
 
 Beside the subprocess issue, there also exist other Window-specific
 performance issues, some of which can be worked around.  The
@@ -7648,9 +7849,9 @@ their child sections.
 
 matches TYPE regardless of its parents.
 @end itemize
-Each TYPE is a symbol.  Note that is not necessary to specify all
+Each TYPE is a symbol.  Note that it is not necessary to specify all
 TYPEs up to the root section as printed by @code{magit-describe-type},
-unless of course your want to be that precise.
+unless of course you want to be that precise.
 @end defun
 
 @defun magit-section-when condition &rest body

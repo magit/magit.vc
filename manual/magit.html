@@ -176,28 +176,29 @@ ul.no-bullet {list-style: none}
       <li><a name="toc-Status-header-sections-1" href="#Status-header-sections">5.1.2 Status header sections</a></li>
       <li><a name="toc-Status-options-1" href="#Status-options">5.1.3 Status options</a></li>
     </ul></li>
-    <li><a name="toc-Logging-1" href="#Logging">5.2 Logging</a>
+    <li><a name="toc-Repository-list-1" href="#Repository-list">5.2 Repository list</a></li>
+    <li><a name="toc-Logging-1" href="#Logging">5.3 Logging</a>
     <ul class="no-bullet">
-      <li><a name="toc-Refreshing-logs-1" href="#Refreshing-logs">5.2.1 Refreshing logs</a></li>
-      <li><a name="toc-Log-Buffer-1" href="#Log-Buffer">5.2.2 Log Buffer</a></li>
-      <li><a name="toc-Select-from-log-1" href="#Select-from-log">5.2.3 Select from log</a></li>
-      <li><a name="toc-Reflog-1" href="#Reflog">5.2.4 Reflog</a></li>
+      <li><a name="toc-Refreshing-logs-1" href="#Refreshing-logs">5.3.1 Refreshing logs</a></li>
+      <li><a name="toc-Log-Buffer-1" href="#Log-Buffer">5.3.2 Log Buffer</a></li>
+      <li><a name="toc-Select-from-log-1" href="#Select-from-log">5.3.3 Select from log</a></li>
+      <li><a name="toc-Reflog-1" href="#Reflog">5.3.4 Reflog</a></li>
     </ul></li>
-    <li><a name="toc-Diffing-1" href="#Diffing">5.3 Diffing</a>
+    <li><a name="toc-Diffing-1" href="#Diffing">5.4 Diffing</a>
     <ul class="no-bullet">
-      <li><a name="toc-Refreshing-diffs-1" href="#Refreshing-diffs">5.3.1 Refreshing diffs</a></li>
-      <li><a name="toc-Diff-buffer-1" href="#Diff-buffer">5.3.2 Diff buffer</a></li>
-      <li><a name="toc-Diff-options-1" href="#Diff-options">5.3.3 Diff options</a></li>
-      <li><a name="toc-Revision-buffer-1" href="#Revision-buffer">5.3.4 Revision buffer</a></li>
+      <li><a name="toc-Refreshing-diffs-1" href="#Refreshing-diffs">5.4.1 Refreshing diffs</a></li>
+      <li><a name="toc-Diff-buffer-1" href="#Diff-buffer">5.4.2 Diff buffer</a></li>
+      <li><a name="toc-Diff-options-1" href="#Diff-options">5.4.3 Diff options</a></li>
+      <li><a name="toc-Revision-buffer-1" href="#Revision-buffer">5.4.4 Revision buffer</a></li>
     </ul></li>
-    <li><a name="toc-Ediffing-1" href="#Ediffing">5.4 Ediffing</a></li>
-    <li><a name="toc-References-buffer-1" href="#References-buffer">5.5 References buffer</a>
+    <li><a name="toc-Ediffing-1" href="#Ediffing">5.5 Ediffing</a></li>
+    <li><a name="toc-References-buffer-1" href="#References-buffer">5.6 References buffer</a>
     <ul class="no-bullet">
-      <li><a name="toc-References-sections-1" href="#References-sections">5.5.1 References sections</a></li>
+      <li><a name="toc-References-sections-1" href="#References-sections">5.6.1 References sections</a></li>
     </ul></li>
-    <li><a name="toc-Bisecting-1" href="#Bisecting">5.6 Bisecting</a></li>
-    <li><a name="toc-Visiting-blobs-1" href="#Visiting-blobs">5.7 Visiting blobs</a></li>
-    <li><a name="toc-Blaming-1" href="#Blaming">5.8 Blaming</a></li>
+    <li><a name="toc-Bisecting-1" href="#Bisecting">5.7 Bisecting</a></li>
+    <li><a name="toc-Visiting-blobs-1" href="#Visiting-blobs">5.8 Visiting blobs</a></li>
+    <li><a name="toc-Blaming-1" href="#Blaming">5.9 Blaming</a></li>
   </ul></li>
   <li><a name="toc-Manipulating-1" href="#Manipulating">6 Manipulating</a>
   <ul class="no-bullet">
@@ -245,7 +246,11 @@ ul.no-bullet {list-style: none}
   <ul class="no-bullet">
     <li><a name="toc-Tagging-1" href="#Tagging">8.1 Tagging</a></li>
     <li><a name="toc-Notes-1" href="#Notes">8.2 Notes</a></li>
-    <li><a name="toc-Submodules-1" href="#Submodules">8.3 Submodules</a></li>
+    <li><a name="toc-Submodules-1" href="#Submodules">8.3 Submodules</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Listing-submodules-1" href="#Listing-submodules">8.3.1 Listing submodules</a></li>
+      <li><a name="toc-Submodule-popup-1" href="#Submodule-popup">8.3.2 Submodule popup</a></li>
+    </ul></li>
     <li><a name="toc-Subtree-1" href="#Subtree">8.4 Subtree</a></li>
     <li><a name="toc-Common-commands-1" href="#Common-commands">8.5 Common commands</a></li>
     <li><a name="toc-Wip-modes-1" href="#Wip-modes">8.6 Wip modes</a></li>
@@ -461,6 +466,8 @@ Inspecting
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Status-buffer">Status buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Repository-list">Repository list</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Logging">Logging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Diffing">Diffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -485,6 +492,7 @@ Status buffer
 <tr><td align="left" valign="top">&bull; <a href="#Status-options">Status options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 
 Logging
 
@@ -620,6 +628,13 @@ Miscellaneous
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
 
+Submodules
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Listing-submodules">Listing submodules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Submodule-popup">Submodule popup</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 Customizing
 
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Per_002drepository-configuration">Per-repository configuration</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -800,13 +815,12 @@ that are useful for resolving conflicts and resuming the sequence
 after doing so.
 </p>
 <p>Magit wraps and in many cases improves upon at least the following Git
-porcelain commands: <code>add</code>, <code>am</code>, <code>bisect</code>, <code>blame</code>, <code>branch</code>,
-<code>checkout</code>, <code>cherry</code>, <code>cherry-pick</code>, <code>clean</code>, <code>clone</code>, <code>commit</code>,
-<code>config</code>, <code>describe</code>, <code>diff</code>, <code>fetch</code>, <code>format-patch</code>, <code>init</code>, <code>log</code>,
-<code>merge</code>, <code>merge-tree</code>, <code>mv</code>, <code>notes</code>, <code>pull</code>, <code>rebase</code>, <code>reflog</code>,
-<code>remote</code>, <code>request-pull</code>, <code>reset</code>, <code>revert</code>, <code>rm</code>, <code>show</code>, <code>stash</code>,
-<code>submodule</code>, and <code>tag</code>.  Many more Magit porcelain commands are
-implemented on top of Git plumbing commands.
+porcelain commands: <code>add</code>, <code>am</code>, <code>bisect</code>, <code>blame</code>, <code>branch</code>, <code>checkout</code>, <code>cherry</code>,
+<code>cherry-pick</code>, <code>clean</code>, <code>clone</code>, <code>commit</code>, <code>config</code>, <code>describe</code>, <code>diff</code>, <code>fetch</code>,
+<code>format-patch</code>, <code>init</code>, <code>log</code>, <code>merge</code>, <code>merge-tree</code>, <code>mv</code>, <code>notes</code>, <code>pull</code>, <code>rebase</code>,
+<code>reflog</code>, <code>remote</code>, <code>request-pull</code>, <code>reset</code>, <code>revert</code>, <code>rm</code>, <code>show</code>, <code>stash</code>,
+<code>submodule</code>, <code>subtree</code>, <code>tag</code>, and <code>worktree.</code>  Many more Magit porcelain
+commands are implemented on top of Git plumbing commands.
 </p>
 <hr>
 <a name="Installation"></a>
@@ -1027,7 +1041,7 @@ outdated value for <code>load-path</code>.
 <p>should display something like
 </p>
 <div class="example">
-<pre class="example">Magit 2.4.0, Git 2.7.0, Emacs 24.5.1
+<pre class="example">Magit 2.8.0, Git 2.9.0, Emacs 24.5.1
 </pre></div>
 
 <p>Then you might also want to read about options that many users likely
@@ -1131,9 +1145,9 @@ Write a message and then type <code>C-c C-c</code> to actually create the commit
 </p>
 <p>You probably don&rsquo;t want to push the commit you just created because
 you just committed some random changes, but if that is not the case
-you could push it by typing <code>P</code> to bring up the push popup and then <code>P</code>
-again to push to the configured upstream.  (If the upstream is not
-configured, then you would be prompted for the push target instead.)
+you could push it by typing <code>P</code> to bring up the push popup and then <code>u</code> to
+push to the configured upstream.  (If the upstream is not configured,
+then you would be prompted for the push target instead.)
 </p>
 <p>Instead we are going to undo the changes made so far.  Bring up the
 log for the current branch by typing <code>l l</code>, move to the last commit
@@ -1213,7 +1227,7 @@ buffers whose major-modes derive from <code>magit-mode</code>.
 <p>This command locks the current buffer to its value or if the buffer
 is already locked, then it unlocks it.
 </p>
-<p>Locking a buffer to its value, prevents it from being reused to
+<p>Locking a buffer to its value prevents it from being reused to
 display another value.  The name of a locked buffer contains its
 value, which allows telling it apart from other locked buffers and
 the unlocked buffer.
@@ -1282,6 +1296,11 @@ one argument, a buffer, to actually display that buffer.  This
 function should call <code>display-buffer</code> with that buffer as first and a
 list of display actions as second argument.
 </p>
+<p>Magit provides several functions, listed below, that are suitable
+values for this option.  If you want to use different rules, then a
+good way of doing that is to start with a copy of one of these
+functions and then adjust it to your needs.
+</p>
 <p>Instead of using a wrapper around <code>display-buffer</code>, that function
 itself can be used here, in which case the display actions have to
 be specified by adding them to <code>display-buffer-alist</code> instead.
@@ -1297,11 +1316,45 @@ be specified by adding them to <code>display-buffer-alist</code> instead.
 were added, the behavior was hard-coded in many places all over the
 code base but now all the rules are contained in this one function
 (except for the &quot;noselect&quot; special case mentioned above).
-</p>
-<p>If you want to use different rules, then a good way of doing that is
-to start with a copy of this function and then adjust it to your
-needs.  More functions to choose from will be added in the future,
-and eventually the default will change.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dsame_002dwindow_002dexcept_002ddiff_002dv1"></a>Function: <strong>magit-display-buffer-same-window-except-diff-v1</strong></dt>
+<dd>
+<p>This function displays most buffers in the currently selected
+window.  If a buffer&rsquo;s mode derives from <code>magit-diff-mode</code> or
+<code>magit-process-mode</code>, it is displayed in another window.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dfullframe_002dstatus_002dv1"></a>Function: <strong>magit-display-buffer-fullframe-status-v1</strong></dt>
+<dd>
+<p>This function fills the entire frame when displaying a status
+buffer.  Otherwise, it behaves like
+<code>magit-display-buffer-traditional</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dfullframe_002dstatus_002dtopleft_002dv1"></a>Function: <strong>magit-display-buffer-fullframe-status-topleft-v1</strong></dt>
+<dd>
+<p>This function fills the entire frame when displaying a status
+buffer.  It behaves like <code>magit-display-buffer-fullframe-status-v1</code>
+except that it displays buffers that derive from <code>magit-diff-mode</code>
+or <code>magit-process-mode</code> to the top or left of the current buffer
+rather than to the bottom or right.  As a result, Magit buffers tend
+to pop up on the same side as they would if
+<code>magit-display-buffer-traditional</code> were in use.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddisplay_002dbuffer_002dfullcolumn_002dmost_002dv1"></a>Function: <strong>magit-display-buffer-fullcolumn-most-v1</strong></dt>
+<dd>
+<p>This function displays most buffers so that they fill the entire
+height of the frame.  However, the buffer is displayed in another
+window if 1) the buffer&rsquo;s mode derives from <code>magit-process-mode</code>,
+or 2) the buffer&rsquo;s mode derives from <code>magit-diff-mode</code>, provided
+that the mode of the current buffer derives from <code>magit-log-mode</code> or
+<code>magit-cherry-mode</code>.
 </p></dd></dl>
 
 <dl>
@@ -1779,7 +1832,7 @@ using an Auto-Revert mode, and should therefore be avoided.  If Emacs
 crashed or if you quit Emacs by mistake, then you would also lose the
 buffer content.  There would be no autosave file still containing the
 intermediate version (because that was deleted when you saved the
-buffer) and you would not be asked whether you want to safe the buffer
+buffer) and you would not be asked whether you want to save the buffer
 (because it isn&rsquo;t modified).
 </p>
 <hr>
@@ -2613,19 +2666,21 @@ described later.
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Status-buffer" accesskey="1">Status buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Logging" accesskey="2">Logging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Repository-list" accesskey="2">Repository list</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Diffing" accesskey="3">Diffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Logging" accesskey="3">Logging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Ediffing" accesskey="4">Ediffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Diffing" accesskey="4">Diffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#References-buffer" accesskey="5">References buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Ediffing" accesskey="5">Ediffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Bisecting" accesskey="6">Bisecting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#References-buffer" accesskey="6">References buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Visiting-blobs" accesskey="7">Visiting blobs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Bisecting" accesskey="7">Bisecting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Blaming" accesskey="8">Blaming</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Visiting-blobs" accesskey="8">Visiting blobs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Blaming" accesskey="9">Blaming</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -2633,7 +2688,7 @@ described later.
 <a name="Status-buffer"></a>
 <div class="header">
 <p>
-Next: <a href="#Logging" accesskey="n" rel="next">Logging</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Repository-list" accesskey="n" rel="next">Repository list</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Status-buffer-1"></a>
 <h3 class="section">5.1 Status buffer</h3>
@@ -2674,17 +2729,22 @@ then offer to initialize it as a new repository.
 <dl>
 <dt><a name="index-magit_002drepository_002ddirectories"></a>User Option: <strong>magit-repository-directories</strong></dt>
 <dd>
-<p>Directories containing Git repositories.  Magit checks these
-directories for Git repositories and offers them as choices when
-<code>magit-status</code> is used with a prefix argument.
+<p>List of directories that are or contain Git repositories.  Each
+element has the form <code>(DIRECTORY . DEPTH)</code> or, for backward
+compatibility, just DIRECTORY.  DIRECTORY has to be a directory or
+a directory file-name, a string.  DEPTH, an integer, specifies the
+maximum depth to look for Git repositories.  If it is 0, then only
+add DIRECTORY itself.  For elements that are strings, the value of
+option <code>magit-repository-directories-depth</code> specifies the depth.
 </p></dd></dl>
 
 <dl>
 <dt><a name="index-magit_002drepository_002ddirectories_002ddepth"></a>User Option: <strong>magit-repository-directories-depth</strong></dt>
 <dd>
-<p>The maximum depth to look for Git repositories.  When looking for
-a Git repository below the directories in
-<code>magit-repository-directories</code>, only descend this many levels deep.
+<p>The maximum depth to look for Git repositories.  This option is
+obsolete and only used for elements of the option
+<code>magit-repository-directories</code> (which see) that don&rsquo;t specify the
+depth directly.
 </p></dd></dl>
 
 <a name="index-ido_002denter_002dmagit_002dstatus"></a>
@@ -2915,8 +2975,13 @@ respective commits.
 <dl>
 <dt><a name="index-magit_002dinsert_002dsubmodules"></a>Function: <strong>magit-insert-submodules</strong></dt>
 <dd>
-<p>Insert sections for all modules.  For each section insert the path
-and the output of <code>git describe --tags</code>.
+<p>Insert sections for all submodules.  For each section insert the
+path, the branch, and the output of <code>git describe --tags</code>.
+</p>
+<p>Press <code>RET</code> on such a submodule section to show its own status buffer.
+Press <code>RET</code> on the &quot;Modules&quot; section to display a list of submodules
+in a separate buffer.  This shows additional information not
+displayed in the super-repository&rsquo;s status buffer.
 </p></dd></dl>
 
 <dl>
@@ -3073,13 +3138,98 @@ with long histories, so you probably don&rsquo;t want to add this here.
 buffers.
 </p>
 <hr>
+<a name="Repository-list"></a>
+<div class="header">
+<p>
+Next: <a href="#Logging" accesskey="n" rel="next">Logging</a>, Previous: <a href="#Status-buffer" accesskey="p" rel="prev">Status buffer</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Repository-list-1"></a>
+<h3 class="section">5.2 Repository list</h3>
+
+<a name="index-magit_002dlist_002drepositories"></a>
+<dl>
+<dt><a name="index-magit_002dlist_002drepositories-1"></a>Command: <strong>magit-list-repositories</strong></dt>
+<dd>
+<p>This command displays a list of repositories in a separate buffer.
+</p>
+<p>The options <code>magit-repository-directories</code> and
+<code>magit-repository-directories-depth</code> control which repositories are
+displayed.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumns"></a>User Option: <strong>magit-repolist-columns</strong></dt>
+<dd>
+<p>This option controls what columns are displayed by the command
+<code>magit-list-repositories</code> and how they are displayed.
+</p>
+<p>Each element has the form <code>(HEADER WIDTH FORMAT PROPS)</code>.
+</p>
+<p>HEADER is the string displayed in the header.  WIDTH is the width of
+the column.  FORMAT is a function that is called with one argument,
+the repository identification (usually its basename), and with
+<code>default-directory</code> bound to the toplevel of its working tree.  It
+has to return a string to be inserted or nil.  PROPS is an alist
+that supports the keys <code>:right-align</code> and <code>:pad-right</code>.
+</p></dd></dl>
+
+<p>The following functions can be added to the above option:
+</p>
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dident"></a>Function: <strong>magit-repolist-column-ident</strong></dt>
+<dd>
+<p>This function inserts the identification of the repository.  Usually
+this is just its basename.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dpath"></a>Function: <strong>magit-repolist-column-path</strong></dt>
+<dd>
+<p>This function inserts the absolute path of the repository.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dversion"></a>Function: <strong>magit-repolist-column-version</strong></dt>
+<dd>
+<p>This function inserts a description of the repository&rsquo;s <code>HEAD</code> revision.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dunpulled_002dfrom_002dupstream"></a>Function: <strong>magit-repolist-column-unpulled-from-upstream</strong></dt>
+<dd>
+<p>This function inserts the number of upstream commits not in the
+current branch.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dunpulled_002dfrom_002dpushremote"></a>Function: <strong>magit-repolist-column-unpulled-from-pushremote</strong></dt>
+<dd>
+<p>This function inserts the number of commits in the push branch but
+not the current branch.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dunpushed_002dto_002dupstream"></a>Function: <strong>magit-repolist-column-unpushed-to-upstream</strong></dt>
+<dd>
+<p>This function inserts the number of commits in the current branch
+but not its upstream.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dunpushed_002dto_002dpushremote"></a>Function: <strong>magit-repolist-column-unpushed-to-pushremote</strong></dt>
+<dd>
+<p>This function inserts the number of commits in the current branch
+but not its push branch.
+</p></dd></dl>
+
+<hr>
 <a name="Logging"></a>
 <div class="header">
 <p>
-Next: <a href="#Diffing" accesskey="n" rel="next">Diffing</a>, Previous: <a href="#Status-buffer" accesskey="p" rel="prev">Status buffer</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Diffing" accesskey="n" rel="next">Diffing</a>, Previous: <a href="#Repository-list" accesskey="p" rel="prev">Repository list</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Logging-1"></a>
-<h3 class="section">5.2 Logging</h3>
+<h3 class="section">5.3 Logging</h3>
 
 <p>The status buffer contains logs for the unpushed and unpulled commits,
 but that obviously isn&rsquo;t enough.  The prefix command <code>magit-log-popup</code>,
@@ -3198,7 +3348,7 @@ being visited in the current buffer exists, see <a href="#Minor-mode-for-buffers
 Next: <a href="#Log-Buffer" accesskey="n" rel="next">Log Buffer</a>, Up: <a href="#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Refreshing-logs-1"></a>
-<h4 class="subsection">5.2.1 Refreshing logs</h4>
+<h4 class="subsection">5.3.1 Refreshing logs</h4>
 
 <p>The prefix command <code>magit-log-refresh-popup</code>, on <code>L</code>, can be used to
 change the log arguments used in the current buffer, without changing
@@ -3258,7 +3408,7 @@ affected because their local values have already been initialized.
 Next: <a href="#Select-from-log" accesskey="n" rel="next">Select from log</a>, Previous: <a href="#Refreshing-logs" accesskey="p" rel="prev">Refreshing logs</a>, Up: <a href="#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Log-Buffer-1"></a>
-<h4 class="subsection">5.2.2 Log Buffer</h4>
+<h4 class="subsection">5.3.2 Log Buffer</h4>
 
 <dl compact="compact">
 <dd><a name="index-L-1"></a>
@@ -3292,6 +3442,15 @@ in the current frame.
 <dt><kbd>C-c C-f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-go-forward</code>)</dt>
 <dd>
 <p>Move forward in current buffer&rsquo;s history.
+</p>
+<a name="index-C_002dc-C_002dn"></a>
+<a name="index-magit_002dlog_002dmove_002dto_002dparent"></a>
+</dd>
+<dt><kbd>C-c C-n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-move-to-parent</code>)</dt>
+<dd>
+<p>Move to a parent of the current commit.  By default, this is the
+first parent, but a numeric prefix can be used to specify another
+parent.
 </p>
 <a name="index-SPC"></a>
 <a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002dup"></a>
@@ -3381,7 +3540,7 @@ useful if you use really long branch names.
 Next: <a href="#Reflog" accesskey="n" rel="next">Reflog</a>, Previous: <a href="#Log-Buffer" accesskey="p" rel="prev">Log Buffer</a>, Up: <a href="#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Select-from-log-1"></a>
-<h4 class="subsection">5.2.3 Select from log</h4>
+<h4 class="subsection">5.3.3 Select from log</h4>
 
 <p>When the user has to select a recent commit that is reachable from
 <code>HEAD</code>, using regular completion would be inconvenient (because most
@@ -3419,7 +3578,7 @@ argument.
 Previous: <a href="#Select-from-log" accesskey="p" rel="prev">Select from log</a>, Up: <a href="#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Reflog-1"></a>
-<h4 class="subsection">5.2.4 Reflog</h4>
+<h4 class="subsection">5.3.4 Reflog</h4>
 
 <p>Also see 
 the <a href="http://git-scm.com/docs/git-reflog">git-reflog(1)</a> manpage.
@@ -3457,7 +3616,7 @@ the <a href="http://git-scm.com/docs/git-reflog">git-reflog(1)</a> manpage.
 Next: <a href="#Ediffing" accesskey="n" rel="next">Ediffing</a>, Previous: <a href="#Logging" accesskey="p" rel="prev">Logging</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Diffing-1"></a>
-<h3 class="section">5.3 Diffing</h3>
+<h3 class="section">5.4 Diffing</h3>
 
 <p>The status buffer contains diffs for the staged and unstaged commits,
 but that obviously isn&rsquo;t enough.  The prefix command <code>magit-diff-popup</code>,
@@ -3584,7 +3743,7 @@ is being visited in the current buffer exists, see <a href="#Minor-mode-for-buff
 Next: <a href="#Diff-buffer" accesskey="n" rel="next">Diff buffer</a>, Up: <a href="#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Refreshing-diffs-1"></a>
-<h4 class="subsection">5.3.1 Refreshing diffs</h4>
+<h4 class="subsection">5.4.1 Refreshing diffs</h4>
 
 <p>The prefix command <code>magit-diff-refresh-popup</code>, on <code>D</code>, can be used to
 change the diff arguments used in the current buffer, without changing
@@ -3721,7 +3880,7 @@ message buffer.
 Next: <a href="#Diff-options" accesskey="n" rel="next">Diff options</a>, Previous: <a href="#Refreshing-diffs" accesskey="p" rel="prev">Refreshing diffs</a>, Up: <a href="#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Diff-buffer-1"></a>
-<h4 class="subsection">5.3.2 Diff buffer</h4>
+<h4 class="subsection">5.4.2 Diff buffer</h4>
 
 <dl compact="compact">
 <dd><a name="index-RET"></a>
@@ -3793,7 +3952,7 @@ Otherwise, jump to the diffstat section or a child thereof.
 Next: <a href="#Revision-buffer" accesskey="n" rel="next">Revision buffer</a>, Previous: <a href="#Diff-buffer" accesskey="p" rel="prev">Diff buffer</a>, Up: <a href="#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Diff-options-1"></a>
-<h4 class="subsection">5.3.3 Diff options</h4>
+<h4 class="subsection">5.4.3 Diff options</h4>
 
 <dl>
 <dt><a name="index-magit_002ddiff_002drefine_002dhunk"></a>User Option: <strong>magit-diff-refine-hunk</strong></dt>
@@ -3856,7 +4015,7 @@ Otherwise, highlight neither.
 Previous: <a href="#Diff-options" accesskey="p" rel="prev">Diff options</a>, Up: <a href="#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Revision-buffer-1"></a>
-<h4 class="subsection">5.3.4 Revision buffer</h4>
+<h4 class="subsection">5.4.4 Revision buffer</h4>
 
 <dl>
 <dt><a name="index-magit_002drevision_002dinsert_002drelated_002drefs"></a>User Option: <strong>magit-revision-insert-related-refs</strong></dt>
@@ -3889,7 +4048,7 @@ be nil.
 Next: <a href="#References-buffer" accesskey="n" rel="next">References buffer</a>, Previous: <a href="#Diffing" accesskey="p" rel="prev">Diffing</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Ediffing-1"></a>
-<h3 class="section">5.4 Ediffing</h3>
+<h3 class="section">5.5 Ediffing</h3>
 
 <p>This section describes how to enter Ediff from Magit buffers.  For
 information on how to use Ediff itself, see <a href="http://www.gnu.org/software/emacs/manual/html_mono/ediff.html#Top">(ediff)Top</a>.
@@ -4030,7 +4189,7 @@ that were created using a Magit command.
 Next: <a href="#Bisecting" accesskey="n" rel="next">Bisecting</a>, Previous: <a href="#Ediffing" accesskey="p" rel="prev">Ediffing</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="References-buffer-1"></a>
-<h3 class="section">5.5 References buffer</h3>
+<h3 class="section">5.6 References buffer</h3>
 
 <dl compact="compact">
 <dd><a name="index-y"></a>
@@ -4119,10 +4278,10 @@ is the current branch, or &quot;#&quot; otherwise.  For all other refs &quot; &q
 
 </li><li> <code>%n</code> Name of this ref.
 
-</li><li> <code>%u</code> Upstream of this local branch and additional local vs. upstream
-information.
+</li><li> <code>%u</code> Upstream of this local branch.
 
-</li><li> <code>%U</code> Upstream of this local branch.
+</li><li> <code>%U</code> Upstream of this local branch and additional local vs. upstream
+information.
 
 </li></ul>
 
@@ -4205,7 +4364,7 @@ visiting a remote branch.
 Up: <a href="#References-buffer" accesskey="u" rel="up">References buffer</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="References-sections-1"></a>
-<h4 class="subsection">5.5.1 References sections</h4>
+<h4 class="subsection">5.6.1 References sections</h4>
 
 <p>The contents of references buffers is controlled using the hook
 <code>magit-refs-sections-hook</code>.  See <a href="#Section-hooks">Section hooks</a> to learn about such hooks
@@ -4245,7 +4404,7 @@ buffer.
 Next: <a href="#Visiting-blobs" accesskey="n" rel="next">Visiting blobs</a>, Previous: <a href="#References-buffer" accesskey="p" rel="prev">References buffer</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Bisecting-1"></a>
-<h3 class="section">5.6 Bisecting</h3>
+<h3 class="section">5.7 Bisecting</h3>
 
 <p>Also see 
 the <a href="http://git-scm.com/docs/git-bisect">git-bisect(1)</a> manpage.
@@ -4324,6 +4483,16 @@ different one.
 </p></dd>
 </dl>
 
+<p>By default the status buffer shows information about the ongoing
+bisect session.
+</p>
+<dl>
+<dt><a name="index-magit_002dbisect_002dshow_002dgraph"></a>User Option: <strong>magit-bisect-show-graph</strong></dt>
+<dd>
+<p>This option controls whether a graph is displayed for the log of
+commits that still have to be bisected.
+</p></dd></dl>
+
 <hr>
 <a name="Visiting-blobs"></a>
 <div class="header">
@@ -4331,7 +4500,7 @@ different one.
 Next: <a href="#Blaming" accesskey="n" rel="next">Blaming</a>, Previous: <a href="#Bisecting" accesskey="p" rel="prev">Bisecting</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Visiting-blobs-1"></a>
-<h3 class="section">5.7 Visiting blobs</h3>
+<h3 class="section">5.8 Visiting blobs</h3>
 
 <dl compact="compact">
 <dd><a name="index-M_002dx-magit_002dfind_002dfile"></a>
@@ -4359,7 +4528,7 @@ create a new window or reuse an existing one.
 Previous: <a href="#Visiting-blobs" accesskey="p" rel="prev">Visiting blobs</a>, Up: <a href="#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Blaming-1"></a>
-<h3 class="section">5.8 Blaming</h3>
+<h3 class="section">5.9 Blaming</h3>
 
 <p>Also see 
 the <a href="http://git-scm.com/docs/git-blame">git-blame(1)</a> manpage.
@@ -4468,6 +4637,9 @@ recursive blame, then also kill the buffer.
 <dt><kbd>M-w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-copy-hash</code>)</dt>
 <dd>
 <p>Save the hash of the current chunk&rsquo;s commit to the kill ring.
+</p>
+<p>When the region is active, then save that to the <code>kill-ring</code>,
+like <code>kill-ring-save</code> would.
 </p>
 <a name="index-t"></a>
 <a name="index-magit_002dblame_002dtoggle_002dheadings"></a>
@@ -5515,10 +5687,10 @@ realize it&rsquo;s all crap and want to start over.
 the target branch is set as the upstream of the branch that is being
 reset.
 </p>
-<a name="index-b-d"></a>
+<a name="index-b-k"></a>
 <a name="index-magit_002dbranch_002ddelete"></a>
 </dd>
-<dt><kbd>b d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-delete</code>)</dt>
+<dt><kbd>b k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-delete</code>)</dt>
 <dd>
 <p>Delete one or multiple branches.  If the region marks multiple
 branches, then offer to delete those.  Otherwise, prompt for a single
@@ -5585,6 +5757,14 @@ up with with e.g.:
 <p>Which you prefer is a matter of personal preference.  If you do
 prefer the former, then you should add branches such as <code>master</code>,
 <code>next</code>, and <code>maint</code> to the value of this options.
+</p></dd></dl>
+
+<a name="index-magit_002dbranch_002dorphan"></a>
+<dl>
+<dt><a name="index-magit_002dbranch_002dorphan-1"></a>Command: <strong>magit-branch-orphan</strong></dt>
+<dd>
+<p>This command creates and checks out a new orphan branch with
+contents from a given revision.
 </p></dd></dl>
 
 <hr>
@@ -7532,6 +7712,75 @@ Next: <a href="#Subtree" accesskey="n" rel="next">Subtree</a>, Previous: <a href
 <p>Also see 
 the <a href="http://git-scm.com/docs/git-submodule">git-submodule(1)</a> manpage.
 </p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Listing-submodules" accesskey="1">Listing submodules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Submodule-popup" accesskey="2">Submodule popup</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Listing-submodules"></a>
+<div class="header">
+<p>
+Next: <a href="#Submodule-popup" accesskey="n" rel="next">Submodule popup</a>, Up: <a href="#Submodules" accesskey="u" rel="up">Submodules</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Listing-submodules-1"></a>
+<h4 class="subsection">8.3.1 Listing submodules</h4>
+
+<p>The command <code>magit-list-submodule</code> displays a list of the current
+repository&rsquo;s submodules in a separate buffer.  It&rsquo;s also possible to
+display information about submodules directly in the status buffer of
+the super-repository by adding <code>magit-insert-submodules</code> to the hook
+<code>magit-status-sections-hook</code>.
+</p>
+<a name="index-magit_002dlist_002dsubmodules"></a>
+<dl>
+<dt><a name="index-magit_002dlist_002dsubmodules-1"></a>Command: <strong>magit-list-submodules</strong></dt>
+<dd>
+<p>This command displays a list of the current repository&rsquo;s submodules
+in a separate buffer.
+</p>
+<p>It can be invoked by pressing <code>RET</code> on the section titled &quot;Modules&quot;.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dsubmodule_002dlist_002dcolumns"></a>User Option: <strong>magit-submodule-list-columns</strong></dt>
+<dd>
+<p>This option controls what columns are displayed by the command
+<code>magit-list-submodules</code> and how they are displayed.
+</p>
+<p>Each element has the form <code>(HEADER WIDTH FORMAT PROPS)</code>.
+</p>
+<p>HEADER is the string displayed in the header.  WIDTH is the width of
+the column.  FORMAT is a function that is called with one argument,
+the repository identification (usually its basename), and with
+<code>default-directory</code> bound to the toplevel of its working tree.  It
+has to return a string to be inserted or nil.  PROPS is an alist
+that supports the keys <code>:right-align</code> and <code>:pad-right</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dsubmodules-1"></a>Function: <strong>magit-insert-submodules</strong></dt>
+<dd>
+<p>Insert sections for all submodules.  For each section insert the
+path, the branch, and the output of <code>git describe --tags</code>.
+</p>
+<p>Press <code>RET</code> on such a submodule section to show its own status buffer.
+Press <code>RET</code> on the &quot;Modules&quot; section to display a list of submodules
+in a separate buffer.  This shows additional information not
+displayed in the super-repository&rsquo;s status buffer.
+</p></dd></dl>
+
+<hr>
+<a name="Submodule-popup"></a>
+<div class="header">
+<p>
+Previous: <a href="#Listing-submodules" accesskey="p" rel="prev">Listing submodules</a>, Up: <a href="#Submodules" accesskey="u" rel="up">Submodules</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Submodule-popup-1"></a>
+<h4 class="subsection">8.3.2 Submodule popup</h4>
+
 <dl compact="compact">
 <dd><a name="index-o"></a>
 <a name="index-magit_002dsubmodule_002dpopup"></a>
@@ -8317,7 +8566,7 @@ per-repository or per-repository-class basis only.  See
 times.  That is only problematic on Microsoft Windows, because that
 operating system is exceptionally slow at starting processes.  Sadly
 this is an issue that can only be fixed by Microsoft itself, and they
-don&rsquo;t appear to particularly interested in doing so.
+don&rsquo;t appear to be particularly interested in doing so.
 </p>
 <p>Beside the subprocess issue, there also exist other Window-specific
 performance issues, some of which can be worked around.  The
@@ -9025,9 +9274,9 @@ their child sections.
 
 <p>matches TYPE regardless of its parents.
 </p></li></ul>
-<p>Each TYPE is a symbol.  Note that is not necessary to specify all
+<p>Each TYPE is a symbol.  Note that it is not necessary to specify all
 TYPEs up to the root section as printed by <code>magit-describe-type</code>,
-unless of course your want to be that precise.
+unless of course you want to be that precise.
 </p></dd></dl>
 
 <dl>
@@ -10062,9 +10311,9 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-B-b"><code>B b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-b"><code>b b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-c"><code>b c</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-b-d"><code>b d</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-g"><code>B g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-k"><code>B k</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-b-k"><code>b k</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-n"><code>b n</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-B-r"><code>B r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-b-r"><code>b r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
@@ -10102,6 +10351,7 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-C_002dc-C_002dk"><code>C-c C-k</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Select-from-log">Select from log</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-C_002dk-1"><code>C-c C-k</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-C_002dk-2"><code>C-c C-k</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-rebase-sequences">Editing rebase sequences</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-C_002dc-C_002dn"><code>C-c C-n</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Log-Buffer">Log Buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-C_002do"><code>C-c C-o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-C_002dp"><code>C-c C-p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-C_002dc-C_002dr"><code>C-c C-r</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
@@ -10260,21 +10510,21 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-n-3"><code>n</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-blobs">Minor mode for buffers visiting blobs</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-O">O</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-o"><code>o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o"><code>o</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-O"><code>O</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-o-a"><code>o a</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o-a"><code>o a</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-O-a"><code>O a</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-o-b"><code>o b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o-b"><code>o b</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-O-c"><code>O c</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-o-f"><code>o f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o-f"><code>o f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-O-f"><code>O f</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-o-i"><code>o i</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-o-i-1"><code>o i</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o-i"><code>o i</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o-i-1"><code>o i</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-O-m"><code>O m</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-O-p"><code>O p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-o-s"><code>o s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o-s"><code>o s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-O-s"><code>O s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-o-u"><code>o u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-o-u"><code>o u</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Keystroke-Index_ky_letter-P">P</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-p"><code>p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-movement">Section movement</a></td></tr>
@@ -10564,6 +10814,7 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch">magit-branch</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dand_002dcheckout">magit-branch-and-checkout</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002ddelete">magit-branch-delete</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dorphan">magit-branch-orphan</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dpopup">magit-branch-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dpopup-1">magit-branch-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-config-popup">The branch config popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002drename">magit-branch-rename</a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
@@ -10652,6 +10903,8 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dinit">magit-init</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-setup">Repository setup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002djump_002dto_002ddiffstat_002dor_002ddiff">magit-jump-to-diffstat-or-diff</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-buffer">Diff buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dkill_002dthis_002dbuffer">magit-kill-this-buffer</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Minor-mode-for-buffers-visiting-blobs">Minor mode for buffers visiting blobs</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dlist_002drepositories">magit-list-repositories</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dlist_002dsubmodules">magit-list-submodules</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Listing-submodules">Listing submodules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog">magit-log</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Logging">Logging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dall">magit-log-all</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Logging">Logging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dall_002dbranches">magit-log-all-branches</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Logging">Logging</a></td></tr>
@@ -10664,6 +10917,7 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002ddouble_002dcommit_002dlimit">magit-log-double-commit-limit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Log-Buffer">Log Buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dhalf_002dcommit_002dlimit">magit-log-half-commit-limit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Log-Buffer">Log Buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dhead">magit-log-head</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Logging">Logging</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dmove_002dto_002dparent">magit-log-move-to-parent</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Log-Buffer">Log Buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dpopup">magit-log-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Logging">Logging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002drefresh">magit-log-refresh</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-logs">Refreshing logs</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002drefresh_002dpopup">magit-log-refresh-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Refreshing-logs">Refreshing logs</a></td></tr>
@@ -10808,15 +11062,15 @@ Next: <a href="#Function-Index" accesskey="n" rel="next">Function Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dstash_002dshow-1">magit-stash-show</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Stashing">Stashing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dstash_002dworktree">magit-stash-worktree</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Stashing">Stashing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dstatus">magit-status</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-buffer">Status buffer</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dadd">magit-submodule-add</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dadd">magit-submodule-add</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dfetch">magit-submodule-fetch</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Fetching">Fetching</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dfetch-1">magit-submodule-fetch</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dinit">magit-submodule-init</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dinit-1">magit-submodule-init</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dpopup">magit-submodule-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dsetup">magit-submodule-setup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dsync">magit-submodule-sync</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dupdate">magit-submodule-update</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodules">Submodules</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dfetch-1">magit-submodule-fetch</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dinit">magit-submodule-init</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dinit-1">magit-submodule-init</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dpopup">magit-submodule-popup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dsetup">magit-submodule-setup</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dsync">magit-submodule-sync</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dupdate">magit-submodule-update</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Submodule-popup">Submodule popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dsubtree_002dadd">magit-subtree-add</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dsubtree_002dadd_002dcommit">magit-subtree-add-commit</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dsubtree_002dmerge">magit-subtree-merge</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Subtree">Subtree</a></td></tr>
@@ -10907,6 +11161,7 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><th><a name="Function-Index_fn_letter-M">M</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dadd_002dsection_002dhook"><code>magit-add-section-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-hooks">Section hooks</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dafter_002dsave_002drefresh_002dstatus"><code>magit-after-save-refresh-status</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Refreshing-of-Magit-Buffers">Automatic Refreshing of Magit Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dorphan-1"><code>magit-branch-orphan</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-popup">The branch popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbranch_002dpopup-2"><code>magit-branch-popup</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-branch-config-popup">The branch config popup</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dbuiltin_002dcompleting_002dread"><code>magit-builtin-completing-read</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Completion-and-confirmation">Completion and confirmation</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dcall_002dgit"><code>magit-call-git</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Calling-Git-for-effect">Calling Git for effect</a></td></tr>
@@ -10917,6 +11172,10 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dscope"><code>magit-diff-scope</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Matching-sections">Matching sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddiff_002dtype"><code>magit-diff-type</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Matching-sections">Matching sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddisplay_002dbuffer"><code>magit-display-buffer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002ddisplay_002dbuffer_002dfullcolumn_002dmost_002dv1"><code>magit-display-buffer-fullcolumn-most-v1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002ddisplay_002dbuffer_002dfullframe_002dstatus_002dtopleft_002dv1"><code>magit-display-buffer-fullframe-status-topleft-v1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002ddisplay_002dbuffer_002dfullframe_002dstatus_002dv1"><code>magit-display-buffer-fullframe-status-v1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002ddisplay_002dbuffer_002dsame_002dwindow_002dexcept_002ddiff_002dv1"><code>magit-display-buffer-same-window-except-diff-v1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002ddisplay_002dbuffer_002dtraditional"><code>magit-display-buffer-traditional</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Switching-Buffers">Switching Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dgenerate_002dbuffer_002dname_002ddefault_002dfunction"><code>magit-generate-buffer-name-default-function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Naming-Buffers">Naming Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dget_002dsection"><code>magit-get-section</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Matching-sections">Matching sections</a></td></tr>
@@ -10960,6 +11219,7 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dstashes"><code>magit-insert-stashes</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dstatus_002dheaders"><code>magit-insert-status-headers</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dsubmodules"><code>magit-insert-submodules</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dsubmodules-1"><code>magit-insert-submodules</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Listing-submodules">Listing submodules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dtags"><code>magit-insert-tags</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-sections">References sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dtags_002dheader"><code>magit-insert-tags-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dtracked_002dfiles"><code>magit-insert-tracked-files</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
@@ -10974,6 +11234,8 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002duntracked_002dfiles"><code>magit-insert-untracked-files</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002dupstream_002dbranch_002dheader"><code>magit-insert-upstream-branch-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dinsert_002duser_002dheader"><code>magit-insert-user-header</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dlist_002drepositories-1"><code>magit-list-repositories</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dlist_002dsubmodules-1"><code>magit-list-submodules</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Listing-submodules">Listing submodules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dmaybe_002dshow_002dmore_002dcommits"><code>magit-log-maybe-show-more-commits</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-movement">Section movement</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dmaybe_002dupdate_002dblob_002dbuffer"><code>magit-log-maybe-update-blob-buffer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-movement">Section movement</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dlog_002dmaybe_002dupdate_002drevision_002dbuffer"><code>magit-log-maybe-update-revision-buffer</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-movement">Section movement</a></td></tr>
@@ -10985,6 +11247,13 @@ Next: <a href="#Variable-Index" accesskey="n" rel="next">Variable Index</a>, Pre
 <tr><td></td><td valign="top"><a href="#index-magit_002dpush_002dto_002dremote"><code>magit-push-to-remote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Pushing">Pushing</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dregion_002dsections"><code>magit-region-sections</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-selection">Section selection</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dregion_002dvalues"><code>magit-region-values</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-selection">Section selection</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drepolist_002dcolumn_002dident"><code>magit-repolist-column-ident</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drepolist_002dcolumn_002dpath"><code>magit-repolist-column-path</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drepolist_002dcolumn_002dunpulled_002dfrom_002dpushremote"><code>magit-repolist-column-unpulled-from-pushremote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drepolist_002dcolumn_002dunpulled_002dfrom_002dupstream"><code>magit-repolist-column-unpulled-from-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drepolist_002dcolumn_002dunpushed_002dto_002dpushremote"><code>magit-repolist-column-unpushed-to-pushremote</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drepolist_002dcolumn_002dunpushed_002dto_002dupstream"><code>magit-repolist-column-unpushed-to-upstream</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drepolist_002dcolumn_002dversion"><code>magit-repolist-column-version</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drestore_002dwindow_002dconfiguration"><code>magit-restore-window-configuration</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Quitting-Windows">Quitting Windows</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drevert_002dbuffers"><code>magit-revert-buffers</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-commit-messages">Editing commit messages</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drun_002dgit"><code>magit-run-git</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Calling-Git-for-effect">Calling Git for effect</a></td></tr>
@@ -11092,6 +11361,7 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002dauto_002drevert_002dimmediately"><code>magit-auto-revert-immediately</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dauto_002drevert_002dmode"><code>magit-auto-revert-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dauto_002drevert_002dtracked_002donly"><code>magit-auto-revert-tracked-only</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Automatic-Reverting-of-File_002dVisiting-Buffers">Automatic Reverting of File-Visiting Buffers</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dbisect_002dshow_002dgraph"><code>magit-bisect-show-graph</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Bisecting">Bisecting</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dblame_002dgoto_002dchunk_002dhook"><code>magit-blame-goto-chunk-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Blaming">Blaming</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dblame_002dheading_002dformat"><code>magit-blame-heading-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Blaming">Blaming</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dblame_002dshow_002dheadings"><code>magit-blame-show-headings</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Blaming">Blaming</a></td></tr>
@@ -11149,6 +11419,7 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002drefs_002dshow_002dmargin"><code>magit-refs-show-margin</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drefs_002dtags_002dformat"><code>magit-refs-tags-format</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#References-buffer">References buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dremote_002dadd_002dset_002dremote_002epushDefault"><code>magit-remote-add-set-remote.pushDefault</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Remotes">Remotes</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002drepolist_002dcolumns"><code>magit-repolist-columns</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Repository-list">Repository list</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drepository_002ddirectories"><code>magit-repository-directories</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-buffer">Status buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drepository_002ddirectories_002ddepth"><code>magit-repository-directories-depth</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-buffer">Status buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002drevision_002dinsert_002drelated_002drefs"><code>magit-revision-insert-related-refs</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Revision-buffer">Revision buffer</a></td></tr>
@@ -11161,6 +11432,7 @@ Previous: <a href="#Function-Index" accesskey="p" rel="prev">Function Index</a>,
 <tr><td></td><td valign="top"><a href="#index-magit_002dstatus_002dheaders_002dhook"><code>magit-status-headers-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-header-sections">Status header sections</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dstatus_002drefresh_002dhook"><code>magit-status-refresh-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-options">Status options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dstatus_002dsections_002dhook"><code>magit-status-sections-hook</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-sections">Status sections</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-magit_002dsubmodule_002dlist_002dcolumns"><code>magit-submodule-list-columns</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Listing-submodules">Listing submodules</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dthis_002dprocess"><code>magit-this-process</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Calling-Git-for-effect">Calling Git for effect</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002duniquify_002dbuffer_002dnames"><code>magit-uniquify-buffer-names</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Naming-Buffers">Naming Buffers</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-magit_002dunstage_002dcommitted"><code>magit-unstage-committed</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-and-unstaging">Staging and unstaging</a></td></tr>

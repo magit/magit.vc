@@ -7,7 +7,7 @@
 #+TEXINFO_DIR_CATEGORY: Emacs
 #+TEXINFO_DIR_TITLE: Magit-Popup: (magit-popup).
 #+TEXINFO_DIR_DESC: Infix arguments with feedback
-#+SUBTITLE: for version 2.7
+#+SUBTITLE: for version 2.8
 
 #+OPTIONS: H:4 num:3 toc:2
 
@@ -143,7 +143,7 @@ By default popup buffers also feature a section listing commands
 common to all popups.  To avoid conflicts with suffix commands, the
 bindings of these common commands are not alphabetic characters.  This
 section is shown by default so that documentation-resistant users get
-a change to notice them.
+a chance to notice them.
 
 - User Option: magit-popup-show-common-commands
 

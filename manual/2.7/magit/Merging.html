@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Merging</title>
+
+<meta name="description" content="Magit User Manual: Merging">
+<meta name="keywords" content="Magit User Manual: Merging">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Manipulating.html#Manipulating" rel="up" title="Manipulating">
+<link href="Resolving-conflicts.html#Resolving-conflicts" rel="next" title="Resolving conflicts">
+<link href="The-branch-config-popup.html#The-branch-config-popup" rel="prev" title="The branch config popup">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Merging"></a>
+<div class="header">
+<p>
+Next: <a href="Resolving-conflicts.html#Resolving-conflicts" accesskey="n" rel="next">Resolving conflicts</a>, Previous: <a href="Branching.html#Branching" accesskey="p" rel="prev">Branching</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Merging-1"></a>
+<h3 class="section">6.6 Merging</h3>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-merge">git-merge(1)</a> manpage.  For information on how to resolve
+merge conflicts see the next section.
+</p>
+<dl compact="compact">
+<dd><a name="index-m"></a>
+<a name="index-magit_002dmerge_002dpopup"></a>
+</dd>
+<dt><kbd>m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-merge-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p></dd>
+</dl>
+
+<p>When no merge is in progress, then the popup buffer features the
+following commands.
+</p>
+<dl compact="compact">
+<dd><a name="index-m-m"></a>
+<a name="index-magit_002dmerge"></a>
+</dd>
+<dt><kbd>m m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-merge</code>)</dt>
+<dd>
+<p>Merge another branch or an arbitrary revision into the current
+branch.  The branch or revision to be merged is read in the
+minibuffer and defaults to the one at point.
+</p>
+<p>Unless there are conflicts or a prefix argument is used, the
+resulting merge commit uses a generic commit message, and the user
+does not get a chance to inspect or change it before the commit is
+created.  With a prefix argument this does not actually create the
+merge commit, which makes it possible to inspect how conflicts were
+resolved and to adjust the commit message.
+</p>
+<a name="index-m-e"></a>
+<a name="index-magit_002dmerge_002deditmsg"></a>
+</dd>
+<dt><kbd>m e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-merge-editmsg</code>)</dt>
+<dd>
+<p>Merge another branch or an arbitrary revision into the current
+branch and open a commit message buffer, so that the user can make
+adjustments.  The commit is not actually created until the user
+finishes with <code>C-c C-c</code>.
+</p>
+<a name="index-m-n"></a>
+<a name="index-magit_002dmerge_002dnocommit"></a>
+</dd>
+<dt><kbd>m n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-merge-nocommit</code>)</dt>
+<dd>
+<p>Merge another branch or an arbitrary revision into the current
+branch, but do not actually create the commit.  The user can then
+further adjust the merge, even when automatic conflict resolution
+succeeded and/or adjust the commit message.
+</p>
+<a name="index-m-p"></a>
+<a name="index-magit_002dmerge_002dpreview"></a>
+</dd>
+<dt><kbd>m p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-merge-preview</code>)</dt>
+<dd>
+<p>Preview result of merging another branch or an arbitrary revision
+into the current branch.
+</p></dd>
+</dl>
+
+<p>When a merge is in progress, then the popup buffer features these
+commands instead.
+</p>
+<dl compact="compact">
+<dd><a name="index-m-m-1"></a>
+<a name="index-magit_002dmerge-1"></a>
+</dd>
+<dt><kbd>m m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-merge</code>)</dt>
+<dd>
+<p>After resolving conflicts, proceed with the merge.  If there are
+still conflicts, then this fails.
+</p>
+<a name="index-m-a"></a>
+<a name="index-magit_002dmerge_002dabort"></a>
+</dd>
+<dt><kbd>m a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-merge-abort</code>)</dt>
+<dd>
+<p>Abort the current merge operation.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Resolving-conflicts.html#Resolving-conflicts" accesskey="n" rel="next">Resolving conflicts</a>, Previous: <a href="Branching.html#Branching" accesskey="p" rel="prev">Branching</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

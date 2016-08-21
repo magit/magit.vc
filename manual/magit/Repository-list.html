@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Repository list</title>
+
+<meta name="description" content="Magit User Manual: Repository list">
+<meta name="keywords" content="Magit User Manual: Repository list">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
+<link href="Logging.html#Logging" rel="next" title="Logging">
+<link href="Status-options.html#Status-options" rel="prev" title="Status options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Repository-list"></a>
+<div class="header">
+<p>
+Next: <a href="Logging.html#Logging" accesskey="n" rel="next">Logging</a>, Previous: <a href="Status-buffer.html#Status-buffer" accesskey="p" rel="prev">Status buffer</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Repository-list-1"></a>
+<h3 class="section">5.2 Repository list</h3>
+
+<a name="index-magit_002dlist_002drepositories"></a>
+<dl>
+<dt><a name="index-magit_002dlist_002drepositories-1"></a>Command: <strong>magit-list-repositories</strong></dt>
+<dd>
+<p>This command displays a list of repositories in a separate buffer.
+</p>
+<p>The options <code>magit-repository-directories</code> and
+<code>magit-repository-directories-depth</code> control which repositories are
+displayed.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumns"></a>User Option: <strong>magit-repolist-columns</strong></dt>
+<dd>
+<p>This option controls what columns are displayed by the command
+<code>magit-list-repositories</code> and how they are displayed.
+</p>
+<p>Each element has the form <code>(HEADER WIDTH FORMAT PROPS)</code>.
+</p>
+<p>HEADER is the string displayed in the header.  WIDTH is the width of
+the column.  FORMAT is a function that is called with one argument,
+the repository identification (usually its basename), and with
+<code>default-directory</code> bound to the toplevel of its working tree.  It
+has to return a string to be inserted or nil.  PROPS is an alist
+that supports the keys <code>:right-align</code> and <code>:pad-right</code>.
+</p></dd></dl>
+
+<p>The following functions can be added to the above option:
+</p>
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dident"></a>Function: <strong>magit-repolist-column-ident</strong></dt>
+<dd>
+<p>This function inserts the identification of the repository.  Usually
+this is just its basename.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dpath"></a>Function: <strong>magit-repolist-column-path</strong></dt>
+<dd>
+<p>This function inserts the absolute path of the repository.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dversion"></a>Function: <strong>magit-repolist-column-version</strong></dt>
+<dd>
+<p>This function inserts a description of the repository&rsquo;s <code>HEAD</code> revision.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dunpulled_002dfrom_002dupstream"></a>Function: <strong>magit-repolist-column-unpulled-from-upstream</strong></dt>
+<dd>
+<p>This function inserts the number of upstream commits not in the
+current branch.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dunpulled_002dfrom_002dpushremote"></a>Function: <strong>magit-repolist-column-unpulled-from-pushremote</strong></dt>
+<dd>
+<p>This function inserts the number of commits in the push branch but
+not the current branch.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dunpushed_002dto_002dupstream"></a>Function: <strong>magit-repolist-column-unpushed-to-upstream</strong></dt>
+<dd>
+<p>This function inserts the number of commits in the current branch
+but not its upstream.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepolist_002dcolumn_002dunpushed_002dto_002dpushremote"></a>Function: <strong>magit-repolist-column-unpushed-to-pushremote</strong></dt>
+<dd>
+<p>This function inserts the number of commits in the current branch
+but not its push branch.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Logging.html#Logging" accesskey="n" rel="next">Logging</a>, Previous: <a href="Status-buffer.html#Status-buffer" accesskey="p" rel="prev">Status buffer</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

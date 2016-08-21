@@ -155,7 +155,26 @@ which a process filter listens for such requests.  As such it is
 not a complete substitute for a proper Emacsclient, it can only
 be used as <code>$EDITOR</code> of child process of the current Emacs instance.
 </p>
-<p>It is unlikely that you should ever have to customize this option.
+<p>Some shells do not execute traps immediately when waiting for a
+child process, but by default we do use such a blocking child
+process.
+</p>
+<p>If you use such a shell (e.g. <code>csh</code> on FreeBSD, but not Debian), then
+you have to edit this option.  You can either replace <code>sh</code> with <code>bash</code>
+(and install that), or you can use the older, less performant
+implementation:
+</p>
+<div class="lisp">
+<pre class="lisp">&quot;sh -c '\
+echo \&quot;WITH-EDITOR: $$ OPEN $0\&quot;; \
+trap \&quot;exit 0\&quot; USR1; \
+trap \&quot;exit 1\&quot; USR2; \
+while true; do sleep 1; done'&quot;
+</pre></div>
+
+<p>This leads to a delay of up to a second.  The delay can be shortened
+by replacing <code>sleep 1</code> with <code>sleep 0.01</code>, or if your implementation does
+not support floats, then by using <code>nanosleep 0.01</code> instead.
 </p></dd></dl>
 
 <hr>

@@ -72,7 +72,7 @@ ul.no-bullet {list-style: none}
 <a name="Status-buffer"></a>
 <div class="header">
 <p>
-Next: <a href="Logging.html#Logging" accesskey="n" rel="next">Logging</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Repository-list.html#Repository-list" accesskey="n" rel="next">Repository list</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Status-buffer-1"></a>
@@ -114,17 +114,22 @@ then offer to initialize it as a new repository.
 <dl>
 <dt><a name="index-magit_002drepository_002ddirectories"></a>User Option: <strong>magit-repository-directories</strong></dt>
 <dd>
-<p>Directories containing Git repositories.  Magit checks these
-directories for Git repositories and offers them as choices when
-<code>magit-status</code> is used with a prefix argument.
+<p>List of directories that are or contain Git repositories.  Each
+element has the form <code>(DIRECTORY . DEPTH)</code> or, for backward
+compatibility, just DIRECTORY.  DIRECTORY has to be a directory or
+a directory file-name, a string.  DEPTH, an integer, specifies the
+maximum depth to look for Git repositories.  If it is 0, then only
+add DIRECTORY itself.  For elements that are strings, the value of
+option <code>magit-repository-directories-depth</code> specifies the depth.
 </p></dd></dl>
 
 <dl>
 <dt><a name="index-magit_002drepository_002ddirectories_002ddepth"></a>User Option: <strong>magit-repository-directories-depth</strong></dt>
 <dd>
-<p>The maximum depth to look for Git repositories.  When looking for
-a Git repository below the directories in
-<code>magit-repository-directories</code>, only descend this many levels deep.
+<p>The maximum depth to look for Git repositories.  This option is
+obsolete and only used for elements of the option
+<code>magit-repository-directories</code> (which see) that don&rsquo;t specify the
+depth directly.
 </p></dd></dl>
 
 <a name="index-ido_002denter_002dmagit_002dstatus"></a>
@@ -166,7 +171,7 @@ like pretty much every other keymap:
 <hr>
 <div class="header">
 <p>
-Next: <a href="Logging.html#Logging" accesskey="n" rel="next">Logging</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Repository-list.html#Repository-list" accesskey="n" rel="next">Repository list</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 
 

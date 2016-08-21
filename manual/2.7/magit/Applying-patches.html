@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Applying patches</title>
+
+<meta name="description" content="Magit User Manual: Applying patches">
+<meta name="keywords" content="Magit User Manual: Applying patches">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Transferring.html#Transferring" rel="up" title="Transferring">
+<link href="Miscellaneous.html#Miscellaneous" rel="next" title="Miscellaneous">
+<link href="Creating-and-sending-patches.html#Creating-and-sending-patches" rel="prev" title="Creating and sending patches">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Applying-patches"></a>
+<div class="header">
+<p>
+Previous: <a href="Creating-and-sending-patches.html#Creating-and-sending-patches" accesskey="p" rel="prev">Creating and sending patches</a>, Up: <a href="Transferring.html#Transferring" accesskey="u" rel="up">Transferring</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Applying-patches-1"></a>
+<h3 class="section">7.6 Applying patches</h3>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-am">git-am(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-w"></a>
+<a name="index-magit_002dam_002dpopup"></a>
+</dd>
+<dt><kbd>w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-am-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-w-w"></a>
+<a name="index-magit_002dam_002dapply_002dpatches"></a>
+</dd>
+<dt><kbd>w w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-am-apply-patches</code>)</dt>
+<dd>
+<p>Apply one or more patches.  If the region marks files, then apply
+those patches.  Otherwise read a file name in the minibuffer
+defaulting to the file at point.
+</p>
+<a name="index-w-m"></a>
+<a name="index-magit_002dam_002dapply_002dmaildir"></a>
+</dd>
+<dt><kbd>w m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-am-apply-maildir</code>)</dt>
+<dd>
+<p>Apply the patches from a maildir.
+</p>
+<a name="index-w-w-1"></a>
+<a name="index-magit_002dam_002dcontinue"></a>
+</dd>
+<dt><kbd>w w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-am-continue</code>)</dt>
+<dd>
+<p>Resume the current patch applying sequence.
+</p>
+<a name="index-w-s"></a>
+<a name="index-magit_002dam_002dskip"></a>
+</dd>
+<dt><kbd>w s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-am-skip</code>)</dt>
+<dd>
+<p>Skip the stopped at patch during a patch applying sequence.
+</p>
+<a name="index-w-a"></a>
+<a name="index-magit_002dam_002dabort"></a>
+</dd>
+<dt><kbd>w a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-am-abort</code>)</dt>
+<dd>
+<p>Abort the current patch applying sequence.  This discards all
+changes made since the sequence started.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>
