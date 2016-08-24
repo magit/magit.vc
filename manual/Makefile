@@ -1,11 +1,13 @@
 include ../config.mk
 
-.PHONY: help move-old copy-new magit magit-popup with-editor clean
+.PHONY: help move-old-emacs move-old-with-editor copy-new \
+	magit magit-popup with-editor clean
 
 help:
-	$(info make move-old        - )
-	$(info make copy-new        - )
-	$(info make all             - )
+	$(info make move-old-magit        - )
+	$(info make move-old-with-editor  - )
+	$(info make copy-new              - )
+	$(info make all                   - )
 	@printf "\n"
 
 all:  texi html pdf
@@ -14,11 +16,14 @@ texi: magit.texi magit-popup.texi with-editor.texi
 pdf:  magit.pdf  magit-popup.pdf  with-editor.pdf magit-refcard.pdf
 html: magit magit-popup with-editor
 
-move-old:
-	@mkdir $(VERSION_PREV)
-	mv -v magit magit-popup with-editor $(VERSION_PREV)
-	mv -v magit.html magit.org magit.pdf magit.texi $(VERSION_PREV)
-	mv -v magit-popup* with-editor* $(VERSION_PREV)
+move-old-magit:
+	@mkdir $(MAGIT_VERSION_PREV)
+	@mv -v magit magit.html magit.org magit.pdf magit.texi $(MAGIT_VERSION_PREV)
+	@mv -v magit-popup magit-popup* $(MAGIT_VERSION_PREV)
+
+move-old-with-editor:
+	@mkdir $(WITH_EDITOR_VERSION_PREV)
+	@mv -v with-editor with-editor $(WITH_EDITOR_VERSION_PREV)
 
 copy-new:
 	@cp ~/.emacs.d/lib/magit/Documentation/*.org .
