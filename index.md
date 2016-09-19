@@ -13,7 +13,9 @@ version control tasks directly from within Emacs.  While many fine Git
 clients exist, only Magit and Git itself deserve to be called
 porcelains.  <a class="small" href="/about">(more)</a>
 
-<p><img class="screenshot" src="/img/shot/top.png"></p>
+<a href="/screenshots">
+  <img class="screenshot" src="/screenshots/status.png">
+</a>
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = inject_quotes;</script>
