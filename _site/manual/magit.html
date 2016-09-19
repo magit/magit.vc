@@ -1003,6 +1003,10 @@ not end with a slash, while those of <code>Info-directory-list</code> should.
 <p>Instead of requiring the feature <code>magit</code>, you could load just the
 autoload definitions, by loading the file <code>magit-autoloads.el</code>.
 </p>
+<div class="lisp">
+<pre class="lisp">(load &quot;/path/to/magit/lisp/magit-autoloads&quot;)
+</pre></div>
+
 <p>Instead of running Magit directly from the repository by adding that
 to the <code>load-path</code>, you might want to instead install it in some other
 directory using <code>sudo make install</code> and setting <code>load-path</code> accordingly.
@@ -2045,10 +2049,10 @@ but all you need to get started are the next two.
 <dd>
 <p>Cycle the visibility of diff-related sections in the current buffer.
 </p>
-<a name="index-s_002d_003ctab_003e"></a>
+<a name="index-S_002d_003ctab_003e"></a>
 <a name="index-magit_002dsection_002dcycle_002dglobal"></a>
 </dd>
-<dt><kbd>s-&lt;tab&gt;</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-cycle-global</code>)</dt>
+<dt><kbd>S-&lt;tab&gt;</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-section-cycle-global</code>)</dt>
 <dd>
 <p>Cycle the visibility of all sections in the current buffer.
 </p></dd>
@@ -6083,7 +6087,7 @@ Take the red pill.
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; feature
 </pre></div>
 
-<p>In this case you have chosen to take the red pill on one bracnh and on
+<p>In this case you have chosen to take the red pill on one branch and on
 another you picked the blue pill.  Now that you are merging these two
 diverging branches, Git cannot possibly know which pill you want to
 take.
@@ -8710,6 +8714,10 @@ packages, without having to depend on Magit.  These libraries are
 described in separate manuals, see <a href="with-editor.html#Top">(with-editor)Top</a> and
 <a href="magit-popup.html#Top">(magit-popup)Top</a>.
 </p>
+<p>If you are trying to find an unused key that you can bound to a
+command provided by your own Magit extension, then checkout
+<a href="https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry">https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry</a>.
+</p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Calling-Git" accesskey="1">Calling Git</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -10572,7 +10580,7 @@ Next: <a href="#Command-Index" accesskey="n" rel="next">Command Index</a>, Previ
 <tr><td></td><td valign="top"><a href="#index-s"><code>s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-and-unstaging">Staging and unstaging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-S"><code>S</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Staging-and-unstaging">Staging and unstaging</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-s-1"><code>s</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Editing-rebase-sequences">Editing rebase sequences</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-s_002d_003ctab_003e"><code>s-&lt;tab&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-visibility">Section visibility</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-S_002d_003ctab_003e"><code>S-&lt;tab&gt;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Section-visibility">Section visibility</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SPC"><code>SPC</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Log-Buffer">Log Buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SPC-1"><code>SPC</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Diff-buffer">Diff buffer</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-SPC-2"><code>SPC</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Blaming">Blaming</a></td></tr>
