@@ -12,4 +12,4 @@
 *.tp
 *.vr
 *.vrs
-/stats/gitstats.cache
+/_site/stats/gitstats.cache
