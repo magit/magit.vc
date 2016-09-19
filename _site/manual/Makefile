@@ -1,13 +1,13 @@
-include ../config.mk
+include ../../config.mk
 
 .PHONY: help move-old-emacs move-old-with-editor copy-new \
 	magit magit-popup with-editor clean
 
 help:
-	$(info make move-old-magit        - )
-	$(info make move-old-with-editor  - )
-	$(info make copy-new              - )
-	$(info make all                   - )
+	$(info make move-old-magit        - move to MAGIT_VERSION_PREV)
+	$(info make move-old-with-editor  - move to WITH_EDITOR_VERSION_PREV)
+	$(info make copy-new              - copy from package repositories)
+	$(info make all                   - regenerate the manuals)
 	@printf "\n"
 
 all:  texi html pdf

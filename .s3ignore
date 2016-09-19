@@ -1,4 +1,2 @@
-.git/*
-config.mk
 Makefile
 manual/Makefile

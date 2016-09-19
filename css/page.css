@@ -34,6 +34,14 @@ header h2 {
   color: #ab2720;ab2720
 }
 
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
 img.screenshot {
   box-shadow: 2px 2px 15px #93a1a1;
   margin-top: 10px;

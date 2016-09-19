@@ -13,3 +13,13 @@
 *.vr
 *.vrs
 /_site/stats/gitstats.cache
+/_site/404.html
+/_site/about/index.html
+/_site/authors/index.html
+/_site/css/page.css
+/_site/css/stats.css
+/_site/donations/index.html
+/_site/index.html
+/_site/quotes/index.html
+/_site/quotes/quotes.js
+/_site/screenshots/index.html
