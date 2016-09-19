@@ -73,6 +73,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
    [org]({{ site.rawgithub }}/with-editor/master/with-editor.org))
 * [Magit Reference Card](/manual/magit-refcard.pdf)
 * [Screenshots](/screenshots)
+* [Screencasts](/screencasts)
 * [Wiki][wiki]
 
 # Resources

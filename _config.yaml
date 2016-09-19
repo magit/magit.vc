@@ -10,6 +10,7 @@ keep_files:
   - elpa
   - img
   - manual
+  - screencasts
   - stats
 exclude:
   - config.mk
