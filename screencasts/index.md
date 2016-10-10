@@ -14,3 +14,6 @@ these screencasts that were created by users:
 * [Magit basics](https://www.youtube.com/watch?v=zobx3T7hGNA) by Renn Seo &mdash; 2015.04 &mdash; 6:10
 * [EmacsATX: Magit](https://www.youtube.com/watch?v=VO7xj2ArpZw) by JJ Asghar &mdash; 2014.11 &mdash; 38:15
 * [Meet Magit](https://vimeo.com/2871241) by Alex Vollmer &mdash; 2009.01 &mdash; 20:48
+
+Or you might be interested in some [screenshots](/screenshots)
+and [blog posts](/blogs).

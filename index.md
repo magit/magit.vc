@@ -90,6 +90,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 * [Screenshots](/screenshots)
 * [Screencasts](/screencasts)
 * [User quotes](/quotes)
+* [Blog posts](/blogs)
 
 # Support
 
