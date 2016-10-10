@@ -13,7 +13,7 @@ help:
 	@printf "\n"
 
 genstats:
-	@gitstats -c style=/css/stats.css -c max_authors=200 $(MAGIT_REPO) _site/stats
+	@gitstats -c style=/css/stats.css -c max_authors=100 $(MAGIT_REPO) _site/stats
 
 manual:
 	@$(MAKE) -C _site/manual all
