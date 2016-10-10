@@ -89,6 +89,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 * [Announcements on Twitter][twitter]
 * [Screenshots](/screenshots)
 * [Screencasts](/screencasts)
+* [User quotes](/quotes)
 
 # Support
 
