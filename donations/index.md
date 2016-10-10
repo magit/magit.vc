@@ -14,7 +14,7 @@ Please also consider asking your employer to pay for the software you
 are using.  That probably means that I have to send an invoice.  I am
 also looking for corporote sponsors who would like to make a
 substantial contribution.  Please contact
-me [by mail](mailto:jonas@bernoulli).
+me [by mail](mailto:jonas@bernoul.li).
 
 # Donation options
 
