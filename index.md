@@ -94,8 +94,8 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # Support
 
-**When something doesn't work as expected then please first see the
-[FAQ][faq].**  Then also try the list of [open issues][issues] and use
+When something doesn't work as expected then please first see the
+[FAQ][faq].  Then also try the list of [open issues][issues] and use
 the search box at the top of that page to find older related issues.
 You should also consult the [manual][manual] and ask a general-purpose
 search engine.
@@ -104,8 +104,8 @@ If that doesn't answer your question, then ask for help on the
 **[Emacs Stackexchange site][forum]**, the [mailing list][list], or
 the [Gitter chat][chat].
 
-**Please do NOT use the GitHub issue tracker for support requests.**
-**We only use it for feature requests and bug reports.**
+Please do NOT use the GitHub issue tracker for support requests.
+We only use it for feature requests and bug reports.
 
 # Credits
 
