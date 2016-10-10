@@ -74,8 +74,6 @@ porcelains.  <a class="small" href="/about">(more)</a>
    [pdf](/manual/with-editor.pdf),
    [org]({{ site.rawgithub }}/with-editor/master/with-editor.org))
 * [Magit Reference Card](/manual/magit-refcard.pdf)
-* [Screenshots](/screenshots)
-* [Screencasts](/screencasts)
 * [Wiki][wiki]
 
 # Resources
@@ -89,6 +87,8 @@ porcelains.  <a class="small" href="/about">(more)</a>
   * [Mailing list][list]
   * [Gitter chat][chat]
 * [Announcements on Twitter][twitter]
+* [Screenshots](/screenshots)
+* [Screencasts](/screencasts)
 
 # Support
 
