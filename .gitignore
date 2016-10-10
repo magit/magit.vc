@@ -12,7 +12,6 @@
 *.tp
 *.vr
 *.vrs
-/_site/stats/gitstats.cache
 /_site/404.html
 /_site/about/index.html
 /_site/authors/index.html
@@ -25,3 +24,4 @@
 /_site/quotes/quotes.js
 /_site/screencasts/index.html
 /_site/screenshots/index.html
+/_site/stats/gitstats.cache
