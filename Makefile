@@ -2,6 +2,7 @@ include config.mk
 
 help:
 	$(info make genstats        - regenerate the statistics)
+	$(info make gource          - regenerate the gource video)
 	$(info make manual          - regenerate the manuals)
 	$(info make manual-move-old-magit        - )
 	$(info make manual-move-old-with-editor  - )
@@ -14,6 +15,9 @@ help:
 
 genstats:
 	@gitstats -c style=/css/stats.css -c max_authors=100 $(MAGIT_REPO) _site/stats
+
+gource:
+	@$(MAKE) -C screencasts all
 
 manual:
 	@$(MAKE) -C _site/manual all
