@@ -26,3 +26,5 @@
 /_site/screencasts/index.html
 /_site/screenshots/index.html
 /_site/stats/gitstats.cache
+/screencasts/magit
+/screencasts/magit-gource.mkv

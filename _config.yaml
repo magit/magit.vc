@@ -16,6 +16,9 @@ keep_files:
 exclude:
   - config.mk
   - Makefile
+  - screencasts/magit
+  - screencasts/magit-gource.mp4
+  - screencasts/Makefile
 
 relnotes: https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes
 rawgithub: https://raw.githubusercontent.com/magit
