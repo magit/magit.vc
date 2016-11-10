@@ -1,0 +1,16 @@
+title: Magit
+author: Jonas Bernoulli
+email: jonas@bernoul.li
+url: https://magit.vc
+
+baseurl: ""
+permalink: /:year/:month/:day/:title/index.html
+markdown: kramdown
+exclude:
+  - Makefile
+  - screencasts/magit
+  - screencasts/magit-gource.mp4
+  - screencasts/Makefile
+
+relnotes: https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes
+rawgithub: https://raw.githubusercontent.com/magit

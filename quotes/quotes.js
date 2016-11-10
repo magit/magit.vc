@@ -1,0 +1,136 @@
+var quotes = [
+    // twitter
+    ["Magit removes the tedium of interacting with Git's commandline interface.",
+     "Hristo Vladev",
+     "https://twitter.com/hrvladev/status/500225688662978561"],
+    ["Thank you Magit for teaching me git.",
+     "ionrock",
+     "https://twitter.com/ionrock/status/547076969754415104"],
+    ["I can hardly even remember what life was like in the Beforetime, when I didn't use magit.",
+     "Rad Knuckle Tats",
+     "https://twitter.com/arnemart/status/527424320659017728"],
+    ["Magit you're amazing. No joke magit changed my day to day workflow and I never knew how bad I had it before. Thank you so much!",
+     "JJ Asghar",
+     "https://twitter.com/jjasghar/status/530382020556619776"],
+    ["If you hack code in emacs and you are not using the magit package, you are missing out.",
+     "Stefan Arentz",
+     "https://twitter.com/satefan/status/469506383637782528"],
+    ["I wish I'd moved to Emacs sooner, Magit is insanely useful.",
+     "dagda1",
+     "https://twitter.com/dagda1/status/519875695292715008"],
+    ["I'm using magit. Even when the rest of my project is not in Emacs. <3 it.",
+     "borkdude",
+     "https://twitter.com/borkdude/status/547032102605443072"],
+    ["I can't emphasize enough how much I love magit.",
+     "Matt Savoie",
+     "https://twitter.com/MatthewSavoie/status/504637136948056067"],
+    ["Magit profoundly changed my understanding of Git.",
+     "Nicolas Petton",
+     "https://twitter.com/NicolasPetton/status/776352147881521152"],
+    ["I recommend magit to everyone even if it's the only reason they ever open emacs",
+     "Katherine Cox-Buday",
+     "https://twitter.com/katco_/status/774293076722319360"],
+    ["magit is the best git ui. worth learning emacs just to use it",
+     "Leonid Onokhov",
+     "https://twitter.com/lonokhov/status/774172288648228864"],
+    ["I'm slowly realising the power of magit and absolutely loving it",
+     "Nikos Fertakis",
+     "https://twitter.com/nikosfertakis/status/773109212004159488"],
+    ["Every time I use magit: How do I ...? It would be really cool if it worked like this... Oh! It does!",
+     "Steven R. Baker",
+     "https://twitter.com/srbaker/status/763019758061096960"],
+    ["I always thought Git on the command line couldnt be beaten, until I started using Magit - its the most sane way to use Git",
+     "John Stevenson",
+     "https://twitter.com/jr0cket/status/758688140131467264"],
+    // reddit (emacs)
+    ["Magit has changed the way I work. It's fantastic.",
+     "djork",
+     "https://www.reddit.com/r/emacs/comments/1xjlrq/emacs_modes_that_are_worth_knowing_about"],
+    ["Magit is great. Up there with org-mode for killer feature status!",
+     "benfitzg",
+     "https://www.reddit.com/r/emacs/comments/2n9tj8/anyone_care_to_share_their_magit_workflow/cmbtiig"],
+    ["Magit is the only git client where I can be faster than on the command line. great stuff.",
+     "tenpn",
+     "https://www.reddit.com/r/emacs/comments/1c5til/meet_magit_intro_remote_reflog_rewrites_20min/c9dpgyy"],
+    ["Magit being a nice interface to git is the understatement of the year: it's the best interface to git.",
+     "anonymous",
+     "https://www.reddit.com/r/emacs/comments/2lszjs/top_ten_things/clxxxfk"],
+    ["People I work with usually think I'm crazy for using Emacs but everybody is always blown away by magit when they see it.",
+     "Jordon Biondo",
+     "https://www.reddit.com/r/emacs/comments/4jvta2/elpy_magit_and_emacs_in_general_are_awesome/d3bjb6t"],
+    ["Magit is pure heavenly goodness",
+     "nihilmancer",
+     "https://www.reddit.com/r/emacs/comments/4jvta2/elpy_magit_and_emacs_in_general_are_awesome/d3cj6yz"],
+    // reddit
+    ["I use Mercurial and I love it, but I am considering switching to Git just for magit.",
+     "durdn",
+     "https://www.reddit.com/r/programming/comments/2o13do/whats_new_in_git_22/cmiwyit"],
+    // hackernews
+    ["I often go so far as to have an emacs session open 'on the side' just for magit, even if I'm using some sort of IDE. I'd even go so far as to say that it might even be worth learning (just enough) emacs for!",
+     "lomnakkus",
+     "https://news.ycombinator.com/item?id=10528278"],
+    ["I used to be a hard-core command line only (no fancy shmancy UIs here GitX!) git user. I have also been an emacs user for 23 years. Since I discovered Magit I will not touch command line git anymore. It's that good. [...] It's exactly what I would expect git + emacs to be.",
+     "craigching",
+     "https://news.ycombinator.com/item?id=10644744"],
+    ["This might be the best user interface available to Git anywhere. It doesn't just make git easier, or more intuitive, but also makes you a more effective git user.",
+     "tptacek",
+     "https://news.ycombinator.com/item?id=10645103"],
+    ["My most important git tip is: use Magit. It really is a huge step forward from using the git CLI — but, unlike many UIs to CLI tools, it actually helps one learn the CLI, [by] presenting flags and git subcommands. Thus, it both supersedes the git CLI and teaches it, just in case one is ever on a computer without Magit.",
+     "zeveb",
+     "https://news.ycombinator.com/item?id=12290740"],
+    ["I started using Emacs (actually Spacemacs) just to be able to learn how to use magit after reading so many people praising it. After around 6 months, I don't even touch the terminal for git",
+     "pvinis",
+     "https://news.ycombinator.com/item?id=12290856"],
+    ["Magit made me so much better at using Git, it's ridiculous.",
+     "Grue3",
+     "https://news.ycombinator.com/item?id=9654390"],
+    ["Hands-down the best Git interface, and entirely keyboard driven. It has improved my workflow more than any other tool besides Emacs itself.",
+     "davexunit",
+     "https://news.ycombinator.com/item?id=9654404"],
+    ["I appreciate how Magit isn't something that takes away from the git experience by holding your hands like a GUI might. Magit is just an efficient interface that in the end is just like using standard git in the command line.",
+     "Peter Hadlaw",
+     "https://news.ycombinator.com/item?id=9873663"],
+    ["I have used many Git UIs over the years, and Magit is the first one that lets me work with greater speed and safety than just using the command line.",
+     "Duncan Bayne",
+     "https://news.ycombinator.com/item?id=9875135"],
+    ["Magit is love. Magit is life. If you're an emacs and git user but don't use magit, it's a big, big waste of the powers of emacs.",
+     "Chetan Ahuja",
+     "https://news.ycombinator.com/item?id=9875798"],
+    // lwn
+    ["Magit is one of those rare packages which actually help you better understand the tool it provides an interface to.",
+     "madscientist",
+     "https://lwn.net/Articles/638804"],
+    // github
+    ["Magit is one of those packages in Emacs that I simply cannot do without, and that I use multiple times a day, every day.",
+     "John Wiegley",
+     "https://github.com/magit/magit/issues/1645#issuecomment-112866395"],
+    ["Magit allowed me to become very fluid with operations others wouldn't dare considering for their normal workflow while feeling very safe.",
+     "Philippe Vaucher",
+     "https://github.com/magit/magit/issues/1645#issuecomment-112875030"],
+    // elsewhere
+    ["I wrote the original git.el Emacs front-end, and used that for a few years, but it was never very good. I'm glad that people smarter than me have now tackled the problem, and Magit does a great job of making the full power of git accessible from Emacs.",
+     "Alexandre Julliard",
+     "https://www.linux.com/blog/git-success-stories-and-tips-wine-maintainer-alexandre-julliard"]
+];
+
+function inject_quotes() {
+    var i = Math.floor(Math.random()*quotes.length);
+    var e = document.getElementById("quote1");
+    e.innerHTML = quotes[i][0]+" &mdash; <cite>"+quotes[i][1]+"</cite>";
+
+    quotes.splice(i,1);
+
+    i = Math.floor(Math.random()*quotes.length);
+    e = document.getElementById("quote2");
+    e.innerHTML = quotes[i][0]+" &mdash; <cite>"+quotes[i][1]+"</cite>";
+}
+
+function list_quotes() {
+    var elt = document.getElementById("quotes");
+    var len = quotes.length;
+    for (var i = 0; i < len; i++) {
+	var child = document.createElement("blockquote");
+	child.innerHTML = quotes[i][0]+" &mdash; <cite>"+quotes[i][1]+"</cite>";
+	elt.appendChild(child);
+    }
+}

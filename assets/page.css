@@ -1,0 +1,109 @@
+body {
+  font-family: 'Noto Serif', serif;
+  text-align: justify;
+  background-color: #fdf6e3;
+  color: #586e75;
+  max-width: 700px;
+  margin: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+a {
+  color: #b58900;
+}
+
+a:visited {
+  color: #7B6000;
+}
+
+a.small {
+  font-size: xx-small;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Noto Sans', sans-serif;
+  text-align: left;
+  margin-top: 40px;
+  color: #20ab2d;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+header h1 {
+  font-size: 56px;
+  display: inline;
+}
+
+header h2 {
+  display: inline;
+  color: #ab2720;
+}
+
+img.screenshot {
+  box-shadow: 2px 2px 15px #93a1a1;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+blockquote {
+  display:block;
+  background: #eee8d5;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: left;
+  box-shadow: 2px 2px 15px #eee8d5;
+}
+
+blockquote::before {
+  content: "\201C";
+  font-size: 60px;
+  font-weight: bold;
+  color: #ab2720;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+div#donate {
+  display: block;
+  background: #eee8d5;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: left;
+  box-shadow: 2px 2px 15px #20ab2d;
+}
+
+div#donate a {
+  color: #20ab2d;
+}
+
+div#donate i {
+  color: #ab2720;
+}
+
+div#donate div {
+  text-align: center;
+}
+
+div#donate::before {
+  content: "\0024";
+  font-size: 40px;
+  font-weight: bold;
+  color: #20ab2d;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}

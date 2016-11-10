@@ -1,0 +1,36 @@
+header img {
+  box-shadow: unset;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+img {
+  box-shadow: 2px 2px 15px #93a1a1;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+code {
+  background-color: #eee8d5;
+  padding: 2px;
+}
+
+/* We abuse markdown's **bold** for key bindings ... */
+strong {
+  background-color: #eee8d5 #93a1a1;
+  border-color: #7B6000;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 0px 5px 1px 5px;
+  box-shadow: 1px 1px 5px #93a1a1;
+}
+/* ... and italic as bold. */
+em {
+  font-weight: bold;
+  font-style: normal
+}
