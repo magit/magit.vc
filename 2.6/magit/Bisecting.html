@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Bisecting</title>
+
+<meta name="description" content="Magit User Manual: Bisecting">
+<meta name="keywords" content="Magit User Manual: Bisecting">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
+<link href="Visiting-blobs.html#Visiting-blobs" rel="next" title="Visiting blobs">
+<link href="References-sections.html#References-sections" rel="prev" title="References sections">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Bisecting"></a>
+<div class="header">
+<p>
+Next: <a href="Visiting-blobs.html#Visiting-blobs" accesskey="n" rel="next">Visiting blobs</a>, Previous: <a href="References-buffer.html#References-buffer" accesskey="p" rel="prev">References buffer</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Bisecting-1"></a>
+<h3 class="section">5.6 Bisecting</h3>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-bisect">git-bisect(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-B"></a>
+<a name="index-magit_002dbisect_002dpopup"></a>
+</dd>
+<dt><kbd>B</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-bisect-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands in a
+popup buffer.
+</p></dd>
+</dl>
+
+<p>When bisecting is not in progress, then the popup buffer features the
+following commands.
+</p>
+<dl compact="compact">
+<dd><a name="index-B-s"></a>
+<a name="index-magit_002dbisect_002dstart"></a>
+</dd>
+<dt><kbd>B s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-bisect-start</code>)</dt>
+<dd>
+<p>Start a bisect session.
+</p>
+<p>Bisecting a bug means to find the commit that introduced it.
+This command starts such a bisect session by asking for a known
+good and a bad commit.
+</p>
+<a name="index-B-u"></a>
+<a name="index-magit_002dbisect_002drun"></a>
+</dd>
+<dt><kbd>B u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-bisect-run</code>)</dt>
+<dd>
+<p>Bisect automatically by running commands after each step.
+</p></dd>
+</dl>
+
+<p>When bisecting is in progress, then the popup buffer features these
+commands instead.
+</p>
+<dl compact="compact">
+<dd><a name="index-B-b"></a>
+<a name="index-magit_002dbisect_002dbad"></a>
+</dd>
+<dt><kbd>B b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-bisect-bad</code>)</dt>
+<dd>
+<p>Mark the current commit as bad.  Use this after you have asserted
+that the commit does contain the bug in question.
+</p>
+<a name="index-B-g"></a>
+<a name="index-magit_002dbisect_002dgood"></a>
+</dd>
+<dt><kbd>B g</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-bisect-good</code>)</dt>
+<dd>
+<p>Mark the current commit as good.  Use this after you have asserted
+that the commit does not contain the bug in question.
+</p>
+<a name="index-B-k"></a>
+<a name="index-magit_002dbisect_002dskip"></a>
+</dd>
+<dt><kbd>B k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-bisect-skip</code>)</dt>
+<dd>
+<p>Skip the current commit.  Use this if for some reason the current
+commit is not a good one to test.  This command lets Git choose a
+different one.
+</p>
+<a name="index-B-r"></a>
+<a name="index-magit_002dbisect_002dreset"></a>
+</dd>
+<dt><kbd>B r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-bisect-reset</code>)</dt>
+<dd>
+<p>After bisecting, cleanup bisection state and return to original
+<code>HEAD</code>.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

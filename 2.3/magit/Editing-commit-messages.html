@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Editing commit messages</title>
+
+<meta name="description" content="Magit User Manual: Editing commit messages">
+<meta name="keywords" content="Magit User Manual: Editing commit messages">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Committing.html#Committing" rel="up" title="Committing">
+<link href="Branching.html#Branching" rel="next" title="Branching">
+<link href="Initiating-a-commit.html#Initiating-a-commit" rel="prev" title="Initiating a commit">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Editing-commit-messages"></a>
+<div class="header">
+<p>
+Previous: <a href="Initiating-a-commit.html#Initiating-a-commit" accesskey="p" rel="prev">Initiating a commit</a>, Up: <a href="Committing.html#Committing" accesskey="u" rel="up">Committing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Editing-commit-messages-1"></a>
+<h4 class="subsection">6.4.2 Editing commit messages</h4>
+
+<p>After initiating a commit as described in the previous section, two new
+buffers appear.  One shows the changes that are about to committed,
+while the other is used to write the message.  All regular editing
+commands are available in the commit message buffer.  This section
+only describes the additional commands.
+</p>
+<p>Commit messages are edited in an edit session - in the background Git
+is waiting for the editor, in our case the Emacsclient, to save the
+commit message in a file (in most cases <code>.git/COMMIT_EDITMSG</code>) and then
+return.  If the Emacsclient returns with a non-zero exit status then
+Git does not create the commit.  So the most important commands are
+those for finishing and aborting the commit.
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dc-C_002dc-2"></a>
+<a name="index-with_002deditor_002dfinish"></a>
+</dd>
+<dt><kbd>C-c C-c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>with-editor-finish</code>)</dt>
+<dd>
+<p>Finish the current editing session by returning with exit code 0.
+Git then creates the commit using the message it finds in the file.
+</p>
+<a name="index-C_002dc-C_002dk-1"></a>
+<a name="index-with_002deditor_002dcancel"></a>
+</dd>
+<dt><kbd>C-c C-k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>with-editor-cancel</code>)</dt>
+<dd>
+<p>Cancel the current editing session by returning with exit code 1.
+Git then cancels the commit, but leaves the file untouched.
+</p></dd>
+</dl>
+
+<p>In additon to being used by Git, these messages may also be stored in
+a ring that persists until Emacs is closed.  By default the message is
+stored at the beginning and the end of an edit session (regardless of
+whether the session is finished successfully or was canceled).  It is
+sometimes useful to bring back messages from that ring.
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002ds-M_002ds"></a>
+<a name="index-git_002dcommit_002dsave_002dmessage"></a>
+</dd>
+<dt><kbd>C-s M-s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-save-message</code>)</dt>
+<dd>
+<p>Save the current buffer content to the commit message ring.
+</p>
+<a name="index-M_002dp-1"></a>
+<a name="index-git_002dcommit_002dprev_002dmessage"></a>
+</dd>
+<dt><kbd>M-p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-prev-message</code>)</dt>
+<dd>
+<p>Cycle backward through the commit message ring, after saving the
+current message to the ring.  With a numeric prefix ARG, go back
+ARG comments.
+</p>
+<a name="index-M_002dn-1"></a>
+<a name="index-git_002dcommit_002dnext_002dmessage"></a>
+</dd>
+<dt><kbd>M-n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-next-message</code>)</dt>
+<dd>
+<p>Cycle forward through the commit message ring, after saving the
+current message to the ring.  With a numeric prefix ARG, go back
+ARG comments.
+</p></dd>
+</dl>
+
+<p>By default the diff for the changes that are about to be committed are
+automatically shown when invoking the commit.  When amending to an
+existing commit it may be useful to show either the changes that are
+about to be added to that commit or to show those changes together
+with those that are already committed.
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dc-C_002dd-1"></a>
+<a name="index-magit_002ddiff_002dwhile_002dcommitting-1"></a>
+</dd>
+<dt><kbd>C-c C-d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-while-committing</code>)</dt>
+<dd>
+<p>While committing, show the changes that are about to be committed.
+While amending, invoking the command again toggles between showing
+just the new changes or all the changes that will be committed.
+</p>
+<a name="index-C_002dc-C_002dw"></a>
+<a name="index-magit_002dpop_002drevision_002dstack"></a>
+</dd>
+<dt><kbd>C-c C-w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-pop-revision-stack</code>)</dt>
+<dd>
+<p>This command inserts a representation of a revision into the current
+buffer.  It can be used inside buffers used to write commit messages
+but also in other buffers such as buffers used to edit emails or
+ChangeLog files.
+</p>
+<p>By default this command pops the revision which was last added to
+the <code>magit-revision-stack</code> and inserts it into the current buffer
+according to <code>magit-pop-revision-stack-format</code>.  Revisions can be put
+on the stack using <code>magit-copy-section-value</code> and
+<code>magit-copy-buffer-revision</code>.
+</p>
+<p>If the stack is empty or with a prefix argument it instead reads a
+revision in the minibuffer.  By using the minibuffer history this
+allows selecting an item which was popped earlier or to insert an
+arbitrary reference or revision without first pushing it onto the
+stack.
+</p>
+<p>When reading the revision from the minibuffer, then it might not
+be possible to guess the correct repository.  When this command
+is called inside a repository (e.g. while composing a commit
+message), then that repository is used.  Otherwise (e.g. while
+composing an email) then the repository recorded for the top
+element of the stack is used (even though we insert another
+revision).  If not called inside a repository and with an empty
+stack, or with two prefix arguments, then read the repository in
+the minibuffer too.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dpop_002drevision_002dstack_002dformat"></a>User Option: <strong>magit-pop-revision-stack-format</strong></dt>
+<dd>
+<p>This option controls how the command <code>magit-pop-revision-stack</code>
+inserts a revision into the current buffer.
+</p>
+<p>The entries on the stack have the format <code>(HASH TOPLEVEL)</code> and this
+option has the format <code>(POINT-FORMAT EOB-FORMAT INDEX-REGEXP)</code>, all
+of which may be nil or a string (though either one of EOB-FORMAT
+or POINT-FORMAT should be a string, and if INDEX-REGEXP is
+non-nil, then the two formats should be too).
+</p>
+<p>First INDEX-REGEXP is used to find the previously inserted entry,
+by searching backward from point.  The first submatch must match
+the index number.  That number is incremented by one, and becomes
+the index number of the entry to be inserted.  If you don&rsquo;t want
+to number the inserted revisions, then use nil for INDEX-REGEXP.
+</p>
+<p>If INDEX-REGEXP is non-nil then both POINT-FORMAT and EOB-FORMAT
+should contain \&quot;%N\&quot;, which is replaced with the number that was
+determined in the previous step.
+</p>
+<p>Both formats, if non-nil and after removing %N, are then expanded
+using &lsquo;git show &ndash;format=FORMAT &hellip;&rsquo; inside TOPLEVEL.
+</p>
+<p>The expansion of POINT-FORMAT is inserted at point, and the
+expansion of EOB-FORMAT is inserted at the end of the buffer (if the
+buffer ends with a comment, then it is inserted right before that).
+</p></dd></dl>
+
+<p>Some projects use pseudo headers in commit messages.  Magit colorizes
+such headers and provides some commands to insert such headers.
+</p>
+<dl>
+<dt><a name="index-git_002dcommit_002dknown_002dpseudo_002dheaders"></a>User Option: <strong>git-commit-known-pseudo-headers</strong></dt>
+<dd>
+<p>A list of Git pseudo headers to be highlighted.
+</p></dd></dl>
+
+<dl compact="compact">
+<dd><a name="index-C_002dc-C_002da"></a>
+<a name="index-git_002dcommit_002dack"></a>
+</dd>
+<dt><kbd>C-c C-a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-ack</code>)</dt>
+<dd>
+<p>Insert a header acknowledging that you have looked at the commit.
+</p>
+<a name="index-C_002dc-C_002dr"></a>
+<a name="index-git_002dcommit_002dreview"></a>
+</dd>
+<dt><kbd>C-c C-r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-review</code>)</dt>
+<dd>
+<p>Insert a header acknowledging that you have reviewed the commit.
+</p>
+<a name="index-C_002dc-C_002ds"></a>
+<a name="index-git_002dcommit_002dsignoff"></a>
+</dd>
+<dt><kbd>C-c C-s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-signoff</code>)</dt>
+<dd>
+<p>Insert a header to sign off the commit.
+</p>
+<a name="index-C_002dc-C_002dt"></a>
+<a name="index-git_002dcommit_002dtest"></a>
+</dd>
+<dt><kbd>C-c C-t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-test</code>)</dt>
+<dd>
+<p>Insert a header acknowledging that you have tested the commit.
+</p>
+<a name="index-C_002dc-C_002do"></a>
+<a name="index-git_002dcommit_002dcc"></a>
+</dd>
+<dt><kbd>C-c C-o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-cc</code>)</dt>
+<dd>
+<p>Insert a header mentioning someone who might be interested.
+</p>
+<a name="index-C_002dc-C_002dp"></a>
+<a name="index-git_002dcommit_002dreported"></a>
+</dd>
+<dt><kbd>C-c C-p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-reported</code>)</dt>
+<dd>
+<p>Insert a header mentioning the person who reported the issue being
+fixed by the commit.
+</p>
+<a name="index-C_002dc-C_002di"></a>
+<a name="index-git_002dcommit_002dsuggested"></a>
+</dd>
+<dt><kbd>C-c C-i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-commit-suggested</code>)</dt>
+<dd>
+<p>Insert a header mentioning the person who suggested the change.
+</p></dd>
+</dl>
+
+<p><code>git-commit-mode</code> is a minor mode that is only used to establish
+the above key bindings.  This allows using an arbitrary major mode
+when editing the commit message.  It&rsquo;s even possible to use a
+different major mode in different repositories, which is useful when
+different projects impose different commit message conventions.
+</p>
+<dl>
+<dt><a name="index-git_002dcommit_002dmajor_002dmode"></a>User Option: <strong>git-commit-major-mode</strong></dt>
+<dd>
+<p>The value of this option is the major mode used to edit Git commit
+messages.
+</p></dd></dl>
+
+<p>Because <code>git-commit-mode</code> is a minor mode, we don&rsquo;t use its mode hook
+to setup the buffer, except for the key bindings.  All other setup
+happens in the function <code>git-commit-setup</code>, which among other things runs
+the hook <code>git-commit-setup-hook</code>.  The following functions are suitable
+for that hook.
+</p>
+<dl>
+<dt><a name="index-git_002dcommit_002dsetup_002dhook"></a>User Option: <strong>git-commit-setup-hook</strong></dt>
+<dd>
+<p>Hook run at the end of <code>git-commit-setup</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drevert_002dbuffers"></a>Function: <strong>magit-revert-buffers</strong> <em>&amp;optional force</em></dt>
+<dd>
+<p>Revert unmodified file-visiting buffers of the current repository.
+</p>
+<p>If either <code>magit-revert-buffers</code> is non-nil and <code>inhibit-magit-revert</code>
+is nil, or if optional FORCE is non-nil, then revert all unmodified
+buffers that visit files being tracked in the current repository.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002dcommit_002dsave_002dmessage-1"></a>Function: <strong>git-commit-save-message</strong></dt>
+<dd>
+<p>Save the current buffer content to the commit message ring.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002dcommit_002dsetup_002dchangelog_002dsupport"></a>Function: <strong>git-commit-setup-changelog-support</strong></dt>
+<dd>
+<p>After this function is called, ChangeLog entries are treated as
+paragraphs.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002dcommit_002dturn_002don_002dauto_002dfill"></a>Function: <strong>git-commit-turn-on-auto-fill</strong></dt>
+<dd>
+<p>Turn on <code>auto-fill-mode</code> and set <code>fill-column</code> to the value of
+<code>git-commit-fill-column</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002dcommit_002dturn_002don_002dflyspell"></a>Function: <strong>git-commit-turn-on-flyspell</strong></dt>
+<dd>
+<p>Turn on Flyspell mode.  Also prevent comments from being checked and
+finally check current non-comment text.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002dcommit_002dpropertize_002ddiff"></a>Function: <strong>git-commit-propertize-diff</strong></dt>
+<dd>
+<p>Propertize the diff shown inside the commit message buffer.  Git
+inserts such diffs into the commit message template when the
+<code>--verbose</code> argument is used.  Magit&rsquo;s commit popup by default does
+not offer that argument because the diff that is shown in a separate
+buffer is more useful.  But some users disagree, which is why this
+function exists.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-with_002deditor_002dusage_002dmessage"></a>Function: <strong>with-editor-usage-message</strong></dt>
+<dd>
+<p>Show usage information in the echo area.
+</p></dd></dl>
+
+<p>Magit also helps with writing <strong>good</strong> commit messages by complaining when
+certain rules are violated.
+</p>
+<dl>
+<dt><a name="index-git_002dcommit_002dsummary_002dmax_002dlength"></a>User Option: <strong>git-commit-summary-max-length</strong></dt>
+<dd>
+<p>The intended maximal length of the summary line of commit messages.
+Characters beyond this column are colorized to indicate that this
+preference has been violated.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002dcommit_002dfill_002dcolumn"></a>User Option: <strong>git-commit-fill-column</strong></dt>
+<dd>
+<p>Column beyond which automatic line-wrapping should happen in commit
+message buffers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002dcommit_002dfinish_002dquery_002dfunctions"></a>User Option: <strong>git-commit-finish-query-functions</strong></dt>
+<dd>
+<p>List of functions called to query before performing commit.
+</p>
+<p>The commit message buffer is current while the functions are called.
+If any of them returns nil, then the commit is not performed and the
+buffer is not killed.  The user should then fix the issue and try
+again.
+</p>
+<p>The functions are called with one argument.  If it is non-nil then
+that indicates that the user used a prefix argument to force
+finishing the session despite issues.  Functions should usually
+honor this wish and return non-nil.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002dcommit_002dcheck_002dstyle_002dconventions"></a>Function: <strong>git-commit-check-style-conventions</strong></dt>
+<dd>
+<p>Check for violations of certain basic style conventions.  For each
+violation ask the user if she wants to proceed anyway.  This makes
+sure the summary line isn&rsquo;t too long and that the second line is
+empty.
+</p></dd></dl>
+
+<p>To show no diff while committing remove <code>magit-commit-diff</code> from
+<code>server-switch-hook</code>.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Initiating-a-commit.html#Initiating-a-commit" accesskey="p" rel="prev">Initiating a commit</a>, Up: <a href="Committing.html#Committing" accesskey="u" rel="up">Committing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

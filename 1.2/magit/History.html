@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the obsolete 1.2 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.2 OBSOLETE): History</title>
+
+<meta name="description" content="Magit User Manual (1.2 OBSOLETE): History">
+<meta name="keywords" content="Magit User Manual (1.2 OBSOLETE): History">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Reflogs.html#Reflogs" rel="next" title="Reflogs">
+<link href="Staging-and-Committing.html#Staging-and-Committing" rel="prev" title="Staging and Committing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="History"></a>
+<div class="header">
+<p>
+Next: <a href="Reflogs.html#Reflogs" accesskey="n" rel="next">Reflogs</a>, Previous: <a href="Staging-and-Committing.html#Staging-and-Committing" accesskey="p" rel="prev">Staging and Committing</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="History-1"></a>
+<h2 class="chapter">7 History</h2>
+
+<p>To show the repository history of your current head, type <kbd>l l</kbd>.  A
+new buffer will be shown that displays the history in a terse form.
+The first paragraph of each commit message is displayed, next to a
+representation of the relationships between commits.
+</p>
+<p>To show the repository history between two branches or between any two
+points of the history, type <kbd>l r l</kbd>.  You will be prompted to enter
+references for starting point and ending point of the history range; you
+can use auto-completion to specify them.  A typical use case for ranged
+history log display would be <kbd>l r l master RET new-feature RET</kbd> that
+will display commits on the new-feature branch that are not in master;
+these commits can then be inspected and cherry-picked, for example.
+</p>
+<p>More thorough filtering can be done by supplying <kbd>l</kbd> with one or
+more suffix arguments, as displayed in its popup.  <kbd>=g</kbd> (&rsquo;Grep&rsquo;)
+for example, limits the output to commits of which the log message
+matches a specific string/regex.
+</p>
+<p>Typing <kbd>l L</kbd> (or <kbd>l C-u L</kbd>) will show the log in a more verbose
+form.
+</p>
+<p>Magit will show only <code>magit-log-cutoff-length</code> entries. <kbd>e</kbd>
+will show twice as many entries. <kbd>C-u e</kbd> will show all entries,
+and given a numeric prefix argument, <kbd>e</kbd> will add this number of
+entries.
+</p>
+<p>You can move point to a commit and then cause various things to happen
+with it.  (The following commands work in any list of commits, such as
+the one shown in the <em>Unpushed commits</em> section.)
+</p>
+<p>Typing <kbd>RET</kbd> will pop up more information about the current commit
+and move point into the new buffer.  See <a href="Commit-Buffer.html#Commit-Buffer">Commit Buffer</a>.  Typing
+<kbd>SPC</kbd> and <kbd>DEL</kbd> will also show the information, but will
+scroll the new buffer up or down (respectively) when typed again.
+</p>
+<p>Typing <kbd>a</kbd> will apply the current commit to your current branch.
+This is useful when you are browsing the history of some other branch
+and you want to &lsquo;cherry-pick&rsquo; some changes from it.  A typical
+situation is applying selected bug fixes from the development version
+of a program to a release branch.  The cherry-picked changes will not
+be committed automatically; you need to do that explicitly.
+</p>
+<p>Typing <kbd>A</kbd> will cherry-pick the current commit and will also
+commit the changes automatically when there have not been any
+conflicts.
+</p>
+<p>Typing <kbd>v</kbd> will revert the current commit.  Thus, it will apply
+the changes made by that commit in reverse.  This is obviously useful
+to cleanly undo changes that turned out to be wrong.  As with <kbd>a</kbd>,
+you need to commit the changes explicitly.
+</p>
+<p>Typing <kbd>C-w</kbd> will copy the sha1 of the current commit into the
+kill ring.
+</p>
+<p>Typing <kbd>=</kbd> will show the differences from the current commit to
+the <em>marked</em> commit.
+</p>
+<p>You can mark the current commit by typing <kbd>.</kbd>.  When the current
+commit is already marked, typing <kbd>.</kbd> will unmark it.  To unmark
+the marked commit no matter where point is, use <kbd>C-u .</kbd>.
+</p>
+<p>Some commands, such as <kbd>=</kbd>, will use the current commit and the
+marked commit as implicit arguments.  Other commands will offer the
+marked commit as a default when prompting for their arguments.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Reflogs.html#Reflogs" accesskey="n" rel="next">Reflogs</a>, Previous: <a href="Staging-and-Committing.html#Staging-and-Committing" accesskey="p" rel="prev">Staging and Committing</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

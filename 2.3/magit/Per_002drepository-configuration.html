@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Per-repository configuration</title>
+
+<meta name="description" content="Magit User Manual: Per-repository configuration">
+<meta name="keywords" content="Magit User Manual: Per-repository configuration">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Customizing.html#Customizing" rel="up" title="Customizing">
+<link href="Essential-settings.html#Essential-settings" rel="next" title="Essential settings">
+<link href="Customizing.html#Customizing" rel="prev" title="Customizing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Per_002drepository-configuration"></a>
+<div class="header">
+<p>
+Next: <a href="Essential-settings.html#Essential-settings" accesskey="n" rel="next">Essential settings</a>, Up: <a href="Customizing.html#Customizing" accesskey="u" rel="up">Customizing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Per_002drepository-configuration-1"></a>
+<h3 class="section">9.1 Per-repository configuration</h3>
+
+<p>Magit can be configured on a per-repository level using both Git
+variables as well as Emacs options.
+</p>
+<p>To set a Git variable for one repository only, simply set it in
+<code>/path/to/repo/.git/config</code> instead of <code>$HOME/.gitconfig</code> or
+<code>/etc/gitconfig</code>.  See 
+the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage.
+</p>
+<p>Similarly, Emacs options can be set for one repository only by editing
+<code>/path/to/repo/.dir-locals.el</code>.  See <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html#Directory-Variables">(emacs)Directory Variables</a>.
+For example to disable automatic refreshes of file-visiting buffers in
+just one huge repository use this:
+</p>
+<ul>
+<li> <code>/path/to/huge/repo/.dir-locals.el</code>
+
+<div class="lisp">
+<pre class="lisp">((nil . ((magit-refresh-buffers . nil))
+</pre></div>
+</li></ul>
+
+<p>If you want to apply the same settings to several, but not all,
+repositories then keeping the repository-local config files in sync
+would quickly become annoying.  To avoid that you can create config
+files for certain classes of repositories (e.g. &quot;huge repositories&quot;)
+and then include those files in the per-repository config files.
+For example:
+</p>
+<ul>
+<li> <code>/path/to/huge/repo/.git/config</code>
+
+<div class="example">
+<pre class="example">[include]
+        path = /path/to/huge-gitconfig
+</pre></div>
+
+
+</li><li> <code>/path/to/huge-gitconfig</code>
+
+<div class="example">
+<pre class="example">[status]
+        showUntrackedFiles = no
+</pre></div>
+
+
+</li><li> <code>$HOME/.emacs.d/init.el</code>
+
+<div class="lisp">
+<pre class="lisp">(dir-locals-set-class-variables 'huge-git-repository
+   '((nil . ((magit-refresh-buffers . nil)))))
+
+(dir-locals-set-directory-class
+   &quot;/path/to/huge/repo/&quot; 'huge-git-repository)
+</pre></div>
+</li></ul>
+
+
+
+
+</body>
+</html>

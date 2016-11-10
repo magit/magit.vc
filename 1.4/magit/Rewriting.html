@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Rewriting</title>
+
+<meta name="description" content="Magit User Manual (1.4): Rewriting">
+<meta name="keywords" content="Magit User Manual (1.4): Rewriting">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Pushing-and-Pulling.html#Pushing-and-Pulling" rel="next" title="Pushing and Pulling">
+<link href="Interactive-Rebasing.html#Interactive-Rebasing" rel="prev" title="Interactive Rebasing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Rewriting"></a>
+<div class="header">
+<p>
+Next: <a href="Pushing-and-Pulling.html#Pushing-and-Pulling" accesskey="n" rel="next">Pushing and Pulling</a>, Previous: <a href="Interactive-Rebasing.html#Interactive-Rebasing" accesskey="p" rel="prev">Interactive Rebasing</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Rewriting-1"></a>
+<h2 class="chapter">19 Rewriting</h2>
+
+<p>As hinted at earlier, you can rewrite your commit history.  For
+example, you can reset the current head to an earlier commit with
+<kbd>x</kbd>.  This leaves the working tree unchanged, and the status
+buffer will show all the changes that have been made since that new
+value of the current head.  You can commit these changes again,
+possibly splitting them into multiple commits as you go along.
+</p>
+<p>Amending your last commit is a common special case of rewriting
+history like this.
+</p>
+<p>Another common way to rewrite history is to reset the head to an
+earlier commit, and then to cherry pick the previous commits in a
+different order.  You could pick them from the reflog, for example.
+</p>
+<p>Magit has several commands that can simplify the book keeping
+associated with rewriting.  These commands all start with the <kbd>r</kbd>
+prefix key.
+</p>
+<p>(Unless you already do so, we recommend that you don&rsquo;t use the
+functionality described here.  It is semi-deprecated and will be
+removed once its unique features have been ported to the <code>git
+rebase --interactive</code> workflow.  Even now the latter is almost always
+the better option.)
+</p>
+<p>Typing <kbd>r b</kbd> will start a rewrite operation.  You will be prompted
+for a <em>base</em> commit.  This commit and all subsequent commits up
+until the current head are then put in a list of <em>Pending
+commits</em>, after which the current head will be reset to the
+<em>parent</em> of the base commit.  This can be configured to behave
+like <code>git rebase</code>, i.e. exclude the selected base commit from the
+rewrite operation, with the <code>magit-rewrite-inclusive</code> variable.
+</p>
+<p>You would then typically use <kbd>a</kbd> and <kbd>A</kbd> to cherry pick
+commits from the list of pending commits in the desired order, until
+all have been applied.  Magit shows which commits have been applied by
+changing their marker from <code>*</code> to <code>.</code>.
+</p>
+<p>Using <kbd>A</kbd> will immediately commit the commit (as usual).  If you
+want to combine multiple previous commits into a single new one, use
+<kbd>a</kbd> to apply them all to your working tree, and then commit them
+together.
+</p>
+<p>Magit has no explicit support for rewriting merge commits.  It will
+happily include merge commits in the list of pending commits, but
+there is no way of replaying them automatically.  You have to redo the
+merge explicitly.
+</p>
+<p>You can also use <kbd>v</kbd> to revert a commit when you have changed your
+mind.  This will change the <code>.</code> mark back to <code>*</code>.
+</p>
+<p>Once you are done with the rewrite, type <kbd>r s</kbd> to remove the book
+keeping information from the status buffer.
+</p>
+<p>If you rather wish to start over, type <kbd>r a</kbd>.  This will abort the
+rewriting, resetting the current head back to the value it had before
+the rewrite was started with <kbd>r b</kbd>.
+</p>
+<p>Typing <kbd>r f</kbd> will <em>finish</em> the rewrite: it will apply all
+unused commits one after the other, as if you would use <kbd>A</kbd> with
+all of them.
+</p>
+<p>You can change the <kbd>*</kbd> and <kbd>.</kbd> marks of a pending commit
+explicitly with <kbd>r *</kbd> and <kbd>r .</kbd>.
+</p>
+<p>In addition to a list of pending commits, the status buffer will show
+the <em>Pending changes</em>.  This section shows the diff between the
+original head and the current head.  You can use it to review the
+changes that you still need to rewrite, and you can apply hunks from
+it, like from any other diff.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Pushing-and-Pulling.html#Pushing-and-Pulling" accesskey="n" rel="next">Pushing and Pulling</a>, Previous: <a href="Interactive-Rebasing.html#Interactive-Rebasing" accesskey="p" rel="prev">Interactive Rebasing</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

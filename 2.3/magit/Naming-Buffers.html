@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Naming Buffers</title>
+
+<meta name="description" content="Magit User Manual: Naming Buffers">
+<meta name="keywords" content="Magit User Manual: Naming Buffers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Modes-and-Buffers.html#Modes-and-Buffers" rel="up" title="Modes and Buffers">
+<link href="Quitting-Windows.html#Quitting-Windows" rel="next" title="Quitting Windows">
+<link href="Switching-Buffers.html#Switching-Buffers" rel="prev" title="Switching Buffers">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Naming-Buffers"></a>
+<div class="header">
+<p>
+Next: <a href="Quitting-Windows.html#Quitting-Windows" accesskey="n" rel="next">Quitting Windows</a>, Previous: <a href="Switching-Buffers.html#Switching-Buffers" accesskey="p" rel="prev">Switching Buffers</a>, Up: <a href="Modes-and-Buffers.html#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Naming-Buffers-1"></a>
+<h4 class="subsection">4.1.2 Naming Buffers</h4>
+
+<dl>
+<dt><a name="index-magit_002dgenerate_002dbuffer_002dname_002dfunction"></a>User Option: <strong>magit-generate-buffer-name-function</strong></dt>
+<dd>
+<p>The function used to generate the names of Magit buffers.
+</p>
+<p>Such a function should take the options <code>magit-uniquify-buffer-names</code>
+as well as <code>magit-buffer-name-format</code> into account.  If it doesn&rsquo;t,
+then should be clearly stated in the doc-string.  And if it supports
+%-sequences beyond those mentioned in the doc-string of the option
+<code>magit-buffer-name-format</code>, then its own doc-string should describe
+the additions.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgenerate_002dbuffer_002dname_002ddefault_002dfunction"></a>Function: <strong>magit-generate-buffer-name-default-function</strong> <em>mode</em></dt>
+<dd>
+<p>This function returns a buffer name suitable for a buffer whose
+major-mode is MODE and which shows information about the repository
+in which <code>default-directory</code> is located.
+</p>
+<p>This function uses <code>magit-buffer-name-format</code> and supporting all of
+the %-sequences mentioned the documentation of that option.  It also
+respects the option <code>magit-uniquify-buffer-names</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dbuffer_002dname_002dformat"></a>User Option: <strong>magit-buffer-name-format</strong></dt>
+<dd>
+<p>The format string used to name Magit buffers.
+</p>
+<p>At least the following %-sequences are supported:
+</p>
+<ul>
+<li> <code>%m</code>
+
+<p>The name of the major-mode, but with the <code>-mode</code> suffix removed.
+</p>
+
+</li><li> <code>%M</code>
+
+<p>Like <code>%m</code> but abbreviate <code>magit-status-mode</code> as <code>magit</code>.
+</p>
+
+</li><li> <code>%v</code>
+
+<p>The value the buffer is locked to, in parentheses, if it is the
+buffer is actually locked to its value.  An empty string
+otherwise.
+</p>
+
+</li><li> <code>%V</code>
+
+<p>Like <code>%v</code>, but the string is prefixed with a space, unless it is an
+empty string.
+</p>
+
+</li><li> <code>%t</code>
+
+<p>The top-level directory of the working tree of the repository, or
+if <code>magit-uniquify-buffer-name</code> is non-nil an abbreviation of that.
+</p></li></ul>
+<p>The value should always contain either <code>%m</code> or <code>%M</code>, <code>%v</code> or <code>%V</code>, and <code>%t</code>.
+If <code>magit-uniquify-buffer-name</code> is non-nil, then the value must end
+with <code>%t</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002duniquify_002dbuffer_002dnames"></a>User Option: <strong>magit-uniquify-buffer-names</strong></dt>
+<dd>
+<p>This option controls whether the names of Magit buffers are
+uniquified.  If the names are not being uniquified, then they
+contain the full path of the top-level of the working tree of the
+corresponding repository.  If they are being uniquified, then they
+end with the basename of the top-level, or if that would conflict
+with the name used for other buffers, then the names of all these
+buffers are adjusted until they no longer conflict.
+</p>
+<p>This is done using the <code>uniquify</code> package; customize its options to
+control how buffer names are uniquified.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Quitting-Windows.html#Quitting-Windows" accesskey="n" rel="next">Quitting Windows</a>, Previous: <a href="Switching-Buffers.html#Switching-Buffers" accesskey="p" rel="prev">Switching Buffers</a>, Up: <a href="Modes-and-Buffers.html#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Viewing Git output</title>
+
+<meta name="description" content="Magit User Manual: Viewing Git output">
+<meta name="keywords" content="Magit User Manual: Viewing Git output">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Running-Git.html#Running-Git" rel="up" title="Running Git">
+<link href="Running-Git-manually.html#Running-Git-manually" rel="next" title="Running Git manually">
+<link href="Running-Git.html#Running-Git" rel="prev" title="Running Git">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Viewing-Git-output"></a>
+<div class="header">
+<p>
+Next: <a href="Running-Git-manually.html#Running-Git-manually" accesskey="n" rel="next">Running Git manually</a>, Up: <a href="Running-Git.html#Running-Git" accesskey="u" rel="up">Running Git</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Viewing-Git-output-1"></a>
+<h4 class="subsection">4.7.1 Viewing Git output</h4>
+
+<p>Magit runs Git either for side-effects (e.g. when pushing) or to get
+some value (e.g. the name of the current branch).  When Git is run for
+side-effects then the output goes into a per-repository log buffer,
+which can be consulted when things don&rsquo;t go as expected.
+</p>
+<dl compact="compact">
+<dd><a name="index-_0024"></a>
+<a name="index-magit_002dprocess"></a>
+</dd>
+<dt><kbd>$</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-process</code>)</dt>
+<dd>
+<p>This commands displays the process buffer for the current
+repository.
+</p></dd>
+</dl>
+
+<p>Inside that buffer, the usual key bindings for navigating and showing
+sections are available.  There is one additional command.
+</p>
+<dl compact="compact">
+<dd><a name="index-k"></a>
+<a name="index-magit_002dprocess_002dkill"></a>
+</dd>
+<dt><kbd>k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-process-kill</code>)</dt>
+<dd>
+<p>This command kills the process represented by the section at point.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002ddebug"></a>User Option: <strong>magit-git-debug</strong></dt>
+<dd>
+<p>When this is non-nil then the output of all calls to git are logged
+in the process buffer.  This is useful when debugging, otherwise it
+just negatively affects performance.
+</p></dd></dl>
+
+
+
+
+</body>
+</html>

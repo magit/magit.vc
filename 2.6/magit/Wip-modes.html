@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Wip modes</title>
+
+<meta name="description" content="Magit User Manual: Wip modes">
+<meta name="keywords" content="Magit User Manual: Wip modes">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Miscellaneous.html#Miscellaneous" rel="up" title="Miscellaneous">
+<link href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files" rel="next" title="Minor mode for buffers visiting files">
+<link href="Common-commands.html#Common-commands" rel="prev" title="Common commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Wip-modes"></a>
+<div class="header">
+<p>
+Next: <a href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files" accesskey="n" rel="next">Minor mode for buffers visiting files</a>, Previous: <a href="Common-commands.html#Common-commands" accesskey="p" rel="prev">Common commands</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Wip-modes-1"></a>
+<h3 class="section">8.5 Wip modes</h3>
+
+<p>Git keeps <strong>committed</strong> changes around long enough for users to recover
+changes they have accidentally deleted.  It does so by not garbage
+collecting any committed but no longer referenced objects for a
+certain period of time, by default 30 days.
+</p>
+<p>But Git does <strong>not</strong> keep track of <strong>uncommitted</strong> changes in the working tree
+and not even the index (the staging area).  Because Magit makes it so
+convenient to modify uncommitted changes, it also makes it easy to
+shoot yourself in the foot in the process.
+</p>
+<p>For that reason Magit provides three global modes that save <strong>tracked</strong>
+files to work-in-progress references after or before certain actions.
+(Untracked files are never saved and these modes also only work after
+the first commit has been created).
+</p>
+<p>Two separate work-in-progress references are used to track the state
+of the index and of the working tree: &quot;refs/wip/index/&lt;branchref&gt;&quot; and
+&quot;refs/wip/wtree/&lt;branchref&gt;&quot;, where <code>&lt;branchref&gt;</code> is the full ref of the
+current branch, e.g. &quot;refs/heads/master&quot;.  When the <code>HEAD</code> is detached
+then &quot;HEAD&quot; is in place of <code>&lt;branchref&gt;</code>.
+</p>
+<p>Checking out another branch (or detaching <code>HEAD</code>) causes the use of
+different wip refs for subsequent changes, but the old refs are not
+deleted.
+</p>
+<p>Creating a commit and then making a change causes the wip refs to be
+recreated to fork from the new commit.  But the old commits on the wip
+refs are not lost.  They are still available from the reflog.  To make
+it easier to see when the fork point of a wip ref was changed, an
+additional commit with the message &quot;restart autosaving&quot; is created on
+it (<code>xxO</code> commits below are such boundary commits).
+</p>
+<p>Starting with
+</p>
+<pre class="verbatim">      BI0---BI1    refs/wip/index/refs/heads/master
+     /
+A---B              refs/heads/master
+     \
+      BW0---BW1    refs/wip/wtree/refs/heads/master
+</pre>
+<p>and committing the staged changes and editing and saving a file would
+result in
+</p>
+<pre class="verbatim">      BI0---BI1        refs/wip/index/refs/heads/master
+     /
+A---B---C              refs/heads/master
+     \   \
+      \   CW0---CW1    refs/wip/wtree/refs/heads/master
+       \
+        BW0---BW1      refs/wip/wtree/refs/heads/master@{2}
+</pre>
+<p>The fork-point of the index wip ref is not changed until some change
+is being staged.  Likewise just checking out a branch or creating a
+commit does not change the fork-point of the working tree wip ref.  The
+fork-points are not adjusted until there actually is a change that
+should be committed to the respective wip ref.
+</p>
+<p>To view the log for the a branch and its wip refs use the commands
+<code>magit-wip-log</code> and <code>magit-wip-log-current</code>.  You should use <code>--graph</code> when
+using these commands.  Alternatively you can use the reflog to show
+all commits that ever existed on a wip ref.  You can then recover lost
+changes from the commits shown in the log or reflog.
+</p>
+<a name="index-magit_002dwip_002dlog"></a>
+<dl>
+<dt><a name="index-magit_002dwip_002dlog-1"></a>Command: <strong>magit-wip-log</strong></dt>
+<dd>
+<p>This command shows the log for a branch and its wip refs.
+</p>
+<p>With a negative prefix argument only the worktree wip ref is shown.
+The absolute numeric value of the prefix argument controls how many
+&quot;branches&quot; of each wip ref are shown.
+</p></dd></dl>
+
+<a name="index-magit_002dwip_002dlog_002dcurrent"></a>
+<dl>
+<dt><a name="index-magit_002dwip_002dlog_002dcurrent-1"></a>Command: <strong>magit-wip-log-current</strong></dt>
+<dd>
+<p>This command shows the log for the current branch and its wip refs.
+</p>
+<p>With a negative prefix argument only the worktree wip ref is shown.
+The absolute numeric value of the prefix argument controls how many
+&quot;branches&quot; of each wip ref are shown.
+</p></dd></dl>
+
+<p>There exists a total of three global modes that save to the wip refs,
+which might seem excessive, but allows fine tuning of when exactly
+changes are being committed to the wip refs.  Enabling all modes makes
+it less likely that a change slips through the cracks.
+</p>
+<p>Setting the below variable directly does not take effect; either
+customize them or call the respective mode function.
+</p>
+<dl>
+<dt><a name="index-magit_002dwip_002dafter_002dsave_002dmode"></a>User Option: <strong>magit-wip-after-save-mode</strong></dt>
+<dd>
+<p>When this mode is enabled, then saving a buffer that visits a file
+tracked in a Git repository causes its current state to be committed
+to the working tree wip ref for the current branch.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dwip_002dafter_002dapply_002dmode"></a>User Option: <strong>magit-wip-after-apply-mode</strong></dt>
+<dd>
+<p>When this mode is enabled, then applying (i.e. staging, unstaging,
+discarding, reversing, and regularly applying) a change to a file
+tracked in a Git repository causes its current state to be committed
+to the index and/or working tree wip refs for the current branch.
+</p></dd></dl>
+
+<p>If you only ever edit files using Emacs and only ever interact with
+Git using Magit, then the above two modes should be enough to protect
+each and every change from accidental loss.  In practice nobody does
+that.  So an additional mode exists that does commit to the wip refs
+before making changes that could cause the loss of earlier changes.
+</p>
+<dl>
+<dt><a name="index-magit_002dwip_002dbefore_002dchange_002dmode"></a>User Option: <strong>magit-wip-before-change-mode</strong></dt>
+<dd>
+<p>When this mode is enabled, then certain commands commit the existing
+changes to the files they are about to make changes to.
+</p></dd></dl>
+
+<p>Note that even if you enable all three modes this won&rsquo;t give you
+perfect protection.  The most likely scenario for losing changes
+despite the use of these modes is making a change outside Emacs and
+then destroying it also outside Emacs.  In such a scenario, Magit,
+being an Emacs package, didn&rsquo;t get the opportunity to keep you from
+shooting yourself in the foot.
+</p>
+<p>When you are unsure whether Magit did commit a change to the wip refs,
+then you can explicitly request that all changes to all tracked files
+are being committed.
+</p>
+<dl compact="compact">
+<dd><a name="index-M_002dx-magit_002dwip_002dcommit"></a>
+<a name="index-magit_002dwip_002dcommit"></a>
+</dd>
+<dt><kbd>M-x magit-wip-commit</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-wip-commit</code>)</dt>
+<dd>
+<p>This command commits all changes to all tracked files to the index
+and working tree work-in-progress refs.  Like the modes described above,
+it does not commit untracked files, but it does check all tracked
+files for changes.  Use this command when you suspect that the modes
+might have overlooked a change made outside Emacs/Magit.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dwip_002dafter_002dsave_002dlocal_002dmode_002dlighter"></a>User Option: <strong>magit-wip-after-save-local-mode-lighter</strong></dt>
+<dd>
+<p>Mode-line lighter for <code>magit-wip-after-save-local-mode</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dwip_002dafter_002dapply_002dmode_002dlighter"></a>User Option: <strong>magit-wip-after-apply-mode-lighter</strong></dt>
+<dd>
+<p>Mode-line lighter for <code>magit-wip-after-apply-mode</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dwip_002dbefore_002dchange_002dmode_002dlighter"></a>User Option: <strong>magit-wip-before-change-mode-lighter</strong></dt>
+<dd>
+<p>Mode-line lighter for <code>magit-wip-before-change-mode</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dwip_002dnamespace"></a>User Option: <strong>magit-wip-namespace</strong></dt>
+<dd>
+<p>The namespace used for work-in-progress refs.  It has to end with a
+slash.  The wip refs are named &quot;&lt;namespace&gt;index/&lt;branchref&gt;&quot; and
+&quot;&lt;namespace&gt;wtree/&lt;branchref&gt;&quot;.  When snapshots are created while
+the <code>HEAD</code> is detached then &quot;HEAD&quot; is used in place of <code>&lt;branchref&gt;</code>.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files" accesskey="n" rel="next">Minor mode for buffers visiting files</a>, Previous: <a href="Common-commands.html#Common-commands" accesskey="p" rel="prev">Common commands</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

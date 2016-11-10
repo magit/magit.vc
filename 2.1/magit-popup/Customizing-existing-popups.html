@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Taking inspiration from regular prefix commands and prefix arguments,
+this library implements a similar abstraction; a new kind of prefix
+command that is associated with a specific set of infix arguments and
+suffix commands.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit-Popup User Manual: Customizing existing popups</title>
+
+<meta name="description" content="Magit-Popup User Manual: Customizing existing popups">
+<meta name="keywords" content="Magit-Popup User Manual: Customizing existing popups">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Usage.html#Usage" rel="up" title="Usage">
+<link href="Other-options.html#Other-options" rel="next" title="Other options">
+<link href="Usage.html#Usage" rel="prev" title="Usage">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Customizing-existing-popups"></a>
+<div class="header">
+<p>
+Next: <a href="Other-options.html#Other-options" accesskey="n" rel="next">Other options</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Customizing-existing-popups-1"></a>
+<h3 class="section">2.1 Customizing existing popups</h3>
+
+<p>It is possible to define additional infix arguments and suffix
+commands to an existing popup using the following functions.
+</p>
+<dl>
+<dt><a name="index-magit_002ddefine_002dpopup_002dswitch"></a>Function: <strong>magit-define-popup-switch</strong> <em>popup key desc switch &amp;optional enable at prepend</em></dt>
+<dd>
+<p>In POPUP, define KEY as SWITCH.
+</p>
+<p>POPUP is a popup command defined using <code>magit-define-popup</code>.  SWITCH
+is a string representing an argument that takes no value.  KEY is a
+character representing the second event in the sequence of
+keystrokes used to toggle the argument.  (The first event, the
+prefix, is shared among all switches, defaults to <code>-</code>, and can be
+changed in <code>magit-popup-mode-keymap</code>).
+</p>
+<p>DESC is a string describing the purpose of the argument, it is
+displayed in the popup.
+</p>
+<p>If optional ENABLE is non-nil then the switch is on by default.
+</p>
+<p>SWITCH is inserted after all other switches already defined for
+POPUP, unless optional PREPEND is non-nil, in which case it is
+placed first.  If optional AT is non-nil then it should be the KEY
+of another switch already defined for POPUP, the argument is then
+placed before or after AT, depending on PREPEND.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddefine_002dpopup_002doption"></a>Function: <strong>magit-define-popup-option</strong> <em>popup key desc option &amp;optional reader value at prepend</em></dt>
+<dd>
+<p>In POPUP, define KEY as OPTION.
+</p>
+<p>POPUP is a popup command defined using <code>magit-define-popup</code>.  OPTION
+is a string representing an argument that takes a value.  KEY is a
+character representing the second event in the sequence of
+keystrokes used to set the argument&rsquo;s value.  (The first event, the
+prefix, is shared among all options, defaults to <code>=</code>, and can be
+changed in <code>magit-popup-mode-keymap</code>).
+</p>
+<p>DESC is a string describing the purpose of the argument, it is
+displayed in the popup.
+</p>
+<p>If optional VALUE is non-nil then the option is on by default, and
+VALUE is its default value.
+</p>
+<p>OPTION is inserted after all other options already defined for
+POPUP, unless optional PREPEND is non-nil, in which case it is
+placed first.  If optional AT is non-nil then it should be the KEY
+of another option already defined for POPUP, the argument is then
+placed before or after AT, depending on PREPEND.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002ddefine_002dpopup_002daction"></a>Function: <strong>magit-define-popup-action</strong> <em>popup key desc command &amp;optional at prepend</em></dt>
+<dd>
+<p>In POPUP, define KEY as COMMAND.
+</p>
+<p>POPUP is a popup command defined using <code>magit-define-popup</code>.  COMMAND
+can be any command but should usually consume the popup arguments in
+its <code>interactive</code> form.  KEY is a character representing the event
+used invoke the action, i.e. to interactively call the COMMAND.
+</p>
+<p>DESC is a string describing the purpose of the action, it is
+displayed in the popup.
+</p>
+<p>COMMAND is inserted after all other commands already defined for
+POPUP, unless optional PREPEND is non-nil, in which case it is
+placed first.  If optional AT is non-nil then it should be the KEY
+of another command already defined for POPUP, the command is then
+placed before or after AT, depending on PREPEND.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dchange_002dpopup_002dkey"></a>Function: <strong>magit-change-popup-key</strong> <em>popup type from to</em></dt>
+<dd>
+<p>In POPUP, bind TO to what FROM was bound to.  TYPE is one of
+<code>:action</code>, <code>:switch</code>, or <code>:option</code>.  Bind TO and unbind FROM, both are
+characters.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dremove_002dpopup_002dkey"></a>Function: <strong>magit-remove-popup-key</strong> <em>popup type key</em></dt>
+<dd>
+<p>In POPUP, remove KEY&rsquo;s binding of TYPE.  POPUP is a popup command
+defined using <code>magit-define-popup</code>.  TYPE is one of <code>:action</code>, <code>:switch</code>,
+or <code>:option</code>.  KEY is the character which is to be unbound.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Other-options.html#Other-options" accesskey="n" rel="next">Other options</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

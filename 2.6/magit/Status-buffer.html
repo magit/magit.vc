@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Status buffer</title>
+
+<meta name="description" content="Magit User Manual: Status buffer">
+<meta name="keywords" content="Magit User Manual: Status buffer">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
+<link href="Status-sections.html#Status-sections" rel="next" title="Status sections">
+<link href="Inspecting.html#Inspecting" rel="prev" title="Inspecting">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Status-buffer"></a>
+<div class="header">
+<p>
+Next: <a href="Logging.html#Logging" accesskey="n" rel="next">Logging</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Status-buffer-1"></a>
+<h3 class="section">5.1 Status buffer</h3>
+
+<p>While other Magit buffers contain e.g. one particular diff or one
+particular log, the status buffer contains the diffs for staged and
+unstaged changes, logs for unpushed and unpulled commits, lists of
+stashes and untracked files, and information related to the current
+branch.
+</p>
+<p>During certain incomplete operations &ndash; for example when a merge
+resulted in a conflict &ndash; additional information is displayed that
+helps proceeding with or aborting the operation.
+</p>
+<p>The command <code>magit-status</code> displays the status buffer belonging to the
+current repository in another window.  This command is used so often
+that it should be bound globally.  We recommend using <code>C-x g</code>:
+</p>
+<div class="lisp">
+<pre class="lisp">(global-set-key (kbd &quot;C-x g&quot;) 'magit-status)
+</pre></div>
+
+<dl compact="compact">
+<dd><a name="index-C_002dx-g"></a>
+<a name="index-magit_002dstatus"></a>
+</dd>
+<dt><kbd>C-x g</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-status</code>)</dt>
+<dd>
+<p>Show the status of the current Git repository in a buffer.
+With a prefix argument prompt for a repository to be shown.
+With two prefix arguments prompt for an arbitrary directory.
+If that directory isn&rsquo;t the root of an existing repository,
+then offer to initialize it as a new repository.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002drepository_002ddirectories"></a>User Option: <strong>magit-repository-directories</strong></dt>
+<dd>
+<p>Directories containing Git repositories.  Magit checks these
+directories for Git repositories and offers them as choices when
+<code>magit-status</code> is used with a prefix argument.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drepository_002ddirectories_002ddepth"></a>User Option: <strong>magit-repository-directories-depth</strong></dt>
+<dd>
+<p>The maximum depth to look for Git repositories.  When looking for
+a Git repository below the directories in
+<code>magit-repository-directories</code>, only descend this many levels deep.
+</p></dd></dl>
+
+<a name="index-ido_002denter_002dmagit_002dstatus"></a>
+<dl>
+<dt><a name="index-ido_002denter_002dmagit_002dstatus-1"></a>Command: <strong>ido-enter-magit-status</strong></dt>
+<dd>
+<p>From an Ido prompt used to open a file, instead drop into
+<code>magit-status</code>.  This is similar to <code>ido-magic-delete-char</code>, which,
+despite its name, usually causes a Dired buffer to be created.
+</p>
+<p>To make this command available, use something like:
+</p>
+<div class="lisp">
+<pre class="lisp">(add-hook 'ido-setup-hook
+	  (lambda ()
+	    (define-key ido-completion-map
+	      (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)))
+</pre></div>
+
+<p>Starting with Emacs 25.1 the Ido keymaps are defined just once
+instead of every time Ido is invoked, so now you can modify it
+like pretty much every other keymap:
+</p>
+<div class="lisp">
+<pre class="lisp">(define-key ido-common-completion-map
+  (kbd \&quot;C-x g\&quot;) 'ido-enter-magit-status)
+</pre></div>
+</dd></dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Status-sections.html#Status-sections" accesskey="1">Status sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Status-header-sections.html#Status-header-sections" accesskey="2">Status header sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Status-options.html#Status-options" accesskey="3">Status options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Logging.html#Logging" accesskey="n" rel="next">Logging</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1670 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the obsolete 1.2 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.2 OBSOLETE)</title>
+
+<meta name="description" content="Magit User Manual (1.2 OBSOLETE)">
+<meta name="keywords" content="Magit User Manual (1.2 OBSOLETE)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="dir.html#Top" rel="up" title="(dir)">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">Magit User Manual (1.2 OBSOLETE)</h1>
+
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Introduction-1" href="#Introduction">1 Introduction</a></li>
+  <li><a name="toc-Acknowledgments-1" href="#Acknowledgments">2 Acknowledgments</a></li>
+  <li><a name="toc-Sections-1" href="#Sections">3 Sections</a></li>
+  <li><a name="toc-Status-1" href="#Status">4 Status</a></li>
+  <li><a name="toc-Untracked-files-1" href="#Untracked-files">5 Untracked files</a></li>
+  <li><a name="toc-Staging-and-Committing-1" href="#Staging-and-Committing">6 Staging and Committing</a></li>
+  <li><a name="toc-History-1" href="#History">7 History</a></li>
+  <li><a name="toc-Reflogs-1" href="#Reflogs">8 Reflogs</a></li>
+  <li><a name="toc-Commit-Buffer-1" href="#Commit-Buffer">9 Commit Buffer</a></li>
+  <li><a name="toc-Diffing-1" href="#Diffing">10 Diffing</a></li>
+  <li><a name="toc-Tagging-1" href="#Tagging">11 Tagging</a></li>
+  <li><a name="toc-Resetting-1" href="#Resetting">12 Resetting</a></li>
+  <li><a name="toc-Stashing-1" href="#Stashing">13 Stashing</a></li>
+  <li><a name="toc-Branching-1" href="#Branching">14 Branching</a></li>
+  <li><a name="toc-The-Branch-Manager-1" href="#The-Branch-Manager">15 The Branch Manager</a></li>
+  <li><a name="toc-Wazzup-1" href="#Wazzup">16 Wazzup</a></li>
+  <li><a name="toc-Merging-1" href="#Merging">17 Merging</a></li>
+  <li><a name="toc-Rebasing-1" href="#Rebasing">18 Rebasing</a></li>
+  <li><a name="toc-Interactive-Rebasing-1" href="#Interactive-Rebasing">19 Interactive Rebasing</a></li>
+  <li><a name="toc-Rewriting-1" href="#Rewriting">20 Rewriting</a></li>
+  <li><a name="toc-Pushing-and-Pulling-1" href="#Pushing-and-Pulling">21 Pushing and Pulling</a></li>
+  <li><a name="toc-Submodules-1" href="#Submodules">22 Submodules</a></li>
+  <li><a name="toc-Bisecting-1" href="#Bisecting">23 Bisecting</a></li>
+  <li><a name="toc-Magit-Extensions" href="#Using-Magit-Extensions">24 Magit Extensions</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Activating-extensions-1" href="#Activating-extensions">24.1 Activating extensions</a></li>
+    <li><a name="toc-Interfacing-with-Subversion-1" href="#Interfacing-with-Subversion">24.2 Interfacing with Subversion</a></li>
+    <li><a name="toc-Interfacing-with-Topgit-1" href="#Interfacing-with-Topgit">24.3 Interfacing with Topgit</a></li>
+    <li><a name="toc-Interfacing-with-StGit-1" href="#Interfacing-with-StGit">24.4 Interfacing with StGit</a></li>
+    <li><a name="toc-Developing-Extensions-1" href="#Developing-Extensions">24.5 Developing Extensions</a></li>
+  </ul></li>
+  <li><a name="toc-Using-Git-Directly-1" href="#Using-Git-Directly">25 Using Git Directly</a></li>
+  <li><a name="toc-Customization-1" href="#Customization">26 Customization</a></li>
+  <li><a name="toc-Frequently-Asked-Questions-1" href="#Frequently-Asked-Questions">27 Frequently Asked Questions</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Changes" href="#FAQ-_002d-Changes">27.1 Changes</a></li>
+    <li><a name="toc-Troubleshooting" href="#FAQ-1-_002d-Troubleshooting">27.2 Troubleshooting</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Question-1_002e1" href="#FAQ-1_002d1">27.2.1 Question 1.1</a></li>
+    </ul></li>
+    <li><a name="toc-Display-issues" href="#FAQ-2-_002d-Display-issues">27.3 Display issues</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Question-2_002e1" href="#FAQ-2_002d1">27.3.1 Question 2.1</a></li>
+    </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Magit-User-Manual"></a>
+<h1 class="top">Magit User Manual</h1>
+<p>Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+</p>
+<p>Unlike Emacs&rsquo;s native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+</p>
+<p>You are looking at the manual for the obsolete <code>1.2</code> series.
+</p>
+<blockquote>
+<p>Copyright &copy; 2008-2015 The Magit Project Developers
+</p>
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.
+</p></blockquote>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Introduction" accesskey="1">Introduction</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Acknowledgments" accesskey="2">Acknowledgments</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Sections" accesskey="3">Sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Status" accesskey="4">Status</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Untracked-files" accesskey="5">Untracked files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Staging-and-Committing" accesskey="6">Staging and Committing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#History" accesskey="7">History</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Reflogs" accesskey="8">Reflogs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Commit-Buffer" accesskey="9">Commit Buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Diffing">Diffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Tagging">Tagging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Resetting">Resetting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Stashing">Stashing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Branching">Branching</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-Branch-Manager">The Branch Manager</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Wazzup">Wazzup</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Merging">Merging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Rebasing">Rebasing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interactive-Rebasing">Interactive Rebasing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Rewriting">Rewriting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Pushing-and-Pulling">Pushing and Pulling</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Submodules">Submodules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Bisecting">Bisecting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Using-Magit-Extensions">Using Magit Extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Using-Git-Directly">Using Git Directly</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Customization">Customization</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Frequently-Asked-Questions">Frequently Asked Questions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Introduction"></a>
+<div class="header">
+<p>
+Next: <a href="#Acknowledgments" accesskey="n" rel="next">Acknowledgments</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Introduction-1"></a>
+<h2 class="chapter">1 Introduction</h2>
+
+<p>With Magit, you can inspect and modify your Git repositories with
+Emacs.  You can review and commit the changes you have made to the
+tracked files, for example, and you can browse the history of past
+changes.  There is support for cherry picking, reverting, merging,
+rebasing, and other common Git operations.
+</p>
+<p>Magit is not a complete interface to Git; it just aims to make the
+most common Git operations convenient.  Thus, Magit will likely not
+save you from learning Git itself.
+</p>
+<p>This manual provides a tour of all Magit features.  It does not give an
+introduction to version control in general, or to Git in particular.
+</p>
+<p>The main entry point to Magit is <kbd>M-x magit-status</kbd>, which will
+put you in Magit&rsquo;s status buffer.  You will be using it frequently, so
+it is probably a good idea to bind <code>magit-status</code> to a key of
+your choice.
+</p>
+<p>In addition to the status buffer, Magit will also create buffers that
+show lists of commits, buffers with diffs, and other kinds of buffers.
+All these buffers are in <code>magit-mode</code> and have the same key
+bindings.  Not all commands make sense in all contexts, but a given
+key will always do the same thing in all Magit buffers.
+</p>
+<p>Naturally, Magit runs the <code>git</code> command to do most of the work.
+The <code>*magit-process*</code> buffer contains the transcript of the most
+recent command.  You can switch to it with <kbd>$</kbd>.
+</p>
+<hr>
+<a name="Acknowledgments"></a>
+<div class="header">
+<p>
+Next: <a href="#Sections" accesskey="n" rel="next">Sections</a>, Previous: <a href="#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Acknowledgments-1"></a>
+<h2 class="chapter">2 Acknowledgments</h2>
+
+<p>Marius Vollmer started the whole project.  Thanks !
+</p>
+<p>From day one of the first Magit announcement, John Wiegley has
+contributed numerous fixes, UI improvements, and new features.
+Thanks!
+</p>
+<p>Linh Dang and Christian Neukirchen also contributed from day one.
+Thanks!
+</p>
+<p>Phil Hagelberg joined a few days later.  Thanks!
+</p>
+<p>Alex Ott contributed support for git svn.  Thanks!
+</p>
+<p>Marcin Bachry contributed bug fixes and support for decorated logs.
+Thanks!
+</p>
+<p>Alexey Voinov fixed bugs.  Thanks!
+</p>
+<p>Rémi Vanicat helped with Tramp support.  Thanks!
+</p>
+<hr>
+<a name="Sections"></a>
+<div class="header">
+<p>
+Next: <a href="#Status" accesskey="n" rel="next">Status</a>, Previous: <a href="#Acknowledgments" accesskey="p" rel="prev">Acknowledgments</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Sections-1"></a>
+<h2 class="chapter">3 Sections</h2>
+
+<p>All Magit buffers are structured into nested &rsquo;sections&rsquo;.  These
+sections can be hidden and shown individually.  When a section is
+hidden, only its first line is shown and all its children are
+completely invisible.
+</p>
+<p>The most fine-grained way to control the visibility of sections is the
+<kbd>TAB</kbd> key.  It will to toggle the current section (the section
+that contains point) between being hidden and being shown.
+</p>
+<p>Typing <kbd>S-TAB</kbd> toggles the visibility of the children of the
+current section.  When all of them are shown, they will all be hidden.
+Otherwise, when some or all are hidden, they will all be shown.
+</p>
+<p>The digit keys <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd>, and <kbd>4</kbd> control the
+visibility of sections based on levels.  Hitting <kbd>2</kbd>, for example,
+will show sections on levels one and two, and will hide sections on
+level 3.  However, only sections that are a parent or child of the
+current section are affected.
+</p>
+<p>For example, when the current section is on level 3 and you hit
+<kbd>1</kbd>, the grand-parent of the current section (which is on level
+one) will be shown, and the parent of the current section (level 2)
+will be hidden.  The visibility of no other section will be changed.
+</p>
+<p>This sounds a bit complicated, but you&rsquo;ll figure it out.
+</p>
+<p>Using <kbd>M-1</kbd>, <kbd>M-2</kbd>, <kbd>M-3</kbd>, and <kbd>M-4</kbd> is similar to the
+unmodified digits, but now all sections on the respective level are
+affected, regardless of whether or not they are related to the current
+section.
+</p>
+<p>For example, <kbd>M-1</kbd> will only show the first lines of the top-level
+sections and will hide everything else.  Typing <kbd>M-4</kbd> on the other
+hand will show everything.
+</p>
+<p>Because of the way the status buffer is set up, some changes to
+section visibility are more common than others.  Files are on level 2
+and diff hunks are on level 4.  Thus, you can type <kbd>2</kbd> to collapse
+the diff of the current file, and <kbd>M-2</kbd> to collapse all files.
+This returns the status buffer to its default setup and is a quick way
+to unclutter it after drilling down into the modified files.
+</p>
+<p>Because <kbd>2</kbd> and <kbd>M-2</kbd> are so common in the status buffer, they
+are bound to additional, more mnemonic keys: <kbd>M-h</kbd> (hide) and
+<kbd>M-H</kbd> (hide all).  Likewise <kbd>4</kbd> and <kbd>M-4</kbd> are also
+available as <kbd>M-s</kbd> (show) and <kbd>M-S</kbd> (show all).
+</p>
+<p>In other buffers than the status buffer, <kbd>M-h</kbd>, <kbd>M-H</kbd>,
+<kbd>M-s</kbd>, and <kbd>M-S</kbd> might work on different levels than on 2 and
+4, but they keep their general meaning: <kbd>M-H</kbd> hides all detail,
+and <kbd>M-S</kbd> shows everything.
+</p>
+<hr>
+<a name="Status"></a>
+<div class="header">
+<p>
+Next: <a href="#Untracked-files" accesskey="n" rel="next">Untracked files</a>, Previous: <a href="#Sections" accesskey="p" rel="prev">Sections</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Status-1"></a>
+<h2 class="chapter">4 Status</h2>
+
+<p>Running <kbd>M-x magit-status</kbd> displays the main interface of Magit,
+the status buffer.  You can have multiple status buffers active at the
+same time, each associated with its own Git repository.
+</p>
+<p>When invoking <kbd>M-x magit-status</kbd> from within a Git repository, it
+will switch to the status buffer of that repository.  Otherwise, it
+will prompt for a directory.  With a prefix argument, it will always
+prompt.
+</p>
+<p>You can set <code>magit-repo-dirs</code> to customize how
+<code>magit-status</code> asks for the repository to work on.  When
+<code>magit-repo-dirs</code> is nil, <code>magit-status</code> will simply ask for
+a directory.
+</p>
+<p>If you specify a directory that is not a Git repository, <kbd>M-x
+magit-status</kbd> will offer to initialize it as one.
+</p>
+<p>When <code>magit-repo-dirs</code> is not nil, it is treated as a list of
+directory names, and <code>magit-status</code> will find all Git
+repositories in those directories and offer them for completion.
+(Magit will only look <code>magit-repo-dirs-depth</code> levels deep,
+however.)
+</p>
+<p>With two prefix arguments, <code>magit-status</code> will always prompt for
+a raw directory.
+</p>
+<p>Thus, you would normally set <code>magit-repo-dirs</code> to the places
+where you keep most of your Git repositories and switch between them
+with <kbd>C-u M-x magit-status</kbd>.  If you want to go to a repository
+outside of your normal working areas, or if you want to create a new
+repository, you would use <kbd>C-u C-u M-x magit-status</kbd>.
+</p>
+<p>You need to explicitly refresh the status buffer when you have made
+changes to the repository from outside of Emacs.  You can type <kbd>g</kbd>
+in the status buffer itself, or just use <kbd>M-x magit-status</kbd>
+instead of <kbd>C-x b</kbd> when switching to it.  You also need to refresh
+the status buffer in this way after saving a file in Emacs.
+</p>
+<p>The header at the top of the status buffer shows a short summary of
+the repository state: where it is located, which branch is checked
+out, etc.  Below the header are a number of sections that show details
+about the working tree and the staging area.  You can hide and show
+them as described in the previous section.
+</p>
+<p>The first section shows <em>Untracked files</em>, if there are any.  See
+<a href="#Untracked-files">Untracked files</a> for more details.
+</p>
+<p>The next two sections show your local changes.  They are explained
+fully in the next chapter, <a href="#Staging-and-Committing">Staging and Committing</a>.
+</p>
+<p>If the current branch is associated with a remote tracking branch, the
+status buffer shows the differences between the current branch and the
+tracking branch.  See <a href="#Pushing-and-Pulling">Pushing and Pulling</a> for more information.
+</p>
+<p>During a history rewriting session, the status buffer shows the
+<em>Pending changes</em> and <em>Pending commits</em> sections.  See
+<a href="#Rewriting">Rewriting</a> for more details.
+</p>
+<hr>
+<a name="Untracked-files"></a>
+<div class="header">
+<p>
+Next: <a href="#Staging-and-Committing" accesskey="n" rel="next">Staging and Committing</a>, Previous: <a href="#Status" accesskey="p" rel="prev">Status</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Untracked-files-1"></a>
+<h2 class="chapter">5 Untracked files</h2>
+
+<p>Untracked files are shown in the <em>Untracked files</em> section.
+</p>
+<p>You can add an untracked file to the staging area with <kbd>s</kbd>.  If
+point is on the <em>Untracked files</em> section title when you hit
+<kbd>s</kbd>, all untracked files are staged.
+</p>
+<p>Typing <kbd>C-u S</kbd> anywhere will also stage all untracked files,
+together with all changes to the tracked files.
+</p>
+<p>You can instruct Git to ignore them by typing <kbd>i</kbd>.  This will add
+the filename to the <code>.gitignore</code> file.  Typing <kbd>C-u i</kbd> will ask
+you for the name of the file to ignore.  This is useful to ignore whole
+directories, for example.  In this case, the minibuffer&rsquo;s future history
+(accessible with <kbd>M-n</kbd>) contains predefined values (such as
+wildcards) that might be of interest. If prefix argument is negative
+(for example after typing <kbd>C-- i</kbd>), the prompt proposes wildcard by
+default.  The <kbd>I</kbd> command is similar to <kbd>i</kbd> but will add the
+file to <code>.git/info/exclude</code> instead.
+</p>
+<p>To delete an untracked file forever, use <kbd>k</kbd>.  If point is on the
+<em>Untracked files</em> section title when you hit <kbd>k</kbd>, all
+untracked files are deleted.
+</p>
+<hr>
+<a name="Staging-and-Committing"></a>
+<div class="header">
+<p>
+Next: <a href="#History" accesskey="n" rel="next">History</a>, Previous: <a href="#Untracked-files" accesskey="p" rel="prev">Untracked files</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Staging-and-Committing-1"></a>
+<h2 class="chapter">6 Staging and Committing</h2>
+
+<p>Comitting with Git is a two step process: first you add the changes
+you want to commit to a &rsquo;staging area&rsquo;, and then you commit them to
+the repository.  This allows you to only commit a subset of your local
+changes.
+</p>
+<p>Magit allows you to ignore the staging area if you wish.  As long as
+your staging area is unused, Magit will show your uncomitted changes
+in a section named <em>Changes</em>.
+</p>
+<p>When the staging area is in use, Magit uses two sections:
+<em>Unstaged changes</em> and <em>Staged changes</em>.  The <em>Staged
+changes</em> section shows the changes that will be included in the next
+commit, while the <em>Unstaged changes</em> section shows the changes
+that will be left out.
+</p>
+<p>To move an unstaged hunk into the staging area, move point into the
+hunk and type <kbd>s</kbd>.  Likewise, to unstage a hunk, move point into
+it and type <kbd>u</kbd>.  If point is in a diff header when you type
+<kbd>s</kbd> or <kbd>u</kbd>, all hunks belonging to that diff are moved at the
+same time.
+</p>
+<p>If the region is active when you type <kbd>s</kbd> or <kbd>u</kbd>, only the
+changes in the region are staged or unstaged.  (This works line by
+line: if the beginning of a line is in the region it is included in
+the changes, otherwise it is not.)
+</p>
+<p>To change the size of the hunks, you can type <kbd>+</kbd> or <kbd>-</kbd> to
+increase and decrease, respectively.  Typing <kbd>0</kbd> will
+reset the hunk size to the default.
+</p>
+<p>Typing <kbd>C-u s</kbd> will ask you for a name of a file to be staged, for
+example to stage files that are hidden.
+</p>
+<p>To move all hunks of all diffs into the staging area in one go, type
+<kbd>S</kbd>.  To unstage everything, type <kbd>U</kbd>.
+</p>
+<p>Typing <kbd>C-u S</kbd> will stage all untracked files in addition to the
+changes to tracked files.
+</p>
+<p>You can discard uncommitted changes by moving point into a hunk and
+typing <kbd>k</kbd>.  The changes to discard are selected as with <kbd>s</kbd>
+and <kbd>u</kbd>.
+</p>
+<p>Before committing, you should write a short description of the
+changes.
+</p>
+<p>Type <kbd>c</kbd> to pop up a buffer where you can write your change
+description.  Once you are happy with the description, type <kbd>C-c
+C-c</kbd> in that buffer to perform the commit.
+</p>
+<p>If you want to write changes in a <samp>ChangeLog</samp> file, you can use
+<kbd>C-x 4 a</kbd> on a diff hunk.
+</p>
+<p>Typing <kbd>c</kbd> when the staging area is unused is a special situation.
+Normally, the next commit would be empty, but you can configure Magit
+to do something more useful by customizing the
+<code>magit-commit-all-when-nothing-staged</code> variable.  One choice is
+to instruct the subsequent <kbd>C-c C-c</kbd> to commit all changes.
+Another choice is stage everything at the time of hitting <kbd>c</kbd>.
+</p>
+<p>You can type <kbd>C-c C-a</kbd> in the buffer with the change description
+to toggle a flag that determines whether the next commit will
+<em>amend</em> the current commit in HEAD.
+</p>
+<p>Typing <kbd>C-c C-s</kbd> will toggle the <code>--signoff</code> option.  The
+default is determined by the <code>magit-commit-signoff</code> customization
+variable.
+</p>
+<p>Typing <kbd>C-c C-e</kbd> will toggle the <code>--allow-empty</code> option.  This
+allows you to make commits that serve as notes, without including any
+changes.
+</p>
+<p>Typing <kbd>C-c C-t</kbd> will toggle the option to specify the name and
+email address for the commit&rsquo;s author.  The default is determined by
+the <code>user.name</code> and <code>user.email</code> git configuration settings.
+</p>
+<p>If you change your mind and don&rsquo;t want to go ahead with your commit
+while you are in the <code>*magit-log-edit*</code> buffer, you can just
+switch to another buffer, continue editing there, staging and
+unstaging things until you are happy, and then return to the
+<code>*magit-log-edit*</code> buffer, maybe via <kbd>C-x b</kbd>, or by hitting
+<kbd>c</kbd> again in a Magit buffer.
+</p>
+<p>If you want to erase the <code>*magit-log-edit*</code> buffer and bury it,
+you can hit <kbd>C-c C-k</kbd> in it.
+</p>
+<p>Typing <kbd>C</kbd> will also pop up the change description buffer, but in
+addition, it will try to insert a ChangeLog-style entry for the change
+that point is in.
+</p>
+<hr>
+<a name="History"></a>
+<div class="header">
+<p>
+Next: <a href="#Reflogs" accesskey="n" rel="next">Reflogs</a>, Previous: <a href="#Staging-and-Committing" accesskey="p" rel="prev">Staging and Committing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="History-1"></a>
+<h2 class="chapter">7 History</h2>
+
+<p>To show the repository history of your current head, type <kbd>l l</kbd>.  A
+new buffer will be shown that displays the history in a terse form.
+The first paragraph of each commit message is displayed, next to a
+representation of the relationships between commits.
+</p>
+<p>To show the repository history between two branches or between any two
+points of the history, type <kbd>l r l</kbd>.  You will be prompted to enter
+references for starting point and ending point of the history range; you
+can use auto-completion to specify them.  A typical use case for ranged
+history log display would be <kbd>l r l master RET new-feature RET</kbd> that
+will display commits on the new-feature branch that are not in master;
+these commits can then be inspected and cherry-picked, for example.
+</p>
+<p>More thorough filtering can be done by supplying <kbd>l</kbd> with one or
+more suffix arguments, as displayed in its popup.  <kbd>=g</kbd> (&rsquo;Grep&rsquo;)
+for example, limits the output to commits of which the log message
+matches a specific string/regex.
+</p>
+<p>Typing <kbd>l L</kbd> (or <kbd>l C-u L</kbd>) will show the log in a more verbose
+form.
+</p>
+<p>Magit will show only <code>magit-log-cutoff-length</code> entries. <kbd>e</kbd>
+will show twice as many entries. <kbd>C-u e</kbd> will show all entries,
+and given a numeric prefix argument, <kbd>e</kbd> will add this number of
+entries.
+</p>
+<p>You can move point to a commit and then cause various things to happen
+with it.  (The following commands work in any list of commits, such as
+the one shown in the <em>Unpushed commits</em> section.)
+</p>
+<p>Typing <kbd>RET</kbd> will pop up more information about the current commit
+and move point into the new buffer.  See <a href="#Commit-Buffer">Commit Buffer</a>.  Typing
+<kbd>SPC</kbd> and <kbd>DEL</kbd> will also show the information, but will
+scroll the new buffer up or down (respectively) when typed again.
+</p>
+<p>Typing <kbd>a</kbd> will apply the current commit to your current branch.
+This is useful when you are browsing the history of some other branch
+and you want to &lsquo;cherry-pick&rsquo; some changes from it.  A typical
+situation is applying selected bug fixes from the development version
+of a program to a release branch.  The cherry-picked changes will not
+be committed automatically; you need to do that explicitly.
+</p>
+<p>Typing <kbd>A</kbd> will cherry-pick the current commit and will also
+commit the changes automatically when there have not been any
+conflicts.
+</p>
+<p>Typing <kbd>v</kbd> will revert the current commit.  Thus, it will apply
+the changes made by that commit in reverse.  This is obviously useful
+to cleanly undo changes that turned out to be wrong.  As with <kbd>a</kbd>,
+you need to commit the changes explicitly.
+</p>
+<p>Typing <kbd>C-w</kbd> will copy the sha1 of the current commit into the
+kill ring.
+</p>
+<p>Typing <kbd>=</kbd> will show the differences from the current commit to
+the <em>marked</em> commit.
+</p>
+<p>You can mark the current commit by typing <kbd>.</kbd>.  When the current
+commit is already marked, typing <kbd>.</kbd> will unmark it.  To unmark
+the marked commit no matter where point is, use <kbd>C-u .</kbd>.
+</p>
+<p>Some commands, such as <kbd>=</kbd>, will use the current commit and the
+marked commit as implicit arguments.  Other commands will offer the
+marked commit as a default when prompting for their arguments.
+</p>
+<hr>
+<a name="Reflogs"></a>
+<div class="header">
+<p>
+Next: <a href="#Commit-Buffer" accesskey="n" rel="next">Commit Buffer</a>, Previous: <a href="#History" accesskey="p" rel="prev">History</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Reflogs-1"></a>
+<h2 class="chapter">8 Reflogs</h2>
+
+<p>You can use <kbd>l h</kbd> and <kbd>l H</kbd> to browse your <em>reflog</em>, the
+local history of changes made to your repository heads.  Typing
+<kbd>H</kbd> will ask for a head, while <kbd>l h</kbd> will show the reflog of
+<code>HEAD</code>.
+</p>
+<p>The resulting buffer is just like the buffer produced by <kbd>l l</kbd> and
+<kbd>l L</kbd> that shows the commit history.
+</p>
+<hr>
+<a name="Commit-Buffer"></a>
+<div class="header">
+<p>
+Next: <a href="#Diffing" accesskey="n" rel="next">Diffing</a>, Previous: <a href="#Reflogs" accesskey="p" rel="prev">Reflogs</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Commit-Buffer-1"></a>
+<h2 class="chapter">9 Commit Buffer</h2>
+
+<p>When you view a commit (perhaps by selecting it in the log buffer,
+<a href="#History">History</a>), the &ldquo;commit buffer&rdquo; is displayed, showing you
+information about the commit and letting you interact with it.
+</p>
+<p>By placing your cursor within the diff or hunk and typing <kbd>a</kbd>, you
+can apply the same patch to your working copy.  This is useful when
+you want to copy a change from another branch, but don&rsquo;t necessarily
+want to cherry-pick the whole commit.
+</p>
+<p>By typing <kbd>v</kbd> you can apply the patch in reverse, removing all the
+lines that were added and adding all the lines that were removed.
+This is a convenient way to remove a change after determining that it
+introduced a bug.
+</p>
+<p>If the commit message refers to any other commits in the repository by
+their unique hash, the hash will be highlighted and you will be able
+to visit the referenced commit either by clicking on it or by moving
+your cursor onto it and pressing <kbd>RET</kbd>.
+</p>
+<p>The commit buffer maintains a history of the commits it has shown.
+After visiting a referenced commit you can type <kbd>C-c C-b</kbd> to get
+back to where you came from.  To go forward in the history, type
+<kbd>C-c C-f</kbd>.  There are also <code>[back]</code> and <code>[forward]</code>
+buttons at the bottom of the buffer.
+</p>
+<hr>
+<a name="Diffing"></a>
+<div class="header">
+<p>
+Next: <a href="#Tagging" accesskey="n" rel="next">Tagging</a>, Previous: <a href="#Commit-Buffer" accesskey="p" rel="prev">Commit Buffer</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Diffing-1"></a>
+<h2 class="chapter">10 Diffing</h2>
+
+<p>Magit typically shows diffs in the &ldquo;unified&rdquo; format.
+</p>
+<p>In any buffer that shows a diff, you can type <kbd>e</kbd> anywhere within
+the diff to show the two versions of the file in Ediff.  If the diff
+is of a file in the status buffer that needs to be merged, you will be
+able to use Ediff as an interactive merge tool.  Otherwise, Ediff will
+simply show the two versions of the file.
+</p>
+<p>To show the changes from your working tree to another revision, type
+<kbd>d</kbd>.  To show the changes between two arbitrary revisions, type
+<kbd>D</kbd>.
+</p>
+<p>You can use <kbd>a</kbd> within the diff output to apply the changes to
+your working tree.  As usual when point is in a diff header for a
+file, all changes for that file are applied, and when it is in a hunk,
+only that hunk is.  When the region is active, the applied changes are
+restricted to that region.
+</p>
+<p>Typing <kbd>v</kbd> will apply the selected changes in reverse.
+</p>
+<hr>
+<a name="Tagging"></a>
+<div class="header">
+<p>
+Next: <a href="#Resetting" accesskey="n" rel="next">Resetting</a>, Previous: <a href="#Diffing" accesskey="p" rel="prev">Diffing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Tagging-1"></a>
+<h2 class="chapter">11 Tagging</h2>
+
+<p>Typing <kbd>t t</kbd> will make a lighweight tag.  Typing <kbd>t a</kbd> will
+make an annotated tag.  It will put you in the normal
+<code>*magit-log-edit</code> buffer for writing commit messages, but typing
+<kbd>C-c C-c</kbd> in it will make the tag instead.  This is controlled by
+the <code>Tag</code> field that will be added to the <code>*magit-log-edit*</code>
+buffer.  You can edit it, if you like.
+</p>
+<hr>
+<a name="Resetting"></a>
+<div class="header">
+<p>
+Next: <a href="#Stashing" accesskey="n" rel="next">Stashing</a>, Previous: <a href="#Tagging" accesskey="p" rel="prev">Tagging</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Resetting-1"></a>
+<h2 class="chapter">12 Resetting</h2>
+
+<p>Once you have added a commit to your local repository, you can not
+change that commit anymore in any way.  But you can reset your current
+head to an earlier commit and start over.
+</p>
+<p>If you have published your history already, rewriting it in this way
+can be confusing and should be avoided.  However, rewriting your local
+history is fine and it is often cleaner to fix mistakes this way than
+by reverting commits (with <kbd>v</kbd>, for example).
+</p>
+<p>Typing <kbd>x</kbd> will ask for a revision and reset your current head to
+it.  No changes will be made to your working tree and staging area.
+Thus, the <em>Staged changes</em> section in the status buffer will show
+the changes that you have removed from your commit history.  You can
+commit the changes again as if you had just made them, thus rewriting
+history.
+</p>
+<p>Typing <kbd>x</kbd> while point is in a line that describes a commit will
+offer this commit as the default revision to reset to.  Thus, you can
+move point to one of the commits in the <em>Unpushed commits</em>
+section and hit <kbd>x RET</kbd> to reset your current head to it.
+</p>
+<p>Type <kbd>X</kbd> to reset your working tree and staging area to the most
+recently committed state.  This will discard your local modifications,
+so be careful.
+</p>
+<p>You can give a prefix to <kbd>x</kbd> if you want to reset both the current
+head and your working tree to a given commit.  This is the same as
+first using an unprefixed <kbd>x</kbd> to reset only the head, and then
+using <kbd>X</kbd>.
+</p>
+<hr>
+<a name="Stashing"></a>
+<div class="header">
+<p>
+Next: <a href="#Branching" accesskey="n" rel="next">Branching</a>, Previous: <a href="#Resetting" accesskey="p" rel="prev">Resetting</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Stashing-1"></a>
+<h2 class="chapter">13 Stashing</h2>
+
+<p>You can create a new stash with <kbd>z z</kbd>.  Your stashes will be listed
+in the status buffer, and you can apply them with <kbd>a</kbd> and pop them
+with <kbd>A</kbd>.  To drop a stash, use <kbd>k</kbd>.
+</p>
+<p>With a prefix argument, both <kbd>a</kbd> and <kbd>A</kbd> will attempt to
+reinstate the index as well as the working tree from the stash.
+</p>
+<p>Typing <kbd>z -k z</kbd> will create a stash just like <kbd>z z</kbd>, but will
+leave the changes in your working tree and index. This makes it easier
+to, for example, test multiple variations of the same change.
+</p>
+<p>If you just want to make quick snapshots in between edits, you can use
+<kbd>z s</kbd>, which automatically enters a timestamp as description, and
+keeps your working tree and index intact by default.
+</p>
+<p>You can visit and show stashes in the usual way: Typing <kbd>SPC</kbd> and
+<kbd>DEL</kbd> will pop up a buffer with the description of the stash and
+scroll it, typing <kbd>RET</kbd> will move point into that buffer. Using
+<kbd>C-u RET</kbd> will move point into that buffer in other window.
+</p>
+<hr>
+<a name="Branching"></a>
+<div class="header">
+<p>
+Next: <a href="#The-Branch-Manager" accesskey="n" rel="next">The Branch Manager</a>, Previous: <a href="#Stashing" accesskey="p" rel="prev">Stashing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Branching-1"></a>
+<h2 class="chapter">14 Branching</h2>
+
+<p>The current branch is indicated in the header of the status buffer.
+You can switch to a different branch by typing <kbd>b b</kbd>.  This will
+immediately checkout the branch into your working copy, so you
+shouldn&rsquo;t have any local modifications when switching branches.
+</p>
+<p>If you try to switch to a remote branch, Magit will offer to create a
+local tracking branch for it instead.  This way, you can easily start
+working on new branches that have appeared in a remote repository.
+</p>
+<p>Typing <kbd>b b</kbd> while point is at a commit description will offer
+that commit as the default to switch to.  This will result in a
+detached head.
+</p>
+
+<p>Typing  <kbd>b m</kbd> will let you rename a branch. Unless a branch with the same
+name already exists, obviously...
+</p>
+
+<p>To create a new branch and switch to it immediately, type <kbd>b n</kbd>.
+</p>
+
+<p>To delete a branch, type <kbd>b d</kbd>. If you&rsquo;re currently on that
+branch, Magit will offer to switch to the &rsquo;master&rsquo; branch.
+</p>
+<p>Deleting a branch is only possible if it&rsquo;s already fully merged into
+HEAD or its upstream branch. Unless you type <kbd>b D</kbd>, that is.
+Here be dragons...
+</p>
+
+<p>Typing <kbd>b v</kbd> will list the local and remote branches in a new buffer
+called <code>*magit-branches*</code> from which you can work with them. See
+<a href="#The-Branch-Manager">The Branch Manager</a> for more details.
+</p>
+
+<hr>
+<a name="The-Branch-Manager"></a>
+<div class="header">
+<p>
+Next: <a href="#Wazzup" accesskey="n" rel="next">Wazzup</a>, Previous: <a href="#Branching" accesskey="p" rel="prev">Branching</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="The-Branch-Manager-1"></a>
+<h2 class="chapter">15 The Branch Manager</h2>
+
+<p>The Branch Manager is a separate buffer called <code>*magit-branches*</code>
+with its own local key map. The buffer contains both local and remote
+branches. The current local branch is marked by a &ldquo;*&rdquo; in front of
+the name.
+</p>
+<p>To check out a branch, move your cursor to the desired branch and
+press <kbd>RET</kbd>.
+</p>
+<p>Typing <kbd>k</kbd> will delete the branch in the current line, and
+<kbd>C-u k</kbd> deletes it even if it hasn&rsquo;t been merged into the current
+local branch. Deleting works for both local and remote branches.
+</p>
+<p>By typing <kbd>T</kbd> on a local branch, you can change which remote branch it&rsquo;s set to track.
+</p>
+<hr>
+<a name="Wazzup"></a>
+<div class="header">
+<p>
+Next: <a href="#Merging" accesskey="n" rel="next">Merging</a>, Previous: <a href="#The-Branch-Manager" accesskey="p" rel="prev">The Branch Manager</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Wazzup-1"></a>
+<h2 class="chapter">16 Wazzup</h2>
+
+<p>Typing <kbd>w</kbd> will show a summary of how your other branches relate
+to the current branch.
+</p>
+<p>For each branch, you will get a section that lists the commits in that
+branch that are not in the current branch.  The sections are initially
+collapsed; you need to explicitly open them with <kbd>TAB</kbd> (or
+similar) to show the lists of commits.
+</p>
+<p>When point is on a <em>N unmerged commits in ...</em> title, the
+corresponding branch will be offered as the default for a merge.
+</p>
+<p>Hitting <kbd>i</kbd> on a branch title will ignore this branch in the
+wazzup view.  You can use <kbd>C-u w</kbd> to show all branches, including
+the ignored ones.  Hitting <kbd>i</kbd> on an already ignored branch in
+that view will unignore it.
+</p>
+<hr>
+<a name="Merging"></a>
+<div class="header">
+<p>
+Next: <a href="#Rebasing" accesskey="n" rel="next">Rebasing</a>, Previous: <a href="#Wazzup" accesskey="p" rel="prev">Wazzup</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Merging-1"></a>
+<h2 class="chapter">17 Merging</h2>
+
+<p>Magit offers two ways to merge branches: manual and automatic.  A
+manual merge will apply all changes to your working tree and staging
+area, but will not commit them, while an automatic merge will go ahead
+and commit them immediately.
+</p>
+<p>Type <kbd>m m</kbd> to initiate merge.
+</p>
+<p>After initiating a merge, the header of the status buffer might remind
+you that the next commit will be a merge commit (with more than one
+parent).  If you want to abort a manual merge, just do a hard reset to
+HEAD with <kbd>X</kbd>.
+</p>
+<p>Merges can fail if the two branches you want to merge introduce
+conflicting changes.  In that case, the automatic merge stops before the
+commit, essentially falling back to a manual merge.  You need to resolve
+the conflicts for example with <kbd>e</kbd> and stage the resolved files, for
+example with <kbd>S</kbd>.
+</p>
+<p>You can not stage individual hunks one by one as you resolve them, you
+can only stage whole files once all conflicts in them have been
+resolved.
+</p>
+<hr>
+<a name="Rebasing"></a>
+<div class="header">
+<p>
+Next: <a href="#Interactive-Rebasing" accesskey="n" rel="next">Interactive Rebasing</a>, Previous: <a href="#Merging" accesskey="p" rel="prev">Merging</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Rebasing-1"></a>
+<h2 class="chapter">18 Rebasing</h2>
+
+<p>Typing <kbd>R</kbd> in the status buffer will initiate a rebase or, if one
+is already in progress, ask you how to continue.
+</p>
+<p>When a rebase is stopped in the middle because of a conflict, the
+header of the status buffer will indicate how far along you are in the
+series of commits that are being replayed.  When that happens, you
+should resolve the conflicts and stage everything and hit <kbd>R c</kbd> to
+continue the rebase.  Alternatively, hitting <kbd>c</kbd> or <kbd>C</kbd> while
+in the middle of a rebase will also ask you whether to continue the
+rebase.
+</p>
+<p>Of course, you can initiate a rebase in any number of ways, by
+configuring <code>git pull</code> to rebase instead of merge, for example.
+Such a rebase can be finished with <kbd>R</kbd> as well.
+</p>
+<hr>
+<a name="Interactive-Rebasing"></a>
+<div class="header">
+<p>
+Next: <a href="#Rewriting" accesskey="n" rel="next">Rewriting</a>, Previous: <a href="#Rebasing" accesskey="p" rel="prev">Rebasing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Interactive-Rebasing-1"></a>
+<h2 class="chapter">19 Interactive Rebasing</h2>
+
+<p>Typing <kbd>E</kbd> in the status buffer will initiate an interactive
+rebase. This is equivalent to running <code>git rebase --interactive</code>
+at the command line. The <samp>git-rebase-todo</samp> file will be opened in
+an Emacs buffer for you to edit. This file is opened using
+<code>emacsclient</code>, so just edit this file as you normally would, then
+call the <code>server-edit</code> function (typically bound to <kbd>C-x #</kbd>)
+to tell Emacs you are finished editing, and the rebase will proceed as
+usual.
+</p>
+<p>If you have loaded <samp>rebase-mode.el</samp> (which is included in the
+Magit distribution), the <samp>git-rebase-todo</samp> buffer will be in
+<code>rebase-mode</code>. This mode disables normal text editing but instead
+provides single-key commands (shown in the buffer) to perform all the
+edits that you would normally do manually, including changing the
+operation to be performed each commit (&ldquo;pick&rdquo;, &ldquo;squash&rdquo;, etc.),
+deleting (commenting out) commits from the list, and reordering
+commits. You can finish editing the buffer and proceed with the rebase
+by pressing <kbd>C-c C-c</kbd>, which is bound to <code>server-edit</code> in
+this mode, and you can abort the rebase with <kbd>C-c C-k</kbd>, just like
+when editing a commit message in Magit.
+</p>
+<hr>
+<a name="Rewriting"></a>
+<div class="header">
+<p>
+Next: <a href="#Pushing-and-Pulling" accesskey="n" rel="next">Pushing and Pulling</a>, Previous: <a href="#Interactive-Rebasing" accesskey="p" rel="prev">Interactive Rebasing</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Rewriting-1"></a>
+<h2 class="chapter">20 Rewriting</h2>
+
+<p>As hinted at earlier, you can rewrite your commit history.  For
+example, you can reset the current head to an earlier commit with
+<kbd>x</kbd>.  This leaves the working tree unchanged, and the status
+buffer will show all the changes that have been made since that new
+value of the current head.  You can commit these changes again,
+possibly splitting them into multiple commits as you go along.
+</p>
+<p>Amending your last commit is a common special case of rewriting
+history like this.
+</p>
+<p>Another common way to rewrite history is to reset the head to an
+earlier commit, and then to cherry pick the previous commits in a
+different order.  You could pick them from the reflog, for example.
+</p>
+<p>Magit has several commands that can simplify the book keeping
+associated with rewriting.  These commands all start with the <kbd>r</kbd>
+prefix key.
+</p>
+<p>Typing <kbd>r b</kbd> will start a rewrite operation.  You will be prompted
+for a <em>base</em> commit.  This commit and all subsequent commits up
+until the current head are then put in a list of <em>Pending
+commits</em>, after which the current head will be reset to the
+<em>parent</em> of the base commit.  This can be configured to behave
+like <code>git rebase</code>, i.e. exclude the selected base commit from the
+rewrite operation, with the <code>magit-rewrite-inclusive</code> variable.
+</p>
+<p>You would then typically use <kbd>a</kbd> and <kbd>A</kbd> to cherry pick
+commits from the list of pending commits in the desired order, until
+all have been applied.  Magit shows which commits have been applied by
+changing their marker from <code>*</code> to <code>.</code>.
+</p>
+<p>Using <kbd>A</kbd> will immediately commit the commit (as usual).  If you
+want to combine multiple previous commits into a single new one, use
+<kbd>a</kbd> to apply them all to your working tree, and then commit them
+together.
+</p>
+<p>Magit has no explicit support for rewriting merge commits.  It will
+happily include merge commits in the list of pending commits, but
+there is no way of replaying them automatically.  You have to redo the
+merge explicitly.
+</p>
+<p>You can also use <kbd>v</kbd> to revert a commit when you have changed your
+mind.  This will change the <code>.</code> mark back to <code>*</code>.
+</p>
+<p>Once you are done with the rewrite, type <kbd>r s</kbd> to remove the book
+keeping information from the status buffer.
+</p>
+<p>If you rather wish to start over, type <kbd>r a</kbd>.  This will abort the
+rewriting, resetting the current head back to the value it had before
+the rewrite was started with <kbd>r b</kbd>.
+</p>
+<p>Typing <kbd>r f</kbd> will <em>finish</em> the rewrite: it will apply all
+unused commits one after the other, as if you would us <kbd>A</kbd> with
+all of them.
+</p>
+<p>You can change the <kbd>*</kbd> and <kbd>.</kbd> marks of a pending commit
+explicitly with <kbd>r *</kbd> and <kbd>r .</kbd>.
+</p>
+<p>In addition to a list of pending commits, the status buffer will show
+the <em>Pending changes</em>.  This section shows the diff between the
+original head and the current head.  You can use it to review the
+changes that you still need to rewrite, and you can apply hunks from
+it, like from any other diff.
+</p>
+<hr>
+<a name="Pushing-and-Pulling"></a>
+<div class="header">
+<p>
+Next: <a href="#Submodules" accesskey="n" rel="next">Submodules</a>, Previous: <a href="#Rewriting" accesskey="p" rel="prev">Rewriting</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Pushing-and-Pulling-1"></a>
+<h2 class="chapter">21 Pushing and Pulling</h2>
+
+<p>Magit will run <code>git push</code> when you type <kbd>P P</kbd>.  If you give
+a prefix argument to <kbd>P P</kbd>, you will be prompted for the repository
+to push to.  When no default remote repository has been configured yet
+for the current branch, you will be prompted as well.  Typing <kbd>P P</kbd>
+will only push the current branch to the remote.  In other words, it
+will run <code>git push &lt;remote&gt; &lt;branch&gt;</code>.  The branch will be created
+in the remote if it doesn&rsquo;t exist already.  The local branch will be
+configured so that it pulls from the new remote branch. If you give
+a double prefix argument to <kbd>P P</kbd>, you will be prompted in addition
+for the target branch to push to.  In other words, it will run <code>git
+push &lt;remote&gt; &lt;branch&gt;:&lt;target&gt;</code>.
+</p>
+<p>Typing <kbd>f f</kbd> will run <code>git fetch</code>.  It will prompt for the name
+of the remote to update if there is no default one.  Typing <kbd>f o</kbd>
+will always prompt for the remote.  Typing <kbd>F F</kbd> will run <code>git
+pull</code>.  When you don&rsquo;t have a default branch configured to be pulled
+into the current one, you will be asked for it.
+</p>
+<p>If there is a default remote repository for the current branch, Magit
+will show that repository in the status buffer header.
+</p>
+<p>In this case, the status buffer will also have a <em>Unpushed
+commits</em> section that shows the commits on your current head that are
+not in the branch named <code>&lt;remote&gt;/&lt;branch&gt;</code>.  This section works
+just like the history buffer: you can see details about a commit with
+<kbd>RET</kbd>, compare two of them with <kbd>.</kbd> and <kbd>=</kbd>, and you can
+reset your current head to one of them with <kbd>x</kbd>, for example. If
+you want to push the changes then type <kbd>P P</kbd>.
+</p>
+<p>When the remote branch has changes that are not in the current branch,
+Magit shows them in a section called <em>Unpulled changes</em>.  Typing
+<kbd>F F</kbd> will fetch and merge them into the current branch.
+</p>
+<hr>
+<a name="Submodules"></a>
+<div class="header">
+<p>
+Next: <a href="#Bisecting" accesskey="n" rel="next">Bisecting</a>, Previous: <a href="#Pushing-and-Pulling" accesskey="p" rel="prev">Pushing and Pulling</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Submodules-1"></a>
+<h2 class="chapter">22 Submodules</h2>
+
+<dl compact="compact">
+<dt><kbd>M u</kbd></dt>
+<dd><p>Update the submodules, with a prefix argument it will initializing.
+</p>
+</dd>
+<dt><kbd>M i</kbd></dt>
+<dd><p>Initialize the submodules.
+</p>
+</dd>
+<dt><kbd>M b</kbd></dt>
+<dd><p>Update and initialize the submodules in one go.
+</p>
+</dd>
+<dt><kbd>M s</kbd></dt>
+<dd><p>Synchronizes submodules&rsquo; remote URL configuration setting to the value
+specified in .gitmodules.
+</p></dd>
+</dl>
+
+
+<hr>
+<a name="Bisecting"></a>
+<div class="header">
+<p>
+Next: <a href="#Using-Magit-Extensions" accesskey="n" rel="next">Using Magit Extensions</a>, Previous: <a href="#Submodules" accesskey="p" rel="prev">Submodules</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Bisecting-1"></a>
+<h2 class="chapter">23 Bisecting</h2>
+
+<p>Magit supports bisecting by showing how many revisions and steps are
+left to be tested in the status buffer. You can control the bisect
+session from both the status and from log buffers with the <kbd>B</kbd> key
+menu.
+</p>
+<p>Typing <kbd>B s</kbd> will start a bisect session.  You will be prompted
+for a revision that is known to be bad (defaults to <em>HEAD</em>) and
+for a revision that is known to be good (defaults to the revision at
+point if there is one). git will select a revision for you to test,
+and Magit will update its status buffer accordingly.
+</p>
+<p>You can tell git that the current revision is good with <kbd>B g</kbd>,
+that it is bad with <kbd>B b</kbd> or that git should skip it with <kbd>B
+k</kbd>. You can also tell git to go into full automatic mode by giving it
+the name of a script to run for each revision to test with <kbd>B u</kbd>.
+</p>
+<p>The current status can be shown as a log with <kbd>B l</kbd>. It contains
+the revisions that have already been tested and your decisions about
+their state.
+</p>
+<p>The revisions left to test can be visualized in gitk with <kbd>B v</kbd>.
+</p>
+<p>When you&rsquo;re finished bisecting you have to reset the session with
+<kbd>B r</kbd>.
+</p>
+
+<hr>
+<a name="Using-Magit-Extensions"></a>
+<div class="header">
+<p>
+Next: <a href="#Using-Git-Directly" accesskey="n" rel="next">Using Git Directly</a>, Previous: <a href="#Bisecting" accesskey="p" rel="prev">Bisecting</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Magit-Extensions"></a>
+<h2 class="chapter">24 Magit Extensions</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Activating-extensions" accesskey="1">Activating extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interfacing-with-Subversion" accesskey="2">Interfacing with Subversion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interfacing-with-Topgit" accesskey="3">Interfacing with Topgit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interfacing-with-StGit" accesskey="4">Interfacing with StGit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Developing-Extensions" accesskey="5">Developing Extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Activating-extensions"></a>
+<div class="header">
+<p>
+Next: <a href="#Interfacing-with-Subversion" accesskey="n" rel="next">Interfacing with Subversion</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Activating-extensions-1"></a>
+<h3 class="section">24.1 Activating extensions</h3>
+
+<p>Magit comes with a couple of shipped extensions that allow interaction
+with <code>git-svn</code>, <code>topgit</code> and <code>stgit</code>. See following
+sections for specific details on how to use them.
+</p>
+<p>Extensions can be activated globally or on a per-repository basis. Since
+those extensions are implemented as minor modes, one can use for example
+<kbd>M-x magit-topgit-mode</kbd> to toggle the <code>topgit</code> extension,
+making the corresponding section and commands (un)available.
+</p>
+<p>In order to do that automatically (and for every repository), one can
+use for example:
+</p>
+<div class="example">
+<pre class="example">(add-hook 'magit-mode-hook 'turn-on-magit-topgit)
+</pre></div>
+
+<p>Magit also allows configuring different extensions, based on the git
+repository configuration.
+</p>
+<div class="example">
+<pre class="example">(add-hook 'magit-mode-hook 'magit-load-config-extensions)
+</pre></div>
+
+<p>This will read git configuration variables and activate the
+relevant extensions.
+</p>
+<p>For example, after running the following commands, the <code>topgit</code>
+extension will be loaded for every repository, while the <code>svn</code> one
+will be loaded only for the current one.
+</p>
+<div class="example">
+<pre class="example">$ git config --global --add magit.extension topgit
+$ git config --add magit.extension svn
+</pre></div>
+
+<p>Note the <code>--add</code> flag, which means that each extension gets its own
+line in the <code>config</code> file.
+</p>
+<hr>
+<a name="Interfacing-with-Subversion"></a>
+<div class="header">
+<p>
+Next: <a href="#Interfacing-with-Topgit" accesskey="n" rel="next">Interfacing with Topgit</a>, Previous: <a href="#Activating-extensions" accesskey="p" rel="prev">Activating extensions</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Interfacing-with-Subversion-1"></a>
+<h3 class="section">24.2 Interfacing with Subversion</h3>
+
+<p>Typing <kbd>N r</kbd> runs <code>git svn rebase</code>, typing <kbd>N c</kbd> runs
+<code>git svn dcommit</code> and typing <kbd>N f</kbd> runs <code>git svn fetch</code>.
+</p>
+<p><kbd>N s</kbd> will prompt you for a (numeric, Subversion) revision and
+then search for a corresponding Git sha1 for the commit. This is
+limited to the path of the remote Subversion repository. With a prefix
+(<kbd>C-u N s</kbd> the user will also be prompted for a branch to search
+in.
+</p>
+<hr>
+<a name="Interfacing-with-Topgit"></a>
+<div class="header">
+<p>
+Next: <a href="#Interfacing-with-StGit" accesskey="n" rel="next">Interfacing with StGit</a>, Previous: <a href="#Interfacing-with-Subversion" accesskey="p" rel="prev">Interfacing with Subversion</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Interfacing-with-Topgit-1"></a>
+<h3 class="section">24.3 Interfacing with Topgit</h3>
+
+<p>Topgit (http://repo.or.cz/r/topgit.git) is a patch queue manager that
+aims at being close as possible to raw Git, which makes it easy to use
+with Magit. In particular, it does not require to use a different set of
+commands for &ldquo;commit&rdquo;, &ldquo;update&rdquo;,… operations.
+</p>
+<p><samp>magit-topgit.el</samp> provides basic integration with Magit, mostly by
+providing a &ldquo;Topics&rdquo; section.
+</p>
+<p>Topgit branches can be created the regular way, by using a &ldquo;t/&rdquo; prefix
+by convention. So, creating a &ldquo;t/foo&rdquo; branch will actually populate
+the &ldquo;Topics&rdquo; section with one more branch after committing
+<samp>.topdeps</samp> and <samp>.topmsg</samp>.
+</p>
+<p>Also, the way we pull (see <a href="#Pushing-and-Pulling">Pushing and Pulling</a>) such a branch is
+slightly different, since it requires updating the various dependencies
+of that branch. This should be mostly transparent, except in case
+of conflicts.
+</p>
+<hr>
+<a name="Interfacing-with-StGit"></a>
+<div class="header">
+<p>
+Next: <a href="#Developing-Extensions" accesskey="n" rel="next">Developing Extensions</a>, Previous: <a href="#Interfacing-with-Topgit" accesskey="p" rel="prev">Interfacing with Topgit</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Interfacing-with-StGit-1"></a>
+<h3 class="section">24.4 Interfacing with StGit</h3>
+
+<p>StGit (http://www.procode.org/stgit) is a Python application providing
+similar functionality to Quilt (i.e. pushing/popping patches to/from a
+stack) on top of Git. These operations are performed using Git commands
+and the patches are stored as Git commit objects, allowing easy merging
+of the StGit patches into other repositories using standard Git
+functionality.
+</p>
+<p><samp>magit-stgit.el</samp> provides basic integration with Magit, mostly by
+providing a &ldquo;Series&rdquo; section, whose patches can be seen as regular
+commits through the &ldquo;visit&rdquo; action.
+</p>
+<p>You can change the current patch in a series with the &ldquo;apply&rdquo; action,
+as well as you can delete them using the &ldquo;discard&rdquo; action.
+</p>
+<p>Additionally, the <code>magit-stgit-refresh</code> and
+<code>magit-stgit-rebase</code> commands let you perform the respective StGit
+operations.
+</p>
+<hr>
+<a name="Developing-Extensions"></a>
+<div class="header">
+<p>
+Previous: <a href="#Interfacing-with-StGit" accesskey="p" rel="prev">Interfacing with StGit</a>, Up: <a href="#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Developing-Extensions-1"></a>
+<h3 class="section">24.5 Developing Extensions</h3>
+
+<p>Magit provides a generic mechanism to allow cooperation with Git-related
+systems, such as foreign VCS, patch systems,…
+</p>
+<p>In particular it allows to:
+</p>
+<ul>
+<li> Define sections to display specific informations about the current state
+of the repository, and place them relatively to existing sections.
+
+<p><code>magit-define-inserter</code> automagically defines two hooks called
+<code>magit-before-insert-SECTION-hook</code> and
+<code>magit-after-insert-SECTION-hook</code> that allow to generate and place
+more sections.
+</p>
+<p>In the following example, we use the builtin &ldquo;stashes&rdquo; section to
+place our own &ldquo;foo&rdquo; one.
+</p>
+<div class="example">
+<pre class="example">(magit-define-inserter foo ()
+  (magit-git-section 'foo
+                     &quot;Foo:&quot; 'foo-wash-function
+                     &quot;foo&quot; &quot;arg1&quot; &quot;arg2&quot;))
+(add-hook 'magit-after-insert-stashes-hook 'magit-insert-foo)
+</pre></div>
+
+</li><li> Define new types of objects in those sections.
+
+<p>The function <code>foo-wash-function</code> defined above post-processes each
+line of the output of the &ldquo;git foo arg1 arg2&rdquo; command, and is able to
+associate a type to certain lines.
+</p>
+<p>A simple implementation could be:
+</p>
+<div class="example">
+<pre class="example">(defun foo-wash-function ()
+  (let ((foo (buffer-substring (line-beginning-position) (line-end-position))))
+    (goto-char (line-beginning-position))
+    (magit-with-section foo 'foo
+      (magit-set-section-info foo)
+      (forward-line))))
+</pre></div>
+
+<p>In this case, every line of the command output is transformed into an
+object of type <code>'foo</code>.
+</p>
+</li><li> Alter behavior of generic commands to dispatch them correctly to the
+relevant system, optionally making use of the newly defined types.
+
+<div class="example">
+<pre class="example">(magit-add-action (item info &quot;discard&quot;)
+  ((foo)
+   (do-something-meaningful-for-discarding-a-foo)))
+</pre></div>
+
+<p>This will alter the behavior of <kbd>k</kbd>, when applied to those objects.
+</p>
+</li><li> Plug a different logic into basic commands, to reflect the presence of
+the extension.
+
+<p><code>magit-define-command</code> automagically defines
+a <code>magit-CMD-command-hook</code> that can contain a list of functions to
+call before the actual core code. Execution stops after the first hook
+that returns a non-nil value. This leaves room for extension logic.
+</p>
+<div class="example">
+<pre class="example">(add-hook 'magit-create-branch-command-hook 'foo-create-branch)
+</pre></div>
+
+<p>The function <code>foo-create-branch</code> will be called each time an
+attempt is made to create a branch, and can, for example, react to
+a certain name convention.
+</p>
+</li><li> Define new commands and associated menu.
+
+<p>This part is not really specific to extensions, except that menus take
+place in the &ldquo;Extensions&rdquo; submenu.
+</p>
+</li></ul>
+
+<p>It is suggested that Magit extensions authors stick to the convention of
+making extensions minor modes. This has many advantages, including the
+fact that users are able to toggle extensions, and that it&rsquo;s easy to
+configure a specific set of extensions for a given repository.
+</p>
+<p>Shipped extensions can serve as an example of how to develop
+new extensions.
+</p>
+<p>Basically a <code>foo</code> extension should provide a <code>magit-foo-mode</code>
+minor mode, as well as a <code>turn-on-magit-foo</code> function.  The main
+task of the minor mode is to register/unregister the various hooks that
+the extension requires. The registered actions on the other hand can be
+left alone and activated globally, since they can be run only on
+displayed items, which won&rsquo;t happen when the minor mode is off.
+</p>
+<p>Don&rsquo;t forget to call <code>magit-refresh</code> when the minor mode is toggled
+interactively, so that the relevant sections can be shown or hidden.
+</p>
+<hr>
+<a name="Using-Git-Directly"></a>
+<div class="header">
+<p>
+Next: <a href="#Customization" accesskey="n" rel="next">Customization</a>, Previous: <a href="#Using-Magit-Extensions" accesskey="p" rel="prev">Using Magit Extensions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Using-Git-Directly-1"></a>
+<h2 class="chapter">25 Using Git Directly</h2>
+
+<p>For situations when Magit doesn&rsquo;t do everything you need, you can run
+raw Git commands using <kbd>:</kbd>.  This will prompt for a Git command, run
+it, and refresh the status buffer.  The output can be viewed by typing
+<kbd>$</kbd>.
+</p>
+
+<hr>
+<a name="Customization"></a>
+<div class="header">
+<p>
+Next: <a href="#Frequently-Asked-Questions" accesskey="n" rel="next">Frequently Asked Questions</a>, Previous: <a href="#Using-Git-Directly" accesskey="p" rel="prev">Using Git Directly</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Customization-1"></a>
+<h2 class="chapter">26 Customization</h2>
+
+<p>The following variables can be used to adapt Magit to your workflow:
+</p>
+<dl compact="compact">
+<dt><code>magit-git-executable</code></dt>
+<dd><p>The name of the Git executable.
+</p>
+</dd>
+<dt><code>magit-git-standard-options</code></dt>
+<dd><p>Standard options when running Git.
+</p>
+</dd>
+<dt><code>magit-repo-dirs</code></dt>
+<dd><p>Directories containing Git repositories.
+</p>
+<p>Magit will look into these directories for Git repositories and offer
+them as choices for <code>magit-status</code>.
+</p>
+</dd>
+<dt><code>magit-repo-dirs-depth</code></dt>
+<dd><p>The maximum depth to look for Git repos.
+</p>
+<p>When looking for a Git repository below the directories in
+<code>magit-repo-dirs</code>, Magit will only descend this many levels deep.
+</p>
+</dd>
+<dt><code>magit-save-some-buffers</code></dt>
+<dd><p>Non-nil means that <code>magit-status</code> will save modified buffers
+before running.  Setting this to <code>t</code> will ask which buffers to
+save, setting it to <code>'dontask</code> will save all modified buffers
+without asking.
+</p>
+</dd>
+<dt><code>magit-save-some-buffers-predicate</code></dt>
+<dd><p>Specifies a predicate function on <code>magit-save-some-buffers</code> to
+determine which unsaved buffers should be prompted for saving.
+</p>
+</dd>
+<dt><code>magit-commit-all-when-nothing-staged</code></dt>
+<dd><p>Determines what <code>magit-log-edit</code> does when nothing is staged.
+Setting this to <code>nil</code> will make it do nothing, setting it to
+<code>t</code> will arrange things so that the actual commit command will
+use the <code>--all</code> option, setting it to <code>'ask</code> will first ask
+for confirmation whether to do this, and setting it to
+<code>'ask-stage</code> will cause all changes to be staged, after a
+confirmation.
+</p>
+</dd>
+<dt><code>magit-commit-signoff</code></dt>
+<dd><p>When performing <code>git commit</code> adds <code>--signoff</code>.
+</p>
+</dd>
+<dt><code>magit-log-cutoff-length</code></dt>
+<dd><p>The maximum number of commits to show in the <code>log</code> and
+<code>whazzup</code> buffers.
+</p>
+</dd>
+<dt><code>magit-log-infinite-length</code></dt>
+<dd><p>Number of log used to show as maximum for
+<code>magit-log-cutoff-length</code>.
+</p>
+</dd>
+<dt><code>magit-log-auto-more</code></dt>
+<dd><p>Insert more log entries automatically when moving past the last entry.
+</p>
+<p>Only considered when moving past the last entry with <code>magit-goto-next-section</code>.
+</p>
+</dd>
+<dt><code>magit-process-popup-time</code></dt>
+<dd><p>Popup the process buffer if a command takes longer than this many
+seconds.
+</p>
+</dd>
+<dt><code>magit-revert-item-confirm</code></dt>
+<dd><p>Require acknowledgment before reverting an item.
+</p>
+</dd>
+<dt><code>magit-log-edit-confirm-cancellation</code></dt>
+<dd><p>Require acknowledgment before canceling the log edit buffer.
+</p>
+</dd>
+<dt><code>magit-remote-ref-format</code></dt>
+<dd><p>What format to use for autocompleting refs, in pariticular for
+remotes.
+</p>
+<p>Autocompletion is used by functions like <code>magit-checkout</code>,
+<code>magit-interactive-rebase</code> and others which offer branch name
+completion.
+</p>
+<p>The value <code>'name-then-remote</code> means remotes will be of the form
+<code>name (remote)</code>, while the value <code>'remote-slash-name</code> means
+that they&rsquo;ll be of the form <code>remote/name</code>. I.e. something that&rsquo;s
+listed as <code>remotes/upstream/next</code> by <code>git branch -l -a</code> will
+be <code>upstream/next</code>.
+</p>
+</dd>
+<dt><code>magit-process-connection-type</code></dt>
+<dd><p>Connection type used for the git process.
+</p>
+<p><code>nil</code> mean pipe, it is usually faster and more efficient, and
+work on cygwin.  <code>t</code> mean pty, it enable magit to prompt for
+passphrase when needed.
+</p>
+</dd>
+<dt><code>magit-completing-read-function</code></dt>
+<dd><p>Function to be called when requesting input from the user.
+</p>
+</dd>
+<dt><code>magit-create-branch-behaviour</code></dt>
+<dd><p>Where magit will create a new branch if not supplied a branchname or
+ref.
+</p>
+<p>The value <code>'at-head</code> means a new branch will be created at the
+tip of your current branch, while the value <code>'at-point</code> means
+magit will try to find a valid reference at point...
+</p>
+</dd>
+<dt><code>magit-status-buffer-switch-function</code></dt>
+<dd><p>Function for <code>magit-status</code> to use for switching to the status
+buffer.
+</p>
+<p>The function is given one argument, the status buffer.
+</p>
+</dd>
+<dt><code>magit-rewrite-inclusive</code></dt>
+<dd><p>Whether magit includes the selected base commit in a rewrite
+operation.
+</p>
+<p><code>t</code> means both the selected commit as well as any subsequent
+commits will be rewritten. This is magit&rsquo;s default behaviour,
+equivalent to <code>git rebase -i ${REV~1}</code>
+</p>
+<pre class="verbatim">  A'---B'---C'---D'
+  ^
+</pre>
+<p><code>nil</code> means the selected commit will be literally used as
+<code>base</code>, so only subsequent commits will be rewritten. This is
+consistent with git-rebase, equivalent to <code>git rebase -i
+${REV}</code>, yet more cumbersome to use from the status buffer.
+</p>
+<pre class="verbatim">  A---B'---C'---D'
+  ^
+</pre>
+</dd>
+<dt><code>magit-topgit-executable</code></dt>
+<dd><p>The name of the TopGit executable.
+</p>
+</dd>
+<dt><code>magit-topgit-branch-prefix</code></dt>
+<dd><p>Convention prefix for topic branch creation.
+</p>
+</dd>
+</dl>
+
+<hr>
+<a name="Frequently-Asked-Questions"></a>
+<div class="header">
+<p>
+Previous: <a href="#Customization" accesskey="p" rel="prev">Customization</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Frequently-Asked-Questions-1"></a>
+<h2 class="chapter">27 Frequently Asked Questions</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#FAQ-_002d-Changes" accesskey="1">FAQ - Changes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#FAQ-1-_002d-Troubleshooting" accesskey="2">FAQ 1 - Troubleshooting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#FAQ-2-_002d-Display-issues" accesskey="3">FAQ 2 - Display issues</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="FAQ-_002d-Changes"></a>
+<div class="header">
+<p>
+Next: <a href="#FAQ-1-_002d-Troubleshooting" accesskey="n" rel="next">FAQ 1 - Troubleshooting</a>, Up: <a href="#Frequently-Asked-Questions" accesskey="u" rel="up">Frequently Asked Questions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Changes"></a>
+<h3 class="section">27.1 Changes</h3>
+
+<ul>
+<li> v1.1: Changed the way extensions work. Previously, they were enabled
+unconditionally once the library was loaded. Now they are minor modes
+that need to be activated explicitly (potentially on a per-repository
+basis). See <a href="#Activating-extensions">Activating extensions</a>.
+
+</li></ul>
+
+<hr>
+<a name="FAQ-1-_002d-Troubleshooting"></a>
+<div class="header">
+<p>
+Next: <a href="#FAQ-2-_002d-Display-issues" accesskey="n" rel="next">FAQ 2 - Display issues</a>, Previous: <a href="#FAQ-_002d-Changes" accesskey="p" rel="prev">FAQ - Changes</a>, Up: <a href="#Frequently-Asked-Questions" accesskey="u" rel="up">Frequently Asked Questions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Troubleshooting"></a>
+<h3 class="section">27.2 Troubleshooting</h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#FAQ-1_002d1" accesskey="1">FAQ 1-1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How do I get raw error messages from git?
+</td></tr>
+</table>
+
+<hr>
+<a name="FAQ-1_002d1"></a>
+<div class="header">
+<p>
+Up: <a href="#FAQ-1-_002d-Troubleshooting" accesskey="u" rel="up">FAQ 1 - Troubleshooting</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Question-1_002e1"></a>
+<h4 class="subsection">27.2.1 Question 1.1</h4>
+
+<p>How do I get raw error messages from git?
+</p>
+<a name="Answer"></a>
+<h4 class="subsubheading">Answer</h4>
+
+<p>If a command goes wrong, you can hit <kbd>$</kbd> to access the git process
+buffer. There, the entire trace for the latest operation is available.
+</p>
+<hr>
+<a name="FAQ-2-_002d-Display-issues"></a>
+<div class="header">
+<p>
+Previous: <a href="#FAQ-1-_002d-Troubleshooting" accesskey="p" rel="prev">FAQ 1 - Troubleshooting</a>, Up: <a href="#Frequently-Asked-Questions" accesskey="u" rel="up">Frequently Asked Questions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Display-issues"></a>
+<h3 class="section">27.3 Display issues</h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#FAQ-2_002d1" accesskey="1">FAQ 2-1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How do I fix international characters display?
+</td></tr>
+</table>
+
+<hr>
+<a name="FAQ-2_002d1"></a>
+<div class="header">
+<p>
+Up: <a href="#FAQ-2-_002d-Display-issues" accesskey="u" rel="up">FAQ 2 - Display issues</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Question-2_002e1"></a>
+<h4 class="subsection">27.3.1 Question 2.1</h4>
+
+<p>How do I fix international characters display?
+</p>
+<a name="Answer-1"></a>
+<h4 class="subsubheading">Answer</h4>
+
+<p>Please make sure your Magit buffer uses a compatible coding system.
+In the particular case of file names, git itself quotes them by
+default. You can disable this with one of the following approaches:
+</p>
+<div class="example">
+<pre class="example">$ git config core.quotepath false
+</pre></div>
+
+<p>or
+</p>
+<div class="example">
+<pre class="example">(setq magit-git-standard-options (append magit-git-standard-options
+                                         '(&quot;-c&quot; &quot;core.quotepath=false&quot;)))
+</pre></div>
+
+<p>The latter might not work in old versions of git.
+</p>
+<hr>
+
+
+
+</body>
+</html>

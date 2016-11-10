@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the obsolete 1.2 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.2 OBSOLETE): Top</title>
+
+<meta name="description" content="Magit User Manual (1.2 OBSOLETE): Top">
+<meta name="keywords" content="Magit User Manual (1.2 OBSOLETE): Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="../dir/index.html" rel="up" title="(dir)">
+<link href="Introduction.html#Introduction" rel="next" title="Introduction">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">Magit User Manual (1.2 OBSOLETE)</h1>
+
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Introduction-1" href="Introduction.html#Introduction">1 Introduction</a></li>
+  <li><a name="toc-Acknowledgments-1" href="Acknowledgments.html#Acknowledgments">2 Acknowledgments</a></li>
+  <li><a name="toc-Sections-1" href="Sections.html#Sections">3 Sections</a></li>
+  <li><a name="toc-Status-1" href="Status.html#Status">4 Status</a></li>
+  <li><a name="toc-Untracked-files-1" href="Untracked-files.html#Untracked-files">5 Untracked files</a></li>
+  <li><a name="toc-Staging-and-Committing-1" href="Staging-and-Committing.html#Staging-and-Committing">6 Staging and Committing</a></li>
+  <li><a name="toc-History-1" href="History.html#History">7 History</a></li>
+  <li><a name="toc-Reflogs-1" href="Reflogs.html#Reflogs">8 Reflogs</a></li>
+  <li><a name="toc-Commit-Buffer-1" href="Commit-Buffer.html#Commit-Buffer">9 Commit Buffer</a></li>
+  <li><a name="toc-Diffing-1" href="Diffing.html#Diffing">10 Diffing</a></li>
+  <li><a name="toc-Tagging-1" href="Tagging.html#Tagging">11 Tagging</a></li>
+  <li><a name="toc-Resetting-1" href="Resetting.html#Resetting">12 Resetting</a></li>
+  <li><a name="toc-Stashing-1" href="Stashing.html#Stashing">13 Stashing</a></li>
+  <li><a name="toc-Branching-1" href="Branching.html#Branching">14 Branching</a></li>
+  <li><a name="toc-The-Branch-Manager-1" href="The-Branch-Manager.html#The-Branch-Manager">15 The Branch Manager</a></li>
+  <li><a name="toc-Wazzup-1" href="Wazzup.html#Wazzup">16 Wazzup</a></li>
+  <li><a name="toc-Merging-1" href="Merging.html#Merging">17 Merging</a></li>
+  <li><a name="toc-Rebasing-1" href="Rebasing.html#Rebasing">18 Rebasing</a></li>
+  <li><a name="toc-Interactive-Rebasing-1" href="Interactive-Rebasing.html#Interactive-Rebasing">19 Interactive Rebasing</a></li>
+  <li><a name="toc-Rewriting-1" href="Rewriting.html#Rewriting">20 Rewriting</a></li>
+  <li><a name="toc-Pushing-and-Pulling-1" href="Pushing-and-Pulling.html#Pushing-and-Pulling">21 Pushing and Pulling</a></li>
+  <li><a name="toc-Submodules-1" href="Submodules.html#Submodules">22 Submodules</a></li>
+  <li><a name="toc-Bisecting-1" href="Bisecting.html#Bisecting">23 Bisecting</a></li>
+  <li><a name="toc-Magit-Extensions" href="Using-Magit-Extensions.html#Using-Magit-Extensions">24 Magit Extensions</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Activating-extensions-1" href="Activating-extensions.html#Activating-extensions">24.1 Activating extensions</a></li>
+    <li><a name="toc-Interfacing-with-Subversion-1" href="Interfacing-with-Subversion.html#Interfacing-with-Subversion">24.2 Interfacing with Subversion</a></li>
+    <li><a name="toc-Interfacing-with-Topgit-1" href="Interfacing-with-Topgit.html#Interfacing-with-Topgit">24.3 Interfacing with Topgit</a></li>
+    <li><a name="toc-Interfacing-with-StGit-1" href="Interfacing-with-StGit.html#Interfacing-with-StGit">24.4 Interfacing with StGit</a></li>
+    <li><a name="toc-Developing-Extensions-1" href="Developing-Extensions.html#Developing-Extensions">24.5 Developing Extensions</a></li>
+  </ul></li>
+  <li><a name="toc-Using-Git-Directly-1" href="Using-Git-Directly.html#Using-Git-Directly">25 Using Git Directly</a></li>
+  <li><a name="toc-Customization-1" href="Customization.html#Customization">26 Customization</a></li>
+  <li><a name="toc-Frequently-Asked-Questions-1" href="Frequently-Asked-Questions.html#Frequently-Asked-Questions">27 Frequently Asked Questions</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Changes" href="FAQ-_002d-Changes.html#FAQ-_002d-Changes">27.1 Changes</a></li>
+    <li><a name="toc-Troubleshooting" href="FAQ-1-_002d-Troubleshooting.html#FAQ-1-_002d-Troubleshooting">27.2 Troubleshooting</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Question-1_002e1" href="FAQ-1_002d1.html#FAQ-1_002d1">27.2.1 Question 1.1</a></li>
+    </ul></li>
+    <li><a name="toc-Display-issues" href="FAQ-2-_002d-Display-issues.html#FAQ-2-_002d-Display-issues">27.3 Display issues</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Question-2_002e1" href="FAQ-2_002d1.html#FAQ-2_002d1">27.3.1 Question 2.1</a></li>
+    </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="Introduction.html#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Magit-User-Manual"></a>
+<h1 class="top">Magit User Manual</h1>
+<p>Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+</p>
+<p>Unlike Emacs&rsquo;s native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+</p>
+<p>You are looking at the manual for the obsolete <code>1.2</code> series.
+</p>
+<blockquote>
+<p>Copyright &copy; 2008-2015 The Magit Project Developers
+</p>
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.
+</p></blockquote>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Introduction.html#Introduction" accesskey="1">Introduction</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Acknowledgments.html#Acknowledgments" accesskey="2">Acknowledgments</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Sections.html#Sections" accesskey="3">Sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Status.html#Status" accesskey="4">Status</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Untracked-files.html#Untracked-files" accesskey="5">Untracked files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Staging-and-Committing.html#Staging-and-Committing" accesskey="6">Staging and Committing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="History.html#History" accesskey="7">History</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Reflogs.html#Reflogs" accesskey="8">Reflogs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Commit-Buffer.html#Commit-Buffer" accesskey="9">Commit Buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Diffing.html#Diffing">Diffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Tagging.html#Tagging">Tagging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Resetting.html#Resetting">Resetting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Stashing.html#Stashing">Stashing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Branching.html#Branching">Branching</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="The-Branch-Manager.html#The-Branch-Manager">The Branch Manager</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Wazzup.html#Wazzup">Wazzup</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Merging.html#Merging">Merging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Rebasing.html#Rebasing">Rebasing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Interactive-Rebasing.html#Interactive-Rebasing">Interactive Rebasing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Rewriting.html#Rewriting">Rewriting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Pushing-and-Pulling.html#Pushing-and-Pulling">Pushing and Pulling</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Submodules.html#Submodules">Submodules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Bisecting.html#Bisecting">Bisecting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Using-Magit-Extensions.html#Using-Magit-Extensions">Using Magit Extensions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Using-Git-Directly.html#Using-Git-Directly">Using Git Directly</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Customization.html#Customization">Customization</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Frequently-Asked-Questions.html#Frequently-Asked-Questions">Frequently Asked Questions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Introduction.html#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

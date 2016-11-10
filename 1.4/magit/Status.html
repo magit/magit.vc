@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Status</title>
+
+<meta name="description" content="Magit User Manual (1.4): Status">
+<meta name="keywords" content="Magit User Manual (1.4): Status">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Untracked-files.html#Untracked-files" rel="next" title="Untracked files">
+<link href="Sections.html#Sections" rel="prev" title="Sections">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Status"></a>
+<div class="header">
+<p>
+Next: <a href="Untracked-files.html#Untracked-files" accesskey="n" rel="next">Untracked files</a>, Previous: <a href="Sections.html#Sections" accesskey="p" rel="prev">Sections</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Status-1"></a>
+<h2 class="chapter">4 Status</h2>
+
+<p>Running <kbd>M-x magit-status</kbd> displays the main interface of Magit,
+the status buffer.  You can have multiple status buffers active at the
+same time, each associated with its own Git repository.
+</p>
+<p>When invoking <kbd>M-x magit-status</kbd> from within a Git repository, it
+will switch to the status buffer of that repository.  Otherwise, it
+will prompt for a directory.  With a prefix argument, it will always
+prompt.
+</p>
+<p>You can set <code>magit-repo-dirs</code> to customize how
+<code>magit-status</code> asks for the repository to work on.  When
+<code>magit-repo-dirs</code> is nil, <code>magit-status</code> will simply ask for
+a directory.
+</p>
+<p>If you specify a directory that is not a Git repository, <kbd>M-x
+magit-status</kbd> will offer to initialize it as one.
+</p>
+<p>When <code>magit-repo-dirs</code> is not nil, it is treated as a list of
+directory names, and <code>magit-status</code> will find all Git
+repositories in those directories and offer them for completion.
+(Magit will only look <code>magit-repo-dirs-depth</code> levels deep,
+however.)
+</p>
+<p>With two prefix arguments, <code>magit-status</code> will always prompt for
+a raw directory.
+</p>
+<p>Thus, you would normally set <code>magit-repo-dirs</code> to the places
+where you keep most of your Git repositories and switch between them
+with <kbd>C-u M-x magit-status</kbd>.  If you want to go to a repository
+outside of your normal working areas, or if you want to create a new
+repository, you would use <kbd>C-u C-u M-x magit-status</kbd>.
+</p>
+<p>You need to explicitly refresh the status buffer when you have made
+changes to the repository from outside of Emacs.  You can type <kbd>g</kbd>
+in the status buffer itself, or just use <kbd>M-x magit-status</kbd>
+instead of <kbd>C-x b</kbd> when switching to it.  You also need to refresh
+the status buffer in this way after saving a file in Emacs.
+</p>
+<p>The header at the top of the status buffer shows a short summary of
+the repository state: where it is located, which branch is checked
+out, etc.  Below the header are a number of sections that show details
+about the working tree and the staging area.  You can hide and show
+them as described in the previous section.
+</p>
+<p>The first section shows <em>Untracked files</em>, if there are any.  See
+<a href="Untracked-files.html#Untracked-files">Untracked files</a> for more details.
+</p>
+<p>The next two sections show your local changes.  They are explained
+fully in the next chapter, <a href="Staging-and-Committing.html#Staging-and-Committing">Staging and Committing</a>.
+</p>
+<p>If the current branch is associated with a remote tracking branch, the
+status buffer shows the differences between the current branch and the
+tracking branch.  See <a href="Pushing-and-Pulling.html#Pushing-and-Pulling">Pushing and Pulling</a> for more information.
+</p>
+<p>During a history rewriting session, the status buffer shows the
+<em>Pending changes</em> and <em>Pending commits</em> sections.  See
+<a href="Rewriting.html#Rewriting">Rewriting</a> for more details.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Untracked-files.html#Untracked-files" accesskey="n" rel="next">Untracked files</a>, Previous: <a href="Sections.html#Sections" accesskey="p" rel="prev">Sections</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

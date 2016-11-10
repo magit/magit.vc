@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Interfacing with StGit</title>
+
+<meta name="description" content="Magit User Manual (1.4): Interfacing with StGit">
+<meta name="keywords" content="Magit User Manual (1.4): Interfacing with StGit">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Using-Magit-Extensions.html#Using-Magit-Extensions" rel="up" title="Using Magit Extensions">
+<link href="Using-Git-Directly.html#Using-Git-Directly" rel="next" title="Using Git Directly">
+<link href="Interfacing-with-Topgit.html#Interfacing-with-Topgit" rel="prev" title="Interfacing with Topgit">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Interfacing-with-StGit"></a>
+<div class="header">
+<p>
+Previous: <a href="Interfacing-with-Topgit.html#Interfacing-with-Topgit" accesskey="p" rel="prev">Interfacing with Topgit</a>, Up: <a href="Using-Magit-Extensions.html#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Interfacing-with-StGit-1"></a>
+<h3 class="section">24.4 Interfacing with StGit</h3>
+
+<p><a href="http://www.procode.org/stgit">StGit</a> is a Python application
+providing similar functionality to Quilt (i.e. pushing/popping patches
+to/from a stack) on top of Git.  These operations are performed using
+Git commands and the patches are stored as Git commit objects,
+allowing easy merging of the StGit patches into other repositories
+using standard Git functionality.
+</p>
+<p><samp>magit-stgit.el</samp> provides basic integration with Magit, mostly by
+providing a &ldquo;Series&rdquo; section, whose patches can be seen as regular
+commits through the &ldquo;visit&rdquo; action.
+</p>
+<p>You can change the current patch in a series with the &ldquo;apply&rdquo; action,
+as well as you can delete them using the &ldquo;discard&rdquo; action.
+</p>
+<p>Additionally, the <code>magit-stgit-refresh</code> and
+<code>magit-stgit-rebase</code> commands let you perform the respective StGit
+operations.
+</p>
+
+
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the obsolete 1.2 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.2 OBSOLETE): Sections</title>
+
+<meta name="description" content="Magit User Manual (1.2 OBSOLETE): Sections">
+<meta name="keywords" content="Magit User Manual (1.2 OBSOLETE): Sections">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Status.html#Status" rel="next" title="Status">
+<link href="Acknowledgments.html#Acknowledgments" rel="prev" title="Acknowledgments">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Sections"></a>
+<div class="header">
+<p>
+Next: <a href="Status.html#Status" accesskey="n" rel="next">Status</a>, Previous: <a href="Acknowledgments.html#Acknowledgments" accesskey="p" rel="prev">Acknowledgments</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Sections-1"></a>
+<h2 class="chapter">3 Sections</h2>
+
+<p>All Magit buffers are structured into nested &rsquo;sections&rsquo;.  These
+sections can be hidden and shown individually.  When a section is
+hidden, only its first line is shown and all its children are
+completely invisible.
+</p>
+<p>The most fine-grained way to control the visibility of sections is the
+<kbd>TAB</kbd> key.  It will to toggle the current section (the section
+that contains point) between being hidden and being shown.
+</p>
+<p>Typing <kbd>S-TAB</kbd> toggles the visibility of the children of the
+current section.  When all of them are shown, they will all be hidden.
+Otherwise, when some or all are hidden, they will all be shown.
+</p>
+<p>The digit keys <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd>, and <kbd>4</kbd> control the
+visibility of sections based on levels.  Hitting <kbd>2</kbd>, for example,
+will show sections on levels one and two, and will hide sections on
+level 3.  However, only sections that are a parent or child of the
+current section are affected.
+</p>
+<p>For example, when the current section is on level 3 and you hit
+<kbd>1</kbd>, the grand-parent of the current section (which is on level
+one) will be shown, and the parent of the current section (level 2)
+will be hidden.  The visibility of no other section will be changed.
+</p>
+<p>This sounds a bit complicated, but you&rsquo;ll figure it out.
+</p>
+<p>Using <kbd>M-1</kbd>, <kbd>M-2</kbd>, <kbd>M-3</kbd>, and <kbd>M-4</kbd> is similar to the
+unmodified digits, but now all sections on the respective level are
+affected, regardless of whether or not they are related to the current
+section.
+</p>
+<p>For example, <kbd>M-1</kbd> will only show the first lines of the top-level
+sections and will hide everything else.  Typing <kbd>M-4</kbd> on the other
+hand will show everything.
+</p>
+<p>Because of the way the status buffer is set up, some changes to
+section visibility are more common than others.  Files are on level 2
+and diff hunks are on level 4.  Thus, you can type <kbd>2</kbd> to collapse
+the diff of the current file, and <kbd>M-2</kbd> to collapse all files.
+This returns the status buffer to its default setup and is a quick way
+to unclutter it after drilling down into the modified files.
+</p>
+<p>Because <kbd>2</kbd> and <kbd>M-2</kbd> are so common in the status buffer, they
+are bound to additional, more mnemonic keys: <kbd>M-h</kbd> (hide) and
+<kbd>M-H</kbd> (hide all).  Likewise <kbd>4</kbd> and <kbd>M-4</kbd> are also
+available as <kbd>M-s</kbd> (show) and <kbd>M-S</kbd> (show all).
+</p>
+<p>In other buffers than the status buffer, <kbd>M-h</kbd>, <kbd>M-H</kbd>,
+<kbd>M-s</kbd>, and <kbd>M-S</kbd> might work on different levels than on 2 and
+4, but they keep their general meaning: <kbd>M-H</kbd> hides all detail,
+and <kbd>M-S</kbd> shows everything.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Status.html#Status" accesskey="n" rel="next">Status</a>, Previous: <a href="Acknowledgments.html#Acknowledgments" accesskey="p" rel="prev">Acknowledgments</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

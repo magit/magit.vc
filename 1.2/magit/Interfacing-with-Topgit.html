@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the obsolete 1.2 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.2 OBSOLETE): Interfacing with Topgit</title>
+
+<meta name="description" content="Magit User Manual (1.2 OBSOLETE): Interfacing with Topgit">
+<meta name="keywords" content="Magit User Manual (1.2 OBSOLETE): Interfacing with Topgit">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Using-Magit-Extensions.html#Using-Magit-Extensions" rel="up" title="Using Magit Extensions">
+<link href="Interfacing-with-StGit.html#Interfacing-with-StGit" rel="next" title="Interfacing with StGit">
+<link href="Interfacing-with-Subversion.html#Interfacing-with-Subversion" rel="prev" title="Interfacing with Subversion">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Interfacing-with-Topgit"></a>
+<div class="header">
+<p>
+Next: <a href="Interfacing-with-StGit.html#Interfacing-with-StGit" accesskey="n" rel="next">Interfacing with StGit</a>, Previous: <a href="Interfacing-with-Subversion.html#Interfacing-with-Subversion" accesskey="p" rel="prev">Interfacing with Subversion</a>, Up: <a href="Using-Magit-Extensions.html#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Interfacing-with-Topgit-1"></a>
+<h3 class="section">24.3 Interfacing with Topgit</h3>
+
+<p>Topgit (http://repo.or.cz/r/topgit.git) is a patch queue manager that
+aims at being close as possible to raw Git, which makes it easy to use
+with Magit. In particular, it does not require to use a different set of
+commands for &ldquo;commit&rdquo;, &ldquo;update&rdquo;,… operations.
+</p>
+<p><samp>magit-topgit.el</samp> provides basic integration with Magit, mostly by
+providing a &ldquo;Topics&rdquo; section.
+</p>
+<p>Topgit branches can be created the regular way, by using a &ldquo;t/&rdquo; prefix
+by convention. So, creating a &ldquo;t/foo&rdquo; branch will actually populate
+the &ldquo;Topics&rdquo; section with one more branch after committing
+<samp>.topdeps</samp> and <samp>.topmsg</samp>.
+</p>
+<p>Also, the way we pull (see <a href="Pushing-and-Pulling.html#Pushing-and-Pulling">Pushing and Pulling</a>) such a branch is
+slightly different, since it requires updating the various dependencies
+of that branch. This should be mostly transparent, except in case
+of conflicts.
+</p>
+
+
+
+</body>
+</html>

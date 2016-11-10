@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Getting a value from Git</title>
+
+<meta name="description" content="Magit User Manual: Getting a value from Git">
+<meta name="keywords" content="Magit User Manual: Getting a value from Git">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Calling-Git.html#Calling-Git" rel="up" title="Calling Git">
+<link href="Calling-Git-for-effect.html#Calling-Git-for-effect" rel="next" title="Calling Git for effect">
+<link href="Calling-Git.html#Calling-Git" rel="prev" title="Calling Git">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Getting-a-value-from-Git"></a>
+<div class="header">
+<p>
+Next: <a href="Calling-Git-for-effect.html#Calling-Git-for-effect" accesskey="n" rel="next">Calling Git for effect</a>, Up: <a href="Calling-Git.html#Calling-Git" accesskey="u" rel="up">Calling Git</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Getting-a-value-from-Git-1"></a>
+<h4 class="subsection">10.1.1 Getting a value from Git</h4>
+
+<p>These functions run Git in order to get a value, either its exit
+status or its output.  Of course you could also use them to run Git
+commands that have side-effects, but that should be avoided.
+</p>
+<dl>
+<dt><a name="index-magit_002dgit_002dexit_002dcode"></a>Function: <strong>magit-git-exit-code</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and returns its exit code.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dsuccess"></a>Function: <strong>magit-git-success</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and returns <code>t</code> if the exit code is <code>0</code>, <code>nil</code>
+otherwise.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dfailure"></a>Function: <strong>magit-git-failure</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and returns <code>t</code> if the exit code is <code>1</code>, <code>nil</code>
+otherwise.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dtrue"></a>Function: <strong>magit-git-true</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and returns <code>t</code> if the first line printed by
+git is the string &quot;true&quot;, <code>nil</code> otherwise.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dfalse"></a>Function: <strong>magit-git-false</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and returns <code>t</code> if the first line printed by
+git is the string &quot;false&quot;, <code>nil</code> otherwise.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dinsert"></a>Function: <strong>magit-git-insert</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and inserts its output at point.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dstring"></a>Function: <strong>magit-git-string</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and returns the first line of its output.  If
+there is no output or if it begins with a newline character, then
+this returns <code>nil</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dlines"></a>Function: <strong>magit-git-lines</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and returns its output as a list of lines.
+Empty lines anywhere in the output are omitted.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002ditems"></a>Function: <strong>magit-git-items</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Executes git with ARGS and returns its null-separated output as a
+list.  Empty items anywhere in the output are omitted.
+</p>
+<p>If the value of option <code>magit-git-debug</code> is non-nil and git exits with
+a non-zero exit status, then warn about that in the echo area and
+add a section containing git&rsquo;s standard error in the current
+repository&rsquo;s process buffer.
+</p></dd></dl>
+
+<p>When an error occurs when using one of the above functions, then that
+is usually due to a bug, i.e. the use of an argument which is not
+actually supported.  Such errors are usually not reported, but when
+they occur we need to be able to debug them.
+</p>
+<dl>
+<dt><a name="index-magit_002dgit_002ddebug-1"></a>User Option: <strong>magit-git-debug</strong></dt>
+<dd>
+<p>Whether to report errors that occur when using <code>magit-git-insert</code>,
+<code>magit-git-string</code>, <code>magit-git-lines</code>, or <code>magit-git-items</code>.  This does
+not actually raise an error.  Instead a message is shown in the echo
+area, and git&rsquo;s standard error is insert into a new section in the
+current repository&rsquo;s process buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dstr"></a>Function: <strong>magit-git-str</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>This is a variant of <code>magit-git-string</code> that ignores the option
+<code>magit-git-debug</code>.  It is mainly intended to be used while handling
+errors in functions that do respect that option.  Using such a
+function while handing an error could cause yet another error and
+therefore lead to an infinite recursion.  You probably won&rsquo;t ever
+need to use this function.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Calling-Git-for-effect.html#Calling-Git-for-effect" accesskey="n" rel="next">Calling Git for effect</a>, Up: <a href="Calling-Git.html#Calling-Git" accesskey="u" rel="up">Calling Git</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Fetching</title>
+
+<meta name="description" content="Magit User Manual: Fetching">
+<meta name="keywords" content="Magit User Manual: Fetching">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Transferring.html#Transferring" rel="up" title="Transferring">
+<link href="Pulling.html#Pulling" rel="next" title="Pulling">
+<link href="Remotes.html#Remotes" rel="prev" title="Remotes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Fetching"></a>
+<div class="header">
+<p>
+Next: <a href="Pulling.html#Pulling" accesskey="n" rel="next">Pulling</a>, Previous: <a href="Remotes.html#Remotes" accesskey="p" rel="prev">Remotes</a>, Up: <a href="Transferring.html#Transferring" accesskey="u" rel="up">Transferring</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Fetching-1"></a>
+<h3 class="section">7.2 Fetching</h3>
+
+<p>For information about the differences between the <em>upstream</em> and the
+<em>push-remote</em>, see <a href="Branching.html#Branching">Branching</a>.
+</p>
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-fetch">git-fetch(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-f-1"></a>
+<a name="index-magit_002dfetch_002dpopup"></a>
+</dd>
+<dt><kbd>f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-f-p"></a>
+<a name="index-magit_002dfetch_002dfrom_002dpushremote"></a>
+</dd>
+<dt><kbd>f p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-from-pushremote</code>)</dt>
+<dd>
+<p>Fetch from the push-remote of the current branch.
+</p>
+<a name="index-f-u"></a>
+<a name="index-magit_002dfetch_002dfrom_002dupstream"></a>
+</dd>
+<dt><kbd>f u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-from-upstream</code>)</dt>
+<dd>
+<p>Fetch from the push-remote of the current branch.
+</p>
+<a name="index-f-e"></a>
+<a name="index-magit_002dfetch"></a>
+</dd>
+<dt><kbd>f e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch</code>)</dt>
+<dd>
+<p>Fetch from another repository.
+</p>
+<a name="index-f-a"></a>
+<a name="index-magit_002dfetch_002dall"></a>
+</dd>
+<dt><kbd>f a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-fetch-all</code>)</dt>
+<dd>
+<p>Fetch from all remotes.
+</p>
+<a name="index-f-m"></a>
+<a name="index-magit_002dsubmodule_002dfetch"></a>
+</dd>
+<dt><kbd>f m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-submodule-fetch</code>)</dt>
+<dd>
+<p>Fetch all submodules.  With a prefix argument fetch all remotes of
+all submodules.
+</p></dd>
+</dl>
+
+<p>Instead of using one popup for fetching and another for pulling, you
+could also use <code>magit-pull-and-fetch-popup</code>.  See its doc-string for
+more information.
+</p>
+
+
+
+</body>
+</html>

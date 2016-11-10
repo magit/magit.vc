@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Staging from file-visiting buffers</title>
+
+<meta name="description" content="Magit User Manual: Staging from file-visiting buffers">
+<meta name="keywords" content="Magit User Manual: Staging from file-visiting buffers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Staging-and-unstaging.html#Staging-and-unstaging" rel="up" title="Staging and unstaging">
+<link href="Applying.html#Applying" rel="next" title="Applying">
+<link href="Staging-and-unstaging.html#Staging-and-unstaging" rel="prev" title="Staging and unstaging">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Staging-from-file_002dvisiting-buffers"></a>
+<div class="header">
+<p>
+Up: <a href="Staging-and-unstaging.html#Staging-and-unstaging" accesskey="u" rel="up">Staging and unstaging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Staging-from-file_002dvisiting-buffers-1"></a>
+<h4 class="subsection">6.2.1 Staging from file-visiting buffers</h4>
+
+<p>Fine-grained un-/staging has to be done from the status or a diff
+buffer, but it&rsquo;s also possible to un-/stage all changes made to the
+file visited in the current buffer right from inside that buffer.
+</p>
+<dl compact="compact">
+<dd><a name="index-M_002dx-magit_002dstage_002dfile"></a>
+<a name="index-magit_002dstage_002dfile"></a>
+</dd>
+<dt><kbd>M-x magit-stage-file</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stage-file</code>)</dt>
+<dd>
+<p>When invoked inside a file-visiting buffer, then stage all changes
+to that file.  In a Magit buffer, stage the file at point if any.
+Otherwise prompt for a file to be staged.  With a prefix argument
+always prompt the user for a file, even in a file-visiting buffer or
+when there is a file section at point.
+</p>
+<a name="index-M_002dx-magit_002dunstage_002dfile"></a>
+<a name="index-magit_002dunstage_002dfile"></a>
+</dd>
+<dt><kbd>M-x magit-unstage-file</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-unstage-file</code>)</dt>
+<dd>
+<p>When invoked inside a file-visiting buffer, then unstage all changes
+to that file.  In a Magit buffer, unstage the file at point if any.
+Otherwise prompt for a file to be unstaged.  With a prefix argument
+always prompt the user for a file, even in a file-visiting buffer or
+when there is a file section at point.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Notes</title>
+
+<meta name="description" content="Magit User Manual: Notes">
+<meta name="keywords" content="Magit User Manual: Notes">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Miscellaneous.html#Miscellaneous" rel="up" title="Miscellaneous">
+<link href="Submodules.html#Submodules" rel="next" title="Submodules">
+<link href="Tagging.html#Tagging" rel="prev" title="Tagging">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Notes"></a>
+<div class="header">
+<p>
+Next: <a href="Submodules.html#Submodules" accesskey="n" rel="next">Submodules</a>, Previous: <a href="Tagging.html#Tagging" accesskey="p" rel="prev">Tagging</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Notes-1"></a>
+<h3 class="section">8.2 Notes</h3>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-notes">git-notes(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-T"></a>
+<a name="index-magit_002dnotes_002dpopup"></a>
+</dd>
+<dt><kbd>T</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-T-T"></a>
+<a name="index-magit_002dnotes_002dedit"></a>
+</dd>
+<dt><kbd>T T</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-edit</code>)</dt>
+<dd>
+<p>Edit the note attached to a commit, defaulting to the commit at
+point.
+</p>
+<p>By default use the value of Git variable <code>core.notesRef</code> or
+&quot;refs/notes/commits&quot; if that is undefined.
+</p>
+<a name="index-T-r"></a>
+<a name="index-magit_002dnotes_002dremove"></a>
+</dd>
+<dt><kbd>T r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-remove</code>)</dt>
+<dd>
+<p>Remove the note attached to a commit, defaulting to the commit at
+point.
+</p>
+<p>By default use the value of Git variable <code>core.notesRef</code> or
+&quot;refs/notes/commits&quot; if that is undefined.
+</p>
+<a name="index-T-p"></a>
+<a name="index-magit_002dnotes_002dprune"></a>
+</dd>
+<dt><kbd>T p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-prune</code>)</dt>
+<dd>
+<p>Remove notes about unreachable commits.
+</p>
+<a name="index-T-s"></a>
+<a name="index-magit_002dnotes_002dset_002dref"></a>
+</dd>
+<dt><kbd>T s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-set-ref</code>)</dt>
+<dd>
+<p>Set the current notes ref to a the value read from the user.  The
+ref is made current by setting the value of the Git variable
+<code>core.notesRef</code>.  With a prefix argument change the global value
+instead of the value in the current repository.  When this is
+undefined, then &quot;refs/notes/commit&quot; is used.
+</p>
+<p>Other <code>magit-notes-*</code> commands, as well as the sub-commands of Git&rsquo;s
+<code>note</code> command, default to operate on that ref.
+</p>
+<a name="index-T-S"></a>
+<a name="index-magit_002dnotes_002dset_002ddisplay_002drefs"></a>
+</dd>
+<dt><kbd>T S</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-set-display-refs</code>)</dt>
+<dd>
+<p>Set notes refs to be display in addition to &quot;core.notesRef&quot;.  This
+reads a colon separated list of notes refs from the user.  The
+values are stored in the Git variable <code>notes.displayRef</code>.  With a
+prefix argument GLOBAL change the global values instead of the
+values in the current repository.
+</p></dd>
+</dl>
+
+<p>It is possible to merge one note ref into another.  That may result in
+conflicts which have to resolved in the temporary worktree
+&quot;.git/NOTES<em>_MERGE</em><em>_WORKTREE</em>&quot;.
+</p>
+<dl compact="compact">
+<dd><a name="index-T-m"></a>
+<a name="index-magit_002dnotes_002dmerge"></a>
+</dd>
+<dt><kbd>T m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-merge</code>)</dt>
+<dd>
+<p>Merge the notes of a ref read from the user into the current notes
+ref.  The current notes ref is the value of Git variable
+<code>core.notesRef</code> or &quot;refs/notes/commits&quot; if that is undefined.
+</p></dd>
+</dl>
+
+<p>When a notes merge is in progress then the popup features the
+following suffix commands, instead of those listed above.
+</p>
+<dl compact="compact">
+<dd><a name="index-T-c"></a>
+<a name="index-magit_002dnotes_002dmerge_002dcommit"></a>
+</dd>
+<dt><kbd>T c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-merge-commit</code>)</dt>
+<dd>
+<p>Commit the current notes ref merge, after manually resolving
+conflicts.
+</p>
+<a name="index-T-a"></a>
+<a name="index-magit_002dnotes_002dmerge_002dabort"></a>
+</dd>
+<dt><kbd>T a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-notes-merge-abort</code>)</dt>
+<dd>
+<p>Abort the current notes ref merge.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Submodules.html#Submodules" accesskey="n" rel="next">Submodules</a>, Previous: <a href="Tagging.html#Tagging" accesskey="p" rel="prev">Tagging</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

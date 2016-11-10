@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: References buffer</title>
+
+<meta name="description" content="Magit User Manual: References buffer">
+<meta name="keywords" content="Magit User Manual: References buffer">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
+<link href="References-sections.html#References-sections" rel="next" title="References sections">
+<link href="Ediffing.html#Ediffing" rel="prev" title="Ediffing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="References-buffer"></a>
+<div class="header">
+<p>
+Next: <a href="Bisecting.html#Bisecting" accesskey="n" rel="next">Bisecting</a>, Previous: <a href="Ediffing.html#Ediffing" accesskey="p" rel="prev">Ediffing</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="References-buffer-1"></a>
+<h3 class="section">5.5 References buffer</h3>
+
+<dl compact="compact">
+<dd><a name="index-y"></a>
+<a name="index-magit_002dshow_002drefs_002dpopup"></a>
+</dd>
+<dt><kbd>y</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-show-refs-popup</code>)</dt>
+<dd>
+<p>List and compare references in a dedicated buffer.  By default all
+refs are compared with <code>HEAD</code>, but with a prefix argument this command
+instead acts as a prefix command and shows the following suffix
+commands along with the appropriate infix arguments in a popup
+buffer.
+</p>
+<a name="index-y-y"></a>
+<a name="index-magit_002dshow_002drefs_002dhead"></a>
+</dd>
+<dt><kbd>y y</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-show-refs-head</code>)</dt>
+<dd>
+<p>List and compare references in a dedicated buffer.  Refs are
+compared with <code>HEAD</code>.
+</p>
+<a name="index-y-c"></a>
+<a name="index-magit_002dshow_002drefs_002dcurrent"></a>
+</dd>
+<dt><kbd>y c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-show-refs-current</code>)</dt>
+<dd>
+<p>List and compare references in a dedicated buffer.  Refs are
+compared with the current branch or <code>HEAD</code> if it is detached.
+</p>
+<a name="index-y-o"></a>
+<a name="index-magit_002dshow_002drefs"></a>
+</dd>
+<dt><kbd>y o</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-show-refs</code>)</dt>
+<dd>
+<p>List and compare references in a dedicated buffer.  Refs are
+compared with a branch read from the user.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002drefs_002dshow_002dcommit_002dcount"></a>User Option: <strong>magit-refs-show-commit-count</strong></dt>
+<dd>
+<p>Whether to show commit counts in Magit-Refs mode buffers.
+</p>
+<ul>
+<li> <code>all</code> Show counts for branches and tags.
+
+</li><li> <code>branch</code> Show counts for branches only.
+
+</li><li> <code>nil</code> Never show counts.
+</li></ul>
+<p>The default is <code>nil</code> because anything else can be very expensive.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drefs_002dshow_002dmargin"></a>User Option: <strong>magit-refs-show-margin</strong></dt>
+<dd>
+<p>Whether to initially show the margin in refs buffers.
+</p>
+<p>When non-nil the committer name and date are initially displayed in
+the margin of refs buffers.  The margin can be shown or hidden in
+the current buffer using the command <code>magit-toggle-margin</code>.
+</p></dd></dl>
+
+<p>The following variables control how individual refs are displayed.  If
+you change one of these variables (especially the &quot;%c&quot; part), then you
+should also change the others to keep things aligned.  The following
+%-sequences are supported:
+</p>
+<ul>
+<li> <code>%a</code> Number of commits this ref has over the one we compare to.
+
+</li><li> <code>%b</code> Number of commits the ref we compare to has over this one.
+
+</li><li> <code>%c</code> Number of commits this ref has over the one we compare to.  For
+the ref which all other refs are compared this is instead &quot;@&quot;, if
+it is the current branch, or &quot;#&quot; otherwise.
+
+</li><li> <code>%C</code> For the ref which all other refs are compared this is &quot;@&quot;, if it
+is the current branch, or &quot;#&quot; otherwise.  For all other refs &quot; &quot;.
+
+</li><li> <code>%h</code> Hash of this ref&rsquo;s tip.
+
+</li><li> <code>%m</code> Commit summary of the tip of this ref.
+
+</li><li> <code>%n</code> Name of this ref.
+
+</li><li> <code>%u</code> Upstream of this local branch and additional local vs. upstream
+information.
+
+</li><li> <code>%U</code> Upstream of this local branch.
+
+</li></ul>
+
+<dl>
+<dt><a name="index-magit_002drefs_002dlocal_002dbranch_002dformat"></a>Variable: <strong>magit-refs-local-branch-format</strong></dt>
+<dd>
+<p>Format used for local branches in refs buffers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drefs_002dremote_002dbranch_002dformat"></a>Variable: <strong>magit-refs-remote-branch-format</strong></dt>
+<dd>
+<p>Format used for remote branches in refs buffers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drefs_002dtags_002dformat"></a>Variable: <strong>magit-refs-tags-format</strong></dt>
+<dd>
+<p>Format used for tags in refs buffers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drefs_002dindent_002dcherry_002dlines"></a>Variable: <strong>magit-refs-indent-cherry-lines</strong></dt>
+<dd>
+<p>Indentation of cherries in refs buffers.  This should be N-1 where N
+is taken from &quot;%Nc&quot; in the above format strings.
+</p></dd></dl>
+
+<p>Everywhere in Magit <code>RET</code> visits the thing represented by the section
+at point.  In almost all cases visiting is done by showing some
+information in another buffer and <strong>not</strong> doing anything else.  In refs
+buffers <code>RET</code> behaves differently, and because many users have grown
+accustomed to that inconsistency we are keeping it that way.
+</p>
+<dl compact="compact">
+<dd><a name="index-RET-1"></a>
+<a name="index-magit_002dvisit_002dref"></a>
+</dd>
+<dt><kbd>RET</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-visit-ref</code>)</dt>
+<dd>
+<p>Everywhere except in refs buffers this command behaves exactly like
+<code>magit-show-commit</code>; it shows the commit at point in another buffer.
+</p>
+<p>In refs buffers, when there is a local branch at point, then this
+command instead checks out that branch.  When there is a remote
+branch or a tag at point then the respective commit is checked out
+causing <code>HEAD</code> to be detached.
+</p>
+<p>When a prefix argument it used, then this command only <strong>focuses</strong> on
+the reference at point, i.e. the commit counts and cherries are
+updated to be relative to that reference, but nothing is checked
+out.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dvisit_002dref_002dcreate"></a>User Option: <strong>magit-visit-ref-create</strong></dt>
+<dd>
+<p>When this is non-nil and <code>magit-visit-ref</code> is called inside a refs
+buffer, then it &quot;visits&quot; the remote branch at point by creating a
+new local branch which tracks that remote branch and then checking
+out the newly created branch.
+</p>
+<p>This is not enabled by default because one has to use an extremely
+loose definition of the verb &quot;to visit&quot; to be able to argue that
+creating and then checking out a new local branch is a form of
+visiting a remote branch.
+</p></dd></dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="References-sections.html#References-sections" accesskey="1">References sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Bisecting.html#Bisecting" accesskey="n" rel="next">Bisecting</a>, Previous: <a href="Ediffing.html#Ediffing" accesskey="p" rel="prev">Ediffing</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

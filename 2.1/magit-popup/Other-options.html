@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Taking inspiration from regular prefix commands and prefix arguments,
+this library implements a similar abstraction; a new kind of prefix
+command that is associated with a specific set of infix arguments and
+suffix commands.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit-Popup User Manual: Other options</title>
+
+<meta name="description" content="Magit-Popup User Manual: Other options">
+<meta name="keywords" content="Magit-Popup User Manual: Other options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Usage.html#Usage" rel="up" title="Usage">
+<link href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" rel="next" title="Defining prefix and suffix commands">
+<link href="Customizing-existing-popups.html#Customizing-existing-popups" rel="prev" title="Customizing existing popups">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Other-options"></a>
+<div class="header">
+<p>
+Previous: <a href="Customizing-existing-popups.html#Customizing-existing-popups" accesskey="p" rel="prev">Customizing existing popups</a>, Up: <a href="Usage.html#Usage" accesskey="u" rel="up">Usage</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Other-options-1"></a>
+<h3 class="section">2.2 Other options</h3>
+
+<dl>
+<dt><a name="index-magit_002dpopup_002duse_002dprefix_002dargument"></a>User Option: <strong>magit-popup-use-prefix-argument</strong></dt>
+<dd>
+<p>This option controls the effect that the use of a prefix argument
+before entering a popup has.  The <strong>intended</strong> default is <code>default</code>, but
+the <strong>actual</strong> default is <code>disabled</code>.  This is necessary because the old
+popup implementation did simply forward such a pre-popup prefix
+argument to the suffix command invoked from the popup, and changing
+that without users being aware of it could lead to tears.
+</p>
+<ul>
+<li> <code>disabled</code>
+
+<p>Bring up a Custom option buffer so that the user reads
+this and then makes an informed choice.
+</p>
+
+</li><li> <code>default</code>
+
+<p>With a prefix argument directly invoke the popup&rsquo;s
+default action (an Emacs command), instead of bringing
+up the popup.
+</p>
+
+</li><li> <code>popup</code>
+
+<p>With a prefix argument bring up the popup, otherwise
+directly invoke the popup&rsquo;s default action.
+</p>
+
+</li><li> <code>nil</code>
+
+<p>Ignore prefix arguments.
+</p></li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dpopup_002dmanpage_002dpackage"></a>User Option: <strong>magit-popup-manpage-package</strong></dt>
+<dd>
+<p>The Emacs package used to display man-pages, one of <code>man</code> or <code>woman</code>.
+</p></dd></dl>
+
+
+
+
+</body>
+</html>

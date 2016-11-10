@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Blaming</title>
+
+<meta name="description" content="Magit User Manual: Blaming">
+<meta name="keywords" content="Magit User Manual: Blaming">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
+<link href="Manipulating.html#Manipulating" rel="next" title="Manipulating">
+<link href="Visiting-blobs.html#Visiting-blobs" rel="prev" title="Visiting blobs">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Blaming"></a>
+<div class="header">
+<p>
+Previous: <a href="Visiting-blobs.html#Visiting-blobs" accesskey="p" rel="prev">Visiting blobs</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Blaming-1"></a>
+<h3 class="section">5.8 Blaming</h3>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-blame">git-blame(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-M_002dx-magit_002dblame"></a>
+<a name="index-magit_002dblame"></a>
+</dd>
+<dt><kbd>M-x magit-blame</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame</code>)</dt>
+<dd>
+<p>Display edit history of FILE up to REVISION.
+</p>
+<p>Interactively blame the file being visited in the current buffer.
+If the buffer visits a revision of that file, then blame up to that
+revision.  Otherwise, blame the file&rsquo;s full history, including
+uncommitted changes.
+</p>
+<p>If Magit-Blame mode is already turned on then blame recursively, by
+visiting REVISION:FILE (using <code>magit-find-file</code>), where revision is
+the revision before the revision that added the lines at point.
+</p>
+<p>ARGS is a list of additional arguments to pass to <code>git blame</code>; only
+arguments available from <code>magit-blame-popup</code> should be used.
+</p>
+<a name="index-M_002dx-magit_002dblame_002dpopup"></a>
+<a name="index-magit_002dblame_002dpopup"></a>
+</dd>
+<dt><kbd>M-x magit-blame-popup</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-RET-2"></a>
+<a name="index-magit_002dshow_002dcommit-1"></a>
+</dd>
+<dt><kbd>RET</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-show-commit</code>)</dt>
+<dd>
+<p>Show the commit at point.  If there is no commit at point or with a
+prefix argument, prompt for a commit.
+</p>
+<a name="index-SPC-2"></a>
+<a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002dup-1"></a>
+</dd>
+<dt><kbd>SPC</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-show-or-scroll-up</code>)</dt>
+<dd>
+<p>Update the commit or diff buffer for the thing at point.
+</p>
+<p>Either show the commit or stash at point in the appropriate buffer,
+or if that buffer is already being displayed in the current frame
+and contains information about that commit or stash, then instead
+scroll the buffer up.  If there is no commit or stash at point, then
+prompt for a commit.
+</p>
+<a name="index-DEL-2"></a>
+<a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002ddown-1"></a>
+</dd>
+<dt><kbd>DEL</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-show-or-scroll-down</code>)</dt>
+<dd>
+<p>Update the commit or diff buffer for the thing at point.
+</p>
+<p>Either show the commit or stash at point in the appropriate buffer,
+or if that buffer is already being displayed in the current frame
+and contains information about that commit or stash, then instead
+scroll the buffer down.  If there is no commit or stash at point,
+then prompt for a commit.
+</p>
+<a name="index-n-1"></a>
+<a name="index-magit_002dblame_002dnext_002dchunk"></a>
+</dd>
+<dt><kbd>n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-next-chunk</code>)</dt>
+<dd>
+<p>Move to the next chunk.
+</p>
+<a name="index-N"></a>
+<a name="index-magit_002dblame_002dnext_002dchunk_002dsame_002dcommit"></a>
+</dd>
+<dt><kbd>N</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-next-chunk-same-commit</code>)</dt>
+<dd>
+<p>Move to the next chunk from the same commit.
+</p>
+<a name="index-p-1"></a>
+<a name="index-magit_002dblame_002dprevious_002dchunk"></a>
+</dd>
+<dt><kbd>p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-previous-chunk</code>)</dt>
+<dd>
+<p>Move to the previous chunk.
+</p>
+<a name="index-P"></a>
+<a name="index-magit_002dblame_002dprevious_002dchunk_002dsame_002dcommit"></a>
+</dd>
+<dt><kbd>P</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-previous-chunk-same-commit</code>)</dt>
+<dd>
+<p>Move to the previous chunk from the same commit.
+</p>
+<a name="index-q-2"></a>
+<a name="index-magit_002dblame_002dquit"></a>
+</dd>
+<dt><kbd>q</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-quit</code>)</dt>
+<dd>
+<p>Turn off Magit-Blame mode.  If the buffer was created during a
+recursive blame, then also kill the buffer.
+</p>
+<a name="index-M_002dw-1"></a>
+<a name="index-magit_002dblame_002dcopy_002dhash"></a>
+</dd>
+<dt><kbd>M-w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-copy-hash</code>)</dt>
+<dd>
+<p>Save the hash of the current chunk&rsquo;s commit to the kill ring.
+</p>
+<a name="index-t"></a>
+<a name="index-magit_002dblame_002dtoggle_002dheadings"></a>
+</dd>
+<dt><kbd>t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-blame-toggle-headings</code>)</dt>
+<dd>
+<p>Show or hide blame chunk headings.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dblame_002dheading_002dformat"></a>User Option: <strong>magit-blame-heading-format</strong></dt>
+<dd>
+<p>Format string used for blame headings.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dblame_002dtime_002dformat"></a>User Option: <strong>magit-blame-time-format</strong></dt>
+<dd>
+<p>Format string used for time strings in blame headings.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dblame_002dshow_002dheadings"></a>User Option: <strong>magit-blame-show-headings</strong></dt>
+<dd>
+<p>Whether to initially show blame block headings.  The headings can
+also be toggled locally using command <tt>magit-blame-toggle-headings</tt>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dblame_002dgoto_002dchunk_002dhook"></a>User Option: <strong>magit-blame-goto-chunk-hook</strong></dt>
+<dd>
+<p>Hook run by <code>magit-blame-next-chunk</code> and <code>magit-blame-previous-chunk</code>.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Visiting-blobs.html#Visiting-blobs" accesskey="p" rel="prev">Visiting blobs</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

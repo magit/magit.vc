@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Getting started</title>
+
+<meta name="description" content="Magit User Manual: Getting started">
+<meta name="keywords" content="Magit User Manual: Getting started">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Interface-concepts.html#Interface-concepts" rel="next" title="Interface concepts">
+<link href="Post_002dinstallation-tasks.html#Post_002dinstallation-tasks" rel="prev" title="Post-installation tasks">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Getting-started"></a>
+<div class="header">
+<p>
+Next: <a href="Interface-concepts.html#Interface-concepts" accesskey="n" rel="next">Interface concepts</a>, Previous: <a href="Installation.html#Installation" accesskey="p" rel="prev">Installation</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Getting-started-1"></a>
+<h2 class="chapter">3 Getting started</h2>
+
+<p>This section describes the most essential features that many
+Magitians use on a daily basis.  It only scratches the surface but
+should be enough to get you started.
+</p>
+<p>(You might want to create a repository just for this walk-through,
+e.g. by cloning an existing repository.  If you don&rsquo;t use a separate
+repository then make sure you create a snapshot as described below).
+</p>
+<p>To display information about the current Git repository, type <code>M-x
+magit-status</code>.  You will be doing that so often that it is best to bind
+this command globally:
+</p>
+<div class="lisp">
+<pre class="lisp">(global-set-key (kbd &quot;C-x g&quot;) 'magit-status)
+</pre></div>
+
+<p>Most Magit commands are commonly invoked from this buffer.  It should
+be considered the primary interface to interact with Git using Magit.
+There are many other Magit buffers, but they are usually created from
+this buffer.
+</p>
+<p>Depending on what state your repository is in, this buffer will
+contain sections titled &quot;Staged changes&quot;, &quot;Unstaged changes&quot;,
+&quot;Unpulled commits&quot;, &quot;Unpushed commits&quot;, and/or some others.
+</p>
+<p>If some staged and/or unstaged changes exist, you should back them up
+now.  Type <code>z</code> to show the stashing popup buffer featuring various stash
+variants and arguments that can be passed to these commands.  Do not
+worry about those for now, just type <code>Z</code> (uppercase) to create a stash
+while also keeping the index and work tree intact.  The status buffer
+should now also contain a section titled &quot;Stashes&quot;.
+</p>
+<p>Otherwise, if there are no uncommitted changes, you should create some
+now by editing and saving some of the tracked files.  Then go back to
+the status buffer, while at the same time refreshing it, by typing <code>C-x
+g</code>.  (When the status buffer, or any Magit buffer for that matter, is
+the current buffer, then you can also use just <code>g</code> to refresh it).
+</p>
+<p>Move between sections using <code>p</code> and <code>n</code>.  Note that the bodies of some
+sections are hidden.  Type <code>TAB</code> to expand or collapse the section at
+point.  You can also use <code>C-tab</code> to cycle the visibility of the current
+section and its children. Move to a file section inside the section
+named &quot;Unstaged changes&quot; and type <code>s</code> to stage the changes you have made
+to that file. That file now appears under &quot;Staged changes&quot;.
+</p>
+<p>Magit can stage and unstage individual hunks, not just complete files.
+Move to the file you have just staged, expand it using <code>TAB</code>, move to
+one of the hunks using <code>n</code>, and unstage just that by typing <code>u</code>.  Note how
+the staging (<code>s</code>) and unstaging (<code>u</code>) commands operate on the change at
+point.  Many other commands behave the same way.
+</p>
+<p>You can also un-/stage just part of a hunk.  Inside the body of a hunk
+section (move there using <code>C-n</code>), set the mark using <code>C-SPC</code> and move down
+until some added and removed lines fall inside the region but not all
+of them.  Again type <code>s</code> to stage.
+</p>
+<p>It&rsquo;s also possible to un-/stage multiple files at once.  Move to a
+file section, type <code>C-SPC</code>, move to the next file using <code>n</code>, and then <code>s</code> to
+stage both files.  Note that both the mark and point have to be on the
+headings of sibling sections for this to work.  If the region looks
+like it does in other buffers, then it doesn&rsquo;t select Magit sections
+that can be acted on as a unit.
+</p>
+<p>And then of course you want to commit your changes.  Type <code>c</code>.  This
+shows the committing popup buffer featuring various commit variants
+and arguments that can be passed to <code>git commit</code>.  Do not worry about
+those for now.  We want to create a &quot;normal&quot; commit, which is done by
+typing <code>c</code> again.
+</p>
+<p>Now two new buffers appear.  One is for writing the commit message,
+the other shows a diff with the changes that are about to committed.
+Write a message and then type <code>C-c C-c</code> to actually create the commit.
+</p>
+<p>You probably don&rsquo;t want to push the commit you just created because
+you just committed some random changes, but if that is not the case
+you could push it by typing <code>p</code> to bring up the push popup and then <code>p</code>
+again to push to the configured upstream.  (If the upstream is not
+configured, then you would be prompted for the push target instead.)
+</p>
+<p>Instead we are going to undo the changes made so far.  Bring up the
+log for the current branch by typing <code>l l</code>, move to the last commit
+created before starting with this walk through using <code>n</code>, and do a hard
+reset using <code>C-u x</code>.  <strong>WARNING</strong>: this discards all uncommitted changes.
+If you did not follow the advice about using a separate repository for
+these experiments and did not create a snapshot of uncommitted changes
+before starting to try out Magit, then don&rsquo;t do this.
+</p>
+<p>So far we have mentioned the commit, push, and log popups.  These are
+probably among the popups you will be using the most, but many others
+exist.  To show a popup with all other popups (and some other commands
+which are not popups), type <code>h</code>.  Try a few.
+</p>
+<p>In most cases the key bindings in that popup correspond to the
+bindings in Magit buffers, including but not limited to the status
+buffer.  So you could type <code>h d</code> to bring up the diff popup, but once
+you remember that &quot;d&quot; stands for &quot;diff&quot;, you would usually do so by
+just typing <code>d</code>.  But the &quot;popup of popups&quot; is useful even once you have
+memorized all the bindings, as it can provide easy access to Magit
+commands from non-Magit buffers.  So you should bind this globally
+too:
+</p>
+<div class="lisp">
+<pre class="lisp">(global-set-key (kbd &quot;C-x M-g&quot;) 'magit-dispatch-popup)
+</pre></div>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Interface-concepts.html#Interface-concepts" accesskey="n" rel="next">Interface concepts</a>, Previous: <a href="Installation.html#Installation" accesskey="p" rel="prev">Installation</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

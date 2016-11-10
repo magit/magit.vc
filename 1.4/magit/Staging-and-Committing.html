@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Staging and Committing</title>
+
+<meta name="description" content="Magit User Manual (1.4): Staging and Committing">
+<meta name="keywords" content="Magit User Manual (1.4): Staging and Committing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="History.html#History" rel="next" title="History">
+<link href="Untracked-files.html#Untracked-files" rel="prev" title="Untracked files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Staging-and-Committing"></a>
+<div class="header">
+<p>
+Next: <a href="History.html#History" accesskey="n" rel="next">History</a>, Previous: <a href="Untracked-files.html#Untracked-files" accesskey="p" rel="prev">Untracked files</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Staging-and-Committing-1"></a>
+<h2 class="chapter">6 Staging and Committing</h2>
+
+<p>Committing with Git is a two step process: first you add the changes
+you want to commit to a &rsquo;staging area&rsquo; or &rsquo;index&rsquo;, and then you commit
+them to the repository.  This allows you to only commit a subset of
+the changes in the working tree.  If you are not familiar with this
+concept yet, then you should change that as soon as possible using one
+of the fine Git tutorials.  If you don&rsquo;t, then Git and by extension
+Magit will seem rather strange.
+</p>
+<p>Magit shows uncommitted changes in two sections, depending on whether
+the changes have been staged yet.  The <em>Staged changes</em> section
+shows the changes that will be included in the next commit, while the
+<em>Unstaged changes</em> section shows the changes that will be left
+out.
+</p>
+<p>To move an unstaged hunk into the staging area, move point into the
+hunk and type <kbd>s</kbd>.  Likewise, to unstage a hunk, move point into
+it and type <kbd>u</kbd>.  If point is in a diff header when you type
+<kbd>s</kbd> or <kbd>u</kbd>, all hunks belonging to that diff are moved at the
+same time.
+</p>
+<p>Currently it is only possible to stage from the status buffer.
+Staging and unstaging from diff buffers that show unstaged and staged
+changes is not possible yet.
+</p>
+<p>If the region is active when you type <kbd>s</kbd> or <kbd>u</kbd>, only the
+changes in the region are staged or unstaged.  (This works line by
+line: if the beginning of a line is in the region it is included in
+the changes, otherwise it is not.)
+</p>
+<p>To change the size of the hunks, you can type <kbd>+</kbd> or <kbd>-</kbd> to
+increase and decrease, respectively.  Typing <kbd>0</kbd> will
+reset the hunk size to the default.
+</p>
+<p>Typing <kbd>C-u s</kbd> will ask you for a name of a file to be staged, for
+example to stage files that are hidden.
+</p>
+<p>To move all hunks of all diffs into the staging area in one go, type
+<kbd>S</kbd>.  To unstage everything, type <kbd>U</kbd>.
+</p>
+<p>Typing <kbd>C-u S</kbd> will stage all untracked files in addition to the
+changes to tracked files.
+</p>
+<p>You can discard uncommitted changes by moving point into a hunk and
+typing <kbd>k</kbd>.  The changes to discard are selected as with <kbd>s</kbd>
+and <kbd>u</kbd>.
+</p>
+<p>Before committing, you should write a short description of the
+changes.
+</p>
+<p>Type <kbd>c c</kbd> to pop up a buffer where you can write your change
+description.  Once you are happy with the description, type <kbd>C-c
+C-c</kbd> in that buffer to perform the commit.
+</p>
+<p>If you want to write changes in a <samp>ChangeLog</samp> file, you can use
+<kbd>C-x 4 a</kbd> on a diff hunk.
+</p>
+<p>Typing <kbd>c c</kbd> when the staging area is unused is a special
+situation.  Normally, the next commit would be empty, but you can
+configure Magit to do something more useful by customizing the
+<code>magit-commit-all-when-nothing-staged</code> variable.  One choice is
+to instruct the subsequent <kbd>C-c C-c</kbd> to commit all changes.
+Another choice is stage everything at the time of hitting <kbd>c c</kbd>.
+</p>
+<p>Typing <kbd>M-n</kbd> or <kbd>M-p</kbd> will cycle through the
+<code>log-edit-comment-ring</code>, which will have your previous log
+messages. This is particularly useful if you have a hook that
+occasionally causes git to refuse your commit.
+</p>
+<p>To abort a commit use <kbd>C-c C-k</kbd>.  The commit message is saved and
+can later be retrieved in the commit message buffer using <kbd>M-n</kbd>
+and <kbd>M-p</kbd>.
+</p>
+<p>Typing <kbd>C</kbd> will also pop up the change description buffer, but in
+addition, it will try to insert a ChangeLog-style entry for the change
+that point is in.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="History.html#History" accesskey="n" rel="next">History</a>, Previous: <a href="Untracked-files.html#Untracked-files" accesskey="p" rel="prev">Untracked files</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

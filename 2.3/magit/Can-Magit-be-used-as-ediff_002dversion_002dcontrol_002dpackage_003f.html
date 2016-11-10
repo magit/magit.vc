@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Can Magit be used as ediff-version-control-package?</title>
+
+<meta name="description" content="Magit User Manual: Can Magit be used as ediff-version-control-package?">
+<meta name="keywords" content="Magit User Manual: Can Magit be used as ediff-version-control-package?">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="FAQ.html#FAQ" rel="up" title="FAQ">
+<link href="How-to-show-diffs-for-gpg_002dencrypted-files_003f.html#How-to-show-diffs-for-gpg_002dencrypted-files_003f" rel="next" title="How to show diffs for gpg-encrypted files?">
+<link href="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer.html#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" rel="prev" title="Point is wrong in the COMMIT_EDITMSG buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f"></a>
+<div class="header">
+<p>
+Next: <a href="How-to-show-diffs-for-gpg_002dencrypted-files_003f.html#How-to-show-diffs-for-gpg_002dencrypted-files_003f" accesskey="n" rel="next">How to show diffs for gpg-encrypted files?</a>, Previous: <a href="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer.html#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" accesskey="p" rel="prev">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>, Up: <a href="FAQ.html#FAQ" accesskey="u" rel="up">FAQ</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1"></a>
+<h3 class="section">A.13 Can Magit be used as ediff-version-control-package?</h3>
+
+<p>No, it cannot.  For that to work the functions <code>ediff-magit-internal</code>
+and <code>ediff-magit-merge-internal</code> would have to be implemented, and they
+are not.  These two functions are only used by the three commands
+<code>ediff-revision</code>, <code>ediff-merge-revisions-with-ancestor</code>, and
+<code>ediff-merge-revisions</code>.
+</p>
+<p>These commands only delegate the task of populating buffers with
+certain revisions to the &quot;internal&quot; functions.  The equally important
+task of determining which revisions are to be compared/merged is not
+delegated.  Instead this is done without any support whatsoever, from
+the version control package/system - meaning that the user has to
+enter the revisions explicitly.  Instead of implementing
+<code>ediff-magit-internal</code> we provide <code>magit-ediff-compare</code>, which handles
+both tasks like it is 2005.
+</p>
+<p>The other commands <code>ediff-merge-revisions</code> and
+<code>ediff-merge-revisions-with-ancestor</code> are normally not what you want
+when using a modern version control system like Git.  Instead of
+letting the user resolve only those conflicts which Git could not
+resolve on its own, they throw away all work done by Git and then
+expect the user to manually merge all conflicts, including those that
+had already been resolved.  That made sense back in the days when
+version control systems couldn&rsquo;t merge (or so I have been told), but
+not anymore.  Once in a blue moon you might actually want to see all
+conflicts, in which case you <strong>can</strong> use these commands, which then use
+<code>ediff-vc-merge-internal</code>.  So we don&rsquo;t actually have to implement
+<code>ediff-magit-merge-internal</code>.  Instead we provide the more useful
+command <code>magit-ediff-resolve</code> which only shows yet-to-be resolved
+conflicts.
+</p>
+
+
+
+</body>
+</html>

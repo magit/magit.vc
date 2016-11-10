@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Automatic Reverting of File-Visiting Buffers</title>
+
+<meta name="description" content="Magit User Manual: Automatic Reverting of File-Visiting Buffers">
+<meta name="keywords" content="Magit User Manual: Automatic Reverting of File-Visiting Buffers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Modes-and-Buffers.html#Modes-and-Buffers" rel="up" title="Modes and Buffers">
+<link href="Risk-of-Reverting-Automatically.html#Risk-of-Reverting-Automatically" rel="next" title="Risk of Reverting Automatically">
+<link href="Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" rel="prev" title="Automatic Saving of File-Visiting Buffers">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Automatic-Reverting-of-File_002dVisiting-Buffers"></a>
+<div class="header">
+<p>
+Previous: <a href="Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" accesskey="p" rel="prev">Automatic Saving of File-Visiting Buffers</a>, Up: <a href="Modes-and-Buffers.html#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Automatic-Reverting-of-File_002dVisiting-Buffers-1"></a>
+<h4 class="subsection">4.1.6 Automatic Reverting of File-Visiting Buffers</h4>
+
+<p>By default Magit automatically reverts buffers that are visiting files
+that are being tracked in a Git repository, after they have changed on
+disk.  When using Magit one often changes files on disk by running
+git, i.e. &quot;outside Emacs&quot;, making this a rather important feature.
+</p>
+<p>For example, if you discard a change in the status buffer, then that
+is done by running <code>git apply --reverse ...</code>, and Emacs considers the
+file to have &quot;changed on disk&quot;.  If Magit did not automatically revert
+the buffer, then you would have to type <code>M-x revert-buffer RET RET</code> in
+the visiting buffer before you could continue making changes.
+</p>
+<dl>
+<dt><a name="index-magit_002dauto_002drevert_002dmode"></a>User Option: <strong>magit-auto-revert-mode</strong></dt>
+<dd>
+<p>When this mode is enabled, then buffers that visit tracked files,
+are automatically reverted after the visited files changed on disk.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-global_002dauto_002drevert_002dmode"></a>User Option: <strong>global-auto-revert-mode</strong></dt>
+<dd>
+<p>When this mode is enabled, then any file-visiting buffer is
+automatically reverted after the visited file changed on disk.
+</p>
+<p>If you like buffers that visit tracked files to be automatically
+reverted, then you might also like any buffer to be reverted, not
+just those visiting tracked files.  If that is the case, then enable
+this mode <em>instead of</em> <code>magit-auto-revert-mode</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dauto_002drevert_002dimmediately"></a>User Option: <strong>magit-auto-revert-immediately</strong></dt>
+<dd>
+<p>This option controls whether Magit reverts buffers immediately.
+</p>
+<p>If this is non-nil and either <code>global-auto-revert-mode</code> or
+<code>magit-auto-revert-mode</code> is enabled, then Magit immediately reverts
+buffers by explicitly calling <code>auto-revert-buffers</code> after running git
+for side-effects.
+</p>
+<p>If <code>auto-revert-use-notify</code> is non-nil (and file notifications are
+actually supported), then <code>magit-auto-revert-immediately</code> does not
+have to be non-nil, because the reverts happen immediately anyway.
+</p>
+<p>If <code>magit-auto-revert-immediately</code> and <code>auto-revert-use-notify</code> are both
+<code>nil</code>, then reverts happen after <code>auto-revert-interval</code> seconds of user
+inactivity.  That is not desirable.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002duse_002dnotify"></a>User Option: <strong>auto-revert-use-notify</strong></dt>
+<dd>
+<p>This option controls whether file notification functions should be
+used.  Note that this variable unfortunately defaults to <code>t</code> even on
+systems on which file notifications cannot be used.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dauto_002drevert_002dtracked_002donly"></a>User Option: <strong>magit-auto-revert-tracked-only</strong></dt>
+<dd>
+<p>This option controls whether <code>magit-auto-revert-mode</code> only reverts
+tracked files or all files that are located inside Git repositories,
+including untracked files and files located inside Git&rsquo;s control
+directory.
+</p></dd></dl>
+
+<a name="index-auto_002drevert_002dmode"></a>
+<dl>
+<dt><a name="index-auto_002drevert_002dmode-1"></a>Command: <strong>auto-revert-mode</strong></dt>
+<dd>
+<p>The global mode <code>magit-auto-revert-mode</code> works by turning on this
+local mode in the appropriate buffers (but <code>global-auto-revert-mode</code>
+is implemented differently).  You can also turn it on or off
+manually, which might be necessary if Magit does not notice that a
+previously untracked file now is being tracked or vice-versa.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dstop_002don_002duser_002dinput"></a>User Option: <strong>auto-revert-stop-on-user-input</strong></dt>
+<dd>
+<p>This option controls whether the arrival of user input suspends the
+automatic reverts for <code>auto-revert-interval</code> seconds.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dinterval"></a>User Option: <strong>auto-revert-interval</strong></dt>
+<dd>
+<p>This option controls for how many seconds Emacs waits before
+resuming suspended reverts.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dbuffer_002dlist_002dfilter"></a>User Option: <strong>auto-revert-buffer-list-filter</strong></dt>
+<dd>
+<p>This option specifies an additional filter used by
+<code>auto-revert-buffers</code> to determine whether a buffer should be reverted
+or not.
+</p>
+<p>This option is provided by <code>magit</code>, which also redefines
+<code>auto-revert-buffers</code> to respect it.  Magit users who do not turn on
+the local mode <code>auto-revert-mode</code> themselves, are best served by
+setting the value to <code>magit-auto-revert-repository-buffers-p</code>.
+</p>
+<p>However the default is nil, to not disturb users who do use the
+local mode directly.  If you experience delays when running Magit
+commands, then you should consider using one of the predicates
+provided by Magit - especially if you also use Tramp.
+</p>
+<p>Users who do turn on <code>auto-revert-mode</code> in buffers in which Magit
+doesn&rsquo;t do that for them, should likely not use any filter.  Users
+who turn on <code>global-auto-revert-mode</code>, do not have to worry about this
+option, because it is disregarded if the global mode is enabled.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-auto_002drevert_002dverbose"></a>User Option: <strong>auto-revert-verbose</strong></dt>
+<dd>
+<p>This option controls whether Emacs reports when a buffer has been
+reverted.
+</p></dd></dl>
+
+<p>The options with the <code>auto-revert-</code> prefix are located in the Custom
+group named <code>auto-revert</code>.  The other, magit-specific, options are
+located in the <code>magit</code> group.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Risk-of-Reverting-Automatically.html#Risk-of-Reverting-Automatically" accesskey="1">Risk of Reverting Automatically</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" accesskey="p" rel="prev">Automatic Saving of File-Visiting Buffers</a>, Up: <a href="Modes-and-Buffers.html#Modes-and-Buffers" accesskey="u" rel="up">Modes and Buffers</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

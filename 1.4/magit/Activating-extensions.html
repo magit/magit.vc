@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Activating extensions</title>
+
+<meta name="description" content="Magit User Manual (1.4): Activating extensions">
+<meta name="keywords" content="Magit User Manual (1.4): Activating extensions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Using-Magit-Extensions.html#Using-Magit-Extensions" rel="up" title="Using Magit Extensions">
+<link href="Interfacing-with-Subversion.html#Interfacing-with-Subversion" rel="next" title="Interfacing with Subversion">
+<link href="Using-Magit-Extensions.html#Using-Magit-Extensions" rel="prev" title="Using Magit Extensions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Activating-extensions"></a>
+<div class="header">
+<p>
+Next: <a href="Interfacing-with-Subversion.html#Interfacing-with-Subversion" accesskey="n" rel="next">Interfacing with Subversion</a>, Up: <a href="Using-Magit-Extensions.html#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Activating-extensions-1"></a>
+<h3 class="section">24.1 Activating extensions</h3>
+
+<p>Magit comes with a couple of shipped extensions that allow interaction
+with <code>git-svn</code>, <code>topgit</code> and <code>stgit</code>.  See following
+sections for specific details on how to use them.
+</p>
+<p>Extensions can be activated globally or on a per-repository basis.  Since
+those extensions are implemented as minor modes, one can use for example
+<kbd>M-x magit-topgit-mode</kbd> to toggle the <code>topgit</code> extension,
+making the corresponding section and commands (un)available.
+</p>
+<p>In order to do that automatically (and for every repository), one can
+use for example:
+</p>
+<div class="example">
+<pre class="example">(add-hook 'magit-mode-hook 'turn-on-magit-topgit)
+</pre></div>
+
+<p>Magit also allows configuring different extensions, based on the git
+repository configuration.
+</p>
+<div class="example">
+<pre class="example">(add-hook 'magit-mode-hook 'magit-load-config-extensions)
+</pre></div>
+
+<p>This will read git configuration variables and activate the
+relevant extensions.
+</p>
+<p>For example, after running the following commands, the <code>topgit</code>
+extension will be loaded for every repository, while the <code>svn</code> one
+will be loaded only for the current one.
+</p>
+<div class="example">
+<pre class="example">$ git config --global --add magit.extension topgit
+$ git config --add magit.extension svn
+</pre></div>
+
+<p>Note the <code>--add</code> flag, which means that each extension gets its own
+line in the <code>config</code> file.
+</p>
+
+
+
+</body>
+</html>

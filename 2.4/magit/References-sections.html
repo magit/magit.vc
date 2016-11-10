@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: References sections</title>
+
+<meta name="description" content="Magit User Manual: References sections">
+<meta name="keywords" content="Magit User Manual: References sections">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="References-buffer.html#References-buffer" rel="up" title="References buffer">
+<link href="Bisecting.html#Bisecting" rel="next" title="Bisecting">
+<link href="References-buffer.html#References-buffer" rel="prev" title="References buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="References-sections"></a>
+<div class="header">
+<p>
+Up: <a href="References-buffer.html#References-buffer" accesskey="u" rel="up">References buffer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="References-sections-1"></a>
+<h4 class="subsection">5.5.1 References sections</h4>
+
+<p>The contents of references buffers is controlled using the hook
+<code>magit-refs-sections-hook</code>.  See <a href="Section-hooks.html#Section-hooks">Section hooks</a> to learn about such hooks
+and how to customize them.  All of the below functions are members of
+the default value.  Note that it makes much less sense to customize
+this hook than it does for the respective hook used for the status
+buffer.
+</p>
+<dl>
+<dt><a name="index-magit_002drefs_002dsections_002dhook"></a>User Option: <strong>magit-refs-sections-hook</strong></dt>
+<dd>
+<p>Hook run to insert sections into a references buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dlocal_002dbranches"></a>Function: <strong>magit-insert-local-branches</strong></dt>
+<dd>
+<p>Insert sections showing all local branches.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dremote_002dbranches"></a>Function: <strong>magit-insert-remote-branches</strong></dt>
+<dd>
+<p>Insert sections showing all remote-tracking branches.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dtags"></a>Function: <strong>magit-insert-tags</strong></dt>
+<dd>
+<p>Insert sections showing all tags.
+</p></dd></dl>
+
+
+
+
+</body>
+</html>

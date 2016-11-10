@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- The library with-editor makes it easy to use the Emacsclient as
+the $EDITOR of child processes, making sure they know how to call
+home.  For remote processes a substitute is provided, which communicates
+with Emacs on standard output instead of using a socket as the Emacsclient
+does.
+
+This library was written because Magit has to be able to do the above
+to allow the user to edit commit messages gracefully and to edit
+rebase sequences, which wouldn't be possible at all otherwise.
+
+Because other packages can benefit from such functionality, this
+library is made available as a separate package.  It also defines some
+additional functionality which makes it useful even for end-users, who
+don't use Magit or another package which uses it internally.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>With-Editor User Manual: Top</title>
+
+<meta name="description" content="With-Editor User Manual: Top">
+<meta name="keywords" content="With-Editor User Manual: Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="../dir/index.html" rel="up" title="(dir)">
+<link href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" rel="next" title="Using the With-Editor package">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">With-Editor User Manual</h1>
+
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Using-the-With_002dEditor-package-1" href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package">1 Using the With-Editor package</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Configuring-With_002dEditor-1" href="Configuring-With_002dEditor.html#Configuring-With_002dEditor">1.1 Configuring With-Editor</a></li>
+    <li><a name="toc-Using-With_002dEditor-commands-1" href="Using-With_002dEditor-commands.html#Using-With_002dEditor-commands">1.2 Using With-Editor commands</a></li>
+  </ul></li>
+  <li><a name="toc-Using-With_002dEditor-as-a-library-1" href="Using-With_002dEditor-as-a-library.html#Using-With_002dEditor-as-a-library">2 Using With-Editor as a library</a></li>
+  <li><a name="toc-Debugging-1" href="Debugging.html#Debugging">3 Debugging</a></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" accesskey="n" rel="next">Using the With-Editor package</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="With_002dEditor-User-Manual"></a>
+<h1 class="top">With-Editor User Manual</h1>
+<p>The library <code>with-editor</code> makes it easy to use the Emacsclient as
+the <code>$EDITOR</code> of child processes, making sure they know how to call
+home.  For remote processes a substitute is provided, which communicates
+with Emacs on standard output instead of using a socket as the Emacsclient
+does.
+</p>
+<p>This library was written because Magit has to be able to do the above
+to allow the user to edit commit messages gracefully and to edit
+rebase sequences, which wouldn&rsquo;t be possible at all otherwise.
+</p>
+<p>Because other packages can benefit from such functionality, this
+library is made available as a separate package.  It also defines some
+additional functionality which makes it useful even for end-users, who
+don&rsquo;t use Magit or another package which uses it internally.
+</p>
+<blockquote>
+<p>Copyright (C) 2015-2016 Jonas Bernoulli &lt;jonas@bernoul.li&gt;
+</p>
+<p>You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+</p>
+<p>This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+</p></blockquote>
+
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" accesskey="1">Using the With-Editor package</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Using-With_002dEditor-as-a-library.html#Using-With_002dEditor-as-a-library" accesskey="2">Using With-Editor as a library</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Debugging.html#Debugging" accesskey="3">Debugging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">&mdash; The Detailed Node Listing &mdash;
+
+Using the With-Editor package
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Configuring-With_002dEditor.html#Configuring-With_002dEditor" accesskey="4">Configuring With-Editor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Using-With_002dEditor-commands.html#Using-With_002dEditor-commands" accesskey="5">Using With-Editor commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr></table>
+
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" accesskey="n" rel="next">Using the With-Editor package</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

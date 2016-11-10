@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the obsolete 1.2 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.2 OBSOLETE): Developing Extensions</title>
+
+<meta name="description" content="Magit User Manual (1.2 OBSOLETE): Developing Extensions">
+<meta name="keywords" content="Magit User Manual (1.2 OBSOLETE): Developing Extensions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Using-Magit-Extensions.html#Using-Magit-Extensions" rel="up" title="Using Magit Extensions">
+<link href="Using-Git-Directly.html#Using-Git-Directly" rel="next" title="Using Git Directly">
+<link href="Interfacing-with-StGit.html#Interfacing-with-StGit" rel="prev" title="Interfacing with StGit">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Developing-Extensions"></a>
+<div class="header">
+<p>
+Previous: <a href="Interfacing-with-StGit.html#Interfacing-with-StGit" accesskey="p" rel="prev">Interfacing with StGit</a>, Up: <a href="Using-Magit-Extensions.html#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Developing-Extensions-1"></a>
+<h3 class="section">24.5 Developing Extensions</h3>
+
+<p>Magit provides a generic mechanism to allow cooperation with Git-related
+systems, such as foreign VCS, patch systems,…
+</p>
+<p>In particular it allows to:
+</p>
+<ul>
+<li> Define sections to display specific informations about the current state
+of the repository, and place them relatively to existing sections.
+
+<p><code>magit-define-inserter</code> automagically defines two hooks called
+<code>magit-before-insert-SECTION-hook</code> and
+<code>magit-after-insert-SECTION-hook</code> that allow to generate and place
+more sections.
+</p>
+<p>In the following example, we use the builtin &ldquo;stashes&rdquo; section to
+place our own &ldquo;foo&rdquo; one.
+</p>
+<div class="example">
+<pre class="example">(magit-define-inserter foo ()
+  (magit-git-section 'foo
+                     &quot;Foo:&quot; 'foo-wash-function
+                     &quot;foo&quot; &quot;arg1&quot; &quot;arg2&quot;))
+(add-hook 'magit-after-insert-stashes-hook 'magit-insert-foo)
+</pre></div>
+
+</li><li> Define new types of objects in those sections.
+
+<p>The function <code>foo-wash-function</code> defined above post-processes each
+line of the output of the &ldquo;git foo arg1 arg2&rdquo; command, and is able to
+associate a type to certain lines.
+</p>
+<p>A simple implementation could be:
+</p>
+<div class="example">
+<pre class="example">(defun foo-wash-function ()
+  (let ((foo (buffer-substring (line-beginning-position) (line-end-position))))
+    (goto-char (line-beginning-position))
+    (magit-with-section foo 'foo
+      (magit-set-section-info foo)
+      (forward-line))))
+</pre></div>
+
+<p>In this case, every line of the command output is transformed into an
+object of type <code>'foo</code>.
+</p>
+</li><li> Alter behavior of generic commands to dispatch them correctly to the
+relevant system, optionally making use of the newly defined types.
+
+<div class="example">
+<pre class="example">(magit-add-action (item info &quot;discard&quot;)
+  ((foo)
+   (do-something-meaningful-for-discarding-a-foo)))
+</pre></div>
+
+<p>This will alter the behavior of <kbd>k</kbd>, when applied to those objects.
+</p>
+</li><li> Plug a different logic into basic commands, to reflect the presence of
+the extension.
+
+<p><code>magit-define-command</code> automagically defines
+a <code>magit-CMD-command-hook</code> that can contain a list of functions to
+call before the actual core code. Execution stops after the first hook
+that returns a non-nil value. This leaves room for extension logic.
+</p>
+<div class="example">
+<pre class="example">(add-hook 'magit-create-branch-command-hook 'foo-create-branch)
+</pre></div>
+
+<p>The function <code>foo-create-branch</code> will be called each time an
+attempt is made to create a branch, and can, for example, react to
+a certain name convention.
+</p>
+</li><li> Define new commands and associated menu.
+
+<p>This part is not really specific to extensions, except that menus take
+place in the &ldquo;Extensions&rdquo; submenu.
+</p>
+</li></ul>
+
+<p>It is suggested that Magit extensions authors stick to the convention of
+making extensions minor modes. This has many advantages, including the
+fact that users are able to toggle extensions, and that it&rsquo;s easy to
+configure a specific set of extensions for a given repository.
+</p>
+<p>Shipped extensions can serve as an example of how to develop
+new extensions.
+</p>
+<p>Basically a <code>foo</code> extension should provide a <code>magit-foo-mode</code>
+minor mode, as well as a <code>turn-on-magit-foo</code> function.  The main
+task of the minor mode is to register/unregister the various hooks that
+the extension requires. The registered actions on the other hand can be
+left alone and activated globally, since they can be run only on
+displayed items, which won&rsquo;t happen when the minor mode is off.
+</p>
+<p>Don&rsquo;t forget to call <code>magit-refresh</code> when the minor mode is toggled
+interactively, so that the relevant sections can be shown or hidden.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Interfacing-with-StGit.html#Interfacing-with-StGit" accesskey="p" rel="prev">Interfacing with StGit</a>, Up: <a href="Using-Magit-Extensions.html#Using-Magit-Extensions" accesskey="u" rel="up">Using Magit Extensions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

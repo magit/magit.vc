@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Top</title>
+
+<meta name="description" content="Magit User Manual: Top">
+<meta name="keywords" content="Magit User Manual: Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="../dir/index.html" rel="up" title="(dir)">
+<link href="Introduction.html#Introduction" rel="next" title="Introduction">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h1 class="settitle" align="center">Magit User Manual</h1>
+
+
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a name="toc-Introduction-1" href="Introduction.html#Introduction">1 Introduction</a></li>
+  <li><a name="toc-Installation-1" href="Installation.html#Installation">2 Installation</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Updating-from-an-older-release-1" href="Updating-from-an-older-release.html#Updating-from-an-older-release">2.1 Updating from an older release</a></li>
+    <li><a name="toc-Installing-from-an-Elpa-archive-1" href="Installing-from-an-Elpa-archive.html#Installing-from-an-Elpa-archive">2.2 Installing from an Elpa archive</a></li>
+    <li><a name="toc-Installing-from-the-Git-repository-1" href="Installing-from-the-Git-repository.html#Installing-from-the-Git-repository">2.3 Installing from the Git repository</a></li>
+    <li><a name="toc-Post_002dinstallation-tasks-1" href="Post_002dinstallation-tasks.html#Post_002dinstallation-tasks">2.4 Post-installation tasks</a></li>
+  </ul></li>
+  <li><a name="toc-Getting-started-1" href="Getting-started.html#Getting-started">3 Getting started</a></li>
+  <li><a name="toc-Interface-concepts-1" href="Interface-concepts.html#Interface-concepts">4 Interface concepts</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Modes-and-Buffers-1" href="Modes-and-Buffers.html#Modes-and-Buffers">4.1 Modes and Buffers</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Switching-Buffers-1" href="Switching-Buffers.html#Switching-Buffers">4.1.1 Switching Buffers</a></li>
+      <li><a name="toc-Naming-Buffers-1" href="Naming-Buffers.html#Naming-Buffers">4.1.2 Naming Buffers</a></li>
+      <li><a name="toc-Quitting-Windows-1" href="Quitting-Windows.html#Quitting-Windows">4.1.3 Quitting Windows</a></li>
+    </ul></li>
+    <li><a name="toc-Automatic-save-1" href="Automatic-save.html#Automatic-save">4.2 Automatic save</a></li>
+    <li><a name="toc-Automatic-refresh-and-revert-1" href="Automatic-refresh-and-revert.html#Automatic-refresh-and-revert">4.3 Automatic refresh and revert</a></li>
+    <li><a name="toc-Sections-1" href="Sections.html#Sections">4.4 Sections</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Section-movement-1" href="Section-movement.html#Section-movement">4.4.1 Section movement</a></li>
+      <li><a name="toc-Section-visibility-1" href="Section-visibility.html#Section-visibility">4.4.2 Section visibility</a></li>
+      <li><a name="toc-Section-hooks-1" href="Section-hooks.html#Section-hooks">4.4.3 Section hooks</a></li>
+      <li><a name="toc-Section-types-and-values-1" href="Section-types-and-values.html#Section-types-and-values">4.4.4 Section types and values</a></li>
+      <li><a name="toc-Section-options-1" href="Section-options.html#Section-options">4.4.5 Section options</a></li>
+    </ul></li>
+    <li><a name="toc-Popup-buffers-and-prefix-commands-1" href="Popup-buffers-and-prefix-commands.html#Popup-buffers-and-prefix-commands">4.5 Popup buffers and prefix commands</a></li>
+    <li><a name="toc-Completion-and-confirmation-1" href="Completion-and-confirmation.html#Completion-and-confirmation">4.6 Completion and confirmation</a></li>
+    <li><a name="toc-Running-Git-1" href="Running-Git.html#Running-Git">4.7 Running Git</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Viewing-Git-output-1" href="Viewing-Git-output.html#Viewing-Git-output">4.7.1 Viewing Git output</a></li>
+      <li><a name="toc-Running-Git-manually-1" href="Running-Git-manually.html#Running-Git-manually">4.7.2 Running Git manually</a></li>
+      <li><a name="toc-Git-executable-1" href="Git-executable.html#Git-executable">4.7.3 Git executable</a></li>
+      <li><a name="toc-Global-Git-arguments-1" href="Global-Git-arguments.html#Global-Git-arguments">4.7.4 Global Git arguments</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-Inspecting-1" href="Inspecting.html#Inspecting">5 Inspecting</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Status-buffer-1" href="Status-buffer.html#Status-buffer">5.1 Status buffer</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Status-sections-1" href="Status-sections.html#Status-sections">5.1.1 Status sections</a></li>
+      <li><a name="toc-Status-header-sections-1" href="Status-header-sections.html#Status-header-sections">5.1.2 Status header sections</a></li>
+      <li><a name="toc-Status-options-1" href="Status-options.html#Status-options">5.1.3 Status options</a></li>
+    </ul></li>
+    <li><a name="toc-Logging-1" href="Logging.html#Logging">5.2 Logging</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Refreshing-logs-1" href="Refreshing-logs.html#Refreshing-logs">5.2.1 Refreshing logs</a></li>
+      <li><a name="toc-Log-Buffer-1" href="Log-Buffer.html#Log-Buffer">5.2.2 Log Buffer</a></li>
+      <li><a name="toc-Select-from-log-1" href="Select-from-log.html#Select-from-log">5.2.3 Select from log</a></li>
+      <li><a name="toc-Reflog-1" href="Reflog.html#Reflog">5.2.4 Reflog</a></li>
+    </ul></li>
+    <li><a name="toc-Diffing-1" href="Diffing.html#Diffing">5.3 Diffing</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Refreshing-diffs-1" href="Refreshing-diffs.html#Refreshing-diffs">5.3.1 Refreshing diffs</a></li>
+      <li><a name="toc-Diff-buffer-1" href="Diff-buffer.html#Diff-buffer">5.3.2 Diff buffer</a></li>
+      <li><a name="toc-Diff-options-1" href="Diff-options.html#Diff-options">5.3.3 Diff options</a></li>
+      <li><a name="toc-Revision-buffer-1" href="Revision-buffer.html#Revision-buffer">5.3.4 Revision buffer</a></li>
+    </ul></li>
+    <li><a name="toc-Ediffing-1" href="Ediffing.html#Ediffing">5.4 Ediffing</a></li>
+    <li><a name="toc-References-buffer-1" href="References-buffer.html#References-buffer">5.5 References buffer</a>
+    <ul class="no-bullet">
+      <li><a name="toc-References-sections-1" href="References-sections.html#References-sections">5.5.1 References sections</a></li>
+    </ul></li>
+    <li><a name="toc-Bisecting-1" href="Bisecting.html#Bisecting">5.6 Bisecting</a></li>
+    <li><a name="toc-Visiting-blobs-1" href="Visiting-blobs.html#Visiting-blobs">5.7 Visiting blobs</a></li>
+    <li><a name="toc-Blaming-1" href="Blaming.html#Blaming">5.8 Blaming</a></li>
+  </ul></li>
+  <li><a name="toc-Manipulating-1" href="Manipulating.html#Manipulating">6 Manipulating</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Repository-setup-1" href="Repository-setup.html#Repository-setup">6.1 Repository setup</a></li>
+    <li><a name="toc-Staging-and-unstaging-1" href="Staging-and-unstaging.html#Staging-and-unstaging">6.2 Staging and unstaging</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Staging-from-file_002dvisiting-buffers-1" href="Staging-from-file_002dvisiting-buffers.html#Staging-from-file_002dvisiting-buffers">6.2.1 Staging from file-visiting buffers</a></li>
+    </ul></li>
+    <li><a name="toc-Applying-1" href="Applying.html#Applying">6.3 Applying</a></li>
+    <li><a name="toc-Committing-1" href="Committing.html#Committing">6.4 Committing</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Initiating-a-commit-1" href="Initiating-a-commit.html#Initiating-a-commit">6.4.1 Initiating a commit</a></li>
+      <li><a name="toc-Editing-commit-messages-1" href="Editing-commit-messages.html#Editing-commit-messages">6.4.2 Editing commit messages</a></li>
+    </ul></li>
+    <li><a name="toc-Branching-1" href="Branching.html#Branching">6.5 Branching</a></li>
+    <li><a name="toc-Merging-1" href="Merging.html#Merging">6.6 Merging</a></li>
+    <li><a name="toc-Rebasing-1" href="Rebasing.html#Rebasing">6.7 Rebasing</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Editing-rebase-sequences-1" href="Editing-rebase-sequences.html#Editing-rebase-sequences">6.7.1 Editing rebase sequences</a></li>
+      <li><a name="toc-Rebase-sequence-log-1" href="Rebase-sequence-log.html#Rebase-sequence-log">6.7.2 Rebase sequence log</a></li>
+    </ul></li>
+    <li><a name="toc-Cherry-picking-1" href="Cherry-picking.html#Cherry-picking">6.8 Cherry picking</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Reverting-1" href="Reverting.html#Reverting">6.8.1 Reverting</a></li>
+    </ul></li>
+    <li><a name="toc-Resetting-1" href="Resetting.html#Resetting">6.9 Resetting</a></li>
+    <li><a name="toc-Stashing-1" href="Stashing.html#Stashing">6.10 Stashing</a></li>
+  </ul></li>
+  <li><a name="toc-Transferring-1" href="Transferring.html#Transferring">7 Transferring</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Remotes-1" href="Remotes.html#Remotes">7.1 Remotes</a></li>
+    <li><a name="toc-Fetching-1" href="Fetching.html#Fetching">7.2 Fetching</a></li>
+    <li><a name="toc-Pulling-1" href="Pulling.html#Pulling">7.3 Pulling</a></li>
+    <li><a name="toc-Pushing-1" href="Pushing.html#Pushing">7.4 Pushing</a></li>
+    <li><a name="toc-Creating-and-sending-patches-1" href="Creating-and-sending-patches.html#Creating-and-sending-patches">7.5 Creating and sending patches</a></li>
+    <li><a name="toc-Applying-patches-1" href="Applying-patches.html#Applying-patches">7.6 Applying patches</a></li>
+  </ul></li>
+  <li><a name="toc-Miscellaneous-1" href="Miscellaneous.html#Miscellaneous">8 Miscellaneous</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Tagging-1" href="Tagging.html#Tagging">8.1 Tagging</a></li>
+    <li><a name="toc-Notes-1" href="Notes.html#Notes">8.2 Notes</a></li>
+    <li><a name="toc-Submodules-1" href="Submodules.html#Submodules">8.3 Submodules</a></li>
+    <li><a name="toc-Common-commands-1" href="Common-commands.html#Common-commands">8.4 Common commands</a></li>
+    <li><a name="toc-Wip-modes-1" href="Wip-modes.html#Wip-modes">8.5 Wip modes</a></li>
+    <li><a name="toc-Minor-mode-for-buffers-visiting-files-1" href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files">8.6 Minor mode for buffers visiting files</a></li>
+    <li><a name="toc-Minor-mode-for-buffers-visiting-blobs-1" href="Minor-mode-for-buffers-visiting-blobs.html#Minor-mode-for-buffers-visiting-blobs">8.7 Minor mode for buffers visiting blobs</a></li>
+  </ul></li>
+  <li><a name="toc-Customizing-1" href="Customizing.html#Customizing">9 Customizing</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Per_002drepository-configuration-1" href="Per_002drepository-configuration.html#Per_002drepository-configuration">9.1 Per-repository configuration</a></li>
+    <li><a name="toc-Essential-settings-1" href="Essential-settings.html#Essential-settings">9.2 Essential settings</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Safety-1" href="Safety.html#Safety">9.2.1 Safety</a></li>
+      <li><a name="toc-Performance-1" href="Performance.html#Performance">9.2.2 Performance</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-Plumbing-1" href="Plumbing.html#Plumbing">10 Plumbing</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Calling-Git-1" href="Calling-Git.html#Calling-Git">10.1 Calling Git</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Getting-a-value-from-Git-1" href="Getting-a-value-from-Git.html#Getting-a-value-from-Git">10.1.1 Getting a value from Git</a></li>
+      <li><a name="toc-Calling-Git-for-effect-1" href="Calling-Git-for-effect.html#Calling-Git-for-effect">10.1.2 Calling Git for effect</a></li>
+    </ul></li>
+    <li><a name="toc-Section-plumbing-1" href="Section-plumbing.html#Section-plumbing">10.2 Section plumbing</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Creating-sections-1" href="Creating-sections.html#Creating-sections">10.2.1 Creating sections</a></li>
+      <li><a name="toc-Section-selection-1" href="Section-selection.html#Section-selection">10.2.2 Section selection</a></li>
+      <li><a name="toc-Matching-sections-1" href="Matching-sections.html#Matching-sections">10.2.3 Matching sections</a></li>
+    </ul></li>
+    <li><a name="toc-Refreshing-buffers-1" href="Refreshing-buffers.html#Refreshing-buffers">10.3 Refreshing buffers</a></li>
+    <li><a name="toc-Conventions-1" href="Conventions.html#Conventions">10.4 Conventions</a>
+    <ul class="no-bullet">
+      <li><a name="toc-Confirmation-and-completion-1" href="Confirmation-and-completion.html#Confirmation-and-completion">10.4.1 Confirmation and completion</a></li>
+      <li><a name="toc-Theming-Faces-1" href="Theming-Faces.html#Theming-Faces">10.4.2 Theming Faces</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a name="toc-FAQ-1" href="FAQ.html#FAQ">Appendix A FAQ</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Magit-is-slow-1" href="Magit-is-slow.html#Magit-is-slow">A.1 Magit is slow</a></li>
+    <li><a name="toc-I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable-1" href="I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable.html#I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable">A.2 I changed several thousand files at once and now Magit is unusable</a></li>
+    <li><a name="toc-I-am-having-problems-committing-1" href="I-am-having-problems-committing.html#I-am-having-problems-committing">A.3 I am having problems committing</a></li>
+    <li><a name="toc-I-don_0027t-like-how-branching-and-pushing-works-1" href="I-don_0027t-like-how-branching-and-pushing-works.html#I-don_0027t-like-how-branching-and-pushing-works">A.4 I don&rsquo;t like how branching and pushing works</a></li>
+    <li><a name="toc-I-cannot-install-the-pre_002drequisits-for-Magit-v2-1" href="I-cannot-install-the-pre_002drequisits-for-Magit-v2.html#I-cannot-install-the-pre_002drequisits-for-Magit-v2">A.5 I cannot install the pre-requisits for Magit v2</a></li>
+    <li><a name="toc-I-am-using-an-Emacs-release-older-than-v24_002e4" href="I-am-using-an-Emacs-release-older-than-v244.html#I-am-using-an-Emacs-release-older-than-v244">A.6 I am using an Emacs release older than v24.4</a></li>
+    <li><a name="toc-I-am-using-a-Git-release-older-than-v1_002e9_002e4" href="I-am-using-a-Git-release-older-than-v194.html#I-am-using-a-Git-release-older-than-v194">A.7 I am using a Git release older than v1.9.4</a></li>
+    <li><a name="toc-I-am-using-MS-Windows-and-cannot-push-with-Magit-1" href="I-am-using-MS-Windows-and-cannot-push-with-Magit.html#I-am-using-MS-Windows-and-cannot-push-with-Magit">A.8 I am using MS Windows and cannot push with Magit</a></li>
+    <li><a name="toc-How-to-install-the-gitman-info-manual_003f-1" href="How-to-install-the-gitman-info-manual_003f.html#How-to-install-the-gitman-info-manual_003f">A.9 How to install the gitman info manual?</a></li>
+    <li><a name="toc-How-can-I-show-Git_0027s-output_003f-1" href="How-can-I-show-Git_0027s-output_003f.html#How-can-I-show-Git_0027s-output_003f">A.10 How can I show Git&rsquo;s output?</a></li>
+    <li><a name="toc-Expanding-a-file-to-show-the-diff-causes-it-to-disappear-1" href="Expanding-a-file-to-show-the-diff-causes-it-to-disappear.html#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">A.11 Expanding a file to show the diff causes it to disappear</a></li>
+    <li><a name="toc-Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer-1" href="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer.html#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">A.12 Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a></li>
+    <li><a name="toc-Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f-1" href="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f.html#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">A.13 Can Magit be used as ediff-version-control-package?</a></li>
+    <li><a name="toc-How-to-show-diffs-for-gpg_002dencrypted-files_003f-1" href="How-to-show-diffs-for-gpg_002dencrypted-files_003f.html#How-to-show-diffs-for-gpg_002dencrypted-files_003f">A.14 How to show diffs for gpg-encrypted files?</a></li>
+    <li><a name="toc-Emacs-24_002e5-hangs-when-loading-Magit" href="Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit">A.15 Emacs 24.5 hangs when loading Magit</a></li>
+  </ul></li>
+  <li><a name="toc-Keystroke-Index-1" href="Keystroke-Index.html#Keystroke-Index">Appendix B Keystroke Index</a></li>
+  <li><a name="toc-Command-Index-1" href="Command-Index.html#Command-Index">Appendix C Command Index</a></li>
+  <li><a name="toc-Function-Index-1" href="Function-Index.html#Function-Index">Appendix D Function Index</a></li>
+  <li><a name="toc-Variable-Index-1" href="Variable-Index.html#Variable-Index">Appendix E Variable Index</a></li>
+</ul>
+</div>
+
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="Introduction.html#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Magit-User-Manual"></a>
+<h1 class="top">Magit User Manual</h1>
+<p>Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+</p>
+<blockquote>
+<p>Copyright (C) 2015 Jonas Bernoulli &lt;jonas@bernoul.li&gt;
+</p>
+<p>You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+</p>
+<p>This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+</p></blockquote>
+
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Introduction.html#Introduction" accesskey="1">Introduction</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Installation.html#Installation" accesskey="2">Installation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Getting-started.html#Getting-started" accesskey="3">Getting started</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Interface-concepts.html#Interface-concepts" accesskey="4">Interface concepts</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Inspecting.html#Inspecting" accesskey="5">Inspecting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Manipulating.html#Manipulating" accesskey="6">Manipulating</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Transferring.html#Transferring" accesskey="7">Transferring</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Miscellaneous.html#Miscellaneous" accesskey="8">Miscellaneous</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Customizing.html#Customizing" accesskey="9">Customizing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Plumbing.html#Plumbing">Plumbing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="FAQ.html#FAQ">FAQ</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Keystroke-Index.html#Keystroke-Index">Keystroke Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Command-Index.html#Command-Index">Command Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Function-Index.html#Function-Index">Function Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Variable-Index.html#Variable-Index">Variable Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">&mdash; The Detailed Node Listing &mdash;
+
+Installation
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Updating-from-an-older-release.html#Updating-from-an-older-release">Updating from an older release</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Installing-from-an-Elpa-archive.html#Installing-from-an-Elpa-archive">Installing from an Elpa archive</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Installing-from-the-Git-repository.html#Installing-from-the-Git-repository">Installing from the Git repository</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Post_002dinstallation-tasks.html#Post_002dinstallation-tasks">Post-installation tasks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Interface concepts
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Modes-and-Buffers.html#Modes-and-Buffers">Modes and Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Automatic-save.html#Automatic-save">Automatic save</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Automatic-refresh-and-revert.html#Automatic-refresh-and-revert">Automatic refresh and revert</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Sections.html#Sections">Sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Popup-buffers-and-prefix-commands.html#Popup-buffers-and-prefix-commands">Popup buffers and prefix commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Completion-and-confirmation.html#Completion-and-confirmation">Completion and confirmation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Running-Git.html#Running-Git">Running Git</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Modes and Buffers
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Switching-Buffers.html#Switching-Buffers">Switching Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Naming-Buffers.html#Naming-Buffers">Naming Buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Quitting-Windows.html#Quitting-Windows">Quitting Windows</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Sections
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Section-movement.html#Section-movement">Section movement</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Section-visibility.html#Section-visibility">Section visibility</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Section-hooks.html#Section-hooks">Section hooks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Section-types-and-values.html#Section-types-and-values">Section types and values</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Section-options.html#Section-options">Section options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Running Git
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Viewing-Git-output.html#Viewing-Git-output">Viewing Git output</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Running-Git-manually.html#Running-Git-manually">Running Git manually</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Git-executable.html#Git-executable">Git executable</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Global-Git-arguments.html#Global-Git-arguments">Global Git arguments</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Inspecting
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Status-buffer.html#Status-buffer">Status buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Logging.html#Logging">Logging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Diffing.html#Diffing">Diffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Ediffing.html#Ediffing">Ediffing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="References-buffer.html#References-buffer">References buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Bisecting.html#Bisecting">Bisecting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Visiting-blobs.html#Visiting-blobs">Visiting blobs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Blaming.html#Blaming">Blaming</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Status buffer
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Status-sections.html#Status-sections">Status sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Status-header-sections.html#Status-header-sections">Status header sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Status-options.html#Status-options">Status options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Logging
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Refreshing-logs.html#Refreshing-logs">Refreshing logs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Log-Buffer.html#Log-Buffer">Log Buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Select-from-log.html#Select-from-log">Select from log</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Reflog.html#Reflog">Reflog</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Diffing
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Refreshing-diffs.html#Refreshing-diffs">Refreshing diffs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Diff-buffer.html#Diff-buffer">Diff buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Diff-options.html#Diff-options">Diff options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Revision-buffer.html#Revision-buffer">Revision buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+References buffer
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="References-sections.html#References-sections">References sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Manipulating
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Repository-setup.html#Repository-setup">Repository setup</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Staging-and-unstaging.html#Staging-and-unstaging">Staging and unstaging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Applying.html#Applying">Applying</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Committing.html#Committing">Committing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Branching.html#Branching">Branching</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Merging.html#Merging">Merging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Rebasing.html#Rebasing">Rebasing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Cherry-picking.html#Cherry-picking">Cherry picking</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Resetting.html#Resetting">Resetting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Stashing.html#Stashing">Stashing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Staging and unstaging
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Staging-from-file_002dvisiting-buffers.html#Staging-from-file_002dvisiting-buffers">Staging from file-visiting buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Committing
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Initiating-a-commit.html#Initiating-a-commit">Initiating a commit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Editing-commit-messages.html#Editing-commit-messages">Editing commit messages</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Rebasing
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Editing-rebase-sequences.html#Editing-rebase-sequences">Editing rebase sequences</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Rebase-sequence-log.html#Rebase-sequence-log">Rebase sequence log</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Cherry picking
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Reverting.html#Reverting">Reverting</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Transferring
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Remotes.html#Remotes">Remotes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Fetching.html#Fetching">Fetching</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Pulling.html#Pulling">Pulling</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Pushing.html#Pushing">Pushing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Creating-and-sending-patches.html#Creating-and-sending-patches">Creating and sending patches</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Applying-patches.html#Applying-patches">Applying patches</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Miscellaneous
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Tagging.html#Tagging">Tagging</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Notes.html#Notes">Notes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Submodules.html#Submodules">Submodules</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Common-commands.html#Common-commands">Common commands</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Wip-modes.html#Wip-modes">Wip modes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Minor-mode-for-buffers-visiting-blobs.html#Minor-mode-for-buffers-visiting-blobs">Minor mode for buffers visiting blobs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Customizing
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Per_002drepository-configuration.html#Per_002drepository-configuration">Per-repository configuration</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Essential-settings.html#Essential-settings">Essential settings</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Essential settings
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Safety.html#Safety">Safety</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Performance.html#Performance">Performance</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Plumbing
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Calling-Git.html#Calling-Git">Calling Git</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Section-plumbing.html#Section-plumbing">Section plumbing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Refreshing-buffers.html#Refreshing-buffers">Refreshing buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Conventions.html#Conventions">Conventions</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Calling Git
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Getting-a-value-from-Git.html#Getting-a-value-from-Git">Getting a value from Git</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Calling-Git-for-effect.html#Calling-Git-for-effect">Calling Git for effect</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Section plumbing
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Creating-sections.html#Creating-sections">Creating sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Section-selection.html#Section-selection">Section selection</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Matching-sections.html#Matching-sections">Matching sections</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Conventions
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Confirmation-and-completion.html#Confirmation-and-completion">Confirmation and completion</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Theming-Faces.html#Theming-Faces">Theming Faces</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+FAQ
+
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Magit-is-slow.html#Magit-is-slow">Magit is slow</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable.html#I-changed-several-thousand-files-at-once-and-now-Magit-is-unusable">I changed several thousand files at once and now Magit is unusable</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-am-having-problems-committing.html#I-am-having-problems-committing">I am having problems committing</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-don_0027t-like-how-branching-and-pushing-works.html#I-don_0027t-like-how-branching-and-pushing-works">I don't like how branching and pushing works</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-cannot-install-the-pre_002drequisits-for-Magit-v2.html#I-cannot-install-the-pre_002drequisits-for-Magit-v2">I cannot install the pre-requisits for Magit v2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-am-using-an-Emacs-release-older-than-v244.html#I-am-using-an-Emacs-release-older-than-v244">I am using an Emacs release older than v24.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-am-using-a-Git-release-older-than-v194.html#I-am-using-a-Git-release-older-than-v194">I am using a Git release older than v1.9.4</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="I-am-using-MS-Windows-and-cannot-push-with-Magit.html#I-am-using-MS-Windows-and-cannot-push-with-Magit">I am using MS Windows and cannot push with Magit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="How-to-install-the-gitman-info-manual_003f.html#How-to-install-the-gitman-info-manual_003f">How to install the gitman info manual?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="How-can-I-show-Git_0027s-output_003f.html#How-can-I-show-Git_0027s-output_003f">How can I show Git's output?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Expanding-a-file-to-show-the-diff-causes-it-to-disappear.html#Expanding-a-file-to-show-the-diff-causes-it-to-disappear">Expanding a file to show the diff causes it to disappear</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer.html#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer">Point is wrong in the COMMIT<em>_EDITMSG</em> buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f.html#Can-Magit-be-used-as-ediff_002dversion_002dcontrol_002dpackage_003f">Can Magit be used as ediff-version-control-package?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="How-to-show-diffs-for-gpg_002dencrypted-files_003f.html#How-to-show-diffs-for-gpg_002dencrypted-files_003f">How to show diffs for gpg-encrypted files?</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit">Emacs 24.5 hangs when loading Magit</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+</pre></th></tr></table>
+
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Introduction.html#Introduction" accesskey="n" rel="next">Introduction</a>, Up: <a href="../dir/index.html" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

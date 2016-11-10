@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Reverting</title>
+
+<meta name="description" content="Magit User Manual: Reverting">
+<meta name="keywords" content="Magit User Manual: Reverting">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Cherry-picking.html#Cherry-picking" rel="up" title="Cherry picking">
+<link href="Resetting.html#Resetting" rel="next" title="Resetting">
+<link href="Cherry-picking.html#Cherry-picking" rel="prev" title="Cherry picking">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Reverting"></a>
+<div class="header">
+<p>
+Up: <a href="Cherry-picking.html#Cherry-picking" accesskey="u" rel="up">Cherry picking</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Reverting-1"></a>
+<h4 class="subsection">6.8.1 Reverting</h4>
+
+<dl compact="compact">
+<dd><a name="index-V"></a>
+<a name="index-magit_002drevert_002dpopup"></a>
+</dd>
+<dt><kbd>V</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-revert-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p></dd>
+</dl>
+
+<p>When no cherry-pick or revert is in progress, then the popup buffer
+features the following commands.
+</p>
+<dl compact="compact">
+<dd><a name="index-V-V"></a>
+<a name="index-magit_002drevert"></a>
+</dd>
+<dt><kbd>V V</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-revert</code>)</dt>
+<dd>
+<p>Revert a commit by creating a new commit.  Prompt for a commit,
+defaulting to the commit at point.  If the region selects multiple
+commits, then revert all of them, without prompting.
+</p>
+<a name="index-V-v"></a>
+<a name="index-magit_002drevert_002dno_002dcommit"></a>
+</dd>
+<dt><kbd>V v</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-revert-no-commit</code>)</dt>
+<dd>
+<p>Revert a commit by applying it in reverse to the working tree.
+Prompt for a commit, defaulting to the commit at point.  If the
+region selects multiple commits, then revert all of them, without
+prompting.
+</p></dd>
+</dl>
+
+<p>When a cherry-pick or revert is in progress, then the popup buffer
+features these commands instead.
+</p>
+<dl compact="compact">
+<dd><a name="index-V-A"></a>
+<a name="index-magit_002dsequence_002dcontinue-1"></a>
+</dd>
+<dt><kbd>V A</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-sequence-continue</code>)</dt>
+<dd>
+<p>Resume the current cherry-pick or revert sequence.
+</p>
+<a name="index-V-s"></a>
+<a name="index-magit_002dsequence_002dskip-1"></a>
+</dd>
+<dt><kbd>V s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-sequence-skip</code>)</dt>
+<dd>
+<p>Skip the stopped at commit during a cherry-pick or revert sequence.
+</p>
+<a name="index-V-a"></a>
+<a name="index-magit_002dsequence_002dabort-1"></a>
+</dd>
+<dt><kbd>V a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-sequence-abort</code>)</dt>
+<dd>
+<p>Abort the current cherry-pick or revert sequence.  This discards all
+changes made since the sequence started.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

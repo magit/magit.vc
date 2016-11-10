@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Staging and unstaging</title>
+
+<meta name="description" content="Magit User Manual: Staging and unstaging">
+<meta name="keywords" content="Magit User Manual: Staging and unstaging">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Manipulating.html#Manipulating" rel="up" title="Manipulating">
+<link href="Staging-from-file_002dvisiting-buffers.html#Staging-from-file_002dvisiting-buffers" rel="next" title="Staging from file-visiting buffers">
+<link href="Repository-setup.html#Repository-setup" rel="prev" title="Repository setup">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Staging-and-unstaging"></a>
+<div class="header">
+<p>
+Next: <a href="Applying.html#Applying" accesskey="n" rel="next">Applying</a>, Previous: <a href="Repository-setup.html#Repository-setup" accesskey="p" rel="prev">Repository setup</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Staging-and-unstaging-1"></a>
+<h3 class="section">6.2 Staging and unstaging</h3>
+
+<p>Like Git, Magit can of course stage and unstage complete files.
+Unlike Git, it also allows users to gracefully un-/stage
+individual hunks and even just part of a hunk.  To stage individual
+hunks and parts of hunks using Git directly, one has to use the very
+modal and rather clumsy interface of a <code>git add --interactive</code> session.
+</p>
+<p>With Magit, on the other hand, one can un-/stage individual hunks by
+just moving point into the respective section inside a diff displayed
+in the status buffer or a separate diff buffer and typing <code>s</code> or <code>u</code>.  To
+operate on just parts of a hunk, mark the changes that should be
+un-/staged using the region and then press the same key that would be
+used to un-/stage.  To stage multiple files or hunks at once use a
+region that starts inside the heading of such a section and ends
+inside the heading of a sibling section of the same type.
+</p>
+<p>Besides staging and unstaging, Magit also provides several other
+&quot;apply variants&quot; that can also operate on a file, multiple files at
+once, a hunk, multiple hunks at once, and on parts of a hunk.  These
+apply variants are described in the next section.
+</p>
+<dl compact="compact">
+<dd><a name="index-s"></a>
+<a name="index-magit_002dstage"></a>
+</dd>
+<dt><kbd>s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stage</code>)</dt>
+<dd>
+<p>Add the change at point to the staging area.
+</p>
+<a name="index-S"></a>
+<a name="index-magit_002dstage_002dmodified"></a>
+</dd>
+<dt><kbd>S</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stage-modified</code>)</dt>
+<dd>
+<p>Stage all changes to files modified in the worktree.  Stage all new
+content of tracked files and remove tracked files that no longer
+exist in the working tree from the index also.  With a prefix
+argument also stage previously untracked (but not ignored) files.
+</p>
+<a name="index-u"></a>
+<a name="index-magit_002dunstage"></a>
+</dd>
+<dt><kbd>u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-unstage</code>)</dt>
+<dd>
+<p>Remove the change at point from the staging area.
+</p>
+<a name="index-U"></a>
+<a name="index-magit_002dunstage_002dall"></a>
+</dd>
+<dt><kbd>U</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-unstage-all</code>)</dt>
+<dd>
+<p>Remove all changes from the staging area.
+</p>
+<a name="index-M_002dx-magit_002dreset_002dindex"></a>
+<a name="index-magit_002dreset_002dindex"></a>
+</dd>
+<dt><kbd>M-x magit-reset-index</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-reset-index</code>)</dt>
+<dd>
+<p>Reset the index to some commit.  The commit is read from the user
+and defaults to the commit at point.  If there is no commit at
+point, then it defaults to <code>HEAD</code>.
+</p></dd>
+</dl>
+
+
+<p>To stage a smaller unit than a range of lines, similar to <code>git add
+--patch</code> followed by <code>e</code> would do, then you can use <code>magit-ediff-stage</code> to
+do so.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Staging-from-file_002dvisiting-buffers.html#Staging-from-file_002dvisiting-buffers" accesskey="1">Staging from file-visiting buffers</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Applying.html#Applying" accesskey="n" rel="next">Applying</a>, Previous: <a href="Repository-setup.html#Repository-setup" accesskey="p" rel="prev">Repository setup</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

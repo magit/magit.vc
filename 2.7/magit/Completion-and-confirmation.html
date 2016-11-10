@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Completion and confirmation</title>
+
+<meta name="description" content="Magit User Manual: Completion and confirmation">
+<meta name="keywords" content="Magit User Manual: Completion and confirmation">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Interface-concepts.html#Interface-concepts" rel="up" title="Interface concepts">
+<link href="Running-Git.html#Running-Git" rel="next" title="Running Git">
+<link href="Popup-buffers-and-prefix-commands.html#Popup-buffers-and-prefix-commands" rel="prev" title="Popup buffers and prefix commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Completion-and-confirmation"></a>
+<div class="header">
+<p>
+Next: <a href="Running-Git.html#Running-Git" accesskey="n" rel="next">Running Git</a>, Previous: <a href="Popup-buffers-and-prefix-commands.html#Popup-buffers-and-prefix-commands" accesskey="p" rel="prev">Popup buffers and prefix commands</a>, Up: <a href="Interface-concepts.html#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Completion-and-confirmation-1"></a>
+<h3 class="section">4.4 Completion and confirmation</h3>
+
+<p>Many commands read a value from the user.  By default this is done
+using the built-in function <code>completing-read</code>, but Magit can instead use
+another completion framework.
+</p>
+<dl>
+<dt><a name="index-magit_002dcompleting_002dread_002dfunction"></a>User Option: <strong>magit-completing-read-function</strong></dt>
+<dd>
+<p>The value of this variable is the function used to perform
+completion.  Because functions <em>intended</em> to replace <code>completing-read</code>
+often are not fully compatible drop-in replacements, and also
+because Magit expects them to add the default choice to the prompt
+themselves, such functions should not be used directly.  Instead a
+wrapper function has to be used.
+</p></dd></dl>
+
+<p>Currently only the real <code>completing-read</code> and <a href="http://www.emacswiki.org/emacs/InteractivelyDoThings">Ido</a> are fully supported.
+More frameworks will be supported in the future.
+</p>
+<dl>
+<dt><a name="index-magit_002dbuiltin_002dcompleting_002dread"></a>Function: <strong>magit-builtin-completing-read</strong> <em>prompt choices &amp;optional predicate require-match initial-input hist def</em></dt>
+<dd>
+<p>Perform completion using <code>completion-read</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dido_002dcompleting_002dread"></a>Function: <strong>magit-ido-completing-read</strong> <em>prompt choices &amp;optional predicate require-match initial-input hist def</em></dt>
+<dd>
+<p>Perform completion using <code>ido-completing-read+</code> from the package by
+the same name (which you have to explicitly install).  Ido itself
+comes with a supposed drop-in replacement <code>ido-completing-read</code>, but
+that has too many deficits to serve our needs.
+</p></dd></dl>
+
+<p>By default many commands that could potentially lead to data loss have
+to be confirmed.  This includes many very common commands, so this
+can become annoying quickly.  Many of these actions can be undone,
+provided <code>magit-wip-before-change-mode</code> is turned on (which it is not by
+default, due to performance concerns).
+</p>
+<dl>
+<dt><a name="index-magit_002dno_002dconfirm"></a>User Option: <strong>magit-no-confirm</strong></dt>
+<dd>
+<p>The value of this option is a list of symbols, representing commands
+which do not have to be confirmed by the user before being carried
+out.
+</p>
+<p>When the global mode <code>magit-wip-before-change-mode</code> is enabled then
+many commands can be undone.  If that mode is enabled then adding
+<code>safe-with-wip</code> to this list has the same effect as adding <code>discard</code>,
+<code>reverse</code>, <code>stage-all-changes</code>, and <code>unstage-all-changes</code>.
+</p>
+<div class="lisp">
+<pre class="lisp">(add-to-list 'magit-no-confirm 'safe-with-wip)
+</pre></div>
+
+<p>For a list of all symbols that can be added to the value of this
+variable, see the doc-string.
+</p></dd></dl>
+
+<p>Note that there are commands that ignore this option and always
+require confirmation, or which can be told not to do so using another
+dedicated option.  Also most commands, when acting on multiple sections
+at once always, require confirmation, even when they do respect this
+option when acting on a single section.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Running-Git.html#Running-Git" accesskey="n" rel="next">Running Git</a>, Previous: <a href="Popup-buffers-and-prefix-commands.html#Popup-buffers-and-prefix-commands" accesskey="p" rel="prev">Popup buffers and prefix commands</a>, Up: <a href="Interface-concepts.html#Interface-concepts" accesskey="u" rel="up">Interface concepts</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

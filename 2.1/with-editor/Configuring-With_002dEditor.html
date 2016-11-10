@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- The library with-editor makes it easy to use the Emacsclient as
+the $EDITOR of child processes, making sure they know how to call
+home.  For remote processes a substitute is provided, which communicates
+with Emacs on standard output instead of using a socket as the Emacsclient
+does.
+
+This library was written because Magit has to be able to do the above
+to allow the user to edit commit messages gracefully and to edit
+rebase sequences, which wouldn't be possible at all otherwise.
+
+Because other packages can benefit from such functionality, this
+library is made available as a separate package.  It also defines some
+additional functionality which makes it useful even for end-users, who
+don't use Magit or another package which uses it internally.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>With-Editor User Manual: Configuring With-Editor</title>
+
+<meta name="description" content="With-Editor User Manual: Configuring With-Editor">
+<meta name="keywords" content="With-Editor User Manual: Configuring With-Editor">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" rel="up" title="Using the With-Editor package">
+<link href="Using-With_002dEditor-commands.html#Using-With_002dEditor-commands" rel="next" title="Using With-Editor commands">
+<link href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" rel="prev" title="Using the With-Editor package">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Configuring-With_002dEditor"></a>
+<div class="header">
+<p>
+Next: <a href="Using-With_002dEditor-commands.html#Using-With_002dEditor-commands" accesskey="n" rel="next">Using With-Editor commands</a>, Up: <a href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" accesskey="u" rel="up">Using the With-Editor package</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Configuring-With_002dEditor-1"></a>
+<h3 class="section">1.1 Configuring With-Editor</h3>
+
+<p>With-Editor tries very hard to locate a suitable emacsclient
+executable, so ideally you should never have to customize the option
+<code>with-editor-emacsclient-executable</code>.  When it fails to do so, then the
+most likely reason is that someone found yet another way to package
+Emacs (most likely on OS X) without putting the executable on <code>$PATH</code>,
+and we have to add another kludge to find it anyway.
+</p>
+<dl>
+<dt><a name="index-with_002deditor_002demacsclient_002dexecutable"></a>User Option: <strong>with-editor-emacsclient-executable</strong></dt>
+<dd>
+<p>The emacsclient executable used as the editor by child process of
+this Emacs instance.  By using this executable, child processes can
+call home to their parent process.
+</p>
+<p>This option is automatically set at startup by looking in <code>exec-path</code>,
+and other places where the executable could be installed, to find
+the emacsclient executable most suitable for the current emacs
+instance.
+</p>
+<p>You should <strong>not</strong> customize this option permanently.  If you have to do
+it, then you should consider that a temporary kludge and inform the
+Magit maintainer as described in <a href="Debugging.html#Debugging">Debugging</a>.
+</p>
+<p>If With-Editor fails to find a suitable emacsclient on you system,
+then this should be fixed for all users at once, by teaching
+<code>with-editor-locate-emacsclient</code> how to so on your system and system
+like yours. Doing it this way has the advantage, that you won&rsquo;t have
+do it again every time you update Emacs, and that other users who
+have installed Emacs the same way as you have, won&rsquo;t have to go
+through the same trouble.
+</p>
+<p>Note that there also is a nuclear option; setting this variable to
+<code>nil</code> causes the &quot;sleeping editor&quot; described below to be used even for
+local child processes.  Obviously we don&rsquo;t recommend that you use
+this except in &quot;emergencies&quot;, i.e. before we had a change to add a
+kludge appropriate for you setup.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-with_002deditor_002dlocate_002demacsclient"></a>Function: <strong>with-editor-locate-emacsclient</strong></dt>
+<dd>
+<p>The function used to set the initial value of the option
+<code>with-editor-emacsclient-executable</code>.  There&rsquo;s a lot of voodoo here.
+</p></dd></dl>
+
+<p>The emacsclient cannot be used when using Tramp to run a process on a
+remote machine.  (Theoretically it could, but that would be hard to
+setup, very fragile, and rather insecure).
+</p>
+<p>With-Editor provides an alternative &quot;editor&quot; which can be used by
+remote processes in much the same way as local processes use an
+emacsclient executable.  This alternative is known as the &quot;sleeping
+editor&quot; because it is implemented as a shell script which sleeps until
+it receives a signal.
+</p>
+<dl>
+<dt><a name="index-with_002deditor_002dsleeping_002deditor"></a>User Option: <strong>with-editor-sleeping-editor</strong></dt>
+<dd>
+<p>The sleeping editor is a shell script used as the editor of child
+processes when the emacsclient executable cannot be used.
+</p>
+<p>This fallback is used for asynchronous process started inside the
+macro <code>with-editor</code>, when the process runs on a remote machine or for
+local processes when <code>with-editor-emacsclient-executable</code> is <code>nil</code>.
+</p>
+<p>Where the latter uses a socket to communicate with Emacs&rsquo; server,
+this substitute prints edit requests to its standard output on
+which a process filter listens for such requests.  As such it is
+not a complete substitute for a proper Emacsclient, it can only
+be used as <code>$EDITOR</code> of child process of the current Emacs instance.
+</p>
+<p>It is unlikely that you should ever have to customize this option.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Using-With_002dEditor-commands.html#Using-With_002dEditor-commands" accesskey="n" rel="next">Using With-Editor commands</a>, Up: <a href="Using-the-With_002dEditor-package.html#Using-the-With_002dEditor-package" accesskey="u" rel="up">Using the With-Editor package</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

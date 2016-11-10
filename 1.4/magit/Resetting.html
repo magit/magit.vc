@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.
+
+Unlike Emacs's native Version Control package which strives to
+provide a unified interface to various version control systems, Magit
+only supports Git and can therefor better take advantage of its native
+features.
+
+You are looking at the manual for the 1.4 series.
+
+Copyright (C) 2008-2015 The Magit Project Developers
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+"GNU Free Documentation License". -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual (1.4): Resetting</title>
+
+<meta name="description" content="Magit User Manual (1.4): Resetting">
+<meta name="keywords" content="Magit User Manual (1.4): Resetting">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Stashing.html#Stashing" rel="next" title="Stashing">
+<link href="Tagging.html#Tagging" rel="prev" title="Tagging">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Resetting"></a>
+<div class="header">
+<p>
+Next: <a href="Stashing.html#Stashing" accesskey="n" rel="next">Stashing</a>, Previous: <a href="Tagging.html#Tagging" accesskey="p" rel="prev">Tagging</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Resetting-1"></a>
+<h2 class="chapter">12 Resetting</h2>
+
+<p>Once you have added a commit to your local repository, you can not
+change that commit anymore in any way.  But you can reset your current
+head to an earlier commit and start over.
+</p>
+<p>If you have published your history already, rewriting it in this way
+can be confusing and should be avoided.  However, rewriting your local
+history is fine and it is often cleaner to fix mistakes this way than
+by reverting commits (with <kbd>v</kbd>, for example).
+</p>
+<p>Typing <kbd>x</kbd> will ask for a revision and reset your current head to
+it.  No changes will be made to your working tree and staging area.
+Thus, the <em>Staged changes</em> section in the status buffer will show
+the changes that you have removed from your commit history.  You can
+commit the changes again as if you had just made them, thus rewriting
+history.
+</p>
+<p>Typing <kbd>x</kbd> while point is in a line that describes a commit will
+offer this commit as the default revision to reset to.  Thus, you can
+move point to one of the commits in the <em>Unpushed commits</em>
+section and hit <kbd>x RET</kbd> to reset your current head to it.
+</p>
+<p>Type <kbd>X</kbd> to reset your working tree and staging area to the most
+recently committed state.  This will discard your local modifications,
+so be careful.
+</p>
+<p>You can give a prefix to <kbd>x</kbd> if you want to reset both the current
+head and your working tree to a given commit.  This is the same as
+first using an unprefixed <kbd>x</kbd> to reset only the head, and then
+using <kbd>X</kbd>.
+</p>
+
+
+
+</body>
+</html>

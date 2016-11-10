@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Calling Git for effect</title>
+
+<meta name="description" content="Magit User Manual: Calling Git for effect">
+<meta name="keywords" content="Magit User Manual: Calling Git for effect">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Calling-Git.html#Calling-Git" rel="up" title="Calling Git">
+<link href="Section-plumbing.html#Section-plumbing" rel="next" title="Section plumbing">
+<link href="Getting-a-value-from-Git.html#Getting-a-value-from-Git" rel="prev" title="Getting a value from Git">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Calling-Git-for-effect"></a>
+<div class="header">
+<p>
+Previous: <a href="Getting-a-value-from-Git.html#Getting-a-value-from-Git" accesskey="p" rel="prev">Getting a value from Git</a>, Up: <a href="Calling-Git.html#Calling-Git" accesskey="u" rel="up">Calling Git</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Calling-Git-for-effect-1"></a>
+<h4 class="subsection">10.1.2 Calling Git for effect</h4>
+
+<p>These functions are used to run git to produce some effect.  Most
+Magit commands that actually run git do so by using such a function.
+</p>
+<p>Because we do not need to consume git&rsquo;s output when using these
+functions, their output is instead logged into a per-repository
+buffer, which can be shown using <code>$</code> from a Magit buffer or <code>M-x
+magit-process</code> elsewhere.
+</p>
+<p>These functions can have an effect in two distinct ways.  Firstly,
+running git may change something, i.e. create or push a new commit.
+Secondly, that change may require that Magit buffers are refreshed to
+reflect the changed state of the repository.  But refreshing isn&rsquo;t
+always desirable, so only some of these functions do perform such a
+refresh after git has returned.
+</p>
+<p>Sometimes it is useful to run git asynchronously.  For example, when
+the user has just initiated a push, then there is no reason to make
+her wait until that has completed.  In other cases it makes sense to
+wait for git to complete before letting the user do something else.
+For example after staging a change it is useful to wait until after
+the refresh because that also automatically moves to the next change.
+</p>
+<dl>
+<dt><a name="index-magit_002dcall_002dgit"></a>Function: <strong>magit-call-git</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Calls git synchronously with ARGS.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dcall_002dprocess"></a>Function: <strong>magit-call-process</strong> <em>program &amp;rest args</em></dt>
+<dd>
+<p>Calls PROGRAM synchronously with ARGS.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drun_002dgit"></a>Function: <strong>magit-run-git</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Calls git synchronously with ARGS and then refreshes.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drun_002dgit_002dwith_002dinput"></a>Function: <strong>magit-run-git-with-input</strong> <em>input &amp;rest args</em></dt>
+<dd>
+<p>Calls git synchronously with ARGS and sends it INPUT on standard
+input.
+</p>
+<p>INPUT should be a buffer or the name of an existing buffer.  The
+content of that buffer is used as the process&rsquo; standard input.
+After the process returns a refresh is performed.
+</p>
+<p>As a special case, INPUT may also be nil.  In that case the content
+of the current buffer is used as standard input and <strong>no</strong> refresh is
+performed.
+</p>
+<p>This function actually runs git asynchronously.  But then it waits
+for the process to return, so the function itself is synchronous.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drun_002dgit_002dwith_002dlogfile"></a>Function: <strong>magit-run-git-with-logfile</strong> <em>file &amp;rest args</em></dt>
+<dd>
+<p>Calls git synchronously with ARGS.  The process&rsquo; output is saved in
+FILE.  This is rarely useful and so this function might be removed
+in the future.
+</p>
+<p>This function actually runs git asynchronously.  But then it waits
+for the process to return, so the function itself is synchronous.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit"></a>Function: <strong>magit-git</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Calls git synchronously with ARGS for side-effects only.  This
+function does not refresh the buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dgit_002dwash"></a>Function: <strong>magit-git-wash</strong> <em>washer &amp;rest args</em></dt>
+<dd>
+<p>Execute Git with ARGS, inserting washed output at point.  Actually
+first insert the raw output at point.  If there is no output call
+<code>magit-cancel-section</code>.  Otherwise temporarily narrow the buffer to
+the inserted text, move to its beginning, and then call function
+WASHER with no argument.
+</p></dd></dl>
+
+<p>And now for the asynchronous variants.
+</p>
+<dl>
+<dt><a name="index-magit_002drun_002dgit_002dasync"></a>Function: <strong>magit-run-git-async</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Start Git, prepare for refresh, and return the process object.
+ARGS is flattened and then used as arguments to Git.
+</p>
+<p>Display the command line arguments in the echo area.
+</p>
+<p>After Git returns some buffers are refreshed: the buffer that was
+current when this function was called (if it is a Magit buffer and
+still alive), as well as the respective Magit status buffer.
+Unmodified buffers visiting files that are tracked in the current
+repository are reverted if <code>magit-revert-buffers</code> is non-nil.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002drun_002dgit_002dwith_002deditor"></a>Function: <strong>magit-run-git-with-editor</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Export GIT<em>_EDITOR</em> and start Git.  Also prepare for refresh and
+return the process object.  ARGS is flattened and then used as
+arguments to Git.
+</p>
+<p>Display the command line arguments in the echo area.
+</p>
+<p>After Git returns some buffers are refreshed: the buffer that was
+current when this function was called (if it is a Magit buffer and
+still alive), as well as the respective Magit status buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dstart_002dgit"></a>Function: <strong>magit-start-git</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Start Git, prepare for refresh, and return the process object.
+</p>
+<p>If INPUT is non-nil, it has to be a buffer or the name of an
+existing buffer.  The buffer content becomes the processes
+standard input.
+</p>
+<p>Option <code>magit-git-executable</code> specifies the Git executable and option
+<code>magit-git-global-arguments</code> specifies constant arguments.  The
+remaining arguments ARGS specify arguments to Git.  They are
+flattened before use.
+</p>
+<p>After Git returns, some buffers are refreshed: the buffer that was
+current when this function was called (if it is a Magit buffer and
+still alive), as well as the respective Magit status buffer.
+Unmodified buffers visiting files that are tracked in the current
+repository are reverted if <code>magit-revert-buffers</code> is non-nil.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dstart_002dprocess"></a>Function: <strong>magit-start-process</strong> <em>&amp;rest args</em></dt>
+<dd>
+<p>Start PROGRAM, prepare for refresh, and return the process object.
+</p>
+<p>If optional argument INPUT is non-nil, it has to be a buffer or
+the name of an existing buffer.  The buffer content becomes the
+processes standard input.
+</p>
+<p>The process is started using <code>start-file-process</code> and then setup to
+use the sentinel <code>magit-process-sentinel</code> and the filter
+<code>magit-process-filter</code>.  Information required by these functions is
+stored in the process object.  When this function returns the
+process has not started to run yet so it is possible to override the
+sentinel and filter.
+</p>
+<p>After the process returns, <code>magit-process-sentinel</code> refreshes the
+buffer that was current when <code>magit-start-process</code> was called (if it
+is a Magit buffer and still alive), as well as the respective Magit
+status buffer.  Unmodified buffers visiting files that are tracked
+in the current repository are reverted if <code>magit-revert-buffers</code> is
+non-nil.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dthis_002dprocess"></a>Variable: <strong>magit-this-process</strong></dt>
+<dd>
+<p>The child process which is about to start.  This can be used to
+change the filter and sentinel.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dprocess_002draise_002derror"></a>Variable: <strong>magit-process-raise-error</strong></dt>
+<dd>
+<p>When this is non-nil, then <code>magit-process-sentinel</code> raises an error if
+git exits with a non-zero exit status.  For debugging purposes.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Getting-a-value-from-Git.html#Getting-a-value-from-Git" accesskey="p" rel="prev">Getting a value from Git</a>, Up: <a href="Calling-Git.html#Calling-Git" accesskey="u" rel="up">Calling Git</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

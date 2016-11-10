@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Updating from an older release</title>
+
+<meta name="description" content="Magit User Manual: Updating from an older release">
+<meta name="keywords" content="Magit User Manual: Updating from an older release">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Installation.html#Installation" rel="up" title="Installation">
+<link href="Installing-from-an-Elpa-archive.html#Installing-from-an-Elpa-archive" rel="next" title="Installing from an Elpa archive">
+<link href="Installation.html#Installation" rel="prev" title="Installation">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Updating-from-an-older-release"></a>
+<div class="header">
+<p>
+Next: <a href="Installing-from-an-Elpa-archive.html#Installing-from-an-Elpa-archive" accesskey="n" rel="next">Installing from an Elpa archive</a>, Up: <a href="Installation.html#Installation" accesskey="u" rel="up">Installation</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Updating-from-an-older-release-1"></a>
+<h3 class="section">2.1 Updating from an older release</h3>
+
+<p>When updating from <code>1.2.*</code> or <code>1.4.*</code>, you should first uninstall Magit
+and some of its dependencies and restart Emacs before installing the
+latest release.
+</p>
+<ul>
+<li> The old Magit installation has to be removed because some macros
+have changed and using the old definitions when building the new
+release would lead to very strange results, including compile
+errors.  This is due to a limitation in Emacs&rsquo; package manager or
+rather Emacs itself: it&rsquo;s not possible to reliably unload a feature
+or even all features belonging to a package.
+
+
+</li><li> Furthermore the old dependencies <code>git-commit-mode</code> and <code>git-rebase-mode</code>
+  have to be removed because they are no longer used by the <code>2.1.0</code>
+  release and later, and get in the way of their successors <code>git-commit</code>
+  and <code>git-rebase</code>.
+</li></ul>
+
+<p>So please uninstall the packages <code>magit</code>, <code>git-commit-mode</code>, and
+<code>git-rebase-mode</code>.  Then quit Emacs and start a new instance.  Only then
+follow the instructions in either one of the next two sections.
+</p>
+<p>Also note that starting with the <code>2.1.0</code> release, Magit requires at least
+Emacs <code>24.4</code> and Git <code>1.9.4</code>.  You should make sure you have at least
+these releases installed before updating Magit.  And if you connect to
+remote hosts using Tramp, then you should also make sure to install a
+recent enough Git version on these hosts.
+</p>
+
+
+
+</body>
+</html>

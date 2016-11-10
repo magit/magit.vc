@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Log Buffer</title>
+
+<meta name="description" content="Magit User Manual: Log Buffer">
+<meta name="keywords" content="Magit User Manual: Log Buffer">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Logging.html#Logging" rel="up" title="Logging">
+<link href="Select-from-log.html#Select-from-log" rel="next" title="Select from log">
+<link href="Refreshing-logs.html#Refreshing-logs" rel="prev" title="Refreshing logs">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Log-Buffer"></a>
+<div class="header">
+<p>
+Next: <a href="Select-from-log.html#Select-from-log" accesskey="n" rel="next">Select from log</a>, Previous: <a href="Refreshing-logs.html#Refreshing-logs" accesskey="p" rel="prev">Refreshing logs</a>, Up: <a href="Logging.html#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Log-Buffer-1"></a>
+<h4 class="subsection">5.2.2 Log Buffer</h4>
+
+<dl compact="compact">
+<dd><a name="index-C_002dc-C_002db"></a>
+<a name="index-magit_002dgo_002dbackward"></a>
+</dd>
+<dt><kbd>C-c C-b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-go-backward</code>)</dt>
+<dd>
+<p>Move backward in current buffer&rsquo;s history.
+</p>
+<a name="index-C_002dc-C_002df"></a>
+<a name="index-magit_002dgo_002dforward"></a>
+</dd>
+<dt><kbd>C-c C-f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-go-forward</code>)</dt>
+<dd>
+<p>Move forward in current buffer&rsquo;s history.
+</p>
+<a name="index-SPC"></a>
+<a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002dup"></a>
+</dd>
+<dt><kbd>SPC</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-show-or-scroll-up</code>)</dt>
+<dd>
+<p>Update the commit or diff buffer for the thing at point.
+</p>
+<p>Either show the commit or stash at point in the appropriate buffer,
+or if that buffer is already being displayed in the current frame
+and contains information about that commit or stash, then instead
+scroll the buffer up.  If there is no commit or stash at point, then
+prompt for a commit.
+</p>
+<a name="index-DEL"></a>
+<a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002ddown"></a>
+</dd>
+<dt><kbd>DEL</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-show-or-scroll-down</code>)</dt>
+<dd>
+<p>Update the commit or diff buffer for the thing at point.
+</p>
+<p>Either show the commit or stash at point in the appropriate buffer,
+or if that buffer is already being displayed in the current frame
+and contains information about that commit or stash, then instead
+scroll the buffer down.  If there is no commit or stash at point,
+then prompt for a commit.
+</p>
+<a name="index-q-1"></a>
+<a name="index-magit_002dlog_002dbury_002dbuffer"></a>
+</dd>
+<dt><kbd>q</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-bury-buffer</code>)</dt>
+<dd>
+<p>Bury the current buffer or the revision buffer in the same frame.
+Like <code>magit-mode-bury-buffer</code> (which see) but with a negative prefix
+argument instead bury the revision buffer, provided it is displayed
+in the current frame.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dauto_002dmore"></a>User Option: <strong>magit-log-auto-more</strong></dt>
+<dd>
+<p>Insert more log entries automatically when moving past the last
+entry.  Only considered when moving past the last entry with
+<code>magit-goto-*-section</code> commands.
+</p></dd></dl>
+
+<dl compact="compact">
+<dd><a name="index-_002b"></a>
+<a name="index-magit_002dlog_002dshow_002dmore_002dcommits"></a>
+</dd>
+<dt><kbd>+</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-show-more-commits</code>)</dt>
+<dd>
+<p>Increase the number of commits shown in current log.
+</p>
+<p>With no prefix argument, show twice as many commits as before.
+With a numerical prefix argument, show this many additional
+commits.  With a non-numeric prefix argument, show all commits.
+</p>
+<p>When no limit was previously imposed in the current buffer, set the
+local limit to the default limit instead (or if that is nil then
+100), regardless of the prefix argument.
+</p>
+<p>By default <code>magit-log-cutoff-length</code> commits are shown.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dshow_002dmargin"></a>User Option: <strong>magit-log-show-margin</strong></dt>
+<dd>
+<p>Whether to initially show the margin in log buffers.
+</p>
+<p>When non-nil the author name and date are initially displayed in the
+margin of log buffers.  The margin can be shown or hidden in the
+current buffer using the command <code>magit-toggle-margin</code>.
+</p>
+<p>When a log buffer contains a verbose log, then the margin is never
+displayed.  In status buffers this option is ignored, but it is
+possible to show the margin using the mentioned command.
+</p></dd></dl>
+
+<dl compact="compact">
+<dd><a name="index-L-1"></a>
+<a name="index-magit_002dlog_002drefresh_002dpopup-1"></a>
+</dd>
+<dt><kbd>L</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-log-refresh-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.  See <a href="Refreshing-logs.html#Refreshing-logs">Refreshing logs</a>.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dcutoff_002dlength"></a>User Option: <strong>magit-log-cutoff-length</strong></dt>
+<dd>
+<p>The maximum number of commits to show in log and reflog buffers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dshow_002drefname_002dafter_002dsummary"></a>User Option: <strong>magit-log-show-refname-after-summary</strong></dt>
+<dd>
+<p>Whether to show the refnames after the commit summaries.  This is
+useful if you use really long branch names.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Select-from-log.html#Select-from-log" accesskey="n" rel="next">Select from log</a>, Previous: <a href="Refreshing-logs.html#Refreshing-logs" accesskey="p" rel="prev">Refreshing logs</a>, Up: <a href="Logging.html#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
