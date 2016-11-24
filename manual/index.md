@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Magit! A Git Porcelain inside Emacs
-header: User Manuals
+title: User Manuals
 ---
 
 # Current releases

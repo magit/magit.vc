@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Magit! Screencasts
-header: Screencasts
+title: Screencasts
 ---
 
 I will soon add some official screencasts.  Meanwhile you can enjoy

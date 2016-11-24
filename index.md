@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Magit! A Git Porcelain inside Emacs
-header: A Git Porcelain inside Emacs
+title: A Git Porcelain inside Emacs
 ---
 
 Magit is an interface to the version control system [Git][git],

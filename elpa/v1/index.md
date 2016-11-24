@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Magit! A Git Porcelain inside Emacs
-header: Elpa archive for obsolete v1 series
+title: Elpa archive for obsolete v1 series
 ---
 
 # The v1 series is obsolete and unmaintained

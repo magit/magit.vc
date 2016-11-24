@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Magit! Blog posts
-header: Blog posts
+title: Blog posts
 ---
 
 # Posts by the maintainer

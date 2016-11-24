@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Magit! A Git Porcelain inside Emacs
-header: Contributors
+title: Contributors
 ---
 
 Magit was started by [Marius Vollmer][marius], and is now maintained

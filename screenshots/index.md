@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Magit! A visual walk-through
-header: A visual walk-through
+title: A visual walk-through
 ---
 
 Magit is an interface to the version control system [Git][git],

@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Magit! A Git Porcelain inside Emacs
-header: Quotes
+title: Quotes
 ---
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>

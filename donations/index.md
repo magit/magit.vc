@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Support Magit Development
-header: Help making it better
+title: Help making it better
 ---
 
 Please consider supporting development financially using one of the
