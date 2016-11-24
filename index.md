@@ -26,7 +26,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
     Please consider supporting development using
     <a href="/donations">PayPal, Payoneer, Patreon, Gratipay,
     Flattr, Bountysource, Coinbase, or Bitcoin.</a>
-    &mdash; <i>Thank you! &lt;3</i>
+    &mdash; <em>Thank you! &lt;3</em>
   </div>
 </section>
 
@@ -64,7 +64,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
    [org]({{ site.rawgithub }}/magit/master/Documentation/magit.org))
   * [Installation](/manual/magit/Installation.html)
   * [FAQ](/manual/magit/FAQ.html)
-    <img src="/assets/R.png" align="top">
+    <img class="clear" src="/assets/R.png" align="top">
 * [Magit-Popup User Manual](/manual/magit-popup#Top)
   ([single-page](/manual/magit-popup.html#Top),
    [pdf](/manual/magit-popup.pdf),
