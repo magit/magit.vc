@@ -89,7 +89,7 @@ wallet, then you can use that instead.
 ## Bitcoin Address
 
 If you would like send Bitcoins as intended by Satoshi then send them to
-**3Hx4mgytZojmnsmAK8ZMcohKb1vruuYrkW**.
+**1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK**.
 
 <img src="/assets/bitcoin.png">
 
