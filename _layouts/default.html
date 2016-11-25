@@ -6,6 +6,7 @@
     <meta name="description" content="Support Magit Development">
     <meta name="keywords"    content="emacs, git, version control">
     <meta charset="utf-8">
+    <link rel="icon" href="/assets/magit.ico">
     <link rel="stylesheet" type="text/css" href="/assets/page.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic">
@@ -13,9 +14,20 @@
 
   <body>
     <header>
-      <a href="/"><img id="M" src="/assets/magit.png"></a>
-      <h1>Magit!</h1>
-      <h2>{{ page.title }}</h2>
+      <a alt="Magit logo"
+         {% if page.home %}
+           title="go to manual" href="/manual/magit#Top"
+         {% else %}
+           title="go home" href="/"
+         {% endif %}
+         >
+      {% if page.logo == "big" %}
+        <img src="/assets/magit-400x400px.png">
+      {% else %}
+        <img src="/assets/magit-168x200px.png">
+      {% endif %}
+      </a>
+      <h1>{{ page.title }}</h2>
     </header>
 {{ content }}
     <script type="text/javascript">

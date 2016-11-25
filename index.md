@@ -1,6 +1,8 @@
 ---
 layout: default
 title: A Git Porcelain inside Emacs
+logo: big
+home: true
 ---
 
 Magit is an interface to the version control system [Git][git],
@@ -57,6 +59,8 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20161206 &mdash; Santa brought a
+  [new](https://prospectone.io/portfolio/magit) Magit logo
 * 20160821 &mdash; Magit **v2.8.0** [released]({{ site.relnotes }}/2.8.0.txt)
   ([announcement](https://emacsair.me/2016/08/21/magit-2.8))
 * 20160519 &mdash; Magit **v2.7.0** [released]({{ site.relnotes }}/2.7.0.txt)
