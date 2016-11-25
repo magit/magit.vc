@@ -19,7 +19,6 @@ me [by mail](mailto:jonas@bernoul.li).
 
 * **One-time donations**
   * [PayPal](#paypal)
-  * [Payoneer](#payoneer)
   * [Bitcoin](#bitcoin)
 * **Monthly subscriptions**
   * [PayPal](#paypal-1)
@@ -62,12 +61,6 @@ me [by mail](mailto:jonas@bernoul.li).
 PayPal allows <del>donating</del> paying using **a PayPal account, a
 credit card, or a bank account**.  First select the amount and only
 then click on the button.
-
-## Payoneer
-
-Payoneer allows donating using a **credit card**.  Follow
-[this link][payoneer] and then enter **jonas@bernoul.li** as
-**Recipient's Email** and complete the subsequent steps.
 
 ## Bitcoin
 
