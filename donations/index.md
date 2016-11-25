@@ -26,8 +26,6 @@ me [by mail](mailto:jonas@bernoul.li).
   * [Gratipay](#gratipay)
   * [Flattr](#flattr)
   * [Bountysource Salt](#bountysource-salt)
-* **Issue bounties**
-  * [Bountysource](#bountysource)
 * [Notes](#notes)
 
 # One-time donations
@@ -128,19 +126,6 @@ above to setup your monthly donation.
 Bountysource Salt allows making monthly donations.  You'll have to
 create an account and add money to it.
 Follow [this link][bountysource-salt] to setup your monthly donation.
-
-# Issue bounties
-
-## Bountysource
-
-Bountysource allows backing particular issues you are interested in.
-You'll have to create an account and add money to it.
-
-Because I have done a good job preventing a large backlog, there
-currently aren't many issues you could back, but feel free to create
-and back new issues.
-
-To back issues follow [this link][bountysource].
 
 # Notes
 
