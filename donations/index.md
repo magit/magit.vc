@@ -20,15 +20,13 @@ me [by mail](mailto:jonas@bernoul.li).
 * **One-time donations**
   * [PayPal](#paypal)
   * [Payoneer](#payoneer)
-  * [Coinbase (Bitcoin)](#coinbase-bitcoin)
-  * [Bitcoin Address](#bitcoin-address)
+  * [Bitcoin](#bitcoin)
 * **Monthly subscriptions**
   * [PayPal](#paypal-1)
   * [Patreon](#patreon)
   * [Gratipay](#gratipay)
   * [Flattr](#flattr)
   * [Bountysource Salt](#bountysource-salt)
-  * [Coinbase (Bitcoin)](#coinbase-bitcoin-1)
 * **Issue bounties**
   * [Bountysource](#bountysource)
 * [Notes](#notes)
@@ -71,22 +69,7 @@ Payoneer allows donating using a **credit card**.  Follow
 [this link][payoneer] and then enter **jonas@bernoul.li** as
 **Recipient's Email** and complete the subsequent steps.
 
-## Coinbase (Bitcoin)
-
-<a class="coinbase-button"
-   data-code="ff49118ff38dc965d03c1142b7357d12"
-   data-button-style="donation_large"
-   data-custom="magit-once"
-   href="https://www.coinbase.com/checkouts/ff49118ff38dc965d03c1142b7357d12">
-  Donate Bitcoins
-</a>
-<script src="https://www.coinbase.com/assets/button.js" type="text/javascript"></script>
-
-Donate bitcoins by clicking on the above button.  You can either send
-your donation to the displayed address or if you have a Coinbase
-wallet, then you can use that instead.
-
-## Bitcoin Address
+## Bitcoin
 
 If you would like send Bitcoins as intended by Satoshi then send them to
 **1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK**.
@@ -152,26 +135,6 @@ above to setup your monthly donation.
 Bountysource Salt allows making monthly donations.  You'll have to
 create an account and add money to it.
 Follow [this link][bountysource-salt] to setup your monthly donation.
-
-## Coinbase (Bitcoin)
-
-<a class="coinbase-button"
-   data-code="d8c9acadc2027c0a0034dd21e820d11b"
-   data-button-style="subscription_large"
-   data-custom="magit-monthly"
-   href="https://www.coinbase.com/checkouts/d8c9acadc2027c0a0034dd21e820d11b">
-  Donate Bitcoins
-</a>
-<script src="https://www.coinbase.com/assets/button.js" type="text/javascript"></script>
-
-Donate bitcoins by clicking on the above button.  The entered amount
-will be payed from your Coinbase wallet every month until you cancel
-the subscription.
-
-You need a Coinbase wallet to do so.  If you would like send Bitcoins
-as intended by Satoshi, then you'll have to make
-a [one-time donation](#bitcoin-address) (of course you are welcome to
-do so every month :-).
 
 # Issue bounties
 
