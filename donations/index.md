@@ -22,10 +22,10 @@ me [by mail](mailto:jonas@bernoul.li).
   * [Bitcoin](#bitcoin)
 * **Monthly subscriptions**
   * [PayPal](#paypal-1)
+  * [Bountysource Salt](#bountysource-salt)
   * [Patreon](#patreon)
   * [Gratipay](#gratipay)
   * [Flattr](#flattr)
-  * [Bountysource Salt](#bountysource-salt)
 * [Notes](#notes)
 
 # One-time donations
@@ -105,6 +105,12 @@ Patreon allows making monthly donations.  You'll have to create an
 account and add money to it.  Follow [this link][patreon] to setup
 your monthly donation.
 
+## Bountysource Salt
+
+Bountysource Salt allows making monthly donations.  You'll have to
+create an account and add money to it.
+Follow [this link][bountysource-salt] to setup your monthly donation.
+
 ## Gratipay
 
 Gratipay allows making monthly donations.  You'll have to create an
@@ -120,12 +126,6 @@ your monthly donation.
 Flattr allows making monthly donations.  You'll have to create an
 account and add money to it.  Follow [this link][flattr] or the button
 above to setup your monthly donation.
-
-## Bountysource Salt
-
-Bountysource Salt allows making monthly donations.  You'll have to
-create an account and add money to it.
-Follow [this link][bountysource-salt] to setup your monthly donation.
 
 # Notes
 
