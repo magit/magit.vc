@@ -53,7 +53,7 @@ better.  Please consider supporting my continuous work on
 <a class="dotted" href="/manual/magit.html#Top">documenting</a> Magit, and
 <a class="dotted" href="http://emacs.stackexchange.com/tags/magit/topusers">helping</a>
 <a class="dotted" href="https://github.com/magit/magit/issues?q=is%3Aissue+is%3Aclosed+label%3Asupport">its</a>
-<a class="dotted" href="https://gitter.im/magit/magit">users</a>.
+<a class="dotted" href="https://gitter.im/magit/magit">users</a> its users.
 
 <em>Thank you! &mdash; Jonas Bernoulli</em>
 

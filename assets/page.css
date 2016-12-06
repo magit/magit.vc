@@ -82,12 +82,13 @@ blockquote {
   display:block;
   background: #eee8d5;
   padding: 15px 20px 15px 45px;
-  margin: 0 0 20px;
+  margin: 0px;
+  margin-bottom: 20px;
   position: relative;
   font-size: 16px;
   line-height: 1.2;
   text-align: left;
-  box-shadow: 2px 2px 15px #eee8d5;
+  box-shadow: 2px 2px 15px #93a1a1;
 }
 
 blockquote::before {
@@ -103,33 +104,45 @@ blockquote::before {
 div#donate {
   display: block;
   background: #eee8d5;
-  padding: 15px 20px 15px 45px;
-  margin: 0 0 20px;
+  padding: 15px 20px 15px 20px;
+  margin: 0px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 40px;
   position: relative;
   font-size: 16px;
   line-height: 1.2;
-  text-align: left;
-  box-shadow: 2px 2px 15px #20ab2d;
+  text-align: center;
+  box-shadow: 2px 2px 15px #93a1a1;
 }
 
 div#donate a {
-  color: #20ab2d;
+  color: #586e75;
 }
 
-div#donate i {
-  color: #ab2720;
+div#donate div:nth-child(1) a, a.dotted {
+  color: #586e75;
+  text-decoration-style: dotted;
 }
 
-div#donate div {
+div#donate div:nth-child(2) {
+  margin-top: 20px;
   text-align: center;
 }
 
-div#donate::before {
-  content: "\0024";
-  font-size: 40px;
-  font-weight: bold;
-  color: #20ab2d;
-  position: absolute;
-  left: 10px;
-  top: 5px;
+div#donate div:nth-child(3) {
+  margin-top: 20px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+div#donate div:nth-child(3) img, img.donate {
+  box-shadow: unset;
+  height: 50px;
+  width: auto;
+}
+
+div#donate div:nth-child(3) {
+  text-align: center;
 }

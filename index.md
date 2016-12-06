@@ -22,10 +22,36 @@ porcelains.  <a class="small" href="/about">(more)</a>
   <blockquote id="quote1"></blockquote>
   <blockquote id="quote2"></blockquote>
   <div id="donate">
-    Please consider supporting development using
-    <a href="/donations">PayPal, Payoneer, Patreon, Gratipay,
-    Flattr, Bountysource, Coinbase, or Bitcoin.</a>
-    &mdash; <em>Thank you! &lt;3</em>
+    <div>
+      Keeping its user this excited is
+      <a href="https://magit.vc/stats/authors.html#cumulated_added_lines_of_code_per_author">
+        a lot of work
+      </a>.
+      If Magit makes you <br> more productive too,
+      then <b>please consider making a donation</b>.
+    </div>
+    <div>
+      <em>Thank you! &mdash; Jonas Bernoulli</em>
+    </div>
+    <div>
+      <a href="https://www.paypal.me/JonasBernoulli/20">
+        <img title="Donate using PayPal"
+             alt="Donate using PayPal"
+             src="/assets/paypal.png"></a>
+      &nbsp;&nbsp;
+      <a href="https://www.patreon.com/tarsius">
+        <img title="Donate monthly using Patreon"
+             alt="Donate monthly using Patreon"
+             src="/assets/patreon.png"></a>
+      &nbsp;&nbsp;
+      <a href="https://salt.bountysource.com/teams/magit">
+        <img title="Donate monthly using Bountysource"
+             alt="Donate monthly using Bountysource"
+             src="/assets/bountysource.png"></a>
+    </div>
+    <div>
+      Some alternative donation methods are <a href="/donate">available</a>.
+    </div>
   </div>
 </section>
 
@@ -87,6 +113,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
   * [Gitter chat][chat]
 * [Announcements on Twitter][twitter]
 * [Screenshots](/screenshots)
+  <img class="clear" src="/assets/R.png" align="top">
 * [Screencasts](/screencasts)
 * [User quotes](/quotes)
 * [Blog posts](/blogs)
