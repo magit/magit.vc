@@ -5,14 +5,14 @@ title: User Manuals
 
 # Current releases
 
-The current Magit feature release is **v2.8**.
+The current Magit feature release is **v2.9**.
 
-- [Magit User Manual **2.8**](/manual/magit#Top)
+- [Magit User Manual **2.9**](/manual/magit#Top)
   ([single page](/manual/magit.html#Top),
   [pdf](/manual/magit.pdf))
   - [Installation](/manual/magit/Installation.html)
   - [FAQ](/manual/magit/FAQ.html)
-- [Magit-Popup User Manual **2.8**](/manual/magit-popup#Top)
+- [Magit-Popup User Manual **2.9**](/manual/magit-popup#Top)
   ([single page](/manual/magit-popup.html#Top),
   [pdf](/manual/magit-popup.pdf))
 - [Magit Reference Card](/manual/magit-refcard.pdf)
@@ -40,6 +40,9 @@ Unfortunately all internal links are broken.
 
 #### Magit
 
+- [Magit User Manual **2.8**](/manual/2.8/magit#Top)
+  ([single page](/manual/2.8/magit.html#Top),
+  [pdf](/manual/2.8/magit.pdf))
 - [Magit User Manual **2.7**](/manual/2.7/magit#Top)
   ([single page](/manual/2.7/magit.html#Top),
   [pdf](/manual/2.7/magit.pdf))
@@ -70,6 +73,9 @@ Unfortunately all internal links are broken.
 
 #### Magit-Popup
 
+- [Magit-Popup User Manual **2.8**](/manual/2.8/magit-popup#Top)
+  ([single page](/manual/2.8/magit-popup.html#Top),
+  [pdf](/manual/2.8/magit-popup.pdf))
 - [Magit-Popup User Manual **2.7**](/manual/2.7/magit-popup#Top)
   ([single page](/manual/2.7/magit-popup.html#Top),
   [pdf](/manual/2.7/magit-popup.pdf))
