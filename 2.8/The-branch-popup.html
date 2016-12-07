@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: The branch popup</title>
+
+<meta name="description" content="Magit User Manual: The branch popup">
+<meta name="keywords" content="Magit User Manual: The branch popup">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Branching.html#Branching" rel="up" title="Branching">
+<link href="The-branch-config-popup.html#The-branch-config-popup" rel="next" title="The branch config popup">
+<link href="The-two-remotes.html#The-two-remotes" rel="prev" title="The two remotes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="The-branch-popup"></a>
+<div class="header">
+<p>
+Next: <a href="The-branch-config-popup.html#The-branch-config-popup" accesskey="n" rel="next">The branch config popup</a>, Previous: <a href="The-two-remotes.html#The-two-remotes" accesskey="p" rel="prev">The two remotes</a>, Up: <a href="Branching.html#Branching" accesskey="u" rel="up">Branching</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-branch-popup-1"></a>
+<h4 class="subsection">6.5.2 The branch popup</h4>
+
+<p>The popup <code>magit-branch-popup</code> is used to create and checkout branches,
+and to make changes to existing branches.  It is not used to fetch,
+pull, merge, rebase, or push branches, i.e. this popup deals with
+branches themselves, not with the commits reachable from them.  Those
+features are available from separate popups.
+</p>
+<dl compact="compact">
+<dd><a name="index-b"></a>
+<a name="index-magit_002dbranch_002dpopup"></a>
+</dd>
+<dt><kbd>b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands in a popup
+buffer.
+</p>
+<p>By default it also displays the values of some branch-related Git
+variables and allows changing their values, just like the
+specialized <code>magit-branch-config-popup</code> does.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dbranch_002dpopup_002dshow_002dvariables"></a>User Option: <strong>magit-branch-popup-show-variables</strong></dt>
+<dd>
+<p>Whether the <code>magit-branch-popup</code> shows Git variables.  This defaults
+to t to avoid changing key bindings.  When set to nil, no variables
+are displayed directly in this popup, and the sub-popup
+<code>magit-branch-config-popup</code> has to be used indead to view and change
+branch related variables.
+</p></dd></dl>
+
+<dl compact="compact">
+<dd><a name="index-b-b"></a>
+<a name="index-magit_002dcheckout"></a>
+</dd>
+<dt><kbd>b b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-checkout</code>)</dt>
+<dd>
+<p>Checkout a revision read in the minibuffer and defaulting to the
+branch or arbitrary revision at point.  If the revision is a local
+branch then that becomes the current branch.  If it is something
+else then <code>HEAD</code> becomes detached.  Checkout fails if the working tree
+or the staging area contain changes.
+</p>
+<a name="index-b-n"></a>
+<a name="index-magit_002dbranch"></a>
+</dd>
+<dt><kbd>b n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch</code>)</dt>
+<dd>
+<p>Create a new branch.  The user is asked for a branch or arbitrary
+revision to use as the starting point of the new branch.  When a
+branch name is provided, then that becomes the upstream branch of
+the new branch.  The name of the new branch is also read in the
+minibuffer.
+</p>
+<p>Also see option <code>magit-branch-prefer-remote-upstream</code>.
+</p>
+<a name="index-b-c"></a>
+<a name="index-magit_002dbranch_002dand_002dcheckout"></a>
+</dd>
+<dt><kbd>b c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-and-checkout</code>)</dt>
+<dd>
+<p>This command creates a new branch like <code>magit-branch</code>, but then also
+checks it out.
+</p>
+<p>Also see option <code>magit-branch-prefer-remote-upstream</code>.
+</p>
+<a name="index-b-s"></a>
+<a name="index-magit_002dbranch_002dspinoff"></a>
+</dd>
+<dt><kbd>b s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-spinoff</code>)</dt>
+<dd>
+<p>This command creates and checks out a new branch starting at and
+tracking the current branch.  That branch in turn is reset to the
+last commit it shares with its upstream.  If the current branch has
+no upstream or no unpushed commits, then the new branch is created
+anyway and the previously current branch is not touched.
+</p>
+<p>This is useful to create a feature branch after work has already
+began on the old branch (likely but not necessarily &quot;master&quot;).
+</p>
+<p>If the current branch is a member of the value of option
+<code>magit-branch-prefer-remote-upstream</code> (which see), then the current
+branch will be used as the starting point as usual, but the upstream
+of the starting-point may be used as the upstream of the new branch,
+instead of the starting-point itself.
+</p>
+<a name="index-b-x"></a>
+<a name="index-magit_002dbranch_002dreset"></a>
+</dd>
+<dt><kbd>b x</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-reset</code>)</dt>
+<dd>
+<p>This command resets a branch, defaulting to the branch at point, to
+the tip of another branch or any other commit.
+</p>
+<p>When the branch being reset is the current branch, then a hard reset
+is performed.  If there are any uncommitted changes, then the user
+has to confirming the reset because those changes would be lost.
+</p>
+<p>This is useful when you have started work on a feature branch but
+realize it&rsquo;s all crap and want to start over.
+</p>
+<p>When resetting to another branch and a prefix argument is used, then
+the target branch is set as the upstream of the branch that is being
+reset.
+</p>
+<a name="index-b-k"></a>
+<a name="index-magit_002dbranch_002ddelete"></a>
+</dd>
+<dt><kbd>b k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-delete</code>)</dt>
+<dd>
+<p>Delete one or multiple branches.  If the region marks multiple
+branches, then offer to delete those.  Otherwise, prompt for a single
+branch to be deleted, defaulting to the branch at point.
+</p>
+<a name="index-b-r"></a>
+<a name="index-magit_002dbranch_002drename"></a>
+</dd>
+<dt><kbd>b r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-branch-rename</code>)</dt>
+<dd>
+<p>Rename a branch.  The branch and the new name are read in the
+minibuffer.  With prefix argument the branch is renamed even if that
+name conflicts with an existing branch.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dbranch_002dread_002dupstream_002dfirst"></a>User Option: <strong>magit-branch-read-upstream-first</strong></dt>
+<dd>
+<p>When creating a branch, whether to read the upstream branch before
+the name of the branch that is to be created.  The default is <code>nil</code>,
+and I recommend you leave it at that.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dbranch_002dprefer_002dremote_002dupstream"></a>User Option: <strong>magit-branch-prefer-remote-upstream</strong></dt>
+<dd>
+<p>This option specifies whether remote upstreams are favored over
+local upstreams when creating new branches.
+</p>
+<p>When a new branch is created, Magit offers the branch, commit, or
+stash as the default starting point of the new branch.  If there is
+no such thing at point, then it falls back to offer the current
+branch as starting-point.  The user may then accept that default or
+pick something else.
+</p>
+<p>If the chosen starting-point is a branch, then it may also be set
+as the upstream of the new branch, depending on the value of the
+Git variable &lsquo;branch.autoSetupMerge&rsquo;.  By default this is done
+for remote branches, but not for local branches.
+</p>
+<p>You might prefer to always use some remote branch as upstream.
+If the chosen starting-point is (1) a local branch, (2) whose
+name is a member of the value of this option, (3) the upstream of
+that local branch is a remote branch with the same name, and (4)
+that remote branch can be fast-forwarded to the local branch,
+then the chosen branch is used as starting-point, but its own
+upstream is used as the upstream of the new branch.
+</p>
+<p>Assuming the chosen branch matches these conditions you would end
+up with with e.g.:
+</p>
+<div class="example">
+<pre class="example">feature --upstream--&gt; origin/master
+</pre></div>
+
+<p>instead of
+</p>
+<div class="example">
+<pre class="example">feature --upstream--&gt; master --upstream--&gt; origin/master
+</pre></div>
+
+<p>Which you prefer is a matter of personal preference.  If you do
+prefer the former, then you should add branches such as <code>master</code>,
+<code>next</code>, and <code>maint</code> to the value of this options.
+</p></dd></dl>
+
+<a name="index-magit_002dbranch_002dorphan"></a>
+<dl>
+<dt><a name="index-magit_002dbranch_002dorphan-1"></a>Command: <strong>magit-branch-orphan</strong></dt>
+<dd>
+<p>This command creates and checks out a new orphan branch with
+contents from a given revision.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="The-branch-config-popup.html#The-branch-config-popup" accesskey="n" rel="next">The branch config popup</a>, Previous: <a href="The-two-remotes.html#The-two-remotes" accesskey="p" rel="prev">The two remotes</a>, Up: <a href="Branching.html#Branching" accesskey="u" rel="up">Branching</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

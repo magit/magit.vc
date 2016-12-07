@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Stashing</title>
+
+<meta name="description" content="Magit User Manual: Stashing">
+<meta name="keywords" content="Magit User Manual: Stashing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Manipulating.html#Manipulating" rel="up" title="Manipulating">
+<link href="Transferring.html#Transferring" rel="next" title="Transferring">
+<link href="Resetting.html#Resetting" rel="prev" title="Resetting">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Stashing"></a>
+<div class="header">
+<p>
+Previous: <a href="Resetting.html#Resetting" accesskey="p" rel="prev">Resetting</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Stashing-1"></a>
+<h3 class="section">6.11 Stashing</h3>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-stash">git-stash(1)</a> manpage.
+</p>
+<dl compact="compact">
+<dd><a name="index-z"></a>
+<a name="index-magit_002dstash_002dpopup"></a>
+</dd>
+<dt><kbd>z</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-z-z"></a>
+<a name="index-magit_002dstash"></a>
+</dd>
+<dt><kbd>z z</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash</code>)</dt>
+<dd>
+<p>Create a stash of the index and working tree.  Untracked files are
+included according to popup arguments.  One prefix argument is
+equivalent to <code>--include-untracked</code> while two prefix arguments are
+equivalent to <code>--all</code>.
+</p>
+<a name="index-z-i"></a>
+<a name="index-magit_002dstash_002dindex"></a>
+</dd>
+<dt><kbd>z i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-index</code>)</dt>
+<dd>
+<p>Create a stash of the index only.  Unstaged and untracked changes
+are not stashed.
+</p>
+<a name="index-z-w"></a>
+<a name="index-magit_002dstash_002dworktree"></a>
+</dd>
+<dt><kbd>z w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-worktree</code>)</dt>
+<dd>
+<p>Create a stash of unstaged changes in the working tree.  Untracked
+files are included according to popup arguments.  One prefix
+argument is equivalent to <code>--include-untracked</code> while two prefix
+arguments are equivalent to <code>--all</code>.
+</p>
+<a name="index-z-x"></a>
+<a name="index-magit_002dstash_002dkeep_002dindex"></a>
+</dd>
+<dt><kbd>z x</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-keep-index</code>)</dt>
+<dd>
+<p>Create a stash of the index and working tree, keeping index intact.
+Untracked files are included according to popup arguments.  One
+prefix argument is equivalent to <code>--include-untracked</code> while two
+prefix arguments are equivalent to <code>--all</code>.
+</p>
+<a name="index-z-Z"></a>
+<a name="index-magit_002dsnapshot"></a>
+</dd>
+<dt><kbd>z Z</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-snapshot</code>)</dt>
+<dd>
+<p>Create a snapshot of the index and working tree.  Untracked files
+are included according to popup arguments.  One prefix argument is
+equivalent to <code>--include-untracked</code> while two prefix arguments are
+equivalent to <code>--all</code>.
+</p>
+<a name="index-z-I"></a>
+<a name="index-magit_002dsnapshot_002dindex"></a>
+</dd>
+<dt><kbd>z I</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-snapshot-index</code>)</dt>
+<dd>
+<p>Create a snapshot of the index only.  Unstaged and untracked changes
+are not stashed.
+</p>
+<a name="index-z-W"></a>
+<a name="index-magit_002dsnapshot_002dworktree"></a>
+</dd>
+<dt><kbd>z W</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-snapshot-worktree</code>)</dt>
+<dd>
+<p>Create a snapshot of unstaged changes in the working tree.
+Untracked files are included according to popup arguments.  One
+prefix argument is equivalent to <code>--include-untracked</code> while two
+prefix arguments are equivalent to <code>--all</code>-.
+</p>
+<a name="index-z-a"></a>
+<a name="index-magit_002dstash_002dapply"></a>
+</dd>
+<dt><kbd>z a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-apply</code>)</dt>
+<dd>
+<p>Apply a stash to the working tree.  Try to preserve the stash index.
+If that fails because there are staged changes, apply without
+preserving the stash index.
+</p>
+<a name="index-z-p"></a>
+<a name="index-magit_002dstash_002dpop"></a>
+</dd>
+<dt><kbd>z p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-pop</code>)</dt>
+<dd>
+<p>Apply a stash to the working tree and remove it from stash list.
+Try to preserve the stash index.  If that fails because there are
+staged changes, apply without preserving the stash index and forgo
+removing the stash.
+</p>
+<a name="index-z-d"></a>
+<a name="index-magit_002dstash_002ddrop"></a>
+</dd>
+<dt><kbd>z d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-drop</code>)</dt>
+<dd>
+<p>Remove a stash from the stash list.  When the region is active, offer
+to drop all contained stashes.
+</p>
+<a name="index-z-l"></a>
+<a name="index-magit_002dstash_002dlist"></a>
+</dd>
+<dt><kbd>z l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-list</code>)</dt>
+<dd>
+<p>List all stashes in a buffer.
+</p>
+<a name="index-z-v"></a>
+<a name="index-magit_002dstash_002dshow-1"></a>
+</dd>
+<dt><kbd>z v</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-show</code>)</dt>
+<dd>
+<p>Show all diffs of a stash in a buffer.
+</p>
+<a name="index-z-b"></a>
+<a name="index-magit_002dstash_002dbranch"></a>
+</dd>
+<dt><kbd>z b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-branch</code>)</dt>
+<dd>
+<p>Create and checkout a new BRANCH from STASH.
+</p>
+<a name="index-z-f"></a>
+<a name="index-magit_002dstash_002dformat_002dpatch"></a>
+</dd>
+<dt><kbd>z f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-format-patch</code>)</dt>
+<dd>
+<p>Create a patch from STASH.
+</p>
+<a name="index-k-3"></a>
+<a name="index-magit_002dstash_002dclear"></a>
+</dd>
+<dt><kbd>k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-clear</code>)</dt>
+<dd>
+<p>Remove all stashes saved in REF&rsquo;s reflog by deleting REF.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Resetting.html#Resetting" accesskey="p" rel="prev">Resetting</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

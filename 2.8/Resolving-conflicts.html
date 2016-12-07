@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Resolving conflicts</title>
+
+<meta name="description" content="Magit User Manual: Resolving conflicts">
+<meta name="keywords" content="Magit User Manual: Resolving conflicts">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Manipulating.html#Manipulating" rel="up" title="Manipulating">
+<link href="Rebasing.html#Rebasing" rel="next" title="Rebasing">
+<link href="Merging.html#Merging" rel="prev" title="Merging">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Resolving-conflicts"></a>
+<div class="header">
+<p>
+Next: <a href="Rebasing.html#Rebasing" accesskey="n" rel="next">Rebasing</a>, Previous: <a href="Merging.html#Merging" accesskey="p" rel="prev">Merging</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Resolving-conflicts-1"></a>
+<h3 class="section">6.7 Resolving conflicts</h3>
+
+<p>When merging branches (or otherwise combining or changing history)
+conflicts can occur.  If you edited two completely different parts of
+the same file in two branches and then merge one of these branches
+into the other, then Git can resolve that on its own, but if you edit
+the same area of a file, then a human is required to decide how the
+two versions, or &quot;sides of the conflict&quot;, are to be combined into one.
+</p>
+<p>Here we can only provide a brief introduction to the subject and point
+you toward some tools that can help.  If you are new to this, then
+please also consult Git&rsquo;s own documentation as well as other
+resources.
+</p>
+<p>If a file has conflicts and Git cannot resolve them by itself, then it
+puts both versions into the affected file along with special markers
+whose purpose is to denote the boundaries of the unresolved part of
+the file and between the different versions.  These boundary lines
+begin with the strings &quot;&lt;&lt;&lt;&lt;<a name="orgradiotarget1"></a>&quot;, &quot;|||||||&quot;, &quot;=======&quot;, and &quot;&gt;&gt;&gt;&gt;&quot;
+and are followed by information about the source of the respective
+versions, e.g.:
+</p>
+<div class="example">
+<pre class="example">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Take the blue pill.
+=======
+Take the red pill.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature
+</pre></div>
+
+<p>In this case you have chosen to take the red pill on one bracnh and on
+another you picked the blue pill.  Now that you are merging these two
+diverging branches, Git cannot possibly know which pill you want to
+take.
+</p>
+<p>To resolve that conflict you have to create a version of the affected
+area of the file by keeping only one of the sides, possibly by editing
+it in order to bring in the changes from the other side, remove the
+other versions as well as the markers, and then stage the result.  A
+possible resolution might be:
+</p>
+<div class="example">
+<pre class="example">Take both pills.
+</pre></div>
+
+<p>Often it is useful to see not only the two sides of the conflict but
+also the &quot;original&quot; version from before the same area of the file was
+modified twice on different branches.  Instruct Git to insert that
+version as well by running this command once:
+</p>
+<div class="example">
+<pre class="example">git config --global merge.conflictStyle diff3
+</pre></div>
+
+<p>The above conflict might then have looked like this:
+</p>
+<div class="example">
+<pre class="example">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Take the blue pill.
+||||||| merged common ancestors
+Take either the blue or the red pill, but not both.
+=======
+Take the red pill.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature
+</pre></div>
+
+<p>If that were the case, then the above conflict resolution would not
+have been correct, which demonstrates why seeing the original version
+alongside the conflicting versions can be useful.
+</p>
+<p>You can perform the conflict resolution completely by hand, but Emacs
+also provides some packages that help in the process: Smerge, Ediff
+(<a href="http://www.gnu.org/software/emacs/manual/html_node/ediff/index.html#Top">(ediff)Top</a>), and Emerge (<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Emerge.html#Emerge">(emacs)Emerge</a>).  Magit does not provide
+its own tools for conflict resolution, but it does make using Smerge
+and Ediff more convenient.  (Ediff supersedes Emerge, so you probably
+don&rsquo;t want to use the latter anyway.)
+</p>
+<p>In the Magit status buffer, files with unresolved conflicts are listed
+in the &quot;Unstaged changes&quot; and/or &quot;Staged changes&quot; sections.  They are
+prefixed with the word &quot;unmerged&quot;, which in this context essentially
+is a synonym for &quot;unresolved&quot;.
+</p>
+<p>Pressing <code>RET</code> while point is on such a file section shows a buffer
+visiting that file, turns on <code>smerge-mode</code> in that buffer, and places
+point inside the first area with conflicts.  You should then resolve
+that conflict using regular edit commands and/or Smerge commands.
+</p>
+<p>Unfortunately Smerge does not have a manual, but you can get a list of
+commands and binding <code>C-c ^ C-h</code> and press <code>RET</code> while point is on a
+command name to read its documentation.
+</p>
+<p>Normally you would edit one version and then tell Smerge to keep only
+that version.  Use <code>C-c ^ m</code> (<code>smerge-keep-mine)</code> to keep the &quot;HEAD&quot;
+version or <code>C-c ^ o</code> (<code>smerge-keep-other</code>) to keep the version that
+follows &quot;|||||||&quot;.  Then use <code>C-c ^ n</code> to move to the next conflicting
+area in the same file.  Once you are done resolving conflicts, return
+to the Magit status buffer.  The file should now be shown as
+&quot;modified&quot;, no longer as &quot;unmerged&quot;, because Smerge automatically
+stages the file when you save the buffer after resolving the last
+conflict.
+</p>
+<p>Alternatively you could use Ediff, which uses separate buffers for the
+different versions of the file.  To resolve conflicts in a file using
+Ediff press <code>e</code> while point is on such a file in the status buffer.
+</p>
+<p>Ediff can be used for other purposes as well.  For more information on
+how to enter Ediff from Magit, see <a href="Ediffing.html#Ediffing">Ediffing</a>.  Explaining how to use
+Ediff is beyond the scope of this manual, instead see <a href="http://www.gnu.org/software/emacs/manual/html_node/ediff/index.html#Top">(ediff)Top</a>.
+</p>
+<p>If you are unsure whether you should Smerge or Ediff, then use the
+former.  It is much easier to understand and use, and except for
+truely complex conflicts, the latter is usually overkill.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Rebasing.html#Rebasing" accesskey="n" rel="next">Rebasing</a>, Previous: <a href="Merging.html#Merging" accesskey="p" rel="prev">Merging</a>, Up: <a href="Manipulating.html#Manipulating" accesskey="u" rel="up">Manipulating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

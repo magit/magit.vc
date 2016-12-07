@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Diff buffer</title>
+
+<meta name="description" content="Magit User Manual: Diff buffer">
+<meta name="keywords" content="Magit User Manual: Diff buffer">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Diffing.html#Diffing" rel="up" title="Diffing">
+<link href="Diff-options.html#Diff-options" rel="next" title="Diff options">
+<link href="Refreshing-diffs.html#Refreshing-diffs" rel="prev" title="Refreshing diffs">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Diff-buffer"></a>
+<div class="header">
+<p>
+Next: <a href="Diff-options.html#Diff-options" accesskey="n" rel="next">Diff options</a>, Previous: <a href="Refreshing-diffs.html#Refreshing-diffs" accesskey="p" rel="prev">Refreshing diffs</a>, Up: <a href="Diffing.html#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Diff-buffer-1"></a>
+<h4 class="subsection">5.4.2 Diff buffer</h4>
+
+<dl compact="compact">
+<dd><a name="index-RET"></a>
+<a name="index-magit_002ddiff_002dvisit_002dfile"></a>
+</dd>
+<dt><kbd>RET</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-visit-file</code>)</dt>
+<dd>
+<p>From a diff, visit the corresponding file at the appropriate
+position.
+</p>
+<p>When the file is already being displayed in another window of the
+same frame, then just select that window and adjust point.  With a
+prefix argument also display in another window.
+</p>
+<p>If the diff shows changes in the worktree, the index, or <code>HEAD</code>, then
+visit the actual file.  Otherwise when the diff is about an older
+commit, then visit the respective blob using <code>magit-find-file</code>.  Also
+see <code>magit-diff-visit-file-worktree</code>, which, as the name suggests,
+always visits the actual file.
+</p>
+<a name="index-C_002d_003creturn_003e"></a>
+<a name="index-magit_002ddiff_002dvisit_002dfile_002dworktree"></a>
+</dd>
+<dt><kbd>C-&lt;return&gt;</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-visit-file-worktree</code>)</dt>
+<dd>
+<p>From a diff, visit the corresponding file at the appropriate position.
+</p>
+<p>When the file is already being displayed in another window of the
+same frame, then just select that window and adjust point.  With
+a prefix argument also display in another window.
+</p>
+<p>The actual file in the worktree is visited. The positions in the
+hunk headers get less useful the &quot;older&quot; the changes are, and as a
+result, jumping to the appropriate position gets less reliable.
+</p>
+<p>Also see <code>magit-diff-visit-file-worktree</code>, which visits the respective
+blob, unless the diff shows changes in the worktree, the index, or
+<code>HEAD</code>.
+</p>
+<a name="index-j"></a>
+<a name="index-magit_002djump_002dto_002ddiffstat_002dor_002ddiff"></a>
+</dd>
+<dt><kbd>j</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-jump-to-diffstat-or-diff</code>)</dt>
+<dd>
+<p>Jump to the diffstat or diff.  When point is on a file inside the
+diffstat section, then jump to the respective diff section.
+Otherwise, jump to the diffstat section or a child thereof.
+</p>
+<a name="index-SPC-1"></a>
+<a name="index-scroll_002dup"></a>
+</dd>
+<dt><kbd>SPC</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>scroll-up</code>)</dt>
+<dd>
+<p>Scroll text upward.
+</p>
+<a name="index-DEL-1"></a>
+<a name="index-scroll_002ddown"></a>
+</dd>
+<dt><kbd>DEL</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>scroll-down</code>)</dt>
+<dd>
+<p>Scroll text downward.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Diff-options.html#Diff-options" accesskey="n" rel="next">Diff options</a>, Previous: <a href="Refreshing-diffs.html#Refreshing-diffs" accesskey="p" rel="prev">Refreshing diffs</a>, Up: <a href="Diffing.html#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

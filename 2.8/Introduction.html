@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Taking inspiration from regular prefix commands and prefix arguments,
+this library implements a similar abstraction; a new kind of prefix
+command that is associated with a specific set of infix arguments and
+suffix commands.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit-Popup User Manual: Introduction</title>
+
+<meta name="description" content="Magit-Popup User Manual: Introduction">
+<meta name="keywords" content="Magit-Popup User Manual: Introduction">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Usage.html#Usage" rel="next" title="Usage">
+<link href="index.html#Top" rel="prev" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Introduction"></a>
+<div class="header">
+<p>
+Next: <a href="Usage.html#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Introduction-1"></a>
+<h2 class="chapter">1 Introduction</h2>
+
+<p>Taking inspiration from regular prefix commands and prefix arguments,
+this library implements a similar abstraction; a new kind of prefix
+command that is associated with a specific set of infix arguments and
+suffix commands.
+</p>
+<p>Invoking such a prefix command displays a popup buffer which lists the
+associated infix arguments and suffix commands.  In that buffer each
+argument is prefixes with the key sequence that can be used to toggle
+it or change its value.  Likewise each suffix command is prefixed with
+the key used to invoke it.  Such a popup buffer might look like this:
+</p>
+<pre class="verbatim">,-----------------------------------------
+|Switches
+| -l Show graph (--graph)
+| -d Show refnames (--decorate)
+|
+|Options
+| =m Search messages (--grep=&quot;popup&quot;)
+| =p Search patches (-G)
+|
+|Action
+| l Show log for current branch
+| o Show log for another branch
+'-----------------------------------------
+</pre>
+<p>The user could then for example type <code>-l</code> to toggle the <code>--graph</code> <strong>switch</strong>
+(when it is on then it is shown in green, otherwise in gray), or <code>=m</code> to
+change the value of the <strong>option</strong> <code>--grep</code>.
+</p>
+<p>Once all arguments are as desired one invokes a suffix command, which
+causes the popup buffer to disappears.  The suffix command should then
+retrieve the infix arguments in its <code>interactive</code> form like this is done
+for prefix arguments.
+</p>
+<p>While such &quot;prefix-infix-suffix&quot; combos were inspired by regular
+prefix commands and prefix arguments, they are also quite different.
+This should illustrate the most basic differences:
+</p>
+<ul>
+<li> A regular prefix commands
+
+<pre class="verbatim">        /- command1
+prefix --- command2
+        \- command3
+</pre>
+
+</li><li> Prefix arguments
+
+<pre class="verbatim">         /- command1
+C-u ... --- command2
+         \- well *any* command
+</pre>
+
+</li><li> A Prefix-Infix-Suffix combo
+
+<pre class="verbatim">         /- argument1 -\ /- suffix1
+prefix----- argument2 --+-- suffix2
+       ^ \- argument3 -/
+       |        |
+       '--------'
+    (refresh buffer)
+</pre></li></ul>
+
+<p>This library was written as a replacement for <code>magit-key-mode</code> which was
+used in Magit releases before 2.1.0.  It is used to implement all
+&quot;popups&quot; in the current Magit release but a future release will switch
+to yet another implementation.
+</p>
+<p>This library does not depend on any other Magit libraries and it is
+distributed as a separate package, which makes it possible to use it
+in packages that are not related to Magit.  But keep in mind that it
+will be deprecated eventually.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Usage.html#Usage" accesskey="n" rel="next">Usage</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Editing rebase sequences</title>
+
+<meta name="description" content="Magit User Manual: Editing rebase sequences">
+<meta name="keywords" content="Magit User Manual: Editing rebase sequences">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Rebasing.html#Rebasing" rel="up" title="Rebasing">
+<link href="Information-about-in_002dprogress-rebase.html#Information-about-in_002dprogress-rebase" rel="next" title="Information about in-progress rebase">
+<link href="Rebasing.html#Rebasing" rel="prev" title="Rebasing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Editing-rebase-sequences"></a>
+<div class="header">
+<p>
+Next: <a href="Information-about-in_002dprogress-rebase.html#Information-about-in_002dprogress-rebase" accesskey="n" rel="next">Information about in-progress rebase</a>, Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Editing-rebase-sequences-1"></a>
+<h4 class="subsection">6.8.1 Editing rebase sequences</h4>
+
+<dl compact="compact">
+<dd><a name="index-C_002dc-C_002dc-3"></a>
+<a name="index-with_002deditor_002dfinish-1"></a>
+</dd>
+<dt><kbd>C-c C-c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>with-editor-finish</code>)</dt>
+<dd>
+<p>Finish the current editing session by returning with exit code 0.
+Git then uses the rebase instructions it finds in the file.
+</p>
+<a name="index-C_002dc-C_002dk-2"></a>
+<a name="index-with_002deditor_002dcancel-1"></a>
+</dd>
+<dt><kbd>C-c C-k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>with-editor-cancel</code>)</dt>
+<dd>
+<p>Cancel the current editing session by returning with exit code 1.
+Git then forgoes starting the rebase sequence.
+</p>
+<a name="index-RET-3"></a>
+<a name="index-git_002drebase_002dshow_002dcommit"></a>
+</dd>
+<dt><kbd>RET</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-show-commit</code>)</dt>
+<dd>
+<p>Show the commit on the current line in another buffer and select
+that buffer.
+</p>
+<a name="index-SPC-3"></a>
+<a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002dup-2"></a>
+</dd>
+<dt><kbd>SPC</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-show-or-scroll-up</code>)</dt>
+<dd>
+<p>Show the commit on the current line in another buffer without
+selecting that buffer.  If the revision buffer is already visible in
+another window of the current frame, then instead scroll that window
+up.
+</p>
+<a name="index-DEL-3"></a>
+<a name="index-magit_002ddiff_002dshow_002dor_002dscroll_002ddown-2"></a>
+</dd>
+<dt><kbd>DEL</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-show-or-scroll-down</code>)</dt>
+<dd>
+<p>Show the commit on the current line in another buffer without
+selecting that buffer.  If the revision buffer is already visible in
+another window of the current frame, then instead scroll that window
+down.
+</p>
+<a name="index-p-2"></a>
+<a name="index-git_002drebase_002dbackward_002dline"></a>
+</dd>
+<dt><kbd>p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-backward-line</code>)</dt>
+<dd>
+<p>Move to previous line.
+</p>
+<a name="index-n-2"></a>
+<a name="index-forward_002dline"></a>
+</dd>
+<dt><kbd>n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>forward-line</code>)</dt>
+<dd>
+<p>Move to next line.
+</p>
+<a name="index-M_002dp-2"></a>
+<a name="index-git_002drebase_002dmove_002dline_002dup"></a>
+</dd>
+<dt><kbd>M-p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-move-line-up</code>)</dt>
+<dd>
+<p>Move the current commit (or command) up.
+</p>
+<a name="index-M_002dn-2"></a>
+<a name="index-git_002drebase_002dmove_002dline_002ddown"></a>
+</dd>
+<dt><kbd>M-n</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-move-line-down</code>)</dt>
+<dd>
+<p>Move the current commit (or command) down.
+</p>
+<a name="index-r-1"></a>
+<a name="index-git_002drebase_002dreword"></a>
+</dd>
+<dt><kbd>r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-reword</code>)</dt>
+<dd>
+<p>Edit message of commit on current line.
+</p>
+<a name="index-e-1"></a>
+<a name="index-git_002drebase_002dedit"></a>
+</dd>
+<dt><kbd>e</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-edit</code>)</dt>
+<dd>
+<p>Stop at the commit on the current line.
+</p>
+<a name="index-s-1"></a>
+<a name="index-git_002drebase_002dsquash"></a>
+</dd>
+<dt><kbd>s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-squash</code>)</dt>
+<dd>
+<p>Meld commit on current line into previous commit, and edit message.
+</p>
+<a name="index-f"></a>
+<a name="index-git_002drebase_002dfixup"></a>
+</dd>
+<dt><kbd>f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-fixup</code>)</dt>
+<dd>
+<p>Meld commit on current line into previous commit, discarding the
+current commit&rsquo;s message.
+</p>
+<a name="index-k-2"></a>
+<a name="index-git_002drebase_002dkill_002dline"></a>
+</dd>
+<dt><kbd>k</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-kill-line</code>)</dt>
+<dd>
+<p>Kill the current action line.
+</p>
+<a name="index-c-1"></a>
+<a name="index-git_002drebase_002dpick"></a>
+</dd>
+<dt><kbd>c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-pick</code>)</dt>
+<dd>
+<p>Use commit on current line.
+</p>
+<a name="index-x"></a>
+<a name="index-git_002drebase_002dexec"></a>
+</dd>
+<dt><kbd>x</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-exec</code>)</dt>
+<dd>
+<p>Insert a shell command to be run after the proceeding commit.
+</p>
+<p>If there already is such a command on the current line, then edit
+that instead.  With a prefix argument insert a new command even when
+there already is one on the current line.  With empty input remove
+the command on the current line, if any.
+</p>
+<a name="index-y-1"></a>
+<a name="index-git_002drebase_002dinsert"></a>
+</dd>
+<dt><kbd>y</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-insert</code>)</dt>
+<dd>
+<p>Read an arbitrary commit and insert it below current line.
+</p>
+<a name="index-C_002dx-u"></a>
+<a name="index-git_002drebase_002dundo"></a>
+</dd>
+<dt><kbd>C-x u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>git-rebase-undo</code>)</dt>
+<dd>
+<p>Undo some previous changes.  Like <code>undo</code> but works in read-only
+buffers.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-git_002drebase_002dauto_002dadvance"></a>User Option: <strong>git-rebase-auto-advance</strong></dt>
+<dd>
+<p>Whether to move to next line after changing a line.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002drebase_002dshow_002dinstructions"></a>User Option: <strong>git-rebase-show-instructions</strong></dt>
+<dd>
+<p>Whether to show usage instructions inside the rebase buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-git_002drebase_002dconfirm_002dcancel"></a>User Option: <strong>git-rebase-confirm-cancel</strong></dt>
+<dd>
+<p>Whether confirmation is required to cancel.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Information-about-in_002dprogress-rebase.html#Information-about-in_002dprogress-rebase" accesskey="n" rel="next">Information about in-progress rebase</a>, Up: <a href="Rebasing.html#Rebasing" accesskey="u" rel="up">Rebasing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

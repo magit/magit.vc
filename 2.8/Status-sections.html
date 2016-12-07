@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Status sections</title>
+
+<meta name="description" content="Magit User Manual: Status sections">
+<meta name="keywords" content="Magit User Manual: Status sections">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Status-buffer.html#Status-buffer" rel="up" title="Status buffer">
+<link href="Status-header-sections.html#Status-header-sections" rel="next" title="Status header sections">
+<link href="Status-buffer.html#Status-buffer" rel="prev" title="Status buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Status-sections"></a>
+<div class="header">
+<p>
+Next: <a href="Status-header-sections.html#Status-header-sections" accesskey="n" rel="next">Status header sections</a>, Up: <a href="Status-buffer.html#Status-buffer" accesskey="u" rel="up">Status buffer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Status-sections-1"></a>
+<h4 class="subsection">5.1.1 Status sections</h4>
+
+<p>The contents of status buffers is controlled using the hook
+<code>magit-status-sections-hook</code>.  See <a href="Section-hooks.html#Section-hooks">Section hooks</a> to learn about such
+hooks and how to customize them.
+</p>
+<dl>
+<dt><a name="index-magit_002dstatus_002dsections_002dhook"></a>User Option: <strong>magit-status-sections-hook</strong></dt>
+<dd>
+<p>Hook run to insert sections into a status buffer.
+</p></dd></dl>
+
+<p>The first function on that hook by default is
+<code>magit-insert-status-headers</code>; it is described in the next section.
+By default the following functions are also members of that hook:
+</p>
+<dl>
+<dt><a name="index-magit_002dinsert_002dmerge_002dlog"></a>Function: <strong>magit-insert-merge-log</strong></dt>
+<dd>
+<p>Insert section for the on-going merge.  Display the heads that are
+being merged.  If no merge is in progress, do nothing.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002drebase_002dsequence"></a>Function: <strong>magit-insert-rebase-sequence</strong></dt>
+<dd>
+<p>Insert section for the on-going rebase sequence.
+If no such sequence is in progress, do nothing.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dam_002dsequence"></a>Function: <strong>magit-insert-am-sequence</strong></dt>
+<dd>
+<p>Insert section for the on-going patch applying sequence.
+If no such sequence is in progress, do nothing.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dsequencer_002dsequence"></a>Function: <strong>magit-insert-sequencer-sequence</strong></dt>
+<dd>
+<p>Insert section for the on-going cherry-pick or revert sequence.
+If no such sequence is in progress, do nothing.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dbisect_002doutput"></a>Function: <strong>magit-insert-bisect-output</strong></dt>
+<dd>
+<p>While bisecting, insert section with output from <code>git bisect</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dbisect_002drest"></a>Function: <strong>magit-insert-bisect-rest</strong></dt>
+<dd>
+<p>While bisecting, insert section visualizing the bisect state.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dbisect_002dlog"></a>Function: <strong>magit-insert-bisect-log</strong></dt>
+<dd>
+<p>While bisecting, insert section logging bisect progress.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002duntracked_002dfiles"></a>Function: <strong>magit-insert-untracked-files</strong></dt>
+<dd>
+<p>Maybe insert a list or tree of untracked files.
+Do so depending on the value of <code>status.showUntrackedFiles</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunstaged_002dchanges"></a>Function: <strong>magit-insert-unstaged-changes</strong></dt>
+<dd>
+<p>Insert section showing unstaged changes.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dstaged_002dchanges"></a>Function: <strong>magit-insert-staged-changes</strong></dt>
+<dd>
+<p>Insert section showing staged changes.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dstashes"></a>Function: <strong>magit-insert-stashes</strong> <em>&amp;optional ref heading</em></dt>
+<dd>
+<p>Insert the <code>stashes</code> section showing reflog for &quot;refs/stash&quot;.
+If optional REF is non-nil show reflog for that instead.
+If optional HEADING is non-nil use that as section heading
+instead of &quot;Stashes:&quot;.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpulled_002dfrom_002dupstream"></a>Function: <strong>magit-insert-unpulled-from-upstream</strong></dt>
+<dd>
+<p>Insert section showing commits that haven&rsquo;t been pulled from the
+upstream branch yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpulled_002dfrom_002dpushremote"></a>Function: <strong>magit-insert-unpulled-from-pushremote</strong></dt>
+<dd>
+<p>Insert section showing commits that haven&rsquo;t been pulled from the
+push-remote branch yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpushed_002dto_002dupstream"></a>Function: <strong>magit-insert-unpushed-to-upstream</strong></dt>
+<dd>
+<p>Insert section showing commits that haven&rsquo;t been pushed to the
+upstream yet.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpushed_002dto_002dpushremote"></a>Function: <strong>magit-insert-unpushed-to-pushremote</strong></dt>
+<dd>
+<p>Insert section showing commits that haven&rsquo;t been pushed to the
+push-remote yet.
+</p></dd></dl>
+
+<p>The following functions can also be added to the above hook:
+</p>
+<dl>
+<dt><a name="index-magit_002dinsert_002dtracked_002dfiles"></a>Function: <strong>magit-insert-tracked-files</strong></dt>
+<dd>
+<p>Insert a tree of tracked files.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpulled_002dor_002drecent_002dcommits"></a>Function: <strong>magit-insert-unpulled-or-recent-commits</strong></dt>
+<dd>
+<p>Insert section showing unpulled or recent commits.
+If an upstream is configured for the current branch and it is
+ahead of the current branch, then show the missing commits.
+Otherwise, show the last <code>magit-log-section-commit-count</code>
+commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002drecent_002dcommits"></a>Function: <strong>magit-insert-recent-commits</strong></dt>
+<dd>
+<p>Insert section showing the last <code>magit-log-section-commit-count</code>
+commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dlog_002dsection_002dcommit_002dcount"></a>User Option: <strong>magit-log-section-commit-count</strong></dt>
+<dd>
+<p>How many recent commits <code>magit-insert-recent-commits</code> and
+<code>magit-insert-unpulled-or-recent-commits</code> (provided there are no
+unpulled commits) show.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dmodules_002dunpulled_002dfrom_002dupstream"></a>Function: <strong>magit-insert-modules-unpulled-from-upstream</strong></dt>
+<dd>
+<p>Insert sections for modules that haven&rsquo;t been pulled from the
+upstream yet.  These sections can be expanded to show the respective
+commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dmodules_002dunpulled_002dfrom_002dpushremote"></a>Function: <strong>magit-insert-modules-unpulled-from-pushremote</strong></dt>
+<dd>
+<p>Insert sections for modules that haven&rsquo;t been pulled from the
+push-remote yet.  These sections can be expanded to show the
+respective commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dmodules_002dunpushed_002dto_002dupstream"></a>Function: <strong>magit-insert-modules-unpushed-to-upstream</strong></dt>
+<dd>
+<p>Insert sections for modules that haven&rsquo;t been pushed to the upstream
+yet.  These sections can be expanded to show the respective commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dmodules_002dunpushed_002dto_002dpushremote"></a>Function: <strong>magit-insert-modules-unpushed-to-pushremote</strong></dt>
+<dd>
+<p>Insert sections for modules that haven&rsquo;t been pushed to the
+push-remote yet. These sections can be expanded to show the
+respective commits.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dsubmodules"></a>Function: <strong>magit-insert-submodules</strong></dt>
+<dd>
+<p>Insert sections for all submodules.  For each section insert the
+path, the branch, and the output of <code>git describe --tags</code>.
+</p>
+<p>Press <code>RET</code> on such a submodule section to show its own status buffer.
+Press <code>RET</code> on the &quot;Modules&quot; section to display a list of submodules
+in a separate buffer.  This shows additional information not
+displayed in the super-repository&rsquo;s status buffer.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpulled_002dcherries"></a>Function: <strong>magit-insert-unpulled-cherries</strong></dt>
+<dd>
+<p>Insert section showing unpulled commits.
+Like <code>magit-insert-unpulled-commits</code> but prefix each commit
+that has not been applied yet (i.e. a commit with a patch-id
+not shared with any local commit) with &quot;+&quot;, and all others
+with &quot;-&quot;.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-magit_002dinsert_002dunpushed_002dcherries"></a>Function: <strong>magit-insert-unpushed-cherries</strong></dt>
+<dd>
+<p>Insert section showing unpushed commits.
+Like <code>magit-insert-unpushed-commits</code> but prefix each commit
+which has not been applied to upstream yet (i.e. a commit with
+a patch-id not shared with any upstream commit) with &quot;+&quot; and
+all others with &quot;-&quot;.
+</p></dd></dl>
+
+<p>See <a href="References-buffer.html#References-buffer">References buffer</a> for some more section inserters, which could be
+used here.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Status-header-sections.html#Status-header-sections" accesskey="n" rel="next">Status header sections</a>, Up: <a href="Status-buffer.html#Status-buffer" accesskey="u" rel="up">Status buffer</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

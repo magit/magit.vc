@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Theming Faces</title>
+
+<meta name="description" content="Magit User Manual: Theming Faces">
+<meta name="keywords" content="Magit User Manual: Theming Faces">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Conventions.html#Conventions" rel="up" title="Conventions">
+<link href="FAQ.html#FAQ" rel="next" title="FAQ">
+<link href="Confirmation-and-completion.html#Confirmation-and-completion" rel="prev" title="Confirmation and completion">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Theming-Faces"></a>
+<div class="header">
+<p>
+Previous: <a href="Confirmation-and-completion.html#Confirmation-and-completion" accesskey="p" rel="prev">Confirmation and completion</a>, Up: <a href="Conventions.html#Conventions" accesskey="u" rel="up">Conventions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Theming-Faces-1"></a>
+<h4 class="subsection">10.4.2 Theming Faces</h4>
+
+<p>The default theme uses blue for local branches, green for remote
+branches, and goldenrod (brownish yellow) for tags.  When creating a
+new theme, you should probably follow that example.  If your theme
+already uses other colors, then stick to that.
+</p>
+<p>In older releases these reference faces used to have a background
+color and a box around them.  The basic default faces no longer do so,
+to make Magit buffers much less noisy, and you should follow that
+example at least with regards to boxes.  (Boxes were used in the past
+to work around a conflict between the highlighting overlay and text
+property backgrounds.  That&rsquo;s no longer necessary because highlighting no
+longer causes other background colors to disappear.)  Alternatively
+you can keep the background color and/or box, but then have to take
+special care to adjust <code>magit-branch-current</code> accordingly.  By default
+it looks mostly like <code>magit-branch-local</code>, but with a box (by default
+the former is the only face that uses a box, exactly so that it sticks
+out).  If the former also uses a box, then you have to make sure that
+it differs in some other way from the latter.
+</p>
+<p>The most difficult faces to theme are those related to diffs,
+headings, highlighting, and the region.  There are faces that fall
+into all four groups - expect to spend some time getting this right.
+</p>
+<p>The <code>region</code> face in the default theme, in both the light and dark
+variants, as well as in many other themes, distributed with Emacs or
+by third-parties, is very ugly.  It is common to use a background
+color that really sticks out, which is ugly but if that were the only
+problem then it would be acceptable.  Unfortunately many themes also
+set the foreground color, which ensures that all text within the
+region is readable.  Without doing that there might be cases where
+some foreground color is too close to the region background color to
+still be readable.  But it also means that text within the region
+loses all syntax highlighting.
+</p>
+<p>I consider the work that went into getting the <code>region</code> face right to be
+a good indicator for the general quality of a theme.  My
+recommendation for the <code>region</code> face is this: use a background color
+slightly different from the background color of the <code>default</code> face, and
+do not set the foreground color at all.  So for a light theme you
+might use a light (possibly tinted) gray as the background color of
+<code>default</code> and a somewhat darker gray for the background of <code>region</code>.
+That should usually be enough to not collide with the foreground color
+of any other face.  But if some other faces also set a light gray as
+background color, then you should also make sure it doesn&rsquo;t collide
+with those (in some cases it might be acceptable though).
+</p>
+<p>Magit only uses the <code>region</code> face when the region is &quot;invalid&quot; by its
+own definition.  In a Magit buffer the region is used to either select
+multiple sibling sections, so that commands which support it act on
+all of these sections instead of just the current section, or to
+select lines within a single hunk section.  In all other cases, the
+section is considered invalid and Magit won&rsquo;t act on it.  But such
+invalid sections happen, either because the user has not moved point
+enough yet to make it valid or because she wants to use a non-magit
+command to act on the region, e.g. <code>kill-region</code>.
+</p>
+<p>So using the regular <code>region</code> face for invalid sections is a feature.  It
+tells the user that Magit won&rsquo;t be able to act on it.  It&rsquo;s acceptable
+if that face looks a bit odd and even (but less so) if it collides
+with the background colors of section headings and other things that
+have a background color.
+</p>
+<p>Magit highlights the current section.  If a section has subsections,
+then all of them are highlighted.  This is done using faces that have
+&quot;highlight&quot; in their names.  For most sections, <code>magit-section-highlight</code>
+is used for both the body and the heading.  Like the <code>region</code> face, it
+should only set the background color to something similar to that of
+<code>default</code>.  The highlight background color must be different from both
+the <code>region</code> background color and the <code>default</code> background color.
+</p>
+<p>For diff related sections Magit uses various faces to
+highlight different parts of the selected section(s).  Note that hunk
+headings, unlike all other section headings, by default have a
+background color, because it is useful to have very visible separators
+between hunks.  That face <code>magit-diff-hunk-heading</code>, should be different
+from both <code>magit-diff-hunk-heading-highlight</code> and
+<code>magit-section-highlight</code>, as well as from <code>magit-diff-context</code> and
+<code>magit-diff-context-highlight</code>.  By default we do that by changing the
+foreground color.  Changing the background color would lead to
+complications, and there are already enough we cannot get around.
+(Also note that it is generally a good idea for section headings to
+always be bold, but only for sections that have subsections).
+</p>
+<p>When there is a valid region selecting diff-related sibling sections,
+i.e. multiple files or hunks, then the bodies of all these sections
+use the respective highlight faces, but additionally the headings
+instead use one of the faces <code>magit-diff-file-heading-selection</code> or
+<code>magit-diff-hunk-heading-selection</code>.  These faces have to be different
+from the regular highlight variants to provide explicit visual
+indication that the region is active.
+</p>
+<p>When theming diff related faces, start by setting the option
+<code>magit-diff-refine-hunk</code> to <code>all</code>.  You might personally prefer to only
+refine the current hunk or not use hunk refinement at all, but some of
+the users of your theme want all hunks to be refined, so you have to
+cater to that.
+</p>
+<p>(Also turn on <code>magit-diff-highlight-indentation</code>,
+<code>magit-diff-highlight-trailing</code>, and <code>magit-diff-paint-whitespace</code>; and
+insert some whitespace errors into the code you use for testing.)
+</p>
+<p>For e.g. &quot;added lines&quot; you have to adjust three faces:
+<code>magit-diff-added</code>, <code>magit-diff-added-highlight</code>, and
+<code>smerge-refined-added</code>.  Make sure that the latter works well with both
+of the former, as well as <code>smerge-other</code> and <code>diff-added</code>.  Then do the
+same for the removed lines, context lines, lines added by us, and
+lines added by them.  Also make sure the respective added, removed,
+and context faces use approximately the same saturation for both the
+highlighted and unhighlighted variants.  Also make sure the file and
+diff headings work nicely with context lines (e.g. make them look
+different).  Line faces should set both the foreground and the
+background color.  For example, for added lines use two different
+greens.
+</p>
+<p>It&rsquo;s best if the foreground color of both the highlighted and the
+unhighlighted variants are the same, so you will need to have to find
+a color that works well on the highlight and unhighlighted background,
+the refine background, and the highlight context background.  When
+there is an hunk internal region, then the added- and removed-lines
+background color is used only within that region.  Outside the region
+the highlighted context background color is used.  This makes it
+easier to see what is being staged.  With an hunk internal region the
+hunk heading is shown using <code>magit-diff-hunk-heading-selection</code>, and so
+are the thin lines that are added around the lines that fall within
+the region.  The background color of that has to be distinct enough
+from the various other involved background colors.
+</p>
+<p>Nobody said this would be easy.  If your theme restricts itself to a
+certain set of colors, then you should make an exception here.
+Otherwise it would be impossible to make the diffs look good in each
+and every variation.  Actually you might want to just stick to the
+default definitions for these faces.  You have been warned.  Also
+please note that if you do not get this right, this will in some cases
+look to users like bugs in Magit - so please do it right or not at
+all.
+</p>
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Confirmation-and-completion.html#Confirmation-and-completion" accesskey="p" rel="prev">Confirmation and completion</a>, Up: <a href="Conventions.html#Conventions" accesskey="u" rel="up">Conventions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
