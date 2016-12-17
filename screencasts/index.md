@@ -6,6 +6,8 @@ title: Screencasts
 I will soon add some official screencasts.  Meanwhile you can enjoy
 these screencasts that were created by users:
 
+* [Productive Emacs: Magit](https://www.youtube.com/watch?v=D1SJ6mFWYyA&feature=youtu.be&a) by Arjen Wiersma &mdash; 2016.11 &mdash; 18:04
+* [Git in Emacs](https://www.youtube.com/watch?v=OMIxZhLU71U) by Jason Milkins &mdash; 2016.11 &mdash; 55:23
 * [Rewrite git history with Emacs, magit and git rebase](https://www.youtube.com/watch?v=mtliRYQd0j4) by Charl Botha &mdash; 2016.03 &mdash; 15:04
 * [Emacs Tutorial - Introduction to Magit](https://www.youtube.com/watch?v=LDafmAJa-4w) by Durant Schoon and Daniel &mdash; 2016.03 &mdash; 13:15
 * [Magit introduction and demonstration](https://www.youtube.com/watch?v=vQO7F2Q9DwA) by Howard Abrams &mdash; 2015.10 &mdash; 14:10

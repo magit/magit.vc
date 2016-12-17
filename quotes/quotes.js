@@ -96,6 +96,12 @@ var quotes = [
     ["Magit is love. Magit is life. If you're an emacs and git user but don't use magit, it's a big, big waste of the powers of emacs.",
      "Chetan Ahuja",
      "https://news.ycombinator.com/item?id=9875798"],
+    ["[Magit is] a fantastic way to use git with a perfect balance between making simple things very easy to do and allowing (almost) anything you can do with the CLI while providing excellent visual feedback.",
+     "duerrp",
+     "https://news.ycombinator.com/item?id=12888471"],
+    ["Magit is a marvelous piece of work indeed, and the thing that keeps me going back to Emacs every time I get curious about some other editor.",
+     "pYQAJ6Zm",
+     "https://news.ycombinator.com/item?id=12888471"],
     // lwn
     ["Magit is one of those rare packages which actually help you better understand the tool it provides an interface to.",
      "madscientist",

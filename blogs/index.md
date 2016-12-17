@@ -10,6 +10,8 @@ posts were release announcements, but that is about to change.
 
 # Posts by users
 
+* [Emacs: Magit Magic](http://www.mycpu.org/emacs-24-magit-magic) by Manoj Rao &mdash; 2016.9
+
 * [Git's selective commits plus Magit are a killer feature for me](https://utcc.utoronto.ca/~cks/space/blog/programming/GitSelectiveCommitWithMagit) by Chris Siebenmann &mdash; 2016.9
 
 * [I like Magit, the GNU Emacs package for Git](https://utcc.utoronto.ca/~cks/space/blog/programming/MagitPraise) by Chris Siebenmann &mdash; 2015.12
