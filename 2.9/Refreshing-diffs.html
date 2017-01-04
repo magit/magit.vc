@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Refreshing diffs</title>
+
+<meta name="description" content="Magit User Manual: Refreshing diffs">
+<meta name="keywords" content="Magit User Manual: Refreshing diffs">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Diffing.html#Diffing" rel="up" title="Diffing">
+<link href="Diff-buffer.html#Diff-buffer" rel="next" title="Diff buffer">
+<link href="Diffing.html#Diffing" rel="prev" title="Diffing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Refreshing-diffs"></a>
+<div class="header">
+<p>
+Next: <a href="Diff-buffer.html#Diff-buffer" accesskey="n" rel="next">Diff buffer</a>, Up: <a href="Diffing.html#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Refreshing-diffs-1"></a>
+<h4 class="subsection">5.4.1 Refreshing diffs</h4>
+
+<p>The prefix command <code>magit-diff-refresh-popup</code>, on <code>D</code>, can be used to
+change the diff arguments used in the current buffer, without changing
+which diff is shown.  This works in dedicated diff buffers, but also
+in the status buffer.
+</p>
+<dl compact="compact">
+<dd><a name="index-D"></a>
+<a name="index-magit_002ddiff_002drefresh_002dpopup"></a>
+</dd>
+<dt><kbd>D</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-refresh-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-D-g"></a>
+<a name="index-magit_002ddiff_002drefresh"></a>
+</dd>
+<dt><kbd>D g</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-refresh</code>)</dt>
+<dd>
+<p>This suffix command sets the local diff arguments for the current
+buffer.
+</p>
+<a name="index-D-s"></a>
+<a name="index-magit_002ddiff_002dset_002ddefault_002darguments"></a>
+</dd>
+<dt><kbd>D s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-set-default-arguments</code>)</dt>
+<dd>
+<p>This suffix command sets the default diff arguments for buffers of
+the same type as that of the current buffer.  Other existing buffers
+of the same type are not affected because their local values have
+already been initialized.
+</p>
+<a name="index-D-w"></a>
+<a name="index-magit_002ddiff_002dsave_002ddefault_002darguments"></a>
+</dd>
+<dt><kbd>D w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-save-default-arguments</code>)</dt>
+<dd>
+<p>This suffix command sets the default diff arguments for buffers of
+the same type as that of the current buffer, and saves the value for
+future sessions.  Other existing buffers of the same type are not
+affected because their local values have already been initialized.
+</p>
+<a name="index-D-t"></a>
+<a name="index-magit_002ddiff_002dtoggle_002drefine_002dhunk"></a>
+</dd>
+<dt><kbd>D t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-toggle-refine-hunk</code>)</dt>
+<dd>
+<p>This command toggles hunk refinement on or off.
+</p>
+<a name="index-D-r"></a>
+<a name="index-magit_002ddiff_002dswitch_002drange_002dtype"></a>
+</dd>
+<dt><kbd>D r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-switch-range-type</code>)</dt>
+<dd>
+<p>This command converts the diff range type from &quot;revA..revB&quot; to
+&quot;revB&hellip;revA&quot;, or vice versa.
+</p>
+<a name="index-D-f"></a>
+<a name="index-magit_002ddiff_002dflip_002drevs"></a>
+</dd>
+<dt><kbd>D f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-flip-revs</code>)</dt>
+<dd>
+<p>This command swaps revisions in the diff range from &quot;revA..revB&quot;
+to &quot;revB..revA&quot;, or vice versa.
+</p></dd>
+</dl>
+
+<p>In addition to the above popup, which allows changing any of the
+supported arguments, there also exist some commands which change a
+particular argument.
+</p>
+<dl compact="compact">
+<dd><a name="index-_002d"></a>
+<a name="index-magit_002ddiff_002dless_002dcontext"></a>
+</dd>
+<dt><kbd>-</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-less-context</code>)</dt>
+<dd>
+<p>This command decreases the context for diff hunks by COUNT lines.
+</p>
+<a name="index-_002b-1"></a>
+<a name="index-magit_002ddiff_002dmore_002dcontext"></a>
+</dd>
+<dt><kbd>+</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-more-context</code>)</dt>
+<dd>
+<p>This command increases the context for diff hunks by COUNT lines.
+</p>
+<a name="index-0"></a>
+<a name="index-magit_002ddiff_002ddefault_002dcontext"></a>
+</dd>
+<dt><kbd>0</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-default-context</code>)</dt>
+<dd>
+<p>This command resets the context for diff hunks to the default height.
+</p></dd>
+</dl>
+
+<p>The following commands quickly change what diff is being displayed
+without having to using one of the diff popups.
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dc-C_002dd"></a>
+<a name="index-magit_002ddiff_002dwhile_002dcommitting"></a>
+</dd>
+<dt><kbd>C-c C-d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-while-committing</code>)</dt>
+<dd>
+<p>While committing, this command shows the changes that are about to
+be committed.  While amending, invoking the command again toggles
+between showing just the new changes or all the changes that will be
+committed.
+</p>
+<p>This binding is available in the diff buffer as well as the commit
+message buffer.
+</p>
+<a name="index-C_002dc-C_002db-1"></a>
+<a name="index-magit_002dgo_002dbackward-1"></a>
+</dd>
+<dt><kbd>C-c C-b</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-go-backward</code>)</dt>
+<dd>
+<p>This command moves backward in current buffer&rsquo;s history.
+</p>
+<a name="index-C_002dc-C_002df-1"></a>
+<a name="index-magit_002dgo_002dforward-1"></a>
+</dd>
+<dt><kbd>C-c C-f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-go-forward</code>)</dt>
+<dd>
+<p>This command moves forward in current buffer&rsquo;s history.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Diff-buffer.html#Diff-buffer" accesskey="n" rel="next">Diff buffer</a>, Up: <a href="Diffing.html#Diffing" accesskey="u" rel="up">Diffing</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

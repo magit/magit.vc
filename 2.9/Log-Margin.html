@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Log Margin</title>
+
+<meta name="description" content="Magit User Manual: Log Margin">
+<meta name="keywords" content="Magit User Manual: Log Margin">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Logging.html#Logging" rel="up" title="Logging">
+<link href="Select-from-log.html#Select-from-log" rel="next" title="Select from log">
+<link href="Log-Buffer.html#Log-Buffer" rel="prev" title="Log Buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Log-Margin"></a>
+<div class="header">
+<p>
+Next: <a href="Select-from-log.html#Select-from-log" accesskey="n" rel="next">Select from log</a>, Previous: <a href="Log-Buffer.html#Log-Buffer" accesskey="p" rel="prev">Log Buffer</a>, Up: <a href="Logging.html#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Log-Margin-1"></a>
+<h4 class="subsection">5.3.3 Log Margin</h4>
+
+<p>In buffers which show one or more logs, it is possible to show
+additional information about each commit in the margin.  The options
+used to configure the margin are named <code>magit-INFIX-margin</code>, where INFIX
+is the same as in the respective major-mode <code>magit-INFIX-mode</code>.  In
+regular log buffers that would be <code>magit-log-margin</code>.
+</p>
+<dl>
+<dt><a name="index-magit_002dlog_002dmargin"></a>User Option: <strong>magit-log-margin</strong></dt>
+<dd>
+<p>This option specifies whether the margin is initially shown in
+Magit-Log mode buffers and how it is formatted.
+</p>
+<p>The value has the form <code>(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)</code>.
+</p>
+<ul>
+<li> If INIT is non-nil, then the margin is shown initially.
+
+</li><li> STYLE controls how to format the committer date.  It can be one
+of <code>age</code> (to show the age of the commit), <code>age-abbreviated</code> (to
+abbreviate the time unit to a character), or a string (suitable
+for <code>format-time-string</code>) to show the actual date.
+
+</li><li> WIDTH controls the width of the margin.  This exists for forward
+compatibility and currently the value should not be changed.
+
+</li><li> AUTHOR controls whether the name of the author is also shown by
+default.
+
+</li><li> AUTHOR-WIDTH has to be an integer.  When the name of the author
+is shown, then this specifies how much space is used to do so.
+</li></ul>
+</dd></dl>
+
+<p>You can change the STYLE and AUTHOR-WIDTH of all <code>magit-INFIX-margin</code>
+options to the same values by customizing <code>magit-log-margin</code> <strong>before</strong>
+<code>magit</code> is loaded.  If you do that, then the respective values for the
+other options will default to what you have set for that variable.
+Likewise if you set INIT in <code>magit-log-margin</code> to <code>nil</code>, then that is used
+in the default of all other options.  But setting it to <code>t</code>, i.e.
+re-enforcing the default for that option, does not carry to other
+options.
+</p>
+<dl compact="compact">
+<dd><a name="index-L-2"></a>
+<a name="index-magit_002dmargin_002dpopup"></a>
+</dd>
+<dt><kbd>L</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-margin-popup</code>)</dt>
+<dd>
+<p>This prefix command features the following commands for changing the
+appearance of the margin.
+</p></dd>
+</dl>
+
+<p>In some buffers that support the margin, &quot;L&quot; is bound to
+<code>magit-log-refresh-popup</code>, but that popup features the same commands,
+and then some other unrelated commands.
+</p>
+<dl compact="compact">
+<dd><a name="index-L-L"></a>
+<a name="index-magit_002dtoggle_002dmargin-1"></a>
+</dd>
+<dt><kbd>L L</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-toggle-margin</code>)</dt>
+<dd>
+<p>This command shows or hides the margin.
+</p>
+<a name="index-L-l"></a>
+<a name="index-magit_002dcycle_002dmargin_002dstyle"></a>
+</dd>
+<dt><kbd>L l</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-cycle-margin-style</code>)</dt>
+<dd>
+<p>This command cycles the style used for the margin.
+</p>
+<a name="index-L-d"></a>
+<a name="index-magit_002dtoggle_002dmargin_002ddetails"></a>
+</dd>
+<dt><kbd>L d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-toggle-margin-details</code>)</dt>
+<dd>
+<p>This command shows or hides details in the margin.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Select-from-log.html#Select-from-log" accesskey="n" rel="next">Select from log</a>, Previous: <a href="Log-Buffer.html#Log-Buffer" accesskey="p" rel="prev">Log Buffer</a>, Up: <a href="Logging.html#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

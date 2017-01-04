@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Subtree</title>
+
+<meta name="description" content="Magit User Manual: Subtree">
+<meta name="keywords" content="Magit User Manual: Subtree">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Miscellaneous.html#Miscellaneous" rel="up" title="Miscellaneous">
+<link href="Common-commands.html#Common-commands" rel="next" title="Common commands">
+<link href="Submodule-popup.html#Submodule-popup" rel="prev" title="Submodule popup">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Subtree"></a>
+<div class="header">
+<p>
+Next: <a href="Common-commands.html#Common-commands" accesskey="n" rel="next">Common commands</a>, Previous: <a href="Submodules.html#Submodules" accesskey="p" rel="prev">Submodules</a>, Up: <a href="Miscellaneous.html#Miscellaneous" accesskey="u" rel="up">Miscellaneous</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Subtree-1"></a>
+<h3 class="section">8.4 Subtree</h3>
+
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-subtree">git-subtree(1)</a> manpage.</p>
+<dl compact="compact">
+<dd><a name="index-O"></a>
+<a name="index-magit_002dtree_002dpopup"></a>
+</dd>
+<dt><kbd>O</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-tree-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p></dd>
+</dl>
+
+<p>Most infix arguments only apply to some of the <code>git subtree</code>
+subcommands.  When an argument that does not apply to the invoked
+command is set, then it is silently ignored.
+</p>
+<p>When the <code>--prefix</code> argument is set in the popup buffer, then that is
+used.  Otherwise the prefix is read in the minibuffer.
+</p>
+<dl compact="compact">
+<dd><a name="index-O-a"></a>
+<a name="index-magit_002dsubtree_002dadd"></a>
+</dd>
+<dt><kbd>O a</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-subtree-add</code>)</dt>
+<dd>
+<p>Add COMMIT from REPOSITORY as a new subtree at PREFIX.
+</p>
+<a name="index-O-c"></a>
+<a name="index-magit_002dsubtree_002dadd_002dcommit"></a>
+</dd>
+<dt><kbd>O c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-subtree-add-commit</code>)</dt>
+<dd>
+<p>Add COMMIT as a new subtree at PREFIX.
+</p>
+<a name="index-O-m"></a>
+<a name="index-magit_002dsubtree_002dmerge"></a>
+</dd>
+<dt><kbd>O m</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-subtree-merge</code>)</dt>
+<dd>
+<p>Merge COMMIT into the PREFIX subtree.
+</p>
+<a name="index-O-f"></a>
+<a name="index-magit_002dsubtree_002dpull"></a>
+</dd>
+<dt><kbd>O f</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-subtree-pull</code>)</dt>
+<dd>
+<p>Pull COMMIT from REPOSITORY into the PREFIX subtree.
+</p>
+<a name="index-O-p"></a>
+<a name="index-magit_002dsubtree_002dpush"></a>
+</dd>
+<dt><kbd>O p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-subtree-push</code>)</dt>
+<dd>
+<p>Extract the history of the subtree PREFIX and push it to REF on
+REPOSITORY.
+</p>
+<a name="index-O-s"></a>
+<a name="index-magit_002dsubtree_002dsplit"></a>
+</dd>
+<dt><kbd>O s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-subtree-split</code>)</dt>
+<dd>
+<p>Extract the history of the subtree PREFIX.
+</p></dd>
+</dl>
+
+
+
+
+</body>
+</html>

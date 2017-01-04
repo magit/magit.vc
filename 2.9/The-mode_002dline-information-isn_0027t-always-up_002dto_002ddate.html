@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: The mode-line information isn't always up-to-date</title>
+
+<meta name="description" content="Magit User Manual: The mode-line information isn't always up-to-date">
+<meta name="keywords" content="Magit User Manual: The mode-line information isn't always up-to-date">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="FAQ-_002d-Issues-and-errors.html#FAQ-_002d-Issues-and-errors" rel="up" title="FAQ - Issues and errors">
+<link href="Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit" rel="next" title="Emacs 245 hangs when loading Magit">
+<link href="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer.html#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" rel="prev" title="Point is wrong in the COMMIT_EDITMSG buffer">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="The-mode_002dline-information-isn_0027t-always-up_002dto_002ddate"></a>
+<div class="header">
+<p>
+Next: <a href="Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit" accesskey="n" rel="next">Emacs 245 hangs when loading Magit</a>, Previous: <a href="Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer.html#Point-is-wrong-in-the-COMMIT_005fEDITMSG-buffer" accesskey="p" rel="prev">Point is wrong in the <code>COMMIT_EDITMSG</code> buffer</a>, Up: <a href="FAQ-_002d-Issues-and-errors.html#FAQ-_002d-Issues-and-errors" accesskey="u" rel="up">FAQ - Issues and errors</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-mode_002dline-information-isn_0027t-always-up_002dto_002ddate-1"></a>
+<h4 class="subsection">A.2.9 The mode-line information isn&rsquo;t always up-to-date</h4>
+
+<p>Magit is not responsible for the version control information that is
+being displayed in the mode-line and looks something like <code>Git-master</code>.
+The built-in &quot;Version Control&quot; package, also known as &quot;VC&quot;, updates
+that information, and can be told to do so more often:
+</p>
+<div class="lisp">
+<pre class="lisp">(setq auto-revert-check-vc-info t)
+</pre></div>
+
+<p>But doing so isn&rsquo;t good for performance.  For more (overly optimistic)
+information see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/VC-Mode-Line.html#VC-Mode-Line">(emacs)VC Mode Line</a>.
+</p>
+<p>If you don&rsquo;t really care about seeing that information in the
+mode-line, but just don&rsquo;t want to see <em>incorrect</em> information, then
+consider disabling VC when using Git:
+</p>
+<div class="lisp">
+<pre class="lisp">(setq vc-handled-backends (delq 'Git vc-handled-backends))
+</pre></div>
+
+<p>Or to disable it completely:
+</p>
+<div class="lisp">
+<pre class="lisp">(setq vc-handled-backends nil)
+</pre></div>
+
+
+
+
+</body>
+</html>

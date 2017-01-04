@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Cherries</title>
+
+<meta name="description" content="Magit User Manual: Cherries">
+<meta name="keywords" content="Magit User Manual: Cherries">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Logging.html#Logging" rel="up" title="Logging">
+<link href="Diffing.html#Diffing" rel="next" title="Diffing">
+<link href="Reflog.html#Reflog" rel="prev" title="Reflog">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Cherries"></a>
+<div class="header">
+<p>
+Previous: <a href="Reflog.html#Reflog" accesskey="p" rel="prev">Reflog</a>, Up: <a href="Logging.html#Logging" accesskey="u" rel="up">Logging</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Cherries-1"></a>
+<h4 class="subsection">5.3.6 Cherries</h4>
+
+<p>Cherries are commits that haven&rsquo;t been applied upstream (yet), and are
+usually visualized using a log.  Each commit is prefixed with <code>-</code> if it
+has an equivalent in the upstream and <code>+</code> if it does not, i.e. if it is
+a cherry.
+</p>
+<p>The command <code>magit-cherry</code> shows cherries for a single branch, but the
+references buffer (see <a href="References-buffer.html#References-buffer">References buffer</a>) can show cherries for
+multiple &quot;upstreams&quot; at once.
+</p>
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-reflog">git-reflog(1)</a> manpage.</p>
+<dl compact="compact">
+<dd><a name="index-Y"></a>
+<a name="index-magit_002dcherry"></a>
+</dd>
+<dt><kbd>Y</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-cherry</code>)</dt>
+<dd>
+<p>Show commits that are in a certain branch but that have not been
+merged in the upstream branch.
+</p>
+</dd>
+</dl>
+
+<dl>
+<dt><a name="index-magit_002dcherry_002dmargin"></a>User Option: <strong>magit-cherry-margin</strong></dt>
+<dd>
+<p>This option specifies whether the margin is initially shown in
+Magit-Cherry mode buffers and how it is formatted.
+</p>
+<p>The value has the form <code>(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)</code>.
+</p>
+<ul>
+<li> If INIT is non-nil, then the margin is shown initially.
+
+</li><li> STYLE controls how to format the committer date.  It can be one
+of <code>age</code> (to show the age of the commit), <code>age-abbreviated</code> (to
+abbreviate the time unit to a character), or a string (suitable
+for <code>format-time-string</code>) to show the actual date.
+
+</li><li> WIDTH controls the width of the margin.  This exists for forward
+compatibility and currently the value should not be changed.
+
+</li><li> AUTHOR controls whether the name of the author is also shown by
+default.
+
+</li><li> AUTHOR-WIDTH has to be an integer.  When the name of the author
+is shown, then this specifies how much space is used to do so.
+</li></ul>
+</dd></dl>
+
+
+
+
+</body>
+</html>

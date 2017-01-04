@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: Diffing</title>
+
+<meta name="description" content="Magit User Manual: Diffing">
+<meta name="keywords" content="Magit User Manual: Diffing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inspecting.html#Inspecting" rel="up" title="Inspecting">
+<link href="Refreshing-diffs.html#Refreshing-diffs" rel="next" title="Refreshing diffs">
+<link href="Cherries.html#Cherries" rel="prev" title="Cherries">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Diffing"></a>
+<div class="header">
+<p>
+Next: <a href="Ediffing.html#Ediffing" accesskey="n" rel="next">Ediffing</a>, Previous: <a href="Logging.html#Logging" accesskey="p" rel="prev">Logging</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Diffing-1"></a>
+<h3 class="section">5.4 Diffing</h3>
+
+<p>The status buffer contains diffs for the staged and unstaged commits,
+but that obviously isn&rsquo;t enough.  The prefix command <code>magit-diff-popup</code>,
+on <code>d</code>, features several suffix commands, which show a specific diff in
+a separate diff buffer.
+</p>
+<p>Like other popups, the diff popup also features several arguments that
+can be changed before invoking one of the suffix commands.  However in
+case of the diff popup these arguments correspond to those currently
+in use in the current repository&rsquo;s diff buffer.  When the diff popup
+is invoked while no diff buffer exists for the current repository yet,
+then the default value of <code>magit-diff-arguments</code> is used instead.
+</p>
+<p>Also see 
+the <a href="http://git-scm.com/docs/git-diff">git-diff(1)</a> manpage.</p>
+<dl compact="compact">
+<dd><a name="index-d"></a>
+<a name="index-magit_002ddiff_002dpopup"></a>
+</dd>
+<dt><kbd>d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-popup</code>)</dt>
+<dd>
+<p>This prefix command shows the following suffix commands along with
+the appropriate infix arguments in a popup buffer.
+</p>
+<a name="index-d-d"></a>
+<a name="index-magit_002ddiff_002ddwim"></a>
+</dd>
+<dt><kbd>d d</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-dwim</code>)</dt>
+<dd>
+<p>Show changes for the thing at point.
+</p>
+<a name="index-d-r"></a>
+<a name="index-magit_002ddiff"></a>
+</dd>
+<dt><kbd>d r</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff</code>)</dt>
+<dd>
+<p>Show differences between two commits.
+</p>
+<p>RANGE should be a range (A..B or A&hellip;B) but can also be a single
+commit.  If one side of the range is omitted, then it defaults to
+HEAD.  If just a commit is given, then changes in the working tree
+relative to that commit are shown.
+</p>
+<p>If the region is active, use the revisions on the first and last
+line of the region.  With a prefix argument, instead of diffing the
+revisions, choose a revision to view changes along, starting at the
+common ancestor of both revisions (i.e., use a &quot;&hellip;&quot;  range).
+</p>
+<a name="index-d-w"></a>
+<a name="index-magit_002ddiff_002dworktree"></a>
+</dd>
+<dt><kbd>d w</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-worktree</code>)</dt>
+<dd>
+<p>Show changes between the current working tree and the <code>HEAD</code> commit.
+With a prefix argument show changes between the working tree and a
+commit read from the minibuffer.
+</p>
+<a name="index-d-s"></a>
+<a name="index-magit_002ddiff_002dstaged"></a>
+</dd>
+<dt><kbd>d s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-staged</code>)</dt>
+<dd>
+<p>Show changes between the index and the <code>HEAD</code> commit.  With a prefix
+argument show changes between the index and a commit read from the
+minibuffer.
+</p>
+<a name="index-d-u"></a>
+<a name="index-magit_002ddiff_002dunstaged"></a>
+</dd>
+<dt><kbd>d u</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-unstaged</code>)</dt>
+<dd>
+<p>Show changes between the working tree and the index.
+</p>
+<a name="index-d-p"></a>
+<a name="index-magit_002ddiff_002dpaths"></a>
+</dd>
+<dt><kbd>d p</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-diff-paths</code>)</dt>
+<dd>
+<p>Show changes between any two files on disk.
+</p></dd>
+</dl>
+
+<p>All of the above suffix commands update the repository&rsquo;s diff buffer.
+The diff popup also features two commands which show differences in
+another buffer:
+</p>
+<dl compact="compact">
+<dd><a name="index-d-c"></a>
+<a name="index-magit_002dshow_002dcommit"></a>
+</dd>
+<dt><kbd>d c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-show-commit</code>)</dt>
+<dd>
+<p>Show the commit at point.  If there is no commit at point or with a
+prefix argument, prompt for a commit.
+</p>
+<a name="index-d-t"></a>
+<a name="index-magit_002dstash_002dshow"></a>
+</dd>
+<dt><kbd>d t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-stash-show</code>)</dt>
+<dd>
+<p>Show all diffs of a stash in a buffer.
+</p></dd>
+</dl>
+
+<p>Two additional commands that show the diff for the file or blob that
+is being visited in the current buffer exists, see <a href="Minor-mode-for-buffers-visiting-files.html#Minor-mode-for-buffers-visiting-files">Minor mode for buffers visiting files</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Refreshing-diffs.html#Refreshing-diffs" accesskey="1">Refreshing diffs</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Diff-buffer.html#Diff-buffer" accesskey="2">Diff buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Diff-options.html#Diff-options" accesskey="3">Diff options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Revision-buffer.html#Revision-buffer" accesskey="4">Revision buffer</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Ediffing.html#Ediffing" accesskey="n" rel="next">Ediffing</a>, Previous: <a href="Logging.html#Logging" accesskey="p" rel="prev">Logging</a>, Up: <a href="Inspecting.html#Inspecting" accesskey="u" rel="up">Inspecting</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

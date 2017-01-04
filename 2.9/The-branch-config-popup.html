@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Magit is an interface to the version control system Git, implemented
+as an Emacs package.  Magit aspires to be a complete Git porcelain.
+While we cannot (yet) claim that Magit wraps and improves upon each
+and every Git command, it is complete enough to allow even experienced
+Git users to perform almost all of their daily version control tasks
+directly from within Emacs.  While many fine Git clients exist, only
+Magit and Git itself deserve to be called porcelains.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit User Manual: The branch config popup</title>
+
+<meta name="description" content="Magit User Manual: The branch config popup">
+<meta name="keywords" content="Magit User Manual: The branch config popup">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Keystroke-Index.html#Keystroke-Index" rel="index" title="Keystroke Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Branching.html#Branching" rel="up" title="Branching">
+<link href="Merging.html#Merging" rel="next" title="Merging">
+<link href="The-branch-popup.html#The-branch-popup" rel="prev" title="The branch popup">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="The-branch-config-popup"></a>
+<div class="header">
+<p>
+Previous: <a href="The-branch-popup.html#The-branch-popup" accesskey="p" rel="prev">The branch popup</a>, Up: <a href="Branching.html#Branching" accesskey="u" rel="up">Branching</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="The-branch-config-popup-1"></a>
+<h4 class="subsection">6.5.3 The branch config popup</h4>
+
+<a name="index-magit_002dbranch_002dpopup-1"></a>
+<dl>
+<dt><a name="index-magit_002dbranch_002dpopup-2"></a>Command: <strong>magit-branch-popup</strong></dt>
+<dd>
+<p>This prefix command shows the following branch-related Git variables
+in a popup buffer.  The values can be changed from that buffer.
+</p>
+<p>This popup is a sub-popup of several popups that deal with branches,
+including <code>magit-branch-popup</code>, <code>magit-pull-popup</code>, <code>magit-fetch-popup</code>,
+<code>magit-pull-and-fetch-popup</code>, and <code>magit-push-popup</code>.  In all of these
+popups &quot;C&quot; is bound to this popup.
+</p></dd></dl>
+
+<p>The following variables are used to configure a specific branch.  The
+values are being displayed for the current branch (if any).  To change
+the value for another branch invoke <code>magit-branch-config-popup</code> with a
+prefix argument.
+</p>
+<dl>
+<dt><a name="index-branch_002eNAME_002emerge"></a>Variable: <strong>branch.NAME.merge</strong></dt>
+<dd>
+<p>Together with <code>branch.NAME.remote</code> this variable defines the upstream
+branch of the local branch named NAME.  The value of this variable
+is the full reference of the upstream <em>branch</em>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002eremote"></a>Variable: <strong>branch.NAME.remote</strong></dt>
+<dd>
+<p>Together with <code>branch.NAME.merge</code> this variable defines the upstream
+branch of the local branch named NAME.  The value of this variable
+is the name of the upstream <em>remote</em>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002erebase"></a>Variable: <strong>branch.NAME.rebase</strong></dt>
+<dd>
+<p>This variable controls whether pulling into the branch named NAME is
+done by rebasing or by merging the fetched branch.
+</p>
+<ul>
+<li> When <code>true</code> then pulling is done by rebasing.
+
+</li><li> When <code>false</code> then pulling is done by merging.
+
+</li><li> When undefined then the value of <code>pull.rebase</code> is used.  The default
+of that variable is <code>false</code>.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002epushRemote"></a>Variable: <strong>branch.NAME.pushRemote</strong></dt>
+<dd>
+<p>This variable specifies the remote that the branch named NAME is
+usually pushed to.  The value has to be the name of an existing
+remote.
+</p>
+<p>It is not possible to specify the name of <em>branch</em> to push the local
+branch to.  The name of the remote branch is always the same as the
+name of the local branch.
+</p>
+<p>If this variable is undefined but <code>remote.pushDefault</code> is defined,
+then the value of the latter is used.  By default <code>remote.pushDefault</code>
+is undefined.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eNAME_002edescription"></a>Variable: <strong>branch.NAME.description</strong></dt>
+<dd>
+<p>This variable can be used to describe the branch named NAME.  That
+description is used e.g. when turning the branch into a series of
+patches.
+</p></dd></dl>
+
+<p>The following variables specify defaults which are used if the above
+branch-specific variables are not set.
+</p>
+<dl>
+<dt><a name="index-pull_002erebase"></a>Variable: <strong>pull.rebase</strong></dt>
+<dd>
+<p>This variable specifies whether pulling is done by rebasing or by
+merging.  It can be overwritten using <code>branch.NAME.rebase</code>.
+</p>
+<ul>
+<li> When <code>true</code> then pulling is done by rebasing.
+
+</li><li> When <code>false</code> (the default) then pulling is done by merging.
+</li></ul>
+<p>Since it is never a good idea to merge the upstream branch into a
+feature or hotfix branch and most branches are such branches, you
+should consider setting this to <code>true</code>, and <code>branch.master.rebase</code> to
+<code>false</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-remote_002epushDefault"></a>Variable: <strong>remote.pushDefault</strong></dt>
+<dd>
+<p>This variable specifies what remote the local branches are usually
+pushed to.  This can be overwritten per branch using
+<code>branch.NAME.pushRemote</code>.
+</p></dd></dl>
+
+<p>The following variables are used during the creation of a branch and
+control whether the various branch-specific variables are
+automatically set at this time.
+</p>
+<dl>
+<dt><a name="index-branch_002eautoSetupMerge"></a>Variable: <strong>branch.autoSetupMerge</strong></dt>
+<dd>
+<p>This variable specifies under what circumstances creating a branch
+NAME should result in the variables <code>branch.NAME.merge</code> and
+<code>branch.NAME.remote</code> being set according to the starting point used to
+create the branch.  If the starting point isn&rsquo;t a branch, then these
+variables are never set.
+</p>
+<ul>
+<li> When <code>always</code> then the variables are set regardless of whether the
+starting point is a local or a remote branch.
+
+</li><li> When <code>true</code> (the default) then the variables are set when the starting
+point is a remote branch, but not when it is a local branch.
+
+</li><li> When <code>false</code> then the variables are never set.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-branch_002eautoSetupRebase"></a>Variable: <strong>branch.autoSetupRebase</strong></dt>
+<dd>
+<p>This variable specifies whether creating a branch NAME should result
+in the variable <code>branch.NAME.rebase</code> being set to <code>true</code>.
+</p>
+<ul>
+<li> When <code>always</code> then the variable is set regardless of whether the
+starting point is a local or a remote branch.
+
+</li><li> When <code>local</code> then the variable are set when the starting point is a
+local branch, but not when it is a remote branch.
+
+</li><li> When <code>remote</code> then the variable are set when the starting point is a
+remote branch, but not when it is a local branch.
+
+</li><li> When <code>never</code> (the default) then the variable is never set.
+</li></ul>
+</dd></dl>
+
+<p>Note that the respective commands always change the repository-local
+values.  If you want to change the global value, which is used when
+the local value is undefined, then you have to do so on the command
+line, e.g.:
+</p>
+<div class="example">
+<pre class="example">git config --global remote.autoSetupMerge always
+</pre></div>
+
+<p>For more information about these variables you should also see
+</p>
+the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage.<p>Also see 
+the <a href="http://git-scm.com/docs/git-branch">git-branch(1)</a> manpage., 
+the <a href="http://git-scm.com/docs/git-checkout">git-checkout(1)</a> manpage. and <a href="Pushing.html#Pushing">Pushing</a>.
+</p>
+<dl>
+<dt><a name="index-magit_002dprefer_002dremote_002dupstream"></a>User Option: <strong>magit-prefer-remote-upstream</strong></dt>
+<dd>
+<p>This option controls whether commands that read a branch from the
+user and then set it as the upstream branch, offer a local or a
+remote branch as default completion candidate, when they have the
+choice.
+</p>
+<p>This affects all commands that use <code>magit-read-upstream-branch</code> or
+<code>magit-read-starting-point</code>, which includes all commands that change
+the upstream and many which create new branches.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="The-branch-popup.html#The-branch-popup" accesskey="p" rel="prev">The branch popup</a>, Up: <a href="Branching.html#Branching" accesskey="u" rel="up">Branching</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Keystroke-Index.html#Keystroke-Index" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

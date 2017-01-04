@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Taking inspiration from regular prefix commands and prefix arguments,
+this library implements a similar abstraction; a new kind of prefix
+command that is associated with a specific set of infix arguments and
+suffix commands.
+
+Copyright (C) 2015-2016 Jonas Bernoulli <jonas@bernoul.li>
+
+You can redistribute this document and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This document is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details. -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Magit-Popup User Manual: Usage</title>
+
+<meta name="description" content="Magit-Popup User Manual: Usage">
+<meta name="keywords" content="Magit-Popup User Manual: Usage">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Customizing-existing-popups.html#Customizing-existing-popups" rel="next" title="Customizing existing popups">
+<link href="Introduction.html#Introduction" rel="prev" title="Introduction">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/page.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Usage"></a>
+<div class="header">
+<p>
+Next: <a href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" accesskey="n" rel="next">Defining prefix and suffix commands</a>, Previous: <a href="Introduction.html#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Usage-1"></a>
+<h2 class="chapter">2 Usage</h2>
+
+<p>Every popup buffers created with a prefix command contains a section
+named &quot;Actions&quot; listing the available suffix commands.  Most buffers
+also contain a &quot;Switches&quot; and/or an &quot;Options&quot; section which list the
+two types of infix arguments separately.
+</p>
+<p>Switches are arguments that can be toggled on or off.  When a switch
+is active then it is shown in color, when it is off then it is shown
+in gray (of course the details depend on the color theme in use).
+</p>
+<p>Options are arguments that have a value.  When an option has a value
+then that is shown after the option itself.  Because for some options
+the empty string is a valid value, options are additionally colorized
+like switches to indicate whether they are active or not.
+</p>
+<p>The events bound to suffix commands are always single alphabetic
+characters.  The bindings for arguments are always two events long.
+For switches the first key is always <code>-</code>, for options it is always <code>=</code>.
+The second key is always an alphabetic character.
+</p>
+<p>By default popup buffers also feature a section listing commands
+common to all popups.  To avoid conflicts with suffix commands, the
+bindings of these common commands are not alphabetic characters.  This
+section is shown by default so that documentation-resistant users get
+a chance to notice them.
+</p>
+<dl>
+<dt><a name="index-magit_002dpopup_002dshow_002dcommon_002dcommands"></a>User Option: <strong>magit-popup-show-common-commands</strong></dt>
+<dd>
+<p>This option controls whether the section that lists the commands
+that are common to all popups is initially shown.
+</p>
+<p>By default this is not the case, but note that you can temporarily
+show this section using <code>C-t</code>, which therefore is the only common
+command you actually have to memorize.
+</p></dd></dl>
+
+<dl compact="compact">
+<dd><a name="index-C_002dt"></a>
+<a name="index-magit_002dpopup_002dtoggle_002dshow_002dcommon_002dcommands"></a>
+</dd>
+<dt><kbd>C-t</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-popup-toggle-show-common-commands</code>)</dt>
+<dd>
+<p>Show or hide the section listing the commands shared by all popups.
+</p>
+<a name="index-C_002dg"></a>
+<a name="index-magit_002dpopup_002dquit"></a>
+</dd>
+<dt><kbd>C-g</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-popup-quit</code>)</dt>
+<dd>
+<p>Quit popup buffer without invoking a suffix command.
+</p></dd>
+</dl>
+
+<p>Without further action, setting arguments only affects the next suffix
+command.  Invoking the same prefix command again resets the arguments
+to their default value, but the defaults can be changed directly from
+the popup buffer itself.  For a prefix command named <code>NAME-popup</code> the
+default values are stored as the value of the custom option named
+<code>NAME-arguments</code>.  While this option can be customized using the Custom
+interface, it is better to do so directly from the popup buffer.
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dc-C_002dc"></a>
+<a name="index-magit_002dpopup_002dset_002ddefault_002darguments"></a>
+</dd>
+<dt><kbd>C-c C-c</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-popup-set-default-arguments</code>)</dt>
+<dd>
+<p>This sets the default value for the arguments for the current popup.
+</p>
+<p>Then the popup buffer is closed without invoking a suffix command;
+unless a prefix argument is used in which case the popup remains
+open.
+</p>
+<a name="index-C_002dx-C_002ds"></a>
+<a name="index-magit_002dpopup_002dsave_002ddefault_002darguments"></a>
+</dd>
+<dt><kbd>C-x C-s</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-popup-save-default-arguments</code>)</dt>
+<dd>
+<p>This sets the default value for the arguments for the current popup
+and saves it for future Emacs sessions.
+</p>
+<p>Then the popup buffer is closed without invoking an action; unless a
+prefix argument is used in which case the popup remains open.
+</p></dd>
+</dl>
+
+<p>It is also possible to add additional arguments and commands to an
+existing popup, but that cannot be done directly from the popup (or
+the Custom interface).  See <a href="Customizing-existing-popups.html#Customizing-existing-popups">Customizing existing popups</a>.
+</p>
+<p>Documentation about a popup&rsquo;s arguments and commands can be shown
+directly from the popup.
+</p>
+<dl compact="compact">
+<dd><a name="index-C_002dh-i"></a>
+<a name="index-magit_002dpopup_002dinfo"></a>
+</dd>
+<dt><kbd>C-h i</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-popup-info</code>)</dt>
+<dd>
+<p>Show this manual.
+</p>
+<a name="index-_003f"></a>
+<a name="index-magit_002dpopup_002dhelp"></a>
+</dd>
+<dt><kbd>?</kbd> &nbsp;&nbsp;&nbsp;&nbsp;(<code>magit-popup-help</code>)</dt>
+<dd>
+<p>This command reads a key sequence and then shows the documentation
+of the argument or command that sequence is bound to.  In other
+words type the same keys that you would use to invoke the argument
+or command, but prefix the sequence with <code>?</code>.
+</p>
+<p>For suffix commands this shows the doc-string.  For arguments this
+command can only show something for popups that have an associated
+man-page.  If the man-page is set, then this command displays it in
+a separate buffer and puts point on the entry about the argument in
+question.
+</p>
+<p>The buffer which is used to display the documentation is selected.
+Simply press <code>q</code> to leave that buffer and restore the old window
+configuration.
+</p></dd>
+</dl>
+
+<p>While it isn&rsquo;t very useful, it is possible to move around in a popup
+buffer using <code>C-p</code> and <code>C-n</code>, and to invoke the argument or command at
+point using <code>RET</code>.  But it is much more efficient to use the dedicated
+key bindings instead, so these commands are not listed in popup
+buffers along with the other common commands.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Customizing-existing-popups.html#Customizing-existing-popups" accesskey="1">Customizing existing popups</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Other-options.html#Other-options" accesskey="2">Other options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Defining-prefix-and-suffix-commands.html#Defining-prefix-and-suffix-commands" accesskey="n" rel="next">Defining prefix and suffix commands</a>, Previous: <a href="Introduction.html#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>
