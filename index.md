@@ -59,6 +59,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20170214 &mdash; Magit **v2.10.2** [released]({{ site.relnotes }}/2.10.2.txt)
 * 20170128 &mdash; Magit **v2.10.1** [released]({{ site.relnotes }}/2.10.1.txt)
 * 20170104 &mdash; Magit **v2.10.0** [released]({{ site.relnotes }}/2.10.0.txt)
   ([announcement](https://emacsair.me/2017/01/04/magit-2.10))
