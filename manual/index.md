@@ -23,6 +23,8 @@ The current With-Editor feature release is **v2.5**.
   ([single page](/manual/with-editor.html#Top),
   [pdf](/manual/with-editor.pdf))
 
+The manuals are from the latest bug fix (subminor) releases.
+
 # Recent development snapshots
 
 If you have installed Magit from Melpa (non-stable), then you are
@@ -76,6 +78,9 @@ Unfortunately all internal links are broken.
 
 #### Magit-Popup
 
+- [Magit-Popup User Manual **2.9**](/manual/2.9/magit-popup#Top)
+  ([single page](/manual/2.9/magit-popup.html#Top),
+  [pdf](/manual/2.9/magit-popup.pdf))
 - [Magit-Popup User Manual **2.8**](/manual/2.8/magit-popup#Top)
   ([single page](/manual/2.8/magit-popup.html#Top),
   [pdf](/manual/2.8/magit-popup.pdf))
