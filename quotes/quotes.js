@@ -104,7 +104,7 @@ var quotes = [
      "https://news.ycombinator.com/item?id=12888471"],
     // lwn
     ["Magit is one of those rare packages which actually help you better understand the tool it provides an interface to.",
-     "madscientist",
+     "Paul D. Smith",
      "https://lwn.net/Articles/638804"],
     // github
     ["Magit is one of those packages in Emacs that I simply cannot do without, and that I use multiple times a day, every day.",
