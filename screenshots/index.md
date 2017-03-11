@@ -103,7 +103,7 @@ of `master`, but the details, i.e. the individual commits, are hidden.
 
 If you want to see them just type <I>TAB</I> again; on the command
 line you would have to type something like `git log --oneline
-@{upstream}`.
+..@{upstream}`.
 
 In Magit's status buffer you can always show as much or little as
 currently appropriate without having to remember both the command that
@@ -227,7 +227,7 @@ In the diff popup, for example, one can enable the use of the
 action.  When an argument takes a value, then that is read from the
 user, when appropriate with completion.
 
-Usually arguments are just used once, when you later enter the same
+Usually arguments are just used ones, when you later enter the same
 popup again, then it is not enabled anymore, but it is possible to
 save the arguments you want to be used by default.
 
@@ -328,7 +328,7 @@ only or on the selection.
 Beside sibling selections, Magit supports a second selection, the
 "hunk internal region".  You can mark just part of a hunk using the
 region and then only stage (or unstage or otherwise apply) just that
-hunk.
+part of the hunk.
 
 Here you can see what it looks like when only the part of the hunk
 which removes the word "older" is selected using the region:
@@ -382,7 +382,7 @@ A similar "log arguments" popup exists on <i>L</i>.
 
 Some other graphical tools approach Magit when it comes to the staging
 features described above, but I don't think any one of them quite
-makes it).  One more thing that sets Magit apart from these tools
+makes it.  One more thing that sets Magit apart from these tools
 however, is that these features are not only available for staging and
 unstaging, but also when "otherwise applying changes".
 
@@ -473,10 +473,10 @@ changes about to be committed.  When done press <i>C-c C-c</i>.
 ![](/screenshots/committing.png)
 
 You can also amend to `HEAD` by pressing <i>a</i>.  This is just like
-`git commit --amend`.  While editing the message during when amending,
-press <i>C-c C-d</i> to toggle between showing only the changes that
-are being added to HEAD and all changes that will make it into the
-amended commit.
+`git commit --amend`.  While editing the message while amending, press
+<i>C-c C-d</i> to toggle between showing only the changes that are
+being added to HEAD and all changes that will make it into the amended
+commit.
 
 There are also fixup and squash variants.  And then there are some
 variants that don't exist in Git.  Because the terms used here do not
@@ -494,7 +494,7 @@ typo fixes.
 
 "Instant fixup and squash" let you pick a commit to be modified with
 the staged changes, but then they immediately initiate a rebase.
-"Initial squash" is mostly like "extend" but on commits other than
+"Instand fixup" is mostly like "extend" but on commits other than
 `HEAD`.
 
 The commit to be modified is picked using a specialized log buffer.
@@ -506,7 +506,7 @@ The commit to be modified is picked using a specialized log buffer.
 The rebasing popup also provides a variety of commands unique to
 Magit.
 
-![](/screenshots/log-squash.png)
+![](/screenshots/popup-rebase.png)
 
 There is one variant which lets you edit a single commit, without
 having to go through having to edit a list to be rebased.  Simply go
