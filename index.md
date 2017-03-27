@@ -83,7 +83,6 @@ porcelains.  <a class="small" href="/about">(more)</a>
   ([announcement](https://emacsair.me/2016/01/18/magit-2.4))
 * 20151111 &mdash; Magit **v2.3.1** [released]({{ site.relnotes }}/2.3.1.txt)
 * 20151028 &mdash; Magit **v2.3.0** [released]({{ site.relnotes }}/2.3.0.txt)
-  ([announcement](https://emacsair.me/))
 * 20150919 &mdash; Provide an [Elpa archive](/elpa/v1) for obsolete **v1.4.2**.
 * 20150903 &mdash; Magit **v2.2.2** [released]({{ site.relnotes }}/2.2.2.txt)
 * 20150824 &mdash; Magit **v2.2.1** [released]({{ site.relnotes }}/2.2.1.txt)
