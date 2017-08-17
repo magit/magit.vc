@@ -8,7 +8,7 @@ title: Help making it better
 <section>
   <div id="donate">
     <div>
-      Keeping its user <a href= "/quotes">this excited</a> is
+      Keeping its users <a href= "/quotes">this excited</a> is
       <a href="https://magit.vc/stats/authors.html#cumulated_added_lines_of_code_per_author">
         a lot of work
       </a>.
