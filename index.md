@@ -25,7 +25,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
   <blockquote id="quote2"></blockquote>
   <div id="donate">
     <div>
-      Keeping its user this excited is
+      Keeping its users this excited is
       <a href="https://magit.vc/stats/authors.html#cumulated_added_lines_of_code_per_author">
         a lot of work
       </a>.
