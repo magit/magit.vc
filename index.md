@@ -52,7 +52,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
              src="/assets/bountysource.png"></a>
     </div>
     <div>
-      Some alternative donation methods are <a href="/donate">available</a>.
+      Some alternative donation methods are <a href="/donate#alternative">available</a>.
     </div>
   </div>
 </section>
