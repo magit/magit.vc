@@ -13,7 +13,8 @@ SRC   = _site
 DST   =
 PORT ?= 4100
 
-SYNC  = --exclude "manual/*"
+SYNC  = --exclude "assets/logo/*"
+SYNC += --exclude "manual/*"
 SYNC += --include "manual/dir/index.html"
 SYNC += --include "manual/index.html"
 SYNC += --exclude "stats/*"
