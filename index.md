@@ -23,42 +23,37 @@ porcelains.  <a class="small" href="/about">(more)</a>
 <section>
   <blockquote id="quote1"></blockquote>
   <blockquote id="quote2"></blockquote>
-  <div id="donate">
-    <div>
-      Keeping its user this excited is
-      <a href="https://magit.vc/stats/authors.html#cumulated_added_lines_of_code_per_author">
-        a lot of work
-      </a>.
-      If Magit makes you <br> more productive too,
-      then <b>please consider making a donation</b>.
-    </div>
-    <div>
+  <div id="campaign">
+    <a href="https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client">
+      <img title="Become a backer on Kickstarter"
+           alt="Become a backer on Kickstarter"
+           src="/assets/kickstarter.png"></a>
+    <p>
+      Please consider supporting the ongoing
+      <a href="https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client">
+      crowd-funding campaign</a>.  If it succeeds, then I can work full-time
+      on Magit for a whole year.  I am still overflowing with ideas, and
+      depend on your support to realize them, and to address the remaining
+      long-standing issues.  It is great that many users already consider
+      Magit to be one of Emacs' killer applications, but it is still far
+      from fulfilling its true potential.  Only with your help can I get it
+      there.
+    </p>
+    <p align="center">
       <em>Thank you! &mdash; Jonas Bernoulli</em>
-    </div>
-    <div>
-      <a href="https://www.paypal.me/JonasBernoulli/20">
-        <img title="Donate using PayPal"
-             alt="Donate using PayPal"
-             src="/assets/paypal.png"></a>
-      &nbsp;&nbsp;
-      <a href="https://www.patreon.com/tarsius">
-        <img title="Donate monthly using Patreon"
-             alt="Donate monthly using Patreon"
-             src="/assets/patreon.png"></a>
-      &nbsp;&nbsp;
-      <a href="https://salt.bountysource.com/teams/magit">
-        <img title="Donate monthly using Bountysource"
-             alt="Donate monthly using Bountysource"
-             src="/assets/bountysource.png"></a>
-    </div>
-    <div>
-      Some alternative donation methods are <a href="/donate#alternative">available</a>.
-    </div>
+    </p>
   </div>
 </section>
 
 # News
 
+* 20170901 &mdash; Launched the fundraising campaign
+  [on Kickstarter](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client)<br>
+  [Articles](https://emacsair.me/2017/09/01/campaign-articles)
+  about Magit and the fundraiser:
+  * [Visual Magit walk-through](https://emacsair.me/2017/09/01/magit-walk-through#start)
+  * [Magit, the magical Git interface](https://emacsair.me/2017/09/01/the-magical-git-interface#start)
+  * [Magit for users of other editors](https://emacsair.me/2017/09/01/magit-for-non-emacs-users#start)
 * 20170308 &mdash; Magit **v2.10.3** [released]({{ site.relnotes }}/2.10.3.txt)
 * 20170214 &mdash; Magit **v2.10.2** [released]({{ site.relnotes }}/2.10.2.txt)
 * 20170128 &mdash; Magit **v2.10.1** [released]({{ site.relnotes }}/2.10.1.txt)

@@ -104,6 +104,28 @@ blockquote::before {
   top: 5px;
 }
 
+div#campaign {
+  display: block;
+  background: #eee8d5;
+  padding: 15px 20px 15px 20px;
+  margin: 0px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: justify;
+  box-shadow: 2px 2px 15px #93a1a1;
+}
+
+div#campaign img {
+  box-shadow: unset;
+  height: auto;
+  width: 100%;
+}
+
 div#donate {
   display: block;
   background: #eee8d5;
