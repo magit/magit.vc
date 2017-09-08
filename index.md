@@ -47,6 +47,8 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20170907 &mdash; [Kickstarter update #2](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1981882)
+* 20170906 &mdash; [Kickstarter update #1](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1978248)
 * 20170901 &mdash; Launched the fundraising campaign
   [on Kickstarter](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client)<br>
   [Articles](https://emacsair.me/2017/09/01/campaign-articles)
