@@ -119,6 +119,13 @@ invoice for accounting and taxing purposes.
        src="/assets/gratipay.png">
 </a>
 
+<a href="https://opencollective.com/magit">
+  <img class="donate"
+       title="Donate monthly using Open Collective"
+       alt="Donate monthly using Open Collective"
+       src="/assets/opencollective.png">
+</a>
+
 <a href="https://flattr.com/submit/auto?user_id=tarsius&url=http%3A%2F%2Fmagit.vc&title=Magit!%20A%20Git%20Porcelain%20inside%20Emacs&">
   <img class="donate"
        title="Donate monthly using Flattr"
