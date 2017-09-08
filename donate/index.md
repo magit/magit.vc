@@ -80,19 +80,35 @@ If you would like to make a IBAN and SWIFT (for US bank accounts) transfer,
 then please [contact me](mailto:jonas@bernoul.li).  I can also send you an
 invoice for accounting and taxing purposes.
 
-## Bitcoin
+## Crypto currencies
+
+### Bitcoin
 
 <img class="donate"
-     title="Donate using Bitcoin"
-     alt="Donate using Bitcoin"
+     title="Donate Bitcoin"
+     alt="Donate Bitcoin"
      src="/assets/bitcoin.png" >
 
 <b>1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK</b>
 
 <img class="clear"
-     title="Donate using Bitcoin"
-     alt="Donate using Bitcoin"
+     title="Donate Bitcoin"
+     alt="Donate Bitcoin"
      src="/assets/bitcoin-addr.png">
+
+### Ethereum
+
+<img class="clear"
+     title="Donate Ether"
+     alt="Donate Ether"
+     src="/assets/ethereum.png">
+
+<b>0x90c98E49862d2Ac495BCA94342426D4e90286Ef5</b>
+
+<img class="clear"
+     title="Donate Ether"
+     alt="Donate Ether"
+     src="/assets/ethereum-addr.png">
 
 ## Alternative subscription methods
 
