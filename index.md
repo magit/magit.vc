@@ -150,6 +150,10 @@ by [Jonas Bernoulli][jonas], [Kyle Meyer][kyle], and
 Many more people have [contributed code][authors] and suggested
 features.
 
+<video id="gource" controls poster="/assets/videos/gource-700x700.png">
+  <source src="/assets/videos/gource-700x700.webm" type="video/webm">
+</video>
+
 [contrib]: https://github.com/magit/magit/blob/master/CONTRIBUTING.md
 [devel]:   https://github.com/magit/magit
 [issues]:  https://github.com/magit/magit/issues

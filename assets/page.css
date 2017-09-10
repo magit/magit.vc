@@ -53,10 +53,14 @@ header img {
   margin-right: auto;
 }
 
-img {
+img, video {
   box-shadow: 2px 2px 15px #93a1a1;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+video#gource {
+  box-shadow: none;
 }
 
 header img, img.clear {
