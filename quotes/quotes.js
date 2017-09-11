@@ -122,13 +122,13 @@ var quotes = [
 function inject_quotes() {
     var i = Math.floor(Math.random()*quotes.length);
     var e = document.getElementById("quote1");
-    e.innerHTML = quotes[i][0]+" &mdash; <cite>"+quotes[i][1]+"</cite>";
+    e.innerHTML = quotes[i][0]+" — <cite>"+quotes[i][1]+"</cite>";
 
     quotes.splice(i,1);
 
     i = Math.floor(Math.random()*quotes.length);
     e = document.getElementById("quote2");
-    e.innerHTML = quotes[i][0]+" &mdash; <cite>"+quotes[i][1]+"</cite>";
+    e.innerHTML = quotes[i][0]+" — <cite>"+quotes[i][1]+"</cite>";
 }
 
 function list_quotes() {
@@ -136,7 +136,7 @@ function list_quotes() {
     var len = quotes.length;
     for (var i = 0; i < len; i++) {
 	var child = document.createElement("blockquote");
-	child.innerHTML = quotes[i][0]+" &mdash; <cite>"+quotes[i][1]+"</cite>";
+	child.innerHTML = quotes[i][0]+" — <cite>"+quotes[i][1]+"</cite>";
 	elt.appendChild(child);
     }
 }

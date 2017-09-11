@@ -18,7 +18,7 @@ title: User testimonials
       then <b>please consider making a donation</b>.
     </div>
     <div>
-      <em>Thank you! &mdash; Jonas Bernoulli</em>
+      <em>Thank you! — Jonas Bernoulli</em>
     </div>
     <div>
       <a href="https://www.paypal.me/JonasBernoulli/20">

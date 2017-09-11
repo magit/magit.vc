@@ -16,7 +16,7 @@ title: Help making it better
       then <b>please consider making a donation</b>.
     </div>
     <div>
-      <em>Thank you! &mdash; Jonas Bernoulli</em>
+      <em>Thank you! — Jonas Bernoulli</em>
     </div>
     <div>
       <a href="https://www.paypal.me/JonasBernoulli/20">
@@ -55,7 +55,7 @@ better.  Please consider supporting my continuous work on
 <a class="dotted" href="https://github.com/magit/magit/issues?q=is%3Aissue+is%3Aclosed+label%3Asupport">its</a>
 <a class="dotted" href="https://gitter.im/magit/magit">users</a>.
 
-<em>Thank you! &mdash; Jonas Bernoulli</em>
+<em>Thank you! — Jonas Bernoulli</em>
 
 <br><br><br><br>
 <br><br><br><br>
