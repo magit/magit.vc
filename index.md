@@ -47,6 +47,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20170911 &mdash; [Kickstarter update #3](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1982683)
 * 20170907 &mdash; [Kickstarter update #2](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1981882)
 * 20170906 &mdash; [Kickstarter update #1](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1978248)
 * 20170901 &mdash; Launched the fundraising campaign
