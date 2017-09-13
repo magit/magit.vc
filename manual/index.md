@@ -17,9 +17,9 @@ The current Magit feature release is **v2.10**.
   [pdf](/manual/magit-popup.pdf))
 - [Magit Reference Card](/manual/magit-refcard.pdf)
 
-The current With-Editor feature release is **v2.5**.
+The current With-Editor feature release is **v2.6**.
 
-- [With-Editor User Manual **2.5**](/manual/with-editor#Top)
+- [With-Editor User Manual **2.6**](/manual/with-editor#Top)
   ([single page](/manual/with-editor.html#Top),
   [pdf](/manual/with-editor.pdf))
 
