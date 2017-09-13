@@ -5,14 +5,14 @@ title: User Manuals
 
 # Current releases
 
-The current Magit feature release is **v2.10**.
+The current Magit feature release is **v2.11**.
 
-- [Magit User Manual **2.10**](/manual/magit#Top)
+- [Magit User Manual **2.11**](/manual/magit#Top)
   ([single page](/manual/magit.html#Top),
   [pdf](/manual/magit.pdf))
   - [Installation](/manual/magit/Installation.html)
   - [FAQ](/manual/magit/FAQ.html)
-- [Magit-Popup User Manual **2.10**](/manual/magit-popup#Top)
+- [Magit-Popup User Manual **2.11**](/manual/magit-popup#Top)
   ([single page](/manual/magit-popup.html#Top),
   [pdf](/manual/magit-popup.pdf))
 - [Magit Reference Card](/manual/magit-refcard.pdf)
@@ -42,6 +42,9 @@ Unfortunately all internal links are broken.
 
 #### Magit
 
+- [Magit User Manual **2.10**](/manual/2.10/magit#Top)
+  ([single page](/manual/2.10/magit.html#Top),
+  [pdf](/manual/2.10/magit.pdf))
 - [Magit User Manual **2.9**](/manual/2.9/magit#Top)
   ([single page](/manual/2.9/magit.html#Top),
   [pdf](/manual/2.9/magit.pdf))
