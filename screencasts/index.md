@@ -16,5 +16,5 @@ these screencasts that were created by users:
 * [EmacsATX: Magit](https://www.youtube.com/watch?v=VO7xj2ArpZw) by JJ Asghar — 2014.11 — 38:15
 * [Meet Magit](https://vimeo.com/2871241) by Alex Vollmer — 2009.01 — 20:48
 
-Or you might be interested in some [screenshots](/screenshots)
+Or you might be interested in some [screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 and [blog posts](/blogs).

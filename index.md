@@ -122,8 +122,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
   * [Mailing list][list]
   * [Gitter chat][chat]
 * [Announcements on Twitter][twitter]
-* [Screenshots](/screenshots)
-  <img class="clear" src="/assets/R.png" align="top">
+* [Screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 * [Screencasts](/screencasts)
 * [User quotes](/quotes)
 * [Blog posts](/blogs)
