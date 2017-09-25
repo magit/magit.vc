@@ -42,6 +42,10 @@ porcelains.  <a class="small" href="/about">(more)</a>
     <p align="center">
       <em>Thank you! — Jonas Bernoulli</em>
     </p>
+    <br>
+    <p align="center">
+      <a href="/donate">Some alternative donation options are available</a>.
+    </p>
   </div>
 </section>
 
