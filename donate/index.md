@@ -24,6 +24,12 @@ title: Help making it better
              alt="Donate using PayPal"
              src="/assets/paypal.png"></a>
       &nbsp;&nbsp;
+      <a href="https://gratipay.com/magit">
+        <img class="donate"
+             title="Donate monthly using Gratipay"
+             alt="Donate monthly using Gratipay"
+             src="/assets/gratipay.png"></a>
+      <br>
       <a href="https://www.patreon.com/tarsius">
         <img title="Donate monthly using Patreon"
              alt="Donate monthly using Patreon"
@@ -33,9 +39,8 @@ title: Help making it better
         <img title="Donate monthly using Bountysource"
              alt="Donate monthly using Bountysource"
              src="/assets/bountysource.png"></a>
-    </div>
-    <div>
-      You can find some alternative donation methods <a href="#alternative">below</a>.
+      <br> bitcoin: 1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK
+      <br> ethereum: 0x90c98E49862d2Ac495BCA94342426D4e90286Ef5
     </div>
   </div>
   <br>
@@ -57,28 +62,13 @@ better.  Please consider supporting my continuous work on
 
 <em>Thank you! — Jonas Bernoulli</em>
 
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-
 # Alternative donation methods
 
-<a name="alternative"></a>
+## IBAN
 
-While the above donation methods are by far the most popular, there
-also are a few alternative ones, just in case *you* prefer one of
-these.  I've hidden these methods a bit because studies have found
-that offering to many options actually makes it less likely that
-people donate.
-
-## IBAN and SWIFT transfers
-
-If you would like to make a IBAN and SWIFT (for US bank accounts) transfer,
-then please [contact me](mailto:jonas@bernoul.li).  I can also send you an
-invoice for accounting and taxing purposes.
+If you would like to make a IBAN transfer, then please [contact
+me](mailto:jonas@bernoul.li).  I can also send you an invoice for
+accounting and taxing purposes.
 
 ## Crypto currencies
 
@@ -111,13 +101,6 @@ invoice for accounting and taxing purposes.
      src="/assets/ethereum-addr.png">
 
 ## Alternative subscription methods
-
-<a href="https://gratipay.com/magit">
-  <img class="donate"
-       title="Donate monthly using Gratipay"
-       alt="Donate monthly using Gratipay"
-       src="/assets/gratipay.png">
-</a>
 
 <a href="https://opencollective.com/magit">
   <img class="donate"
