@@ -51,6 +51,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20171002 — [Kickstarter update #5](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2003372)
 * 20170921 — [Kickstarter update #4](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1988383)
 * 20170913 — Magit **v2.11.0** [released]({{ site.relnotes }}/2.11.0.txt)
   ([announcement](https://emacsair.me/2017/09/13/magit-2.11))
