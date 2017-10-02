@@ -126,10 +126,15 @@ div#campaign {
 
 div#campaign img {
   box-shadow: unset;
-  height: auto;
-  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+div#campaign p:nth-child(3) {
+  margin-top: 20px;
+  text-align: center;
+}
 div#donate {
   display: block;
   background: #eee8d5;

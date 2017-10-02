@@ -25,28 +25,58 @@ porcelains.  <a class="small" href="/about">(more)</a>
   <blockquote id="quote2"></blockquote>
   <div id="campaign">
     <a href="https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client">
-      <img title="Become a backer on Kickstarter"
-           alt="Become a backer on Kickstarter"
-           src="/assets/kickstarter.png"></a>
+      <img title="Visit the Kickstarter (finished)"
+           alt="Visit the Kickstarter (finished)"
+           src="/assets/kickstarter-k.png"></a>
     <p>
-      Please consider supporting the ongoing
-      <a href="https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client">
-      crowd-funding campaign</a>.  If it succeeds, then I can work full-time
-      on Magit for a whole year.  I am still overflowing with ideas, and
-      depend on your support to realize them, and to address the remaining
-      long-standing issues.  It is great that many users already consider
-      Magit to be one of Emacs' killer applications, but it is still far
-      from fulfilling its true potential.  Only with your help can I get it
-      there.
+      Thanks to 1987 backers the Kickstarter campaign was a huge success!
+      This September was very exciting and I would like to thank you all
+      for your generosity and enthusiastic support!
     </p>
     <p align="center">
       <em>Thank you! — Jonas Bernoulli</em>
-    </p>
-    <br>
-    <p align="center">
-      <a href="/donate">Some alternative donation options are available</a>.
+      <img src="/assets/pixel-heart.png">
     </p>
   </div>
+  <div id="donate">
+    <div>
+      Keeping its users <a href= "/quotes">this excited</a> is
+      <a href="https://magit.vc/stats/authors.html#cumulated_added_lines_of_code_per_author">
+        a lot of work
+      </a>.
+      If Magit makes you <br> more productive too,
+      then <b>please consider making a donation</b>.
+    </div>
+    <div>
+      <em>Thank you! — Jonas Bernoulli</em>
+    </div>
+    <div>
+      <a href="https://www.paypal.me/JonasBernoulli/20">
+        <img title="Donate using PayPal"
+             alt="Donate using PayPal"
+             src="/assets/paypal.png"></a>
+      &nbsp;&nbsp;
+      <a href="https://gratipay.com/magit">
+        <img class="donate"
+             title="Donate monthly using Gratipay"
+             alt="Donate monthly using Gratipay"
+             src="/assets/gratipay.png"></a>
+      <br>
+      <a href="https://www.patreon.com/tarsius">
+        <img title="Donate monthly using Patreon"
+             alt="Donate monthly using Patreon"
+             src="/assets/patreon.png"></a>
+      &nbsp;&nbsp;
+      <a href="https://salt.bountysource.com/teams/magit">
+        <img title="Donate monthly using Bountysource"
+             alt="Donate monthly using Bountysource"
+             src="/assets/bountysource.png"></a>
+      <br> bitcoin: 1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK
+      <br> ethereum: 0x90c98E49862d2Ac495BCA94342426D4e90286Ef5
+      <br> <a href="/donate">Some alternative donation options are available</a>.
+    </div>
+  </div>
+  <br>
 </section>
 
 # News
