@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/tarsius
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://magit.vc
+  * I am tarsius (https://keybase.io/tarsius) on keybase.
+  * I have a public key ASAL_MB_f6G-29k2QhzK37eS3ETydpXfeymPHKQrgoo2Qwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01200bfcc07f7fa1bedbd936421ccadfb792dc44f27695df7b298f1ca42b828a36430a",
+      "host": "keybase.io",
+      "kid": "01200bfcc07f7fa1bedbd936421ccadfb792dc44f27695df7b298f1ca42b828a36430a",
+      "uid": "92e0684904e56173c22babc6b321eb19",
+      "username": "tarsius"
+    },
+    "merkle_root": {
+      "ctime": 1507143670,
+      "hash": "3f27626bd596925cf553672be58971ebf36253b0cb84c361e3601bc5293669f32782a25aaa8bfb188a161a8826f01ef4fd8e2ed0272b81b73314ef68023c2c31",
+      "hash_meta": "3395b1f42b7e5cd8c15c7316170e22638b612c6de731cc6e93d049cd6af308f4",
+      "seqno": 1497587
+    },
+    "service": {
+      "hostname": "magit.vc",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.33"
+  },
+  "ctime": 1507143679,
+  "expire_in": 504576000,
+  "prev": "efa10664716752c536c2dbeeac31c0f700fff414883b06c57f5822b24f2c0b74",
+  "seqno": 11,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgC/zAf3+hvtvZNkIcyt+3ktxE8naV33spjxykK4KKNkMKp3BheWxvYWTFA0B7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwMGJmY2MwN2Y3ZmExYmVkYmQ5MzY0MjFjY2FkZmI3OTJkYzQ0ZjI3Njk1ZGY3YjI5OGYxY2E0MmI4MjhhMzY0MzBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwMGJmY2MwN2Y3ZmExYmVkYmQ5MzY0MjFjY2FkZmI3OTJkYzQ0ZjI3Njk1ZGY3YjI5OGYxY2E0MmI4MjhhMzY0MzBhIiwidWlkIjoiOTJlMDY4NDkwNGU1NjE3M2MyMmJhYmM2YjMyMWViMTkiLCJ1c2VybmFtZSI6InRhcnNpdXMifSwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE1MDcxNDM2NzAsImhhc2giOiIzZjI3NjI2YmQ1OTY5MjVjZjU1MzY3MmJlNTg5NzFlYmYzNjI1M2IwY2I4NGMzNjFlMzYwMWJjNTI5MzY2OWYzMjc4MmEyNWFhYThiZmIxODhhMTYxYTg4MjZmMDFlZjRmZDhlMmVkMDI3MmI4MWI3MzMxNGVmNjgwMjNjMmMzMSIsImhhc2hfbWV0YSI6IjMzOTViMWY0MmI3ZTVjZDhjMTVjNzMxNjE3MGUyMjYzOGI2MTJjNmRlNzMxY2M2ZTkzZDA0OWNkNmFmMzA4ZjQiLCJzZXFubyI6MTQ5NzU4N30sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJtYWdpdC52YyIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjMzIn0sImN0aW1lIjoxNTA3MTQzNjc5LCJleHBpcmVfaW4iOjUwNDU3NjAwMCwicHJldiI6ImVmYTEwNjY0NzE2NzUyYzUzNmMyZGJlZWFjMzFjMGY3MDBmZmY0MTQ4ODNiMDZjNTdmNTgyMmIyNGYyYzBiNzQiLCJzZXFubyI6MTEsInRhZyI6InNpZ25hdHVyZSJ9o3NpZ8RA7aO5YA3VojGgl89z941pB5HyylNcTuQ4Qs3VbAXdMVAOL48FB0mcRzyFgOsrxYyDhX+LXsNVXmiw7ShhOYo1D6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIMTdT6fJnxYjyUFf4+P5laTbZj536tHVPFI9y0o+lNu9o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/tarsius
+
+==================================================================
