@@ -1,0 +1,46 @@
+body {
+  background-color: #fdf6e3;
+  color: #586e75;
+}
+a {
+  color: #b58900;
+}
+a:visited {
+  color: #7B6000;
+}
+h1, h2, h3, h4 {
+  color: #20ab2d;
+}
+img, video {
+  box-shadow: 2px 2px 15px #93a1a1;
+}
+/* Used for key bindings */
+i {
+  background-color: #eee8d5 #93a1a1;
+  border-color: #7B6000;
+  box-shadow: 1px 1px 5px #93a1a1;
+}
+code {
+  background-color: #eee8d5;
+}
+blockquote {
+  background: #eee8d5;
+  box-shadow: 2px 2px 15px #93a1a1;
+}
+blockquote::before {
+  color: #ab2720;
+}
+div#campaign {
+  background: #eee8d5;
+  box-shadow: 2px 2px 15px #93a1a1;
+}
+div#donate {
+  background: #eee8d5;
+  box-shadow: 2px 2px 15px #93a1a1;
+}
+div#donate a {
+  color: #586e75;
+}
+div#donate div:nth-child(1) a, a.dotted {
+  color: #586e75;
+}

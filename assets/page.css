@@ -1,20 +1,10 @@
 body {
   font-family: 'Noto Serif', serif;
   text-align: justify;
-  background-color: #fdf6e3;
-  color: #586e75;
   max-width: 700px;
   margin: 50px;
   margin-right: auto;
   margin-left: auto;
-}
-
-a {
-  color: #b58900;
-}
-
-a:visited {
-  color: #7B6000;
 }
 
 a.small {
@@ -25,7 +15,6 @@ h1, h2, h3, h4 {
   font-family: 'Noto Sans', sans-serif;
   text-align: left;
   margin-top: 40px;
-  color: #20ab2d;
 }
 
 h1 {
@@ -54,7 +43,6 @@ header img {
 }
 
 img, video {
-  box-shadow: 2px 2px 15px #93a1a1;
   margin-top: 10px;
   margin-bottom: 20px;
 }
@@ -71,23 +59,18 @@ header img, img.clear {
 
 /* Used for key bindings */
 i {
-  background-color: #eee8d5 #93a1a1;
-  border-color: #7B6000;
   border-style: solid;
   border-width: 1px;
   border-radius: 2px;
   padding: 0px 5px 1px 5px;
-  box-shadow: 1px 1px 5px #93a1a1;
 }
 
 code {
-  background-color: #eee8d5;
   padding: 2px;
 }
 
 blockquote {
   display:block;
-  background: #eee8d5;
   padding: 15px 20px 15px 45px;
   margin: 0px;
   margin-bottom: 20px;
@@ -95,14 +78,12 @@ blockquote {
   font-size: 16px;
   line-height: 1.2;
   text-align: left;
-  box-shadow: 2px 2px 15px #93a1a1;
 }
 
 blockquote::before {
   content: "\201C";
   font-size: 60px;
   font-weight: bold;
-  color: #ab2720;
   position: absolute;
   left: 10px;
   top: 5px;
@@ -110,7 +91,6 @@ blockquote::before {
 
 div#campaign {
   display: block;
-  background: #eee8d5;
   padding: 15px 20px 15px 20px;
   margin: 0px;
   margin-top: 40px;
@@ -121,7 +101,6 @@ div#campaign {
   font-size: 16px;
   line-height: 1.2;
   text-align: justify;
-  box-shadow: 2px 2px 15px #93a1a1;
 }
 
 div#campaign img {
@@ -137,7 +116,6 @@ div#campaign p:nth-child(3) {
 }
 div#donate {
   display: block;
-  background: #eee8d5;
   padding: 15px 20px 15px 20px;
   margin: 0px;
   margin-top: 40px;
@@ -148,15 +126,9 @@ div#donate {
   font-size: 16px;
   line-height: 1.2;
   text-align: center;
-  box-shadow: 2px 2px 15px #93a1a1;
-}
-
-div#donate a {
-  color: #586e75;
 }
 
 div#donate div:nth-child(1) a, a.dotted {
-  color: #586e75;
   text-decoration-style: dotted;
 }
 
