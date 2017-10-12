@@ -8,39 +8,34 @@ a {
 a:visited {
   color: #7B6000;
 }
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   color: #20ab2d;
 }
-img, video {
+div#campaign,
+div#donate,
+blockquote,
+img,
+video {
   box-shadow: 2px 2px 15px #93a1a1;
 }
-/* Used for key bindings */
-i {
-  background-color: #eee8d5;
+i { /* Used for key bindings */
   border-color: #7B6000;
   box-shadow: 1px 1px 5px #93a1a1;
 }
-code {
-  background-color: #eee8d5;
-}
+i,
+code,
+div#campaign,
+div#donate,
 blockquote {
-  background: #eee8d5;
-  box-shadow: 2px 2px 15px #93a1a1;
+  background-color: #eee8d5;
 }
 blockquote::before {
   color: #ab2720;
 }
-div#campaign {
-  background: #eee8d5;
-  box-shadow: 2px 2px 15px #93a1a1;
-}
-div#donate {
-  background: #eee8d5;
-  box-shadow: 2px 2px 15px #93a1a1;
-}
-div#donate a {
-  color: #586e75;
-}
-div#donate div:nth-child(1) a, a.dotted {
+div#donate a,
+a.dotted {
   color: #586e75;
 }
