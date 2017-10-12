@@ -4,7 +4,7 @@ title: Help making it better
 ---
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>
-<script type="text/javascript">window.onload = inject_quotes;</script>
+<script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 <section>
   <div id="donate">
     <div>

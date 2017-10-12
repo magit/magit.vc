@@ -4,7 +4,7 @@ title: User testimonials
 ---
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>
-<script type="text/javascript">window.onload = list_quotes;</script>
+<script type="text/javascript">window.onload = function(){list_quotes(); simpleCssSwitch();}</script>
 <br>
 <section id="quotes"></section>
 <br>

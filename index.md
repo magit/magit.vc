@@ -19,7 +19,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 </a>
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>
-<script type="text/javascript">window.onload = inject_quotes;</script>
+<script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 <section>
   <blockquote id="quote1"></blockquote>
   <blockquote id="quote2"></blockquote>
