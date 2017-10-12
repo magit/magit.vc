@@ -13,9 +13,10 @@
     <link class="s-css-s--style" rel="stylesheet alternate" title="Solarized dark xterm"  href="/assets/themes/solarized-dark-xterm.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic">
+    <script src="/assets/js/simple-css-switch.js"></script>
   </head>
 
-  <body>
+  <body onload="simpleCssSwitch()">
     <header>
       <a alt="Magit logo"
          {% if page.home %}
@@ -46,5 +47,6 @@
       })();
     </script>
     <noscript><p><img src="//tarsius.piwikpro.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <div id="s-css-s--menu"></div>
   </body>
 </html>
