@@ -14,6 +14,7 @@ h3,
 h4 {
   color: #20ab2d;
 }
+#s-css-s--menu,
 div#campaign,
 div#donate,
 blockquote,
@@ -25,6 +26,7 @@ i { /* Used for key bindings */
   border-color: #7B6000;
   box-shadow: 1px 1px 5px #93a1a1;
 }
+#s-css-s--menu,
 i,
 code,
 div#campaign,

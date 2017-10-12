@@ -47,6 +47,7 @@ h4 {
   color: #0087ff;
   color: var(--solarized-blue);
 }
+#s-css-s--menu,
 div#campaign,
 div#donate,
 blockquote,
@@ -61,6 +62,7 @@ i { /* Used for key bindings */
   box-shadow: 1px 1px 5px #585858;
   box-shadow: 1px 1px 5px var(--solarized-base01);
 }
+#s-css-s--menu,
 i,
 code,
 div#campaign,

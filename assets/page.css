@@ -152,3 +152,40 @@ div#donate div:nth-child(3) img, img.donate {
 div#donate div:nth-child(3) {
   text-align: center;
 }
+/* simple-CSS-switch style */
+#s-css-s--menu {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    right: calc((100vw - 820px) / 2);
+}
+.s-css-s-button:focus {
+    outline: 0 none;
+}
+.s-css-s-button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: .2em;
+    padding: 0;
+    color: inherit;
+    background-color: inherit;
+}
+.s-css-s--active-style {
+    border-style: inset;
+}
+.s-css-s-default-css {
+  color: #586e75;
+  background-color: #fdf6e3;
+}
+.s-css-s-default-high-contrast-css {
+  color: #002b36;
+  background-color: #fdf6e3;
+}
+.s-css-s-solarized-dark-xterm-css {
+  color: #808080;
+  background-color: #1c1c1c;
+}
+/* simple-CSS-switch style end */
