@@ -188,4 +188,8 @@ div#donate div:nth-child(3) {
   color: #808080;
   background-color: #1c1c1c;
 }
+.s-css-s-black-on-white-css {
+  color: #000;
+  background-color: #fff;
+}
 /* simple-CSS-switch style end */
