@@ -154,7 +154,7 @@ div#donate div:nth-child(3) {
 }
 /* simple-CSS-switch style */
 #s-css-s--menu {
-    position: fixed;
+    position: absolute;
     top: 1em;
     right: 1em;
     opacity: .3;
