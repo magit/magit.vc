@@ -168,32 +168,51 @@ div#donate div:nth-child(3) {
 }
 .s-css-s-button {
     display: block;
-    width: 30px;
+    width: 100%;
     height: 30px;
     line-height: 30px;
-    text-align: center;
+    text-align: right;
     margin: .2em;
     padding: 0;
+    padding-right: 1em;
     color: inherit;
     background-color: inherit;
+}
+.s-css-s-button:after {
+  position: relative;
+  content: attr(title);
+  white-space: nowrap;
+  z-index: 20;
 }
 .s-css-s--active-style {
     border-style: inset;
 }
-.s-css-s-default-css {
+.s-css-s-default-css:after {
   color: #586e75;
+}
+.s-css-s-default-css {
+  color: #fdf6e3;
   background-color: #fdf6e3;
+}
+.s-css-s-default-high-contrast-css:after {
+  color: #002b36;
 }
 .s-css-s-default-high-contrast-css {
-  color: #002b36;
+  color: #fdf6e3;
   background-color: #fdf6e3;
 }
-.s-css-s-solarized-dark-xterm-css {
+.s-css-s-solarized-dark-xterm-css:after {
   color: #808080;
+}
+.s-css-s-solarized-dark-xterm-css {
+  color: #1c1c1c;
   background-color: #1c1c1c;
 }
-.s-css-s-black-on-white-css {
+.s-css-s-black-on-white-css:after {
   color: #000;
+}
+.s-css-s-black-on-white-css {
+  color: #fff;
   background-color: #fff;
 }
 /* simple-CSS-switch style end */
