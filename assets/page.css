@@ -157,7 +157,6 @@ div#donate div:nth-child(3) {
     position: fixed;
     top: 1em;
     right: 1em;
-    right: calc((100vw - 820px) / 2);
     opacity: .3;
     transition: opacity 0.3s ease;
 }
