@@ -158,6 +158,11 @@ div#donate div:nth-child(3) {
     top: 1em;
     right: 1em;
     right: calc((100vw - 820px) / 2);
+    opacity: .3;
+    transition: opacity 0.3s ease;
+}
+#s-css-s--menu:hover {
+  opacity: 1;
 }
 .s-css-s-button:focus {
     outline: 0 none;
