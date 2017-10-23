@@ -3,18 +3,32 @@ layout: default
 title: User Manuals
 ---
 
-# Current releases
+# Recent development snapshots
 
-The current Magit feature release is **v2.11**.
+If you have installed Magit from Melpa (non-stable), then you are
+using a development snapshot.
 
-- [Magit User Manual **2.11**](/manual/magit#Top)
+- [Magit User Manual **master**](/manual/magit#Top)
   ([single page](/manual/magit.html#Top),
   [pdf](/manual/magit.pdf))
   - [Installation](/manual/magit/Installation.html)
   - [FAQ](/manual/magit/FAQ.html)
-- [Magit-Popup User Manual **2.11**](/manual/magit-popup#Top)
+- [Magit-Popup User Manual **master**](/manual/magit-popup#Top)
   ([single page](/manual/magit-popup.html#Top),
   [pdf](/manual/magit-popup.pdf))
+
+# Current releases
+
+The current Magit feature release is **v2.11**.
+
+- [Magit User Manual **2.11**](/manual/2.11/magit#Top)
+  ([single page](/manual/2.11/magit.html#Top),
+  [pdf](/manual/2.11/magit.pdf))
+  - [Installation](/manual/2.11/magit/Installation.html)
+  - [FAQ](/manual/2.11/magit/FAQ.html)
+- [Magit-Popup User Manual **2.11**](/manual/2.11/magit-popup#Top)
+  ([single page](/manual/2.11/magit-popup.html#Top),
+  [pdf](/manual/2.11/magit-popup.pdf))
 - [Magit Reference Card](/manual/magit-refcard.pdf)
 
 The current With-Editor feature release is **v2.6**.
@@ -24,19 +38,6 @@ The current With-Editor feature release is **v2.6**.
   [pdf](/manual/with-editor.pdf))
 
 The manuals are from the latest bug fix (subminor) releases.
-
-# Recent development snapshots
-
-If you have installed Magit from Melpa (non-stable), then you are
-using a development snapshot.
-
-These links point to the Org files, which have been exported using a
-third-party exporter which only partially supports Org syntax.
-Unfortunately all internal links are broken.
-
-- [Magit User Manual](https://github.com/magit/magit/blob/master/Documentation/magit.org)
-- [Magit-Popup User Manual](https://github.com/magit/magit/blob/master/Documentation/magit-popup.org)
-- [With-Editor User Manual](https://github.com/magit/with-editor/blob/master/with-editor.org)
 
 # Older releases
 

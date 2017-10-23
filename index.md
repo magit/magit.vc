@@ -81,6 +81,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20171023 — Added Css style switcher to this page
 * 20171002 — [Kickstarter update #5](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2003372)
 * 20170921 — [Kickstarter update #4](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1988383)
 * 20170913 — Magit **v2.11.0** [released]({{ site.relnotes }}/2.11.0.txt)
@@ -127,8 +128,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # Documentation
 
-* [All manuals](/manual)
-  (for older releases and development snapshots)
+* [All manuals](/manual) (for releases)
 * [Magit User Manual](/manual/magit#Top)
   ([single-page](/manual/magit.html#Top),
    [pdf](/manual/magit.pdf),

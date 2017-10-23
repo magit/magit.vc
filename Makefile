@@ -63,6 +63,7 @@ serve:
 preview:
 	@echo "Uploading to $(PREVIEW_BUCKET)..."
 	@aws s3 sync $(SRC) $(PREVIEW_BUCKET)$(DST) --delete $(SYNC)
+	@make -C manual/2.11 preview
 
 publish: clean build
 	@if test $$(git symbolic-ref --short HEAD) = master; \
@@ -71,6 +72,7 @@ publish: clean build
 	@aws s3 sync $(SRC) $(PUBLISH_BUCKET)$(DST) --delete $(SYNC)
 	@aws cloudfront create-invalidation \
 	--distribution-id $(CFRONT_DIST) --paths "/*"
+#	@make -C manual/2.11 publish
 
 publish-other:
 	@echo "Publishing from related repositories..."
