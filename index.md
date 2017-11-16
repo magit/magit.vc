@@ -71,21 +71,10 @@ porcelains.  <a class="small" href="/about">(more)</a>
              alt="Donate using PayPal"
              src="/assets/paypal.png"></a>
       &nbsp;&nbsp;
-      <a href="https://gratipay.com/magit">
-        <img class="donate"
-             title="Donate monthly using Gratipay"
-             alt="Donate monthly using Gratipay"
-             src="/assets/gratipay.png"></a>
-      <br>
       <a href="https://www.patreon.com/tarsius">
         <img title="Donate monthly using Patreon"
              alt="Donate monthly using Patreon"
              src="/assets/patreon.png"></a>
-      &nbsp;&nbsp;
-      <a href="https://salt.bountysource.com/teams/magit">
-        <img title="Donate monthly using Bountysource"
-             alt="Donate monthly using Bountysource"
-             src="/assets/bountysource.png"></a>
       <br> bitcoin: 1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK
       <br> ethereum: 0x90c98E49862d2Ac495BCA94342426D4e90286Ef5
       <br> <a href="/donate">Some alternative donation options are available</a>.
