@@ -100,20 +100,16 @@ div#campaign {
   position: relative;
   font-size: 16px;
   line-height: 1.2;
-  text-align: justify;
-}
-
-div#campaign img {
-  box-shadow: unset;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-div#campaign p:nth-child(3) {
-  margin-top: 20px;
   text-align: center;
 }
+
+div#donate p:nth-child(1) {
+  text-align: justify;
+}
+div#campaign img {
+  box-shadow: unset;
+}
+
 div#donate {
   display: block;
   padding: 15px 20px 15px 20px;

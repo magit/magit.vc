@@ -29,14 +29,29 @@ porcelains.  <a class="small" href="/about">(more)</a>
            alt="Visit the Kickstarter (finished)"
            src="/assets/kickstarter-k.png"></a>
     <p>
-      Thanks to 1987 backers the Kickstarter campaign was a huge success!
+      Thanks to 1987 backers the Kickstarter campaign was a huge success!<br>
       This September was very exciting and I would like to thank you all
-      for your generosity and enthusiastic support!
+      for<br> your generosity and enthusiastic support!
     </p>
-    <p align="center">
+    <p>
       <em>Thank you! — Jonas Bernoulli</em>
-      <img src="/assets/pixel-heart.png">
     </p>
+    <img src="/assets/pixel-heart.png">
+    <p>
+      <em>My thanks also go to these three sponsors!</em>
+    </p>
+    <a href="https://www.mojotech.com/about">
+      <img title="Mojotech"
+           alt="Mojotech"
+           src="/assets/mojotech.png"></a>
+    <a href="https://opensource.google.com">
+      <img title="Google Open Source"
+           alt="Google Open Source"
+           src="/assets/google-os.png"></a>
+    <a href="http://www.directangular.com">
+      <img title="Directangular"
+           alt="Directangular"
+           src="/assets/directangular.png"></a>
   </div>
   <div id="donate">
     <div>
