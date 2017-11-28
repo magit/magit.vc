@@ -39,6 +39,12 @@ The current With-Editor feature release is **v2.6**.
   ([single page](/manual/with-editor.html#Top),
   [pdf](/manual/with-editor.pdf))
 
+Coming soon: Ghub **v2.0**.
+
+- [Ghub **2.0**](/manual/ghub#Top)
+  ([single page](/manual/ghub.html#Top),
+  [pdf](/manual/ghub.pdf))
+
 # Older releases
 
 #### Magit
