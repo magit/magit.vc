@@ -28,6 +28,11 @@ title: Help making it better
         <img title="Donate monthly using Patreon"
              alt="Donate monthly using Patreon"
              src="/assets/patreon.png"></a>
+      &nbsp;&nbsp;
+      <a href="https://liberapay.com/magit">
+        <img title="Donate weekly using Liberapay"
+             alt="Donate weekly using Liberapay"
+             src="/assets/liberapay.png"></a>
       <br> bitcoin: 1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK
       <br> ethereum: 0x90c98E49862d2Ac495BCA94342426D4e90286Ef5
     </div>
