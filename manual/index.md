@@ -16,6 +16,12 @@ using a development snapshot.
 - [Magit-Popup User Manual **master**](/manual/magit-popup)
   ([single page](/manual/magit-popup.html),
   [pdf](/manual/magit-popup.pdf))
+- [With-Editor User Manual **master**](/manual/with-editor)
+  ([single page](/manual/with-editor.html),
+  [pdf](/manual/with-editor.pdf))
+- [Ghub User and Developer Manual **master**](/manual/ghub)
+  ([single page](/manual/ghub.html),
+  [pdf](/manual/ghub.pdf))
 
 # Current releases
 
@@ -33,17 +39,16 @@ The current Magit-Popup feature release is **v2.12.0**.
   ([single page](/manual/2.12.0/magit-popup.html),
   [pdf](/manual/2.12.0/magit-popup.pdf))
 
-The current With-Editor feature release is **v2.6**.
+The current With-Editor feature release is **v2.7**.
 
-- [With-Editor User Manual **2.6**](/manual/with-editor)
+- [With-Editor User Manual **2.7**](/manual/with-editor)
   ([single page](/manual/with-editor.html),
   [pdf](/manual/with-editor.pdf))
 
-Coming soon: Ghub **v2.0**.
+The current Ghub feature release is **v1.3**.
 
-- [Ghub **2.0**](/manual/ghub)
-  ([single page](/manual/ghub.html),
-  [pdf](/manual/ghub.pdf))
+It didn't come with a manual.  You should use the development version
+instead, which will soon be released as v2.
 
 # Older releases
 
@@ -124,6 +129,12 @@ Coming soon: Ghub **v2.0**.
 
 #### With-Editor
 
+- [With-Editor User Manual **2.6**](/manual/2.6/with-editor)
+  ([single page](/manual/2.6/with-editor.html),
+  [pdf](/manual/2.6/with-editor.pdf))
+- [With-Editor User Manual **2.5**](/manual/2.5/with-editor)
+  ([single page](/manual/2.5/with-editor.html),
+  [pdf](/manual/2.5/with-editor.pdf))
 - [With-Editor User Manual **2.4**](/manual/2.4/with-editor)
   ([single page](/manual/2.4/with-editor.html),
   [pdf](/manual/2.4/with-editor.pdf))
