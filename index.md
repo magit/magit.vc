@@ -40,7 +40,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
     <p>
       <em>My thanks also go to these three sponsors!</em>
     </p>
-    <a href="https://www.mojotech.com/about">
+    <a href="https://www.mojotech.com">
       <img title="Mojotech"
            alt="Mojotech"
            src="/assets/mojotech.png"></a>
