@@ -90,9 +90,10 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20180228 — [Kickstarter update #6](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2124955)
 * 20171120 — Magit-Popup **v2.12.0** [released](https://github.com/magit/magit-popup/releases/tag/v2.12.0)
-  (first independent release)
-* 20171023 — Added Css style switcher to this page
+  (first separate release)
+* 20171023 — Added css style switcher to this page
 * 20171002 — [Kickstarter update #5](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2003372)
 * 20170921 — [Kickstarter update #4](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1988383)
 * 20170913 — Magit **v2.11.0** [released]({{ site.relnotes }}/2.11.0.txt)
