@@ -45,10 +45,11 @@ The current With-Editor feature release is **v2.7**.
   ([single page](/manual/with-editor.html),
   [pdf](/manual/with-editor.pdf))
 
-The current Ghub feature release is **v1.3**.
+The current Ghub feature release is **v2.0.0**.
 
-It didn't come with a manual.  You should use the development version
-instead, which will soon be released as v2.
+- [Ghub User Manual **2.0.0**](/manual/2.0.0/ghub)
+  ([single page](/manual/2.0.0/ghub.html),
+  [pdf](/manual/2.0.0/ghub.pdf))
 
 # Older releases
 
@@ -147,3 +148,7 @@ instead, which will soon be released as v2.
 - [With-Editor User Manual **2.1**](/manual/2.1/with-editor)
   ([single page](/manual/2.1/with-editor.html),
   [pdf](/manual/2.1/with-editor.pdf))
+
+#### Ghub
+
+Version 2.0.0 is the first release that comes with a manual.
