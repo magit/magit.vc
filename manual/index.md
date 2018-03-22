@@ -70,10 +70,3 @@ using a development snapshot.
   [2.3](/manual/2.3/magit-popup.pdf),
   [2.2](/manual/2.2/magit-popup.pdf),
   [2.1](/manual/2.1/magit-popup.pdf)
-- With-Editor
-  [2.6](/manual/2.6/with-editor.pdf),
-  [2.5](/manual/2.5/with-editor.pdf),
-  [2.4](/manual/2.4/with-editor.pdf),
-  [2.3](/manual/2.3/with-editor.pdf),
-  [2.2](/manual/2.2/with-editor.pdf),
-  [2.1](/manual/2.1/with-editor.pdf)

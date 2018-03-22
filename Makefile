@@ -15,22 +15,7 @@ PORT ?= 4100
 
 SYNC  = --exclude "assets/logo/*"
 SYNC += --exclude "manual/*"
-SYNC += --include "manual/dir/index.html"
-SYNC += --include "manual/index.html"
 SYNC += --exclude "stats/*"
-#NOT
-#NOT https://github.com/magit/magit
-#NOT   => /manual/magit{/*,.html,.pdf}
-#NOT   => /manual/magit-popup{/*,.html,.pdf}
-#NOT   => /stats/*
-#NOT
-#NOT https://github.com/magit/with-editor
-#NOT   => /manual/with-editor{/*,.html,.pdf}
-#NOT
-#NOT https://github.com/magit/magit.vc
-#NOT
-#NOT   => /manual/magit/N.M/*
-#NOT   => /manual/magit-refcard.pdf
 
 ## Usage #############################################################
 
@@ -70,6 +55,7 @@ publish: clean build
 	then echo "Uploading to $(PUBLISH_BUCKET)..."; \
 	else echo "ERROR: Only master can be published"; exit 1; fi
 	@aws s3 sync $(SRC) $(PUBLISH_BUCKET)$(DST) --delete $(SYNC)
+	@aws s3 sync manual $(PUBLISH_BUCKET)/manual $(SYNC)
 	@aws cloudfront create-invalidation \
 	--distribution-id $(CFRONT_DIST) --paths "/*" > /dev/null
 #	@make -C manual/2.11 publish
