@@ -25,130 +25,55 @@ using a development snapshot.
 
 # Current releases
 
-The current Magit feature release is **v2.11**.
+- [Magit User Manual **2.11.0**](/manual/2.11.0/magit)
+  ([single page](/manual/2.11.0/magit.html),
+  [pdf](/manual/2.11.0/magit.pdf))
+  - [Installation](/manual/2.11.0/magit/Installation.html)
+  - [FAQ](/manual/2.11.0/magit/FAQ.html)
 
-- [Magit User Manual **2.11**](/manual/2.11/magit)
-  ([single page](/manual/2.11/magit.html),
-  [pdf](/manual/2.11/magit.pdf))
-  - [Installation](/manual/2.11/magit/Installation.html)
-  - [FAQ](/manual/2.11/magit/FAQ.html)
+- [Magit-Popup User Manual **2.12.2**](/manual/2.12.2/magit-popup)
+  ([single page](/manual/2.12.2/magit-popup.html),
+  [pdf](/manual/2.12.2/magit-popup.pdf))
 
-The current Magit-Popup feature release is **v2.12.0**.
+- [With-Editor User Manual **2.7.1**](/manual/2.7.1/with-editor)
+  ([single page](/manual/2.7.1/with-editor.html),
+  [pdf](/manual/2.7.1/with-editor.pdf))
 
-- [Magit-Popup User Manual **2.12.0**](/manual/2.12.0/magit-popup)
-  ([single page](/manual/2.12.0/magit-popup.html),
-  [pdf](/manual/2.12.0/magit-popup.pdf))
-
-The current With-Editor feature release is **v2.7**.
-
-- [With-Editor User Manual **2.7**](/manual/with-editor)
-  ([single page](/manual/with-editor.html),
-  [pdf](/manual/with-editor.pdf))
-
-The current Ghub feature release is **v2.0.0**.
-
-- [Ghub User Manual **2.0.0**](/manual/2.0.0/ghub)
+- [Ghub User and Developer Manual **2.0.0**](/manual/2.0.0/ghub)
   ([single page](/manual/2.0.0/ghub.html),
   [pdf](/manual/2.0.0/ghub.pdf))
 
 # Older releases
 
-#### Magit
-
-- [Magit User Manual **2.10**](/manual/2.10/magit)
-  ([single page](/manual/2.10/magit.html),
-  [pdf](/manual/2.10/magit.pdf))
-- [Magit User Manual **2.9**](/manual/2.9/magit)
-  ([single page](/manual/2.9/magit.html),
-  [pdf](/manual/2.9/magit.pdf))
-- [Magit User Manual **2.8**](/manual/2.8/magit)
-  ([single page](/manual/2.8/magit.html),
-  [pdf](/manual/2.8/magit.pdf))
-- [Magit User Manual **2.7**](/manual/2.7/magit)
-  ([single page](/manual/2.7/magit.html),
-  [pdf](/manual/2.7/magit.pdf))
-- [Magit User Manual **2.6**](/manual/2.6/magit)
-  ([single page](/manual/2.6/magit.html),
-  [pdf](/manual/2.6/magit.pdf))
-- [Magit User Manual **2.5**](/manual/2.5/magit)
-  ([single page](/manual/2.5/magit.html),
-  [pdf](/manual/2.5/magit.pdf))
-- [Magit User Manual **2.4**](/manual/2.4/magit)
-  ([single page](/manual/2.4/magit.html),
-  [pdf](/manual/2.4/magit.pdf))
-- [Magit User Manual **2.3**](/manual/2.3/magit)
-  ([single page](/manual/2.3/magit.html),
-  [pdf](/manual/2.3/magit.pdf))
-- [Magit User Manual **2.2**](/manual/2.2/magit)
-  ([single page](/manual/2.2/magit.html),
-  [pdf](/manual/2.2/magit.pdf))
-- [Magit User Manual **2.1**](/manual/2.1/magit)
-  ([single page](/manual/2.1/magit.html),
-  [pdf](/manual/2.1/magit.pdf))
-- [Magit User Manual **1.4**](/manual/1.4/magit)
-  ([single page](/manual/1.4/magit.html),
-  [pdf](/manual/1.4/magit.pdf))
-- [Magit User Manual **1.2**](/manual/1.2/magit)
-  ([single page](/manual/1.2/magit.html),
-  [pdf](/manual/1.2/magit.pdf))
-
-#### Magit-Popup
-
-- [Magit-Popup User Manual **2.11**](/manual/2.11/magit-popup)
-  ([single page](/manual/2.11/magit-popup.html),
-  [pdf](/manual/2.11/magit-popup.pdf))
-- [Magit-Popup User Manual **2.10**](/manual/2.10/magit-popup)
-  ([single page](/manual/2.10/magit-popup.html),
-  [pdf](/manual/2.10/magit-popup.pdf))
-- [Magit-Popup User Manual **2.9**](/manual/2.9/magit-popup)
-  ([single page](/manual/2.9/magit-popup.html),
-  [pdf](/manual/2.9/magit-popup.pdf))
-- [Magit-Popup User Manual **2.8**](/manual/2.8/magit-popup)
-  ([single page](/manual/2.8/magit-popup.html),
-  [pdf](/manual/2.8/magit-popup.pdf))
-- [Magit-Popup User Manual **2.7**](/manual/2.7/magit-popup)
-  ([single page](/manual/2.7/magit-popup.html),
-  [pdf](/manual/2.7/magit-popup.pdf))
-- [Magit-Popup User Manual **2.6**](/manual/2.6/magit-popup)
-  ([single page](/manual/2.6/magit-popup.html),
-  [pdf](/manual/2.6/magit-popup.pdf))
-- [Magit-Popup User Manual **2.5**](/manual/2.5/magit-popup)
-  ([single page](/manual/2.5/magit-popup.html),
-  [pdf](/manual/2.5/magit-popup.pdf))
-- [Magit-Popup User Manual **2.4**](/manual/2.4/magit-popup)
-  ([single page](/manual/2.4/magit-popup.html),
-  [pdf](/manual/2.4/magit-popup.pdf))
-- [Magit-Popup User Manual **2.3**](/manual/2.3/magit-popup)
-  ([single page](/manual/2.3/magit-popup.html),
-  [pdf](/manual/2.3/magit-popup.pdf))
-- [Magit-Popup User Manual **2.2**](/manual/2.2/magit-popup)
-  ([single page](/manual/2.2/magit-popup.html),
-  [pdf](/manual/2.2/magit-popup.pdf))
-- [Magit-Popup User Manual **2.1**](/manual/2.1/magit-popup)
-  ([single page](/manual/2.1/magit-popup.html),
-  [pdf](/manual/2.1/magit-popup.pdf))
-
-#### With-Editor
-
-- [With-Editor User Manual **2.6**](/manual/2.6/with-editor)
-  ([single page](/manual/2.6/with-editor.html),
-  [pdf](/manual/2.6/with-editor.pdf))
-- [With-Editor User Manual **2.5**](/manual/2.5/with-editor)
-  ([single page](/manual/2.5/with-editor.html),
-  [pdf](/manual/2.5/with-editor.pdf))
-- [With-Editor User Manual **2.4**](/manual/2.4/with-editor)
-  ([single page](/manual/2.4/with-editor.html),
-  [pdf](/manual/2.4/with-editor.pdf))
-- [With-Editor User Manual **2.3**](/manual/2.3/with-editor)
-  ([single page](/manual/2.3/with-editor.html),
-  [pdf](/manual/2.3/with-editor.pdf))
-- [With-Editor User Manual **2.2**](/manual/2.2/with-editor)
-  ([single page](/manual/2.2/with-editor.html),
-  [pdf](/manual/2.2/with-editor.pdf))
-- [With-Editor User Manual **2.1**](/manual/2.1/with-editor)
-  ([single page](/manual/2.1/with-editor.html),
-  [pdf](/manual/2.1/with-editor.pdf))
-
-#### Ghub
-
-Version 2.0.0 is the first release that comes with a manual.
+- Magit:
+  [2.10](/manual/2.10/magit.pdf),
+  [2.9](/manual/2.9/magit.pdf),
+  [2.8](/manual/2.8/magit.pdf),
+  [2.7](/manual/2.7/magit.pdf),
+  [2.6](/manual/2.6/magit.pdf),
+  [2.5](/manual/2.5/magit.pdf),
+  [2.4](/manual/2.4/magit.pdf),
+  [2.3](/manual/2.3/magit.pdf),
+  [2.2](/manual/2.2/magit.pdf),
+  [2.1](/manual/2.1/magit.pdf),
+  [1.4](/manual/1.4/magit.pdf),
+  [1.2](/manual/1.2/magit.pdf)
+- Magit-Popup:
+  [2.11](/manual/2.11/magit-popup.pdf),
+  [2.10](/manual/2.10/magit-popup.pdf),
+  [2.9](/manual/2.9/magit-popup.pdf),
+  [2.8](/manual/2.8/magit-popup.pdf),
+  [2.7](/manual/2.7/magit-popup.pdf),
+  [2.6](/manual/2.6/magit-popup.pdf),
+  [2.5](/manual/2.5/magit-popup.pdf),
+  [2.4](/manual/2.4/magit-popup.pdf),
+  [2.3](/manual/2.3/magit-popup.pdf),
+  [2.2](/manual/2.2/magit-popup.pdf),
+  [2.1](/manual/2.1/magit-popup.pdf)
+- With-Editor
+  [2.6](/manual/2.6/with-editor.pdf),
+  [2.5](/manual/2.5/with-editor.pdf),
+  [2.4](/manual/2.4/with-editor.pdf),
+  [2.3](/manual/2.3/with-editor.pdf),
+  [2.2](/manual/2.2/with-editor.pdf),
+  [2.1](/manual/2.1/with-editor.pdf)
