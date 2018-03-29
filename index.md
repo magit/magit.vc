@@ -90,6 +90,8 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20180329 — Magit **v2.12.0** [released]({{ site.relnotes }}/2.12.0.txt)
+  ([announcement](https://emacsair.me/2018/03/29/magit-2.12))
 * 20180320 — Ghub and Glab **v2.0.0** [released](https://emacsair.me/2018/03/20/ghub-2.0)
 * 20180228 — [Kickstarter update #6](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2124955)
 * 20171120 — Magit-Popup **v2.12.0** [released](https://github.com/magit/magit-popup/releases/tag/v2.12.0)
