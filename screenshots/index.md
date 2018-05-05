@@ -494,7 +494,7 @@ typo fixes.
 
 "Instant fixup and squash" let you pick a commit to be modified with
 the staged changes, but then they immediately initiate a rebase.
-"Instand fixup" is mostly like "extend" but on commits other than
+"Instant fixup" is mostly like "extend" but on commits other than
 `HEAD`.
 
 The commit to be modified is picked using a specialized log buffer.
@@ -574,7 +574,7 @@ variant.  A branch's "push-remote" is somewhat similar to the
 is actually a Git feature but not many Git users know about it because
 it is hardly documented.  To learn more about the "push-remote" and
 how it is different from the "upstream",
-see [this](/manual/magit/The-two-remotes.html)
+see [this](/manual/magit/The-Two-Remotes.html)
 
 # Branching
 
