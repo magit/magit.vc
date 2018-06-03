@@ -90,6 +90,8 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20180602 — Magit **v2.13.0** [released]({{ site.relnotes }}/2.13.0.txt)
+  ([announcement](https://emacsair.me/2018/06/02/magit-2.13))
 * 20180329 — Magit **v2.12.0** [released]({{ site.relnotes }}/2.12.0.txt)
   ([announcement](https://emacsair.me/2018/03/29/magit-2.12))
 * 20180320 — Ghub and Glab **v2.0.0** [released](https://emacsair.me/2018/03/20/ghub-2.0)
