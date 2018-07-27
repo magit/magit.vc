@@ -90,7 +90,7 @@ collapsed.  You can collapse diff sections and any other section
 then pressing <I>TAB</I>.
 
 Note that the current section is highlighted by changing the
-background color, so that you always know the extend of the current
+background color, so that you always know the extent of the current
 section.  If you moved up one line then "Unpulled from origin/master"
 would become the current section and the current line as well as all
 the commits that follow would be highlighted, i.e. all commits that
