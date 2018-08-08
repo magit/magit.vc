@@ -18,6 +18,13 @@ porcelains.  <a class="small" href="/about">(more)</a>
   <img class="screenshot" src="/screenshots/status.png">
 </a>
 
+<a href="/buy">
+  <img src="/assets/stickers1x.png">
+</a>
+<center><a href="/buy">Buy some stickers!</a></center>
+<br>
+<br>
+
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 <section>
