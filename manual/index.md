@@ -10,7 +10,8 @@ using a development snapshot.
 
 - [Magit User Manual **master**](/manual/magit)
   ([single page](/manual/magit.html),
-  [pdf](/manual/magit.pdf))
+  [pdf](/manual/magit.pdf)
+  [epub](/manual/magit.epub))
   - [Installation](/manual/magit/Installation.html)
   - [FAQ](/manual/magit/FAQ.html)
 - [Magit-Popup User Manual **master**](/manual/magit-popup)
