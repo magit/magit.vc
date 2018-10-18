@@ -1,7 +1,5 @@
 sudo: false
 language: ruby
-rvm:
-  - 2.2.5
 
 install:
   - gem install jekyll
