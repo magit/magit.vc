@@ -3,6 +3,15 @@ layout: default
 title: News about Magit and related packages
 ---
 
+* 20181002 — Extending the Year of Magit [Kickstarter update #9](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2304233)
+* 20180602 — Magit **v2.13.0** [released]({{ site.relnotes }}/2.13.0.txt)
+  ([announcement](https://emacsair.me/2018/06/02/magit-2.13))
+* 20180531 — [Kickstarter update #8](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2201646)
+* 20180426 — [Kickstarter update #7](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2172226)
+* 20180329 — Magit **v2.12.0** [released]({{ site.relnotes }}/2.12.0.txt)
+  ([announcement](https://emacsair.me/2018/03/29/magit-2.12))
+* 20180320 — Ghub and Glab **v2.0.0** [released](https://emacsair.me/2018/03/20/ghub-2.0)
+* 20180228 — [Kickstarter update #6](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2124955)
 * 20171120 — Magit-Popup **v2.12.0** [released](https://github.com/magit/magit-popup/releases/tag/v2.12.0)
   (first independent release)
 * 20171023 — Added Css style switcher to this page
