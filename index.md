@@ -124,6 +124,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 * [Magit User Manual](/manual/magit)
   ([single-page](/manual/magit.html),
    [pdf](/manual/magit.pdf),
+   [epub](/manual/magit.epub),
    [org]({{ site.rawgithub }}/magit/master/Documentation/magit.org))
   * [Installation](/manual/magit/Installation.html)
   * [FAQ](/manual/magit/FAQ.html)
