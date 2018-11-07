@@ -124,19 +124,16 @@ porcelains.  <a class="small" href="/about">(more)</a>
 * [Magit User Manual](/manual/magit)
   ([single-page](/manual/magit.html),
    [pdf](/manual/magit.pdf),
-   [epub](/manual/magit.epub),
-   [org]({{ site.rawgithub }}/magit/master/Documentation/magit.org))
+   [epub](/manual/magit.epub))
   * [Installation](/manual/magit/Installation.html)
   * [FAQ](/manual/magit/FAQ.html)
     <img class="clear" src="/assets/R.png" align="top">
 * [Magit-Popup User Manual](/manual/magit-popup)
   ([single-page](/manual/magit-popup.html),
-   [pdf](/manual/magit-popup.pdf),
-   [org]({{ site.rawgithub }}/magit/master/Documentation/magit-popup.org))
+   [pdf](/manual/magit-popup.pdf))
 * [With-Editor User Manual](/manual/with-editor)
   ([single-page](/manual/with-editor.html),
-   [pdf](/manual/with-editor.pdf),
-   [org]({{ site.rawgithub }}/with-editor/master/with-editor.org))
+   [pdf](/manual/with-editor.pdf))
 * [Magit Reference Card](/manual/magit-refcard.pdf)
 * [Wiki][wiki]
 
