@@ -26,11 +26,11 @@ using a development snapshot.
 
 # Current releases
 
-- [Magit User Manual **2.13.0**](/manual/2.13.0/magit)
-  ([single page](/manual/2.13.0/magit.html),
-  [pdf](/manual/2.13.0/magit.pdf))
-  - [Installation](/manual/2.13.0/magit/Installation.html)
-  - [FAQ](/manual/2.13.0/magit/FAQ.html)
+- [Magit User Manual **2.90.0**](/manual/2.90.0/magit)
+  ([single page](/manual/2.90.0/magit.html),
+  [pdf](/manual/2.90.0/magit.pdf))
+  - [Installation](/manual/2.90.0/magit/Installation.html)
+  - [FAQ](/manual/2.90.0/magit/FAQ.html)
 
 - [Magit-Popup User Manual **2.12.4**](/manual/2.12.4/magit-popup)
   ([single page](/manual/2.12.4/magit-popup.html),
@@ -47,6 +47,8 @@ using a development snapshot.
 # Older releases
 
 - Magit:
+  [2.13.1](/manual/2.13.1/magit.pdf),
+  [2.13.0](/manual/2.13.0/magit.pdf),
   [2.12.1](/manual/2.12.1/magit.pdf),
   [2.12.0](/manual/2.12.0/magit.pdf),
   [2.11.0](/manual/2.11.0/magit.pdf),
