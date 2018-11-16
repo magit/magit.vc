@@ -97,6 +97,7 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20181116 — Magit **v2.90.1** [released]({{ site.relnotes }}/2.90.1.org)
 * 20181108 — Magit **v2.90.0** [released]({{ site.relnotes }}/2.90.0.org)
   ([announcement](https://emacsair.me/2018/11/08/magit-2.90))
 * 20181002 — Extending the Year of Magit [Kickstarter update #9](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2304233)

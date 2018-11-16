@@ -3,6 +3,7 @@ layout: default
 title: News about Magit and related packages
 ---
 
+* 20181116 — Magit **v2.90.1** [released]({{ site.relnotes }}/2.90.1.org)
 * 20181108 — Magit **v2.90.0** [released]({{ site.relnotes }}/2.90.0.org)
   ([announcement](https://emacsair.me/2018/11/08/magit-2.90))
 * 20181108 — Magit **v2.13.1** [released]({{ site.relnotes }}/2.13.1.txt)
