@@ -97,6 +97,8 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20181219 — Forge **v0.1.0** released
+  ([announcement](https://emacsair.me/2018/12/19/forge-0.1))
 * 20181116 — Magit **v2.90.1** [released]({{ site.relnotes }}/2.90.1.org)
 * 20181108 — Magit **v2.90.0** [released]({{ site.relnotes }}/2.90.0.org)
   ([announcement](https://emacsair.me/2018/11/08/magit-2.90))
@@ -134,6 +136,9 @@ porcelains.  <a class="small" href="/about">(more)</a>
   * [Installation](/manual/magit/Installation.html)
   * [FAQ](/manual/magit/FAQ.html)
     <img class="clear" src="/assets/R.png" align="top">
+* [Forge User Manual](/manual/forge)
+  ([single-page](/manual/forge.html),
+   [pdf](/manual/forge.pdf))
 * [Magit-Popup User Manual](/manual/magit-popup)
   ([single-page](/manual/magit-popup.html),
    [pdf](/manual/magit-popup.pdf))

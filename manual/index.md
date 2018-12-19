@@ -14,6 +14,9 @@ using a development snapshot.
   [epub](/manual/magit.epub))
   - [Installation](/manual/magit/Installation.html)
   - [FAQ](/manual/magit/FAQ.html)
+* [Forge User Manual](/manual/forge)
+  ([single-page](/manual/forge.html),
+   [pdf](/manual/forge.pdf))
 - [Magit-Popup User Manual **master**](/manual/magit-popup)
   ([single page](/manual/magit-popup.html),
   [pdf](/manual/magit-popup.pdf))
@@ -31,6 +34,10 @@ using a development snapshot.
   [pdf](/manual/2.90.1/magit.pdf))
   - [Installation](/manual/2.90.1/magit/Installation.html)
   - [FAQ](/manual/2.90.1/magit/FAQ.html)
+
+- [Forge User Manual **0.1.0**](/manual/0.1.0/forge)
+  ([single page](/manual/0.1.0/forge.html),
+  [pdf](/manual/0.1.0/forge.pdf))
 
 - [Magit-Popup User Manual **2.12.4**](/manual/2.12.4/magit-popup)
   ([single page](/manual/2.12.4/magit-popup.html),
