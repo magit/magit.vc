@@ -20,6 +20,9 @@ using a development snapshot.
 - [Magit-Popup User Manual **master**](/manual/magit-popup)
   ([single page](/manual/magit-popup.html),
   [pdf](/manual/magit-popup.pdf))
+- [Transient User Manual **master**](/manual/transient)
+  ([single page](/manual/transient.html),
+  [pdf](/manual/transient.pdf))
 - [With-Editor User Manual **master**](/manual/with-editor)
   ([single page](/manual/with-editor.html),
   [pdf](/manual/with-editor.pdf))
@@ -42,6 +45,10 @@ using a development snapshot.
 - [Magit-Popup User Manual **2.12.4**](/manual/2.12.4/magit-popup)
   ([single page](/manual/2.12.4/magit-popup.html),
   [pdf](/manual/2.12.4/magit-popup.pdf))
+
+- [Transient User Manual **0.1.0**](/manual/0.1.0/transient)
+  ([single page](/manual/0.1.0/transient.html),
+  [pdf](/manual/0.1.0/transient.pdf))
 
 - [With-Editor User Manual **2.7.4**](/manual/2.7.4/with-editor)
   ([single page](/manual/2.7.4/with-editor.html),

@@ -97,6 +97,8 @@ porcelains.  <a class="small" href="/about">(more)</a>
 
 # News
 
+* 20190214 — Transient **v0.1.0** released
+  ([announcement](https://emacsair.me/2019/02/14/transient-0.1))
 * 20181219 — Forge **v0.1.0** released
   ([announcement](https://emacsair.me/2018/12/19/forge-0.1))
 * 20181116 — Magit **v2.90.1** [released]({{ site.relnotes }}/2.90.1.org)
@@ -142,6 +144,9 @@ porcelains.  <a class="small" href="/about">(more)</a>
 * [Magit-Popup User Manual](/manual/magit-popup)
   ([single-page](/manual/magit-popup.html),
    [pdf](/manual/magit-popup.pdf))
+* [Transient User Manual](/manual/transient)
+  ([single-page](/manual/transient.html),
+   [pdf](/manual/transient.pdf))
 * [With-Editor User Manual](/manual/with-editor)
   ([single-page](/manual/with-editor.html),
    [pdf](/manual/with-editor.pdf))
