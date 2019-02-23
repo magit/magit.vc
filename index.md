@@ -141,10 +141,10 @@ porcelains.  <a class="small" href="/about">(more)</a>
 * [Forge User Manual](/manual/forge)
   ([single-page](/manual/forge.html),
    [pdf](/manual/forge.pdf))
-* [Magit-Popup User Manual](/manual/magit-popup)
-  ([single-page](/manual/magit-popup.html),
-   [pdf](/manual/magit-popup.pdf))
-* [Transient User Manual](/manual/transient)
+* [Ghub User and Developer Manual](/manual/forge)
+  ([single-page](/manual/forge.html),
+   [pdf](/manual/forge.pdf))
+* [Transient User and Developer Manual](/manual/transient)
   ([single-page](/manual/transient.html),
    [pdf](/manual/transient.pdf))
 * [With-Editor User Manual](/manual/with-editor)
