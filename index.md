@@ -56,10 +56,6 @@ porcelains.  <a class="small" href="/about">(more)</a>
     </div>
   </div>
   <div id="campaign">
-    <a href="https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client">
-      <img title="Visit the Kickstarter (finished)"
-           alt="Visit the Kickstarter (finished)"
-           src="/assets/kickstarter-k.png"></a>
     <p>
       Thanks to 1987 backers the Kickstarter campaign was a huge success!<br>
       This September was very exciting and I would like to thank you all
@@ -68,7 +64,6 @@ porcelains.  <a class="small" href="/about">(more)</a>
     <p>
       <em>Thank you! — Jonas Bernoulli</em>
     </p>
-    <img src="/assets/pixel-heart.png">
     <p>
       <em>My thanks also go to these three sponsors!</em>
     </p>
