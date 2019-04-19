@@ -120,9 +120,10 @@ Or you might want to see a little more than that, e.g.:
 
 # Status is automatically updated
 
-*If you use Emacs to edit and save a file which is located inside the
-repository or if you use Magit to perform some action such as staging
-a change, then the status buffer is automatically updated.*
+*If you use Magit to perform some action such as staging a change, then
+the status buffer is automatically updated. This can also be triggered
+on file save by using*
+[`magit-after-save-refresh-status`](/manual/magit/Automatic-Refreshing-of-Magit-Buffers.html).
 
 And if you change something outside of Emacs, then you can press
 <i>g</i> to refresh the status buffer or <i>G</i> to refresh all Magit
