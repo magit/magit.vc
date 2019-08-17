@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Help making it better
+title: Please help making it better
 ---
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>
@@ -19,6 +19,16 @@ title: Help making it better
       <em>Thank you! — Jonas Bernoulli</em>
     </div>
     <div>
+      <a href="#iban">
+        <img title="Donate using IBAN"
+             alt="Donate using IBAN"
+             src="/assets/iban.png"></a>
+      &nbsp;&nbsp;
+      <a href="#zelle">
+        <img title="Donate using Zelle"
+             alt="Donate using Zelle"
+             src="/assets/zelle.png"></a>
+      <br>
       <a href="https://www.paypal.me/JonasBernoulli/20">
         <img title="Donate using PayPal"
              alt="Donate using PayPal"
@@ -53,11 +63,64 @@ better.  Please consider supporting my continuous work on
 <a class="dotted" href="https://gitter.im/magit/magit">users</a>.
 
 <em>Thank you! — Jonas Bernoulli</em>
+
+<a name="iban">
+<h1>
+  <img class="donate"
+       title="Donate using IBAN"
+       alt="Donate using IBAN"
+       src="/assets/iban.png"></h1>
+
+If you have a **European bank account**, then
+[IBAN](https://en.wikipedia.org/wiki/International_Bank_Account_Number)
+is the best option to transfer money to me.  For non-European bank
+accounts this may also be the best option; a notable exception are US
+bank accounts.
+
+My IBAN is **CH92 0077 0016 0444 2057 7**.  Before completing the
+transaction make sure you are sending money to **Jonas Bernoulli**.
+
+<a name="zelle">
+<h1>
+  <img class="donate"
+       title="Donate using Zelle"
+       alt="Donate using Zelle"
+       src="/assets/zelle.png"></h1>
+
+If you have an **US bank account**, then
+[Zelle](https://en.wikipedia.org/wiki/Zelle_(payment_service)) may be
+the best option to transfer money to me.  Zelle is supported by at
+least Bank of America, BB&T, Capital One, JPMorgan Chase, PNC Bank, US
+Bank, Citibank and Wells Fargo.
+
+Login to your online banking and send money to the email address
+**jonas(at)bernoul(dot)li**.  Before completing the transation double
+check the email address.
+
+Note that unlike other US-internal money transfer methods Zelle is
+free of charge.  If you have never used Zelle before you should be
+able to set it up in less than ten minutes.
+
+# FAQ 1: Which payment method do you prefer?
+
+I prefer the above bank transfer methods because they are free of
+charge.
+
+# FAQ 2: Can you send me a bill?
+
+Of course! Just ask me for one in an email.
+
+By the way, while your employer may not have a budget for donations to
+free software, they might have one to **buy** any software or support.
+I would be happy to send them such a bill.
+
+# FAQ 3: Do you accept any other donation methods?
+
+So far PayPal and Patreon are by far the most popular methods and I
+hope that eventually IBAN and Zelle take their place.  Nevertheless
+a few other donation methods are available and while they are
+significantly less populare you are more than welcome to use your
+favorite.
+
 [Here](/donate/alternative.html) you can find a list of the
 alternative methods.
-
-## IBAN
-
-If you would like to make a IBAN transfer, then please [contact
-me](mailto:jonas@bernoul.li).  I can also send you an invoice for
-accounting and taxing purposes.

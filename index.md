@@ -36,6 +36,16 @@ porcelains.  <a class="small" href="/about">(more)</a>
       <em>Thank you! — Jonas Bernoulli</em>
     </div>
     <div>
+      <a href="/donate#iban">
+        <img title="Donate using IBAN"
+             alt="Donate using IBAN"
+             src="/assets/iban.png"></a>
+      &nbsp;&nbsp;
+      <a href="/donate#zelle">
+        <img title="Donate using Zelle"
+             alt="Donate using Zelle"
+             src="/assets/zelle.png"></a>
+      <br>
       <a href="https://www.paypal.me/JonasBernoulli/20">
         <img title="Donate using PayPal"
              alt="Donate using PayPal"
