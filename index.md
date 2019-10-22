@@ -12,11 +12,34 @@ and improves upon each and every Git command, it is complete enough to
 allow even experienced Git users to perform almost all of their daily
 version control tasks directly from within Emacs.  While many fine Git
 clients exist, only Magit and Git itself deserve to be called
-porcelains.  <a class="small" href="/about">(more)</a>
+porcelains.
 
 <a href="/screenshots">
   <img class="screenshot" src="/screenshots/status.png">
 </a>
+
+If you are new too Magit, then either one of the following two
+articles should help understanding how it differs from other Git
+clients.
+
+- [Visual Magit walk-through](https://emacsair.me/2017/09/01/magit-walk-through)
+
+  If you are completely new to Magit, then this article is a good
+  visual introduction.
+
+  Almost everything that you see in Magit can be acted on by pressing
+  some key, but that's not obvious from just seeing how Magit looks.
+  The screenshots and accompanying text of this article explain how to
+  perform a variety of actions on Magit's output.
+
+- [Magit, the magical Git interface](https://emacsair.me/2017/09/01/the-magical-git-interface)
+
+  Magit differs significantly from other Git interfaces, and its
+  advantages are not immediately obvious simply from looking at a few
+  screenshots as presented in the preceding article.
+
+  This article discusses Magit's properties in somewhat more abstract
+  terms.
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
