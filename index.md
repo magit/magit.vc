@@ -59,6 +59,11 @@ clients.
       <em>Thank you! — Jonas Bernoulli</em>
     </div>
     <div>
+      <a href="https://github.com/sponsors/tarsius">
+        <img title="Donate using Github Sponsors"
+             alt="Donate using Github Sponsors"
+             src="https://magit.vc/assets/github-sponsors-50px.png"></a>
+      <br>
       <a href="/donate#iban">
         <img title="Donate using IBAN"
              alt="Donate using IBAN"

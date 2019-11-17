@@ -19,6 +19,11 @@ title: Please help making it better
       <em>Thank you! — Jonas Bernoulli</em>
     </div>
     <div>
+      <a href="https://github.com/sponsors/tarsius">
+        <img title="Donate using Github Sponsors"
+             alt="Donate using Github Sponsors"
+             src="https://magit.vc/assets/github-sponsors-50px.png"></a>
+      <br>
       <a href="#iban">
         <img title="Donate using IBAN"
              alt="Donate using IBAN"
@@ -103,8 +108,14 @@ able to set it up in less than ten minutes.
 
 # FAQ 1: Which payment method do you prefer?
 
-I prefer the above bank transfer methods because they are free of
-charge.
+I prefer [Github sponsors](https://github.com/sponsors/tarsius)
+because that currently is not only completely free of fees but Github
+actually matches your contribution!  You can read about that
+[here](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors).
+
+If that weren't the case, then I would prefer the above bank transfer
+methods because they are also free of charge.
+
 
 # FAQ 2: Can you send me a bill?
 
