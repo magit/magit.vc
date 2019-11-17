@@ -86,31 +86,6 @@ clients.
       <br> <a href="/donate">Some alternative donation options are available</a>.
     </div>
   </div>
-  <div id="campaign">
-    <p>
-      Thanks to 1987 backers the Kickstarter campaign was a huge success!<br>
-      This September was very exciting and I would like to thank you all
-      for<br> your generosity and enthusiastic support!
-    </p>
-    <p>
-      <em>Thank you! — Jonas Bernoulli</em>
-    </p>
-    <p>
-      <em>My thanks also go to these three sponsors!</em>
-    </p>
-    <a href="https://www.mojotech.com">
-      <img title="Mojotech"
-           alt="Mojotech"
-           src="/assets/mojotech.png"></a>
-    <a href="https://opensource.google.com">
-      <img title="Google Open Source"
-           alt="Google Open Source"
-           src="/assets/google-os.png"></a>
-    <a href="http://www.directangular.com">
-      <img title="Directangular"
-           alt="Directangular"
-           src="/assets/directangular.png"></a>
-  </div>
   <br>
 </section>
 
@@ -213,10 +188,15 @@ by [Jonas Bernoulli][jonas], [Kyle Meyer][kyle], and
 Many more people have [contributed code][authors] and suggested
 features.
 
+Over the years a lot of people supported development financially,
+including the [1987 backers][backers] of the 2017 crowdfunding
+campaign.
+
 <video id="gource" controls poster="/assets/videos/gource-700x700.png">
   <source src="/assets/videos/gource-700x700.webm" type="video/webm">
 </video>
 
+[backers]: https://github.com/magit/magit/blob/master/Documentation/BACKERS.md
 [contrib]: https://github.com/magit/magit/blob/master/CONTRIBUTING.md
 [devel]:   https://github.com/magit/magit
 [issues]:  https://github.com/magit/magit/issues
