@@ -63,32 +63,23 @@ clients.
         <img title="Donate using Github Sponsors"
              alt="Donate using Github Sponsors"
              src="https://magit.vc/assets/github-sponsors-50px.png"></a>
-      <br>
+      &nbsp;&nbsp;
       <a href="/donate#iban">
         <img title="Donate using IBAN"
              alt="Donate using IBAN"
              src="/assets/iban.png"></a>
-      &nbsp;&nbsp;
-      <a href="/donate#zelle">
-        <img title="Donate using Zelle"
-             alt="Donate using Zelle"
-             src="/assets/zelle.png"></a>
       <br>
       <a href="https://www.paypal.me/JonasBernoulli/20">
         <img title="Donate using PayPal"
              alt="Donate using PayPal"
              src="/assets/paypal.png"></a>
       &nbsp;&nbsp;
-      <a href="https://www.patreon.com/tarsius">
-        <img title="Donate monthly using Patreon"
-             alt="Donate monthly using Patreon"
-             src="/assets/patreon.png"></a>
-      &nbsp;&nbsp;
-      <a href="https://liberapay.com/magit">
-        <img title="Donate weekly using Liberapay"
-             alt="Donate weekly using Liberapay"
-             src="/assets/liberapay.png"></a>
-      <br> <a href="/donate">Some alternative donation options are available</a>.
+      <a href="/donate#zelle">
+        <img title="Donate using Zelle"
+             alt="Donate using Zelle"
+             src="/assets/zelle.png"></a>
+      <br>
+      <a href="/donate">Some alternative donation options are available</a>.
     </div>
   </div>
   <br>
