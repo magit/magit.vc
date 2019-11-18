@@ -21,3 +21,9 @@ these screencasts that were created by users:
 
 Or you might be interested in some [screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 and [blog posts](/blogs).
+
+{% markdown donate.md %}
+
+If you create new screencasts, then let me know so that I can had
+them here.  Please also consider mentioning that users might want
+to consider sponsoring my work.  That is how I make a living.
