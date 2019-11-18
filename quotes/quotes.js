@@ -42,6 +42,9 @@ var quotes = [
     ["I always thought Git on the command line couldnt be beaten, until I started using Magit - its the most sane way to use Git",
      "John Stevenson",
      "https://twitter.com/jr0cket/status/758688140131467264"],
+    ["I’ve gone through a lot of git clients and Magit is the best one by far, and the only one better than the official CLI",
+     "Nick McCurdy",
+     "https://twitter.com/nickemccurdy/status/1164481622026182656"],
     // reddit (emacs)
     ["Magit has changed the way I work. It's fantastic.",
      "djork",
@@ -102,10 +105,25 @@ var quotes = [
     ["Magit is a marvelous piece of work indeed, and the thing that keeps me going back to Emacs every time I get curious about some other editor.",
      "pYQAJ6Zm",
      "https://news.ycombinator.com/item?id=12888471"],
+    ["I use Xcode and VS Code ever day, and I absolutely never use the Git functionality in either of them. I tried both for a few weeks each, but absolutely nothing compares to Magit. Not even command line. For git, Magit is the same secret weapon that pg claimed Lisp was for programming.",
+     "sdegutis",
+     "https://news.ycombinator.com/item?id=18621634"],
+    ["Magit is that good, really. The way I see it, it reduces the burden associated with carrying the required git mental model in your mind, by giving you easier points of entry into its complexity. I owe all the slightly more advanced things I now routinely do with git (which would probably be seen as pretty basic by a lot of people though) to Magit, without question.",
+     "cjauvin",
+     "https://news.ycombinator.com/item?id=16892406"],
+    ["Yep- I'm actually a pretty old hand when it comes to git, and I know most of what git can do, but... I'm lazy, so when I use git at the command line I do caveman git. Magit lets me remain lazy and do subtle git things,",
+     "Tagore",
+     "https://news.ycombinator.com/item?id=16894928"],
     // lwn
     ["Magit is one of those rare packages which actually help you better understand the tool it provides an interface to.",
      "Paul D. Smith",
      "https://lwn.net/Articles/638804"],
+    ["Magit is the porcelain/TUI git always needed. It’s really that good.",
+     "rauhl",
+     "https://news.ycombinator.com/item?id=18725570"],
+    ["Emacs 'just' lets you display and interact with text on your screen, and it does it very well. I didn't think much of text UIs until I used Magit.",
+     "globuous",
+     "https://news.ycombinator.com/item?id=20374881"],
     // github
     ["Magit is one of those packages in Emacs that I simply cannot do without, and that I use multiple times a day, every day.",
      "John Wiegley",
@@ -116,8 +134,22 @@ var quotes = [
     // elsewhere
     ["I wrote the original git.el Emacs front-end, and used that for a few years, but it was never very good. I'm glad that people smarter than me have now tackled the problem, and Magit does a great job of making the full power of git accessible from Emacs.",
      "Alexandre Julliard",
-     "https://www.linux.com/blog/git-success-stories-and-tips-wine-maintainer-alexandre-julliard"]
+     "https://www.linux.com/blog/git-success-stories-and-tips-wine-maintainer-alexandre-julliard"],
+    ["Discovering magit was like finding beer, on Christmas, hidden in a lower counter on your uncle's house, back when you were 12.",
+     "Yoandy Rodriguez Martinez",
+     "https://dev.to/yorodm/comment/8a6d"],
+    ["Love when I'm using a tool and get \"damn this is well thought out\" feeling. Magit (Git client) for Emacs. Been using it for a couple of years and still get these awe moments.",
+     "Hastouki",
+     "https://devrant.com/rants/1296988"],
+    ["Ok, #Magit has to be my favourite thing about #Emacs so far. Been using the Git CLI for years and never thought I'd find something more elegant, yet here we are.",
+     "Gueorgui",
+     "https://merveilles.town/@gueorgui/102685740382369640"]
 ];
+
+// TODO These longer quotes look at the bigger picture and have to be
+// presented differently from the above.
+// - https://www.reddit.com/r/emacs/comments/aept8c/how_did_you_learn_magit/edvj57w
+// - https://news.ycombinator.com/item?id=16594344
 
 function inject_quotes() {
     var i = Math.floor(Math.random()*quotes.length);
