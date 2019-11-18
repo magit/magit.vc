@@ -3,8 +3,11 @@ layout: default
 title: Screencasts
 ---
 
-I will soon add some official screencasts.  Meanwhile you can enjoy
-these screencasts that were created by users:
+<center>
+  <video id="magic" autoplay loop>
+    <source src="/assets/videos/magic.mp4" type="video/mp4">
+  </video>
+</center>
 
 * [Prevent Losing Work in Magit & Git](https://www.youtube.com/watch?v=59aOIyoMBnE) 2017.08 — 3:56
 * [Spacemacs: From new Git project to Github repository with Magit and Magithub](https://www.youtube.com/watch?v=qjseaajXYGc) by John Stevenson — 2017.02 — 5:39
@@ -19,7 +22,7 @@ these screencasts that were created by users:
 * [EmacsATX: Magit](https://www.youtube.com/watch?v=VO7xj2ArpZw) by JJ Asghar — 2014.11 — 38:15
 * [Meet Magit](https://vimeo.com/2871241) by Alex Vollmer — 2009.01 — 20:48
 
-Or you might be interested in some [screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
+You might also be interested in some [screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 and [blog posts](/blogs).
 
 {% markdown donate.md %}
