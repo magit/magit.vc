@@ -9,6 +9,7 @@ title: Screencasts
   </video>
 </center>
 
+* [Magit deep dive](https://emacsconf.org/2019/videos) (@ EmacsConf 2019) by Jonathan Chu — 2019.11 — 39:47
 * [Using Emacs 62 - Magit Forge](https://www.youtube.com/watch?v=wgI8r3Nx_BI) by Mike Zamansky — 2019.11 — 17:52
 * [Emacs Magit with Forge for Issuing Pull Requests - Emacs Doomcasts 20](https://www.youtube.com/watch?v=fFuf3hExF5w) by Zaiste — 2019.11 — 5:45
 * [Emacs Magit - The Git Commit Flow in More Detail - Emacs Doomcasts 19](https://www.youtube.com/watch?v=qXgGtyjXPiw) by Zaiste — 2019.10 — 7:53
