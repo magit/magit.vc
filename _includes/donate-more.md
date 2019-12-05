@@ -26,7 +26,7 @@
            alt="Donate using Zelle"
            src="/assets/zelle.png"></a>
     <br>
-    <a href="https://www.paypal.me/JonasBernoulli/20">
+    <a href="https://www.paypal.me/JonasBernoulli/25">
       <img title="Donate using PayPal"
            alt="Donate using PayPal"
            src="/assets/paypal.png"></a>

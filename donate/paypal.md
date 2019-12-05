@@ -3,7 +3,7 @@ layout: default
 title: Donate using PayPal
 ---
 
-Make a [one time payment](https://www.paypal.me/JonasBernoulli/20)
+Make a [one time payment](https://www.paypal.me/JonasBernoulli/25)
 or contribute using a subscription:
 
 <p>
