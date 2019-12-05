@@ -17,6 +17,8 @@ SYNC  = --exclude "assets/logo/*"
 SYNC += --exclude "manual/*"
 SYNC += --exclude "stats/*"
 
+FONTS = Noto+Sans:400,400i,700,700i|Noto+Serif:400,400i,700,700i
+
 ## Usage #############################################################
 
 help:
@@ -26,6 +28,7 @@ help:
 	$(info make preview        - upload to preview site)
 	$(info make publish        - upload to production site)
 	$(info make publish-other  - upload from related repos)
+	$(info make update-fonts   - download updated fonts)
 	$(info make clean          - remove build directory)
 	$(info make ci-install     - install required tools)
 	$(info make ci-version     - print version information)
@@ -66,6 +69,12 @@ publish-other:
 #	@make -C ~/.emacs.d/lib/magit publish-manuals
 #	@make -C ~/.emacs.d/lib/with-editor publish
 	@make -C ~/Repos/pages/magit.vc/manual publish
+
+update-fonts:
+	@mkdir -p assets/fonts
+	@cd assets/fonts; google-font-download -o ../font.css -f woff2,woff -u \
+	"https://fonts.googleapis.com/css?family=$(FONTS)"
+	@cd assets; sed -i -e "s:url('Noto:url('/assets/fonts/Noto:" font.css
 
 clean:
 	@echo "Cleaning..."
