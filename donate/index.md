@@ -6,51 +6,8 @@ title: Please help making it better
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 <section>
-  <div id="donate">
-    <div>
-      Keeping its users <a href= "/quotes">this excited</a> is
-      <a href="https://magit.vc/stats/authors.html#cumulated_added_lines_of_code_per_author">
-        a lot of work
-      </a>.
-      If Magit makes you <br> more productive too,
-      then <b>please consider making a donation</b>.
-    </div>
-    <div>
-      <em>Thank you! — Jonas Bernoulli</em>
-    </div>
-    <div>
-      <a href="https://github.com/sponsors/tarsius">
-        <img title="Donate using Github Sponsors"
-             alt="Donate using Github Sponsors"
-             src="https://magit.vc/assets/github-sponsors-50px.png"></a>
-      <br>
-      <a href="#iban">
-        <img title="Donate using IBAN"
-             alt="Donate using IBAN"
-             src="/assets/iban.png"></a>
-      &nbsp;&nbsp;
-      <a href="#zelle">
-        <img title="Donate using Zelle"
-             alt="Donate using Zelle"
-             src="/assets/zelle.png"></a>
-      <br>
-      <a href="https://www.paypal.me/JonasBernoulli/20">
-        <img title="Donate using PayPal"
-             alt="Donate using PayPal"
-             src="/assets/paypal.png"></a>
-      &nbsp;&nbsp;
-      <a href="https://www.patreon.com/tarsius">
-        <img title="Donate monthly using Patreon"
-             alt="Donate monthly using Patreon"
-             src="/assets/patreon.png"></a>
-      &nbsp;&nbsp;
-      <a href="https://liberapay.com/magit">
-        <img title="Donate weekly using Liberapay"
-             alt="Donate weekly using Liberapay"
-             src="/assets/liberapay.png"></a>
-    </div>
-  </div>
-  <br>
+  {% markdown donate-core.md %}
+  <br/>
 </section>
 
 # Please help making Magit even better
@@ -108,6 +65,12 @@ able to set it up in less than ten minutes.
 
 # FAQ 1: Which payment method do you prefer?
 
+<a href="https://github.com/sponsors/tarsius">
+  <img class="donate"
+       title="Donate using Github Sponsors"
+       alt="Donate using Github Sponsors"
+       src="/assets/github-sponsors-50px.png"></a>
+
 I prefer [Github sponsors](https://github.com/sponsors/tarsius)
 because that currently is not only completely free of fees but Github
 actually matches your contribution!  You can read about that
@@ -127,11 +90,14 @@ I would be happy to send them such a bill.
 
 # FAQ 3: Do you accept any other donation methods?
 
-So far PayPal and Patreon are by far the most popular methods and I
-hope that eventually IBAN and Zelle take their place.  Nevertheless
-a few other donation methods are available and while they are
-significantly less populare you are more than welcome to use your
-favorite.
+Yes, a few other donation methods are available and while they are
+less populare than the options mentioned above you are of course more
+than welcome to use your favorite.
 
-[Here](/donate/alternative.html) you can find a list of the
-alternative methods.
+- [Liberapay](https://liberapay.com/magit)
+- [Patreon](https://www.patreon.com/tarsius)
+- [Opencollective](https://opencollective.com/magit)
+- [Flattr](https://flattr.com/@tarsius)
+- [Paypal subscription](/donate/paypal.html)
+- Bitcoin: 1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK
+- Ethereum: 0x90c98E49862d2Ac495BCA94342426D4e90286Ef5

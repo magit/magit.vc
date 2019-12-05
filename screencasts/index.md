@@ -51,7 +51,7 @@ https://www.youtube.com/watch?v=t8tEzJ1RnW0
 You might also be interested in some [screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 and [blog posts](/blogs).
 
-{% markdown donate.md %}
+{% markdown donate-main.md %}
 
 If you create new screencasts, then let me know so that I can had
 them here.  Please also consider mentioning that users might want

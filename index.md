@@ -47,7 +47,7 @@ clients.
 <section>
   <blockquote id="quote1"></blockquote>
   <blockquote id="quote2"></blockquote>
-  {% markdown donate.md %}
+  {% markdown donate-main.md %}
   <br>
 </section>
 
