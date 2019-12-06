@@ -103,11 +103,12 @@ div#campaign {
   text-align: center;
 }
 
-div#donate p:nth-child(1) {
-  text-align: justify;
-}
 div#campaign img {
   box-shadow: unset;
+}
+
+div#donate p:nth-child(1) {
+  text-align: justify;
 }
 
 div#donate {
@@ -148,6 +149,7 @@ div#donate div:nth-child(3) img, img.donate {
 div#donate div:nth-child(3) {
   text-align: center;
 }
+
 /* simple-CSS-switch style */
 #s-css-s--menu {
     position: absolute;
