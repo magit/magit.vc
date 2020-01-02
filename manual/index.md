@@ -47,13 +47,13 @@ using a development snapshot.
   ([single page](/manual/0.1.0/transient.html),
   [pdf](/manual/0.1.0/transient.pdf))
 
-- [Ghub User and Developer Manual **2.0.0**](/manual/2.0.0/ghub)
-  ([single page](/manual/2.0.0/ghub.html),
-  [pdf](/manual/2.0.0/ghub.pdf))
+- [Ghub User and Developer Manual **3.2.0**](/manual/3.2.0/ghub)
+  ([single page](/manual/3.2.0/ghub.html),
+  [pdf](/manual/3.2.0/ghub.pdf))
 
-- [With-Editor User Manual **2.7.4**](/manual/2.7.4/with-editor)
-  ([single page](/manual/2.7.4/with-editor.html),
-  [pdf](/manual/2.7.4/with-editor.pdf))
+- [With-Editor User Manual **2.9.1**](/manual/2.9.1/with-editor)
+  ([single page](/manual/2.9.1/with-editor.html),
+  [pdf](/manual/2.9.1/with-editor.pdf))
 
 # Older releases
 
@@ -79,6 +79,6 @@ using a development snapshot.
 
 # Obsolete packages
 
-- [Magit-Popup User Manual **2.13.0**](/manual/2.13.0/magit-popup)
-  ([single page](/manual/2.13.0/magit-popup.html),
-  [pdf](/manual/2.13.0/magit-popup.pdf))
+- [Magit-Popup User Manual](/manual/magit-popup)
+  ([single page](/manual/magit-popup.html),
+  [pdf](/manual/magit-popup.pdf))
