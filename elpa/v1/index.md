@@ -30,9 +30,8 @@ source.  It's really not that hard and is a skill worth having.
 
 Currently we do not provide any distribution specific instructions for
 installing Emacs and Git, but should such instructions be contributed
-by users, then they would appear [here][install-emacs]
-and [here][install-git].  (Note that you could be that user who
-contributes those instructions for your distribution.)
+by users, then we would happily publish them.  (Note that you could be
+that user who contributes those instructions for your distribution.)
 
 # How to install v1 if that's the only option
 
@@ -53,6 +52,4 @@ Melpa.
 
 [1.4.0]: https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/1.4.0.txt
 [2.1.0]: https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.1.0.txt
-[install-emacs]: https://magit.vc/manual/magit/I-am-using-an-Emacs-release-older-than-244.html
-[install-git]:   https://magit.vc/manual/magit/I-am-using-a-Git-release-older-than-194.html
 [config-melpa]:  https://melpa.org/#/getting-started

@@ -396,7 +396,7 @@ described above.  For more information about these apply variants
 
 If you noticed that the diff popup lacked your favorite argument, then
 fear not.  It is trivial to add arguments to an existing popup, as
-[describe](/manual/magit-popup/Customizing-existing-popups.html) in
+[describe](/manual/magit-popup/Customizing-Existing-Popups.html) in
 the manual.
 
 Some arguments are missing because they are not actually required.
@@ -644,11 +644,11 @@ There are many other popups, including:
 
 ### <i>w</i> Am
 ![](/screenshots/popup-am.png)
-See [Applying patches](https://magit.vc/manual/magit/Applying-patches.html).
+See [Maildir Patches](https://magit.vc/manual/magit/Maildir-Patches.html).
 
 ### <i>A</i> Cherry-pick
 ![](/screenshots/popup-cherry-pick.png)
-See [Cherry picking](https://magit.vc/manual/magit/Cherry-picking.html).
+See [Cherry Picking](https://magit.vc/manual/magit/Cherry-Picking.html).
 
 ### <i>B</i> Bisect
 ![](/screenshots/popup-bisect.png)
@@ -664,7 +664,7 @@ See [Remotes](https://magit.vc/manual/magit/Remotes.html).
 
 ### <i>o</i> Submodule
 ![](/screenshots/popup-submodule.png)
-See [Submodule popup](https://magit.vc/manual/magit/Submodule-popup.html).
+See [Submodules](https://magit.vc/manual/magit/Submodules.html).
 
 ### <i>O</i> Subtree
 ![](/screenshots/popup-subtree.png)
@@ -684,7 +684,7 @@ See [Reverting](https://magit.vc/manual/magit/Reverting.html).
 
 ### <i>W</i> Patch
 ![](/screenshots/popup-patch.png)
-See [Creating and sending patches](https://magit.vc/manual/magit/Creating-and-sending-patches.html).
+See [Plain Patches](https://magit.vc/manual/magit/Plain-Patches.html).
 
 ### <i>X</i> Reset
 ![](/screenshots/popup-reset.png)
@@ -692,7 +692,7 @@ See [Resetting](https://magit.vc/manual/magit/Resetting.html).
 
 ### <i>C-u y</i> Show refs
 ![](/screenshots/popup-show-refs.png)
-See [References buffer](https://magit.vc/manual/magit/References-buffer.html).
+See [References Buffer](https://magit.vc/manual/magit/References-Buffer.html).
 
 ### <i>z</i> Stash
 ![](/screenshots/popup-stash.png)
@@ -700,7 +700,7 @@ See [Stashing](https://magit.vc/manual/magit/Stashing.html).
 
 ### <i>!</i> Run
 ![](/screenshots/popup-run.png)
-See [Running Git manually](https://magit.vc/manual/magit/Running-Git-manually.html).
+See [Running Git Manually](https://magit.vc/manual/magit/Running-Git-Manually.html).
 
 [emacs]:     https://www.gnu.org/software/emacs
 [git]:       https://git-scm.com
