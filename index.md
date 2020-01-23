@@ -53,6 +53,8 @@ clients.
 
 # News
 
+* 20200123 — Magit-Section as a stand-alone package
+  ([announcement](https://emacsair.me/2020/01/23/magit-section))
 * 20190214 — Transient **v0.1.0** released
   ([announcement](https://emacsair.me/2019/02/14/transient-0.1))
 * 20181219 — Forge **v0.1.0** released
@@ -100,6 +102,9 @@ clients.
 * [Ghub User and Developer Manual](/manual/forge)
   ([single-page](/manual/forge.html),
    [pdf](/manual/forge.pdf))
+* [Magit-Section Developer Manual](/manual/magit-section)
+  ([single page](/manual/magit-section.html),
+  [pdf](/manual/magit-section.pdf))
 * [Transient User and Developer Manual](/manual/transient)
   ([single-page](/manual/transient.html),
    [pdf](/manual/transient.pdf))

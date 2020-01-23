@@ -27,6 +27,10 @@ using a development snapshot.
   ([single page](/manual/transient.html),
   [pdf](/manual/transient.pdf))
 
+- [Magit-Section Developer Manual **master**](/manual/magit-section)
+  ([single page](/manual/magit-section.html),
+  [pdf](/manual/magit-section.pdf))
+
 - [With-Editor User Manual **master**](/manual/with-editor)
   ([single page](/manual/with-editor.html),
   [pdf](/manual/with-editor.pdf))
@@ -50,6 +54,8 @@ using a development snapshot.
 - [Transient User and Developer Manual **0.1.0**](/manual/0.1.0/transient)
   ([single page](/manual/0.1.0/transient.html),
   [pdf](/manual/0.1.0/transient.pdf))
+
+- Magit-Section [no version released yet]
 
 - [With-Editor User Manual **2.9.1**](/manual/2.9.1/with-editor)
   ([single page](/manual/2.9.1/with-editor.html),
