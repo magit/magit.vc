@@ -43,13 +43,13 @@ using a development snapshot.
   ([single page](/manual/0.1.0/forge.html),
   [pdf](/manual/0.1.0/forge.pdf))
 
-- [Transient User and Developer Manual **0.1.0**](/manual/0.1.0/transient)
-  ([single page](/manual/0.1.0/transient.html),
-  [pdf](/manual/0.1.0/transient.pdf))
-
 - [Ghub User and Developer Manual **3.2.0**](/manual/3.2.0/ghub)
   ([single page](/manual/3.2.0/ghub.html),
   [pdf](/manual/3.2.0/ghub.pdf))
+
+- [Transient User and Developer Manual **0.1.0**](/manual/0.1.0/transient)
+  ([single page](/manual/0.1.0/transient.html),
+  [pdf](/manual/0.1.0/transient.pdf))
 
 - [With-Editor User Manual **2.9.1**](/manual/2.9.1/with-editor)
   ([single page](/manual/2.9.1/with-editor.html),
