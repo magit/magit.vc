@@ -99,9 +99,9 @@ clients.
 * [Forge User Manual](/manual/forge)
   ([single-page](/manual/forge.html),
    [pdf](/manual/forge.pdf))
-* [Ghub User and Developer Manual](/manual/forge)
-  ([single-page](/manual/forge.html),
-   [pdf](/manual/forge.pdf))
+* [Ghub User and Developer Manual](/manual/ghub)
+  ([single-page](/manual/ghub.html),
+   [pdf](/manual/ghub.pdf))
 * [Magit-Section Developer Manual](/manual/magit-section)
   ([single page](/manual/magit-section.html),
   [pdf](/manual/magit-section.pdf))
