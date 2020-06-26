@@ -5,10 +5,25 @@ title: Blog posts
 
 # Posts by the maintainer
 
-The full list of posts is [here](https://emacsair.me/).  So far most
-posts were release announcements, but that is about to change.
+The full list of posts is [here](https://emacsair.me/).
 
 # Posts by users
+
+* [Why You Should Use Magit: A Git Porcelain Inside Emacs](https://www.mojotech.com/blog/why-you-should-use-magit-git-porcelain-inside-emacs) by Matthew Forsyth — 2017.10
+
+  Magit is the holy grail of workspace tools, allowing Git users to
+  handle all aspects of source control directly from within Emacs. But
+  rather than merely lauding Magit and asking you the reader to take
+  my recommendation at face value, I'd like to share a couple of
+  recent events that reminded me why Magit is such a powerful tool.
+
+* [It’s Magit! And you’re the magician!](https://endlessparentheses.com/it-s-magit-and-you-re-the-magician.html) by Artur Malabarba — 2017.9 
+
+  I could go on and on about the virtues of this gem. It’s probably
+  the package that most saves me time, and has taught me more about
+  git than I learned reading a whole book on it. But that’s all just
+  sparks and glitter on top of the real show. For Magit is a magic
+  show, and its real feature is making you the magician.
 
 * [Emacs: Magit Magic](http://www.mycpu.org/emacs-24-magit-magic) by Manoj Rao — 2016.9
 
