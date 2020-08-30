@@ -78,3 +78,7 @@ using a development snapshot.
 - [Magit-Popup User Manual](/manual/magit-popup)
   ([single page](/manual/magit-popup.html),
   [pdf](/manual/magit-popup.pdf))
+
+# FAQ
+
+{% markdown faq-links.md %}
