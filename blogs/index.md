@@ -9,6 +9,15 @@ The full list of posts is [here](https://emacsair.me/).
 
 # Posts by users
 
+* [Magit, the one and only](https://www.manueluberti.eu/emacs/2017/11/09/magit)
+
+  Nowadays it is basically impossible to land in a group of Emacs
+  enthusiasts without someone talking rapturously about the wonders of
+  Magit. If you listen closely, the words resemble a chant: “You wish
+  you could do it with Git, until you experience the great Magit.”
+
+  Be warned: the following story goes along those magic lines.
+
 * [Why You Should Use Magit: A Git Porcelain Inside Emacs](https://www.mojotech.com/blog/why-you-should-use-magit-git-porcelain-inside-emacs) by Matthew Forsyth — 2017.10
 
   Magit is the holy grail of workspace tools, allowing Git users to
@@ -59,6 +68,19 @@ and [wrote](/quotes) nice things I like to quote.
 
 # Discussions
 
-* [Magit: a Git porcelain inside emacs](https://news.ycombinator.com/item?id=10643977)
-* [Using Emacs and Git with Magit 2.1](https://news.ycombinator.com/item?id=9873237)
-
+* 2019-12-09 [A walk through the Magit interface](https://news.ycombinator.com/item?id=21729597)
+* 2019-12-09 [A walk through the Magit interface](https://lobste.rs/s/gdga2t/walk_through_magit_interface)
+* 2017-10-16 [Why you should use Magit: a Git porcelain inside Emacs](https://www.reddit.com/r/programming/comments/76sow3)
+* 2017-10-16 [Why you should use Magit: a Git porcelain inside Emacs](https://www.reddit.com/r/emacs/comments/76snsk)
+* 2017-09-29 [Emacs Rocks! Episode 17: Magit](https://www.reddit.com/r/emacs/comments/734m1n)
+* 2017-09-22 [Magit Kickstarter fully funded](https://news.ycombinator.com/item?id=15312288)
+* 2017-09-21 [Magit kickstarter is funded!](https://www.reddit.com/r/emacs/comments/71j6dk)
+* 2017-09-20 [Magit Kickstarter campaign almost there! Help it to the finish line](https://www.reddit.com/r/emacs/comments/71e6t6)
+* 2017-09-16 [Magit is running a crowdfunding campaign](https://www.reddit.com/r/programming/comments/70ix98)
+* 2017-09-12 [Magit fundraising campaign on Kickstarter](https://www.reddit.com/r/git/comments/6zjkl6)
+* 2017-09-06 [Magit crowd-funding campaign](https://lobste.rs/s/e5s1ff/magit_crowd_funding_campaign)
+* 2017-09-03 [Magit fundraising campaign on kickstarter](https://www.reddit.com/r/programming/comments/6xt7jy)
+* 2017-09-03 [Magit fundraising campaign on kickstarter](https://www.reddit.com/r/linux/comments/6xvh3e)
+* 2017-09-01 [Magit fundraising campaign on Kickstarter](https://www.reddit.com/r/emacs/comments/6xf3er)
+* 2015-11-29 [Magit: a Git porcelain inside emacs](https://news.ycombinator.com/item?id=10643977)
+* 2015-07-12 [Using Emacs and Git with Magit 2.1](https://news.ycombinator.com/item?id=9873237)
