@@ -7,12 +7,12 @@ home: true
 
 Magit is an interface to the version control system [Git][git],
 implemented as an [Emacs][emacs] package.  Magit aspires to be a
-complete Git porcelain.  While we cannot (yet) claim that Magit wraps
-and improves upon each and every Git command, it is complete enough to
-allow even experienced Git users to perform almost all of their daily
-version control tasks directly from within Emacs.  While many fine Git
-clients exist, only Magit and Git itself deserve to be called
-porcelains.
+complete Git porcelain ([?][porcelain]).  While we cannot (yet) claim
+that Magit wraps and improves upon each and every Git command, it is
+complete enough to allow even experienced Git users to perform almost
+all of their daily version control tasks directly from within Emacs.
+While many fine Git clients exist, only Magit and Git itself deserve
+to be called porcelains.
 
 <a href="/screenshots">
   <img class="screenshot" src="/screenshots/status.png">
@@ -194,3 +194,5 @@ campaign.
 [phil]:    https://github.com/philjackson
 [remi]:    https://github.com/vanicat
 [yann]:    http://www.hodique.info
+
+[porcelain]: https://stackoverflow.com/questions/6976473
