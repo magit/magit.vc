@@ -135,6 +135,12 @@ var quotes = [
     ["Magit is one of the most powerful pieces of software I use on a daily basis. It's incredibly well designed and I'd be seriously lost without it.",
      "sjm",
      "https://news.ycombinator.com/item?id=14823341"],
+    ["I knew magit really was magic when all of the sudden I became the guy people went to when they needed help with with their complicated git tasks. Before magit I knew I was only scratching the surface of git's power, but could never figure out the command line interface well enough to do more than the basics. I still don't feel like I'm a git expert, but magit lets me use it like I'm one.",
+     "narwally",
+     "https://news.ycombinator.com/item?id=24443580"],
+    ["The difference between a porcelain like magit and some other \"front-end\" is you are actually using git. Other front-ends hide git behind new abstractions (or rather, old abstractions, more like SVN or other centralised VCSs) and I find that users of these never really understand how git works. I've been using magit for almost my entire life with git, I don't really know how to use the CLI, but I consider myself a git expert.",
+     "globular-toast",
+     "https://news.ycombinator.com/item?id=24440525"],
     // lwn
     ["Magit is one of those rare packages which actually help you better understand the tool it provides an interface to.",
      "Paul D. Smith",

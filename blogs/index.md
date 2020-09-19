@@ -68,6 +68,7 @@ and [wrote](/quotes) nice things I like to quote.
 
 # Discussions
 
+* 2020-09-11 [Magit – A Git Porcelain inside Emacs](https://news.ycombinator.com/item?id=24431216)
 * 2019-12-09 [A walk through the Magit interface](https://news.ycombinator.com/item?id=21729597)
 * 2019-12-09 [A walk through the Magit interface](https://lobste.rs/s/gdga2t/walk_through_magit_interface)
 * 2017-10-16 [Why you should use Magit: a Git porcelain inside Emacs](https://www.reddit.com/r/programming/comments/76sow3)
