@@ -22,7 +22,10 @@ If you are new to Magit, then either one of the following two
 articles should help understanding how it differs from other Git
 clients.
 
-- [Visual Magit walk-through](https://emacsair.me/2017/09/01/magit-walk-through)
+<details>
+  <summary>
+  <a href="https://emacsair.me/2017/09/01/magit-walk-through">Visual Magit walk-through</a>
+  </summary>
 
   If you are completely new to Magit, then this article is a good
   visual introduction.
@@ -31,8 +34,13 @@ clients.
   some key, but that's not obvious from just seeing how Magit looks.
   The screenshots and accompanying text of this article explain how to
   perform a variety of actions on Magit's output.
+  <br>
+</details>
 
-- [Magit, the magical Git interface](https://emacsair.me/2017/09/01/the-magical-git-interface)
+<details>
+  <summary>
+  <a href="https://emacsair.me/2017/09/01/the-magical-git-interface">Magit, the magical Git interface</a>
+  </summary>
 
   Magit differs significantly from other Git interfaces, and its
   advantages are not immediately obvious simply from looking at a few
@@ -40,7 +48,9 @@ clients.
 
   This article discusses Magit's properties in somewhat more abstract
   terms.
+</details>
 
+<br>
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 

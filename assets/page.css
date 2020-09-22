@@ -57,6 +57,14 @@ header img, img.clear {
   margin-bottom: 0;
 }
 
+details {
+  cursor: se-resize;
+}
+
+details[open] {
+  cursor: default;
+}
+
 /* Used for key bindings */
 i {
   border-style: solid;
