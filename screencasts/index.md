@@ -41,6 +41,7 @@ title: Screencasts
 * [EmacsConf 2015 - Lightning talk - Magit](https://www.youtube.com/watch?v=4ccCNQaTJ10) 2015.08 — 14:28
 * [Magit basics](https://www.youtube.com/watch?v=zobx3T7hGNA) by Renn Seo — 2015.04 — 6:10
 * [EmacsATX: Magit](https://www.youtube.com/watch?v=VO7xj2ArpZw) by JJ Asghar — 2014.11 — 38:15
+<!-- TODO Add this to my youtube channel. -->
 * [Meet Magit](https://vimeo.com/2871241) by Alex Vollmer — 2009.01 — 20:48
 
 <!--
@@ -51,6 +52,8 @@ https://www.youtube.com/watch?v=qjseaajXYGc
 https://www.youtube.com/watch?v=AdEOazt1rD0
 https://www.youtube.com/watch?v=t8tEzJ1RnW0
 -->
+
+The [Magit Youtube channel](youtube.com/channel/UCexQgXXm2njaZOn2GEEtRCw) might have some additional video.
 
 You might also be interested in some [screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 and [blog posts](/blogs).
