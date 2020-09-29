@@ -9,12 +9,13 @@ title: Screencasts
   </video>
 </center>
 
+* [Emacs From Scratch #4 - Projectile and Magit](https://www.youtube.com/watch?v=INTu30BHZGk) by the_dev_aspect — 2020.11 — 1:01
 * [Emacs: introduction to MAGIT](https://www.youtube.com/watch?v=2-0OwGTt0dI) by Protesilaos Stavrou — 2020.04 — 26:32
 * [Emacs quick demo: git commit fixup with Magit](https://www.youtube.com/watch?v=ZGoImgzWUs8) by Protesilaos Stavrou — 2019.11.27 — 3:06
 * [Emacs: interactively rebase git commits with Magit](https://www.youtube.com/watch?v=7qEoSr9Mii4) by Protesilaos Stavrou — 2019.11.27 — 7:19
 * [Using Emacs 62 - Magit Forge](https://www.youtube.com/watch?v=wgI8r3Nx_BI) by Mike Zamansky — 2019.11.19 — 17:52
 * [Emacs Magit with Forge for Issuing Pull Requests - Emacs Doomcasts 20](https://www.youtube.com/watch?v=fFuf3hExF5w) by Zaiste — 2019.11.09 — 5:45
-* [Magit deep dive](https://emacsconf.org/2019/videos) (@ EmacsConf 2019) by Jonathan Chu — 2019.11.02 — 39:47
+* [Magit deep dive](https://emacsconf.org/2019/talks/14/) (@ EmacsConf 2019) by Jonathan Chu — 2019.11.02 — 39:47
 * [Emacs Magit - The Git Commit Flow in More Detail - Emacs Doomcasts 19](https://www.youtube.com/watch?v=qXgGtyjXPiw) by Zaiste — 2019.10 — 7:53
 * [Emacs Magit - Getting Started - Emacs Doomcasts 18](https://www.youtube.com/watch?v=7ywEgcbaiys) by Zaiste — 2019.09 — 8:17
 * [Emacs Is Great - Ep 43, Magit Forge](https://www.youtube.com/watch?v=9mVF5sNdR7M) by Yisrael Dov L — 2019.06 — 11:24
@@ -35,7 +36,7 @@ title: Screencasts
 * [Productive Emacs: Magit](https://www.youtube.com/watch?v=D1SJ6mFWYyA) by Arjen Wiersma — 2016.11 — 18:04
 * [Git on Emacs](https://www.youtube.com/watch?v=OMIxZhLU71U) by Jason Milkins — 2016.11 — 55:23
 * [Rewrite git history with Emacs, magit and git rebase](https://www.youtube.com/watch?v=mtliRYQd0j4) by Charl Botha — 2016.03 — 15:04
-* [Emacs Tutorial - Introduction to Magit](https://www.youtube.com/watch?v=LDafmAJa-4w) by Durant Schoon and Daniel — 2016.03 — 13:15
+<!-- 404 * [Emacs Tutorial - Introduction to Magit](https://www.youtube.com/watch?v=LDafmAJa-4w) by Durant Schoon and Daniel — 2016.03 — 13:15 -->
 * [Magit introduction and demonstration](https://www.youtube.com/watch?v=vQO7F2Q9DwA) by Howard Abrams — 2015.10 — 14:10
 * [EmacsConf 2015 - Lightning talk - Magit](https://www.youtube.com/watch?v=4ccCNQaTJ10) 2015.08 — 14:28
 * [Magit basics](https://www.youtube.com/watch?v=zobx3T7hGNA) by Renn Seo — 2015.04 — 6:10
