@@ -9,7 +9,8 @@ title: Screencasts
   </video>
 </center>
 
-* [Emacs From Scratch #4 - Projectile and Magit](https://www.youtube.com/watch?v=INTu30BHZGk) by the_dev_aspect — 2020.11 — 1:01
+* [Emacs From Scratch #4 - Projectile and Magit](https://www.youtube.com/watch?v=INTu30BHZGk) by the_dev_aspect — 2020.09 — 1:01:24
+* [The Magit Git Client Is The "Killer Feature" In Emacs](https://www.youtube.com/watch?v=X_iX5US1_xE) by DistroTube — 2020.07 — 9:40
 * [Emacs: introduction to MAGIT](https://www.youtube.com/watch?v=2-0OwGTt0dI) by Protesilaos Stavrou — 2020.04 — 26:32
 * [Emacs quick demo: git commit fixup with Magit](https://www.youtube.com/watch?v=ZGoImgzWUs8) by Protesilaos Stavrou — 2019.11.27 — 3:06
 * [Emacs: interactively rebase git commits with Magit](https://www.youtube.com/watch?v=7qEoSr9Mii4) by Protesilaos Stavrou — 2019.11.27 — 7:19
