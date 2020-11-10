@@ -25,9 +25,12 @@ is both faster and more intuitive than either the command line or any
 GUI and these holds for both Git beginners and experts alike.
 
 <br>
-If you are new to Magit, then either one of the following two
-articles should help understanding how it differs from other Git
-clients.
+<img class="clear" src="/assets/L.png" align="top" style="float: left;">
+<b>
+  If you are new to Magit, then either one of the following two
+  articles should help understanding how it differs from other Git
+  clients.  Click the triangles to expand brief summaries.
+<b>
 
 <details>
   <summary>
