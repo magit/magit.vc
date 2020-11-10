@@ -24,10 +24,7 @@ could not be reasonably mapped to a non-command-line interface.  Magit
 is both faster and more intuitive than either the command line or any
 GUI and these holds for both Git beginners and experts alike.
 
-<a href="/screenshots">
-  <img class="screenshot" src="/screenshots/status.png">
-</a>
-
+<br>
 If you are new to Magit, then either one of the following two
 articles should help understanding how it differs from other Git
 clients.
@@ -59,6 +56,11 @@ clients.
   This article discusses Magit's properties in somewhat more abstract
   terms.
 </details>
+
+<a href="/screenshots">
+  <img class="screenshot" src="/screenshots/status.png">
+</a>
+
 
 <br>
 <script type="text/javascript" src="/quotes/quotes.js"></script>
