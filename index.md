@@ -5,14 +5,24 @@ logo: big
 home: true
 ---
 
-Magit is an interface to the version control system [Git][git],
-implemented as an [Emacs][emacs] package.  Magit aspires to be a
-complete Git porcelain ([?][porcelain]).  While we cannot (yet) claim
-that Magit wraps and improves upon each and every Git command, it is
-complete enough to allow even experienced Git users to perform almost
-all of their daily version control tasks directly from within Emacs.
-While many fine Git clients exist, only Magit and Git itself deserve
-to be called porcelains.
+Magit is a complete text-based user interface to [Git].  It fills the
+glaring gap between the Git command-line interface and various GUIs,
+letting you perform trivial as well as elaborate version control tasks
+with just a couple of mnemonic key presses.  Magit looks like a
+prettified version of what you get after running a few Git commands
+but in Magit every bit of visible information is also actionable to an
+extend that goes far beyond what any Git GUI provides and it takes
+care of automatically refreshed this output when it becomes outdated.
+In the background Magit just runs Git commands and if you wish you can
+see what exactly is being run, making it possible for you can learn
+the `git` command-line by using Magit.
+
+Using Magit for a while will make you a more effective version control
+user.  Magit supports and streamlines the use of Git features that
+most users and developers of other Git clients apparently thought
+could not be reasonably mapped to a non-command-line interface.  Magit
+is both faster and more intuitive than either the command line or any
+GUI and these holds for both Git beginners and experts alike.
 
 <a href="/screenshots">
   <img class="screenshot" src="/screenshots/status.png">
@@ -192,8 +202,8 @@ campaign.
 [twitter]: https://twitter.com/magit_emacs
 [wiki]:    https://github.com/magit/magit/wiki
 
-[emacs]:   https://www.gnu.org/software/emacs
-[git]:     https://git-scm.com
+[Emacs]:   https://www.gnu.org/software/emacs
+[Git]:     https://git-scm.com
 
 [jonas]:   https://emacsair.me
 [kyle]:    https://github.com/kyleam
