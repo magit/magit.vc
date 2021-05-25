@@ -32,28 +32,31 @@ using a development snapshot.
 
 # Current releases
 
-- [Magit User Manual **2.90.1**](/manual/2.90.1/magit)
-  ([single page](/manual/2.90.1/magit.html),
-  [pdf](/manual/2.90.1/magit.pdf))
-  - [Installation](/manual/2.90.1/magit/Installation.html)
-  - [FAQ](/manual/2.90.1/magit/FAQ.html)
+- [Magit User Manual **3.0.0**](/manual/3.0.0/magit)
+  ([single page](/manual/3.0.0/magit.html),
+  [pdf](/manual/3.0.0/magit.pdf))
+  - [Installation](/manual/3.0.0/magit/Installation.html)
+  - [FAQ](/manual/3.0.0/magit/FAQ.html)
 - [Forge User Manual **0.1.0**](/manual/0.1.0/forge)
   ([single page](/manual/0.1.0/forge.html),
   [pdf](/manual/0.1.0/forge.pdf))
-- [Ghub User and Developer Manual **3.2.0**](/manual/3.2.0/ghub)
-  ([single page](/manual/3.2.0/ghub.html),
-  [pdf](/manual/3.2.0/ghub.pdf))
-- [Transient User and Developer Manual **0.1.0**](/manual/0.1.0/transient)
-  ([single page](/manual/0.1.0/transient.html),
-  [pdf](/manual/0.1.0/transient.pdf))
-- Magit-Section [no version released yet]
-- [With-Editor User Manual **2.9.1**](/manual/2.9.1/with-editor)
-  ([single page](/manual/2.9.1/with-editor.html),
-  [pdf](/manual/2.9.1/with-editor.pdf))
+- [Ghub User and Developer Manual **3.5.2**](/manual/3.5.2/ghub)
+  ([single page](/manual/3.5.2/ghub.html),
+  [pdf](/manual/3.5.2/ghub.pdf))
+- [Transient User and Developer Manual **0.3.3**](/manual/0.3.3/transient)
+  ([single page](/manual/0.3.3/transient.html),
+  [pdf](/manual/0.3.3/transient.pdf))
+- [Magit-Section Developer Manual **3.0.0**](/manual/3.0.0/magit-section)
+  ([single page](/manual/3.0.0/magit-section.html),
+  [pdf](/manual/3.0.0/magit-section.pdf))
+- [With-Editor User Manual **3.0.4**](/manual/3.0.4/with-editor)
+  ([single page](/manual/3.0.4/with-editor.html),
+  [pdf](/manual/3.0.4/with-editor.pdf))
 
 # Older releases
 
 - Magit:
+  [2.90.1](/manual/2.90.1/magit.pdf),
   [2.90.0](/manual/2.90.0/magit.pdf),
   [2.13.1](/manual/2.13.1/magit.pdf),
   [2.13.0](/manual/2.13.0/magit.pdf),

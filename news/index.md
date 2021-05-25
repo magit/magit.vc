@@ -3,7 +3,11 @@ layout: default
 title: News about Magit and related packages
 ---
 
-<!--Also update news/index.md-->
+<!--Also update index.md-->
+* 20210525 — Magit **v3.0.0** [released]({{ site.relnotes }}/3.0.0.org)
+  ([announcement](https://emacsair.me/2021/05/25/magit-3.0))
+* 20210221 — Transient **v0.3.0** released
+  ([announcement](https://emacsair.me/2021/02/21/transient-0.3))
 * 20200226 — Transient **v0.2.0** released
   ([announcement](https://emacsair.me/2020/02/26/transient-0.2))
 * 20200123 — Magit-Section as a stand-alone package
