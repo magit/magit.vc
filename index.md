@@ -79,6 +79,8 @@ GUI and these holds for both Git beginners and experts alike.
 # News
 
 <!--Also update news/index.md-->
+* 20210425 — Forge **v0.2.0** released
+  ([announcement](https://emacsair.me/2021/05/25/forge-0.2))
 * 20210525 — Magit **v3.0.0** [released]({{ site.relnotes }}/3.0.0.org)
   ([announcement](https://emacsair.me/2021/05/25/magit-3.0))
 * 20210221 — Transient **v0.3.0** released

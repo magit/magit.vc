@@ -37,9 +37,9 @@ using a development snapshot.
   [pdf](/manual/3.0.0/magit.pdf))
   - [Installation](/manual/3.0.0/magit/Installation.html)
   - [FAQ](/manual/3.0.0/magit/FAQ.html)
-- [Forge User Manual **0.1.0**](/manual/0.1.0/forge)
-  ([single page](/manual/0.1.0/forge.html),
-  [pdf](/manual/0.1.0/forge.pdf))
+- [Forge User Manual **0.2.0**](/manual/0.2.0/forge)
+  ([single page](/manual/0.2.0/forge.html),
+  [pdf](/manual/0.2.0/forge.pdf))
 - [Ghub User and Developer Manual **3.5.2**](/manual/3.5.2/ghub)
   ([single page](/manual/3.5.2/ghub.html),
   [pdf](/manual/3.5.2/ghub.pdf))
