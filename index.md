@@ -93,30 +93,6 @@ GUI and these holds for both Git beginners and experts alike.
   ([announcement](https://emacsair.me/2019/02/14/transient-0.1))
 * 20181219 — Forge **v0.1.0** released
   ([announcement](https://emacsair.me/2018/12/19/forge-0.1))
-* 20181116 — Magit **v2.90.1** [released]({{ site.relnotes }}/2.90.1.org)
-* 20181108 — Magit **v2.90.0** [released]({{ site.relnotes }}/2.90.0.org)
-  ([announcement](https://emacsair.me/2018/11/08/magit-2.90))
-* 20181002 — Extending the Year of Magit [Kickstarter update #9](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2304233)
-* 20180602 — Magit **v2.13.0** [released]({{ site.relnotes }}/2.13.0.txt)
-  ([announcement](https://emacsair.me/2018/06/02/magit-2.13))
-* 20180531 — [Kickstarter update #8](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2201646)
-* 20180426 — [Kickstarter update #7](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2172226)
-* 20180329 — Magit **v2.12.0** [released]({{ site.relnotes }}/2.12.0.txt)
-  ([announcement](https://emacsair.me/2018/03/29/magit-2.12))
-* 20180320 — Ghub and Glab **v2.0.0** [released](https://emacsair.me/2018/03/20/ghub-2.0)
-* 20180228 — [Kickstarter update #6](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2124955)
-* 20171120 — Magit-Popup **v2.12.0** [released](https://github.com/magit/magit-popup/releases/tag/v2.12.0)
-  (first separate release)
-* 20171023 — Added css style switcher to this page
-* 20171002 — [Kickstarter update #5](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/2003372)
-* 20170921 — [Kickstarter update #4](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1988383)
-* 20170913 — Magit **v2.11.0** [released]({{ site.relnotes }}/2.11.0.txt)
-  ([announcement](https://emacsair.me/2017/09/13/magit-2.11))
-* 20170911 — [Kickstarter update #3](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1982683)
-* 20170907 — [Kickstarter update #2](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1981882)
-* 20170906 — [Kickstarter update #1](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1978248)
-* 20170901 — Launched the fundraising campaign
-  [on Kickstarter](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client)
 
 [All news](/news).
 
