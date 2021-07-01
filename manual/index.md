@@ -32,11 +32,11 @@ using a development snapshot.
 
 # Current releases
 
-- [Magit User Manual **3.0.0**](/manual/3.0.0/magit)
-  ([single page](/manual/3.0.0/magit.html),
-  [pdf](/manual/3.0.0/magit.pdf))
-  - [Installation](/manual/3.0.0/magit/Installation.html)
-  - [FAQ](/manual/3.0.0/magit/FAQ.html)
+- [Magit User Manual **3.1.0**](/manual/3.1.0/magit)
+  ([single page](/manual/3.1.0/magit.html),
+  [pdf](/manual/3.1.0/magit.pdf))
+  - [Installation](/manual/3.1.0/magit/Installation.html)
+  - [FAQ](/manual/3.1.0/magit/FAQ.html)
 - [Forge User Manual **0.2.0**](/manual/0.2.0/forge)
   ([single page](/manual/0.2.0/forge.html),
   [pdf](/manual/0.2.0/forge.pdf))
@@ -56,6 +56,7 @@ using a development snapshot.
 # Older releases
 
 - Magit:
+  [3.0](/manual/3.0.0/magit.pdf),
   [2.90.1](/manual/2.90.1/magit.pdf),
   [2.90.0](/manual/2.90.0/magit.pdf),
   [2.13.1](/manual/2.13.1/magit.pdf),
