@@ -79,6 +79,8 @@ GUI and these holds for both Git beginners and experts alike.
 # News
 
 <!--Also update news/index.md-->
+* 20210806 — Magit available from NonGNU Elpa
+  ([announcement](https://emacsair.me/2021/08/06/nongnu-elpa))
 * 20210801 — Magit **v3.2.0** [released]({{ site.relnotes }}/3.2.0.org)
   ([announcement](https://emacsair.me/2021/08/01/magit-3.2))
 * 20210701 — Magit **v3.1.0** [released]({{ site.relnotes }}/3.1.0.org)
