@@ -32,11 +32,11 @@ using a development snapshot.
 
 # Current releases
 
-- [Magit User Manual **3.2.1**](/manual/3.2.1/magit)
-  ([single page](/manual/3.2.1/magit.html),
-  [pdf](/manual/3.2.1/magit.pdf))
-  - [Installation](/manual/3.2.1/magit/Installation.html)
-  - [FAQ](/manual/3.2.1/magit/FAQ.html)
+- [Magit User Manual **3.3.0**](/manual/3.3.0/magit)
+  ([single page](/manual/3.3.0/magit.html),
+  [pdf](/manual/3.3.0/magit.pdf))
+  - [Installation](/manual/3.3.0/magit/Installation.html)
+  - [FAQ](/manual/3.3.0/magit/FAQ.html)
 - [Forge User Manual **0.2.0**](/manual/0.2.0/forge)
   ([single page](/manual/0.2.0/forge.html),
   [pdf](/manual/0.2.0/forge.pdf))
