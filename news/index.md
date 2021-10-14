@@ -4,6 +4,8 @@ title: News about Magit and related packages
 ---
 
 <!--Also update index.md-->
+* 20211014 — Forge **v0.3.0** released
+  ([announcement](https://emacsair.me/2021/10/14/forge-0.3))
 * 20211004 — Magit **v3.3.0** [released]({{ site.relnotes }}/3.3.0.org)
   ([announcement](https://emacsair.me/2021/10/04/magit-3.3))
 * 20210806 — Magit available from NonGNU Elpa
