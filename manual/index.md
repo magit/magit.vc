@@ -33,7 +33,8 @@ using a development snapshot.
 # Current releases
 
 - [Magit User Manual **3.3.0**](/manual/3.3.0/magit)
-  ([single page](/manual/3.3.0/magit.html),
+  ([**modern design**](https://www.emacsdocs.org/docs/magit/Top),
+  [single page](/manual/3.3.0/magit.html),
   [pdf](/manual/3.3.0/magit.pdf))
   - [Installation](/manual/3.3.0/magit/Installation.html)
   - [FAQ](/manual/3.3.0/magit/FAQ.html)
