@@ -42,6 +42,9 @@ bank accounts.
 My IBAN is **CH92 0077 0016 0444 2057 7**.  Before completing the
 transaction make sure you are sending money to **Jonas Bernoulli**.
 
+(SWIFT is **BKBBCHBB**, BIC is **BKBBCHBBXXX**, and Clearing-Nr. is
+**770**)
+
 <a name="zelle">
 <h1>
   <img class="donate"
