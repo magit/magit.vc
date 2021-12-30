@@ -82,7 +82,6 @@ actually matches your contribution!  You can read about that
 If that weren't the case, then I would prefer the above bank transfer
 methods because they are also free of charge.
 
-
 # FAQ 2: Can you send me a bill?
 
 Of course! Just ask me for one in an email.
@@ -97,10 +96,7 @@ Yes, a few other donation methods are available and while they are
 less populare than the options mentioned above you are of course more
 than welcome to use your favorite.
 
-- [Liberapay](https://liberapay.com/magit)
 - [Patreon](https://www.patreon.com/tarsius)
-- [Opencollective](https://opencollective.com/magit)
-- [Flattr](https://flattr.com/@tarsius)
-- [Paypal subscription](/donate/paypal.html)
-- Bitcoin: 1KvLZpbo1AZCPsMJidUyLxS44uXGBxxHgK
-- Ethereum: 0x90c98E49862d2Ac495BCA94342426D4e90286Ef5
+- [Paypal](/donate/paypal.html) (recurring)
+- [Opencollective](https://opencollective.com/magit) (payment via PayPal or credit card)
+- [Liberapay](https://liberapay.com/magit) (payment via PayPal or Stripe)
