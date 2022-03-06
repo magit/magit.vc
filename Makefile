@@ -59,6 +59,7 @@ publish: clean build
 	else echo "ERROR: Only master can be published"; exit 1; fi
 	@aws s3 sync $(SRC) $(PUBLISH_BUCKET)$(DST) --delete $(SYNC)
 	@aws s3 sync $(SRC)/manual $(PUBLISH_BUCKET)/manual
+	@aws s3 sync $(SRC)/stats $(PUBLISH_BUCKET)/stats
 	@printf "Generating CDN invalidation\n"
 	@aws cloudfront create-invalidation \
 	--distribution-id $(CFRONT_DIST) --paths "/*" > /dev/null
