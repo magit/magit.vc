@@ -139,7 +139,7 @@ GUI and these holds for both Git beginners and experts alike.
 * [Development][devel]
   * [Pull requests][pulls]
   * [Issue tracker][issues]
-  * [Statistics](/stats/activity.html)
+  * [Statistics](/stats)
 * Support
   * [Magit tag on the Emacs Stackexchange][forum]
   * [Mailing list][list]
