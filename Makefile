@@ -45,7 +45,7 @@ build:
 serve:
 	jekyll serve -P $(PORT)
 
-publish: clean build
+publish:
 	@if test $$(git symbolic-ref --short HEAD) = master; \
 	then echo "Uploading to $(PUBLISH_BUCKET)..."; \
 	else echo "ERROR: Only master can be published"; exit 1; fi
