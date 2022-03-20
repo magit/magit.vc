@@ -4,10 +4,8 @@ DOMAIN         ?= magit.vc
 PUBLIC         ?= https://$(DOMAIN)
 CFRONT_DIST    ?= E2LUHBKU1FBV02
 PUBLISH_BUCKET ?= s3://$(DOMAIN)
-PREVIEW_BUCKET ?= s3://preview.$(DOMAIN)
 S3_DOMAIN      ?= s3-website.eu-central-1.amazonaws.com
 PUBLISH_S3_URL ?= http://$(DOMAIN).$(S3_DOMAIN)
-PREVIEW_S3_URL ?= http://preview.$(DOMAIN).$(S3_DOMAIN)
 
 SRC   = _site
 DST   =
@@ -25,7 +23,6 @@ help:
 	$(info )
 	$(info make build          - build using jekyll)
 	$(info make serve          - run a local jekyll server)
-	$(info make preview        - upload to preview site)
 	$(info make publish        - upload to production site)
 	$(info make publish-other  - upload from related repos)
 	$(info make update-fonts   - download updated fonts)
@@ -47,11 +44,6 @@ build:
 
 serve:
 	jekyll serve -P $(PORT)
-
-preview:
-	@echo "Uploading to $(PREVIEW_BUCKET)..."
-	@aws s3 sync $(SRC) $(PREVIEW_BUCKET)$(DST) --delete $(SYNC)
-	@make -C manual/2.11 preview
 
 publish: clean build
 	@if test $$(git symbolic-ref --short HEAD) = master; \
