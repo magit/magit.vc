@@ -82,7 +82,7 @@ title: News about Magit and related packages
   ([announcement](https://emacsair.me/2016/01/18/magit-2.40))
 * 20151111 — Magit **v2.3.1** [released]({{ site.relnotes }}/2.3.1.txt)
 * 20151028 — Magit **v2.3.0** [released]({{ site.relnotes }}/2.3.0.txt)
-* 20150919 — Provide an [Elpa archive](/elpa/v1) for obsolete **v1.4.2**.
+* 20150919 — Provide an Elpa archive for obsolete **v1.4.2** [now defunct].
 * 20150903 — Magit **v2.2.2** [released]({{ site.relnotes }}/2.2.2.txt)
 * 20150824 — Magit **v2.2.1** [released]({{ site.relnotes }}/2.2.1.txt)
 * 20150816 — Magit **v2.2.0** [released]({{ site.relnotes }}/2.2.0.txt)
