@@ -54,7 +54,7 @@ https://www.youtube.com/watch?v=AdEOazt1rD0
 https://www.youtube.com/watch?v=t8tEzJ1RnW0
 -->
 
-The [Magit Youtube channel](youtube.com/channel/UCexQgXXm2njaZOn2GEEtRCw) might have some additional video.
+The [Magit Youtube channel](https://www.youtube.com/channel/UCexQgXXm2njaZOn2GEEtRCw) might have some additional video.
 
 You might also be interested in some [screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 and [blog posts](/blogs).

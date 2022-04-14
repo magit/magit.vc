@@ -176,22 +176,20 @@ Many more people have [contributed code][authors] and suggested
 features.
 
 Over the years a lot of people supported development financially,
-including the [1987 backers][backers] of the 2017 crowdfunding
-campaign.
+including the backers of the 2017 crowdfunding campaign.
 
 <video id="gource" controls poster="/assets/videos/gource-700x700.png">
   <source src="/assets/videos/gource-700x700.webm" type="video/webm">
 </video>
 
-[backers]: https://github.com/magit/magit/blob/master/Documentation/BACKERS.md
 [contrib]: https://github.com/magit/magit/blob/master/CONTRIBUTING.md
 [devel]:   https://github.com/magit/magit
 [issues]:  https://github.com/magit/magit/issues
 [pulls]:   https://github.com/magit/magit/pulls
 
-[authors]: https://magit.vc/stats/authors.html
-[faq]:     https://magit.vc/manual/magit/FAQ.html
-[manual]:  https://magit.vc/manual
+[authors]: /stats/magit/authors.html
+[faq]:     /manual/magit/FAQ.html
+[manual]:  /manual
 
 [chat]:    https://gitter.im/magit/magit
 [forum]:   https://emacs.stackexchange.com/questions/tagged/magit

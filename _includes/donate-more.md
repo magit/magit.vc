@@ -1,7 +1,7 @@
 <div id="donate">
   <div>
     Keeping its users <a href= "/quotes">this excited</a> is
-    <a href="https://magit.vc/stats/authors.html#cumulated_added_lines_of_code_per_author">
+    <a href="https://magit.vc/stats/magit/authors.html#cumulated_added_lines_of_code_per_author">
       a lot of work
     </a>.
     If Magit makes you <br> more productive too,

@@ -55,16 +55,16 @@ title: News about Magit and related packages
   [on Kickstarter](https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client)<br>
   [Articles](https://emacsair.me/2017/09/01/campaign-articles)
   about Magit and the fundraiser:
-  * [Visual Magit walk-through](https://emacsair.me/2017/09/01/magit-walk-through#start)
-  * [Magit, the magical Git interface](https://emacsair.me/2017/09/01/the-magical-git-interface#start)
-  * [Magit for users of other editors](https://emacsair.me/2017/09/01/magit-for-non-emacs-users#start)
+  * [Visual Magit walk-through](https://emacsair.me/2017/09/01/magit-walk-through/)
+  * [Magit, the magical Git interface](https://emacsair.me/2017/09/01/the-magical-git-interface/)
+  * [Magit for users of other editors](https://emacsair.me/2017/09/01/magit-for-non-emacs-users/)
 * 20170308 — Magit **v2.10.3** [released]({{ site.relnotes }}/2.10.3.txt)
 * 20170214 — Magit **v2.10.2** [released]({{ site.relnotes }}/2.10.2.txt)
 * 20170128 — Magit **v2.10.1** [released]({{ site.relnotes }}/2.10.1.txt)
 * 20170104 — Magit **v2.10.0** [released]({{ site.relnotes }}/2.10.0.txt)
   ([announcement](https://emacsair.me/2017/01/04/magit-2.10))
 * 20161207 — Magit **v2.9.0** [released]({{ site.relnotes }}/2.9.0.txt)
-  ([announcement](https://emacsair.me/2016/12/07/magit-2.9))
+  ([announcement](https://emacsair.me/2016/12/07/magit-2.90))
 * 20161206 — Santa brought a
   [new](https://prospectone.io/portfolio/magit) Magit logo
 * 20160821 — Magit **v2.8.0** [released]({{ site.relnotes }}/2.8.0.txt)
@@ -79,7 +79,7 @@ title: News about Magit and related packages
   ([announcement](https://emacsair.me/2016/02/10/magit-2.5))
 * 20160119 — Magit **v2.4.1** [released]({{ site.relnotes }}/2.4.1.txt)
 * 20160118 — Magit **v2.4.0** [released]({{ site.relnotes }}/2.4.0.txt)
-  ([announcement](https://emacsair.me/2016/01/18/magit-2.4))
+  ([announcement](https://emacsair.me/2016/01/18/magit-2.40))
 * 20151111 — Magit **v2.3.1** [released]({{ site.relnotes }}/2.3.1.txt)
 * 20151028 — Magit **v2.3.0** [released]({{ site.relnotes }}/2.3.0.txt)
 * 20150919 — Provide an [Elpa archive](/elpa/v1) for obsolete **v1.4.2**.

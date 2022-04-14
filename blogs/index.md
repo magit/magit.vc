@@ -9,7 +9,7 @@ The full list of posts is [here](https://emacsair.me/).
 
 # Posts by users
 
-* [Magit, the one and only](https://www.manueluberti.eu/emacs/2017/11/09/magit)
+* [Magit, the one and only](https://manueluberti.eu/emacs/2017/11/09/magit)
 
   Nowadays it is basically impossible to land in a group of Emacs
   enthusiasts without someone talking rapturously about the wonders of
@@ -18,7 +18,7 @@ The full list of posts is [here](https://emacsair.me/).
 
   Be warned: the following story goes along those magic lines.
 
-* [Why You Should Use Magit: A Git Porcelain Inside Emacs](https://www.mojotech.com/blog/why-you-should-use-magit-git-porcelain-inside-emacs) by Matthew Forsyth — 2017.10
+* [Why You Should Use Magit: A Git Porcelain Inside Emacs](https://www.mojotech.com/blog/why-you-should-use-magit-git-porcelain-inside-emacs/) by Matthew Forsyth — 2017.10
 
   Magit is the holy grail of workspace tools, allowing Git users to
   handle all aspects of source control directly from within Emacs. But
@@ -34,7 +34,7 @@ The full list of posts is [here](https://emacsair.me/).
   sparks and glitter on top of the real show. For Magit is a magic
   show, and its real feature is making you the magician.
 
-* [Emacs: Magit Magic](http://www.mycpu.org/emacs-24-magit-magic) by Manoj Rao — 2016.9
+* [Emacs: Magit Magic](http://www.mycpu.org/emacs-24-magit-magic/) by Manoj Rao — 2016.9
 
 * [Git's selective commits plus Magit are a killer feature for me](https://utcc.utoronto.ca/~cks/space/blog/programming/GitSelectiveCommitWithMagit) by Chris Siebenmann — 2016.9
 
@@ -58,7 +58,7 @@ The full list of posts is [here](https://emacsair.me/).
 
 * [An introduction to Magit, an Emacs mode for Git](https://www.masteringemacs.org/article/introduction-magit-emacs-mode-git) by Mickey Petersen — 2015
 
-* [Magit](http://randycoulman.com/blog/2014/10/21/magit/) by Randy Coulman — 2014.10
+* [Magit](https://randycoulman.com/blog/2014/10/21/magit/) by Randy Coulman — 2014.10
 
   When we decided to migrate to Git a few years ago, I decided to try
   Magit in Emacs as a front-end, and I’ve never looked back.

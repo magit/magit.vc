@@ -10,18 +10,18 @@ by [Jonas Bernoulli][jonas], [Kyle Meyer][kyle], and
 [Phil Jackson][phil], [Rémi Vanicat][remi], and [Yann Hodique][yann].
 
 For a full list of all contributors, see [AUTHORS.md][authors] or
-the [statistics](/stats/authors.html).
+the [statistics](/stats/magit/authors.html).
 
 Thanks to all of you, may (the history of) the source be with you!
 
-[authors]: https://raw.githubusercontent.com/magit/magit/master/AUTHORS.md
+[authors]: {{site.rawgithub}}/magit/master/docs/AUTHORS.md
 
 [jonas]:   https://emacsair.me
 [kyle]:    https://github.com/kyleam
 [marius]:  https://github.com/mvollmer
-[nicolas]: http://dudebout.com
+[nicolas]: https://dudebout.com
 [noam]:    https://github.com/npostavs
 [peter]:   https://github.com/pjweisberg
 [phil]:    https://github.com/philjackson
 [remi]:    https://github.com/vanicat
-[yann]:    http://www.hodique.info
+[yann]:    https://www.hodique.info

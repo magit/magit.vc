@@ -83,7 +83,7 @@ reflog, remote, request-pull, reset, revert, rm, show, stash,
 submodule, and tag.  Many more Magit porcelain commands are
 implemented on top of Git plumbing commands.
 
-[emacs]:     https://www.gnu.org/software/emacs
-[evil]:      https://bitbucket.org/lyro/evil/wiki/Home
+[emacs]:     https://www.gnu.org/software/emacs/
+[evil]:      https://github.com/emacs-evil/evil
 [git]:       https://git-scm.com
 [spacemacs]: https://github.com/syl20bnr/spacemacs

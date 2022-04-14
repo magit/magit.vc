@@ -18,9 +18,9 @@ form, and I am thankful for all the positive feedback.
 But I believe that, with your help, I can make it even
 better.  Please consider supporting my continuous work on
 <a class="dotted" href="https://github.com/magit/magit/issues">maintaining</a>,
-<a class="dotted" href="https://github.com/magit/magit/tree/master/Documentation/RelNotes">improving</a> and
+<a class="dotted" href="https://github.com/magit/magit/tree/master/docs/RelNotes">improving</a> and
 <a class="dotted" href="/manual/magit.html#Top">documenting</a> Magit, and
-<a class="dotted" href="http://emacs.stackexchange.com/tags/magit/topusers">helping</a>
+<a class="dotted" href="https://emacs.stackexchange.com/tags/magit/topusers">helping</a>
 <a class="dotted" href="https://github.com/magit/magit/issues?q=is%3Aissue+is%3Aclosed+label%3Asupport">its</a>
 <a class="dotted" href="https://gitter.im/magit/magit">users</a>.
 
@@ -77,8 +77,7 @@ able to set it up in less than ten minutes.
 I prefer [Github sponsors](https://github.com/sponsors/tarsius)
 because that currently is not only completely free of fees but Github
 actually matches your contribution!  You can read about that
-[here](https://help.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors).
-
+[here](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors).
 If that weren't the case, then I would prefer the above bank transfer
 methods because they are also free of charge.
 

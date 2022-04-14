@@ -702,7 +702,7 @@ See [Stashing](https://magit.vc/manual/magit/Stashing.html).
 ![](/screenshots/popup-run.png)
 See [Running Git Manually](https://magit.vc/manual/magit/Running-Git-Manually.html).
 
-[emacs]:     https://www.gnu.org/software/emacs
+[emacs]:     https://www.gnu.org/software/emacs/
 [git]:       https://git-scm.com
 [solarized]: https://github.com/bbatsov/solarized-emacs
 [zenburn]:   https://github.com/bbatsov/zenburn-emacs
