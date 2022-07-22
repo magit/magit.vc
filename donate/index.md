@@ -1,87 +1,48 @@
 ---
 layout: default
-title: Please help making it better
+title: Please help me improve Magit
 ---
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 <section>
-  {% markdown donate-core.md %}
+{% markdown donate-self.md %}
   <br/>
 </section>
 
-# Please help making Magit even better
+{% markdown make-better.md %}
+<br/>
 
-Many users are quite excited about Magit in its current
-form, and I am thankful for all the positive feedback.
+# FAQ 1: What other payment options do you accept?
 
-But I believe that, with your help, I can make it even
-better.  Please consider supporting my continuous work on
-<a class="dotted" href="https://github.com/magit/magit/issues">maintaining</a>,
-<a class="dotted" href="https://github.com/magit/magit/tree/master/docs/RelNotes">improving</a> and
-<a class="dotted" href="/manual/magit.html#Top">documenting</a> Magit, and
-<a class="dotted" href="https://emacs.stackexchange.com/tags/magit/topusers">helping</a>
-<a class="dotted" href="https://github.com/magit/magit/issues?q=is%3Aissue+is%3Aclosed+label%3Asupport">its</a>
-<a class="dotted" href="https://gitter.im/magit/magit">users</a>.
+Please keep scrolling or [jump there](#alt).
 
-<em>Thank you! — Jonas Bernoulli</em>
+# FAQ 2: What payment option do you prefer?
 
-<a name="iban">
-<h1>
-  <img class="donate"
-       title="Donate using IBAN"
-       alt="Donate using IBAN"
-       src="/assets/iban.png"></h1>
+I prefer options that come with no, or very, low fees.  Of course I like these
+options because it means I get more money, but it is equally important who does
+*not* get a cut when we avoid unnecessary fees.
 
-If you have a **European bank account**, then
-[IBAN](https://en.wikipedia.org/wiki/International_Bank_Account_Number)
-is the best option to transfer money to me.  For non-European bank
-accounts this may also be the best option; a notable exception are US
-bank accounts.
+In practical terms, that means that I prefer bank transfers.  Nowadays many
+banks have web-pages and apps, that make it nearly as simple to transfer money
+as the offerings of platforms that focus solely on money transfer.  So even
+if you avoided using them in the past, it might be worth giving them another
+chance.
 
-My IBAN is **CH92 0077 0016 0444 2057 7**.  Before completing the
-transaction make sure you are sending money to **Jonas Bernoulli**.
+# FAQ 3: I already use something else for donations.  Can I stick to that?
 
-(SWIFT is **BKBBCHBB**, BIC is **BKBBCHBBXXX**, and Clearing-Nr. is
-**770**)
+Of course I welcome all donations!  Since most developers only accept donations
+through one of the popular donation platforms, it makes sense to stick to that
+for all your donations.  It is certainly better to make donations using an
+expensive offering, than it is to make no donations at all because doing so
+would be too time consuming.
 
-<a name="zelle">
-<h1>
-  <img class="donate"
-       title="Donate using Zelle"
-       alt="Donate using Zelle"
-       src="/assets/zelle.png"></h1>
+Currently only a tiny fractions of the donations that I receive are done using
+bank transfers, so don't feel bad if you don't do that either.  Still, it might
+be worth investing some time, making sure a greater part of your donations reach
+the intended recipients.
 
-If you have an **US bank account**, then
-[Zelle](https://en.wikipedia.org/wiki/Zelle_(payment_service)) may be
-the best option to transfer money to me.  Zelle is supported by at
-least Bank of America, BB&T, Capital One, JPMorgan Chase, PNC Bank, US
-Bank, Citibank and Wells Fargo.
-
-Login to your online banking and send money to the email address
-**jonas(at)bernoul(dot)li**.  Before completing the transation double
-check the email address.
-
-Note that unlike other US-internal money transfer methods Zelle is
-free of charge.  If you have never used Zelle before you should be
-able to set it up in less than ten minutes.
-
-# FAQ 1: Which payment method do you prefer?
-
-<a href="https://github.com/sponsors/tarsius">
-  <img class="donate"
-       title="Donate using Github Sponsors"
-       alt="Donate using Github Sponsors"
-       src="/assets/github-sponsors-50px.png"></a>
-
-I prefer [Github sponsors](https://github.com/sponsors/tarsius)
-because that currently is not only completely free of fees but Github
-actually matches your contribution!  You can read about that
-[here](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors).
-If that weren't the case, then I would prefer the above bank transfer
-methods because they are also free of charge.
-
-# FAQ 2: Can you send me a bill?
+# FAQ 4: Can you send me a bill?
 
 Of course! Just ask me for one in an email.
 
@@ -89,13 +50,42 @@ By the way, while your employer may not have a budget for donations to
 free software, they might have one to **buy** any software or support.
 I would be happy to send them such a bill.
 
-# FAQ 3: Do you accept any other donation methods?
+# Bank transfers
 
-Yes, a few other donation methods are available and while they are
-less populare than the options mentioned above you are of course more
-than welcome to use your favorite.
+- Use [ACH](/donate/ach.html) direct deposit if you have an US bank account.
+- Use [IBAN](/donate/iban.html) if you have a European account.  This might
+  also work for other non-US bank account.
 
-- [Patreon](https://www.patreon.com/tarsius)
-- [Paypal](/donate/paypal.html) (recurring)
-- [Opencollective](https://opencollective.com/magit) (payment via PayPal or credit card)
-- [Liberapay](https://liberapay.com/magit) (payment via PayPal or Stripe)
+# Payment processors
+
+Compared to (at least European) banks these charge higher fees.
+
+- [Stripe](/donate/stripe.html)
+- [Paypal](/donate/paypal.html)
+
+<a name="alt">
+# Donation platforms
+
+- [Github Sponsors](https://github.com/sponsors/tarsius/)
+
+  This is by far the most popular option among my backers.  They currently do
+  not charge any fees themselves, but the fees of Stripe and your credit card
+  company still apply.
+
+- [Patreon](https://www.patreon.com/tarsius/)
+
+  This is the second most popular option among my backers.  They charge very
+  high fees, including some hidden fees.  Please avoid them going forward; if
+  all the people you back on there also accept donations elsewhere, then you
+  might even want to move away from this platform.
+  
+- [Opencollective](https://opencollective.com/magit/)
+
+  Not popular among my backers.  Because I have opted to use no "fiscal host"
+  they charge no additional fees.  As a consequence, they do however ask you
+  to also donate to them when you are donating to me (but you can decline).
+
+- [Liberapay](https://liberapay.com/magit/)
+
+  Not popular, but they have only the best intentions and they charge no
+  additional fees.

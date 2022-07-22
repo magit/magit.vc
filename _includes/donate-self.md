@@ -37,6 +37,6 @@
            src="/assets/paypal.png"></a>
   </div>
   <div>
-    <a href="/donate">Some alternative donation options are available</a>.
+    <a href="#alt">Some alternative donation options are available</a>.
   </div>
 </div>

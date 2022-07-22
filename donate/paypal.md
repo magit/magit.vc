@@ -1,10 +1,11 @@
 ---
 layout: default
-title: Donate using PayPal
+title: Sponsor my work using PayPal
 ---
 
-Make a [one time payment](https://www.paypal.me/JonasBernoulli/25)
-or contribute using a subscription:
+- Make a [**one time payment**](https://www.paypal.me/JonasBernoulli/25).
+
+- Or contribute using a subscription:
 
 <p>
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -30,3 +31,14 @@ or contribute using a subscription:
     <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
   </form>
 </p>
+
+<br/>
+<img title="Sponsor my work using PayPal"
+     alt="Sponsor my work using PayPal"
+     src="/assets/paypal.png"
+     class="paylogo">
+
+<hr>
+<br>
+*Some other donation options are [available](/donate).*
+{% markdown make-better.md %}
