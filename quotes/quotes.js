@@ -141,6 +141,9 @@ var quotes = [
     ["The difference between a porcelain like magit and some other \"front-end\" is you are actually using git. Other front-ends hide git behind new abstractions (or rather, old abstractions, more like SVN or other centralised VCSs) and I find that users of these never really understand how git works. I've been using magit for almost my entire life with git, I don't really know how to use the CLI, but I consider myself a git expert.",
      "globular-toast",
      "https://news.ycombinator.com/item?id=24440525"],
+    ["magit is a superb example of nominative determinism",
+     "eointierney",
+     "https://news.ycombinator.com/item?id=32958041"],
     // lwn
     ["Magit is one of those rare packages which actually help you better understand the tool it provides an interface to.",
      "Paul D. Smith",
