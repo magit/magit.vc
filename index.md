@@ -144,7 +144,7 @@ GUI and these holds for both Git beginners and experts alike.
   * [Magit tag on the Emacs Stackexchange][forum]
   * [Mailing list][list]
   * [Gitter chat][chat]
-* [Announcements on Twitter][twitter]
+* [Announcements on Mastodon][mastodon]
 * [Screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 * [Screencasts](/screencasts)
 * [User quotes](/quotes)
@@ -194,7 +194,7 @@ including the backers of the 2017 crowdfunding campaign.
 [chat]:    https://gitter.im/magit/magit
 [forum]:   https://emacs.stackexchange.com/questions/tagged/magit
 [list]:    https://groups.google.com/forum/?fromgroups#!forum/magit
-[twitter]: https://twitter.com/magit_emacs
+[mastodon]: https://mastodon.social/@tarsius
 [wiki]:    https://github.com/magit/magit/wiki
 
 [Emacs]:   https://www.gnu.org/software/emacs
