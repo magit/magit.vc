@@ -141,9 +141,9 @@ GUI and these holds for both Git beginners and experts alike.
   * [Issue tracker][issues]
   * [Statistics](/stats)
 * Support
-  * [Magit tag on the Emacs Stackexchange][forum]
-  * [Mailing list][list]
-  * [Gitter chat][chat]
+  * [Emacs Subreddit][reddit]
+  * [Emacs Stackexchange][stackexchange]
+  * [Github discussions][discussions]
 * [Announcements on Mastodon][mastodon]
 * [Screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 * [Screencasts](/screencasts)
@@ -159,8 +159,8 @@ You should also consult the [manual][manual] and ask a general-purpose
 search engine.
 
 If that doesn't answer your question, then ask for help on the
-**[Emacs Stackexchange site][forum]**, the [mailing list][list], or
-the [Gitter chat][chat].
+[Emacs Stackexchange site][stackexchange], the [Emacs Subreddit][reddit]
+or [Github discussions][discussions].
 
 Please do NOT use the GitHub issue tracker for support requests.
 We only use it for feature requests and bug reports.
@@ -191,11 +191,14 @@ including the backers of the 2017 crowdfunding campaign.
 [faq]:     /manual/magit/FAQ.html
 [manual]:  /manual
 
-[chat]:    https://gitter.im/magit/magit
-[forum]:   https://emacs.stackexchange.com/questions/tagged/magit
-[list]:    https://groups.google.com/forum/?fromgroups#!forum/magit
-[mastodon]: https://mastodon.social/@tarsius
-[wiki]:    https://github.com/magit/magit/wiki
+[reddit]:        https://www.reddit.com/r/emacs
+[stackexchange]: https://emacs.stackexchange.com/questions/tagged/magit
+[discussions]:   https://github.com/magit/magit/discussions/4630
+[//]: #          https://gitter.im/magit/magit
+[//]: #          https://groups.google.com/forum/?fromgroups#!forum/magit
+[//]: #          https://twitter.com/magit_emacs
+[mastodon]:      https://mastodon.social/@tarsius
+[wiki]:          https://github.com/magit/magit/wiki
 
 [Emacs]:   https://www.gnu.org/software/emacs
 [Git]:     https://git-scm.com
