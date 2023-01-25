@@ -8,25 +8,25 @@ title: User Manuals
 If you have installed Magit from Melpa (non-stable), then you are
 using a development snapshot.
 
-- [Magit User Manual **master**](/manual/magit)
+- [Magit User Manual **main**](/manual/magit)
   ([single page](/manual/magit.html),
   [pdf](/manual/magit.pdf),
   [epub](/manual/magit.epub))
   - [Installation](/manual/magit/Installation.html)
   - [FAQ](/manual/magit/FAQ.html)
-- [Forge User Manual **master**](/manual/forge)
+- [Forge User Manual **main**](/manual/forge)
   ([single-page](/manual/forge.html),
    [pdf](/manual/forge.pdf))
-- [Ghub User and Developer Manual **master**](/manual/ghub)
+- [Ghub User and Developer Manual **main**](/manual/ghub)
   ([single page](/manual/ghub.html),
   [pdf](/manual/ghub.pdf))
-- [Transient User and Developer Manual **master**](/manual/transient)
+- [Transient User and Developer Manual **main**](/manual/transient)
   ([single page](/manual/transient.html),
   [pdf](/manual/transient.pdf))
-- [Magit-Section Developer Manual **master**](/manual/magit-section)
+- [Magit-Section Developer Manual **main**](/manual/magit-section)
   ([single page](/manual/magit-section.html),
   [pdf](/manual/magit-section.pdf))
-- [With-Editor User Manual **master**](/manual/with-editor)
+- [With-Editor User Manual **main**](/manual/with-editor)
   ([single page](/manual/with-editor.html),
   [pdf](/manual/with-editor.pdf))
 
