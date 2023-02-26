@@ -9,6 +9,24 @@ title: Screencasts
   </video>
 </center>
 
+### A few recommended videos to get you started
+
+* [The Magit Git Client Is The "Killer Feature" In Emacs](https://www.youtube.com/watch?v=X_iX5US1_xE) by DistroTube — 2020.07 — 9:40
+* [Emacs: introduction to MAGIT](https://www.youtube.com/watch?v=2-0OwGTt0dI) by Protesilaos Stavrou by System Crafter — 2020.04 — 26:32
+* System Crafter's *Magit* series:
+  * [An Introduction to the Ultimate Git Interface, Magit!](https://www.youtube.com/watch?v=_zfvQkJsYwI) by System Crafter — 2021.07 — 32:50
+  * [Everyday Git Workflow in Emacs with Magit](https://www.youtube.com/watch?v=qPfJoeQCIvA) by System Crafter — 2021.07 — 56:38
+  * [Fix Your Git Commits Like a Rebase Expert with Magit](https://www.youtube.com/watch?v=zM7K1y4h6UQ) by System Crafter — 2021.09 — 24:44
+* Zaiste Programming's *Doom Emacs* series:
+  * [Emacs Magit - Getting Started - Emacs Doomcasts 18](https://www.youtube.com/watch?v=7ywEgcbaiys) by Zaiste — 2019.09 — 8:17
+  * [Emacs Magit - The Git Commit Flow in More Detail - Emacs Doomcasts 19](https://www.youtube.com/watch?v=qXgGtyjXPiw) by Zaiste — 2019.10 — 7:53
+  * [Emacs Magit with Forge for Issuing Pull Requests - Emacs Doomcasts 20](https://www.youtube.com/watch?v=fFuf3hExF5w) by Zaiste — 2019.11.09 — 5:45
+
+### In reverse chronological order
+
+* [Fix Your Git Commits Like a Rebase Expert with Magit](https://www.youtube.com/watch?v=zM7K1y4h6UQ) — 2021.09 — 24:44
+* [Everyday Git Workflow in Emacs with Magit](https://www.youtube.com/watch?v=qPfJoeQCIvA) — 2021.07 — 56:38
+* [An Introduction to the Ultimate Git Interface, Magit!](https://www.youtube.com/watch?v=_zfvQkJsYwI) — 2021.07 — 32:50
 * [Emacs From Scratch #4 - Projectile and Magit](https://www.youtube.com/watch?v=INTu30BHZGk) by the_dev_aspect — 2020.09 — 1:01:24
 * [The Magit Git Client Is The "Killer Feature" In Emacs](https://www.youtube.com/watch?v=X_iX5US1_xE) by DistroTube — 2020.07 — 9:40
 * [Emacs: introduction to MAGIT](https://www.youtube.com/watch?v=2-0OwGTt0dI) by Protesilaos Stavrou — 2020.04 — 26:32

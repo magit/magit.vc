@@ -60,6 +60,8 @@ GUI and these holds for both Git beginners and experts alike.
   terms.
 </details>
 
+Or you might prefer a [video](/screencasts) video introduction.
+
 <a href="/screenshots">
   <img class="screenshot" src="/screenshots/status.png">
 </a>
