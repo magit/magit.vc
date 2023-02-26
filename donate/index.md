@@ -11,6 +11,9 @@ might not be obvious that the logo above serves as the "back to homepage" link),
 will find a short introduction, with links to a longer version, to two in depth
 articles and to some videos by happy users.
 
+And yes, the "vc" in magit.vc stands for "version control", not "venture
+capital". ☺️
+
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 <section>
@@ -60,7 +63,19 @@ the intended recipients.
 
 # FAQ 4: Can you send me a bill?
 
-Of course! Just ask me for one in an email.
+~~Of course! Just ask me for one in an email.~~  Sadly, it depends.  Apparently
+EU countries now require that VAT is being payed even for small earnings for
+digital services.  In each country individually, using the country-specific
+platform and rules.  I cannot afford a lawyer to be certain about these things,
+and I likely would have to invest hours per country to figure out how to give
+them money.  If I have to spend all that time to pay taxes for $100, then that
+sadly is not worth the effort and legal uncertainty.
+
+Of course if you intend to pay considerably more, then that is well worth the
+effort.  If not, then consider whether you can make a donation instead of a
+payment.  If you cannot do that but would have payed otherwise, then please
+give me a heads up.  If the lose of donations is considerable enough because
+of this, then it might be worth finding another solution.
 
 By the way, while your employer may not have a budget for donations to
 free software, they might have one to **buy** any software or support.
