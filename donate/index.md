@@ -37,6 +37,14 @@ as the offerings of platforms that focus solely on money transfer.  So even
 if you avoided using them in the past, it might be worth giving them another
 chance.
 
+**Update**, since I am gaining many new supporters right now.  Choose the
+payment method **you** *are most comfortable with*, given the time you are
+willing to invest to set that up.  As we have just learned, putting too many
+eggs in one basket is risky.  GitHub Sponsors dropping support for PayPal is a
+major issue exactly because that was by far the most popular option.  That being
+said, if you have the time, I still encourage you do go with the solution that
+has the smallest fees.
+
 # FAQ 3: I already use something else for donations.  Can I stick to that?
 
 Of course I welcome all donations!  Since most developers only accept donations
