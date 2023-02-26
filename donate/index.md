@@ -3,6 +3,14 @@ layout: default
 title: Please help me improve Magit
 ---
 
+<a href="/"><img class="clear" src="/assets/L.png" align="top" style="float: left;"></a>
+Since the current top [post](https://news.ycombinator.com/item?id=34945086) on
+Hacker News points here but this page does not describe what Magit *is* (and it
+might not be obvious that the logo above serves as the "back to homepage" link),
+[a prominent link](/) to the homepage is in order.  There, near the top, you
+will find a short introduction, with links to a longer version, to two in depth
+articles and to some videos by happy users.
+
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 <section>
