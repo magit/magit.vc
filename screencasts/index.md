@@ -12,7 +12,7 @@ title: Screencasts
 ### A few recommended videos to get you started
 
 * [The Magit Git Client Is The "Killer Feature" In Emacs](https://www.youtube.com/watch?v=X_iX5US1_xE) by DistroTube — 2020.07 — 9:40
-* [Emacs: introduction to MAGIT](https://www.youtube.com/watch?v=2-0OwGTt0dI) by Protesilaos Stavrou by System Crafter — 2020.04 — 26:32
+* [Emacs: introduction to MAGIT](https://www.youtube.com/watch?v=2-0OwGTt0dI) by Protesilaos Stavrou — 2020.04 — 26:32
 * System Crafter's *Magit* series:
   * [An Introduction to the Ultimate Git Interface, Magit!](https://www.youtube.com/watch?v=_zfvQkJsYwI) by System Crafter — 2021.07 — 32:50
   * [Everyday Git Workflow in Emacs with Magit](https://www.youtube.com/watch?v=qPfJoeQCIvA) by System Crafter — 2021.07 — 56:38
