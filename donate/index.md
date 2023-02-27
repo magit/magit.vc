@@ -77,9 +77,10 @@ payment.  If you cannot do that but would have payed otherwise, then please
 give me a heads up.  If the lose of donations is considerable enough because
 of this, then it might be worth finding another solution.
 
-By the way, while your employer may not have a budget for donations to
-free software, they might have one to **buy** any software or support.
-I would be happy to send them such a bill.
+By the way, while your employer may not have a budget for donations to free
+software, they might have one to **buy** any software or support.  I would be
+happy to send them such a bill.  But of course the above caveat applies in that
+case too.
 
 # Bank transfers
 
