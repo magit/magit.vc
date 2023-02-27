@@ -19,6 +19,18 @@ You probably won't need this information, but in case your bank asks for it:
 SWIFT is **BKBBCHBB**, BIC is **BKBBCHBBXXX**, the bank's name is **Basler
 Kantonalbank**, and the clearing-number is **770**.
 
+<h2>Alternative transaction details</h2>
+
+Ultimately I am going to spend most of my money in CHF, and therefore most
+donations have to go through a currency conversion at some point.  I do not
+plan to open an IBAN account for each currency someone might want to pay in,
+but since I live a twenty minute walk away from two EU contries, I do have
+some expenses in EUR, and an IBAN account in that currency:
+
+IBAN is **BE72 9673 1066 6916**, BIC is **TRWIBEB1XXX**, Account holder is
+**Jonas Remigius Bernoulli**, and the address is **Avenue Louise 54, Room S52 /
+Brussels / 1050 / Belgium**.
+
 <br><img class="paylogo" src="/assets/iban.png"><br>
 
 <hr>
