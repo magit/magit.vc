@@ -118,5 +118,5 @@ Compared to (at least European) banks these charge higher fees.
 
 - [Liberapay](https://liberapay.com/magit/)
 
-  Not popular, but they have only the best intentions and they charge no
-  additional fees.
+  Gaining in popularity.  They have only the best intentions and they do not
+  charge any additional fees.
