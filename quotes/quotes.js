@@ -79,7 +79,10 @@ var quotes = [
     ["Magit is pure heavenly goodness",
      "nihilmancer",
      "https://www.reddit.com/r/emacs/comments/4jvta2/elpy_magit_and_emacs_in_general_are_awesome/d3cj6yz"],
-    // reddit
+    ["Magit is to git like snorkeling is to drowning.",
+     "Underarm5498",
+     "https://www.reddit.com/r/emacs/comments/11iexxq/would_you_pay_for_an_emacs_distro/jcmcn8r/"],
+    // reddit (other)
     ["I use Mercurial and I love it, but I am considering switching to Git just for magit.",
      "durdn",
      "https://www.reddit.com/r/programming/comments/2o13do/whats_new_in_git_22/cmiwyit"],
