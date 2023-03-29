@@ -9,7 +9,7 @@ The full list of posts is [here](https://emacsair.me/).
 
 # Posts by users
 
-* [Magit, the one and only](https://manueluberti.eu/emacs/2017/11/09/magit)
+* [Magit, the one and only](https://manueluberti.eu/2017/11/09/magit.html)
 
   Nowadays it is basically impossible to land in a group of Emacs
   enthusiasts without someone talking rapturously about the wonders of
