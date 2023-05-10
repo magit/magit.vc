@@ -44,9 +44,9 @@ using a development snapshot.
 - [Ghub User and Developer Manual **3.5.2**](/manual/3.5.2/ghub)
   ([single page](/manual/3.5.2/ghub.html),
   [pdf](/manual/3.5.2/ghub.pdf))
-- [Transient User and Developer Manual **0.3.4**](/manual/0.3.4/transient)
-  ([single page](/manual/0.3.4/transient.html),
-  [pdf](/manual/0.3.4/transient.pdf))
+- [Transient User and Developer Manual **0.4.0**](/manual/0.4.0/transient)
+  ([single page](/manual/0.4.0/transient.html),
+  [pdf](/manual/0.4.0/transient.pdf))
 - [Magit-Section Developer Manual **3.0.0**](/manual/3.0.0/magit-section)
   ([single page](/manual/3.0.0/magit-section.html),
   [pdf](/manual/3.0.0/magit-section.pdf))

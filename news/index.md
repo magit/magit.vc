@@ -4,6 +4,8 @@ title: News about Magit and related packages
 ---
 
 <!--Also update index.md-->
+* 20230510 — Transient **v0.4.0** released
+  ([announcement](https://emacsair.me/2023/05/10/transient-0.4))
 * 20211014 — Forge **v0.3.0** released
   ([announcement](https://emacsair.me/2021/10/14/forge-0.3))
 * 20211004 — Magit **v3.3.0** [released]({{ site.relnotes }}/3.3.0.org)
