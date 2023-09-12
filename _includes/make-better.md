@@ -1,5 +1,3 @@
-# Please help me improve Magit
-
 Many users are quite excited about Magit in its current
 form, and I am thankful for all the positive feedback.
 

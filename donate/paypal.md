@@ -35,10 +35,12 @@ title: Sponsor my work using PayPal
 <br/>
 <img title="Sponsor my work using PayPal"
      alt="Sponsor my work using PayPal"
-     src="/assets/paypal.png"
+     src="/assets/donate/paypal.png"
      class="paylogo">
 
 <hr>
 <br>
 *Some other donation options are [available](/donate).*
+
+# Please support my work on Magit
 {% markdown make-better.md %}

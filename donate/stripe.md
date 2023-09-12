@@ -14,10 +14,12 @@ expenses are in CHF.
 <br>
 <img title="Sponsor my work using Stripe"
      alt="Sponsor my work using Stripe"
-     src="/assets/stripe.png"
+     src="/assets/donate/stripe.png"
      class="paylogo">
 
 <hr>
 <br>
 *Some other donation options are [available](/donate).*
+
+# Please support my work on Magit
 {% markdown make-better.md %}

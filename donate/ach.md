@@ -43,11 +43,12 @@ Memphis TN 38119
 United States
 </pre>
 
-<br><img class="paylogo" src="/assets/ach.png"><br>
+<br><img class="paylogo" src="/assets/donate/ach.png"><br>
 
 <hr>
 <br>
 *If you have a non-US bank account, then instead make an [IBAN](/donate/iban/)
 transaction.  Some other donation options are [available](/donate).*
 
+# Please support my work on Magit
 {% markdown make-better.md %}

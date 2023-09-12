@@ -31,11 +31,12 @@ IBAN is **BE72 9673 1066 6916**, BIC is **TRWIBEB1XXX**, Account holder is
 **Jonas Remigius Bernoulli**, and the address is **Avenue Louise 54, Room S52 /
 Brussels / 1050 / Belgium**.
 
-<br><img class="paylogo" src="/assets/iban.png"><br>
+<br><img class="paylogo" src="/assets/donate/iban.png"><br>
 
 <hr>
 <br>
 *If you have a US bank account, then instead make an [ACH](/donate/ach/)
 direct deposit.  Some other donation options are [available](/donate).*
 
+# Please support my work on Magit
 {% markdown make-better.md %}
