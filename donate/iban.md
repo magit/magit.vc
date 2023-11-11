@@ -4,39 +4,32 @@ title: Sponsor my work using an IBAN bank transfer
 ---
 
 If you have a **European bank account**, then
-[IBAN](https://en.wikipedia.org/wiki/International_Bank_Account_Number)
-is the best option to transfer money to me.  For non-European bank
-accounts this may also be the best option; a notable exception are US
-bank accounts.
+[IBAN](https://en.wikipedia.org/wiki/International_Bank_Account_Number) is a
+good option to transfer money to me.
 
-<h2>Transaction details</h2>
+<h2>Account details</h2>
 
-IBAN is **CH92 0077 0016 0444 2057 7**.  Before completing the transaction make
-sure you are sending money to **Jonas Bernoulli** and that you use **CHF**
-(Swiss franks) as the currency.
+My IBAN is **CH92 0077 0016 0444 2057 7**.
+
+Before completing the transaction make sure you are sending money to **Jonas
+Bernoulli** and that you _use **CHF (Swiss franks)** as the currency_.
 
 You probably won't need this information, but in case your bank asks for it:
 SWIFT is **BKBBCHBB**, BIC is **BKBBCHBBXXX**, the bank's name is **Basler
 Kantonalbank**, and the clearing-number is **770**.
 
-<h2>Alternative transaction details</h2>
 
-Ultimately I am going to spend most of my money in CHF, and therefore most
-donations have to go through a currency conversion at some point.  I do not
-plan to open an IBAN account for each currency someone might want to pay in,
-but since I live a twenty minute walk away from two EU contries, I do have
-some expenses in EUR, and an IBAN account in that currency:
+<br>
+<hr>
 
-IBAN is **BE72 9673 1066 6916**, BIC is **TRWIBEB1XXX**, Account holder is
-**Jonas Remigius Bernoulli**, and the address is **Avenue Louise 54, Room S52 /
-Brussels / 1050 / Belgium**.
-
-<br><img class="paylogo" src="/assets/donate/iban.png"><br>
+*I can no longer accept payments to an EUR bank account.  I used Wise for that
+before, but their accounts are inherently unsafe.  I apologize to everyone I
+previously convinced to use this method and kindly ask you to use [another
+payment method](/donate) going forward.  Thanks!*
 
 <hr>
-<br>
-*If you have a US bank account, then instead make an [ACH](/donate/ach/)
-direct deposit.  Some other donation options are [available](/donate).*
+
+<br><img class="paylogo" src="/assets/donate/iban.png"><br>
 
 # Please support my work on Magit
 {% markdown make-better.md %}
