@@ -81,6 +81,8 @@ Or you might prefer a [video](/screencasts) video introduction.
 # News
 
 <!--Also update news/index.md-->
+* 20231128 — Transient **v0.5.0** released
+  ([announcement](https://emacsair.me/2023/11/28/transient-0.5))
 * 20230510 — Transient **v0.4.0** released
   ([announcement](https://emacsair.me/2023/05/10/transient-0.4))
 * 20211014 — Forge **v0.3.0** released
