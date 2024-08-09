@@ -4,6 +4,8 @@ title: News about Magit and related packages
 ---
 
 <!--Also update index.md-->
+* 2024-08-08 — Magit **v4.0.0** [released]({{site.relnotes}}/4.0.0.org)
+  ([announcement](https://emacsair.me/2024/08/08/magit-4.0))
 * 2023-11-28 — Transient **v0.5.0** released
   ([announcement](https://emacsair.me/2023/11/28/transient-0.5))
 * 2023-05-10 — Transient **v0.4.0** released
