@@ -12,5 +12,5 @@ exclude:
   - screencasts/magit-gource.mp4
   - screencasts/Makefile
 
-relnotes: https://raw.githubusercontent.com/magit/magit/master/docs/RelNotes
-rawgithub: https://raw.githubusercontent.com/magit
+relnotes: https://github.com/magit/magit/blob/main/docs/RelNotes/
+rawgithub: https://raw.githubusercontent.com/magit/
