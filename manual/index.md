@@ -32,31 +32,32 @@ using a development snapshot.
 
 # Current releases
 
-- [Magit User Manual **3.3.0**](/manual/3.3.0/magit)
+- [Magit User Manual **4.0.0**](/manual/4.0.0/magit)
   ([**modern design**](https://www.emacsdocs.org/docs/magit/Top),
-  [single page](/manual/3.3.0/magit.html),
-  [pdf](/manual/3.3.0/magit.pdf))
-  - [Installation](/manual/3.3.0/magit/Installation.html)
-  - [FAQ](/manual/3.3.0/magit/FAQ.html)
-- [Forge User Manual **0.3.0**](/manual/0.3.0/forge)
-  ([single page](/manual/0.3.0/forge.html),
-  [pdf](/manual/0.3.0/forge.pdf))
-- [Ghub User and Developer Manual **3.5.2**](/manual/3.5.2/ghub)
-  ([single page](/manual/3.5.2/ghub.html),
-  [pdf](/manual/3.5.2/ghub.pdf))
-- [Transient User and Developer Manual **0.5.0**](/manual/0.5.0/transient)
-  ([single page](/manual/0.5.0/transient.html),
-  [pdf](/manual/0.5.0/transient.pdf))
-- [Magit-Section Developer Manual **3.0.0**](/manual/3.0.0/magit-section)
-  ([single page](/manual/3.0.0/magit-section.html),
-  [pdf](/manual/3.0.0/magit-section.pdf))
-- [With-Editor User Manual **3.0.4**](/manual/3.0.4/with-editor)
-  ([single page](/manual/3.0.4/with-editor.html),
-  [pdf](/manual/3.0.4/with-editor.pdf))
+  [single page](/manual/4.0.0/magit.html),
+  [pdf](/manual/4.0.0/magit.pdf))
+  - [Installation](/manual/4.0.0/magit/Installation.html)
+  - [FAQ](/manual/4.0.0/magit/FAQ.html)
+- [Forge User Manual **0.4.0**](/manual/0.4.0/forge)
+  ([single page](/manual/0.4.0/forge.html),
+  [pdf](/manual/0.4.0/forge.pdf))
+- [Ghub User and Developer Manual **4.0.0**](/manual/4.0.0/ghub)
+  ([single page](/manual/4.0.0/ghub.html),
+  [pdf](/manual/4.0.0/ghub.pdf))
+- [Transient User and Developer Manual **0.7.4**](/manual/0.7.4/transient)
+  ([single page](/manual/0.7.4/transient.html),
+  [pdf](/manual/0.7.4/transient.pdf))
+- [Magit-Section Developer Manual **4.0.0**](/manual/4.0.0/magit-section)
+  ([single page](/manual/4.0.0/magit-section.html),
+  [pdf](/manual/4.0.0/magit-section.pdf))
+- [With-Editor User Manual **3.4.1**](/manual/3.4.1/with-editor)
+  ([single page](/manual/3.4.1/with-editor.html),
+  [pdf](/manual/3.4.1/with-editor.pdf))
 
 # Older releases
 
 - Magit:
+  [3.3](/manual/3.3.0/magit.pdf),
   [3.2](/manual/3.2.0/magit.pdf),
   [3.1](/manual/3.1.0/magit.pdf),
   [3.0](/manual/3.0.0/magit.pdf),
