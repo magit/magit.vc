@@ -39,6 +39,7 @@ payment processor, then that is noted below.
 
 # Bank transfers
 
-I recomment transfering to my [IBAN](/donate/iban.html) account, if you also
-happen to have an IBAN account.  IBAN transfers have the advantage that there
-are *no fees*, except for the currency conversion fees.
+I recomment transfering to either my EUR or CHF [IBAN](/donate/iban.html)
+account, if you also happen to have an IBAN account.  IBAN transfers have
+the advantage that there are *no fees*, except potentially for a currency
+conversion fees.
