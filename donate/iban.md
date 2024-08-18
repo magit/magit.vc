@@ -3,11 +3,15 @@ layout: default
 title: Sponsor my work using an IBAN bank transfer
 ---
 
-If you have a **European bank account**, then
-[IBAN](https://en.wikipedia.org/wiki/International_Bank_Account_Number) is a
-good option to transfer money to me.
+If you have a European bank account, using that to make a [SWIFT] transaction to
+either my EUR or CHF [IBAN] account, is the cheapest option.  If you transfer
+another currency, there will be a currency conversion fees, but other than that
+there should be no fees.
 
-<h2>CHF account details</h2>
+[SWIFT]: https://en.wikipedia.org/wiki/SWIFT
+[IBAN]:  https://en.wikipedia.org/wiki/International_Bank_Account_Number
+
+## **CHF** account details
 
 My IBAN is **CH92 0077 0016 0444 2057 7**.
 
@@ -18,7 +22,7 @@ You probably won't need this information, but in case your bank asks for it:
 SWIFT is **BKBBCHBB**, BIC is **BKBBCHBBXXX**, the bank's name is **Basler
 Kantonalbank**, and the clearing-number is **770**.
 
-<h2>EUR account details</h2>
+## **EUR** account details
 
 My IBAN is **CH73 0077 0251 3226 4200 6**.
 
@@ -32,10 +36,11 @@ Kantonalbank**, and the clearing-number is **770**.
 <br>
 <hr>
 
-*I can no longer accept payments to an USD bank account.  I used Wise for that
-before, but their accounts are inherently unsafe.  I apologize to everyone I
-previously convinced to use this method and kindly ask you to use [another
-payment method](/donate) going forward.  Thanks!*
+*I can no longer accept payments to a USD bank account.  I used to use Wise
+to receive USD and EUR transfers, but their accounts are inherently unsafe,
+so I cannot do that anymore.  If I previously convinced to use this method,
+then I kindly ask you to use [another payment method](/donate) going forward.
+Thanks!*
 
 <hr>
 

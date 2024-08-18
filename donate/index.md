@@ -17,6 +17,18 @@ title: Please support my work on Magit
   <br/>
 </section>
 
+# Bank transfers
+
+If you have a European bank account, using that to make a [SWIFT] transaction to
+either my EUR or CHF [IBAN] account, is the cheapest option.  If you transfer
+another currency, there will be a currency conversion fees, but other than that
+there should be no fees.
+
+[SWIFT]: https://en.wikipedia.org/wiki/SWIFT
+[IBAN]:  https://en.wikipedia.org/wiki/International_Bank_Account_Number
+
+- [EUR and CHF account details](/donate/iban.html)
+
 # Payment processors
 
 - [Stripe](/donate/stripe.html)
@@ -36,10 +48,3 @@ payment processor, then that is noted below.
   to them as well, but you can decline.
 - [Patreon](https://www.patreon.com/tarsius/) They charge *very high fees*,
   including some hidden fees.  Please consider using another platform.
-
-# Bank transfers
-
-I recomment transfering to either my EUR or CHF [IBAN](/donate/iban.html)
-account, if you also happen to have an IBAN account.  IBAN transfers have
-the advantage that there are *no fees*, except potentially for a currency
-conversion fees.
