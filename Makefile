@@ -24,14 +24,12 @@ help:
 	$(info make build          - build using jekyll)
 	$(info make serve          - run a local jekyll server)
 	$(info make publish        - upload to production site)
-	$(info make publish-other  - upload from related repos)
 	$(info make update-fonts   - download updated fonts)
 	$(info make clean          - remove build directory)
 	$(info make ci-install     - install required tools)
 	$(info make ci-version     - print version information)
 	$(info )
 	$(info Public:  $(PUBLIC))
-	$(info Preview: $(PREVIEW_S3_URL))
 	$(info Publish: $(PUBLISH_S3_URL))
 	@echo
 	@grep -e "^SRC" -e "^DST" -e "^SYNC" -e "^#NOT" Makefile
@@ -55,14 +53,6 @@ publish:
 	@printf "Generating CDN invalidation\n"
 	@aws cloudfront create-invalidation \
 	--distribution-id $(CFRONT_DIST) --paths "/*" > /dev/null
-#	@make -C manual/2.11 publish
-
-publish-other:
-	@echo "Publishing from related repositories..."
-	@make -C ~/.emacs.d/lib/magit publish-stats
-#	@make -C ~/.emacs.d/lib/magit publish-manuals
-#	@make -C ~/.emacs.d/lib/with-editor publish
-	@make -C ~/Repos/pages/magit.vc/manual publish
 
 update-fonts:
 	@mkdir -p assets/fonts
