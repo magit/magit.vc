@@ -4,7 +4,7 @@ title: News about Magit and related packages
 ---
 
 <!--Also update index.md-->
-* 2021-10-14 — Forge **v0.4.0** and **v0.4.1** released
+* 2024-08-14 — Forge **v0.4.0** and **v0.4.1** released
   ([announcement](https://emacsair.me/2024/08/14/forge-0.4))
 * 2024-08-08 — Magit **v4.0.0** [released]({{site.relnotes}}/4.0.0.org)
   ([announcement](https://emacsair.me/2024/08/08/magit-4.0))
