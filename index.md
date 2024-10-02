@@ -89,30 +89,6 @@ Or you might prefer a [video](/screencasts) introduction.
   ([announcement](https://emacsair.me/2023/11/28/transient-0.5))
 * 2023-05-10 — Transient **v0.4.0** released
   ([announcement](https://emacsair.me/2023/05/10/transient-0.4))
-* 2021-10-14 — Forge **v0.3.0** released
-  ([announcement](https://emacsair.me/2021/10/14/forge-0.3))
-* 2021-10-04 — Magit **v3.3.0** [released]({{site.relnotes}}/3.3.0.org)
-  ([announcement](https://emacsair.me/2021/10/04/magit-3.3))
-* 2021-08-06 — Magit available from NonGNU Elpa
-  ([announcement](https://emacsair.me/2021/08/06/nongnu-elpa))
-* 2021-08-01 — Magit **v3.2.0** [released]({{site.relnotes}}/3.2.0.org)
-  ([announcement](https://emacsair.me/2021/08/01/magit-3.2))
-* 2021-07-01 — Magit **v3.1.0** [released]({{site.relnotes}}/3.1.0.org)
-  ([announcement](https://emacsair.me/2021/07/01/magit-3.1))
-* 2021-04-25 — Forge **v0.2.0** released
-  ([announcement](https://emacsair.me/2021/05/25/forge-0.2))
-* 2021-05-25 — Magit **v3.0.0** [released]({{site.relnotes}}/3.0.0.org)
-  ([announcement](https://emacsair.me/2021/05/25/magit-3.0))
-* 2021-02-21 — Transient **v0.3.0** released
-  ([announcement](https://emacsair.me/2021/02/21/transient-0.3))
-* 2020-02-26 — Transient **v0.2.0** released
-  ([announcement](https://emacsair.me/2020/02/26/transient-0.2))
-* 2020-01-23 — Magit-Section as a stand-alone package
-  ([announcement](https://emacsair.me/2020/01/23/magit-section))
-* 2019-02-14 — Transient **v0.1.0** released
-  ([announcement](https://emacsair.me/2019/02/14/transient-0.1))
-* 2018-12-19 — Forge **v0.1.0** released
-  ([announcement](https://emacsair.me/2018/12/19/forge-0.1))
 
 [All news](/news).
 
