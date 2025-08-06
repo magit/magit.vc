@@ -180,10 +180,7 @@ including the backers of the 2017 crowdfunding campaign.
 [reddit]:        https://www.reddit.com/r/emacs
 [stackexchange]: https://emacs.stackexchange.com/questions/tagged/magit
 [discussions]:   https://github.com/magit/magit/discussions/4630
-[//]: #          https://gitter.im/magit/magit
-[//]: #          https://groups.google.com/forum/?fromgroups#!forum/magit
-[//]: #          https://twitter.com/magit_emacs
-[mastodon]:      https://mastodon.social/@tarsius
+[mastodon]:      https://fosstodon.org/@tarsius
 [wiki]:          https://github.com/magit/magit/wiki
 
 [Emacs]:   https://www.gnu.org/software/emacs
