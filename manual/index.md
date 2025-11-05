@@ -32,8 +32,7 @@ using a development snapshot.
 # Current releases
 
 - [Magit User Manual **4.0.0**](/manual/4.0.0/magit)
-  ([**modern design**](https://www.emacsdocs.org/docs/magit/Top),
-  [single page](/manual/4.0.0/magit.html),
+  ([single page](/manual/4.0.0/magit.html),
   [pdf](/manual/4.0.0/magit.pdf))
   - [Installation](/manual/4.0.0/magit/Installation.html)
   - [FAQ](/manual/4.0.0/magit/FAQ.html)
