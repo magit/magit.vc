@@ -54,39 +54,6 @@ using a development snapshot.
   ([single page](/manual/3.4.1/with-editor.html),
   [pdf](/manual/3.4.1/with-editor.pdf))
 
-# Older releases
-
-- Magit:
-  [3.3](/manual/3.3.0/magit.pdf),
-  [3.2](/manual/3.2.0/magit.pdf),
-  [3.1](/manual/3.1.0/magit.pdf),
-  [3.0](/manual/3.0.0/magit.pdf),
-  [2.90.1](/manual/2.90.1/magit.pdf),
-  [2.90.0](/manual/2.90.0/magit.pdf),
-  [2.13.1](/manual/2.13.1/magit.pdf),
-  [2.13.0](/manual/2.13.0/magit.pdf),
-  [2.12.1](/manual/2.12.1/magit.pdf),
-  [2.12.0](/manual/2.12.0/magit.pdf),
-  [2.11.0](/manual/2.11.0/magit.pdf),
-  [2.10](/manual/2.10/magit.pdf),
-  [2.9](/manual/2.9/magit.pdf),
-  [2.8](/manual/2.8/magit.pdf),
-  [2.7](/manual/2.7/magit.pdf),
-  [2.6](/manual/2.6/magit.pdf),
-  [2.5](/manual/2.5/magit.pdf),
-  [2.4](/manual/2.4/magit.pdf),
-  [2.3](/manual/2.3/magit.pdf),
-  [2.2](/manual/2.2/magit.pdf),
-  [2.1](/manual/2.1/magit.pdf),
-  [1.4](/manual/1.4/magit.pdf),
-  [1.2](/manual/1.2/magit.pdf)
-
-# Obsolete packages
-
-- [Magit-Popup User Manual](/manual/magit-popup)
-  ([single page](/manual/magit-popup.html),
-  [pdf](/manual/magit-popup.pdf))
-
 # FAQ
 
 {% markdown faq-links.md %}
