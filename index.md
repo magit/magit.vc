@@ -97,8 +97,7 @@ Or you might prefer a [video](/screencasts) introduction.
 * [All manuals](/manual) (for releases)
 * [Magit User Manual](/manual/magit)
   ([single-page](/manual/magit.html),
-   [pdf](/manual/magit.pdf),
-   [epub](/manual/magit.epub))
+   [pdf](/manual/magit.pdf))
   * [Installation](/manual/magit/Installation.html)
   * [FAQ](/manual/magit/FAQ.html)
     <img class="clear" src="/assets/R.png" align="top">
