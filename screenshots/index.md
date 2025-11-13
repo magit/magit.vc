@@ -644,63 +644,63 @@ There are many other popups, including:
 
 ### <i>w</i> Am
 ![](/screenshots/popup-am.png)
-See [Maildir Patches](https://magit.vc/manual/magit/Maildir-Patches.html).
+See [Maildir Patches](https://docs.magit.vc/magit/Maildir-Patches.html).
 
 ### <i>A</i> Cherry-pick
 ![](/screenshots/popup-cherry-pick.png)
-See [Cherry Picking](https://magit.vc/manual/magit/Cherry-Picking.html).
+See [Cherry Picking](https://docs.magit.vc/magit/Cherry-Picking.html).
 
 ### <i>B</i> Bisect
 ![](/screenshots/popup-bisect.png)
-See [Bisecting](https://magit.vc/manual/magit/Bisecting.html).
+See [Bisecting](https://docs.magit.vc/magit/Bisecting.html).
 
 ### <i>E</i> Ediff
 ![](/screenshots/popup-ediff.png)
-See [Ediffing](https://magit.vc/manual/magit/Ediffing.html).
+See [Ediffing](https://docs.magit.vc/magit/Ediffing.html).
 
 ### <i>M</i> Remote
 ![](/screenshots/popup-remote.png)
-See [Remotes](https://magit.vc/manual/magit/Remotes.html).
+See [Remotes](https://docs.magit.vc/magit/Remotes.html).
 
 ### <i>o</i> Submodule
 ![](/screenshots/popup-submodule.png)
-See [Submodules](https://magit.vc/manual/magit/Submodules.html).
+See [Submodules](https://docs.magit.vc/magit/Submodules.html).
 
 ### <i>O</i> Subtree
 ![](/screenshots/popup-subtree.png)
-See [Subtree](https://magit.vc/manual/magit/Subtree.html).
+See [Subtree](https://docs.magit.vc/magit/Subtree.html).
 
 ### <i>t</i> Tag
 ![](/screenshots/popup-tag.png)
-See [Tagging](https://magit.vc/manual/magit/Tagging.html).
+See [Tagging](https://docs.magit.vc/magit/Tagging.html).
 
 ### <i>T</i> Notes
 ![](/screenshots/popup-notes.png)
-See [Notes](https://magit.vc/manual/magit/Notes.html).
+See [Notes](https://docs.magit.vc/magit/Notes.html).
 
 ### <i>V</i> Revert
 ![](/screenshots/popup-revert.png)
-See [Reverting](https://magit.vc/manual/magit/Reverting.html).
+See [Reverting](https://docs.magit.vc/magit/Reverting.html).
 
 ### <i>W</i> Patch
 ![](/screenshots/popup-patch.png)
-See [Plain Patches](https://magit.vc/manual/magit/Plain-Patches.html).
+See [Plain Patches](https://docs.magit.vc/magit/Plain-Patches.html).
 
 ### <i>X</i> Reset
 ![](/screenshots/popup-reset.png)
-See [Resetting](https://magit.vc/manual/magit/Resetting.html).
+See [Resetting](https://docs.magit.vc/magit/Resetting.html).
 
 ### <i>C-u y</i> Show refs
 ![](/screenshots/popup-show-refs.png)
-See [References Buffer](https://magit.vc/manual/magit/References-Buffer.html).
+See [References Buffer](https://docs.magit.vc/magit/References-Buffer.html).
 
 ### <i>z</i> Stash
 ![](/screenshots/popup-stash.png)
-See [Stashing](https://magit.vc/manual/magit/Stashing.html).
+See [Stashing](https://docs.magit.vc/magit/Stashing.html).
 
 ### <i>!</i> Run
 ![](/screenshots/popup-run.png)
-See [Running Git Manually](https://magit.vc/manual/magit/Running-Git-Manually.html).
+See [Running Git Manually](https://docs.magit.vc/magit/Running-Git-Manually.html).
 
 [emacs]:     https://www.gnu.org/software/emacs/
 [git]:       https://git-scm.com
