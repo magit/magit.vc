@@ -1,58 +1,61 @@
 ## Configuration #####################################################
 
-DOMAIN         ?= magit.vc
-PUBLIC         ?= https://$(DOMAIN)
-CFRONT_DIST    ?= E2LUHBKU1FBV02
-PUBLISH_BUCKET ?= s3://$(DOMAIN)
-S3_DOMAIN      ?= s3-website.eu-central-1.amazonaws.com
-PUBLISH_S3_URL ?= http://$(DOMAIN).$(S3_DOMAIN)
+DOMAIN = magit.vc
 
-SRC   = _site
-DST   =
-PORT ?= 4100
+RCLONE      ?= rclone
+RCLONE_ARGS ?= -v
 
-SYNC  = --exclude "assets/logo/*"
-SYNC += --exclude "manual/*"
-SYNC += --exclude "stats/*"
+SERVE_ARGS = -P 4100
 
 FONTS = Noto+Sans:400,400i,700,700i|Noto+Serif:400,400i,700,700i
 
 ## Usage #############################################################
 
 help:
-	$(info )
-	$(info make build          - build using jekyll)
-	$(info make serve          - run a local jekyll server)
-	$(info make publish        - upload to production site)
-	$(info make update-fonts   - download updated fonts)
-	$(info make clean          - remove build directory)
-	$(info make ci-install     - install required tools)
-	$(info make ci-version     - print version information)
-	$(info )
-	$(info Public:  $(PUBLIC))
-	$(info Publish: $(PUBLISH_S3_URL))
-	@echo
-	@grep -e "^SRC" -e "^DST" -e "^SYNC" -e "^#NOT" Makefile
-	@echo
+	$(info make build            - Build using jekyll)
+	$(info make serve            - Run a local jekyll server)
+	$(info make publish-indices  - Publish indices to fastmail)
+	$(info make update-fonts     - Download updated fonts)
+	$jinfo make clean            - Remove build directory)
+	@true
 
-## Targets ###########################################################
+## Build #############################################################
 
 build:
 	@jekyll build
 
 serve:
-	jekyll serve -P $(PORT)
+	@jekyll serve $(SERVE_ARGS)
 
-publish:
-	@if test $$(git symbolic-ref --short HEAD) = main; \
-	then echo "Uploading to $(PUBLISH_BUCKET)..."; \
-	else echo "ERROR: Only main can be published"; exit 1; fi
-	@aws s3 sync $(SRC) $(PUBLISH_BUCKET)$(DST) --delete $(SYNC)
-	@aws s3 sync $(SRC)/manual $(PUBLISH_BUCKET)/manual
-	@aws s3 sync $(SRC)/stats $(PUBLISH_BUCKET)/stats
-	@printf "Generating CDN invalidation\n"
-	@aws cloudfront create-invalidation \
-	--distribution-id $(CFRONT_DIST) --paths "/*" > /dev/null
+## Publish ###########################################################
+
+DOCS_DOMAIN = docs.$(DOMAIN)
+STAT_DOMAIN = stats.$(DOMAIN)
+DOCS_TARGET = $(subst .,_,$(DOCS_DOMAIN)):
+SNAP_TARGET = $(subst .,_,$(DOCS_DOMAIN)):devel
+STAT_TARGET = $(subst .,_,$(STAT_DOMAIN)):
+
+publish-indices: build
+	@echo "Publishing indices to $(DOCS_DOMAIN)..."
+	@$(RCLONE) copy $(RCLONE_ARGS) manual/magit-refcard.pdf    $(DOCS_TARGET)
+	@$(RCLONE) copy $(RCLONE_ARGS) _site/manual/dir/index.html $(DOCS_TARGET)/dir
+	@$(RCLONE) copy $(RCLONE_ARGS) _site/manual/dir.html       $(DOCS_TARGET)
+	@$(RCLONE) copy $(RCLONE_ARGS) _site/manual/index.html     $(DOCS_TARGET)
+	@$(RCLONE) copy $(RCLONE_ARGS) _site/manual/dir/index.html $(SNAP_TARGET)/dir
+	@$(RCLONE) copy $(RCLONE_ARGS) _site/manual/dir.html       $(SNAP_TARGET)
+	@$(RCLONE) copy $(RCLONE_ARGS) _site/manual/index.html     $(SNAP_TARGET)
+	@echo "Publishing indices to $(STAT_DOMAIN)..."
+	@$(RCLONE) copy $(RCLONE_ARGS) _site/stats/index.html      $(STAT_TARGET)
+
+# Instead of this, we publish using Github Pages.
+# APEX_TARGET  = $(subst .,_,$(DOMAIN)):
+# publish:
+# 	@if test $$(git symbolic-ref --short HEAD) = main; \
+# 	then echo "Publishing page to $(DOMAIN)..."; \
+# 	else echo "ERROR: Only main can be published"; exit 1; fi
+# 	@$(RCLONE) sync $(RCLONE_ARGS) _site $(APEX_TARGET)
+
+## Miscellaneous #####################################################
 
 update-fonts:
 	@mkdir -p assets/fonts
@@ -63,13 +66,3 @@ update-fonts:
 clean:
 	@echo "Cleaning..."
 	@rm -rf _site
-
-ci-install:
-	@apt-get -qq update
-	@apt-get -qq install python-dev python-pip
-	@gem install jekyll
-	@pip install awscli
-
-ci-version:
-	@aws --version
-	@jekyll --version

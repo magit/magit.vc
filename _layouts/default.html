@@ -9,29 +9,30 @@
     <link rel="me" href="https://fosstodon.org/@tarsius">
     <link rel="me" href="https://bsky.app/profile/tarsius.bsky.social">
     <link rel="me" href="https://github.com/tarsius">
-    <link rel="icon" href="/assets/magit.ico">
-    <link rel="stylesheet" type="text/css" href="/assets/page.css">
-    <link class="s-css-s--style" rel="stylesheet"           title="Default"               href="/assets/themes/default.css">
-    <link class="s-css-s--style" rel="stylesheet alternate" title="Default high contrast" href="/assets/themes/default-high-contrast.css">
-    <link class="s-css-s--style" rel="stylesheet alternate" title="Solarized dark xterm"  href="/assets/themes/solarized-dark-xterm.css">
-    <link class="s-css-s--style" rel="stylesheet alternate" title="Black on white"        href="/assets/themes/black-on-white.css">
-    <script src="/assets/js/simple-css-switch.js"></script>
-    <script src="/assets/js/count.js" async data-goatcounter="https://magit-vc.goatcounter.com/count"></script>
+    <link rel="icon" href="https://magit.vc/assets/magit.ico">
+    <link rel="stylesheet" type="text/css" href="https://magit.vc/assets/page.css">
+    <link class="s-css-s--style" rel="stylesheet"           title="Default"               href="https://magit.vc/assets/themes/default.css">
+    <link class="s-css-s--style" rel="stylesheet alternate" title="Default high contrast" href="https://magit.vc/assets/themes/default-high-contrast.css">
+    <link class="s-css-s--style" rel="stylesheet alternate" title="Solarized dark xterm"  href="https://magit.vc/assets/themes/solarized-dark-xterm.css">
+    <link class="s-css-s--style" rel="stylesheet alternate" title="Black on white"        href="https://magit.vc/assets/themes/black-on-white.css">
+    <script src="https://magit.vc/assets/js/simple-css-switch.js"></script>
+    <script src="https://magit.vc/assets/js/count.js" async
+            data-goatcounter="https://magit-vc.goatcounter.com/count"></script>
   </head>
 
   <body onload="simpleCssSwitch()">
     <header>
       <a alt="Magit logo"
          {% if page.home %}
-           title="go to manual" href="/manual/magit#Top"
+           title="go to manual" href="https://docs.magit.vc/magit#Top"
          {% else %}
-           title="go home" href="/"
+           title="go home" href="https://magit.vc"
          {% endif %}
          >
       {% if page.logo == "big" %}
-        <img src="/assets/magit-400x400px.png">
+        <img src="https://magit.vc/assets/magit-400x400px.png">
       {% else %}
-        <img src="/assets/magit-168x200px.png">
+        <img src="https://magit.vc/assets/magit-168x200px.png">
       {% endif %}
       </a>
       <h1>{{ page.title }}</h1>

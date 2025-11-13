@@ -98,37 +98,29 @@ More releases are listed on the release pages for
 
 # Documentation
 
-* [All manuals](/manual) (for releases)
-* [Magit User Manual](/manual/magit)
-  ([single-page](/manual/magit.html),
-   [pdf](/manual/magit.pdf))
-  * [Installation](/manual/magit/Installation.html)
-  * [FAQ](/manual/magit/FAQ.html)
-    <img class="clear" src="/assets/R.png" align="top">
-* [Forge User Manual](/manual/forge)
-  ([single-page](/manual/forge.html),
-   [pdf](/manual/forge.pdf))
-* [Ghub User and Developer Manual](/manual/ghub)
-  ([single-page](/manual/ghub.html),
-   [pdf](/manual/ghub.pdf))
-* [Magit-Section Developer Manual](/manual/magit-section)
-  ([single page](/manual/magit-section.html),
-  [pdf](/manual/magit-section.pdf))
-* [Transient User and Developer Manual](/manual/transient)
-  ([single-page](/manual/transient.html),
-   [pdf](/manual/transient.pdf))
-* [With-Editor User Manual](/manual/with-editor)
-  ([single-page](/manual/with-editor.html),
-   [pdf](/manual/with-editor.pdf))
-* [Magit Reference Card](/manual/magit-refcard.pdf)
-* [Wiki][wiki]
+- [Magit User Manual](https://docs.magit.vc/magit)
+  ([pdf](https://docs.magit.vc/magit/magit.pdf),
+   [Reference Card](https://docs.magit.vc/magit-refcard.pdf))
+- [Forge User Manual](https://docs.magit.vc/forge)
+  ([pdf](https://docs.magit.vc/forge/forge.pdf))
+- [Ghub User and Developer Manual](https://docs.magit.vc/ghub)
+  ([pdf](https://docs.magit.vc/ghub/ghub.pdf))
+- [Magit-Section Developer Manual](https://docs.magit.vc/magit-section)
+  ([pdf](https://docs.magit.vc/magit-section/magit-section.pdf))
+- [Transient User and Developer Manual](https://docs.magit.vc/transient)
+  ([pdf](https://docs.magit.vc/transient/transient.pdf))
+- [With-Editor User Manual](https://docs.magit.vc/with-editor)
+  ([pdf](https://docs.magit.vc/with-editor/with-editor.pdf))
+- [Snapshot Manuals](https://docs.magit.vc/devel)
+- [FAQ][faq]
+- [Wiki][wiki]
 
 # Resources
 
 * [Development][devel]
   * [Pull requests][pulls]
   * [Issue tracker][issues]
-  * [Statistics](/stats)
+  * [Statistics][stats]
 * Support
   * [Emacs Subreddit][reddit]
   * [Emacs Stackexchange][stackexchange]
@@ -176,9 +168,10 @@ including the backers of the 2017 crowdfunding campaign.
 [issues]:  https://github.com/magit/magit/issues
 [pulls]:   https://github.com/magit/magit/pulls
 
-[authors]: /stats/magit/authors.html
-[faq]:     /manual/magit/FAQ.html
-[manual]:  /manual
+[faq]:     https://docs.magit.vc
+
+[authors]: https://stats.magit.vc/magit/authors.html
+[stats]:   https://stats.magit.vc
 
 [reddit]:        https://www.reddit.com/r/emacs
 [stackexchange]: https://emacs.stackexchange.com/questions/tagged/magit
