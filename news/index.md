@@ -3,6 +3,12 @@ layout: default
 title: News about Magit and related packages
 ---
 
+Not all releases are announced on my blog.
+More releases are listed on the release pages for
+[Magit](https://github.com/magit/magit/releases),
+[Transient](https://github.com/magit/transient/releases),
+[Forge](https://github.com/magit/forge/releases) and other packages.
+
 <!--Also update index.md-->
 * 2024-08-14 — Forge **v0.4.0** and **v0.4.1** released
   ([announcement](https://emacsair.me/2024/08/14/forge-0.4))

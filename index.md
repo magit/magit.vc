@@ -90,7 +90,11 @@ Or you might prefer a [video](/screencasts) introduction.
 * 2023-05-10 — Transient **v0.4.0** released
   ([announcement](https://emacsair.me/2023/05/10/transient-0.4))
 
-[All news](/news).
+[More news](/news).  Not all releases are announced on my blog.
+More releases are listed on the release pages for
+[Magit](https://github.com/magit/magit/releases),
+[Transient](https://github.com/magit/transient/releases),
+[Forge](https://github.com/magit/forge/releases) and other packages.
 
 # Documentation
 
