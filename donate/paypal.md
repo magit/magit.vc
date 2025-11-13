@@ -43,4 +43,4 @@ title: Sponsor my work using PayPal
 *Some other donation options are [available](/donate).*
 
 # Please support my work on Magit
-{% markdown make-better.md %}
+{% include make-better.md %}

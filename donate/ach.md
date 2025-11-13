@@ -8,4 +8,4 @@ USA is inherently unsafe.  I apologize to everyone I previously confinced to
 use this method and kindly ask you to use another payment method going forward.
 Thanks!*
 
-{% markdown donate-main.md %}
+{% include donate-main.md %}

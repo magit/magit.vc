@@ -74,7 +74,7 @@ Or you might prefer a [video](/screencasts) introduction.
 <section>
   <blockquote id="quote1"></blockquote>
   <blockquote id="quote2"></blockquote>
-  {% markdown donate-main.md %}
+  {% include donate-main.md %}
   <br>
 </section>
 

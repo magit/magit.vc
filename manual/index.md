@@ -54,4 +54,4 @@ using a development snapshot.
 
 # FAQ
 
-{% markdown faq-links.md %}
+{% include faq-links.md %}

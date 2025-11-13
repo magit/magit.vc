@@ -47,4 +47,4 @@ Thanks!*
 <br><img class="paylogo" src="/assets/donate/iban.png"><br>
 
 # Please support my work on Magit
-{% markdown make-better.md %}
+{% include make-better.md %}

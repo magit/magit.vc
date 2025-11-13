@@ -16,5 +16,5 @@ title: User testimonials
     If Magit makes you more productive too,
     then <b>please consider making a donation</b>.
   </div>
-  {% markdown donate-main.md %}
+  {% include donate-main.md %}
 </section>

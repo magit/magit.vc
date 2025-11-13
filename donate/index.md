@@ -7,13 +7,13 @@ title: Please support my work on Magit
 <br><br>
 
 <!-- no title here -->
-{% markdown make-better.md %}
+{% include make-better.md %}
 <br/>
 
 <script type="text/javascript" src="/quotes/quotes.js"></script>
 <script type="text/javascript">window.onload = function(){inject_quotes(); simpleCssSwitch();}</script>
 <section>
-{% markdown donate-self.md %}
+{% include donate-self.md %}
   <br/>
 </section>
 

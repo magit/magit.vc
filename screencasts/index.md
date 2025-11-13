@@ -77,7 +77,7 @@ The [Magit Youtube channel](https://www.youtube.com/channel/UCexQgXXm2njaZOn2GEE
 You might also be interested in some [screenshots](https://emacsair.me/2017/09/01/magit-walk-through)
 and [blog posts](/blogs).
 
-{% markdown donate-main.md %}
+{% include donate-main.md %}
 
 If you create new screencasts, then let me know so that I can had
 them here.  Please also consider mentioning that users might want

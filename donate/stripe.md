@@ -22,4 +22,4 @@ expenses are in CHF.
 *Some other donation options are [available](/donate).*
 
 # Please support my work on Magit
-{% markdown make-better.md %}
+{% include make-better.md %}
