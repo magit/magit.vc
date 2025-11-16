@@ -3,8 +3,8 @@ layout: default
 title: Repository Statistics
 ---
 
-- [Magit statistics](/magit/activity.html)
-- [Forge statistics](/forge/activity.html)
-- [Ghub statistics](/ghub/activity.html)
-- [Transient statistics](/transient/activity.html)
-- [With-Editor statistics](/with-editor/activity.html)
+- [Magit statistics](https://stats.magit.vc/magit/activity.html)
+- [Forge statistics](https://stats.magit.vc/forge/activity.html)
+- [Ghub statistics](https://stats.magit.vc/ghub/activity.html)
+- [Transient statistics](https://stats.magit.vc/transient/activity.html)
+- [With-Editor statistics](https://stats.magit.vc/with-editor/activity.html)

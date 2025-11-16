@@ -5,19 +5,19 @@ title: Manuals
 
 # Manuals
 
-- [Magit User Manual](./magit)
-  ([pdf](./magit/magit.pdf),
-   [Reference Card](./magit-refcard.pdf))
-- [Forge User Manual](./forge)
-  ([pdf](./forge/forge.pdf))
-- [Ghub User and Developer Manual](./ghub)
-  ([pdf](./ghub/ghub.pdf))
-- [Magit-Section Developer Manual](./magit-section)
-  ([pdf](./magit-section/magit-section.pdf))
-- [Transient User and Developer Manual](./transient)
-  ([pdf](./transient/transient.pdf))
-- [With-Editor User Manual](./with-editor)
-  ([pdf](./with-editor/with-editor.pdf))
+- [Magit User Manual](https://docs.magit.vc/magit)
+  ([pdf](https://docs.magit.vc/magit/magit.pdf),
+   [Reference Card](https://docs.magit.vc/magit-refcard.pdf))
+- [Forge User Manual](https://docs.magit.vc/forge)
+  ([pdf](https://docs.magit.vc/forge/forge.pdf))
+- [Ghub User and Developer Manual](https://docs.magit.vc/ghub)
+  ([pdf](https://docs.magit.vc/ghub/ghub.pdf))
+- [Magit-Section Developer Manual](https://docs.magit.vc/magit-section)
+  ([pdf](https://docs.magit.vc/magit-section/magit-section.pdf))
+- [Transient User and Developer Manual](https://docs.magit.vc/transient)
+  ([pdf](https://docs.magit.vc/transient/transient.pdf))
+- [With-Editor User Manual](https://docs.magit.vc/with-editor)
+  ([pdf](https://docs.magit.vc/with-editor/with-editor.pdf))
 
 # FAQ
 
